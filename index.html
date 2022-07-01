@@ -27,28 +27,64 @@
 			background-color: #000;
 		}
 	</style>
-
-	<script type="text/javascript">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- <script type="text/javascript">
 		if (!window.location.search) {
 			var roomName = prompt('Enter room name to enter, or leave blank for random');
 			window.location.search = roomName || Math.random().toString(16).slice(-10);
 		}
 		var roomName = window.location.search;
-	</script>
-    <script type="text/javascript" src="lib/net/socket.io.js"></script>
-    <script type="text/javascript" src="lib/net/adapter.js"></script>
-	<script type="text/javascript" src="lib/messages.js"></script>
-	<script type="text/javascript" src="game.min.js"></script>
+	</script> -->
 </head>
+<style>
+	.connectWalletContainer {
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 500px;
+		padding: 25px;
+	}
+	.connectWallet {
+		display: inline-block;
+        outline: 0;
+        border: none;
+        cursor: pointer;
+        padding: 0 24px;
+        border-radius: 50px;
+        min-width: 200px;
+        height: 50px;
+        font-size: 18px;
+        background-color: #fd0;
+        font-weight: 500;
+        color: #222;
+	}
+	.connectWallet:hover {
+		background-color: rgb(204, 184, 54);
+	}
+	#canvasWrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+
 <body>
-	<canvas id="canvas"></canvas>
-    <div>
+	<div class="connectWalletContainer">
+		<button class="connectWallet" id="connect">Connect Wallet</button>
+		<!-- <input class="connectWallet" id="connect" type="button" value="Connect Wallet"/> -->
+	</div>
+	<script src="dist/connector.js"></script>
+    <!-- <div>
         0. Use arrows to move <br/>
         1. X - jump<br/>
         2. C - shoot<br/>
         3. Collect tubes to recharge weapon<br/>
         4. Be careful of acid burns!<br/>
         5. Invite your friends by sending them a link to page url<br/>
-    </div>
+    </div> -->
+	
+
 </body>
 </html>
