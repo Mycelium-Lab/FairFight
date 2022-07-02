@@ -24,6 +24,7 @@ var MessageType = {
   USER_LEAVE: 'user_leave',
   USER_SIGNED_CHANNEL_CLOSE: 'user_signed_channel_close',
   USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
+  USER_CLOSED_CHANNEL: 'user_closed_channel',
 
   // WebRtc signalling info, session and ice-framework related
   SDP: 'sdp',
@@ -109,6 +110,7 @@ function handleSocket(socket) {
   socket.on(MessageType.JOIN, onJoin);
   socket.on(MessageType.USER_SIGNED_CHANNEL_CLOSE, onUserSignedChannelClose);
   socket.on(MessageType.USER_EDIT_PAYMENT_CHANNEL, onUserEditPaymentChannel);
+  socket.on(MessageType.USER_CLOSED_CHANNEL, onUserClosedChannel);
   socket.on(MessageType.SDP, onSdp);
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
   socket.on(MessageType.DISCONNECT, onLeave);
@@ -153,6 +155,11 @@ function handleSocket(socket) {
   function onUserEditPaymentChannel(data) {
     log(`User ${user.getId()} edit payment channel`);
     room.broadcastFrom(user, MessageType.USER_EDIT_PAYMENT_CHANNEL, data);
+  }
+
+  function onUserClosedChannel(data) {
+    log(`User ${user.getId()} closed the channel`);
+    room.broadcastFrom(user, MessageType.USER_CLOSED_CHANNEL, data);
   }
 
   function getOrCreateRoom(name) {

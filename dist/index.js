@@ -132,7 +132,9 @@ if (!window.location.search) {
     document.getElementById("canvas").style.display = "inherit";
 
     document.getElementById("finishGame").addEventListener("click", async function () {
+      this.innerText = 'Finishing...';
       await window.gameRoom.finishGame();
+      window.location.search = "";
     });
   });
 }
