@@ -42,38 +42,59 @@ if (!window.location.search) {
         const text = "Your in-game balance: " + internalNumBalance.toString() + " TON"
         document.getElementById("startInternalBalance").style.display = 'inline-block'  
         document.getElementById("startInternalBalance").innerText = text  
-        document.getElementById("withdrawInput").style.display = "inline-block"
         document.getElementById("room").style.display = "flex"
         document.getElementById("name").disabled = false;
         document.getElementById("inputName").disabled = false;
         document.getElementById("createGame").disabled = false;
         document.getElementById("connect").disabled = true;
-        const withdrawButton = document.getElementById("withdraw")
-        withdrawButton.style.display = "inline-block"
-        withdrawButton.addEventListener("click", async function() {
-          try {
-            const base64Key = localStorage.getItem("secretKey")
-            const bytesArray = TonWeb.utils.hexToBytes(base64Key)
-            const internalWallet = tonweb.wallet.create({address: localStorage.getItem("walletAddress")})
-            const seqno = await internalWallet.methods.seqno().call()
-            const amount = document.getElementById("withdrawInput").value
-            const transfer = internalWallet.methods.transfer({
-              secretKey: bytesArray,
-              toAddress: localStorage.getItem("userTonWalletAddress"),
-              amount: TonWeb.utils.toNano(amount.toString()),
-              seqno: seqno,
-              payload: 'Withdraw',
-              sendMode: 3,
-            });
-            const transferSended = await transfer.send();
-            console.log(transferSended)
-            // const deploy = internalWallet.deploy(bytesArray);
-            // const deploySended = await deploy.send()
-          } catch(err) {
-            console.log(err)
-          }
-        })
+        document.getElementById("withdrawInput").style.display = "inline-block"
+        document.getElementById("withdraw").style.display = "inline-block"
       }
+      const withdrawButton = document.getElementById("withdraw")
+      withdrawButton.addEventListener("click", async function() {
+        try {
+          const base64Key = localStorage.getItem("secretKey")
+          const internalBalanceBefore = await tonweb.getBalance(internalAddress);
+          const bytesArray = TonWeb.utils.hexToBytes(base64Key)
+          const internalWallet = tonweb.wallet.create({address: localStorage.getItem("walletAddress")})
+          const seqno = await internalWallet.methods.seqno().call()
+          const amount = document.getElementById("withdrawInput").value
+          const transfer = internalWallet.methods.transfer({
+            secretKey: bytesArray,
+            toAddress: localStorage.getItem("userTonWalletAddress"),
+            amount: TonWeb.utils.toNano(amount.toString()),
+            seqno: seqno,
+            payload: 'Withdraw',
+            sendMode: 3,
+          });
+          const transferSended = await transfer.send();
+          document.getElementById("withdraw").style.display = "none";
+          document.getElementById("withdrawLoad").style.display = "inline-block";
+          if (transferSended) {
+            let wait = async function () {
+              const internalBalanceNow = await tonweb.getBalance(internalAddress);
+              console.log(internalBalanceBefore, internalBalanceNow)
+              if (internalBalanceBefore !== internalBalanceNow) {
+                const balanceA = await tonweb.getBalance(address);
+                const text = 'Your balance: ' + (balanceA / 10**9).toString() + ' TON'
+                document.getElementById("startTonBalance").innerText = text
+                const textBalance = "Your in-game balance: " + (internalBalanceNow/10**9).toString() + " TON"
+                const internalBalance = document.getElementById("startInternalBalance")
+                internalBalance.innerText = textBalance
+                document.getElementById("withdrawLoad").style.display = "none";
+                document.getElementById("withdraw").style.display = "inline-block"    
+                clearInterval(intervalId);
+              }
+            }
+            intervalId = setInterval(wait, 5000);
+          } else {
+            document.getElementById("withdrawLoad").style.display = "none";
+            document.getElementById("withdraw").style.display = "inline-block"
+          }
+        } catch(err) {
+          console.log(err)
+        }
+      })
       const base64Key = localStorage.getItem("secretKey")
       const bytesArray = TonWeb.utils.hexToBytes(base64Key)
       const seqno = await internalWallet.methods.seqno().call()
@@ -115,6 +136,7 @@ if (!window.location.search) {
           );
           document.getElementById("deposit").style.display = "none";
           document.getElementById("depositLoad").style.display = "inline-block";
+          document.getElementById("feeInfo").innerText = "Depositing..."
           if (tx) {
             let wait = async function(){
               const internalBalanceNow = await tonweb.getBalance(internalAddress);
@@ -122,22 +144,55 @@ if (!window.location.search) {
               if(internalBalanceNow === internalBalanceBefore) {
                 ///
               } else {
-                document.getElementById("depositLoad").style.display = "none";
-                document.getElementById("deposit").style.display = "inline-block"
-                // document.getElementById("depositInput").style.display = "none"  
-                document.getElementById("room").style.display = "flex"
-                document.getElementById("name").disabled = false;
-                document.getElementById("inputName").disabled = false;
-                document.getElementById("createGame").disabled = false;
-                document.getElementById("connect").disabled = true;        
+
+                const balanceA = await tonweb.getBalance(address);
+                const text = 'Your balance: ' + (balanceA / 10**9).toString() + ' TON'
+                document.getElementById("startTonBalance").innerText = text
+                const textBalance = "Your in-game balance: " + (internalBalanceNow/10**9).toString() + " TON"
+                const internalBalance = document.getElementById("startInternalBalance")
+                internalBalance.style.display = "inherit"
+                internalBalance.innerText = textBalance
                 clearInterval(intervalId);
+                if (deploy) {
+                  document.getElementById("feeInfo").innerText = "Deploying..."
+                  console.log("deploy")
+                  await deploy.send()
+                  let waitDeploy = async () => {
+                    const seqno = await internalWallet.methods.seqno().call()
+                    console.log("seqno:", seqno)
+                    if (seqno) {
+                      console.log("deployed")
+                      clearInterval(deployInterval)
+                      document.getElementById("withdrawInput").style.display = "inline-block"
+                      document.getElementById("withdraw").style.display = "inline-block"                        
+                      document.getElementById("feeInfo").style.display = "none"
+                      document.getElementById("depositLoad").style.display = "none";
+                      document.getElementById("deposit").style.display = "inline-block"
+                      // document.getElementById("depositInput").style.display = "none"  
+                      document.getElementById("room").style.display = "flex"
+                      document.getElementById("name").disabled = false;
+                      document.getElementById("inputName").disabled = false;
+                      document.getElementById("createGame").disabled = false;
+                      document.getElementById("connect").disabled = true;      
+                    }
+                  }
+                  deployInterval = setInterval(waitDeploy, 5000)
+                } else {
+                  document.getElementById("withdrawInput").style.display = "inline-block"
+                  document.getElementById("withdraw").style.display = "inline-block"                    
+                  document.getElementById("feeInfo").style.display = "none"
+                  document.getElementById("depositLoad").style.display = "none";
+                  document.getElementById("deposit").style.display = "inline-block"
+                  // document.getElementById("depositInput").style.display = "none"  
+                  document.getElementById("room").style.display = "flex"
+                  document.getElementById("name").disabled = false;
+                  document.getElementById("inputName").disabled = false;
+                  document.getElementById("createGame").disabled = false;
+                  document.getElementById("connect").disabled = true;  
+                } 
               }
             };
             intervalId = setInterval(wait, 5000);
-            if (deploy) {
-              console.log("deploy")
-              await deploy.send()
-            }
           } else { 
             document.getElementById("depositLoad").style.display = "none";
             document.getElementById("deposit").style.display = "inline-block"
