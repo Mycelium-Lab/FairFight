@@ -1,5 +1,5 @@
 var PORT = 8033;
-var MAX_ROOM_USERS = 5;
+var MAX_ROOM_USERS = 2;
 
 var fs = require('fs');
 var log = console.log.bind(console);
@@ -32,12 +32,20 @@ var MessageType = {
   ERROR_USER_INITIALIZED: 'error_user_initialized'
 };
 
-function User() {
+function User(walletAddress, publicKey) {
   this.userId = ++lastUserId;
+  this.walletAddress = walletAddress;
+  this.publicKey = publicKey;
 }
 User.prototype = {
   getId: function() {
     return this.userId;
+  },
+  getWalletAddress: function() {
+    return this.walletAddress;
+  },
+  getPublicKey: function() {
+    return this.publicKey;
   }
 };
 
@@ -116,7 +124,7 @@ function handleSocket(socket) {
     }
 
     // Add a new user
-    room.addUser(user = new User(), socket);
+    room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
 
     // Send room info to new user
     room.sendTo(user, MessageType.ROOM, {
@@ -127,10 +135,11 @@ function handleSocket(socket) {
     // Notify others of a new user joined
     room.broadcastFrom(user, MessageType.USER_JOIN, {
       userId: user.getId(),
-      users: room.getUsers()
+      user: user
     });
     log('User %s joined room %s. Users in room: %d',
       user.getId(), room.getName(), room.numUsers());
+    log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
   }
 
   function getOrCreateRoom(name) {
