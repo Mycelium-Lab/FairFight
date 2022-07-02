@@ -1,14 +1,13 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const TonWeb = require('tonweb')
 const toNano = TonWeb.utils.toNano;
-const apiKey = 'df344c315ae71a22ae1e58ceb3158597e78435c7dac009bf30e619e3c6dca9fa'
-const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: apiKey}));
-const provider = window.ton;
-
 if (!window.location.search) {
-  $(document).ready(function () {
+  $(document).ready(async function () {
     var walletConnect = document.getElementById("connect");
     walletConnect.addEventListener("click", async function () {
+      const apiKey = 'df344c315ae71a22ae1e58ceb3158597e78435c7dac009bf30e619e3c6dca9fa'
+      const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: apiKey}));
+      const provider = window.ton;  
       const accounts = await provider.send('ton_requestAccounts');
       const account = accounts[0];
       walletConnect.textContent = account.slice(0, 6) + '...' + account.slice(account.length - 4, account.length);
@@ -109,6 +108,9 @@ if (!window.location.search) {
 
   //   window.location.search = roomName || Math.random().toString(16).slice(-10);
 } else {
+  const apiKey = 'df344c315ae71a22ae1e58ceb3158597e78435c7dac009bf30e619e3c6dca9fa'
+  const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: apiKey}));
+
   $(document).ready(async function () {
     const storageWalletAddress = localStorage.getItem("walletAddress")
     const wallet = tonweb.wallet.create({address: storageWalletAddress});
