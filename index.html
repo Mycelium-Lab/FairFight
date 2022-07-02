@@ -192,12 +192,23 @@
 		padding: 0 24px;
 		margin: 25px;
 	}
+	.startBalances {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin: 25px;
+	}
+	#feeInfo {
+		color:rgb(195, 191, 191);
+		font-size: 12px;
+	}
 </style>
 
 <body>
 	<div class="canvasWrapper">
 		<span id="internalWallet" class="canvasHeader" style="display: none;">Your in-game wallet: </span>
-		<span id="internalBalance" class="canvasHeader" style="display: none;">Your in-game balance: </span>
+		<span id="tonBalance" class="canvasHeader" style="display: none;">Your TON balance: </span>
+		<span id="internalBalance" class="canvasHeader" style="display: none;">Your in-game TON balance: </span>
 		<canvas id="canvas" style="display: none;"></canvas>
 		<div id="info" style="display: none;">
 			0. Use arrows to move <br/>
@@ -212,9 +223,14 @@
 		<div class="startContainer">
 			<h1 id="walletHeader">Please connect wallet</h1>
 			<button class="startBtn" id="connect">Connect Wallet</button>
-			<input type="number" placeholder="0" id="depositInput" style="display:none">
+			<span id="startTonBalance" style="display:none">Your TON balanceL</span>
+			<input type="number" placeholder="Deposit amount" id="depositInput" style="display:none">
 			<button class="startBtn" id="depositLoad" style="display:none"><span class="loader"></span></button>
 			<button class="startBtn" id="deposit" style="display:none">Deposit</button>
+			<p id="feeInfo" style="display:none">...</p>
+			<span id="startInternalBalance" style="display:none">Your in-game TON balance:</span>
+			<input type="number" placeholder="Withdrawal amount" id="withdrawInput" style="display:none">
+			<button class="startBtn" id="withdraw" style="display:none">Withdraw</button>
 			<!-- <input class="startBtn" id="connect" type="button" value="Connect Wallet"/> -->
 			<div id="room" style="display:none">
 				<div class="input-group mb-3 p-3">
