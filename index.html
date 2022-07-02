@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Impact Game</title>
+	<title>TON Game</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<style type="text/css">
 		html,body {
@@ -27,15 +27,7 @@
 			border: 1px solid #3b3d42;
 			background-color: #000;
 		}
-		/* .startContainer {
-			display:flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			padding: 1em;
-			margin: 1em;
 
-		} */
 		.inputName{
 			display:flex;
 			justify-content: center;
@@ -44,26 +36,6 @@
 			padding: 1em;
 			margin: 1em;
 		}
-		/* .startBtn {
-			display: inline-block;
-			outline: 0;
-			border: none;
-			cursor: pointer;
-			padding: 0 24px;
-			border-radius: 50px;
-			min-width: 200px;
-			height: 50px;
-			font-size: 18px;
-			background-color: #fd0;
-			font-weight: 500;
-			color: #222;
-			padding: 1em;
-			max-width: 400px;
-
-		} */
-		/* .startBtn:hover {
-			background-color: rgb(204, 184, 54);
-		} */
 
 		.createGame {
 			display: inline-block;
@@ -78,8 +50,6 @@
 			background-color: rgb(241, 91, 10);
 			font-weight: 500;
 			color: #222;
-			padding: 1em;
-
 		}
 		.createGame:hover {
 			background-color: rgb(168, 72, 20);
@@ -90,6 +60,88 @@
 
 		}
 
+		/* Chrome, Safari, Edge, Opera */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		/* Firefox */
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+		.startContainer {
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			height: 500px;
+			padding: 25px;
+		}
+		.flexBox {
+			display: flex;
+			flex-direction: column;
+			max-width: 1000px;
+			max-height: 1000px;
+			justify-content: center;
+		}
+		.startBtn {
+			display: inline-block;
+			outline: 0;
+			border: none;
+			cursor: pointer;
+			padding: 0 24px;
+			border-radius: 50px;
+			min-width: 200px;
+			height: 50px;
+			font-size: 18px;
+			background-color: #fd0;
+			font-weight: 500;
+			color: #222;
+			margin: 10px 0;
+		}
+		.startBtn:hover {
+			background-color: rgb(204, 184, 54);
+		}
+		.canvasWrapper {
+			margin: 50px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		#room {
+			display: flex;
+			flex-direction: column;
+			max-width: 500px;
+			justify-content: space-between;
+		}
+		#startStage {
+			display: inherit;
+		}
+		.loader {
+			width: 24px;
+			height: 24px;
+			border: 5px solid rgb(160, 48, 48);
+			border-bottom-color: transparent;
+			border-radius: 50%;
+			display: inline-block;
+			box-sizing: border-box;
+			animation: rotation 1s linear infinite;
+			}
+
+			@keyframes rotation {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+		#canvasHeader {
+			padding: 0 24px;
+			margin: 25px;
+		}
 
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
@@ -109,103 +161,17 @@
 	<script type="text/javascript" src="lib/net/room-connection.js"></script>
 	<script type="text/javascript" src="lib/game/main.js"></script>
 </head>
-<style>
-	/* Chrome, Safari, Edge, Opera */
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-	}
-	/* Firefox */
-	input[type=number] {
-	-moz-appearance: textfield;
-	}
-	.startContainer {
-		display:flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		height: 500px;
-		padding: 25px;
-	}
-	.flexBox {
-		display: flex;
-		flex-direction: column;
-		max-width: 1000px;
-		max-height: 1000px;
-		justify-content: center;
-	}
-	.startBtn {
-		display: inline-block;
-        outline: 0;
-        border: none;
-        cursor: pointer;
-        padding: 0 24px;
-        border-radius: 50px;
-        min-width: 200px;
-        height: 50px;
-        font-size: 18px;
-        background-color: #fd0;
-        font-weight: 500;
-        color: #222;
-		margin: 10px 0;
-	}
-	.startBtn:hover {
-		background-color: rgb(204, 184, 54);
-	}
-	.canvasWrapper {
-		margin: 50px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-	#room {
-		display: flex;
-		flex-direction: column;
-		max-width: 500px;
-		justify-content: space-between;
-	}
-	#startStage {
-		display: inherit;
-	}
-	.loader {
-		width: 24px;
-		height: 24px;
-		border: 5px solid rgb(160, 48, 48);
-		border-bottom-color: transparent;
-		border-radius: 50%;
-		display: inline-block;
-		box-sizing: border-box;
-		animation: rotation 1s linear infinite;
-		}
-
-		@keyframes rotation {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-    }
-	#canvasHeader {
-		padding: 0 24px;
-		margin: 25px;
-	}
-</style>
-
 <body>
 	<div class="canvasWrapper">
 		<span id="internalWallet" class="canvasHeader" style="display: none;">Your in-game wallet: </span>
 		<span id="internalBalance" class="canvasHeader" style="display: none;">Your in-game balance: </span>
+		<button class="startBtn" id="finishGame" style="display:none">Finish Game</button>
 		<canvas id="canvas" style="display: none;"></canvas>
 		<div id="info" style="display: none;">
-			0. Use arrows to move <br/>
-			1. X - jump<br/>
-			2. C - shoot<br/>
+			1. WSAD to move & jump<br/>
+			2. Spacebar to shoot<br/>
 			3. Collect tubes to recharge weapon<br/>
 			4. Be careful of acid burns!<br/>
-			5. Invite your friends by sending them a link to page url<br/>
 		</div>
 	</div>
 	<div id="start" >
@@ -215,7 +181,6 @@
 			<input type="number" placeholder="0" id="depositInput" style="display:none">
 			<button class="startBtn" id="depositLoad" style="display:none"><span class="loader"></span></button>
 			<button class="startBtn" id="deposit" style="display:none">Deposit</button>
-			<!-- <input class="startBtn" id="connect" type="button" value="Connect Wallet"/> -->
 			<div id="room" style="display:none">
 				<div class="input-group mb-3 p-3">
 					<input type="text" class="form-control" placeholder="Name of play" aria-label="Name of play" aria-describedby="button-addon2" disabled="disabled" id="inputName">
