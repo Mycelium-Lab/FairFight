@@ -178,11 +178,17 @@
 		100% {
 			transform: rotate(360deg);
 		}
-    } 
+    }
+	#canvasHeader {
+		padding: 0 24px;
+		margin: 25px;
+	}
 </style>
 
 <body>
 	<div class="canvasWrapper">
+		<span id="internalWallet" class="canvasHeader" style="display: none;">Your in-game wallet: </span>
+		<span id="internalBalance" class="canvasHeader" style="display: none;">Your in-game balance: </span>
 		<canvas id="canvas" style="display: none;"></canvas>
 		<div id="info" style="display: none;">
 			0. Use arrows to move <br/>
