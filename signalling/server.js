@@ -135,7 +135,7 @@ function handleSocket(socket) {
     // Notify others of a new user joined
     room.broadcastFrom(user, MessageType.USER_JOIN, {
       userId: user.getId(),
-      users: room.getUsers()
+      user: user
     });
     log('User %s joined room %s. Users in room: %d',
       user.getId(), room.getName(), room.numUsers());
