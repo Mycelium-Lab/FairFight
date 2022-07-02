@@ -8,9 +8,14 @@ if (!window.location.search) {
       const apiKey = 'df344c315ae71a22ae1e58ceb3158597e78435c7dac009bf30e619e3c6dca9fa'
       const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: apiKey}));
       const provider = window.ton;  
-      const accounts = await provider.send('ton_requestAccounts');
-      const account = accounts[0];
-      localStorage.setItem("userTonWalletAddress", account)
+      let account
+      if (localStorage.getItem("userTonWalletAddress")) {
+        account = localStorage.getItem("userTonWalletAddress")
+      } else {
+        const accounts = await provider.send('ton_requestAccounts');
+        account = accounts[0];
+        localStorage.setItem("userTonWalletAddress", account)
+      }
       walletConnect.textContent = account.slice(0, 6) + '...' + account.slice(account.length - 4, account.length);
       const wallet = tonweb.wallet.create({address: account});
       const address = await wallet.getAddress();
@@ -117,10 +122,6 @@ if (!window.location.search) {
               if(internalBalanceNow === internalBalanceBefore) {
                 ///
               } else {
-                if (deploy) {
-                  console.log("deploy")
-                  await deploy.send()
-                }
                 document.getElementById("depositLoad").style.display = "none";
                 document.getElementById("deposit").style.display = "inline-block"
                 // document.getElementById("depositInput").style.display = "none"  
@@ -133,7 +134,10 @@ if (!window.location.search) {
               }
             };
             intervalId = setInterval(wait, 5000);
-            
+            if (deploy) {
+              console.log("deploy")
+              await deploy.send()
+            }
           } else { 
             document.getElementById("depositLoad").style.display = "none";
             document.getElementById("deposit").style.display = "inline-block"
@@ -167,6 +171,9 @@ if (!window.location.search) {
           }
         });
     });
+    if (localStorage.getItem("userTonWalletAddress")) {
+      $('#connect').trigger('click');
+    }
   });
 
   //   window.location.search = roomName || Math.random().toString(16).slice(-10);
