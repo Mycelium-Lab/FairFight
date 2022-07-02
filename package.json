@@ -23,6 +23,11 @@
     "preset": "google",
     "maxErrors": 100,
     "maximumLineLength": 100,
-    "validateIndentation" : 2
+    "validateIndentation": 2
+  },
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "buffer": "^6.0.3",
+    "tonweb": "^0.0.50"
   }
 }
