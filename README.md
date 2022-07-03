@@ -1,5 +1,5 @@
 # TON Multiplayer Game
-You appear in a locked room with another player. Your goal is to survive and kill the other player. For each kill you receive 0.1 TON.
+You appear in a locked room with another player. Your goal is to survive and kill the other player. When you die you lose 0.1 TON. When your opponent dies you receive their 0.1 TON.
 
 # How to test it?
 
@@ -8,7 +8,7 @@ You appear in a locked room with another player. Your goal is to survive and kil
 3. npm run http
 4. visit http://localhost:8080
 
-# Deployerd demo
+# Deployed demo
 
 [TON GAME ONLINE](http://159.223.9.94:8080/)
 
