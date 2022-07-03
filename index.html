@@ -250,6 +250,16 @@
 		.withdrawWrapper {
 			width: 280px;
 		}
+
+		#canvasLoad {
+			display:inherit;
+			width: 480px;
+			height: 320px;
+			border: 1px solid #3b3d42;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+
 		/* Модальный (фон) */
 		.modal {
 			display: none; /* Скрыто по умолчанию */
@@ -287,6 +297,7 @@
 			color: black;
 			text-decoration: none;
 			cursor: pointer;
+      
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
@@ -323,6 +334,9 @@
 		<span id="enemyBalance" class="canvasHeader" style="display: none;">Your enemy in-game balance: </span>
 		<button class="startBtn" id="finishGame" style="display:none">Finish Game</button>
 		<canvas id="canvas" style="display: none;"></canvas>
+		<div id="canvasLoad" style="display: none;">
+			<span id="loadingStage">Waiting payment channel init by another user...</span>
+		</div>
 		<div id="info" style="display: none;">
 			1. WSAD to move & jump<br/>
 			2. Spacebar to shoot<br/>
