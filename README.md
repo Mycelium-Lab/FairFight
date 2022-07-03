@@ -1,7 +1,7 @@
 # TON Multiplayer Game
 You appear in a locked room with another player. Your goal is to survive and kill the other player. For each kill you receive 0.1 TON.
 
-# how to test it
+# How to test it?
 
 1. In cloned repo directory: npm i
 2. npm run signalling
