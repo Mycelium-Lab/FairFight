@@ -22,6 +22,9 @@ var MessageType = {
   USER_JOIN: 'user_join',
   USER_READY: 'user_ready',
   USER_LEAVE: 'user_leave',
+  CHANNEL_DEPLOYED: 'channel_deployed',
+  USER_TOPPED_UP_CHANNEL: 'user_topped_up_channel',
+  USER_INITED_CHANNEL: 'user_inited_channel',
   USER_SIGNED_CHANNEL_CLOSE: 'user_signed_channel_close',
   USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
   USER_CLOSED_CHANNEL: 'user_closed_channel',
@@ -108,6 +111,9 @@ function handleSocket(socket) {
   var room = null;
 
   socket.on(MessageType.JOIN, onJoin);
+  socket.on(MessageType.CHANNEL_DEPLOYED, onChannelDeployed);
+  socket.on(MessageType.USER_TOPPED_UP_CHANNEL, onUserToppedUpChannel);
+  socket.on(MessageType.USER_INITED_CHANNEL, onUserInitedChannel);
   socket.on(MessageType.USER_SIGNED_CHANNEL_CLOSE, onUserSignedChannelClose);
   socket.on(MessageType.USER_EDIT_PAYMENT_CHANNEL, onUserEditPaymentChannel);
   socket.on(MessageType.USER_CLOSED_CHANNEL, onUserClosedChannel);
@@ -146,6 +152,21 @@ function handleSocket(socket) {
     log('User %s joined room %s. Users in room: %d',
       user.getId(), room.getName(), room.numUsers());
     log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
+  }
+
+  function onChannelDeployed(data) {
+    log(`User ${user.getId()} deployed channel`);
+    room.broadcastFrom(user, MessageType.CHANNEL_DEPLOYED, data);
+  }
+
+  function onUserToppedUpChannel() {
+    log(`User ${user.getId()} topped up channel`);
+    room.broadcastFrom(user, MessageType.USER_TOPPED_UP_CHANNEL);
+  }
+
+  function onUserInitedChannel() {
+    log(`User ${user.getId()} initialized channel`);
+    room.broadcastFrom(user, MessageType.USER_INITED_CHANNEL);
   }
 
   function onUserSignedChannelClose(data) {
