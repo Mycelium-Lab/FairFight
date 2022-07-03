@@ -6,11 +6,11 @@ You appear in a locked room with another player. Your goal is to survive and kil
 1. In cloned repo directory: npm i
 2. npm run signalling
 3. npm run http
-4. visit http://localhost:8080
+4. visit http://127.0.0.1:8080/
 
 # Deployed demo
 
-[TON GAME ONLINE](http://159.223.9.94:8080/)
+[TON GAME ONLINE](https://c78a-2a03-b0c0-2-d0-00-10ed-b001.eu.ngrok.io/)
 
 # SCREENSHOTS
 
