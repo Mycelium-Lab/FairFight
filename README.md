@@ -5,7 +5,7 @@ You appear in a locked room with another player. Your goal is to survive and kil
 
 1. In cloned repo directory: npm i
 2. npm run signalling
-3. npm run http
+3. npm run http (in other terminal)
 4. visit http://127.0.0.1:8080/
 
 # Deployed demo
