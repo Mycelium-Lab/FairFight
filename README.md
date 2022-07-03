@@ -10,6 +10,8 @@ You appear in a locked room with another player. Your goal is to survive and kil
 
 # Deployed demo
 
+There were problems noticed with UDP when connecting users from different countries. All good when running locally on the same network.
+
 [TON GAME ONLINE](https://c78a-2a03-b0c0-2-d0-00-10ed-b001.eu.ngrok.io/)
 
 # SCREENSHOTS
