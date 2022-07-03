@@ -236,19 +236,57 @@
 			font-size: 12px;
 		}
 		.maxBtn {
-		position: absolute;
-		max-width: 60px;
-		height: 24px;
-		font-size: 10px;
-		background-color: #D3D3D3;
-		color:#000;
-		top:5px;
+			position: absolute;
+			max-width: 60px;
+			height: 24px;
+			font-size: 10px;
+			background-color: #D3D3D3;
+			color:#000;
+			top:5px;
 		}
 		.withdrawBtn {
 			position: absolute;
 		}
 		.withdrawWrapper {
 			width: 280px;
+		}
+		/* Модальный (фон) */
+		.modal {
+			display: none; /* Скрыто по умолчанию */
+			position: fixed; /* Оставаться на месте */
+			z-index: 1; /* Сидеть на вершине */
+			left: 0;
+			top: 0;
+			width: 100%; /* Полная ширина */
+			height: 100%; /* Полная высота */
+			overflow: auto; /* Включите прокрутку, если это необходимо */
+			background-color: rgb(0,0,0); /* Цвет запасной вариант */
+			background-color: rgba(0,0,0,0.4); /* Черный с непрозрачностью */
+		}
+
+		/* Модальное содержание/коробка */
+		.modal-content {
+			display: block;
+			background-color: #fefefe;
+			margin: 15% auto; /* 15% сверху и по центру */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 40%; /* Может быть больше или меньше, в зависимости от размера экрана */
+		}
+
+		/* Кнопка закрытия */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
@@ -269,6 +307,13 @@
 	<script type="text/javascript" src="lib/game/main.js"></script>
 </head>
 <body>
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+		<h3>Please install <a target="_blank" href="https://chrome.google.com/webstore/detail/ton-wallet/nphplpgoakhhjchkkhmiggakijnkhfnd">TON Walllet extension.</a></h3>
+		<p>After install click reload button.</p>
+		<button class="btn btn-info" id="reload" >Reload</button>
+		</div>
+	</div>
 	<div class="canvasWrapper">
 		<span id="gameName" class="canvasHeader" style="display: none;">Game name: </span>
 		<span id="internalWallet" class="canvasHeader" style="display: none;">Your in-game wallet: </span>
