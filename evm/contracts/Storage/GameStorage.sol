@@ -13,8 +13,7 @@ contract GameStorage {
         address winner;
         uint256 player1Amount;
         uint256 player2Amount;
-        bool player1Finished;
-        bool player2Finished;
+        bool finished;
     }
 
     Battle[] public battles;

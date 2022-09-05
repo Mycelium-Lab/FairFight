@@ -47,7 +47,7 @@ describe("Game", function (){
         const sign1 = await acc1.signMessage(ethers.utils.arrayify(hashMessage1));
         const r1 = sign1.substr(0, 66)
         const s1 = '0x' + sign1.substr(66, 64);
-        const v1 = web3.utils.toDecimal("0x" + (sign1.substr(130,2) == 0 ? "1b" : "1c"));
+        const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
         const data1 = ethers.utils.defaultAbiCoder.encode(
             [
                 'uint256',
@@ -67,34 +67,8 @@ describe("Game", function (){
             ]
         )
         const tx1 = await game.finishBattle(data1)
-        // //player 1 sign
-        const message2 = [ID, player1Amount, player2Amount, acc2.address]
-        const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
-        const sign2 = await acc1.signMessage(ethers.utils.arrayify(hashMessage2));
-        const r2 = sign2.substr(0, 66)
-        const s2 = '0x' + sign2.substr(66, 64);
-        const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
-        const data2 = ethers.utils.defaultAbiCoder.encode(
-            [
-                'uint256',
-                'uint256',
-                'uint256',
-                'bytes32',
-                'uint8',
-                'bytes32'
-            ], 
-            [
-                ID, 
-                player1Amount, 
-                player2Amount,
-                r2,
-                v2,
-                s2
-            ]
-        )
-        const tx2 = await game.connect(acc2).finishBattle(data2)
         await expect(() => tx1).to.changeEtherBalance(acc1, player1Amount)
-        await expect(() => tx2).to.changeEtherBalance(acc2, player2Amount)
+        await expect(() => tx1).to.changeEtherBalance(acc2, player2Amount)
     })
 
     it("Should negative finishBattle()", async () => {

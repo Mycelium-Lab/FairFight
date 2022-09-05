@@ -50,8 +50,7 @@ contract Game is IGame, GameBasic {
             address(0),      //winner
             msg.value,       //player1Amount
             0,               //player2Amount
-            false,           //player1Finished
-            false            //player2Finished
+            false            //finished
         );
         battles.push(_newBattle);
         emit CreateBattle(battlesLength, _name, msg.sender);
@@ -80,17 +79,11 @@ contract Game is IGame, GameBasic {
         require(checkAccess(_ID, player1Amount, player2Amount, _r, _v, _s), "You dont have access");
         Battle memory _battle = battles[_ID];
         require(msg.sender == _battle.player1 || msg.sender == _battle.player2, "You not player");
-        if (msg.sender == _battle.player1) {
-            require(_battle.player1Finished == false, "Battle from player1 already finished");
-            _battle.player1Finished = true;
-            (bool success, ) = msg.sender.call{value: player1Amount}("");
-            require(success, "Not success sending");
-        } else {
-            require(_battle.player2Finished == false, "Battle from player2 already finished");
-            _battle.player2Finished = true;
-            (bool success, ) = msg.sender.call{value: player2Amount}("");
-            require(success, "Not success sending");
-        }
+        require(_battle.finished == false, "Battle already finished");
+        _battle.finished = true;
+        (bool success1, ) = _battle.player1.call{value: player1Amount}("");
+        (bool success2, ) = _battle.player2.call{value: player2Amount}("");
+        require(success1 && success2, "Not success sending");
         battles[_ID] = _battle;
     }
 
