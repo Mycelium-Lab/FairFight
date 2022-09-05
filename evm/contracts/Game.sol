@@ -5,7 +5,6 @@ import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol";
 import "./Storage/GameStorage.sol";
 import "./Interfaces/IGame.sol";
 
@@ -102,17 +101,20 @@ contract Game is IGame, GameBasic {
         bytes32 _r,
         uint8 _v,
         bytes32 _s
-    ) private view returns(bool) {
+    ) public view returns(bool) {
         bytes32 hash = keccak256(
             abi.encodePacked(
                 _ID,
                 player1Amount,
                 player2Amount,
-                address(this), 
                 msg.sender
             )
         );
-        address recovered = ECDSAUpgradeable.recover(hash, _v, _r, _s);
-        return recovered == signerAccess;
+        return signerAccess == ecrecover(
+            keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)),
+            _v,
+            _r,
+            _s
+        );
     }
 }
