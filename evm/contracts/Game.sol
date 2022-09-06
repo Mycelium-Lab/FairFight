@@ -10,15 +10,12 @@ import "./Storage/GameStorage.sol";
 import "./Interfaces/IGame.sol";
 
 contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeable, ReentrancyGuardUpgradeable, GameStorage {
-    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-    bytes32 public constant SIGNER_ROLE = keccak256("SIGNER_ROLE");
-
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
     }
 
-    function initialize(uint256 _amountToPlay, address _signer) initializer public {
+    function initialize(uint256 _amountToPlay, address _signer, uint8 _amountUserGamesToReturn) initializer public {
         __Pausable_init();
         __AccessControl_init();
 
@@ -27,6 +24,7 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         _grantRole(SIGNER_ROLE, _signer);
         signerAccess = _signer;
         amountToPlay = _amountToPlay;
+        amountUserGamesToReturn = _amountUserGamesToReturn;
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -44,6 +42,7 @@ contract Game is IGame, GameBasic {
 
     function createBattle() external payable {
         require(msg.value == amountToPlay, "Not enough amount to play");
+        require(currentlyBusy[msg.sender] == false, "You already have open battle");
         uint256 battlesLength = battles.length;
         Battle memory _newBattle = Battle(
             battlesLength,   //ID
@@ -52,8 +51,11 @@ contract Game is IGame, GameBasic {
             address(0),      //winner
             msg.value,       //player1Amount
             0,               //player2Amount
-            false            //finished
+            false,           //finished
+            block.timestamp, //battleCreatedTimestamp
+            0                //battleFinishedTimestamp
         );
+        currentlyBusy[msg.sender] = true;
         userBattles[msg.sender]+=1;
         battles.push(_newBattle);
         openBattles.increment();
@@ -66,8 +68,10 @@ contract Game is IGame, GameBasic {
         require(_battle.player1 != address(0), "Battle not exists");
         require(_battle.finished == false, "Battle already finished");
         require(_battle.player1 != msg.sender, "You creator of this battle");
+        require(currentlyBusy[msg.sender] == false, "You already have open battle");
         _battle.player2 = msg.sender;
         _battle.player2Amount = msg.value;
+        currentlyBusy[msg.sender] = true;
         userBattles[msg.sender]+=1;
         battles[_ID] = _battle;
         openBattles.decrement();
@@ -81,7 +85,9 @@ contract Game is IGame, GameBasic {
         require(_battle.player2 == address(0), "Battle was joined");
         require(_battle.finished == false, "Already finished");
         openBattles.decrement();
+        currentlyBusy[msg.sender] = false;
         _battle.finished = true;
+        _battle.battleFinishedTimestamp = block.timestamp;
         (bool success, ) = msg.sender.call{value: _battle.player1Amount}("");
         battles[ID] = _battle;
         require(success, "Not success");
@@ -102,10 +108,13 @@ contract Game is IGame, GameBasic {
         require(msg.sender == _battle.player1 || msg.sender == _battle.player2, "You not player");
         require(_battle.finished == false, "Battle already finished");
         _battle.finished = true;
+        _battle.battleFinishedTimestamp = block.timestamp;
+        battles[_ID] = _battle;
+        currentlyBusy[_battle.player1] = false;
+        currentlyBusy[_battle.player2] = false;
         (bool success1, ) = _battle.player1.call{value: player1Amount}("");
         (bool success2, ) = _battle.player2.call{value: player2Amount}("");
         require(success1 && success2, "Not success sending");
-        battles[_ID] = _battle;
     }
 
     function checkAccess(
@@ -134,7 +143,8 @@ contract Game is IGame, GameBasic {
 
     function getUserPastBattles(address user) public view returns(Battle[] memory) {
         //ОГРАНИЧИТЬ КОЛИЧЕСТВО ВЫДАЧИ
-        Battle[] memory _userB = new Battle[](userBattles[user]);
+        uint32 _userBattlesAmount = userBattles[user];
+        Battle[] memory _userB = new Battle[](_userBattlesAmount);
         uint256 counter = 0;
         for (uint256 i; i < battles.length; i++) {
             if (
@@ -146,7 +156,16 @@ contract Game is IGame, GameBasic {
                 counter++;
             }
         }
-        return _userB;
+        //limit amount games to send
+        if (_userB.length > amountUserGamesToReturn) {
+            Battle[] memory _userLimitedB = new Battle[](amountUserGamesToReturn);
+            for (uint256 j; j < amountUserGamesToReturn; j++) {
+                _userLimitedB[j] = _userB[_userB.length - 1 - j];
+            }
+            return _userLimitedB;
+        } else {
+            return _userB;
+        }
     }
 
     function getOpenBattles() public view returns(Battle[] memory) {

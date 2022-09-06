@@ -14,11 +14,12 @@ describe("Game", function (){
 	let acc3;
 	let game;
     let amountToPlay = ethers.utils.parseEther('1');
+    const amountUserGamesToReturn = 15
 
 	beforeEach(async function() {
 		[acc1, acc2, acc3] = await ethers.getSigners();
 		const Game = await ethers.getContractFactory("Game");
-		game = await upgrades.deployProxy(Game, [amountToPlay, acc1.address], { initializer: "initialize" });
+		game = await upgrades.deployProxy(Game, [amountToPlay, acc1.address, amountUserGamesToReturn], { initializer: "initialize" });
         await game.deployed()
 	})
 
@@ -159,6 +160,46 @@ describe("Game", function (){
         assert.equal(openBattlesAfter.length, 0, "Open battles")
         const pastBattles = await game.getUserPastBattles(acc1.address)
         assert.equal(pastBattles.length, 1, "Past battles")
+    })
+
+    it("Cant create 2 games in one moment", async () => {
+        await game.createBattle({value: amountToPlay})
+        //cant create two battles in one moment
+        expect(
+            game.createBattle({value: amountToPlay})
+        ).to.be.revertedWith("You already have open battle")
+    })
+
+    it("Cant join 2 games in one moment", async () => {
+        await game.createBattle({value: amountToPlay})
+        await game.connect(acc2).createBattle({value: amountToPlay})
+        //join first
+        await game.connect(acc3).joinBattle(0, {value: amountToPlay})
+        //cant join two battles in one moment
+        expect(
+            game.connect(acc3).joinBattle(1, {value: amountToPlay})
+        ).to.be.revertedWith("You already have open battle")
+    })
+
+    it(`Should return maximum ${amountUserGamesToReturn} user past games`, async () => {
+        let amount = 16
+        for (let i = 0; i < amount; i++) {
+            await game.createBattle({value: amountToPlay})
+            await game.withdraw(i)
+        }
+        //all user games amount
+        const userBattlesAmount = await game.userBattles(acc1.address)
+        //equal amountUserGamesToReturn
+        const userBattlesPast = await game.getUserPastBattles(acc1.address)
+        assert.equal(userBattlesAmount, amount)
+        //last timestamp is higher because it is created lately
+        expect(
+            userBattlesPast[amountUserGamesToReturn - 4].battleCreatedTimestamp
+        ).to.be.above(
+            userBattlesPast[amountUserGamesToReturn - 3].battleCreatedTimestamp
+        ).to.be.above(
+            userBattlesPast[amountUserGamesToReturn - 2].battleCreatedTimestamp
+        )
     })
 
 })

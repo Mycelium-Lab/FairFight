@@ -10,7 +10,7 @@ async function main() {
   const amountToPlay = ethers.utils.parseEther('1');
   const [acc1] = await ethers.getSigners();
   const Game = await ethers.getContractFactory("Game");
-  const game = await upgrades.deployProxy(Game, [amountToPlay, acc1.address], { initializer: "initialize" });
+  const game = await upgrades.deployProxy(Game, [amountToPlay, acc1.address, 15], { initializer: "initialize" });
   await game.deployed()
 
   console.log(
