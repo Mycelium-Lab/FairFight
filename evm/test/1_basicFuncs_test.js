@@ -31,10 +31,9 @@ describe("Game", function (){
     })
 
     it("Should positive createBattle(),joinBattle(),finishBattle()", async () => {
-        const battleName = "new"
-        await game.createBattle(battleName, {value: amountToPlay})
-        const actualName = (await game.battles(0)).name
-        assert.equal(actualName, battleName, "Battle created")
+        await game.createBattle({value: amountToPlay})
+        const actualPlayer1 = (await game.battles(0)).player1
+        assert.equal(actualPlayer1, acc1.address, "Battle created")
         await game.connect(acc2).joinBattle(0, {value: amountToPlay})
         const actualPlayer2 = (await game.battles(0)).player2
         assert.equal(actualPlayer2.toString(), acc2.address, "Player 2 Joined")
@@ -69,13 +68,17 @@ describe("Game", function (){
         const tx1 = await game.finishBattle(data1)
         await expect(() => tx1).to.changeEtherBalance(acc1, player1Amount)
         await expect(() => tx1).to.changeEtherBalance(acc2, player2Amount)
+        //get past battles
+        const pastBattlesAcc1 = await game.getUserPastBattles(acc1.address)
+        const pastBattlesAcc2 = await game.getUserPastBattles(acc2.address)
+        assert.equal(pastBattlesAcc1.length, 1, "Past Acc 1 battles")
+        assert.equal(pastBattlesAcc2.length, 1, "Past Acc 2 battles")
     })
 
     it("Should negative finishBattle()", async () => {
-        const battleName = "new"
-        await game.createBattle(battleName, {value: amountToPlay})
-        const actualName = (await game.battles(0)).name
-        assert.equal(actualName, battleName, "Battle created")
+        await game.createBattle({value: amountToPlay})
+        const actualPlayer1 = (await game.battles(0)).player1
+        assert.equal(actualPlayer1, acc1.address, "Battle created")
         await game.connect(acc2).joinBattle(0, {value: amountToPlay})
         const actualPlayer2 = (await game.battles(0)).player2
         assert.equal(actualPlayer2.toString(), acc2.address, "Player 2")
@@ -140,6 +143,22 @@ describe("Game", function (){
         await expect(
             game.connect(acc2).finishBattle(data2)
           ).to.be.revertedWith("You dont have access")
+    })
+
+    it("Should getOpenBattles() and withdraw()", async () => {
+        await game.createBattle({value: amountToPlay})
+        //get open battles
+        const openBattlesBefore = await game.getOpenBattles()
+        //check if exist
+        assert.equal(openBattlesBefore.length, 1, "Open battles")
+        //withdraw before somebody join game
+        const tx = await game.withdraw(0)
+        const openBattlesAfter = await game.getOpenBattles()
+        await expect(() => tx).to.changeEtherBalance(acc1, amountToPlay)
+        //check if zero
+        assert.equal(openBattlesAfter.length, 0, "Open battles")
+        const pastBattles = await game.getUserPastBattles(acc1.address)
+        assert.equal(pastBattles.length, 1, "Past battles")
     })
 
 })

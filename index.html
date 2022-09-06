@@ -301,8 +301,11 @@
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="dist/index.js"></script>
+	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
+	</script>
+    <!-- <script type="text/javascript" src="dist/index.js"></script> -->
+	<script type="module" src="lib/index.js"></script>
+    <script type="text/javascript" src="lib/connect.js"></script>
     <script type="text/javascript" src="lib/net/socket.io.js"></script>
     <script type="text/javascript" src="lib/net/adapter.js"></script>
 	<script type="text/javascript" src="lib/messages.js"></script>
@@ -347,8 +350,10 @@
 	</div>
 	<div id="start" >
 		<div class="startContainer">
-			<h1 id="walletHeader">Please connect wallet</h1>
-			<button class="startBtn" id="connect">Connect Wallet</button>
+			<h1 id="walletHeader" style="display:none">Please connect wallet</h1>
+			<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
+			<h1 id="walletHeaderDisconnect" style="display:none">Disconnect wallet</h1>
+			<button class="startBtn" id="disconnect" style="display:none"></button>
 			<span id="startTonBalance" style="display:none">Your TON balanceL</span>
 			<div class="withdrawWrapper">
 				<input class="form-control" type="number" placeholder="Deposit amount" id="depositInput" style="display:none">
@@ -357,23 +362,23 @@
 			<button class="startBtn" id="deposit" style="display:none">Deposit</button>
 			<p id="feeInfo" style="display:none">...</p>
 			<span id="startInternalBalance" style="display:none">Your in-game TON balance:</span>
-			<div class="input-group withdrawWrapper">
+			<!-- <div class="input-group withdrawWrapper">
 				<input type="number" class="form-control" placeholder="Withdrawal amount" id="withdrawInput" style="display:none">
 				<button class="btn btn-outline-secondary" id="maxWithdraw" style="display:none">MAX</button>
-			</div>
-			<button class="startBtn" id="withdrawLoad" style="display:none"><span class="loader"></span></button>
-			<button class="startBtn" id="withdraw" style="display:none">Withdraw</button>	
+			</div> -->
+			<!-- <button class="startBtn" id="withdrawLoad" style="display:none"><span class="loader"></span></button>
+			<button class="startBtn" id="withdraw" style="display:none">Withdraw</button>	 -->
 			<!-- <input class="startBtn" id="connect" type="button" value="Connect Wallet"/> -->
-			<div id="room" style="display:none">
+			<!-- <div id="room" style="display:none">
 				<div class="input-group mb-3 p-3">
 					<input type="text" class="form-control" placeholder="Name of play" aria-label="Name of play" aria-describedby="button-addon2" disabled="disabled" id="inputName">
 					<button class="btn btn-outline-secondary" type="button" disabled="disabled" id="name">To play</button>
-				</div>
+				</div> -->
 				<button class="createGame btn btn-white btn-big" disabled="disabled" id="createGame">Create Game</button>	
 				<div class="alert alert-danger m-3"  role="alert" id="allertBalance" style="display: none;">
-					Game ballance must be more than 1 TON
+					Game balance must be more than 1 TON
 				</div>
-			</div>
+			<!-- </div> -->
 		
 		</div>
 	</div>
