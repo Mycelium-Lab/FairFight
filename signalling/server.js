@@ -1,15 +1,24 @@
-var PORT = 8033;
-var MAX_ROOM_USERS = 2;
+const PORT = 8033;
+const MAX_ROOM_USERS = 2;
 
-var fs = require('fs');
-var log = console.log.bind(console);
-var io = require('socket.io')(PORT);
+const fs = require('fs');
+const log = console.log.bind(console);
+const io = require('socket.io')(PORT);
+const redis = require("redis")
 
-var rooms = {};
-var lastUserId = 0;
-var lastRoomId = 0;
+const redisClient = redis.createClient({
+  socket: {
+      host: 'localhost',
+      port: 6379
+  }
+})
 
-var MessageType = {
+
+const rooms = {};
+let lastUserId = 0;
+let lastRoomId = 0;
+
+const MessageType = {
   // A messages you send to server, when want to join or leave etc.
   JOIN: 'join',
   DISCONNECT: 'disconnect',
@@ -21,6 +30,7 @@ var MessageType = {
   // A messages you receive from server when another user want to join or leave etc.
   USER_JOIN: 'user_join',
   USER_READY: 'user_ready',
+  USER_DEAD: 'user_dead',
   USER_LEAVE: 'user_leave',
   CHANNEL_DEPLOYED: 'channel_deployed',
   USER_TOPPED_UP_CHANNEL: 'user_topped_up_channel',
@@ -28,6 +38,7 @@ var MessageType = {
   USER_SIGNED_CHANNEL_CLOSE: 'user_signed_channel_close',
   USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
   USER_CLOSED_CHANNEL: 'user_closed_channel',
+  USER_LOSE_ALL: 'user_lose_all',
 
   // WebRtc signalling info, session and ice-framework related
   SDP: 'sdp',
@@ -106,7 +117,6 @@ Room.prototype = {
 
 // socket
 function handleSocket(socket) {
-
   var user = null;
   var room = null;
 
@@ -120,8 +130,25 @@ function handleSocket(socket) {
   socket.on(MessageType.SDP, onSdp);
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
   socket.on(MessageType.DISCONNECT, onLeave);
+  socket.on(MessageType.USER_DEAD, onDead);
 
-  function onJoin(joinData) {
+
+  async function onDead(data) {
+    console.log(data)
+    // const balance = await redisClient.get(data.walletAddress)
+    // console.log(balance)
+    console.log(room.users[0].walletAddress)
+    console.log(room.users[1].walletAddress)
+    // const newBalance = parseInt(balance) - 500000000000000000
+    // await redisClient.set(data.walletAddress, newBalance)
+    // if (newBalance == 0) {
+      // room.broadcastFrom(user, MessageType.USER_LOSE_ALL, user);
+    // }
+  }
+
+  async function onJoin(joinData) {
+    console.log(joinData)
+    await redisClient.set(joinData.walletAddress, joinData.inGameBalance)
     // Somehow sent join request twice?
     if (user !== null || room !== null) {
       room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
@@ -131,6 +158,7 @@ function handleSocket(socket) {
     // Let's get a room, or create if none still exists
     room = getOrCreateRoom(joinData.roomName);
     if (room.numUsers() >= MAX_ROOM_USERS) {
+      console.log(user)
       room.sendTo(user, MessageType.ERROR_ROOM_IS_FULL);
       return;
     }
@@ -149,6 +177,7 @@ function handleSocket(socket) {
       userId: user.getId(),
       user: user
     });
+    console.log(user)
     log('User %s joined room %s. Users in room: %d',
       user.getId(), room.getName(), room.numUsers());
     log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
@@ -226,5 +255,11 @@ function handleSocket(socket) {
   }
 }
 
-io.on('connection', handleSocket);
-log('Running room server on port %d', PORT);
+
+redisClient
+  .connect()
+  .then(() => {
+    io.on('connection', handleSocket);
+    log('Running room server on port %d', PORT);
+  })
+
