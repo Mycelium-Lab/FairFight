@@ -141,6 +141,31 @@ contract Game is IGame, GameBasic {
         );
     }
 
+    function getAccess(bytes memory data, address sender) public view returns(address) {
+        (
+            uint256 _ID, 
+            uint256 player1Amount,
+            uint256 player2Amount,  //player2Amount
+            bytes32 _r,             //_r
+            uint8 _v,               //_v
+            bytes32 _s              //_s
+        ) = abi.decode(data, (uint256, uint256, uint256, bytes32, uint8, bytes32));
+        bytes32 hash = keccak256(
+            abi.encodePacked(
+                _ID,
+                player1Amount,
+                player2Amount,
+                sender
+            )
+        );
+        return ecrecover(
+            keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)),
+            _v,
+            _r,
+            _s
+        );
+    }
+
     function getUserPastBattles(address user) public view returns(Battle[] memory) {
         //ОГРАНИЧИТЬ КОЛИЧЕСТВО ВЫДАЧИ
         uint32 _userBattlesAmount = userBattles[user];
@@ -178,6 +203,20 @@ contract Game is IGame, GameBasic {
             }
         }
         return _openB;
+    }
+
+    function getCurrentUserGame(address user) public view returns(Battle memory) {
+        for (uint256 i; i < battles.length; i++) {
+            if (
+                (battles[i].player1 == user || battles[i].player2 == user)
+                &&
+                battles[i].finished == false
+            ){
+                return battles[i];
+            }
+        }
+        Battle memory _battle = Battle(0,address(0),address(0),address(0),0,0,false,0,0);
+        return _battle;
     }
 
 }

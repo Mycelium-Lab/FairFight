@@ -202,4 +202,9 @@ describe("Game", function (){
         )
     })
 
+    it("Should getCurrentUserGame()", async () => {
+        await game.createBattle({value: amountToPlay})
+        console.log(await game.getCurrentUserGame(acc1.address))
+    })
+
 })

@@ -5,12 +5,27 @@ const fs = require('fs');
 const log = console.log.bind(console);
 const io = require('socket.io')(PORT);
 const redis = require("redis")
+const pg = require("pg")
+const ethers = require("ethers")
+const web3 = require("web3")
+require("dotenv").config()
+
+const { contractAbi, contractAddress } = require("../contract/contract.js")
+const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545")
+const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 
 const redisClient = redis.createClient({
   socket: {
       host: 'localhost',
       port: 6379
   }
+})
+
+const pgClient = new pg.Client({
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB
 })
 
 
@@ -134,21 +149,96 @@ function handleSocket(socket) {
 
 
   async function onDead(data) {
-    console.log(data)
-    // const balance = await redisClient.get(data.walletAddress)
-    // console.log(balance)
-    console.log(room.users[0].walletAddress)
-    console.log(room.users[1].walletAddress)
-    // const newBalance = parseInt(balance) - 500000000000000000
-    // await redisClient.set(data.walletAddress, newBalance)
-    // if (newBalance == 0) {
-      // room.broadcastFrom(user, MessageType.USER_LOSE_ALL, user);
-    // }
+    console.log(`${data.walletAddress} dead`)
+    const balance = await redisClient.get(data.walletAddress)
+    const newBalance = parseInt(balance) - 100000000000000000
+    await redisClient.set(data.walletAddress, newBalance)
+    console.log(newBalance)
+    //get from loser
+    if (data.walletAddress == room.users[0].walletAddress) {
+      //paste to winner
+      const balanceWinner = await redisClient.get(room.users[1].walletAddress)
+      const newBalanceWinner = parseInt(balanceWinner) + 100000000000000000
+      await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
+      if (newBalance == 0) {
+        await createSignature({
+          loserAddress: data.walletAddress,
+          winnerAddress: room.users[1].walletAddress,
+          loserAmount: newBalance.toString(),
+          winnerAmount: newBalanceWinner.toString()
+        })
+        room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+      }
+    } else {
+      const balanceWinner = await redisClient.get(room.users[0].walletAddress)
+      const newBalanceWinner = parseInt(balanceWinner) + 100000000000000000
+      await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
+      if (newBalance == 0) {
+        await createSignature({
+          loserAddress: data.walletAddress,
+          winnerAddress: room.users[0].walletAddress,
+          loserAmount: newBalance.toString(),
+          winnerAmount: newBalanceWinner.toString()
+        })
+        room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+      }
+    }
+  }
+
+  async function createSignature(data) {
+    console.log('hh')
+    const battle = await contract.battles(room.roomName)
+    let message1;
+    let message2;
+    if (data.loserAddress == battle.player1) {
+      message1 = [room.roomName, data.loserAmount, data.winnerAmount, data.loserAddress]
+      message2 = [room.roomName, data.loserAmount, data.winnerAmount, data.winnerAddress]
+    } else {
+      message1 = [room.roomName, data.winnerAmount, data.loserAmount, data.winnerAddress]
+      message2 = [room.roomName, data.winnerAmount, data.loserAmount, data.loserAddress]
+    }
+    const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
+    console.log(hashMessage1)
+    const sign1 = await signer.signMessage(ethers.utils.arrayify(hashMessage1));
+    const r1 = sign1.substr(0, 66)
+    const s1 = '0x' + sign1.substr(66, 64);
+    const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
+    const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
+    console.log(hashMessage2)
+    const sign2 = await signer.signMessage(ethers.utils.arrayify(hashMessage2));
+    const r2 = sign2.substr(0, 66)
+    const s2 = '0x' + sign2.substr(66, 64);
+    const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
+    if (data.loserAddress == battle.player1) {
+      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+        data.loserAddress, 
+        data.loserAmount,  
+        data.winnerAmount, 
+        room.roomName, v1, r1, s1])
+      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+        data.winnerAddress, 
+        data.loserAmount,  
+        data.winnerAmount, 
+        room.roomName,v2, r2, s2])
+    } else {
+      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+        data.winnerAddress,  
+        data.winnerAmount,  
+        data.loserAmount,
+        room.roomName, v1, r1, s1])
+      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+        data.loserAddress,   
+        data.winnerAmount,  
+        data.loserAmount,
+        room.roomName,v2, r2, s2])
+    }
   }
 
   async function onJoin(joinData) {
-    console.log(joinData)
-    await redisClient.set(joinData.walletAddress, joinData.inGameBalance)
+    const exists = await redisClient.get(joinData.walletAddress)
+    // if (exists == null) {
+      await redisClient.set(joinData.walletAddress, joinData.inGameBalance)
+    // }
     // Somehow sent join request twice?
     if (user !== null || room !== null) {
       room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
@@ -259,7 +349,11 @@ function handleSocket(socket) {
 redisClient
   .connect()
   .then(() => {
+    pgClient.connect()
+  })
+  .then(() => {
     io.on('connection', handleSocket);
     log('Running room server on port %d', PORT);
   })
+  .catch(err => console.error(err))
 
