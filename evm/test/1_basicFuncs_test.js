@@ -14,25 +14,35 @@ describe("Game", function (){
 	let acc3;
 	let game;
     let amountToPlay = ethers.utils.parseEther('1');
+    let amountForOneDeath = ethers.utils.parseEther('0.1');
+    let amountForOneDeathWrongDivide = ethers.utils.parseEther('0.3');
+    let amountForOneDeathWrongMaxDeath = ethers.utils.parseEther('0.05');
     const amountUserGamesToReturn = 15
+    const maxDeathInARow = 10
 
 	beforeEach(async function() {
 		[acc1, acc2, acc3] = await ethers.getSigners();
 		const Game = await ethers.getContractFactory("Game");
-		game = await upgrades.deployProxy(Game, [amountToPlay, acc1.address, amountUserGamesToReturn], { initializer: "initialize" });
+		game = await upgrades.deployProxy(Game, 
+            [
+            acc1.address, 
+            amountUserGamesToReturn,
+            maxDeathInARow
+            ], 
+        { initializer: "initialize" });
         await game.deployed()
 	})
 
     it("Should check initial variables", async () => {
         //amount to create game
-        const _amountToPlay = await game.amountToPlay()
         const signerAccess = await game.signerAccess()
-        assert.equal(_amountToPlay.toString(), amountToPlay.toString(), "Amount to play is OK")
+        const _maxDeathInARow = await game.maxDeathInARow()
         assert.equal(signerAccess.toString(), acc1.address.toString(), "Signer address is OK")
+        assert.equal(_maxDeathInARow.toString(), maxDeathInARow.toString(), "Max Death in a Row is ok")
     })
 
     it("Should positive createBattle(),joinBattle(),finishBattle()", async () => {
-        await game.createBattle({value: amountToPlay})
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
         const actualPlayer1 = (await game.battles(0)).player1
         assert.equal(actualPlayer1, acc1.address, "Battle created")
         await game.connect(acc2).joinBattle(0, {value: amountToPlay})
@@ -77,7 +87,7 @@ describe("Game", function (){
     })
 
     it("Should negative finishBattle()", async () => {
-        await game.createBattle({value: amountToPlay})
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
         const actualPlayer1 = (await game.battles(0)).player1
         assert.equal(actualPlayer1, acc1.address, "Battle created")
         await game.connect(acc2).joinBattle(0, {value: amountToPlay})
@@ -147,7 +157,7 @@ describe("Game", function (){
     })
 
     it("Should getOpenBattles() and withdraw()", async () => {
-        await game.createBattle({value: amountToPlay})
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
         //get open battles
         const openBattlesBefore = await game.getOpenBattles()
         //check if exist
@@ -163,16 +173,16 @@ describe("Game", function (){
     })
 
     it("Cant create 2 games in one moment", async () => {
-        await game.createBattle({value: amountToPlay})
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
         //cant create two battles in one moment
         expect(
-            game.createBattle({value: amountToPlay})
+            game.createBattle(amountForOneDeath, {value: amountToPlay})
         ).to.be.revertedWith("You already have open battle")
     })
 
     it("Cant join 2 games in one moment", async () => {
-        await game.createBattle({value: amountToPlay})
-        await game.connect(acc2).createBattle({value: amountToPlay})
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
+        await game.connect(acc2).createBattle(amountForOneDeath, {value: amountToPlay})
         //join first
         await game.connect(acc3).joinBattle(0, {value: amountToPlay})
         //cant join two battles in one moment
@@ -184,7 +194,7 @@ describe("Game", function (){
     it(`Should return maximum ${amountUserGamesToReturn} user past games`, async () => {
         let amount = 16
         for (let i = 0; i < amount; i++) {
-            await game.createBattle({value: amountToPlay})
+            await game.createBattle(amountForOneDeath, {value: amountToPlay})
             await game.withdraw(i)
         }
         //all user games amount
@@ -203,8 +213,33 @@ describe("Game", function (){
     })
 
     it("Should getCurrentUserGame()", async () => {
-        await game.createBattle({value: amountToPlay})
-        console.log(await game.getCurrentUserGame(acc1.address))
+        await game.createBattle(amountForOneDeath, {value: amountToPlay})
+        const currentGame = await game.getCurrentUserGame(acc1.address)
+        assert.equal(
+            currentGame.player1Amount.toString(),
+            amountToPlay,
+            "Amount not equal"
+        )
+        await game.withdraw(0)
+        //because we dont have current games contract will return 0 Battle
+        const currentGameNotExist = await game.getCurrentUserGame(acc1.address)
+        assert.equal(
+            currentGameNotExist.player1Amount.toString(),
+            "0",
+            "Amount not equal"
+        )
+    })
+
+    it("Should createBattle() with wrong amountForOneDeath", async () => {
+        expect(
+            game.createBattle(amountForOneDeathWrongDivide, {value: amountToPlay})
+        ).to.be.revertedWith("Amount for one death must be divided by the msg.value with the remainder 0")
+    })
+
+    it("Should createBattle() with wrong maxDeathInARow", async () => {
+        expect(
+            game.createBattle(amountForOneDeathWrongMaxDeath, {value: amountToPlay})
+        ).to.be.revertedWith("Exceeded the limit death in a row")
     })
 
 })

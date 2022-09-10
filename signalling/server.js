@@ -54,6 +54,7 @@ const MessageType = {
   USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
   USER_CLOSED_CHANNEL: 'user_closed_channel',
   USER_LOSE_ALL: 'user_lose_all',
+  FINISHING: 'finishing',
 
   // WebRtc signalling info, session and ice-framework related
   SDP: 'sdp',
@@ -146,6 +147,7 @@ function handleSocket(socket) {
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
   socket.on(MessageType.DISCONNECT, onLeave);
   socket.on(MessageType.USER_DEAD, onDead);
+  socket.on(MessageType.FINISHING, onFinishing)
 
 
   async function onDead(data) {
@@ -185,8 +187,23 @@ function handleSocket(socket) {
     }
   }
 
+  async function onFinishing() {
+    // const balance1 = await redisClient.get(room.users[0].walletAddress)
+    // const balance2 = await redisClient.get(room.users[1].walletAddress)
+    balance1 = '1000000000000000000'
+    balance2 = '1000000000000000000'
+    await createSignature({
+      loserAddress: room.users[0].walletAddress,
+      winnerAddress: room.users[1].walletAddress,
+      loserAmount: balance1,
+      winnerAmount: balance2
+    }).then(() => {
+      socket.to(room.sockets['1'].id).emit("finishing")
+      socket.to(room.sockets['2'].id).emit("finishing")
+    })
+  }
+
   async function createSignature(data) {
-    console.log('hh')
     const battle = await contract.battles(room.roomName)
     let message1;
     let message2;
@@ -198,13 +215,11 @@ function handleSocket(socket) {
       message2 = [room.roomName, data.winnerAmount, data.loserAmount, data.loserAddress]
     }
     const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
-    console.log(hashMessage1)
     const sign1 = await signer.signMessage(ethers.utils.arrayify(hashMessage1));
     const r1 = sign1.substr(0, 66)
     const s1 = '0x' + sign1.substr(66, 64);
     const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
     const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
-    console.log(hashMessage2)
     const sign2 = await signer.signMessage(ethers.utils.arrayify(hashMessage2));
     const r2 = sign2.substr(0, 66)
     const s2 = '0x' + sign2.substr(66, 64);
@@ -236,9 +251,9 @@ function handleSocket(socket) {
 
   async function onJoin(joinData) {
     const exists = await redisClient.get(joinData.walletAddress)
-    // if (exists == null) {
+    if (exists == null) {
       await redisClient.set(joinData.walletAddress, joinData.inGameBalance)
-    // }
+    }
     // Somehow sent join request twice?
     if (user !== null || room !== null) {
       room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);

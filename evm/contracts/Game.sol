@@ -15,7 +15,7 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         _disableInitializers();
     }
 
-    function initialize(uint256 _amountToPlay, address _signer, uint8 _amountUserGamesToReturn) initializer public {
+    function initialize(address _signer, uint8 _amountUserGamesToReturn, uint8 _maxDeathInARow) initializer public {
         __Pausable_init();
         __AccessControl_init();
 
@@ -23,8 +23,8 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         _grantRole(PAUSER_ROLE, msg.sender);
         _grantRole(SIGNER_ROLE, _signer);
         signerAccess = _signer;
-        amountToPlay = _amountToPlay;
         amountUserGamesToReturn = _amountUserGamesToReturn;
+        maxDeathInARow = _maxDeathInARow;
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -40,8 +40,10 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
 contract Game is IGame, GameBasic {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
-    function createBattle() external payable {
-        require(msg.value == amountToPlay, "Not enough amount to play");
+    function createBattle(uint256 amountForOneDeath) external payable {
+        require(msg.value != 0, "Amount to play cant be zero");
+        require(msg.value % amountForOneDeath == 0, "Amount for one death must be divided by the msg.value with the remainder 0");
+        require(msg.value / amountForOneDeath <= maxDeathInARow, "Exceeded the limit death in a row");
         require(currentlyBusy[msg.sender] == false, "You already have open battle");
         uint256 battlesLength = battles.length;
         Battle memory _newBattle = Battle(
@@ -53,7 +55,8 @@ contract Game is IGame, GameBasic {
             0,               //player2Amount
             false,           //finished
             block.timestamp, //battleCreatedTimestamp
-            0                //battleFinishedTimestamp
+            0,               //battleFinishedTimestamp
+            amountForOneDeath
         );
         currentlyBusy[msg.sender] = true;
         userBattles[msg.sender]+=1;
@@ -64,7 +67,7 @@ contract Game is IGame, GameBasic {
 
     function joinBattle(uint256 _ID) external payable {
         Battle memory _battle = battles[_ID];
-        require(msg.value == amountToPlay, "Not enough amount to play");
+        require(msg.value == _battle.player1Amount, "Not enough amount to play");
         require(_battle.player1 != address(0), "Battle not exists");
         require(_battle.finished == false, "Battle already finished");
         require(_battle.player1 != msg.sender, "You creator of this battle");
@@ -141,7 +144,7 @@ contract Game is IGame, GameBasic {
         );
     }
 
-    function getAccess(bytes memory data, address sender) public view returns(address) {
+    function getAccess(bytes memory data, address sender) public pure returns(address) {
         (
             uint256 _ID, 
             uint256 player1Amount,
@@ -215,7 +218,7 @@ contract Game is IGame, GameBasic {
                 return battles[i];
             }
         }
-        Battle memory _battle = Battle(0,address(0),address(0),address(0),0,0,false,0,0);
+        Battle memory _battle = Battle(0,address(0),address(0),address(0),0,0,false,0,0,0);
         return _battle;
     }
 

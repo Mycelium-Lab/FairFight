@@ -7,10 +7,15 @@
 const { upgrades, ethers } = require("hardhat")
 
 async function main() {
-  const amountToPlay = ethers.utils.parseEther('1');
   const [acc1] = await ethers.getSigners();
   const Game = await ethers.getContractFactory("Game");
-  const game = await upgrades.deployProxy(Game, [amountToPlay, '0xA841a2a238Fa48D1C409D95E64c3F08d8Dd5DdA7', 15], { initializer: "initialize" });
+  const game = await upgrades.deployProxy(Game, 
+    [
+      '0xA841a2a238Fa48D1C409D95E64c3F08d8Dd5DdA7', 
+      15,
+      10
+    ], 
+  { initializer: "initialize" });
   await game.deployed()
 
   console.log(

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="refresh" content="30"/>
 	<title>TON Game</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<style type="text/css">
@@ -354,6 +355,8 @@
 					<input type="text" class="form-control" placeholder="Name of play" aria-label="Name of play" aria-describedby="button-addon2" disabled="disabled" id="inputName">
 					<button class="btn btn-outline-secondary" type="button" disabled="disabled" id="name">To play</button>
 				</div> -->
+				<span id="amountToPlayText" style="display: none;">Amount To Play <input id="amountToPlay" placeholder="ETH" required/></span>
+				<span id="amountPerDeathText" style="display: none;">Amount Per One Death <input id="amountPerDeath" placeholder="ETH" required/></span><br>
 				<button class="createGame btn btn-white btn-big" disabled="disabled" id="createGame">Create Game</button>	
 				<div class="alert alert-danger m-3"  role="alert" id="allertBalance" style="display: none;">
 					Game balance must be more than 1 TON

@@ -9,8 +9,8 @@ contract GameStorage {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant SIGNER_ROLE = keccak256("SIGNER_ROLE");
 
-    uint256 public amountToPlay;
     address public signerAccess;
+    uint8 public maxDeathInARow;
 
     //currently open battles for join
     CountersUpgradeable.Counter public openBattles;
@@ -31,6 +31,7 @@ contract GameStorage {
         bool finished;
         uint256 battleCreatedTimestamp;
         uint256 battleFinishedTimestamp;
+        uint256 amountForOneDeath;
     }
 
     Battle[] public battles;
