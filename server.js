@@ -3,6 +3,14 @@ const server = express()
 const path = require('path')
 const pg = require("pg")
 require("dotenv").config()
+const redis = require("redis")
+
+const redisClient = redis.createClient({
+  socket: {
+      host: 'localhost',
+      port: 6379
+  }
+})
 
 const pgClient = new pg.Client({
     user: process.env.DB_USER,
@@ -46,7 +54,13 @@ server.get('/sign', async (req, res) => {
     res.json(await getSignature(req.query.gameID, req.query.address))
 })
 
+server.get('/balance', async (req, res) => {
+    const balance = await redisClient.get(req.query.address)
+    res.json(balance)
+})
+
 server.listen(5000, async () => {
     await pgClient.connect()
+    await redisClient.connect()
 })
 

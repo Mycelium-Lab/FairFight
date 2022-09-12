@@ -171,6 +171,18 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
+        // let players = []
+        // Object.entries(room.sockets).forEach(([key, value]) => {
+        //   players.push(value.id)
+        // })
+        // socket.to(players[1]).emit("update_balance", {
+        //   address1: data.walletAddress, amount1: newBalance.toString(),
+        //   address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+        // })
+        // socket.to(players[0]).emit("update_balance", {
+        //   address1: data.walletAddress, amount1: newBalance.toString(),
+        //   address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+        // })
       } else {
         const balanceWinner = await redisClient.get(room.users[0].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
@@ -184,6 +196,18 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
+        // let players = []
+        // Object.entries(room.sockets).forEach(([key, value]) => {
+        //   players.push(value.id)
+        // })
+        // socket.to(players[0]).emit("update_balance", {
+        //   address1: data.walletAddress, amount1: newBalance.toString(),
+        //   address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
+        // })
+        // socket.to(players[1]).emit("update_balance", {
+        //   address1: data.walletAddress, amount1: newBalance.toString(),
+        //   address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
+        // })
       }
     } catch (error) {
       console.error(error)
@@ -211,7 +235,6 @@ function handleSocket(socket) {
     } catch (error) {
       console.error(error)
     }
-    
   }
 
   async function createSignature(data) {
