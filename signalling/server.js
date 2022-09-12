@@ -14,7 +14,6 @@ const { contractAbi, contractAddress } = require("../contract/contract.js")
 const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
-
 const redisClient = redis.createClient({
   socket: {
       host: 'localhost',
@@ -151,141 +150,173 @@ function handleSocket(socket) {
 
 
   async function onDead(data) {
-    console.log(`${data.walletAddress} dead`)
-    const balance = await redisClient.get(data.walletAddress)
-    const newBalance = parseInt(balance) - 100000000000000000
-    await redisClient.set(data.walletAddress, newBalance)
-    console.log(newBalance)
-    //get from loser
-    if (data.walletAddress == room.users[0].walletAddress) {
-      //paste to winner
-      const balanceWinner = await redisClient.get(room.users[1].walletAddress)
-      const newBalanceWinner = parseInt(balanceWinner) + 100000000000000000
-      await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
-      if (newBalance == 0) {
-        await createSignature({
-          loserAddress: data.walletAddress,
-          winnerAddress: room.users[1].walletAddress,
-          loserAmount: newBalance.toString(),
-          winnerAmount: newBalanceWinner.toString()
-        })
-        room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+    try {
+      //прайс снижения разный
+      console.log(`${data.walletAddress} dead`)
+      const balance = await redisClient.get(data.walletAddress)
+      const newBalance = parseInt(balance) - parseInt(room.amountToLose)
+      await redisClient.set(data.walletAddress, newBalance)
+      //get from loser
+      if (data.walletAddress == room.users[0].walletAddress) {
+        //paste to winner
+        const balanceWinner = await redisClient.get(room.users[1].walletAddress)
+        const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
+        await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
+        if (newBalance == 0) {
+          await createSignature({
+            loserAddress: data.walletAddress,
+            winnerAddress: room.users[1].walletAddress,
+            loserAmount: newBalance.toString(),
+            winnerAmount: newBalanceWinner.toString()
+          })
+          room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+        }
+      } else {
+        const balanceWinner = await redisClient.get(room.users[0].walletAddress)
+        const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
+        await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
+        if (newBalance == 0) {
+          await createSignature({
+            loserAddress: data.walletAddress,
+            winnerAddress: room.users[0].walletAddress,
+            loserAmount: newBalance.toString(),
+            winnerAmount: newBalanceWinner.toString()
+          })
+          room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+        }
       }
-    } else {
-      const balanceWinner = await redisClient.get(room.users[0].walletAddress)
-      const newBalanceWinner = parseInt(balanceWinner) + 100000000000000000
-      await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
-      if (newBalance == 0) {
-        await createSignature({
-          loserAddress: data.walletAddress,
-          winnerAddress: room.users[0].walletAddress,
-          loserAmount: newBalance.toString(),
-          winnerAmount: newBalanceWinner.toString()
-        })
-        room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
-      }
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async function onFinishing() {
-    // const balance1 = await redisClient.get(room.users[0].walletAddress)
-    // const balance2 = await redisClient.get(room.users[1].walletAddress)
-    balance1 = '1000000000000000000'
-    balance2 = '1000000000000000000'
-    await createSignature({
-      loserAddress: room.users[0].walletAddress,
-      winnerAddress: room.users[1].walletAddress,
-      loserAmount: balance1,
-      winnerAmount: balance2
-    }).then(() => {
-      socket.to(room.sockets['1'].id).emit("finishing")
-      socket.to(room.sockets['2'].id).emit("finishing")
-    })
+    try {
+      //если не существуют то создать по контракту
+      const balance1 = await redisClient.get(room.users[0].walletAddress)
+      const balance2 = await redisClient.get(room.users[1].walletAddress)
+      // balance1 = '1000000000000000000'
+      // balance2 = '1000000000000000000'
+      await createSignature({
+        loserAddress: room.users[0].walletAddress,
+        winnerAddress: room.users[1].walletAddress,
+        loserAmount: balance1,
+        winnerAmount: balance2
+      }).then(() => {
+        Object.entries(room.sockets).forEach(([key, value]) => {
+          console.log(value.id)
+          socket.to(value.id).emit("finishing")
+        })
+      })
+    } catch (error) {
+      console.error(error)
+    }
+    
   }
 
   async function createSignature(data) {
-    const battle = await contract.battles(room.roomName)
-    let message1;
-    let message2;
-    if (data.loserAddress == battle.player1) {
-      message1 = [room.roomName, data.loserAmount, data.winnerAmount, data.loserAddress]
-      message2 = [room.roomName, data.loserAmount, data.winnerAmount, data.winnerAddress]
-    } else {
-      message1 = [room.roomName, data.winnerAmount, data.loserAmount, data.winnerAddress]
-      message2 = [room.roomName, data.winnerAmount, data.loserAmount, data.loserAddress]
-    }
-    const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
-    const sign1 = await signer.signMessage(ethers.utils.arrayify(hashMessage1));
-    const r1 = sign1.substr(0, 66)
-    const s1 = '0x' + sign1.substr(66, 64);
-    const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
-    const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
-    const sign2 = await signer.signMessage(ethers.utils.arrayify(hashMessage2));
-    const r2 = sign2.substr(0, 66)
-    const s2 = '0x' + sign2.substr(66, 64);
-    const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
-    if (data.loserAddress == battle.player1) {
-      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-        data.loserAddress, 
-        data.loserAmount,  
-        data.winnerAmount, 
-        room.roomName, v1, r1, s1])
-      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-        data.winnerAddress, 
-        data.loserAmount,  
-        data.winnerAmount, 
-        room.roomName,v2, r2, s2])
-    } else {
-      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-        data.winnerAddress,  
-        data.winnerAmount,  
-        data.loserAmount,
-        room.roomName, v1, r1, s1])
-      await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-        data.loserAddress,   
-        data.winnerAmount,  
-        data.loserAmount,
-        room.roomName,v2, r2, s2])
+    try {
+      await redisClient.del(data.winnerAddress)
+      await redisClient.del(data.loserAddress)
+      const battle = await contract.battles(room.roomName)
+      let message1;
+      let message2;
+      if (data.loserAddress == battle.player1) {
+        message1 = [room.roomName, data.loserAmount, data.winnerAmount, data.loserAddress]
+        message2 = [room.roomName, data.loserAmount, data.winnerAmount, data.winnerAddress]
+      } else {
+        message1 = [room.roomName, data.winnerAmount, data.loserAmount, data.winnerAddress]
+        message2 = [room.roomName, data.winnerAmount, data.loserAmount, data.loserAddress]
+      }
+      const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
+      const sign1 = await signer.signMessage(ethers.utils.arrayify(hashMessage1));
+      const r1 = sign1.substr(0, 66)
+      const s1 = '0x' + sign1.substr(66, 64);
+      const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
+      const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
+      const sign2 = await signer.signMessage(ethers.utils.arrayify(hashMessage2));
+      const r2 = sign2.substr(0, 66)
+      const s2 = '0x' + sign2.substr(66, 64);
+      const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
+      if (data.loserAddress == battle.player1) {
+        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+          data.loserAddress, 
+          data.loserAmount,  
+          data.winnerAmount, 
+          room.roomName, v1, r1, s1])
+        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+          data.winnerAddress, 
+          data.loserAmount,  
+          data.winnerAmount, 
+          room.roomName,v2, r2, s2])
+      } else {
+        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+          data.winnerAddress,  
+          data.winnerAmount,  
+          data.loserAmount,
+          room.roomName, v1, r1, s1])
+        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
+          data.loserAddress,   
+          data.winnerAmount,  
+          data.loserAmount,
+          room.roomName,v2, r2, s2])
+      }
+    } catch (error) {
+      console.error(error)
     }
   }
 
   async function onJoin(joinData) {
-    const exists = await redisClient.get(joinData.walletAddress)
-    if (exists == null) {
-      await redisClient.set(joinData.walletAddress, joinData.inGameBalance)
-    }
-    // Somehow sent join request twice?
-    if (user !== null || room !== null) {
-      room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
-      return;
-    }
+    try {
+      // Somehow sent join request twice?
+      if (user !== null || room !== null) {
+        room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
+        return;
+      }
 
-    // Let's get a room, or create if none still exists
-    room = getOrCreateRoom(joinData.roomName);
-    if (room.numUsers() >= MAX_ROOM_USERS) {
-      console.log(user)
-      room.sendTo(user, MessageType.ERROR_ROOM_IS_FULL);
-      return;
+      // Let's get a room, or create if none still exists
+      room = getOrCreateRoom(joinData.roomName);
+      if (room.numUsers() >= MAX_ROOM_USERS) {
+        console.log(user)
+        room.sendTo(user, MessageType.ERROR_ROOM_IS_FULL);
+        return;
+      }
+    
+      const battle = await contract.battles(room.getName())
+      room.amountToLose = battle.amountForOneDeath.toString()
+      room.baseAmount = battle.player1Amount.toString()
+      if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
+        const exists = await redisClient.get(joinData.walletAddress)
+        if (exists == null) {
+          await redisClient.set(joinData.walletAddress, room.baseAmount)
+        }
+
+        // Add a new user
+        room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
+
+        // Send room info to new user
+        room.sendTo(user, MessageType.ROOM, {
+          userId: user.getId(),
+          roomName: room.getName(),
+          users: room.getUsers()
+        });
+        // Notify others of a new user joined
+        room.broadcastFrom(user, MessageType.USER_JOIN, {
+          userId: user.getId(),
+          user: user
+        });
+        console.log(user)
+        log('User %s joined room %s. Users in room: %d',
+          user.getId(), room.getName(), room.numUsers());
+        log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
+      } else {
+        throw Error('User not in this battle or battle finished')
+      }
+      
+    } catch (error) {
+      console.error(error)
     }
-
-    // Add a new user
-    room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
-
-    // Send room info to new user
-    room.sendTo(user, MessageType.ROOM, {
-      userId: user.getId(),
-      roomName: room.getName(),
-      users: room.getUsers()
-    });
-    // Notify others of a new user joined
-    room.broadcastFrom(user, MessageType.USER_JOIN, {
-      userId: user.getId(),
-      user: user
-    });
-    console.log(user)
-    log('User %s joined room %s. Users in room: %d',
-      user.getId(), room.getName(), room.numUsers());
-    log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
+    
   }
 
   function onChannelDeployed(data) {
