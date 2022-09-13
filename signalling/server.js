@@ -169,6 +169,11 @@ function handleSocket(socket) {
             loserAmount: newBalance.toString(),
             winnerAmount: newBalanceWinner.toString()
           })
+          .then(() => {
+            Object.entries(room.sockets).forEach(([key, value]) => {
+              socket.to(value.id).emit("finishing")
+            })
+          })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
         // let players = []
@@ -193,6 +198,10 @@ function handleSocket(socket) {
             winnerAddress: room.users[0].walletAddress,
             loserAmount: newBalance.toString(),
             winnerAmount: newBalanceWinner.toString()
+          }).then(() => {
+            Object.entries(room.sockets).forEach(([key, value]) => {
+              socket.to(value.id).emit("finishing")
+            })
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
@@ -228,7 +237,6 @@ function handleSocket(socket) {
         winnerAmount: balance2
       }).then(() => {
         Object.entries(room.sockets).forEach(([key, value]) => {
-          console.log(value.id)
           socket.to(value.id).emit("finishing")
         })
       })
