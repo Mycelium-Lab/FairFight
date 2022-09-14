@@ -199,12 +199,12 @@ const contractAbi = [
   },
   {
     "inputs": [],
-    "name": "SIGNER_ROLE",
+    "name": "amountUserGamesToReturn",
     "outputs": [
       {
-        "internalType": "bytes32",
+        "internalType": "uint8",
         "name": "",
-        "type": "bytes32"
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -272,6 +272,45 @@ const contractAbi = [
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "_new",
+        "type": "uint8"
+      }
+    ],
+    "name": "changeAmountUserGamesToReturn",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "_new",
+        "type": "uint8"
+      }
+    ],
+    "name": "changeMaxDeathInARow",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_new",
+        "type": "address"
+      }
+    ],
+    "name": "changeSigner",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

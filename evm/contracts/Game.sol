@@ -15,13 +15,16 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         _disableInitializers();
     }
 
-    function initialize(address _signer, uint8 _amountUserGamesToReturn, uint8 _maxDeathInARow) initializer public {
+    function initialize(
+        address _signer, 
+        uint8 _amountUserGamesToReturn, 
+        uint8 _maxDeathInARow
+    ) initializer public {
         __Pausable_init();
         __AccessControl_init();
 
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
-        _grantRole(SIGNER_ROLE, _signer);
         signerAccess = _signer;
         amountUserGamesToReturn = _amountUserGamesToReturn;
         maxDeathInARow = _maxDeathInARow;
@@ -40,7 +43,7 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
 contract Game is IGame, GameBasic {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
-    function createBattle(uint256 amountForOneDeath) external payable {
+    function createBattle(uint256 amountForOneDeath) external payable whenNotPaused {
         require(msg.value != 0, "Amount to play cant be zero");
         require(msg.value % amountForOneDeath == 0, "Amount for one death must be divided by the msg.value with the remainder 0");
         require(msg.value / amountForOneDeath <= maxDeathInARow, "Exceeded the limit death in a row");
@@ -65,7 +68,7 @@ contract Game is IGame, GameBasic {
         emit CreateBattle(battlesLength, msg.sender);
     }
 
-    function joinBattle(uint256 _ID) external payable {
+    function joinBattle(uint256 _ID) external payable whenNotPaused {
         Battle memory _battle = battles[_ID];
         require(msg.value == _battle.player1Amount, "Not enough amount to play");
         require(_battle.player1 != address(0), "Battle not exists");
@@ -82,7 +85,7 @@ contract Game is IGame, GameBasic {
     }
 
     //withdraw if nobody join to game
-    function withdraw(uint256 ID) external payable nonReentrant {
+    function withdraw(uint256 ID) external payable nonReentrant whenNotPaused {
         Battle memory _battle = battles[ID];
         require(_battle.player1 == msg.sender, "You not creator");
         require(_battle.player2 == address(0), "Battle was joined");
@@ -97,7 +100,7 @@ contract Game is IGame, GameBasic {
     }
 
     //finish with signature
-    function finishBattle(bytes memory data) external payable nonReentrant {
+    function finishBattle(bytes memory data) external payable nonReentrant whenNotPaused {
         (
             uint256 _ID, 
             uint256 player1Amount,
@@ -111,6 +114,8 @@ contract Game is IGame, GameBasic {
         require(msg.sender == _battle.player1 || msg.sender == _battle.player2, "You not player");
         require(_battle.finished == false, "Battle already finished");
         _battle.finished = true;
+        _battle.player1Amount = player1Amount;
+        _battle.player2Amount = player2Amount;
         _battle.battleFinishedTimestamp = block.timestamp;
         battles[_ID] = _battle;
         currentlyBusy[_battle.player1] = false;
@@ -222,4 +227,15 @@ contract Game is IGame, GameBasic {
         return _battle;
     }
 
+    function changeMaxDeathInARow(uint8 _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        maxDeathInARow = _new;
+    }
+
+    function changeSigner(address _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        signerAccess = _new;
+    }
+
+    function changeAmountUserGamesToReturn(uint8 _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        amountUserGamesToReturn = _new;
+    }
 }

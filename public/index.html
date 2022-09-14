@@ -299,6 +299,12 @@
 			cursor: pointer;
       
 		}
+		summary {
+			display: block;
+		}
+		summary::-webkit-details-marker {
+			display: none;
+		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
@@ -332,10 +338,18 @@
 				<h4 id="currentgame-empty">Empty</h4>
 				<div id="currentgame" style="display: none;">
 					<span id="currentgame-ID"></span>
-					<button id="currentGame-LinkButton"><a href="" id="currentGame-Link">Join</a></button>
 					<button id="currentgame-Finish">Finish</button>
 					<button id="currentgame-Withdraw">Withdraw</button>
+					<div id="currentgame-status"></div>
 				</div>
+				<details>
+					<summary><h2>Past Games</h2></summary>
+					<h4 id="pastgames-empty">Empty</h4>
+					<div id="pastgames">
+						<ul id="pastgames-list">
+						</ul>
+					</div>
+				</details>
 				<h2>Open Games</h2>
 				<h4 id="opengames-empty">Empty or only your game</h4>
 				<div id="opengames">

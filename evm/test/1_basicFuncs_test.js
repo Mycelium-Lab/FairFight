@@ -1,10 +1,5 @@
-const {
-    time,
-    loadFixture,
-  } = require("@nomicfoundation/hardhat-network-helpers");
-  const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
-  const { expect } = require("chai");
-  const assert = require("assert");
+const { expect } = require("chai");
+const assert = require("assert");
 const { upgrades, ethers } = require("hardhat")
 const web3 = require("web3")
 
@@ -175,7 +170,7 @@ describe("Game", function (){
     it("Cant create 2 games in one moment", async () => {
         await game.createBattle(amountForOneDeath, {value: amountToPlay})
         //cant create two battles in one moment
-        expect(
+        await expect(
             game.createBattle(amountForOneDeath, {value: amountToPlay})
         ).to.be.revertedWith("You already have open battle")
     })
@@ -186,7 +181,7 @@ describe("Game", function (){
         //join first
         await game.connect(acc3).joinBattle(0, {value: amountToPlay})
         //cant join two battles in one moment
-        expect(
+        await expect(
             game.connect(acc3).joinBattle(1, {value: amountToPlay})
         ).to.be.revertedWith("You already have open battle")
     })
@@ -231,13 +226,13 @@ describe("Game", function (){
     })
 
     it("Should createBattle() with wrong amountForOneDeath", async () => {
-        expect(
+        await expect(
             game.createBattle(amountForOneDeathWrongDivide, {value: amountToPlay})
         ).to.be.revertedWith("Amount for one death must be divided by the msg.value with the remainder 0")
     })
 
     it("Should createBattle() with wrong maxDeathInARow", async () => {
-        expect(
+        await expect(
             game.createBattle(amountForOneDeathWrongMaxDeath, {value: amountToPlay})
         ).to.be.revertedWith("Exceeded the limit death in a row")
     })
