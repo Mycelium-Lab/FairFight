@@ -21,7 +21,9 @@ describe("Game Variables", function (){
             [
             acc1.address, 
             amountUserGamesToReturn,
-            maxDeathInARow
+            maxDeathInARow,
+            '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4',
+            300 //3%
             ], 
         { initializer: "initialize" });
         await game.deployed()

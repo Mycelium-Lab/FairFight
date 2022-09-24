@@ -18,7 +18,9 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
     function initialize(
         address _signer, 
         uint8 _amountUserGamesToReturn, 
-        uint8 _maxDeathInARow
+        uint8 _maxDeathInARow,
+        address _feeAddress,
+        uint16 _fee
     ) initializer public {
         __Pausable_init();
         __AccessControl_init();
@@ -28,6 +30,8 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         signerAccess = _signer;
         amountUserGamesToReturn = _amountUserGamesToReturn;
         maxDeathInARow = _maxDeathInARow;
+        feeAddress = _feeAddress;
+        fee = _fee;
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -85,7 +89,7 @@ contract Game is IGame, GameBasic {
     }
 
     //withdraw if nobody join to game
-    function withdraw(uint256 ID) external payable nonReentrant whenNotPaused {
+    function withdraw(uint256 ID) external payable nonReentrant {
         Battle memory _battle = battles[ID];
         require(_battle.player1 == msg.sender, "You not creator");
         require(_battle.player2 == address(0), "Battle was joined");
@@ -100,7 +104,7 @@ contract Game is IGame, GameBasic {
     }
 
     //finish with signature
-    function finishBattle(bytes memory data) external payable nonReentrant whenNotPaused {
+    function finishBattle(bytes memory data) external payable nonReentrant {
         (
             uint256 _ID, 
             uint256 player1Amount,
@@ -113,6 +117,23 @@ contract Game is IGame, GameBasic {
         Battle memory _battle = battles[_ID];
         require(msg.sender == _battle.player1 || msg.sender == _battle.player2, "You not player");
         require(_battle.finished == false, "Battle already finished");
+        if (player1Amount > player2Amount) {
+            uint256 sendToWinner = player1Amount - player1Amount * fee / 10000;
+            (bool success1, ) = _battle.player1.call{value: sendToWinner}("");
+            (bool success2, ) = _battle.player2.call{value: player2Amount}("");
+            (bool success3, ) = feeAddress.call{value: player1Amount - sendToWinner}("");
+            require(success1 && success2 && success3, "Not success sending");
+        } else if (player2Amount > player1Amount) {
+            uint256 sendToWinner = player2Amount - player2Amount * fee / 10000;
+            (bool success1, ) = _battle.player1.call{value: player1Amount}("");
+            (bool success2, ) = _battle.player2.call{value: sendToWinner}("");
+            (bool success3, ) = feeAddress.call{value: player2Amount - sendToWinner}("");
+            require(success1 && success2 && success3, "Not success sending");
+        } else {
+            (bool success1, ) = _battle.player1.call{value: player1Amount}("");
+            (bool success2, ) = _battle.player2.call{value: player2Amount}("");
+            require(success1 && success2, "Not success sending");
+        }
         _battle.finished = true;
         _battle.player1Amount = player1Amount;
         _battle.player2Amount = player2Amount;
@@ -120,9 +141,6 @@ contract Game is IGame, GameBasic {
         battles[_ID] = _battle;
         currentlyBusy[_battle.player1] = false;
         currentlyBusy[_battle.player2] = false;
-        (bool success1, ) = _battle.player1.call{value: player1Amount}("");
-        (bool success2, ) = _battle.player2.call{value: player2Amount}("");
-        require(success1 && success2, "Not success sending");
     }
 
     function checkAccess(
@@ -233,6 +251,10 @@ contract Game is IGame, GameBasic {
 
     function changeSigner(address _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
         signerAccess = _new;
+    }
+
+    function changeFeeAddress(address _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        feeAddress = _new;
     }
 
     function changeAmountUserGamesToReturn(uint8 _new) public onlyRole(DEFAULT_ADMIN_ROLE) {

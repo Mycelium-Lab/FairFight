@@ -9,11 +9,16 @@ describe("Game", function (){
 	let acc3;
 	let game;
     let amountToPlay = ethers.utils.parseEther('1');
+    //if win 1.1 eth
+    //amount win with fee equals
+    //1067000000000000000
     let amountForOneDeath = ethers.utils.parseEther('0.1');
     let amountForOneDeathWrongDivide = ethers.utils.parseEther('0.3');
     let amountForOneDeathWrongMaxDeath = ethers.utils.parseEther('0.05');
     const amountUserGamesToReturn = 15
     const maxDeathInARow = 10
+    const feeAddress = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
+    const fee = 300
 
 	beforeEach(async function() {
 		[acc1, acc2, acc3] = await ethers.getSigners();
@@ -22,7 +27,9 @@ describe("Game", function (){
             [
             acc1.address, 
             amountUserGamesToReturn,
-            maxDeathInARow
+            maxDeathInARow,
+            feeAddress,
+            fee //3%
             ], 
         { initializer: "initialize" });
         await game.deployed()
@@ -73,7 +80,8 @@ describe("Game", function (){
         )
         const tx1 = await game.finishBattle(data1)
         await expect(() => tx1).to.changeEtherBalance(acc1, player1Amount)
-        await expect(() => tx1).to.changeEtherBalance(acc2, player2Amount)
+        await expect(() => tx1).to.changeEtherBalance(acc2, '1067000000000000000')//with fee
+        await expect(() => tx1).to.changeEtherBalance(feeAddress, '33000000000000000')//owner fee
         //get past battles
         const pastBattlesAcc1 = await game.getUserPastBattles(acc1.address)
         const pastBattlesAcc2 = await game.getUserPastBattles(acc2.address)

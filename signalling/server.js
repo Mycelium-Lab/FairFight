@@ -54,7 +54,8 @@ const MessageType = {
   USER_CLOSED_CHANNEL: 'user_closed_channel',
   USER_LOSE_ALL: 'user_lose_all',
   FINISHING: 'finishing',
-
+  JUMP: 'jump',
+  SHOOT: 'shoot',
   // WebRtc signalling info, session and ice-framework related
   SDP: 'sdp',
   ICE_CANDIDATE: 'ice_candidate',
@@ -146,8 +147,27 @@ function handleSocket(socket) {
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
   socket.on(MessageType.DISCONNECT, onLeave);
   socket.on(MessageType.USER_DEAD, onDead);
-  socket.on(MessageType.FINISHING, onFinishing)
+  socket.on(MessageType.FINISHING, onFinishing);
+  socket.on(MessageType.JUMP, onJump);
+  socket.on(MessageType.SHOOT, onShoot);
 
+  async function onJump() {
+    Object.entries(room.sockets).forEach(([key, value]) => {
+      socket.to(value.id).emit("jump")
+      console.log('here')
+    })
+  }
+
+  async function onShoot(enemyAddress) {
+    console.log(enemyAddress)
+    // const key = `${enemyAddress}_health`
+    // const health = await redisClient.get(key) 
+    // if (health == null) {
+    //   await redisClient.set(key, 2)
+    // } else {
+    //   await redisClient.set(key, parseInt(health) - 1) 
+    // }
+  }
 
   async function onDead(data) {
     try {
@@ -176,18 +196,13 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
-        // let players = []
-        // Object.entries(room.sockets).forEach(([key, value]) => {
-        //   players.push(value.id)
-        // })
-        // socket.to(players[1]).emit("update_balance", {
-        //   address1: data.walletAddress, amount1: newBalance.toString(),
-        //   address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
-        // })
-        // socket.to(players[0]).emit("update_balance", {
-        //   address1: data.walletAddress, amount1: newBalance.toString(),
-        //   address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
-        // })
+        Object.entries(room.sockets).forEach(([key, value]) => {
+          console.log(value.id)
+          socket.to(value.id).emit("update_balance", {
+            address1: data.walletAddress, amount1: newBalance.toString(),
+            address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+          })
+        })
       } else {
         const balanceWinner = await redisClient.get(room.users[0].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
@@ -205,18 +220,13 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
-        // let players = []
-        // Object.entries(room.sockets).forEach(([key, value]) => {
-        //   players.push(value.id)
-        // })
-        // socket.to(players[0]).emit("update_balance", {
-        //   address1: data.walletAddress, amount1: newBalance.toString(),
-        //   address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
-        // })
-        // socket.to(players[1]).emit("update_balance", {
-        //   address1: data.walletAddress, amount1: newBalance.toString(),
-        //   address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
-        // })
+        Object.entries(room.sockets).forEach(([key, value]) => {
+          console.log(value.id)
+          socket.to(value.id).emit("update_balance", {
+            address1: data.walletAddress, amount1: newBalance.toString(),
+            address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
+          })
+        })
       }
     } catch (error) {
       console.error(error)
@@ -299,7 +309,6 @@ function handleSocket(socket) {
 
   async function onJoin(joinData) {
     try {
-      
       // await redisClient.del(joinData.walletAddress)
       // Somehow sent join request twice?
       if (user !== null || room !== null) {
