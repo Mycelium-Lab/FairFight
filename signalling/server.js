@@ -154,7 +154,6 @@ function handleSocket(socket) {
   async function onJump() {
     Object.entries(room.sockets).forEach(([key, value]) => {
       socket.to(value.id).emit("jump")
-      console.log('here')
     })
   }
 
