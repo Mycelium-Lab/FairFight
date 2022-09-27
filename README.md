@@ -162,6 +162,7 @@ npm run prod
 
 <h3>Polling websocket error</h3>
 
+
 Change in the end of ```lib/game/main.js```
 
 ```
@@ -171,3 +172,11 @@ window.gameRoom = new GameRoom(
   localStorage.getItem('publicKey')
 );
 ```
+<hr>
+
+<h3>Cannot read properties of undefined (reading 'toHexString') in ether.js</h3>
+
+Add the same ```.env``` file in ```signalling```.
+
+
+<hr>
