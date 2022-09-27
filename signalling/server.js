@@ -11,7 +11,7 @@ const web3 = require("web3")
 require("dotenv").config()
 
 const { contractAbi, contractAddress } = require("../contract/contract.js")
-const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545")
+const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
