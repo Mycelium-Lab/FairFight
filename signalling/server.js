@@ -11,7 +11,8 @@ const web3 = require("web3")
 require("dotenv").config()
 
 const { contractAbi, contractAddress } = require("../contract/contract.js")
-const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+// const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
@@ -53,6 +54,7 @@ const MessageType = {
   USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
   USER_CLOSED_CHANNEL: 'user_closed_channel',
   USER_LOSE_ALL: 'user_lose_all',
+  USER_UPDATE_BALANCE: 'user_update_balance',
   FINISHING: 'finishing',
   JUMP: 'jump',
   SHOOT: 'shoot',
@@ -150,6 +152,7 @@ function handleSocket(socket) {
   socket.on(MessageType.FINISHING, onFinishing);
   socket.on(MessageType.JUMP, onJump);
   socket.on(MessageType.SHOOT, onShoot);
+  socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
 
   async function onJump() {
     Object.entries(room.sockets).forEach(([key, value]) => {
@@ -166,6 +169,18 @@ function handleSocket(socket) {
     // } else {
     //   await redisClient.set(key, parseInt(health) - 1) 
     // }
+  }
+
+  async function onUpdateBalance() {
+    const balance1 = await redisClient.get(room.users[0].walletAddress)
+    const balance2 = await redisClient.get(room.users[1].walletAddress)
+    // Object.entries(room.sockets).forEach(([key, value]) => {
+    //   console.log(value.id)
+      socket.emit("update_balance", {
+        address1: room.users[1].walletAddress, amount1: balance2.toString(),
+        address2: room.users[0].walletAddress, amount2: balance1.toString()
+      })
+    // })
   }
 
   async function onDead(data) {
@@ -402,19 +417,24 @@ function handleSocket(socket) {
   }
 
   function onLeave() {
-    if (room === null) {
-      return;
+    try {
+      if (room === null) {
+        return;
+      }
+      room.removeUser(user.getId());
+      log('User %d left room %s. Users in room: %d',
+        user.getId(), room.getName(), room.numUsers());
+      if (room.isEmpty()) {
+        log('Room is empty - dropping room %s', room.getName());
+        delete rooms[room.getName()];
+      }
+      room.broadcastFrom(user, MessageType.USER_LEAVE, {
+        userId: user.getId()
+      });
+    } catch (error) {
+      console.error(error)
     }
-    room.removeUser(user.getId());
-    log('User %d left room %s. Users in room: %d',
-      user.getId(), room.getName(), room.numUsers());
-    if (room.isEmpty()) {
-      log('Room is empty - dropping room %s', room.getName());
-      delete rooms[room.getName()];
-    }
-    room.broadcastFrom(user, MessageType.USER_LEAVE, {
-      userId: user.getId()
-    });
+    
   }
 
   function onSdp(message) {
