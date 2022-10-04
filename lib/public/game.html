@@ -299,66 +299,41 @@
 			cursor: pointer;
       
 		}
-		summary {
-			display: block;
-		}
-		summary::-webkit-details-marker {
-			display: none;
-		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
 	</script>
     <!-- <script type="text/javascript" src="dist/index.js"></script> -->
-	<script type="module" src="index.js"></script>
+	<script type="module" src="../index_game.js"></script>
+    <script type="text/javascript" src="../net/socket.io.js"></script>
+    <script type="text/javascript" src="../net/adapter.js"></script>
+	<script type="text/javascript" src="../messages.js"></script>
+	<script type="text/javascript" src="../game.min.js"></script>
+	<script type="text/javascript" src="../game/entities/remote-player.js"></script>
+	<script type="text/javascript" src="../game/levels/main.js"></script>
+	<script type="text/javascript" src="../game/events.js"></script>
+	<script type="text/javascript" src="../net/peer-connection.js"></script>
+	<script type="text/javascript" src="../net/room-connection.js"></script>
+	<script type="text/javascript" src="../game/entities/player.js"></script>
+	<script type="text/javascript" src="../game/main.js"></script>
 </head>
-<body>
-	
-	<div id="start" >
-		<div class="startContainer">
-			<h1 id="walletHeader" style="display:none">Please connect wallet</h1>
-			<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
-			<h1 id="walletHeaderDisconnect" style="display:none">Disconnect wallet</h1>
-			<button class="startBtn" id="disconnect" style="display:none"></button>
-			<span id="startTonBalance" style="display:none">Your TON balanceL</span>
-			<div class="withdrawWrapper">
-				<input class="form-control" type="number" placeholder="Deposit amount" id="depositInput" style="display:none">
-			</div>
-			<button class="startBtn" id="depositLoad" style="display:none"><span class="loader"></span></button>
-			<button class="startBtn" id="deposit" style="display:none">Deposit</button>
-			<p id="feeInfo" style="display:none">...</p>
-			<span id="startInternalBalance" style="display:none">Your in-game TON balance:</span>
-			
-				<span id="amountToPlayText" style="display: none;">Amount To Play <input id="amountToPlay" placeholder="ETH" required/></span>
-				<span id="amountPerDeathText" style="display: none;">Amount Per One Death <input id="amountPerDeath" placeholder="ETH" required/></span>
-				<div id="deathInARow" style="display: none;"></div>
-				<button class="createGame btn btn-white btn-big" disabled="disabled" id="createGame">Create Game</button>	
-				
-				<h2>Current Games</h2>
-				<h4 id="currentgame-empty">Empty</h4>
-				<div id="currentgame" style="display: none;">
-					<span id="currentgame-ID"></span>
-					<button id="currentgame-Finish">Finish</button>
-					<button id="currentgame-Withdraw">Withdraw</button>
-					<div id="currentgame-status"></div>
-				</div>
-				<details>
-					<summary><h2>Past Games</h2></summary>
-					<h4 id="pastgames-empty">Empty</h4>
-					<div id="pastgames">
-						<ul id="pastgames-list">
-						</ul>
-					</div>
-				</details>
-				<h2>Open Games</h2>
-				<h4 id="opengames-empty">Empty or only your game</h4>
-				<div id="opengames">
-					<ul id="opengames-list">
-
-					</ul>
-				</div>
+<body oncontextmenu="return false;">
+    <div class="canvasWrapper">
+		<span id="internalWallet" class="canvasHeader" style="display: inherit;">Your wallet: </span>
+		<span id="internalBalance" class="canvasHeader" style="display: inherit;">Your in-game balance: </span>
+		<span id="enemyBalance" class="canvasHeader" style="display: inherit;">Your enemy in-game balance: </span>
+		<button class="" id="finishGame" style="display:inherit">Finish Game</button>
+		<div>Click on screen to change size</div>
+		<canvas id="canvas" style="display: inherit;"></canvas>
+		<div id="canvasLoad" style="display: none;">
+			<span id="loadingStage">Waiting another user</span>
 		</div>
-	</div>
+		<div id="info" style="display: inherit;">
+			1. WSAD to move & jump<br/>
+			2. Spacebar to shoot<br/>
+			3. Collect tubes to recharge weapon<br/>
+			4. Be careful of lava burns!<br/>
+		</div>
 	</div>
 </body>
 </html>

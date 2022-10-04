@@ -43,11 +43,11 @@ async function getSignature(gameID, address) {
 
 server.use(express.static(path.join(__dirname,'/lib')))
 server.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
+    res.sendFile(path.join(__dirname,'/lib') + '/public/index.html')
 })
 
 server.get('/game', (req, res) => {
-    res.sendFile(__dirname + '/public/game.html')
+    res.sendFile(path.join(__dirname,'/lib') + '/public/game.html')
 })
 
 server.get('/sign', async (req, res) => {

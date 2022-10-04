@@ -47,12 +47,6 @@ const MessageType = {
   USER_READY: 'user_ready',
   USER_DEAD: 'user_dead',
   USER_LEAVE: 'user_leave',
-  CHANNEL_DEPLOYED: 'channel_deployed',
-  USER_TOPPED_UP_CHANNEL: 'user_topped_up_channel',
-  USER_INITED_CHANNEL: 'user_inited_channel',
-  USER_SIGNED_CHANNEL_CLOSE: 'user_signed_channel_close',
-  USER_EDIT_PAYMENT_CHANNEL: 'user_edit_payment_channel',
-  USER_CLOSED_CHANNEL: 'user_closed_channel',
   USER_LOSE_ALL: 'user_lose_all',
   USER_UPDATE_BALANCE: 'user_update_balance',
   FINISHING: 'finishing',
@@ -139,12 +133,6 @@ function handleSocket(socket) {
   var room = null;
 
   socket.on(MessageType.JOIN, onJoin);
-  socket.on(MessageType.CHANNEL_DEPLOYED, onChannelDeployed);
-  socket.on(MessageType.USER_TOPPED_UP_CHANNEL, onUserToppedUpChannel);
-  socket.on(MessageType.USER_INITED_CHANNEL, onUserInitedChannel);
-  socket.on(MessageType.USER_SIGNED_CHANNEL_CLOSE, onUserSignedChannelClose);
-  socket.on(MessageType.USER_EDIT_PAYMENT_CHANNEL, onUserEditPaymentChannel);
-  socket.on(MessageType.USER_CLOSED_CHANNEL, onUserClosedChannel);
   socket.on(MessageType.SDP, onSdp);
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
   socket.on(MessageType.DISCONNECT, onLeave);
@@ -172,20 +160,20 @@ function handleSocket(socket) {
   }
 
   async function onUpdateBalance() {
-    const balance1 = await redisClient.get(room.users[0].walletAddress)
-    const balance2 = await redisClient.get(room.users[1].walletAddress)
-    // Object.entries(room.sockets).forEach(([key, value]) => {
-    //   console.log(value.id)
+    try {
+      const balance1 = await redisClient.get(room.users[0].walletAddress)
+      const balance2 = await redisClient.get(room.users[1].walletAddress)
       socket.emit("update_balance", {
         address1: room.users[1].walletAddress, amount1: balance2.toString(),
         address2: room.users[0].walletAddress, amount2: balance1.toString()
       })
-    // })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function onDead(data) {
     try {
-      //прайс снижения разный
       console.log(`${data.walletAddress} dead`)
       const balance = await redisClient.get(data.walletAddress)
       const newBalance = parseInt(balance) - parseInt(room.amountToLose)
@@ -196,6 +184,8 @@ function handleSocket(socket) {
         const balanceWinner = await redisClient.get(room.users[1].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
+        //if balance == 0 -> user losed
+        //create signature and add data to database
         if (newBalance == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
@@ -210,8 +200,10 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
+        //update balance
+        //we send it each user in room
+        //but its not works so on frontend we send it again from another user
         Object.entries(room.sockets).forEach(([key, value]) => {
-          console.log(value.id)
           socket.to(value.id).emit("update_balance", {
             address1: data.walletAddress, amount1: newBalance.toString(),
             address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
@@ -235,7 +227,6 @@ function handleSocket(socket) {
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
         Object.entries(room.sockets).forEach(([key, value]) => {
-          console.log(value.id)
           socket.to(value.id).emit("update_balance", {
             address1: data.walletAddress, amount1: newBalance.toString(),
             address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
@@ -249,11 +240,9 @@ function handleSocket(socket) {
 
   async function onFinishing() {
     try {
-      //если не существуют то создать по контракту
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
-      // balance1 = '1000000000000000000'
-      // balance2 = '1000000000000000000'
+      //create signatures on finish button
       await createSignature({
         loserAddress: room.users[0].walletAddress,
         winnerAddress: room.users[1].walletAddress,
@@ -271,11 +260,14 @@ function handleSocket(socket) {
 
   async function createSignature(data) {
     try {
+      //delete data from redis
       await redisClient.del(data.winnerAddress)
       await redisClient.del(data.loserAddress)
+      //get this battle data
       const battle = await contract.battles(room.roomName)
       let message1;
       let message2;
+      //create hash message and signatures
       if (data.loserAddress == battle.player1) {
         message1 = [room.roomName, data.loserAmount, data.winnerAmount, data.loserAddress]
         message2 = [room.roomName, data.loserAmount, data.winnerAmount, data.winnerAddress]
@@ -293,6 +285,7 @@ function handleSocket(socket) {
       const r2 = sign2.substr(0, 66)
       const s2 = '0x' + sign2.substr(66, 64);
       const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
+      //add data to database
       if (data.loserAddress == battle.player1) {
         await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
           data.loserAddress, 
@@ -323,7 +316,6 @@ function handleSocket(socket) {
 
   async function onJoin(joinData) {
     try {
-      // await redisClient.del(joinData.walletAddress)
       // Somehow sent join request twice?
       if (user !== null || room !== null) {
         room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
@@ -375,34 +367,6 @@ function handleSocket(socket) {
     
   }
 
-  function onChannelDeployed(data) {
-    log(`User ${user.getId()} deployed channel`);
-    room.broadcastFrom(user, MessageType.CHANNEL_DEPLOYED, data);
-  }
-
-  function onUserToppedUpChannel() {
-    log(`User ${user.getId()} topped up channel`);
-    room.broadcastFrom(user, MessageType.USER_TOPPED_UP_CHANNEL);
-  }
-
-  function onUserInitedChannel() {
-    log(`User ${user.getId()} initialized channel`);
-    room.broadcastFrom(user, MessageType.USER_INITED_CHANNEL);
-  }
-
-  function onUserSignedChannelClose(data) {
-    log(`User ${user.getId()} signed channel close`);
-    room.broadcastFrom(user, MessageType.USER_SIGNED_CHANNEL_CLOSE, data);
-  }
-  function onUserEditPaymentChannel(data) {
-    log(`User ${user.getId()} edit payment channel`);
-    room.broadcastFrom(user, MessageType.USER_EDIT_PAYMENT_CHANNEL, data);
-  }
-
-  function onUserClosedChannel(data) {
-    log(`User ${user.getId()} closed the channel`);
-    room.broadcastFrom(user, MessageType.USER_CLOSED_CHANNEL, data);
-  }
 
   function getOrCreateRoom(name) {
     var room;
