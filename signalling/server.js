@@ -28,6 +28,13 @@ const pgClient = new pg.Client({
   database: process.env.DB
 })
 
+const pgPool = new pg.Pool(
+  {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB
+  }
+)
 
 const rooms = {};
 let lastUserId = 0;
@@ -50,6 +57,7 @@ const MessageType = {
   USER_LOSE_ALL: 'user_lose_all',
   USER_UPDATE_BALANCE: 'user_update_balance',
   FINISHING: 'finishing',
+  END_FINISHING: 'end_finishing',
   JUMP: 'jump',
   SHOOT: 'shoot',
   // WebRtc signalling info, session and ice-framework related
@@ -141,6 +149,14 @@ function handleSocket(socket) {
   socket.on(MessageType.JUMP, onJump);
   socket.on(MessageType.SHOOT, onShoot);
   socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
+  socket.on(MessageType.END_FINISHING, onEndFinishing)
+
+  async function onEndFinishing() {
+    console.log('endInfdfkdjflkjsdlkjflksdjflj')
+    Object.entries(room.sockets).forEach(([key, value]) => {
+      socket.to(value.id).emit("end_finishing")
+    })
+  }
 
   async function onJump() {
     Object.entries(room.sockets).forEach(([key, value]) => {
@@ -163,10 +179,36 @@ function handleSocket(socket) {
     try {
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
-      socket.emit("update_balance", {
-        address1: room.users[1].walletAddress, amount1: balance2.toString(),
-        address2: room.users[0].walletAddress, amount2: balance1.toString()
-      })
+      // const statistics1 = await pgClient.query(
+      //   "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
+      //   [room.users[0].walletAddress, room.roomName]
+      // )
+      // const statistics2 = await pgClient.query(
+      //   "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
+      //   [room.users[1].walletAddress, room.roomName]
+      // )
+      // console.log(statistics1.rows, statistics2.rows)
+      if (balance1 == null || balance2 == null) {
+        const zeroAddressData = await pgClient.query("SELECT * FROM signatures WHERE address1=$1 AND gameid=$2", [
+          room.users[0].walletAddress,
+          room.roomName
+        ])
+        const oneAddressData =await pgClient.query("SELECT * FROM signatures WHERE address1=$1 AND gameid=$2", [
+          room.users[1].walletAddress,
+          room.roomName
+        ])
+        console.log(zeroAddressData.rows)
+        console.log(oneAddressData.rows)
+        socket.emit("update_balance", {
+          address1: room.users[1].walletAddress, amount1: '0',
+          address2: room.users[0].walletAddress, amount2: '0'
+        })
+      } else {
+        socket.emit("update_balance", {
+          address1: room.users[1].walletAddress, amount1: balance2.toString(),
+          address2: room.users[0].walletAddress, amount2: balance1.toString()
+        })
+      }
     } catch (error) {
       console.error(error)
     }
@@ -184,6 +226,27 @@ function handleSocket(socket) {
         const balanceWinner = await redisClient.get(room.users[1].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
+        // pgPool
+        // .connect()
+        // .then((client) => {
+        //     client
+        //         .query("BEGIN")
+        //         .then(() => {
+        //             return client.query("UPDATE statistics SET kills=kills+1 WHERE address=$1 AND gameid=$2", room.users[1].walletAddress, room.roomName)
+        //         })
+        //         .then(res => {
+        //           return client.query("UPDATE statistics SET deaths=deaths+1 WHERE address=$1 AND gameid=$2", room.users[0].walletAddress, room.roomName)
+        //         })
+        //         .then(() => {
+        //           return client.query("COMMIT")
+        //         })
+        //         .then(() => {
+        //             console.log(`Stats updated`)
+        //         })
+        //         .catch(() => {
+        //             client.query("ROLLBACK")
+        //         })
+        // })
         //if balance == 0 -> user losed
         //create signature and add data to database
         if (newBalance == 0) {
@@ -196,6 +259,10 @@ function handleSocket(socket) {
           .then(() => {
             Object.entries(room.sockets).forEach(([key, value]) => {
               socket.to(value.id).emit("finishing")
+              socket.to(value.id).emit("update_balance", {
+                address1: data.walletAddress, amount1: newBalance.toString(),
+                address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+              })
             })
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
@@ -213,6 +280,27 @@ function handleSocket(socket) {
         const balanceWinner = await redisClient.get(room.users[0].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
+        // pgPool
+        // .connect()
+        // .then((client) => {
+        //     client
+        //         .query("BEGIN")
+        //         .then(() => {
+        //           return client.query("UPDATE statistics SET kills=kills+1 WHERE address=$1 AND gameid=$2", room.users[0].walletAddress, room.roomName)
+        //         })
+        //         .then(res => {
+        //           return client.query("UPDATE statistics SET deaths=deaths+1 WHERE address=$1 AND gameid=$2", room.users[1].walletAddress, room.roomName)
+        //         })
+        //         .then(() => {
+        //           return client.query("COMMIT")
+        //         })
+        //         .then(() => {
+        //             console.log(`Stats updated`)
+        //         })
+        //         .catch(() => {
+        //             client.query("ROLLBACK")
+        //         })
+        // })
         if (newBalance == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
@@ -222,6 +310,10 @@ function handleSocket(socket) {
           }).then(() => {
             Object.entries(room.sockets).forEach(([key, value]) => {
               socket.to(value.id).emit("finishing")
+              socket.to(value.id).emit("update_balance", {
+                address1: data.walletAddress, amount1: newBalance.toString(),
+                address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+              })
             })
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
@@ -287,24 +379,28 @@ function handleSocket(socket) {
       const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
       //add data to database
       if (data.loserAddress == battle.player1) {
-        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-          data.loserAddress, 
+        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+          data.loserAddress,
+          data.winnerAddress,
           data.loserAmount,  
           data.winnerAmount, 
           room.roomName, v1, r1, s1])
-        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-          data.winnerAddress, 
+        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+          data.winnerAddress,
+          data.loserAddress,
           data.loserAmount,  
           data.winnerAmount, 
           room.roomName,v2, r2, s2])
       } else {
-        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-          data.winnerAddress,  
+        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+          data.winnerAddress,
+          data.loserAddress,
           data.winnerAmount,  
           data.loserAmount,
           room.roomName, v1, r1, s1])
-        await pgClient.query("INSERT INTO signatures (address, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7)", [
-          data.loserAddress,   
+        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+          data.loserAddress,
+          data.winnerAddress,
           data.winnerAmount,  
           data.loserAmount,
           room.roomName,v2, r2, s2])
@@ -329,6 +425,12 @@ function handleSocket(socket) {
         room.sendTo(user, MessageType.ERROR_ROOM_IS_FULL);
         return;
       }
+
+      if (room.numUsers() > 0) {
+        Object.entries(room.sockets).forEach(([key, value]) => {
+          socket.to(value.id).emit("end_waiting_another_user")
+        })
+      }
     
       const battle = await contract.battles(room.getName())
       room.amountToLose = battle.amountForOneDeath.toString()
@@ -338,9 +440,20 @@ function handleSocket(socket) {
         if (exists == null) {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
         }
-
+        const statisticsExist = await pgClient.query(
+          "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
+          [joinData.walletAddress, room.roomName]
+        )
+        if (statisticsExist.rows.length == 0) {
+          await pgClient.query(
+            "INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)",
+            [room.roomName, joinData.walletAddress, 0, 0]
+          )
+        }
+        
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
+
 
         // Send room info to new user
         room.sendTo(user, MessageType.ROOM, {

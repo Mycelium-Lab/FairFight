@@ -36,17 +36,21 @@
 					<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number" id="amountToPlay" min="1" max="10" required/></div>
 					<div>Total prize pool: <span id="totalPrizePool">None</span></div>
 					<div>Your deposit: <span id="yourDeposit">None</span></div>
-					<button class="createGame btn btn-white btn-big" disabled="disabled" id="createGame">New game</button>	
+					<button class="createGame btn btn-white btn-big" disabled="disabled" id="createGame">Create</button>	
 				</div>
 			</div>
-				<h2>Current Games</h2>
-				<h4 id="currentgame-empty">Empty</h4>
-				<div id="currentgame" style="display: none;">
-					<span id="currentgame-ID"></span>
-					<button id="currentgame-Finish">Finish</button>
-					<button id="currentgame-Withdraw">Withdraw</button>
-					<div id="currentgame-status"></div>
+			<div id="confirmation_modal" class="modal">
+				<div class="modal_content">
+					<span class="close_modal_window">×</span>
+					<div>Waiting for confirmation</div>
 				</div>
+			</div>
+			<div id="pending_modal" class="modal">
+				<div class="modal_content">
+					<span class="close_modal_window">×</span>
+					<div>Pending</div>
+				</div>
+			</div>
 				<details>
 					<summary><h2>Past Games</h2></summary>
 					<h4 id="pastgames-empty">Empty</h4>

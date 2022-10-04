@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A short experiment on making peer to peer game with webrtc and impactjs",
   "scripts": {
-    "prod": "pm2 start server.js --exp-backoff-restart-delay=100 -i 1 --name signalling && pm2 start server.js",
+    "prod": "pm2 start signalling/server.js --exp-backoff-restart-delay=100 -i 1 --name signalling && pm2 start server.js --exp-backoff-restart-delay=100",
     "sg-stop": "pm2 delete signalling",
     "signalling": "node signalling/server.js",
     "http": " http-server -c-1 . -p 8080",

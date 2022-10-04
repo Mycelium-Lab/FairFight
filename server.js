@@ -20,7 +20,7 @@ const pgClient = new pg.Client({
 
 async function getSignature(gameID, address) {
     const res = await pgClient.query(
-        'SELECT * FROM signatures WHERE address=$1 AND gameid=$2',
+        'SELECT * FROM signatures WHERE address1=$1 AND gameid=$2',
         [address, gameID]
     )
     if (res.rows.length !== 1) {
