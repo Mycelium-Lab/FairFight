@@ -152,7 +152,6 @@ function handleSocket(socket) {
   socket.on(MessageType.END_FINISHING, onEndFinishing)
 
   async function onEndFinishing() {
-    console.log('endInfdfkdjflkjsdlkjflksdjflj')
     Object.entries(room.sockets).forEach(([key, value]) => {
       socket.to(value.id).emit("end_finishing")
     })
@@ -179,15 +178,10 @@ function handleSocket(socket) {
     try {
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
-      // const statistics1 = await pgClient.query(
-      //   "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
-      //   [room.users[0].walletAddress, room.roomName]
-      // )
-      // const statistics2 = await pgClient.query(
-      //   "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
-      //   [room.users[1].walletAddress, room.roomName]
-      // )
-      // console.log(statistics1.rows, statistics2.rows)
+      const killsAddress1 = await getKills(room.users[1].walletAddress)
+      const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
+      const killsAddress2 = await getKills(room.users[0].walletAddress)
+      const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
       if (balance1 == null || balance2 == null) {
         const zeroAddressData = await pgClient.query("SELECT * FROM signatures WHERE address1=$1 AND gameid=$2", [
           room.users[0].walletAddress,
@@ -197,16 +191,14 @@ function handleSocket(socket) {
           room.users[1].walletAddress,
           room.roomName
         ])
-        console.log(zeroAddressData.rows)
-        console.log(oneAddressData.rows)
         socket.emit("update_balance", {
           address1: room.users[1].walletAddress, amount1: '0',
           address2: room.users[0].walletAddress, amount2: '0'
         })
       } else {
         socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: balance2.toString(),
-          address2: room.users[0].walletAddress, amount2: balance1.toString()
+          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,
+          address2: room.users[0].walletAddress, amount2: balance1.toString(),killsAddress2,deathsAddress2
         })
       }
     } catch (error) {
@@ -220,33 +212,15 @@ function handleSocket(socket) {
       const balance = await redisClient.get(data.walletAddress)
       const newBalance = parseInt(balance) - parseInt(room.amountToLose)
       await redisClient.set(data.walletAddress, newBalance)
+      
       //get from loser
       if (data.walletAddress == room.users[0].walletAddress) {
         //paste to winner
         const balanceWinner = await redisClient.get(room.users[1].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
-        // pgPool
-        // .connect()
-        // .then((client) => {
-        //     client
-        //         .query("BEGIN")
-        //         .then(() => {
-        //             return client.query("UPDATE statistics SET kills=kills+1 WHERE address=$1 AND gameid=$2", room.users[1].walletAddress, room.roomName)
-        //         })
-        //         .then(res => {
-        //           return client.query("UPDATE statistics SET deaths=deaths+1 WHERE address=$1 AND gameid=$2", room.users[0].walletAddress, room.roomName)
-        //         })
-        //         .then(() => {
-        //           return client.query("COMMIT")
-        //         })
-        //         .then(() => {
-        //             console.log(`Stats updated`)
-        //         })
-        //         .catch(() => {
-        //             client.query("ROLLBACK")
-        //         })
-        // })
+        await addKills(room.users[1].walletAddress)
+        await addDeaths(room.users[0].walletAddress)
         //if balance == 0 -> user losed
         //create signature and add data to database
         if (newBalance == 0) {
@@ -270,37 +244,22 @@ function handleSocket(socket) {
         //update balance
         //we send it each user in room
         //but its not works so on frontend we send it again from another user
+        const killsAddress1 = await getKills(data.walletAddress)
+        const deathsAddress1 = await getDeaths(data.walletAddress)
+        const killsAddress2 = await getKills(room.users[1].walletAddress)
+        const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(),
-            address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,
+            address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
           })
         })
       } else {
         const balanceWinner = await redisClient.get(room.users[0].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
-        // pgPool
-        // .connect()
-        // .then((client) => {
-        //     client
-        //         .query("BEGIN")
-        //         .then(() => {
-        //           return client.query("UPDATE statistics SET kills=kills+1 WHERE address=$1 AND gameid=$2", room.users[0].walletAddress, room.roomName)
-        //         })
-        //         .then(res => {
-        //           return client.query("UPDATE statistics SET deaths=deaths+1 WHERE address=$1 AND gameid=$2", room.users[1].walletAddress, room.roomName)
-        //         })
-        //         .then(() => {
-        //           return client.query("COMMIT")
-        //         })
-        //         .then(() => {
-        //             console.log(`Stats updated`)
-        //         })
-        //         .catch(() => {
-        //             client.query("ROLLBACK")
-        //         })
-        // })
+        await addKills(room.users[0].walletAddress)
+        await addDeaths(room.users[1].walletAddress)
         if (newBalance == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
@@ -318,13 +277,83 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
         }
+        const killsAddress1 = await getKills(data.walletAddress)
+        const deathsAddress1 = await getDeaths(data.walletAddress)
+        const killsAddress2 = await getKills(room.users[0].walletAddress)
+        const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(),
-            address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString()
+            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,
+            address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
           })
         })
       }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function addKills(address) {
+    try {
+      const exist = await redisClient.get(`${address}_kills`)
+      if (exist == null) {
+        await redisClient.set(`${address}_kills`, 1)
+      } else {
+        await redisClient.set(`${address}_kills`, parseInt(exist) + 1)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function addDeaths(address) {
+    try {
+      const exist = await redisClient.get(`${address}_deaths`)
+      if (exist == null) {
+        await redisClient.set(`${address}_deaths`, 1)
+      } else {
+        await redisClient.set(`${address}_deaths`, parseInt(exist) + 1)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getKills(address) {
+    try {
+      const exist = await redisClient.get(`${address}_kills`)
+      if (exist == null) {
+        await redisClient.set(`${address}_kills`, 0)
+      }
+      return await redisClient.get(`${address}_kills`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getDeaths(address) {
+    try {
+      const exist = await redisClient.get(`${address}_deaths`)
+      if (exist == null) {
+        await redisClient.set(`${address}_deaths`, 0)
+      }
+      return await redisClient.get(`${address}_deaths`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function removeKills(address) {
+    try {
+      await redisClient.del(`${address}_kills`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function removeDeaths(address) {
+    try {
+      await redisClient.del(`${address}_deaths`)
     } catch (error) {
       console.error(error)
     }
@@ -391,6 +420,7 @@ function handleSocket(socket) {
           data.loserAmount,  
           data.winnerAmount, 
           room.roomName,v2, r2, s2])
+        
       } else {
         await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
           data.winnerAddress,
@@ -405,6 +435,37 @@ function handleSocket(socket) {
           data.loserAmount,
           room.roomName,v2, r2, s2])
       }
+      const killsLoser = await getKills(data.loserAddress)
+      const deathsLoser = await getDeaths(data.loserAddress)
+      const killsWinner = await getKills(data.winnerAddress)
+      const deathsWinner = await getDeaths(data.winnerAddress)
+      pgPool
+        .connect()
+        .then((client) => {
+            client
+                .query("BEGIN")
+                .then(async () => {
+                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [killsLoser, data.loserAddress, room.roomName])
+                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [killsWinner, data.winnerAddress, room.roomName])
+                    await removeKills(data.loserAddress)
+                    await removeKills(data.winnerAddress)
+                })
+                .then(async () => {
+                    await pgClient.query("UPDATE statistics SET deaths=$1 WHERE address=$2 AND gameid=$3", [deathsLoser, data.loserAddress, room.roomName])
+                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [deathsWinner, data.winnerAddress, room.roomName])
+                    await removeDeaths(data.loserAddress)
+                    await removeDeaths(data.winnerAddress)
+                })
+                .then(() => {
+                    client.query("COMMIT")
+                })
+                .then(() => {
+                    console.log(`Stats updated`)
+                })
+                .catch(() => {
+                    client.query("ROLLBACK")
+                })
+        })
     } catch (error) {
       console.error(error)
     }
@@ -440,17 +501,6 @@ function handleSocket(socket) {
         if (exists == null) {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
         }
-        const statisticsExist = await pgClient.query(
-          "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
-          [joinData.walletAddress, room.roomName]
-        )
-        if (statisticsExist.rows.length == 0) {
-          await pgClient.query(
-            "INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)",
-            [room.roomName, joinData.walletAddress, 0, 0]
-          )
-        }
-        
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
 
