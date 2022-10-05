@@ -445,14 +445,10 @@ function handleSocket(socket) {
             client
                 .query("BEGIN")
                 .then(async () => {
-                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [killsLoser, data.loserAddress, room.roomName])
-                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [killsWinner, data.winnerAddress, room.roomName])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)", [room.roomName, data.loserAddress, killsLoser, deathsLoser])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)", [room.roomName, data.winnerAddress, killsWinner, deathsWinner])
                     await removeKills(data.loserAddress)
                     await removeKills(data.winnerAddress)
-                })
-                .then(async () => {
-                    await pgClient.query("UPDATE statistics SET deaths=$1 WHERE address=$2 AND gameid=$3", [deathsLoser, data.loserAddress, room.roomName])
-                    await pgClient.query("UPDATE statistics SET kills=$1 WHERE address=$2 AND gameid=$3", [deathsWinner, data.winnerAddress, room.roomName])
                     await removeDeaths(data.loserAddress)
                     await removeDeaths(data.winnerAddress)
                 })
