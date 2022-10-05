@@ -15,7 +15,6 @@
 	<div id="start" >
 		<div class="startContainer">
 			<h1 id="walletHeader" style="display:none">Please connect wallet</h1>
-			<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
 			<h1 id="walletHeaderDisconnect" style="display:none">Disconnect wallet</h1>
 			<button class="startBtn" id="disconnect" style="display:none"></button>
 			<span id="startTonBalance" style="display:none">Your TON balanceL</span>
@@ -26,6 +25,7 @@
 			<button class="startBtn" id="deposit" style="display:none">Deposit</button>
 			<p id="feeInfo" style="display:none">...</p>
 			<span id="startInternalBalance" style="display:none">Your in-game TON balance:</span>
+			<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
 			<button id="btn_modal_window">New game</button>
 			<div id="my_modal" class="modal">
 				<div class="modal_content">
@@ -49,6 +49,13 @@
 				<div class="modal_content">
 					<span class="close_modal_window">×</span>
 					<div>Pending</div>
+				</div>
+			</div>
+			<div id="install_wallet_modal" class="modal">
+				<div class="modal_content">
+					<span class="close_modal_window">×</span>
+					<div>You have to install wallet</div>
+					<button id="reload_button">Reload</button>
 				</div>
 			</div>
 				<details>

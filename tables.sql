@@ -13,5 +13,6 @@ CREATE TABLE statistics(
     gameID  INT NOT NULL,
     address VARCHAR(255) NOT NULL,
     kills  INT NOT NULL,
-    deaths  INT NOT NULL
+    deaths  INT NOT NULL,
+    remainingRounds INT NOT NULL
 );

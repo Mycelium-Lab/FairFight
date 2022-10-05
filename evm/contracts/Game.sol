@@ -202,6 +202,8 @@ contract Game is IGame, GameBasic {
                 (battles[i].player1 == user || battles[i].player2 == user)
                 &&
                 battles[i].finished == true
+                &&
+                battles[i].player2 != address(0)
             ) {
                 _userB[counter] = battles[i];
                 counter++;

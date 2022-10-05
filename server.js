@@ -56,14 +56,16 @@ async function getStatistics(gameID, address) {
                 gameid: '',
                 address: '',
                 kills: '',
-                deaths: '' 
+                deaths: '',
+                remainingRounds: ''
             }
         }
         return {
             gameid: res.rows[0].gameid,
             address: res.rows[0].address,
             kills: res.rows[0].kills,
-            deaths: res.rows[0].deaths 
+            deaths: res.rows[0].deaths,
+            remainingRounds: res.rows[0].remainingrounds
         }
     } catch (error) {
         console.error(error)
@@ -84,6 +86,7 @@ server.get('/sign', async (req, res) => {
 })
 
 server.get('/statistics', async (req, res) => {
+    console.log(await getStatistics(req.query.gameID, req.query.address))
     res.json(await getStatistics(req.query.gameID, req.query.address))
 })
 

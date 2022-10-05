@@ -11,8 +11,8 @@ const web3 = require("web3")
 require("dotenv").config()
 
 const { contractAbi, contractAddress } = require("../contract/contract.js")
-// const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
-const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
+const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+// const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
@@ -212,7 +212,8 @@ function handleSocket(socket) {
       const balance = await redisClient.get(data.walletAddress)
       const newBalance = parseInt(balance) - parseInt(room.amountToLose)
       await redisClient.set(data.walletAddress, newBalance)
-      
+      const rounds = await redisClient.get(room.roomName)
+      await redisClient.set(room.roomName, parseInt(rounds) - 1)
       //get from loser
       if (data.walletAddress == room.users[0].walletAddress) {
         //paste to winner
@@ -223,7 +224,7 @@ function handleSocket(socket) {
         await addDeaths(room.users[0].walletAddress)
         //if balance == 0 -> user losed
         //create signature and add data to database
-        if (newBalance == 0) {
+        if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
             winnerAddress: room.users[1].walletAddress,
@@ -260,7 +261,7 @@ function handleSocket(socket) {
         await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
         await addKills(room.users[0].walletAddress)
         await addDeaths(room.users[1].walletAddress)
-        if (newBalance == 0) {
+        if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
             winnerAddress: room.users[0].walletAddress,
@@ -406,6 +407,7 @@ function handleSocket(socket) {
       const r2 = sign2.substr(0, 66)
       const s2 = '0x' + sign2.substr(66, 64);
       const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
+      const rounds = await redisClient.get(room.roomName)
       //add data to database
       if (data.loserAddress == battle.player1) {
         await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
@@ -445,12 +447,13 @@ function handleSocket(socket) {
             client
                 .query("BEGIN")
                 .then(async () => {
-                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)", [room.roomName, data.loserAddress, killsLoser, deathsLoser])
-                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths) VALUES($1,$2,$3,$4)", [room.roomName, data.winnerAddress, killsWinner, deathsWinner])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5)", [room.roomName, data.loserAddress, killsLoser, deathsLoser, rounds])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5)", [room.roomName, data.winnerAddress, killsWinner, deathsWinner, rounds])
                     await removeKills(data.loserAddress)
                     await removeKills(data.winnerAddress)
                     await removeDeaths(data.loserAddress)
                     await removeDeaths(data.winnerAddress)
+                    await redisClient.del(room.roomName)
                 })
                 .then(() => {
                     client.query("COMMIT")
@@ -494,8 +497,14 @@ function handleSocket(socket) {
       room.baseAmount = battle.player1Amount.toString()
       if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
         const exists = await redisClient.get(joinData.walletAddress)
+        const roundsExists = await redisClient.get(room.roomName)
         if (exists == null) {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
+        }
+        if (roundsExists == null) {
+          const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player2Amount.toString())
+          const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
+          await redisClient.set(room.roomName, rounds)
         }
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
