@@ -32,6 +32,10 @@
 			<span >Deaths: <span id="yourDeaths">Loading...</span></span>
 		</div>
 		<div>
+			<div>Rounds</div>
+			<div id="rounds_amount">Loading...</div>
+		</div>
+		<div>
 			<div>Enemy</div>
 			<span style="display: inherit;">Your enemy in-game balance: <span id="enemyBalance" ></span> ROSE</span>
 			<span >Kills: <span id="enemyKills">Loading...</span></span>
@@ -41,9 +45,8 @@
 		<div>Click on screen to change size</div>
 		<div><canvas id="canvas" style="display: inherit;"></canvas></div>
 		
-		<div id="canvasLoad" style="display: none;">
-			<span id="loadingStage">Waiting another user</span>
-		</div>
+		<h3 id="loadingStage" style="display: none;">Waiting another user(if you are waiting for a long time, try to reload the page)</h3>
+
 		<button id="confirm_finish" >Finish Game</button>
 		<div id="confirmation_modal" class="modal">
 			<div class="modal_content">

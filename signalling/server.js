@@ -176,29 +176,33 @@ function handleSocket(socket) {
 
   async function onUpdateBalance() {
     try {
+      console.log('ss')
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
       const killsAddress1 = await getKills(room.users[1].walletAddress)
       const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
       const killsAddress2 = await getKills(room.users[0].walletAddress)
       const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
+      const remainingRounds = await redisClient.get(room.roomName)
       if (balance1 == null || balance2 == null) {
-        const zeroAddressData = await pgClient.query("SELECT * FROM signatures WHERE address1=$1 AND gameid=$2", [
-          room.users[0].walletAddress,
-          room.roomName
-        ])
-        const oneAddressData =await pgClient.query("SELECT * FROM signatures WHERE address1=$1 AND gameid=$2", [
-          room.users[1].walletAddress,
-          room.roomName
-        ])
-        socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: '0',
-          address2: room.users[0].walletAddress, amount2: '0'
-        })
+        setTimeout(async () => {
+          const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE address=$1 AND gameid=$2", [
+            room.users[0].walletAddress,
+            room.roomName
+          ])
+          const oneAddressData =await pgClient.query("SELECT * FROM statistics WHERE address=$1 AND gameid=$2", [
+            room.users[1].walletAddress,
+            room.roomName
+          ])
+          socket.emit("update_balance", {
+            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].playeramount, killsAddress1,deathsAddress1,remainingRounds,
+            amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].playeramount,killsAddress2,deathsAddress2
+          })
+        }, 100)
       } else {
         socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,
-          address2: room.users[0].walletAddress, amount2: balance1.toString(),killsAddress2,deathsAddress2
+          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,remainingRounds,
+          amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: balance1.toString(),killsAddress2,deathsAddress2
         })
       }
     } catch (error) {
@@ -235,7 +239,8 @@ function handleSocket(socket) {
             Object.entries(room.sockets).forEach(([key, value]) => {
               socket.to(value.id).emit("finishing")
               socket.to(value.id).emit("update_balance", {
-                address1: data.walletAddress, amount1: newBalance.toString(),
+                address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
+                amountToLose:room.amountToLose, 
                 address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
               })
             })
@@ -251,8 +256,8 @@ function handleSocket(socket) {
         const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,
-            address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
+            amountToLose:room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
           })
         })
       } else {
@@ -271,7 +276,8 @@ function handleSocket(socket) {
             Object.entries(room.sockets).forEach(([key, value]) => {
               socket.to(value.id).emit("finishing")
               socket.to(value.id).emit("update_balance", {
-                address1: data.walletAddress, amount1: newBalance.toString(),
+                address1: data.walletAddress, amount1: newBalance.toString(),remainingRounds: parseInt(rounds) - 1,
+                amountToLose:room.amountToLose, 
                 address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
               })
             })
@@ -284,8 +290,8 @@ function handleSocket(socket) {
         const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,
-            address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,remainingRounds: parseInt(rounds) - 1,
+            amountToLose:room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
           })
         })
       }
@@ -447,8 +453,8 @@ function handleSocket(socket) {
             client
                 .query("BEGIN")
                 .then(async () => {
-                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5)", [room.roomName, data.loserAddress, killsLoser, deathsLoser, rounds])
-                    await pgClient.query("INSERT INTO statistics (gameid, address, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5)", [room.roomName, data.winnerAddress, killsWinner, deathsWinner, rounds])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.loserAddress, data.loserAmount, killsLoser, deathsLoser, rounds])
+                    await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.winnerAddress, data.winnerAmount,killsWinner, deathsWinner, rounds])
                     await removeKills(data.loserAddress)
                     await removeKills(data.winnerAddress)
                     await removeDeaths(data.loserAddress)
@@ -506,6 +512,7 @@ function handleSocket(socket) {
           const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
           await redisClient.set(room.roomName, rounds)
         }
+
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
 

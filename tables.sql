@@ -12,6 +12,7 @@ CREATE TABLE signatures(
 CREATE TABLE statistics(
     gameID  INT NOT NULL,
     address VARCHAR(255) NOT NULL,
+    playerAmount VARCHAR(255) NOT NULL,
     kills  INT NOT NULL,
     deaths  INT NOT NULL,
     remainingRounds INT NOT NULL

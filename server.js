@@ -45,6 +45,45 @@ async function getSignature(gameID, address) {
     }
 }
 
+async function getCurrentInGameStatistics(gameID, address) {
+    try {
+        const remainingRounds = await redisClient.get(gameID)
+        console.log(address)
+        const kills = await redisClient.get(`${address}_kills`)
+        const deaths = await redisClient.get(`${address}_deaths`)
+        const balance = await redisClient.get(address)
+        console.log(remainingRounds, kills, deaths, balance)
+        if (
+            remainingRounds == null 
+            || 
+            kills == null 
+            || 
+            deaths == null 
+        ) {
+            const stats = await getStatistics(gameID, address)
+            return {
+                gameid: stats.gameid,
+                address: stats.address,
+                kills: stats.kills,
+                deaths: stats.deaths,
+                remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
+                balance
+            }
+        } else {
+            return {
+                gameid: gameID,
+                address,
+                kills,
+                deaths,
+                remainingRounds,
+                balance
+            }
+        }
+    } catch (error) {
+        
+    }
+}
+
 async function getStatistics(gameID, address) {
     try {
         const res = await pgClient.query(
@@ -86,13 +125,11 @@ server.get('/sign', async (req, res) => {
 })
 
 server.get('/statistics', async (req, res) => {
-    console.log(await getStatistics(req.query.gameID, req.query.address))
     res.json(await getStatistics(req.query.gameID, req.query.address))
 })
 
 server.get('/balance', async (req, res) => {
-    const balance = await redisClient.get(req.query.address)
-    res.json(balance)
+    res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address))
 })
 
 server.listen(5000, async () => {
