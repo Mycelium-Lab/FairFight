@@ -11,9 +11,10 @@ const web3 = require("web3")
 require("dotenv").config()
 
 const { contractAbi, contractAddress } = require("../contract/contract.js")
-const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
+// const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
 // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
-const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
+const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
   socket: {
@@ -198,7 +199,7 @@ function handleSocket(socket) {
             address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].playeramount, killsAddress1,deathsAddress1,remainingRounds,
             amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].playeramount,killsAddress2,deathsAddress2
           })
-        }, 100)
+        }, 1000)
       } else {
         socket.emit("update_balance", {
           address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,remainingRounds,
@@ -508,7 +509,7 @@ function handleSocket(socket) {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
         }
         if (roundsExists == null) {
-          const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player2Amount.toString())
+          const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player1Amount.toString())
           const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
           await redisClient.set(room.roomName, rounds)
         }
