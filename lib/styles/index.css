@@ -320,7 +320,7 @@ summary::-webkit-details-marker {
     z-index: 99999;
 }
 .modal .modal_content .close_modal_window {
-    
+
     float: right;
     font-size: 28px;
     font-weight: bold;
