@@ -7,6 +7,18 @@
   --color-red: #ee0000;
 }
 
+html,
+body,
+#start {
+  height: 100%;
+}
+
+#start,
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 body,
 button {
   font-family: "HelveticaNeueCyr";
@@ -17,17 +29,37 @@ a {
 }
 
 .startContainer {
-  padding-top: 354px;
+  padding-top: 365px;
   height: auto;
 }
 
 #wrapper {
   position: relative;
-  background-image: url("../media/banner.png");
-  background-size: 1095px 376px;
-  background-repeat: no-repeat;
-  background-position: top 40px center;
+  background-image: url("../media/background.jpg");
+  background-size: cover;
   padding: 0 65px;
+  flex: 1 0 auto;
+  z-index: 10;
+}
+
+.wrapper__monetki {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  max-width: 1095px;
+  width: 100%;
+  height: auto;
+}
+
+.wrapper__gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(3.25deg, #020202 9.97%, rgba(2, 2, 2, 0) 116.55%);
+  z-index: -1;
 }
 
 .wrapper__link {
@@ -114,6 +146,7 @@ a {
   border-radius: 8px;
   font-size: 20px;
   font-weight: 500;
+  position: relative;
 }
 
 .startBtn#disconnect {
@@ -126,6 +159,20 @@ a {
   font-weight: 300;
   color: #000;
   height: 40px;
+  background-image: url("/media/svg/dot.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.startBtn span {
+  font-size: 16px;
+  font-weight: 300;
+  color: #c6c6c6;
+}
+
+#disconnect-address {
+  color: #000000;
 }
 
 .btn-white {
@@ -135,6 +182,11 @@ a {
   color: #fff;
   border-radius: 8px;
   align-self: center;
+}
+
+#btn_modal_window {
+  position:relative;
+  z-index: 100;
 }
 
 #btn_modal_window img {
@@ -199,13 +251,26 @@ a {
 
 #opengames.empty .games__empty,
 #pastgames.empty .games__empty {
-  display: block !important;
+  display: flex !important;
 }
 
 .games__empty {
   font-size: 96px;
   color: var(--color-grey);
   font-weight: 100;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  justify-content: center;
+  text-align: center;
+  max-width: 515px;
+}
+
+.games__empty span {
+  font-size: 25px;
+  font-weight: 400;
+  color: rgba(57, 57, 57, 0.5);
+  line-height: 30px;
 }
 
 .opengames__btn {
@@ -237,6 +302,8 @@ a {
   flex-direction: column;
 }
 
+
+
 /* modals */
 .modal {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -264,6 +331,43 @@ a {
   border-radius: 8px;
   background-color: #fff;
   margin-top: 25px;
+}
+
+#install_wallet_modal .modal_content {
+  background-image: none;
+  padding-top: 73px;
+}
+
+#install_wallet_modal button {
+  background-color: transparent;
+  border: 1px solid var(--color-orange);
+  border-radius: 8px;
+  height: 48px;
+  min-width: 290px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-black);
+  align-self: center;
+  margin-top: 30px;
+  margin-bottom: 35px;
+  box-shadow: 0px 4px 5px 0px hsla(0, 0%, 0%, 0.1);
+}
+
+#install_wallet_modal p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+#install_wallet_modal p:last-child {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#install_wallet_modal a {
+  color: var(--color-orange);
+  display: block;
+  text-decoration: underline;
 }
 
 #connect_modal .modal_content {
@@ -298,7 +402,32 @@ a {
   background-position: right bottom;
 }
 
-.modal__map .modal_content {
+.map-show {
+  cursor: pointer;
+}
+
+.modal__map {
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: none;
+  padding: 10px;
+  border: 1px solid var(--color-black);
+  border-radius: 16px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  background-color: #fff;
+  transition: all ease 0.3s;
+}
+
+.modal__map.active {
+  opacity: 1;
+  transition: all ease 0.3s;
+  visibility: visible;
+}
+
+/* .modal__map .modal_content {
   padding: 10px;
   border: 1px solid var(--color-black);
 }
@@ -306,7 +435,7 @@ a {
 .modal__map .modal_content img {
   border-radius: 16px;
   overflow: hidden;
-}
+} */
 
 .modal__row {
   display: flex;
@@ -330,14 +459,21 @@ a {
   border-color: var(--color-orange);
   border-width: 1px;
   border-radius: 8px;
+  border-style: solid;
   background-color: #f2f2f2;
   height: 30px;
   padding: 0 10px;
   width: 156px;
+  padding-top: 2px;
+  background-image: url("../media/svg/select.svg");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  padding-right: 25px;
 }
 
 .modal .modal_content input::placeholder {
   color: #b6bcc4;
+  font-weight: 300;
 }
 
 .close_modal_window {
@@ -384,6 +520,13 @@ a {
   margin-bottom: 20px;
 }
 
+.modal__title--mode {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 0;
+}
+
 .modal__subtitle {
   font-size: 20px;
   font-weight: 500;
@@ -395,6 +538,13 @@ a {
 #over_modal .modal_content {
   background-image: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+#over_modal .modal_content .modal__block div {
+  display: flex;
+  gap: 30px;
 }
 
 #over_modal .modal_content button {
@@ -418,6 +568,9 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .modal__block {
@@ -430,7 +583,8 @@ a {
 .modal__wsad .modal_content {
   max-width: 369px;
   width: 100%;
-  padding: 40px 30px;
+  padding: 40px 20px;
+  background-image: none;
 }
 
 .canvasWrapper {
@@ -454,10 +608,11 @@ a {
   background-color: #fff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 7px 10px;
+  padding: 7px 20px;
   color: var(--color-black);
   font-size: 18px;
   font-weight: 500;
+  margin: 10px 0;
 }
 
 .ronds-head__title {
@@ -479,6 +634,14 @@ a {
 
 .rounds-head__col:last-child {
   text-align: right;
+}
+
+.rounds-head__col svg {
+  margin-bottom: 4px;
+}
+
+.rounds-head__col > span:nth-child(2) {
+  margin-right: 20px;
 }
 
 .inner-block {
@@ -516,6 +679,7 @@ a {
 .inner-block__head button {
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: -1px;
 }
 
 .inner-block__head button {
@@ -561,7 +725,6 @@ a {
 
 .games__item {
   display: flex;
-  gap: 10px;
   align-items: center;
   gap: 30px;
 }
@@ -590,6 +753,10 @@ a {
   font-weight: 500;
   color: var(--color-black);
   margin-bottom: 0;
+}
+
+.opengames__col p {
+  font-weight: 400;
 }
 
 .games__item span {
@@ -639,6 +806,22 @@ a {
   border: none;
 }
 
+#rounds_amount {
+  text-align: center;
+}
+
+@media (max-width: 1550px) {
+  .canvasWrapper {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .canvasWrapper {
+    margin-top: 0;
+  }
+}
+
 .inner-block.inner-block--mobile {
   display: none;
 }
@@ -674,13 +857,116 @@ a {
 
   .inner-block.inner-block--mobile {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 95px 30px;
+    padding: 0 26px;
     font-size: 24px;
     font-weight: 500;
     color: var(--color-black);
     text-align: center;
+    gap: 50px;
+    height: 346px;
   }
+
+  .inner-block.inner-block--mobile span {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-orange);
+    line-height: 29px;
+  }
+
+  .inner-block.inner-block--mobile p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-black);
+    background-image: linear-gradient();
+    margin-bottom: 0;
+  }
+
+  .inner-block.inner-block--mobile a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.inventory-block {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  width: 271px;
+  min-height: 396px;
+  background-color: #fff;
+  padding: 16px 30px;
+  border-radius: 16px;
+  z-index: 10;
+}
+
+.inventory-block.active {
+  display: block;
+}
+
+.inventory-block__head {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-grey);
+  gap: 20px;
+  margin-bottom: 13px;
+}
+
+.inventory-block__middle {
+  display: grid;
+  grid-gap: 7px 14px;
+  grid-template-columns: 150px 45px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "item1 item2"
+    "item1 item3"
+    "item1 item4"
+  ;
+}
+
+.inventory-block__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 0;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid var(--color-grey);
+}
+
+.inventory-block__box {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  border: 2px solid var(--color-grey);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inventory-block__box--big {
+  width: 100%;
+  height: 100%;
+}
+
+.inventory-block__title {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  color: #000;
+  margin-bottom: 30px;
+  margin-top: 4px;
+}
+
+.close_inventory {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
 }

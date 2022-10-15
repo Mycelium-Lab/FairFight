@@ -8,20 +8,20 @@ html,body {
 }
 
 #canvas {
-    width:1020px;
-    height:770px;
+    width: 1020px;
+    height: 100vh;
     border: 1px solid #3b3d42;
     image-rendering: optimizeSpeed;
     -webkit-interpolation-mode: nearest-neighbor;
 }
 
 #noCanvas {
-    width:1020px;
-    height:770px;
+    width: 1020px;
+    height: 100vh;
     padding: 90px 32px;
     font-weight: bold;
     border: 1px solid #3b3d42;
-    background-color: #3b3d42;
+    background-color: #D9D9D9;
 }
 
 .inputName{
