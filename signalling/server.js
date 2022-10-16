@@ -12,9 +12,9 @@ require("dotenv").config()
 
 const { contractAbi, contractAddress } = require("../contract/contract.js")
 // const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
-const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
-// const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
-const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+// const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
+const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
+const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
   socket: {
@@ -369,12 +369,33 @@ function handleSocket(socket) {
 
   async function onFinishing() {
     try {
-      const balance1 = await redisClient.get(room.users[0].walletAddress)
-      const balance2 = await redisClient.get(room.users[1].walletAddress)
+      let balance1;
+      let balance2;
+      let loserAddress;
+      let winnerAddress;
+      if (room.users[0] == undefined || room.users[1] == undefined) {
+        const battle = await contract.battles(room.getName())
+        const exists1 = await redisClient.get(battle.player1)
+        const exists2 = await redisClient.get(battle.player2)
+        if (exists1 != null && exists2 != null) {
+          balance1 = exists1
+          balance2 = exists2
+        } else {
+          balance1 = battle.player1Amount.toString()
+          balance2 = battle.player1Amount.toString()
+        }
+        loserAddress = battle.player1
+        winnerAddress = battle.player2
+      } else {
+        balance1 = await redisClient.get(room.users[0].walletAddress)
+        loserAddress = room.users[0].walletAddress
+        balance2 = await redisClient.get(room.users[1].walletAddress)
+        winnerAddress = room.users[1].walletAddress
+      }
       //create signatures on finish button
       await createSignature({
-        loserAddress: room.users[0].walletAddress,
-        winnerAddress: room.users[1].walletAddress,
+        loserAddress,
+        winnerAddress,
         loserAmount: balance1,
         winnerAmount: balance2
       }).then(() => {

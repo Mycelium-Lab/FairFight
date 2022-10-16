@@ -134,40 +134,44 @@
 
 				</button>
 			</div>
-			<div id="confirmation_modal" class="modal">
+			<!-- <div id="confirmation_modal" class="modal">
 				<div class="modal_content">
 					<span class="close_modal_window">
 						<img src="/media/svg/cross.svg" alt="">
 					</span>
 					<div class="modal__title">Finish the game</div>
 					<div>Are you sure that you want to complete game?</div>
+					<div>Players & stats:</div>
 					<div><span id="internal_balance_return"></span>(your in-game balance) will return to your wallet
 					</div>
+					<div id="yourStats">0x23d...P11t (you): 10 kills, 2 death</div>
+					<div id="yourAmountWinLose">Win 0 ROSE</div>
+					<div id="enemyStats">0x23d...P11t (you): 10 kills, 2 death</div>
+					<div id="enemyAmountWinLose">Win 0 ROSE</div>
 					<button id="finishGame" style="display:inherit">Confirm</button>
 				</div>
-			</div>
+			</div> -->
 			<div id="over_modal" class="modal">
 				<div class="modal_content">
 					<span class="close_modal_window">
 						<img src="/media/svg/cross.svg" alt="">
 					</span>
-					<div class="modal__title">GAME OVER</div>
+					<div class="modal__title">Finish the game</div>
+					<div class="modal__subtitle" id="sure_want_end">Are you sure that you want to complete game?</div>
 					<div class="modal__subtitle">Players & stats:</div>
 					<div class="modal__block">
-						<div>0x23d...P11t (you): 10 kills, 2 death, dep 22 ROSE</div>
+						<div id="yourStats" class="opengames__col"></div>
 						<div>
-							<span class="green">Win 8 ROSE</span>
-							<span class="grey">Lose 0 ROSE</span>
+							<span id="yourAmountWinLose"></span>
 						</div>
 					</div>
 					<div class="modal__block">
-						<div>0x4u5...Gt7k: 6 kills, 6 death, dep 22 ROSE</div>
+						<div id="enemyStats" class="opengames__col"></div>
 						<div>
-							<span class="grey">Win 0 ROSE</span>
-							<span class="red">Lose 8 ROSE</span>
+							<span id="enemyAmountWinLose"></span>
 						</div>
 					</div>
-					<button id="finishGame" style="display:inherit">Claim 8 ROSE & exit</button>
+					<button id="finishGame" style="display:inherit">Confirm</button>
 				</div>
 			</div>
 			<div id="about_modal" class="modal">
