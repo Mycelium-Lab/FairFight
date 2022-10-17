@@ -149,6 +149,19 @@ a {
   position: relative;
 }
 
+#header {
+  min-height: 120px;
+}
+
+.logo {
+  width: 200px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
 .startBtn#disconnect {
   min-width: 220px;
   background-color: #fff;

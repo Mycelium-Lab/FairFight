@@ -20,7 +20,8 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         uint8 _amountUserGamesToReturn, 
         uint8 _maxDeathInARow,
         address _feeAddress,
-        uint16 _fee
+        uint16 _fee,
+        uint256 _minAmountForOneRound
     ) initializer public {
         __Pausable_init();
         __AccessControl_init();
@@ -32,6 +33,7 @@ contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeab
         maxDeathInARow = _maxDeathInARow;
         feeAddress = _feeAddress;
         fee = _fee;
+        minAmountForOneRound = _minAmountForOneRound;
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -52,6 +54,7 @@ contract Game is IGame, GameBasic {
         require(msg.value % amountForOneDeath == 0, "Amount for one death must be divided by the msg.value with the remainder 0");
         require(msg.value / amountForOneDeath <= maxDeathInARow, "Exceeded the limit death in a row");
         require(currentlyBusy[msg.sender] == false, "You already have open battle");
+        require(amountForOneDeath >= minAmountForOneRound, "AmountForOneDeath is too low");
         uint256 battlesLength = battles.length;
         Battle memory _newBattle = Battle(
             battlesLength,   //ID

@@ -8,6 +8,7 @@ contract GameStorage {
 
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
+    uint256 public minAmountForOneRound;
     address public signerAccess;
     address public feeAddress;
     uint16 public fee; //if equals 100 -> 1%

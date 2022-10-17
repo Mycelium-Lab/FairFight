@@ -11,11 +11,12 @@ async function main() {
   const Game = await ethers.getContractFactory("Game");
   const game = await upgrades.deployProxy(Game, 
     [
-      '0xAb1F38D350729e74B22E14e3254BaC70A10cb9e1', 
-      15,
-      10,
+      '0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0', //signer
+      15, //_amountUserGamesToReturn
+      255, //max rounds
       '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
-      300 //fee
+      300, //fee
+      ethers.utils.parseEther("1")
     ], 
   { initializer: "initialize" });
   await game.deployed()

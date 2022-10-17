@@ -177,7 +177,6 @@ function handleSocket(socket) {
 
   async function onUpdateBalance() {
     try {
-      console.log('ss')
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
       const killsAddress1 = await getKills(room.users[1].walletAddress)
@@ -538,6 +537,14 @@ function handleSocket(socket) {
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
 
+        if(room.users.length === 1) {
+          setTimeout(async () => {
+            if (room.numUsers() === 1) {
+              await onFinishing()
+              room.sendTo(user, 'update_balance', {});
+            }
+          }, 1000 * 60 * 3)
+        }
 
         // Send room info to new user
         room.sendTo(user, MessageType.ROOM, {

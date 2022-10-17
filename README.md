@@ -121,7 +121,19 @@ upstream websocket {
 
 server {
     listen 80;
-    server_name 141.8.195.14;
+    listen [::]:80;
+
+    server_name fairfight.fairprotocol.solutions;
+    return 301 https://fairfight.fairprotocol.solutions$request_uri;
+}
+
+
+server{
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    
+    server_name fairfight.fairprotocol.solutions;
+    
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $host;
@@ -134,13 +146,14 @@ server {
         #     proxy_redirect off;
         # }
     }
-    location /socket.io/ {
+    
+    location /socket.io {
         proxy_pass http://127.0.0.1:8033;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
-        proxy_set_header Host $host;
     }
+    
+    ssl_certificate /etc/letsencrypt/live/fairfight.fairprotocol.solutions/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fairfight.fairprotocol.solutions/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/fairfight.fairprotocol.solutions/chain.pem;
 }
 
 ```

@@ -48,11 +48,9 @@ async function getSignature(gameID, address) {
 async function getCurrentInGameStatistics(gameID, address) {
     try {
         const remainingRounds = await redisClient.get(gameID)
-        console.log(address)
         const kills = await redisClient.get(`${address}_kills`)
         const deaths = await redisClient.get(`${address}_deaths`)
         const balance = await redisClient.get(address)
-        console.log(remainingRounds, kills, deaths, balance)
         if (
             remainingRounds == null 
             || 
@@ -135,5 +133,6 @@ server.get('/balance', async (req, res) => {
 server.listen(5000, async () => {
     await pgClient.connect()
     await redisClient.connect()
+    console.log(`Server started on port 5000`)
 })
 

@@ -110,7 +110,7 @@
 								<div id="amountPerDeathText" style="display: none;">Bet per round <input
 										id="amountPerDeath" placeholder="ROSE" required /></div>
 								<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
-										id="amountToPlay" min="1" max="10" required /></div>
+										id="amountToPlay" min="1" max="255" required /></div>
 							</div>
 
 							<div class="modal__row">
@@ -153,6 +153,13 @@
 								assets. Connecting a wallet lets you interact with apps.
 								<a href="https://metamask.io/" target="_blank">Install the wallet.</a>
 							</p>
+						</div>
+					</div>
+					<div id="error_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h3 style="color:#FF7C06">Error</h3>
+							<div id="error_modal_text" style="font-size: 16px; font-weight: 400;"></div>
 						</div>
 					</div>
 					<img class="modal__map" src="/media/map.png" alt="">
