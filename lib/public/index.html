@@ -107,15 +107,15 @@
 								</div>
 							</div>
 							<div class="modal__row">
-								<div id="amountPerDeathText" style="display: none;">Bet per round <input
+								<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
 										id="amountPerDeath" placeholder="ROSE" required /></div>
 								<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
 										id="amountToPlay" min="1" max="255" required /></div>
 							</div>
 
 							<div class="modal__row">
-								<div>Total prize pool: <span id="totalPrizePool">None</span></div>
-								<div class="active">Your deposit: <span id="yourDeposit">None</span></div>
+								<div>Total prize pool: <span id="totalPrizePool">-</span></div>
+								<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
 							</div>
 
 							<button class="createGame btn btn-white btn-big" disabled="disabled"
@@ -169,7 +169,7 @@
 						</div>
 					</div> -->
 
-					<div class="inventory-block">
+					<div class="inventory-block" id="inventory-block">
 						<span class="close_inventory"><img src="/media/svg/cross.svg" alt=""></span>
 						<h2 class="inventory-block__title">Coming soon</h2>
 						<div class="inventory-block__head">

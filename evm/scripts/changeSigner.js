@@ -7,8 +7,8 @@ async function main() {
     //   10,  //second to finish game
     //   30,   //userGamesToReturnNumber
     // );
-    const game = Game.attach('0x64BB70e1e2f776D95dE00676D8332e6aD5217195')
-    await game.changeSigner('0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0')
+    const game = Game.attach('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0')
+    await game.changeSigner('0xAb1F38D350729e74B22E14e3254BaC70A10cb9e1')
     .then(() => {
         console.log(`Done`)
     })

@@ -986,3 +986,7 @@ a {
   top: 20px;
   cursor: pointer;
 }
+
+.inventory-block {
+  z-index:100;
+}

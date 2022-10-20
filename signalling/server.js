@@ -91,6 +91,7 @@ function Room(name) {
   this.roomName = name;
   this.users = [];
   this.sockets = {};
+  this.finished = false;
 }
 Room.prototype = {
   getName: function() {
@@ -121,11 +122,19 @@ Room.prototype = {
     delete this.sockets[id];
   },
   sendTo: function(user, message, data) {
-    var socket = this.sockets[user.getId()];
-    socket.emit(message, data);
+    try {
+      var socket = this.sockets[user.getId()];
+      socket.emit(message, data);
+    } catch (error) {
+      console.error(error)
+    }
   },
   sendToId: function(userId, message, data) {
-    return this.sendTo(this.getUserById(userId), message, data);
+    try {
+      return this.sendTo(this.getUserById(userId), message, data);
+    } catch (error) {
+      console.error(error)
+    }
   },
   broadcastFrom: function(fromUser, message, data) {
     this.users.forEach(function(user) {
@@ -179,6 +188,7 @@ function handleSocket(socket) {
     try {
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
+      console.log(balance1, balance2)
       const killsAddress1 = await getKills(room.users[1].walletAddress)
       const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
       const killsAddress2 = await getKills(room.users[0].walletAddress)
@@ -195,13 +205,13 @@ function handleSocket(socket) {
             room.roomName
           ])
           socket.emit("update_balance", {
-            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].playeramount, killsAddress1,deathsAddress1,remainingRounds,
+            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].playeramount, killsAddress1,deathsAddress1,remainingRounds: remainingRounds == null ? 0 : remainingRounds,
             amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].playeramount,killsAddress2,deathsAddress2
           })
         }, 1000)
       } else {
         socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,remainingRounds,
+          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,remainingRounds: remainingRounds == null ? 0 : remainingRounds,
           amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: balance1.toString(),killsAddress2,deathsAddress2
         })
       }
@@ -217,15 +227,20 @@ function handleSocket(socket) {
       const newBalance = parseInt(balance) - parseInt(room.amountToLose)
       await redisClient.set(data.walletAddress, newBalance)
       const rounds = await redisClient.get(room.roomName)
-      await redisClient.set(room.roomName, parseInt(rounds) - 1)
+      if (rounds != 0 || rounds != null) {
+        await redisClient.set(room.roomName, parseInt(rounds) - 1)
+      }
       //get from loser
       if (data.walletAddress == room.users[0].walletAddress) {
         //paste to winner
         const balanceWinner = await redisClient.get(room.users[1].walletAddress)
+        console.log(balance, balanceWinner)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
-        await addKills(room.users[1].walletAddress)
-        await addDeaths(room.users[0].walletAddress)
+        if (room.finished == false) {
+          await addKills(room.users[1].walletAddress)
+          await addDeaths(room.users[0].walletAddress)
+        }
         //if balance == 0 -> user losed
         //create signature and add data to database
         if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
@@ -237,16 +252,19 @@ function handleSocket(socket) {
           })
           .then(() => {
             Object.entries(room.sockets).forEach(([key, value]) => {
-              socket.to(value.id).emit("finishing")
-              socket.to(value.id).emit("update_balance", {
-                address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
-                amountToLose:room.amountToLose, 
-                address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
-              })
+              if (value != null) {
+                socket.to(value.id).emit("finishing")
+                socket.to(value.id).emit("update_balance", {
+                  address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
+                  amountToLose:room.amountToLose, 
+                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+                })
+              }
             })
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
-        }
+          room.finished = true;
+        } 
         //update balance
         //we send it each user in room
         //but its not works so on frontend we send it again from another user
@@ -255,17 +273,21 @@ function handleSocket(socket) {
         const killsAddress2 = await getKills(room.users[1].walletAddress)
         const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
-          socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-            amountToLose:room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
-          })
+          if (value != null) {
+            socket.to(value.id).emit("update_balance", {
+              address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
+              amountToLose:room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+            })
+          }
         })
       } else {
         const balanceWinner = await redisClient.get(room.users[0].walletAddress)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
         await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
-        await addKills(room.users[0].walletAddress)
-        await addDeaths(room.users[1].walletAddress)
+        if (room.finished == false) {
+          await addKills(room.users[0].walletAddress)
+          await addDeaths(room.users[1].walletAddress)
+        }
         if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
@@ -274,25 +296,30 @@ function handleSocket(socket) {
             winnerAmount: newBalanceWinner.toString()
           }).then(() => {
             Object.entries(room.sockets).forEach(([key, value]) => {
-              socket.to(value.id).emit("finishing")
-              socket.to(value.id).emit("update_balance", {
-                address1: data.walletAddress, amount1: newBalance.toString(),remainingRounds: parseInt(rounds) - 1,
-                amountToLose:room.amountToLose, 
-                address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
-              })
+              if (value != null) {
+                socket.to(value.id).emit("finishing")
+                socket.to(value.id).emit("update_balance", {
+                  address1: data.walletAddress, amount1: newBalance.toString(),remainingRounds: parseInt(rounds) - 1,
+                  amountToLose:room.amountToLose, 
+                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+                })
+              }
             })
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
-        }
+          room.finished = true;
+        } 
         const killsAddress1 = await getKills(data.walletAddress)
         const deathsAddress1 = await getDeaths(data.walletAddress)
         const killsAddress2 = await getKills(room.users[0].walletAddress)
         const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
-          socket.to(value.id).emit("update_balance", {
-            address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,remainingRounds: parseInt(rounds) - 1,
-            amountToLose:room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
-          })
+          if (value != null) {
+            socket.to(value.id).emit("update_balance", {
+              address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,remainingRounds: parseInt(rounds) - 1,
+              amountToLose:room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+            })
+          }
         })
       }
     } catch (error) {
@@ -303,11 +330,7 @@ function handleSocket(socket) {
   async function addKills(address) {
     try {
       const exist = await redisClient.get(`${address}_kills`)
-      if (exist == null) {
-        await redisClient.set(`${address}_kills`, 1)
-      } else {
-        await redisClient.set(`${address}_kills`, parseInt(exist) + 1)
-      }
+      await redisClient.set(`${address}_kills`, parseInt(exist) + 1)
     } catch (error) {
       console.error(error)
     }
@@ -316,11 +339,7 @@ function handleSocket(socket) {
   async function addDeaths(address) {
     try {
       const exist = await redisClient.get(`${address}_deaths`)
-      if (exist == null) {
-        await redisClient.set(`${address}_deaths`, 1)
-      } else {
-        await redisClient.set(`${address}_deaths`, parseInt(exist) + 1)
-      }
+      await redisClient.set(`${address}_deaths`, parseInt(exist) + 1)
     } catch (error) {
       console.error(error)
     }
@@ -399,9 +418,12 @@ function handleSocket(socket) {
         winnerAmount: balance2
       }).then(() => {
         Object.entries(room.sockets).forEach(([key, value]) => {
-          socket.to(value.id).emit("finishing")
+          if (value != null) {
+            socket.to(value.id).emit("finishing")
+          }
         })
       })
+      room.finished = true;
     } catch (error) {
       console.error(error)
     }
@@ -525,13 +547,23 @@ function handleSocket(socket) {
       if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
         const exists = await redisClient.get(joinData.walletAddress)
         const roundsExists = await redisClient.get(room.roomName)
-        if (exists == null) {
+        if (exists == null || exists == NaN || exists == 'NaN') {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
         }
         if (roundsExists == null) {
           const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player1Amount.toString())
           const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
           await redisClient.set(room.roomName, rounds)
+        }
+
+        const existKills = await redisClient.get(`${joinData.walletAddress}_kills`)
+        if (existKills == null || existKills == NaN || existKills == 'NaN') {
+          await redisClient.set(`${joinData.walletAddress}_kills`, 0)
+        }
+
+        const existDeath = await redisClient.get(`${joinData.walletAddress}_deaths`)
+        if (existDeath == null || existDeath == NaN || existDeath == 'NaN') {
+          await redisClient.set(`${joinData.walletAddress}_deaths`, 0)
         }
 
         // Add a new user
@@ -573,15 +605,19 @@ function handleSocket(socket) {
 
 
   function getOrCreateRoom(name) {
-    var room;
-    if (!name) {
-      name =  ++lastRoomId + '_room';
+    try {
+      var room;
+      if (!name) {
+        name =  ++lastRoomId + '_room';
+      }
+      if (!rooms[name]) {
+        room = new Room(name);
+        rooms[name] = room;
+      }
+      return rooms[name];
+    } catch (error) {
+      console.error(error)
     }
-    if (!rooms[name]) {
-      room = new Room(name);
-      rooms[name] = room;
-    }
-    return rooms[name];
   }
 
   function onLeave() {
