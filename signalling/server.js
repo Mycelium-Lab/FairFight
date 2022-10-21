@@ -13,8 +13,10 @@ require("dotenv").config()
 const { contractAbi, contractAddress } = require("../contract/contract.js")
 // const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
 // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
-const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
+// const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
+const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
+// const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
 const redisClient = redis.createClient({
   socket: {
@@ -162,19 +164,26 @@ function handleSocket(socket) {
   socket.on(MessageType.END_FINISHING, onEndFinishing)
 
   async function onEndFinishing() {
-    Object.entries(room.sockets).forEach(([key, value]) => {
-      socket.to(value.id).emit("end_finishing")
-    })
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit("end_finishing")
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function onJump() {
-    Object.entries(room.sockets).forEach(([key, value]) => {
-      socket.to(value.id).emit("jump")
-    })
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit("jump")
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function onShoot(enemyAddress) {
-    console.log(enemyAddress)
     // const key = `${enemyAddress}_health`
     // const health = await redisClient.get(key) 
     // if (health == null) {
@@ -188,7 +197,6 @@ function handleSocket(socket) {
     try {
       const balance1 = await redisClient.get(room.users[0].walletAddress)
       const balance2 = await redisClient.get(room.users[1].walletAddress)
-      console.log(balance1, balance2)
       const killsAddress1 = await getKills(room.users[1].walletAddress)
       const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
       const killsAddress2 = await getKills(room.users[0].walletAddress)
