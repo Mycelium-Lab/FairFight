@@ -24,7 +24,7 @@ async function getSignature(gameID, address) {
             'SELECT * FROM signatures WHERE address1=$1 AND gameid=$2',
             [address, gameID]
         )
-        if (res.rows.length !== 1) {
+        if (res.rows.length === 0) {
             return {
                 player1Amount: '',
                 player2Amount: '',

@@ -393,7 +393,7 @@ function handleSocket(socket) {
     }
   }
 
-  async function onFinishing() {
+  async function onFinishing(data) {
     try {
       let balance1;
       let balance2;
@@ -427,7 +427,7 @@ function handleSocket(socket) {
       }).then(() => {
         Object.entries(room.sockets).forEach(([key, value]) => {
           if (value != null) {
-            socket.to(value.id).emit("finishing")
+            socket.to(value.id).emit("finishing", data)
           }
         })
       })
@@ -555,22 +555,22 @@ function handleSocket(socket) {
       if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
         const exists = await redisClient.get(joinData.walletAddress)
         const roundsExists = await redisClient.get(room.roomName)
-        if (exists == null || exists == NaN || exists == 'NaN') {
+        if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
           await redisClient.set(joinData.walletAddress, room.baseAmount)
         }
-        if (roundsExists == null) {
+        if (roundsExists == null || isNaN(parseFloat(roundsExists))) {
           const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player1Amount.toString())
           const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
           await redisClient.set(room.roomName, rounds)
         }
 
         const existKills = await redisClient.get(`${joinData.walletAddress}_kills`)
-        if (existKills == null || existKills == NaN || existKills == 'NaN') {
+        if (existKills == null || isNaN(parseFloat(existKills)) || existKills == 'NaN') {
           await redisClient.set(`${joinData.walletAddress}_kills`, 0)
         }
 
         const existDeath = await redisClient.get(`${joinData.walletAddress}_deaths`)
-        if (existDeath == null || existDeath == NaN || existDeath == 'NaN') {
+        if (existDeath == null || isNaN(parseFloat(existDeath)) || existDeath == 'NaN') {
           await redisClient.set(`${joinData.walletAddress}_deaths`, 0)
         }
 

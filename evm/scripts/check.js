@@ -1,15 +1,10 @@
 const { upgrades, ethers } = require("hardhat")
 
 async function main() {
-    const [signer, acc] = await ethers.getSigners()
-    const jump = 150
-    const hash = ethers.utils.solidityKeccak256(["uint256"], [jump])
-    const sign = await signer.signMessage(ethers.utils.arrayify(hash));
-    const address = await ethers.utils.verifyMessage(ethers.utils.arrayify(hash), sign)
-    console.log(
-        address,
-        signer.address
-    )
+    const signer = await hre.ethers.getSigner()
+    const Game = await hre.ethers.getContractFactory("Game");
+    const game = Game.attach('0x09ED6f33Fb905883eb29Ca83f5E591a1DDB3fd25')
+    console.log(await game.battles('13'))
 }
 
 main().catch((error) => {
