@@ -15,8 +15,8 @@
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
 	</script>
 	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
-	<script type="module" src="index.js"></script>
-	<script src="custom.js"></script>
+	<script type="module" src="/index.js"></script>
+	<script src="/custom.js"></script>
 </head>
 
 <body>
@@ -53,6 +53,15 @@
 
 			</a>
 
+			<a href="" id="howtobuy-show" class="wrapper__link link-third">How to buy ROSE
+				<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="14" cy="14" r="14" fill="white" />
+					<path
+						d="M15.36 18.54V21.62H12.22V18.54H15.36ZM9 11.94C9.01333 11.22 9.13333 10.56 9.36 9.96C9.6 9.36 9.92667 8.84 10.34 8.4C10.7667 7.96 11.2733 7.62 11.86 7.38C12.46 7.12667 13.1267 7 13.86 7C14.8067 7 15.5933 7.13333 16.22 7.4C16.86 7.65333 17.3733 7.97333 17.76 8.36C18.1467 8.74667 18.42 9.16667 18.58 9.62C18.7533 10.06 18.84 10.4733 18.84 10.86C18.84 11.5 18.7533 12.0267 18.58 12.44C18.42 12.8533 18.2133 13.2067 17.96 13.5C17.72 13.7933 17.4467 14.0467 17.14 14.26C16.8467 14.46 16.5667 14.6667 16.3 14.88C16.0333 15.08 15.7933 15.3133 15.58 15.58C15.38 15.8467 15.2533 16.18 15.2 16.58V17.34H12.5V16.44C12.54 15.8667 12.6467 15.3867 12.82 15C13.0067 14.6133 13.22 14.2867 13.46 14.02C13.7 13.74 13.9533 13.5 14.22 13.3C14.4867 13.1 14.7333 12.9 14.96 12.7C15.1867 12.5 15.3667 12.28 15.5 12.04C15.6467 11.8 15.7133 11.5 15.7 11.14C15.7 10.5267 15.5467 10.0733 15.24 9.78C14.9467 9.48667 14.5333 9.34 14 9.34C13.64 9.34 13.3267 9.41333 13.06 9.56C12.8067 9.69333 12.5933 9.88 12.42 10.12C12.26 10.3467 12.14 10.62 12.06 10.94C11.98 11.2467 11.94 11.58 11.94 11.94H9Z"
+						fill="#FF7C06" />
+				</svg>
+
+			</a>
 			<body>
 				<div class="startContainer">
 					<div id="connect_modal" class="modal">
@@ -79,6 +88,29 @@
 								<p>4. Users can end the game any time and take the reward.</p>
 								<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
 							</div>
+						</div>
+					</div>
+					<div id="howtobuy_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h2 class="about__title">How to buy ROSE</h2>
+							<div class="about__content">
+								<h6 class="howtobuy_title">How to get rose tokens to your MetaMask wallet!</h6>
+
+								<p>1. Buy Rose on CEX (Binance, KuCoin, Coinbase, Gate.io and etc.</p>
+
+								<p>2. Creating an <a class="howtobuy_href" href="https://chrome.google.com/webstore/detail/oasis-wallet/ppdadbejkmjnefldpcdjhnkpbjkikoip" target="_blank">
+									Oasis Wallet
+								</a>
+								</p>
+
+								<p>3. Adding <a class="howtobuy_href" href="https://chainlist.org/" target="_blank">Emerald Mainnet</a> to MetaMask
+								</p>
+
+								<p>4. Bridging ROSE from Oasis Wallet to MetaMask</p>
+								
+								</div>
+								<p class="howtobuy-video"><iframe src="//player.vimple.ru/iframe/61a462b8424e4aaca664fdce222ba5ef" width="390" height="250" frameborder="0" style="z-index:2147483647;" allowfullscreen></iframe></p>
 						</div>
 					</div>
 					<h1 id="walletHeaderDisconnect" style="display:none">Disconnect wallet</h1>

@@ -83,6 +83,12 @@ a {
   bottom: 45px;
 }
 
+.link-third {
+  left: 65px;
+  top: 35px;
+  text-decoration: underline;
+}
+
 #header {
   display: flex;
   align-items: center;
@@ -748,6 +754,19 @@ a {
 
 .games__item .active {
   color: var(--color-orange);
+}
+
+.howtobuy_title {
+  color: #ff7c06;
+}
+
+.howtobuy_href {
+  color: #ff7c06;
+  font-weight: 600;
+}
+
+.howtobuy-video {
+  margin: auto;
 }
 
 .games__item__footer {
