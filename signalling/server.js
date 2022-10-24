@@ -195,8 +195,8 @@ function handleSocket(socket) {
 
   async function onUpdateBalance() {
     try {
-      const balance1 = await redisClient.get(room.users[0].walletAddress)
-      const balance2 = await redisClient.get(room.users[1].walletAddress)
+      const balance1 = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
+      const balance2 = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
       const killsAddress1 = await getKills(room.users[1].walletAddress)
       const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
       const killsAddress2 = await getKills(room.users[0].walletAddress)
@@ -231,9 +231,9 @@ function handleSocket(socket) {
   async function onDead(data) {
     try {
       console.log(`${data.walletAddress} dead`)
-      const balance = await redisClient.get(data.walletAddress)
+      const balance = await redisClient.get(`${data.walletAddress}_${room.roomName}`)
       const newBalance = parseInt(balance) - parseInt(room.amountToLose)
-      await redisClient.set(data.walletAddress, newBalance)
+      await redisClient.set(`${data.walletAddress}_${room.roomName}`, newBalance)
       const rounds = await redisClient.get(room.roomName)
       if (rounds != 0 || rounds != null) {
         await redisClient.set(room.roomName, parseInt(rounds) - 1)
@@ -241,10 +241,9 @@ function handleSocket(socket) {
       //get from loser
       if (data.walletAddress == room.users[0].walletAddress) {
         //paste to winner
-        const balanceWinner = await redisClient.get(room.users[1].walletAddress)
-        console.log(balance, balanceWinner)
+        const balanceWinner = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
-        await redisClient.set(room.users[1].walletAddress, newBalanceWinner)
+        await redisClient.set(`${room.users[1].walletAddress}_${room.roomName}`, newBalanceWinner)
         if (room.finished == false) {
           await addKills(room.users[1].walletAddress)
           await addDeaths(room.users[0].walletAddress)
@@ -289,9 +288,9 @@ function handleSocket(socket) {
           }
         })
       } else {
-        const balanceWinner = await redisClient.get(room.users[0].walletAddress)
+        const balanceWinner = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
         const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
-        await redisClient.set(room.users[0].walletAddress, newBalanceWinner)
+        await redisClient.set(`${room.users[0].walletAddress}_${room.roomName}`, newBalanceWinner)
         if (room.finished == false) {
           await addKills(room.users[0].walletAddress)
           await addDeaths(room.users[1].walletAddress)
@@ -337,8 +336,8 @@ function handleSocket(socket) {
 
   async function addKills(address) {
     try {
-      const exist = await redisClient.get(`${address}_kills`)
-      await redisClient.set(`${address}_kills`, parseInt(exist) + 1)
+      const exist = await redisClient.get(`${address}_kills_${room.roomName}`)
+      await redisClient.set(`${address}_kills_${room.roomName}`, parseInt(exist) + 1)
     } catch (error) {
       console.error(error)
     }
@@ -346,8 +345,8 @@ function handleSocket(socket) {
 
   async function addDeaths(address) {
     try {
-      const exist = await redisClient.get(`${address}_deaths`)
-      await redisClient.set(`${address}_deaths`, parseInt(exist) + 1)
+      const exist = await redisClient.get(`${address}_deaths_${room.roomName}`)
+      await redisClient.set(`${address}_deaths_${room.roomName}`, parseInt(exist) + 1)
     } catch (error) {
       console.error(error)
     }
@@ -355,11 +354,11 @@ function handleSocket(socket) {
 
   async function getKills(address) {
     try {
-      const exist = await redisClient.get(`${address}_kills`)
+      const exist = await redisClient.get(`${address}_kills_${room.roomName}`)
       if (exist == null) {
-        await redisClient.set(`${address}_kills`, 0)
+        await redisClient.set(`${address}_kills_${room.roomName}`, 0)
       }
-      return await redisClient.get(`${address}_kills`)
+      return await redisClient.get(`${address}_kills_${room.roomName}`)
     } catch (error) {
       console.error(error)
     }
@@ -367,11 +366,11 @@ function handleSocket(socket) {
 
   async function getDeaths(address) {
     try {
-      const exist = await redisClient.get(`${address}_deaths`)
+      const exist = await redisClient.get(`${address}_deaths_${room.roomName}`)
       if (exist == null) {
-        await redisClient.set(`${address}_deaths`, 0)
+        await redisClient.set(`${address}_deaths_${room.roomName}`, 0)
       }
-      return await redisClient.get(`${address}_deaths`)
+      return await redisClient.get(`${address}_deaths_${room.roomName}`)
     } catch (error) {
       console.error(error)
     }
@@ -379,7 +378,7 @@ function handleSocket(socket) {
 
   async function removeKills(address) {
     try {
-      await redisClient.del(`${address}_kills`)
+      await redisClient.del(`${address}_kills_${room.roomName}`)
     } catch (error) {
       console.error(error)
     }
@@ -387,7 +386,7 @@ function handleSocket(socket) {
 
   async function removeDeaths(address) {
     try {
-      await redisClient.del(`${address}_deaths`)
+      await redisClient.del(`${address}_deaths_${room.roomName}`)
     } catch (error) {
       console.error(error)
     }
@@ -401,8 +400,8 @@ function handleSocket(socket) {
       let winnerAddress;
       if (room.users[0] == undefined || room.users[1] == undefined) {
         const battle = await contract.battles(room.getName())
-        const exists1 = await redisClient.get(battle.player1)
-        const exists2 = await redisClient.get(battle.player2)
+        const exists1 = await redisClient.get(`${battle.player1}_${room.roomName}`)
+        const exists2 = await redisClient.get(`${battle.player2}_${room.roomName}`)
         if (exists1 != null && exists2 != null) {
           balance1 = exists1
           balance2 = exists2
@@ -413,9 +412,9 @@ function handleSocket(socket) {
         loserAddress = battle.player1
         winnerAddress = battle.player2
       } else {
-        balance1 = await redisClient.get(room.users[0].walletAddress)
+        balance1 = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
         loserAddress = room.users[0].walletAddress
-        balance2 = await redisClient.get(room.users[1].walletAddress)
+        balance2 = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
         winnerAddress = room.users[1].walletAddress
       }
       //create signatures on finish button
@@ -440,8 +439,9 @@ function handleSocket(socket) {
   async function createSignature(data) {
     try {
       //delete data from redis
-      await redisClient.del(data.winnerAddress)
-      await redisClient.del(data.loserAddress)
+      await redisClient.del(`${data.winnerAddress}_${room.roomName}`)
+      await redisClient.del(`${data.loserAddress}_${room.roomName}`)
+      
       //get this battle data
       const battle = await contract.battles(room.roomName)
       let message1;
@@ -553,10 +553,10 @@ function handleSocket(socket) {
       room.amountToLose = battle.amountForOneDeath.toString()
       room.baseAmount = battle.player1Amount.toString()
       if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
-        const exists = await redisClient.get(joinData.walletAddress)
+        const exists = await redisClient.get(`${joinData.walletAddress}_${room.roomName}`)
         const roundsExists = await redisClient.get(room.roomName)
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
-          await redisClient.set(joinData.walletAddress, room.baseAmount)
+          await redisClient.set(`${joinData.walletAddress}_${room.roomName}`, room.baseAmount)
         }
         if (roundsExists == null || isNaN(parseFloat(roundsExists))) {
           const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player1Amount.toString())
@@ -564,14 +564,14 @@ function handleSocket(socket) {
           await redisClient.set(room.roomName, rounds)
         }
 
-        const existKills = await redisClient.get(`${joinData.walletAddress}_kills`)
+        const existKills = await redisClient.get(`${joinData.walletAddress}_kills_${room.roomName}`)
         if (existKills == null || isNaN(parseFloat(existKills)) || existKills == 'NaN') {
-          await redisClient.set(`${joinData.walletAddress}_kills`, 0)
+          await redisClient.set(`${joinData.walletAddress}_kills_${room.roomName}`, 0)
         }
 
-        const existDeath = await redisClient.get(`${joinData.walletAddress}_deaths`)
+        const existDeath = await redisClient.get(`${joinData.walletAddress}_deaths_${room.roomName}`)
         if (existDeath == null || isNaN(parseFloat(existDeath)) || existDeath == 'NaN') {
-          await redisClient.set(`${joinData.walletAddress}_deaths`, 0)
+          await redisClient.set(`${joinData.walletAddress}_deaths_${room.roomName}`, 0)
         }
 
         // Add a new user
