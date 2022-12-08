@@ -1,4 +1,4 @@
-const airdropAddress = '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9'
+const airdropAddress = '0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE'
 const airdropAbi = [
     {
       "inputs": [
