@@ -1,4 +1,4 @@
-const contractAddress = ''
+const airdropAddress = '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9'
 const airdropAbi = [
     {
       "inputs": [
@@ -325,3 +325,8 @@ const airdropAbi = [
       "type": "receive"
     }
   ]
+
+module.exports = {
+  airdropAbi,
+  airdropAddress
+}
