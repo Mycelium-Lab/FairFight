@@ -23,7 +23,8 @@ describe("Game Variables", function (){
             amountUserGamesToReturn,
             maxDeathInARow,
             '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4',
-            300 //3%
+            300, //3%
+            '1'
             ], 
         { initializer: "initialize" });
         await game.deployed()
