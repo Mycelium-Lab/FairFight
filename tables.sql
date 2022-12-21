@@ -22,7 +22,6 @@ CREATE TABLE leaderboard(
     address TEXT NOT NULL,
     games INT NOT NULL,
     wins INT NOT NULL,
-    kills INT NOT NULL,
     amountWon FLOAT NOT NULL,
     period INT NOT NULL
 );
