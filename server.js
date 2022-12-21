@@ -289,7 +289,7 @@ server.get('/createleaderboard', async (req, res) => {
 server.listen(5000, async () => {
     await pgClient.connect()
     await redisClient.connect()
-    // await createLeaderboard()
+    await createLeaderboard()
     console.log(`Server started on port 5000`)
 })
 
