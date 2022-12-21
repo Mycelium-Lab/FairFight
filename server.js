@@ -6,7 +6,7 @@ const pg = require("pg")
 require("dotenv").config()
 const redis = require("redis")
 
-const { airdropAddress } = require("./contract/airdrop.js")
+const { airdropAddress, airdropAbi } = require("./contract/airdrop.js")
 
 // const redisClient = redis.createClient({
 //   socket: {
@@ -23,31 +23,28 @@ const { airdropAddress } = require("./contract/airdrop.js")
 
 const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY_TEST, provider)
+const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
 
 const checkIfAddressIsNotNew = async (address) => {
     let timestamps = []
-    // let providerPolygon = new ethers.providers.EtherscanProvider("matic");
     let providerEthereum = new ethers.providers.EtherscanProvider("homestead")
-    //let providerArbitrum = new ethers.providers.EtherscanProvider("arbitrum")
     let providerOptimism = new ethers.providers.EtherscanProvider("optimism")
-    //let historyPolygon = await providerPolygon.getHistory(address)
-    let historyEthereum = await providerEthereum.getHistory(address)
-    //let historyArbitrum = await providerArbitrum.getHistory(address)
-    let historyOptimism = await providerOptimism.getHistory(address)
-    //timestamps.push(historyPolygon[0] !== undefined ? historyPolygon[0].timestamp: 0)
+    let historyEthereum = await providerEthereum.getHistory('0xA841a2a238Fa48D1C409D95E64c3F08d8Dd5DdA7')
+    let historyOptimism = await providerOptimism.getHistory('0xA841a2a238Fa48D1C409D95E64c3F08d8Dd5DdA7')
     timestamps.push(historyEthereum[0] !== undefined ? historyEthereum[0].timestamp: 0)
-    //timestamps.push(historyArbitrum[0] !== undefined ? historyArbitrum[0].timestamp: 0)
     timestamps.push(historyOptimism[0] !== undefined ? historyOptimism[0].timestamp: 0)
-    const timestamp = await fetch(
-        `https://api.bscscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.BSCSCAN_API_KEY}`
-    ).then(async (res) => {
-        const result = (await res.json()).result
-        timestamps.push(result[0] !== undefined ? result[0].timeStamp : 0)
-        return Math.min.apply(null, timestamps.filter(Boolean))
-    }).catch(err => {
-        console.err(err)
-        return Math.min.apply(null, timestamps.filter(Boolean))
-    })
+    let historyBinance = await fetch(
+                `https://api.bscscan.com/api?module=account&action=txlist&address=0x13d5BF04B0D393e0D026126bBDD44fC33e9A7555&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.BSCSCAN_API_KEY}`
+            ).then(res => res.json()).catch(err => {return {result: []}})
+    let historyPolygon = await fetch(
+                `https://api.polygonscan.com/api?module=account&action=txlist&address=0x13d5BF04B0D393e0D026126bBDD44fC33e9A7555&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.POLYGONSCAN_API_KEY}`
+            ).then(res => res.json()).catch(err => {return {result: []}})
+    timestamps = [
+        ...timestamps, 
+        ...historyBinance.result.map(v => parseInt(v.timeStamp)), 
+        ...historyPolygon.result.map(v => parseInt(v.timeStamp))
+    ]
+    const timestamp = Math.min.apply(null, timestamps.filter(Boolean))
     if (timestamp !== Infinity) {
         const dateNow = Math.floor(Date.now() / 1000)
         return timestamp < (dateNow - 86400 * 30) //check if older than month
@@ -72,6 +69,46 @@ async function getAirDropSignature(address,typeOfWithdraw) {
     } catch (error) {
         console.error(error)
         return {r:'',v:'',s:''}
+    }
+}
+
+async function sendTokensFirstTime(req, res) {
+    try {
+        const alreadyGetFirstTokens = await airdropContract.alreadyGetFirstTokens(req.query.address)
+        if (alreadyGetFirstTokens === false) {
+            const sign = await getAirDropSignature(req.query.address, 'first')
+            await airdropContract.withdrawFirstTime(req.query.address, sign.r, sign.v, sign.s)
+                .then((tx) => tx.wait())
+                .then(() => {res.status(200).send('Success')})
+                .catch((err) => {
+                    console.log(err)
+                    res.status(500).send('Not success')
+                })
+        } else {
+            res.status(500).send('Not success')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function sendTokensSecondTime(req, res) {
+    try {
+        const alreadyGetPrizeTokens = await airdropContract.alreadyGetTokens(req.query.address)
+        if (alreadyGetPrizeTokens === false) {
+            const sign = await getAirDropSignature(req.query.address, 'second')
+            await airdropContract.withdraw(req.query.address, sign.r, sign.v, sign.s)
+                .then((tx) => tx.wait())
+                .then(() => {res.status(200).send('Success')})
+                .catch((err) => {
+                    console.log(err)
+                    res.status(500).send('Not success')
+                })
+        } else {
+            res.status(500).send('Not success')
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -187,12 +224,12 @@ server.get('/balance', async (req, res) => {
     res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address))
 })
 
-server.get('/airdrop_first_sign', async (req, res) => {
-    res.json(await getAirDropSignature(req.query.address, 'first'))
+server.post('/airdrop_first_sign', async (req, res) => {
+    await sendTokensFirstTime(req, res)
 })
 
-server.get('/airdrop_second_sign', async (req, res) => {
-    res.json(await getAirDropSignature(req.query.address, 'second'))
+server.post('/airdrop_second_sign', async (req, res) => {
+    await sendTokensSecondTime(req, res)
 })
 
 server.listen(5000, async () => {
