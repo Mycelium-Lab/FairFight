@@ -17,3 +17,18 @@ CREATE TABLE statistics(
     deaths  INT NOT NULL,
     remainingRounds INT NOT NULL
 );
+
+CREATE TABLE leaderboard(
+    address TEXT NOT NULL,
+    games INT NOT NULL,
+    wins INT NOT NULL,
+    amountWon FLOAT NOT NULL,
+    period INT NOT NULL
+);
+
+CREATE TABLE utils(
+    id INT NOT NULL,
+    currentLeaderboardUpdate INT NOT NULL
+);
+
+INSERT INTO utils (id, currentleaderboardupdate) VALUES(0,0);

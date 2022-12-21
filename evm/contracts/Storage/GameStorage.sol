@@ -6,21 +6,44 @@ import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
 contract GameStorage {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
+    /// @notice Contains pauser data
+    /// @return PAUSER_ROLE pauser
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
+    /// @notice Contains minimum token amount allowed for one round
+    /// @return minAmountForOneRound minimum token amount for one round
     uint256 public minAmountForOneRound;
+
+    /// @notice Contains signer address
+    /// @dev Needs for checking users signatures 
+    /// @return signerAccess signer address
     address public signerAccess;
+
+    /// @notice Contains fee wallet
+    /// @return feeAddress fee wallet
     address public feeAddress;
-    uint16 public fee; //if equals 100 -> 1%
+
+    /// @notice Contains fee percent
+    /// @dev If equals 100 fee = 1%
+    /// @return fee
+    uint16 public fee;
+
+    /// @notice Contains the maximum number of consecutive deaths, which can be understood as rounds
+    /// @return maxDeathInARow maximum number of consecutive deaths
     uint8 public maxDeathInARow;
-    //amount user games to return
+
+    /// @notice We limit the number of games returned as data to prevent gas limitation errors.
+    /// @return amountUserGamesToReturn maximum number of games to return
     uint8 public amountUserGamesToReturn;
 
-    //currently open battles for join
+    /// @notice Currently open battles amount for join
     CountersUpgradeable.Counter public openBattles;
-    //amount of user games
+
+    /// @notice Amount of user games
     mapping(address => uint32) public userBattles;
-    //user cant have more than 1 game in a moment
+
+    /// @notice Shoes if user currently busy
+    /// @dev User cant have more than 1 game in a moment
     mapping(address => bool) public currentlyBusy;
 
     struct Battle {
@@ -36,6 +59,7 @@ contract GameStorage {
         uint256 amountForOneDeath;
     }
 
+    /// @notice Contains all battles
     Battle[] public battles;
     
 }
