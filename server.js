@@ -34,6 +34,7 @@ cron.schedule("6 6 6 * * *", async () => {
 
 async function createLeaderboard() {
     try {
+        console.log('Start creating leaderboard')
         await pgClient.query('DELETE FROM leaderboard')
         let lastID = 0
         const resID = await pgClient.query(
@@ -57,8 +58,8 @@ async function createLeaderboard() {
         for (let i = 0; i < (lastID / chunkSize); i++) {
             try {
                 const chunk = await contract.getChunkFinishedBattles(i, chunkSize)
-                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => parseInt(v.battleFinishedTimestamp) !== 0 && parseInt(v.battleFinishedTimestamp) > unixDateLastWeek))]
-                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => parseInt(v.battleFinishedTimestamp) !== 0 && parseInt(v.battleFinishedTimestamp) > unixDateLastMonth))]
+                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastWeek))]
+                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastMonth))]
             } catch (error) {
                 console.log(error)
             }
@@ -73,13 +74,14 @@ async function createLeaderboard() {
                     winAmount = parseFloat(ethers.utils.formatEther((BigInt(battle.player1Amount) - BigInt(battle.player2Amount)).toString()))
                     isWin = 1;
                 }
+                const kills = resStats.rows.length !== 0 ? resStats.rows[0].kills : 0
                 await pgClient.query(
-                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND perion=$5",
-                    [isWin, resStats.rows[0].kills, winAmount, battle.player1, 0]
+                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND period=$5",
+                    [isWin, kills, winAmount, battle.player1, 0]
                 )
                 await pgClient.query(
-                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, perion) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1)",
-                    [battle.player1, 1, isWin, resStats.rows[0].kills, winAmount, 0]
+                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, period) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$6)",
+                    [battle.player1, 1, isWin, kills, winAmount, 0]
                 )
             } catch (error) {
                 console.log(error)
@@ -92,13 +94,14 @@ async function createLeaderboard() {
                     winAmount = parseFloat(ethers.utils.formatEther((BigInt(battle.player2Amount) - BigInt(battle.player2Amount)).toString()))
                     isWin = 1;
                 }
+                const kills = resStats.rows.length !== 0 ? resStats.rows[0].kills : 0
                 await pgClient.query(
-                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND perion=$5",
-                    [isWin, resStats.rows[0].kills, winAmount, battle.player2, 0]
+                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND period=$5",
+                    [isWin, kills, winAmount, battle.player2, 0]
                 )
                 await pgClient.query(
-                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, perion) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1)",
-                    [battle.player2, 1, isWin, resStats.rows[0].kills, winAmount, 0]
+                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, period) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$6)",
+                    [battle.player2, 1, isWin, kills, winAmount, 0]
                 )
             } catch (error) {
                 console.log(error)
@@ -114,13 +117,14 @@ async function createLeaderboard() {
                     winAmount = parseFloat(ethers.utils.formatEther((BigInt(battle.player1Amount) - BigInt(battle.player2Amount)).toString()))
                     isWin = 1;
                 }
+                const kills = resStats.rows.length !== 0 ? resStats.rows[0].kills : 0
                 await pgClient.query(
-                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND perion=$5",
-                    [isWin, resStats.rows[0].kills, winAmount, battle.player1, 1]
+                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND period=$5",
+                    [isWin, kills, winAmount, battle.player1, 1]
                 )
                 await pgClient.query(
-                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, perion) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1)",
-                    [battle.player1, 1, isWin, resStats.rows[0].kills, winAmount, 1]
+                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, period) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$6)",
+                    [battle.player1, 1, isWin, kills, winAmount, 1]
                 )
             } catch (error) {
                 console.log(error)
@@ -133,13 +137,14 @@ async function createLeaderboard() {
                     winAmount = parseFloat(ethers.utils.formatEther((BigInt(battle.player2Amount) - BigInt(battle.player2Amount)).toString()))
                     isWin = 1;
                 }
+                const kills = resStats.rows.length !== 0 ? resStats.rows[0].kills : 0
                 await pgClient.query(
-                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND perion=$5",
-                    [isWin, resStats.rows[0].kills, winAmount, battle.player2, 1]
+                    "UPDATE leaderboard SET games=games+1, wins=wins+$1, kills=kills+$2, amountwon=amountwon+$3 WHERE address=$4 AND period=$5",
+                    [isWin, kills, winAmount, battle.player2, 1]
                 )
                 await pgClient.query(
-                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, perion) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1)",
-                    [battle.player2, 1, isWin, resStats.rows[0].kills, winAmount, 1]
+                    "INSERT INTO leaderboard (address, games, wins, kills, amountwon, period) SELECT $1,$2, $3, $4, $5, $6 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$6)",
+                    [battle.player2, 1, isWin, kills, winAmount, 1]
                 )
             } catch (error) {
                 console.log(error)
@@ -232,11 +237,11 @@ async function getStatistics(gameID, address) {
         )
         if (res.rows.length !== 1) {
             return {
-                gameid: '',
-                address: '',
-                kills: '',
-                deaths: '',
-                remainingRounds: ''
+                gameid: gameID,
+                address: address,
+                kills: 0,
+                deaths: 0,
+                remainingRounds: 0
             }
         }
         return {
@@ -274,6 +279,11 @@ server.get('/balance', async (req, res) => {
 
 server.get('/leaderboard', async (req, res) => {
     await getLeaderboard(res)
+})
+
+server.get('/createleaderboard', async (req, res) => {
+    await createLeaderboard()
+    res.status(200).redirect('/')
 })
 
 server.listen(5000, async () => {
