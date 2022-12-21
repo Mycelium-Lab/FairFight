@@ -999,6 +999,15 @@ a {
   margin-top: 4px;
 }
 
+.airdrop_modal_text {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: #000;
+  margin-bottom: 30px;
+  margin-top: 4px;
+}
+
 .close_inventory {
   position: absolute;
   right: 20px;

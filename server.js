@@ -1,5 +1,4 @@
 const express = require('express')
-const ethers = require("ethers")
 const server = express()
 const path = require('path')
 const pg = require("pg")
@@ -22,6 +21,13 @@ const redisClient = redis.createClient({
        port: 6379
    }
 })
+
+const pgClient = new pg.Client({
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB
+  })
+
 
 const checkIfAddressIsNotNew = async (address) => {
     let timestamps = []
@@ -369,7 +375,7 @@ server.post('/airdrop_second_sign', async (req, res) => {
 server.listen(5000, async () => {
     await pgClient.connect()
     await redisClient.connect()
-    await createLeaderboard()
+    // await createLeaderboard()
     console.log(`Server started on port 5000`)
 })
 
