@@ -29,7 +29,8 @@ describe("Game", function (){
             amountUserGamesToReturn,
             maxDeathInARow,
             feeAddress,
-            fee //3%
+            fee, //3%
+            '1'
             ], 
         { initializer: "initialize" });
         await game.deployed()

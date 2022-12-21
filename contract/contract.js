@@ -14,9 +14,27 @@ const contractAbi = [
       },
       {
         "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountForOneDeath",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
         "internalType": "address",
-        "name": "player1",
+        "name": "owner",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "battleCreatedTimestamp",
+        "type": "uint256"
       }
     ],
     "name": "CreateBattle",
@@ -33,9 +51,21 @@ const contractAbi = [
       },
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "winner",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "player1Amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "player2Amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "battleFinishedTimestamp",
+        "type": "uint256"
       }
     ],
     "name": "FinishBattle",
@@ -68,6 +98,12 @@ const contractAbi = [
         "internalType": "address",
         "name": "player2",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
       }
     ],
     "name": "JoinBattle",
@@ -293,6 +329,19 @@ const contractAbi = [
   {
     "inputs": [
       {
+        "internalType": "uint16",
+        "name": "_new",
+        "type": "uint16"
+      }
+    ],
+    "name": "changeFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "_new",
         "type": "address"
@@ -403,25 +452,77 @@ const contractAbi = [
   {
     "inputs": [
       {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
+        "internalType": "uint256",
+        "name": "chunkIndex",
+        "type": "uint256"
       },
       {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "amountBattlesToReturn",
+        "type": "uint256"
       }
     ],
-    "name": "getAccess",
+    "name": "getChunkFinishedBattles",
     "outputs": [
       {
-        "internalType": "address",
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "ID",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "player1",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "player2",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "winner",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "player1Amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "player2Amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "finished",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "battleCreatedTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "battleFinishedTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amountForOneDeath",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct GameStorage.Battle[]",
         "name": "",
-        "type": "address"
+        "type": "tuple[]"
       }
     ],
-    "stateMutability": "pure",
+    "stateMutability": "view",
     "type": "function"
   },
   {

@@ -175,9 +175,9 @@ function handleSocket(socket) {
 
   async function onJump() {
     try {
-      Object.entries(room.sockets).forEach(([key, value]) => {
-        socket.to(value.id).emit("jump")
-      })
+      // Object.entries(room.sockets).forEach(([key, value]) => {
+      //   socket.to(value.id).emit("jump")
+      // })
     } catch (error) {
       console.error(error)
     }
@@ -467,61 +467,142 @@ function handleSocket(socket) {
       const rounds = await redisClient.get(room.roomName)
       //add data to database
       if (data.loserAddress == battle.player1) {
-        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-          data.loserAddress,
-          data.winnerAddress,
-          data.loserAmount,  
-          data.winnerAmount, 
-          room.roomName, v1, r1, s1])
-        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-          data.winnerAddress,
-          data.loserAddress,
-          data.loserAmount,  
-          data.winnerAmount, 
-          room.roomName,v2, r2, s2])
+        try {
+          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+            data.loserAddress,
+            data.winnerAddress,
+            data.loserAmount,  
+            data.winnerAmount, 
+            room.roomName, v1, r1, s1])
+        } catch (error) {
+          console.log(error)
+          console.log('-------------------'),
+          console.log(
+            'Error with data signatures:\n', 
+            `Loser: ${data.loserAddress}\n`,
+            `Winner: ${data.winnerAddress}\n`,
+            `LoserAmount: ${data.loserAmount}\n`,
+            `WinnerAmount: ${data.winnerAmount}\n`,
+            `GameID: ${room.roomName}\n`,
+            `v1: ${v1}\n`,
+            `r1: ${r1}\n`,
+            `s1: ${s1}`
+          )
+          console.log('-------------------')
+        }
+        try {
+          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+            data.winnerAddress,
+            data.loserAddress,
+            data.loserAmount,  
+            data.winnerAmount, 
+            room.roomName,v2, r2, s2])
+        } catch (error) {
+          console.log(error)
+          console.log('-------------------'),
+          console.log(
+            'Error with data signatures:\n', 
+            `Loser: ${data.loserAddress}\n`,
+            `Winner: ${data.winnerAddress}\n`,
+            `LoserAmount: ${data.loserAmount}\n`,
+            `WinnerAmount: ${data.winnerAmount}\n`,
+            `GameID: ${room.roomName}\n`,
+            `v2: ${v2}\n`,
+            `r2: ${r2}\n`,
+            `s2: ${s2}`
+          )
+          console.log('-------------------')
+        }
         
       } else {
-        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-          data.winnerAddress,
-          data.loserAddress,
-          data.winnerAmount,  
-          data.loserAmount,
-          room.roomName, v1, r1, s1])
-        await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-          data.loserAddress,
-          data.winnerAddress,
-          data.winnerAmount,  
-          data.loserAmount,
-          room.roomName,v2, r2, s2])
+        try {
+          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+            data.winnerAddress,
+            data.loserAddress,
+            data.winnerAmount,  
+            data.loserAmount,
+            room.roomName, v1, r1, s1])
+        } catch (error) {
+          console.log(error)
+          console.log('-------------------'),
+          console.log(
+            'Error with data signatures:\n', 
+            `Loser: ${data.loserAddress}\n`,
+            `Winner: ${data.winnerAddress}\n`,
+            `LoserAmount: ${data.loserAmount}\n`,
+            `WinnerAmount: ${data.winnerAmount}\n`,
+            `GameID: ${room.roomName}\n`,
+            `v1: ${v1}\n`,
+            `r1: ${r1}\n`,
+            `s1: ${s1}`
+          )
+          console.log('-------------------')
+        }
+        try {
+          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+            data.loserAddress,
+            data.winnerAddress,
+            data.winnerAmount,  
+            data.loserAmount,
+            room.roomName,v2, r2, s2])
+        } catch (error) {
+          console.log(error)
+          console.log('-------------------'),
+          console.log(
+            'Error with data signatures:\n', 
+            `Loser: ${data.loserAddress}\n`,
+            `Winner: ${data.winnerAddress}\n`,
+            `LoserAmount: ${data.loserAmount}\n`,
+            `WinnerAmount: ${data.winnerAmount}\n`,
+            `GameID: ${room.roomName}\n`,
+            `v2: ${v2}\n`,
+            `r2: ${r2}\n`,
+            `s2: ${s2}`
+          )
+          console.log('-------------------')
+        }
       }
       const killsLoser = await getKills(data.loserAddress)
       const deathsLoser = await getDeaths(data.loserAddress)
       const killsWinner = await getKills(data.winnerAddress)
       const deathsWinner = await getDeaths(data.winnerAddress)
-      pgPool
-        .connect()
-        .then((client) => {
-            client
-                .query("BEGIN")
-                .then(async () => {
-                    await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.loserAddress, data.loserAmount, killsLoser, deathsLoser, rounds])
-                    await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.winnerAddress, data.winnerAmount,killsWinner, deathsWinner, rounds])
-                    await removeKills(data.loserAddress)
-                    await removeKills(data.winnerAddress)
-                    await removeDeaths(data.loserAddress)
-                    await removeDeaths(data.winnerAddress)
-                    await redisClient.del(room.roomName)
-                })
-                .then(() => {
-                    client.query("COMMIT")
-                })
-                .then(() => {
-                    console.log(`Stats updated`)
-                })
-                .catch(() => {
-                    client.query("ROLLBACK")
-                })
-        })
+      try {
+        await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.loserAddress, data.loserAmount, killsLoser, deathsLoser, rounds])
+      } catch (error) {
+        console.log(error)
+        console.log('-------------------')
+        console.log(
+          'Error with data statistics:\n',
+          `GameID: ${room.roomName}`,
+          `Address: ${data.loserAddress}`,
+          `Amount: ${data.loserAmount}`,
+          `Kills: ${killsLoser}`,
+          `Deaths: ${deathsLoser}`,
+          `Rounds: ${rounds}`,
+        )
+        console.log('-------------------')
+      }
+      try {
+        await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.winnerAddress, data.winnerAmount,killsWinner, deathsWinner, rounds])
+      } catch (error) {
+        console.log(error)
+        console.log('-------------------')
+        console.log(
+          'Error with data statistics:\n',
+          `GameID: ${room.roomName}`,
+          `Address: ${data.winnerAddress}`,
+          `Amount: ${data.winnerAmount}`,
+          `Kills: ${killsWinner}`,
+          `Deaths: ${deathsWinner}`,
+          `Rounds: ${rounds}`,
+        )
+        console.log('-------------------')
+      }
+      await removeKills(data.loserAddress)
+      await removeKills(data.winnerAddress)
+      await removeDeaths(data.loserAddress)
+      await removeDeaths(data.winnerAddress)
+      await redisClient.del(room.roomName)
     } catch (error) {
       console.error(error)
     }
