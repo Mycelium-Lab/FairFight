@@ -175,9 +175,9 @@ function handleSocket(socket) {
 
   async function onJump() {
     try {
-      Object.entries(room.sockets).forEach(([key, value]) => {
-        socket.to(value.id).emit("jump")
-      })
+      // Object.entries(room.sockets).forEach(([key, value]) => {
+      //   socket.to(value.id).emit("jump")
+      // })
     } catch (error) {
       console.error(error)
     }
