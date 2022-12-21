@@ -24,7 +24,7 @@ CREATE TABLE leaderboard(
     wins INT NOT NULL,
     kills INT NOT NULL,
     amountWon FLOAT NOT NULL,
-    perion INT NOT NULL
+    period INT NOT NULL
 );
 
 CREATE TABLE utils(
