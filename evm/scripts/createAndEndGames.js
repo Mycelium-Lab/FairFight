@@ -29,8 +29,8 @@ async function createSing(ID, player1Amount, player2Amount, playerAddress, signe
 }
 
 async function main() {
-    const Game = await ethers.getContractFactory("Game");
-    const game = await Game.attach('0x36C02dA8a0983159322a80FFE9F24b1acfF8B570')
+    const Game = await ethers.getContractFactory("GameV2");
+    const game = await Game.attach('0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE')
     const signer = await ethers.getSigner();
     const wallet = new ethers.Wallet('0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0', ethers.provider)
     const amountToPlay = ethers.utils.parseEther('1');

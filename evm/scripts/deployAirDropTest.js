@@ -8,7 +8,7 @@ const { upgrades, ethers } = require("hardhat")
 
 async function main() {
   const [acc1] = await ethers.getSigners();
-  const Game = await ethers.getContractFactory("Game");
+  const Game = await ethers.getContractFactory("GameV2");
   const AirDrop = await ethers.getContractFactory("AirDrop")
   const game = await upgrades.deployProxy(Game, 
     [
