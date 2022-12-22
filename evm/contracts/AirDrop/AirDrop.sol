@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "../Game.sol";
-import "../Storage/GameStorage.sol";
+import "../GameV2.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -26,7 +25,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
         uint256 amountForOneDeath;
     }
 
-    Game public gameContract;
+    GameV2 public gameContract;
     /// @notice Contains minimum number of battles for a player to get a prize
     /// @return minBattlesAmount minimum battles amount
     uint8 public minBattlesAmount = 5;
@@ -37,7 +36,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
     /// @return amountToFirstSend amount to first send
     uint256 public amountToFirstSend = 1 ether;
     /// @notice Address through which the signature is created and verified
-    address signerAccess;
+    address public signerAccess;
     /// @notice Has the token distribution ended or not
     /// @return isAirDropEnded is Air Drop Ended
     bool public isAirDropEnded;
@@ -49,7 +48,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
     mapping(address => bool) public alreadyGetFirstTokens;
 
     constructor (address _gameAddress, address _signerAccess) {
-        gameContract = Game(_gameAddress);
+        gameContract = GameV2(_gameAddress);
         signerAccess = _signerAccess;
     }
 
@@ -134,6 +133,10 @@ contract AirDrop is ReentrancyGuard, Ownable {
         amountToFirstSend = _amountToFirstSend;
     }
 
+    function changeSignerAccess(address _signerAccess) public onlyOwner {
+        signerAccess = _signerAccess;
+    }
+
     function endAirDrop() public onlyOwner {
         isAirDropEnded = true;
     }
@@ -144,6 +147,11 @@ contract AirDrop is ReentrancyGuard, Ownable {
 
     function withdrawOwner() public onlyOwner {
         (bool success, ) = owner().call{value: address(this).balance}("");
+        require(success, "Not success");
+    }
+
+    function withdrawOwnerExactAmount(uint256 amount) public onlyOwner {
+        (bool success, ) = owner().call{value: amount}("");
         require(success, "Not success");
     }
 

@@ -8,7 +8,7 @@ const { upgrades, ethers } = require("hardhat")
 
 async function main() {
   const AirDrop = await ethers.getContractFactory("AirDrop")
-  const airDrop = await AirDrop.deploy('game.address', 'signerAccess')
+  const airDrop = await AirDrop.deploy('0x09ED6f33Fb905883eb29Ca83f5E591a1DDB3fd25', '0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0')
   await airDrop.deployed()
   console.log(
     `AirDrop deployed to ${airDrop.address}`
