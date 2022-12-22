@@ -355,82 +355,86 @@ async function getStatistics(gameID, address) {
 }
 
 server.use(express.static(path.join(__dirname,'/lib')))
-const error = true
+const maintenance = false
 server.get('/', (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     res.sendFile(__dirname+'/lib/public/index.html')
 })
 
 server.get('/game', (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     res.sendFile(__dirname+'/lib/public/game.html')
 })
 
 server.get('/sign', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     res.json(await getSignature(req.query.gameID, req.query.address))
 })
 
 server.get('/statistics', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     res.json(await getStatistics(req.query.gameID, req.query.address))
 })
 
 server.get('/balance', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address))
 })
 
 server.get('/leaderboard', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     await getLeaderboard(res)
 })
 
 server.get('/createleaderboard', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     // await createLeaderboard()
     res.status(200).redirect('/')
 })
 
 server.post('/airdrop_first_sign', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     await sendTokensFirstTime(req, res)
 })
 
 server.post('/airdrop_second_sign', async (req, res) => {
-    error
+    maintenance
     ?
-    res.redirect('/error')
+    res.redirect('/maintenance')
     :
     await sendTokensSecondTime(req, res)
 })
 
-server.get('/error', async (req, res) => {
-    res.sendFile(__dirname+'/lib/public/error.html')
+server.get('/maintenance', async (req, res) => {
+    !maintenance
+    ?
+    res.redirect('/')
+    :
+    res.sendFile(__dirname+'/lib/public/maintenance.html')
 })
 
 server.listen(5000, async () => {
