@@ -6,10 +6,10 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
 
-import "./Storage/GameStorageV3.sol";
+import "./Storage/GameStorage.sol";
 import "./Interfaces/IGameV2.sol";
 
-contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeable, ReentrancyGuardUpgradeable, GameStorageV3 {
+contract GameBasic is Initializable, PausableUpgradeable, AccessControlUpgradeable, ReentrancyGuardUpgradeable, GameStorage {
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
@@ -77,7 +77,7 @@ contract GameV3 is IGameV2, GameBasic {
         currentlyBusy[msg.sender] = true;
         userBattles[msg.sender]+=1;
         battles.push(_newBattle);
-        openBattles.increment();
+        // openBattles.increment();
         emit CreateBattle(battlesLength, _newBattle.player1Amount, amountForOneDeath, msg.sender, _newBattle.battleCreatedTimestamp);
     }
 
@@ -96,7 +96,7 @@ contract GameV3 is IGameV2, GameBasic {
         currentlyBusy[msg.sender] = true;
         userBattles[msg.sender]+=1;
         battles[_ID] = _battle;
-        openBattles.decrement();
+        // openBattles.decrement();
         emit JoinBattle(_ID, msg.sender, block.timestamp);
     }
 
@@ -108,7 +108,7 @@ contract GameV3 is IGameV2, GameBasic {
         require(_battle.player1 == msg.sender, "You not creator");
         require(_battle.player2 == address(0), "Battle was joined");
         require(_battle.finished == false, "Already finished");
-        openBattles.decrement();
+        // openBattles.decrement();
         currentlyBusy[msg.sender] = false;
         _battle.finished = true;
         _battle.battleFinishedTimestamp = block.timestamp;
@@ -130,10 +130,10 @@ contract GameV3 is IGameV2, GameBasic {
             uint8 _v,               //_v
             bytes32 _s              //_s
         ) = abi.decode(data, (uint256, uint256, uint256, bytes32, uint8, bytes32));
-        require(checkAccess(_ID, player1Amount, player2Amount, _r, _v, _s), "Dont have access");
+        require(checkAccess(_ID, player1Amount, player2Amount, _r, _v, _s), "You dont have access");
         Battle memory _battle = battles[_ID];
         require(msg.sender == _battle.player1 || msg.sender == _battle.player2, "You not player");
-        require(_battle.finished == false, "Already finished");
+        require(_battle.finished == false, "Battle already finished");
         uint256 player1ToSend;
         uint256 player2ToSend;
         uint256 feeToSend;
@@ -260,26 +260,10 @@ contract GameV3 is IGameV2, GameBasic {
 
     /// @notice Returns current open battles
     /// @return Battle[]
-    // function getOpenBattles() public view returns(Battle[] memory) {
-    //     Battle[] memory _openB = new Battle[](openBattles.current());
-    //     uint256 counter = 0;
-    //     for (uint256 i = battles.length - 1; i > battles.length - amountOpenGamesToReturn - 1; i--) {
-    //         if (battles[i].player2 == address(0) && battles[i].finished == false) {
-    //             _openB[counter] = battles[i];
-    //             counter++;
-    //         }
-    //     }
-    //     return _openB;
-    // }
-
     function getOpenBattles() public view returns(Battle[] memory) {
         Battle[] memory _openB = new Battle[](openBattles.current());
         uint256 counter = 0;
-        for (
-            uint256 i = battles.length; 
-            i > ((battles.length > amountOpenGamesToReturn) ?  (battles.length - amountOpenGamesToReturn - 1) : 0); 
-            i--
-        ) {
+        for (uint256 i; i < battles.length; i++) {
             if (battles[i].player2 == address(0) && battles[i].finished == false) {
                 _openB[counter] = battles[i];
                 counter++;
@@ -357,10 +341,6 @@ contract GameV3 is IGameV2, GameBasic {
     /// @dev only admin
     function changeAmountUserGamesToReturn(uint8 _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
         amountUserGamesToReturn = _new;
-    }
-
-    function changeAmountOpenGamesToReturn(uint8 _new) public onlyRole(DEFAULT_ADMIN_ROLE) {
-        amountOpenGamesToReturn = _new;
     }
 
     /// @notice Change fee

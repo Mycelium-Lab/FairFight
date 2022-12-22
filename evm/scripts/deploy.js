@@ -8,7 +8,7 @@ const { upgrades, ethers } = require("hardhat")
 
 async function main() {
   const [acc1] = await ethers.getSigners();
-  const Game = await ethers.getContractFactory("Game");
+  const Game = await ethers.getContractFactory("GameV2");
   const game = await upgrades.deployProxy(Game, 
     [
       '0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0', //signer
