@@ -1,19 +1,195 @@
-# TON Multiplayer Game
-You appear in a locked room with another player. Your goal is to survive and kill the other player. When you die you lose 0.1 TON. When your opponent dies you receive their 0.1 TON.
+# Multiplayer Game
+You appear in a locked room with another player. Your goal is to survive and kill the other player. When you die you lose money. When your opponent dies you receive their money.
 
 # How to test it?
 
-1. In cloned repo directory: npm i
-2. npm run signalling
-3. npm run http (in other terminal)
-4. visit http://127.0.0.1:8080/
+0. ```npm install pm2 -g```
+1. In cloned repo directory: ```npm i```
+2. ```npm run prod```
+3. visit http://127.0.0.1:5000/
 
-# Deployed demo
+# How to deploy?
 
-There were problems noticed with UDP when connecting users from different countries. All good when running locally on the same network.
+<h2>Install Node.js</h2>
 
-[TON GAME ONLINE](https://c78a-2a03-b0c0-2-d0-00-10ed-b001.eu.ngrok.io/)
+```
+cd ~
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+```
 
-# SCREENSHOTS
+```
+sudo bash /tmp/nodesource_setup.sh
+sudo apt install nodejs
+```
+Check version
+```
+node -v
+```
 
-[![2022-07-03-06-50-11.png](https://i.postimg.cc/155k0vrG/2022-07-03-06-50-11.png)](https://postimg.cc/nMgSpY5r)
+<h2>Install Git</h2>
+
+```
+sudo apt-get update
+sudo apt-get install git
+```
+
+<h2>Clone repository</h2>
+
+```
+git clone https://github.com/Mycelium-Lab/tonGame.git
+```
+
+<h2>Install PostgreSQL</h2>
+
+```
+sudo apt update 
+sudo apt install postgresql postgresql-contrib
+sudo -i -u postgres
+psql 
+create database somedb;
+createuser egorg;
+ALTER USER egorg WITH ENCRYPTED PASSWORD 'password';
+alter user egorg superuser createrole somedb;
+\q
+psql -h localhost -p 5432 -U egorg tongame
+\i path/to/tongame/tables.sql
+
+```
+
+<h2>Install Redis</h2>
+
+```
+sudo apt install redis-server
+sudo systemctl status redis
+```
+
+<h2>Install pm2</h2>
+
+```
+npm install pm2 -g
+```
+
+<h2>Create .env file</h2>
+
+```
+nano .env
+```
+
+With variables
+
+```
+DB="tongame"
+DB_USER="egorg"
+DB_PASSWORD="password"
+PRIVATE_KEY="signerkey"
+```
+
+<h2>Install and configure NGINX</h2>
+
+```
+sudo apt update
+sudo apt install nginx
+sudo apt-get remove apache2*
+sudo apt install ufw
+```
+
+Firewall
+
+```
+ufw allow ssh
+ufw app list
+sudo ufw allow 'Nginx HTTP'
+```
+
+Check Nginx
+
+```
+sudo systemctl status nginx
+```
+
+Create config files
+
+```
+sudo nano /etc/nginx/sites-available/tongame
+sudo nano /etc/nginx/sites-enable/tongame
+```
+Add to both
+```
+upstream websocket {
+    server localhost:8033;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name fairfight.fairprotocol.solutions;
+    return 301 https://fairfight.fairprotocol.solutions$request_uri;
+}
+
+
+server{
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    
+    server_name fairfight.fairprotocol.solutions;
+    
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        # location /overview {
+        #     proxy_pass http://127.0.0.1:3000$request_uri;
+        #     proxy_redirect off;
+        # }
+    }
+    
+    location /socket.io {
+        proxy_pass http://127.0.0.1:8033;
+    }
+    
+    ssl_certificate /etc/letsencrypt/live/fairfight.fairprotocol.solutions/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fairfight.fairprotocol.solutions/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/fairfight.fairprotocol.solutions/chain.pem;
+}
+
+```
+Check Nginx
+
+```
+nginx -t
+```
+
+<h2>Run application</h2>
+
+```
+cd ~/tongame
+npm i
+npm run prod
+```
+
+<h2>Possible errors</h2>
+
+<h3>Polling websocket error</h3>
+
+
+Change in the end of ```lib/game/main.js```
+
+```
+window.gameRoom = new GameRoom(
+  `${window.location.protocol}//` + window.location.hostname + '',
+  address,
+  localStorage.getItem('publicKey')
+);
+```
+<hr>
+
+<h3>Cannot read properties of undefined (reading 'toHexString') in ether.js</h3>
+
+Add the same ```.env``` file in ```signalling```.
+
+
+<hr>

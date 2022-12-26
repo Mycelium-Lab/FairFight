@@ -4,3 +4,4 @@ node_modules
 .project
 npm-debug.log
 dist/index.js
+.env

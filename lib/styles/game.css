@@ -1,0 +1,324 @@
+html,body {
+    background-color: #333;
+    color: #fff;
+    font-family: helvetica, arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
+#canvas {
+    width: 1020px;
+    height: 100vh;
+    border: 1px solid #3b3d42;
+    image-rendering: optimizeSpeed;
+    -webkit-interpolation-mode: nearest-neighbor;
+}
+
+#noCanvas {
+    width: 1020px;
+    height: 100vh;
+    padding: 90px 32px;
+    font-weight: bold;
+    border: 1px solid #3b3d42;
+    background-color: #D9D9D9;
+}
+
+.inputName{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 1em;
+    margin: 1em;
+}
+
+.createGame {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: rgb(241, 91, 10);
+    font-weight: 500;
+    color: #222;
+}
+.createGame:hover {
+    background-color: rgb(168, 72, 20);
+}
+
+.inputName {
+    padding: 1 em;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.startContainer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    padding: 25px;
+}
+.flexBox {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    max-height: 1000px;
+    justify-content: center;
+}
+.startBtn {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: #fd0;
+    font-weight: 500;
+    color: #222;
+    margin: 10px 0;
+}
+.startBtn:hover {
+    background-color: rgb(204, 184, 54);
+}
+.canvasWrapper {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#room {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    justify-content: space-between;
+}
+#startStage {
+    display: inherit;
+}
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 5px solid rgb(160, 48, 48);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#canvasHeader {
+    padding: 0 24px;
+    margin: 25px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.startContainer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    padding: 25px;
+}
+.flexBox {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    max-height: 1000px;
+    justify-content: center;
+}
+.startBtn {
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: #fd0;
+    font-weight: 500;
+    color: #222;
+    margin: 10px 0;
+}
+.startBtn:hover {
+    background-color: rgb(204, 184, 54);
+}
+.canvasWrapper {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#room {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    justify-content: space-between;
+}
+#startStage {
+    display: inherit;
+}
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 5px solid rgb(160, 48, 48);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#canvasHeader {
+    padding: 0 24px;
+    margin: 25px;
+}
+.startBalances {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 25px;
+}
+#feeInfo {
+    color:rgb(195, 191, 191);
+    font-size: 12px;
+}
+.maxBtn {
+    position: absolute;
+    max-width: 60px;
+    height: 24px;
+    font-size: 10px;
+    background-color: #D3D3D3;
+    color:#000;
+    top:5px;
+}
+.withdrawBtn {
+    position: absolute;
+}
+.withdrawWrapper {
+    width: 280px;
+}
+
+#canvasLoad {
+    display:inherit;
+    width: 480px;
+    height: 320px;
+    border: 1px solid #3b3d42;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/* Модальный (фон) */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Оставаться на месте */
+    z-index: 1; /* Сидеть на вершине */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включите прокрутку, если это необходимо */
+    background-color: rgb(0,0,0); /* Цвет запасной вариант */
+    background-color: rgba(0,0,0,0.4); /* Черный с непрозрачностью */
+}
+
+/* Модальное содержание/коробка */
+.modal-content {
+    display: block;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% сверху и по центру */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%; /* Может быть больше или меньше, в зависимости от размера экрана */
+}
+
+/* Кнопка закрытия */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+.modal .modal_content {
+    background-color: #000000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    z-index: 99999;
+}
+.modal .modal_content .close_modal_window {
+
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
