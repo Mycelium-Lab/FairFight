@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-import "../Interfaces/IFairFight.sol";
+import "../../Legacy/GameV2.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -9,10 +9,23 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @notice Checks if user have games in contract and then sends tokens
 contract AirDrop is ReentrancyGuard, Ownable {
 
-    event Withdraw(address indexed player);
-    event WithdrawFirst(address indexed player);
+    event Withdraw(address player);
+    event WithdrawFirst(address player);
 
-    IFairFight public gameContract;
+    struct Battle {
+        uint256 ID;
+        address player1;
+        address player2;
+        address winner;
+        uint256 player1Amount;
+        uint256 player2Amount;
+        bool finished;
+        uint256 battleCreatedTimestamp;
+        uint256 battleFinishedTimestamp;
+        uint256 amountForOneDeath;
+    }
+
+    GameV2 public gameContract;
     /// @notice Contains minimum number of battles for a player to get a prize
     /// @return minBattlesAmount minimum battles amount
     uint8 public minBattlesAmount = 5;
@@ -35,7 +48,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
     mapping(address => bool) public alreadyGetFirstTokens;
 
     constructor (address _gameAddress, address _signerAccess) {
-        gameContract = IFairFight(_gameAddress);
+        gameContract = GameV2(_gameAddress);
         signerAccess = _signerAccess;
     }
 
@@ -51,7 +64,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
     /// @param s one of the signature values
     function withdraw(address player, bytes32 r, uint8 v, bytes32 s) public payable nonReentrant isAirDropNotEnded {
         require(alreadyGetTokens[player] == false, "AirDrop: You already get tokens");
-        IFairFight.Fight[] memory userPastBattles = gameContract.userPastFights(player,minBattlesAmount);
+        GameStorage.Battle[] memory userPastBattles = gameContract.getUserPastBattles(player);
         require(userPastBattles.length >= minBattlesAmount, "Not enough battles");
         require(checkAccess(player, r, v, s, "second"), "AirDrop: Your are not allowed to withdraw");
         _send(player);
