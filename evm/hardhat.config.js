@@ -25,5 +25,5 @@ module.exports = {
         process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
     }
   },
-  solidity: "0.8.16",
+  solidity: "0.8.17",
 };

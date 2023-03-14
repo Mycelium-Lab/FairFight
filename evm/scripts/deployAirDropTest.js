@@ -9,20 +9,26 @@ const { upgrades, ethers } = require("hardhat")
 async function main() {
   const [acc1] = await ethers.getSigners();
   const Game = await ethers.getContractFactory("GameV2");
+  const AirDrop = await ethers.getContractFactory("AirDrop")
   const game = await upgrades.deployProxy(Game, 
     [
-      '0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0', //signer
+      '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', //signer
       15, //_amountUserGamesToReturn
       255, //max rounds
       '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
       300, //fee
-      ethers.utils.parseEther("1") //min amount for one round
+      ethers.utils.parseEther("1")
     ], 
   { initializer: "initialize" });
   await game.deployed()
-
+  const airDrop = await AirDrop.deploy(game.address, '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266')
+  await airDrop.deployed()
+  await acc1.sendTransaction({to: airDrop.address, from: acc1.address, value: ethers.utils.parseEther('100')})
   console.log(
     `Game deployed to ${game.address}`
+  );
+  console.log(
+    `AirDrop deployed to ${airDrop.address}`
   );
 }
 

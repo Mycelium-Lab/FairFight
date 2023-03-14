@@ -1,23 +1,32 @@
-const express = require('express')
+import express from 'express'
 const server = express()
-const path = require('path')
-const pg = require("pg")
-require("dotenv").config()
-const redis = require("redis")
-const ethers = require("ethers")
-const cron = require("node-cron")
-const { contractAbi, contractAddress } = require("./contract/contract.js")
+import path from 'path'
+import pg from "pg"
+import dotenv from 'dotenv'
+dotenv.config()
+import redis from "redis"
+import ethers from "ethers"
+import cron from "node-cron"
+import fetch from "node-fetch"
+import { fileURLToPath } from 'url';
+import { contractAbi, contractAddress } from "./contract/contract.js"
+import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 
 const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
+// const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
+// const signer = new ethers.Wallet(process.env.PRIVATE_KEY_TEST, provider)
 const contract = new ethers.Contract(contractAddress, contractAbi, signer)
+const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
 const secondsInADay = 86400
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const redisClient = redis.createClient({
-  socket: {
-      host: 'localhost',
-      port: 6379
-  }
+   socket: {
+       host: 'localhost',
+       port: 6379
+   }
 })
 
 const pgClient = new pg.Client({
@@ -25,6 +34,107 @@ const pgClient = new pg.Client({
     password: process.env.DB_PASSWORD,
     database: process.env.DB
   })
+
+
+const checkIfAddressIsNotNew = async (address) => {
+    let timestamps = []
+    let providerEthereum = new ethers.providers.EtherscanProvider("homestead")
+    let providerOptimism = new ethers.providers.EtherscanProvider("optimism")
+    let historyEthereum = await providerEthereum.getHistory(address)
+    let historyOptimism = await providerOptimism.getHistory(address)
+    timestamps.push(historyEthereum[0] !== undefined ? historyEthereum[0].timestamp: 0)
+    timestamps.push(historyOptimism[0] !== undefined ? historyOptimism[0].timestamp: 0)
+    let historyBinance = await fetch(
+                `https://api.bscscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.BSCSCAN_API_KEY}`
+            ).then(res => res.json()).catch(err => {return {result: []}})
+    let historyPolygon = await fetch(
+                `https://api.polygonscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.POLYGONSCAN_API_KEY}`
+            ).then(res => res.json()).catch(err => {return {result: []}})
+    timestamps = [
+        ...timestamps, 
+        ...historyBinance.result.map(v => parseInt(v.timeStamp)), 
+        ...historyPolygon.result.map(v => parseInt(v.timeStamp))
+    ]
+    const timestamp = Math.min.apply(null, timestamps.filter(Boolean))
+    console.log(address, timestamp)
+    if (timestamp !== Infinity) {
+        const dateNow = Math.floor(Date.now() / 1000)
+        return timestamp < (dateNow - 86400 * 30) //check if older than month
+    } else {
+        return false
+    }
+}
+
+async function getAirDropSignature(address,typeOfWithdraw) {
+    try {
+        const isNotNew = await checkIfAddressIsNotNew(address)
+        if (isNotNew) {
+            const hashMessage = ethers.utils.solidityKeccak256(["uint160","uint160","string"], [airdropAddress, address, typeOfWithdraw])
+            const sign = await signer.signMessage(ethers.utils.arrayify(hashMessage));
+            const r = sign.substr(0, 66)
+            const s = '0x' + sign.substr(66, 64);
+            const v = parseInt("0x" + sign.substr(130,2));
+            return {r, v, s}
+        } else {
+            return {r:'',v:'',s:''}
+        }
+    } catch (error) {
+        console.error(error)
+        return {r:'',v:'',s:''}
+    }
+}
+
+async function sendTokensFirstTime(req, res) {
+    try {
+        const alreadyGetFirstTokens = await airdropContract.alreadyGetFirstTokens(req.query.address)
+        if (alreadyGetFirstTokens === false) {
+            const sign = await getAirDropSignature(req.query.address, 'first')
+            if (sign.r === '', sign.v === '', sign.s === '') {
+                res.status(403).send('Insufficient wallet tx history')
+            } else {
+                await airdropContract.withdrawFirstTime(req.query.address, sign.r, sign.v, sign.s)
+                    .then((tx) => tx.wait())
+                    .then(() => {res.status(200).send('Success')})
+                    .catch((err) => {
+                        console.log(err)
+                        res.status(500).send('Not success')
+                    })
+            }
+        } else {
+            res.status(403).send('Already get first tokens')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function sendTokensSecondTime(req, res) {
+    try {
+        const alreadyGetPrizeTokens = await airdropContract.alreadyGetTokens(req.query.address)
+        if (alreadyGetPrizeTokens === false) {
+            const sign = await getAirDropSignature(req.query.address, 'second')
+            if (sign.r === '', sign.v === '', sign.s === '') {
+                res.status(403).send('Insufficient wallet tx history')
+            } else {
+                await airdropContract.withdraw(req.query.address, sign.r, sign.v, sign.s)
+                    .then((tx) => tx.wait())
+                    .then(() => {res.status(200).send('Success')})
+                    .catch((err) => {
+                        console.log(err)
+                        if (err.error.reason && err.error.reason.includes('Not enough battles')) {
+                            res.status(403).send('Not enough battles')
+                        } else {
+                            res.status(500).send('Not success')
+                        }
+                    })
+            }
+        } else {
+            res.status(403).send('Already get prize tokens')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 cron.schedule("6 6 6 * * *", async () => {
     await createLeaderboard()
@@ -245,39 +355,92 @@ async function getStatistics(gameID, address) {
 }
 
 server.use(express.static(path.join(__dirname,'/lib')))
+const maintenance = false
 server.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'/lib') + '/public/index.html')
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    res.sendFile(__dirname+'/lib/public/index.html')
 })
 
 server.get('/game', (req, res) => {
-    res.sendFile(path.join(__dirname,'/lib') + '/public/game.html')
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    res.sendFile(__dirname+'/lib/public/game.html')
 })
 
 server.get('/sign', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
     res.json(await getSignature(req.query.gameID, req.query.address))
 })
 
 server.get('/statistics', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
     res.json(await getStatistics(req.query.gameID, req.query.address))
 })
 
 server.get('/balance', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
     res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address))
 })
 
 server.get('/leaderboard', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
     await getLeaderboard(res)
 })
 
 server.get('/createleaderboard', async (req, res) => {
-    await createLeaderboard()
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    // await createLeaderboard()
     res.status(200).redirect('/')
+})
+
+server.post('/airdrop_first_sign', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await sendTokensFirstTime(req, res)
+})
+
+server.post('/airdrop_second_sign', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await sendTokensSecondTime(req, res)
+})
+
+server.get('/maintenance', async (req, res) => {
+    !maintenance
+    ?
+    res.redirect('/')
+    :
+    res.sendFile(__dirname+'/lib/public/maintenance.html')
 })
 
 server.listen(5000, async () => {
     await pgClient.connect()
     await redisClient.connect()
-    await createLeaderboard()
+    // await createLeaderboard()
     console.log(`Server started on port 5000`)
 })
 

@@ -1,16 +1,18 @@
 const PORT = 8033;
 const MAX_ROOM_USERS = 2;
 
-const fs = require('fs');
+import fs from 'fs';
 const log = console.log.bind(console);
-const io = require('socket.io')(PORT);
-const redis = require("redis")
-const pg = require("pg")
-const ethers = require("ethers")
-const web3 = require("web3")
-require("dotenv").config()
+import socketio from 'socket.io';
+const io = socketio(PORT)
+import redis from "redis"
+import pg from "pg"
+import ethers from "ethers"
+import web3 from "web3"
+import dotenv from "dotenv"
+dotenv.config()
 
-const { contractAbi, contractAddress } = require("../contract/contract.js")
+import { contractAbi, contractAddress } from "../contract/contract.js"
 // const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
 // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 // const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
