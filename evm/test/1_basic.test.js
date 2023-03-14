@@ -15,12 +15,10 @@ describe("FairFight", function (){
     //amount win with fee equals
     //1067000000000000000
     let amountForOneDeath = ethers.utils.parseEther('0.1');
-    let amountForOneDeathWrongDivide = ethers.utils.parseEther('0.3');
-    let amountForOneDeathWrongMaxDeath = ethers.utils.parseEther('0.05');
     const amountUserGamesToReturn = 15
     const maxRounds = 10
     const maxPlayers = 2
-    const minAmountPerRound = '1'
+    const minAmountPerRound = '10'
     const feeAddress = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
     const fee = 300 //3%
 
@@ -50,188 +48,135 @@ describe("FairFight", function (){
     })
 
     it("Should positive create(),join(),finish()", async () => {
-        try {
-            await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
-            const actualOwner = (await game.fights(0)).owner
-            assert.equal(actualOwner, acc1.address, "Battle created")
-            await game.connect(acc2).join(0, {value: amountToPlay})
-            const actualPlayer = await game.players(0, 1)
-            assert(actualPlayer === acc2.address, "Player 2 Joined")
-            const ID = 0
-            const player1Amount = ethers.utils.parseEther('0.9');
-            const player2Amount = ethers.utils.parseEther('1.1');
-            const signature1 = await sign(ID, player1Amount, chainid, acc1.address, game.address, acc1)
-            const signature2 = await sign(ID, player2Amount, chainid, acc2.address, game.address, acc1)
-            // console.log(await game.check)
-            const tx1 = await game.finish(ID, player1Amount, signature1.r, signature1.v, signature1.s)
-            // const tx2 = await game.finish(ID, player2Amount, signature2.r, signature2.v, signature2.s)
-            await expect(() => tx1).to.changeEtherBalance(acc1, player1Amount)
-            // await expect(() => tx2).to.changeEtherBalance(acc2, '1067000000000000000')//with fee
-            // await expect(() => tx2).to.changeEtherBalance(feeAddress, '33000000000000000')//owner fee
-            //get past battles
-            // const pastBattlesAcc1 = await game.userPastFights(acc1.address, 1)
-            // const pastBattlesAcc2 = await game.userPastFights(acc2.address, 1)
-            // assert.equal(pastBattlesAcc1.length, 1, "Past Acc 1 battles")
-            // assert.equal(pastBattlesAcc2.length, 1, "Past Acc 2 battles")
-        } catch (error) {
-            console.log(error)
-        }
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        const actualOwner = (await game.fights(0)).owner
+        assert.equal(actualOwner, acc1.address, "Battle created")
+        await game.connect(acc2).join(0, {value: amountToPlay})
+        const actualPlayer = await game.players(0, 1)
+        assert(actualPlayer === acc2.address, "Player 2 Joined")
+        const ID = 0
+        const player1Amount = ethers.utils.parseEther('0.9');
+        const player2Amount = ethers.utils.parseEther('1.1');
+        const signature1 = await sign(ID, player1Amount, chainid, acc1.address, game.address, acc1)
+        const signature2 = await sign(ID, player2Amount, chainid, acc2.address, game.address, acc1)
+        const tx1 = await game.finish(ID, player1Amount, signature1.r, signature1.v, signature1.s)
+        const tx2 = await game.connect(acc2).finish(ID, player2Amount, signature2.r, signature2.v, signature2.s)
+        await expect(() => tx1).to.changeEtherBalance(acc1, player1Amount)
+        await expect(() => tx2).to.changeEtherBalance(acc2, '1067000000000000000')//with fee
+        await expect(() => tx2).to.changeEtherBalance(feeAddress, '33000000000000000')//owner fee
+        //get past battles
+        const pastBattlesAcc1 = await game.userPastFights(acc1.address, 1)
+        const pastBattlesAcc2 = await game.userPastFights(acc2.address, 1)
+        assert.equal(pastBattlesAcc1.length, 1, "Past Acc 1 battles")
+        assert.equal(pastBattlesAcc2.length, 1, "Past Acc 2 battles")
     })
 
-    // it("Should negative finishBattle()", async () => {
-    //     await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     const actualPlayer1 = (await game.battles(0)).player1
-    //     assert.equal(actualPlayer1, acc1.address, "Battle created")
-    //     await game.connect(acc2).joinBattle(0, {value: amountToPlay})
-    //     const actualPlayer2 = (await game.battles(0)).player2
-    //     assert.equal(actualPlayer2.toString(), acc2.address, "Player 2")
-    //     const ID = 0
-    //     const player1Amount = ethers.utils.parseEther('0.9');
-    //     const player2Amount = ethers.utils.parseEther('1.1');
-    //     const player1WrongAmount = ethers.utils.parseEther('2');
-    //     const player2WrongAmount = ethers.utils.parseEther('2');
-    //     //PLAYER 1 SIGN
-    //     const message1 = [ID, player1Amount, player2Amount, acc1.address]
-    //     const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
-    //     const sign1 = await acc1.signMessage(ethers.utils.arrayify(hashMessage1));
-    //     const r1 = sign1.substr(0, 66)
-    //     const s1 = '0x' + sign1.substr(66, 64);
-    //     const v1 = web3.utils.toDecimal("0x" + (sign1.substr(130,2) == 0 ? "1b" : "1c"));
-    //     const data1 = ethers.utils.defaultAbiCoder.encode(
-    //         [
-    //             'uint256',
-    //             'uint256',
-    //             'uint256',
-    //             'bytes32',
-    //             'uint8',
-    //             'bytes32'
-    //         ], 
-    //         [
-    //             ID, 
-    //             player1WrongAmount, 
-    //             player2Amount,
-    //             r1,
-    //             v1,
-    //             s1
-    //         ]
-    //     )
-    //     await expect(
-    //         game.finishBattle(data1)
-    //       ).to.be.revertedWith("You dont have access")
-    //     // PLAYER 2 SIGN
-    //     const message2 = [ID, player1Amount, player2Amount, acc2.address]
-    //     const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
-    //     const sign2 = await acc1.signMessage(ethers.utils.arrayify(hashMessage2));
-    //     const r2 = sign2.substr(0, 66)
-    //     const s2 = '0x' + sign2.substr(66, 64);
-    //     const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
-    //     const data2 = ethers.utils.defaultAbiCoder.encode(
-    //         [
-    //             'uint256',
-    //             'uint256',
-    //             'uint256',
-    //             'bytes32',
-    //             'uint8',
-    //             'bytes32'
-    //         ], 
-    //         [
-    //             ID, 
-    //             player1Amount, 
-    //             player2WrongAmount,
-    //             r2,
-    //             v2,
-    //             s2
-    //         ]
-    //     )
-    //     await expect(
-    //         game.connect(acc2).finishBattle(data2)
-    //       ).to.be.revertedWith("You dont have access")
-    // })
+    it("Should negative finishBattle()", async () => {
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        const actualOwner = (await game.fights(0)).owner
+        assert.equal(actualOwner, acc1.address, "Battle created")
+        await game.connect(acc2).join(0, {value: amountToPlay})
+        const actualPlayer = await game.players(0, 1)
+        assert(actualPlayer === acc2.address, "Player 2 Joined")
+        const ID = 0
+        const player1Amount = ethers.utils.parseEther('0.9');
+        const player2Amount = ethers.utils.parseEther('1.1');
+        const player1WrongAmount = ethers.utils.parseEther('2');
+        const player2WrongAmount = ethers.utils.parseEther('2');
+        const signature1 = await sign(ID, player1Amount, chainid, acc1.address, game.address, acc1)
+        const signature2 = await sign(ID, player2Amount, chainid, acc2.address, game.address, acc1)
+        await expect(
+            game.finish(ID, player1WrongAmount, signature1.r, signature1.v, signature1.s)
+          ).to.be.revertedWith("FairFight: You dont have access")
+        await expect(
+            game.connect(acc2).finish(ID, player2WrongAmount, signature2.r, signature2.v, signature2.s)
+          ).to.be.revertedWith("FairFight: You dont have access")
+    })
 
-    // it("Should getOpenBattles() and withdraw()", async () => {
-    //     await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     //get open battles
-    //     const openBattlesBefore = await game.getOpenBattles()
-    //     //check if exist
-    //     assert.equal(openBattlesBefore.length, 1, "Open battles")
-    //     //withdraw before somebody join game
-    //     const tx = await game.withdraw(0)
-    //     const openBattlesAfter = await game.getOpenBattles()
-    //     await expect(() => tx).to.changeEtherBalance(acc1, amountToPlay)
-    //     //check if zero
-    //     assert.equal(openBattlesAfter.length, 0, "Open battles")
-    //     const pastBattles = await game.getUserPastBattles(acc1.address)
-    //     assert.equal(pastBattles.length, 1, "Past battles")
-    // })
+    it("Should withdraw()", async () => {
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        const busy = await game.currentlyBusy(acc1.address)
+        //check if exist
+        assert(busy, "Busy")
+        //withdraw before somebody join game
+        const tx = await game.withdraw(0)
+        const busyAfter = await game.currentlyBusy(acc1.address)
+        await expect(() => tx).to.changeEtherBalance(acc1, amountToPlay)
+        //check if zero
+        assert(!busyAfter, "Busy after")
+    })
 
-    // it("Cant create 2 games in one moment", async () => {
-    //     await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     //cant create two battles in one moment
-    //     await expect(
-    //         game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     ).to.be.revertedWith("You already have open battle")
-    // })
+    it("Cant create 2 games in one moment", async () => {
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        //cant create two fights in one moment
+        await expect(
+            game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        ).to.be.revertedWith("FairFight: You have open fight")
+    })
 
-    // it("Cant join 2 games in one moment", async () => {
-    //     await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     await game.connect(acc2).createBattle(amountForOneDeath, {value: amountToPlay})
-    //     //join first
-    //     await game.connect(acc3).joinBattle(0, {value: amountToPlay})
-    //     //cant join two battles in one moment
-    //     await expect(
-    //         game.connect(acc3).joinBattle(1, {value: amountToPlay})
-    //     ).to.be.revertedWith("You already have open battle")
-    // })
+    it("Cant join 2 games in one moment", async () => {
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        await game.connect(acc2).create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        //join first
+        await game.connect(acc3).join(0, {value: amountToPlay})
+        //cant join two battles in one moment
+        await expect(
+            game.connect(acc3).join(1, {value: amountToPlay})
+        ).to.be.revertedWith("FairFight: You have open fight")
+    })
 
-    // it(`Should return maximum ${amountUserGamesToReturn} user past games`, async () => {
-    //     let amount = 16
-    //     for (let i = 0; i < amount; i++) {
-    //         await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //         await game.withdraw(i)
-    //     }
-    //     //all user games amount
-    //     const userBattlesAmount = await game.userBattles(acc1.address)
-    //     //equal amountUserGamesToReturn
-    //     const userBattlesPast = await game.getUserPastBattles(acc1.address)
-    //     assert.equal(userBattlesAmount, amount)
-    //     //last timestamp is higher because it is created lately
-    //     expect(
-    //         userBattlesPast[amountUserGamesToReturn - 4].battleCreatedTimestamp
-    //     ).to.be.above(
-    //         userBattlesPast[amountUserGamesToReturn - 3].battleCreatedTimestamp
-    //     ).to.be.above(
-    //         userBattlesPast[amountUserGamesToReturn - 2].battleCreatedTimestamp
-    //     )
-    // })
+    it(`Should return maximum ${amountUserGamesToReturn} user past games`, async () => {
+        let amount = 16
+        for (let i = 0; i <= amount; i++) {
+            await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+            await game.connect(acc2).join(i, {value: amountToPlay})
+            const player1Amount = ethers.utils.parseEther('0.9');
+            const player2Amount = ethers.utils.parseEther('1.1');
+            const signature1 = await sign(i, player1Amount, chainid, acc1.address, game.address, acc1)
+            const signature2 = await sign(i, player2Amount, chainid, acc2.address, game.address, acc1)
+            await game.finish(i, player1Amount, signature1.r, signature1.v, signature1.s)
+            await game.connect(acc2).finish(i, player2Amount, signature2.r, signature2.v, signature2.s)
+        }
+        //all user games amount
+        const userPastFights = await game.userPastFights(acc1.address, amount)
+        assert.equal(userPastFights.length, amount)
+        assert(userPastFights[0].finishTime != 0, 'Real game')
+        assert(userPastFights[userPastFights.length-1].finishTime != 0, 'Real game2')
+    })
 
-    // it("Should getCurrentUserGame()", async () => {
-    //     await game.createBattle(amountForOneDeath, {value: amountToPlay})
-    //     const currentGame = await game.getCurrentUserGame(acc1.address)
-    //     assert.equal(
-    //         currentGame.player1Amount.toString(),
-    //         amountToPlay,
-    //         "Amount not equal"
-    //     )
-    //     await game.withdraw(0)
-    //     //because we dont have current games contract will return 0 Battle
-    //     const currentGameNotExist = await game.getCurrentUserGame(acc1.address)
-    //     assert.equal(
-    //         currentGameNotExist.player1Amount.toString(),
-    //         "0",
-    //         "Amount not equal"
-    //     )
-    // })
+    it("Should lastPlayerFight()", async () => {
+        await game.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+        const lastGame = await game.lastPlayerFight(acc1.address)
+        const fight = await game.fights(lastGame)
+        assert.equal(
+            fight.owner,
+            acc1.address,
+            "Not owner"
+        )
+    })
 
-    // it("Should createBattle() with wrong amountForOneDeath", async () => {
-    //     await expect(
-    //         game.createBattle(amountForOneDeathWrongDivide, {value: amountToPlay})
-    //     ).to.be.revertedWith("Amount for one death must be divided by the msg.value with the remainder 0")
-    // })
+    it("Should create() with wrong value", async () => {
+        await expect(
+            game.create(amountForOneDeath, 10, 2, {value: '1'})
+        ).to.be.revertedWith("FairFight: Wrong amount")
+    })
 
-    // it("Should createBattle() with wrong maxDeathInARow", async () => {
-    //     await expect(
-    //         game.createBattle(amountForOneDeathWrongMaxDeath, {value: amountToPlay})
-    //     ).to.be.revertedWith("Exceeded the limit death in a row")
-    // })
+    it("Should create() with wrong amountPerRound", async () => {
+        await expect(
+            game.create('1', 10, 2, {value: amountToPlay})
+        ).to.be.revertedWith("FairFight: Too little amount per round")
+    })
+
+    it("Should create() with wrong rounds", async () => {
+        await expect(
+            game.create(amountForOneDeath, 20, 2, {value: amountToPlay})
+        ).to.be.revertedWith("FairFight: Too much rounds")
+    })
+
+    it("Should create() with wrong amount of players", async () => {
+        await expect(
+            game.create(amountForOneDeath, 10, 3, {value: amountToPlay})
+        ).to.be.revertedWith("FairFight: Too much players")
+    })
 
 })

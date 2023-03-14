@@ -54,12 +54,12 @@ contract FairFight is
         uint256 rounds,
         uint256 playersAmount
     ) external payable whenNotPaused returns (uint256 ID) {
-        require(!currentlyBusy[msg.sender], "FairFight: You open have fight");
+        require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
         require(rounds <= maxRounds, "FairFight: Too much rounds");
         require(playersAmount <= maxPlayers, "FairFight: Too much players");
         require(
             amountPerRound >= minAmountPerRound,
-            "FairFight: Too little amount"
+            "FairFight: Too little amount per round"
         );
         require(
             msg.value == rounds * amountPerRound,
@@ -91,11 +91,10 @@ contract FairFight is
         uint8 v,
         bytes32 s
     ) external nonReentrant {
-        (bool c,,,) = check(ID, amount, r, v, s);
-        require(
-            check()
+        require(check(ID, amount, r, v, s), 'FairFight: You dont have access');
+        Fight storage _fight = fights[ID];
         if (_fight.finishTime == 0) {
-)            _fight.finishTime = block.timestamp;
+            _fight.finishTime = block.timestamp;
         }
         if (playerFightAmount[msg.sender][ID] == 0)
             revert("FairFight: Already sended or you not in game");
@@ -125,7 +124,7 @@ contract FairFight is
             "FairFight: Fight is full"
         );
         require(_fight.finishTime == 0, "FairFight: Fight is over");
-        require(!currentlyBusy[msg.sender], "FairFight: You open have fight");
+        require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
         require(_fight.owner != msg.sender, "FairFight: You fight's owner");
         require(
             playerFightAmount[msg.sender][ID] == 0,
@@ -162,7 +161,8 @@ contract FairFight is
     function userPastFights(
         address player,
         uint256 amountToReturn
-    ) external view returns (Fight[] memory _fights) {
+    ) external view returns (Fight[] memory) {
+        Fight[] memory _fights = new Fight[](amountToReturn);
         uint256 length = playerFullFights[player].length ;
         if (length < amountToReturn) {
             amountToReturn = length;
@@ -170,12 +170,16 @@ contract FairFight is
         uint256 counter;
         for (
             uint256 i = length - 1;
-            i > length - amountToReturn;
-            i--
+            i >= length - amountToReturn;
         ) {
             _fights[counter] = fights[playerFullFights[player][i]];
-            counter++;
+            if (i == 0) break;
+            unchecked { 
+                i--;
+                counter++;
+            }
         }
+        return _fights;
     }
 
     /// @notice Returns chunk of fights

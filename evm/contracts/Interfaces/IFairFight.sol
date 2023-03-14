@@ -43,10 +43,10 @@ interface IFairFight {
         bytes32 s
     ) external;
 
-    function userPastFights(
-        address player,
-        uint256 amountToReturn
-    ) external view returns(Fight[] memory);
+    // function userPastFights(
+    //     address player,
+    //     uint256 amountToReturn
+    // ) external view returns(Fight[] memory);
 
     function getChunkFights(
         uint256 chunkIndex,
