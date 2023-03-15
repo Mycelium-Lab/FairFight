@@ -1,7 +1,53 @@
+import dotenv from "dotenv"
+dotenv.config()
+
 export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
 // const contractAddress = '0xa061c2604F35352F8A7731d0c738f535DAa6411a'//goerli
 // const contractAddress = '0xe7cCffC4F633713C3ee7d8FEe46d1253a1261206' //emerald_test
 // export const contractAddress = '0x09ED6f33Fb905883eb29Ca83f5E591a1DDB3fd25' //emerald main
+export const networks = [
+  {
+      name: "Hardhat",
+      chainid: 31337,
+      rpc: 'http://localhost:8545',
+      currency: 'ETH',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Ganache",
+      chainid: 1337,
+      rpc: 'http://localhost:7545',
+      currency: 'ETH',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Goerli",
+      chainid: 5,
+      rpc: 'https://goerli.infura.io/v3',
+      currency: 'ETH',
+      contractAddress: '',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Emerald Testnet",
+      chainid: 42261,
+      rpc: 'https://testnet.emerald.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+      name: "Emerald Mainnet",
+      chainid: 42262,
+      rpc: 'https://emerald.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+]
+
 export const contractAbi = [
   {
     "inputs": [],

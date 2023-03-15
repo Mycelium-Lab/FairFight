@@ -8,7 +8,7 @@ async function main() {
     const lastGame = await fairFight.lastPlayerFight(acc1.address)
     const fight = await fairFight.fights(lastGame)
     const chainid = (await ethers.provider.getNetwork()).chainId
-    await fairFight.changeSigner(acc1.address)
+    // await fairFight.changeSigner(acc1.address)
     // await fairFight.connect(acc2).join(lastGame, {value: fight.baseAmount})
     const signature1 = await sign(
         fight.ID, 
