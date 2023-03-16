@@ -129,6 +129,7 @@ Room.prototype = {
   },
   sendTo: function (user, message, data) {
     try {
+      console.log(user)
       var socket = this.sockets[user.getId()];
       socket.emit(message, data);
     } catch (error) {
