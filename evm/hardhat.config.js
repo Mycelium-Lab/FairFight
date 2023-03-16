@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
+require('@oasisprotocol/sapphire-hardhat')
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -24,6 +25,15 @@ module.exports = {
       url: "https://emerald.oasis.dev",
       accounts:
         process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+    },
+    sapphire_testnet: {
+      url: "https://testnet.sapphire.oasis.dev",
+      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+      chainId: 0x5aff
+    },
+    sapphire_mainnet: {
+      url: "https://sapphire.oasis.io",
+      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : []
     }
   },
   solidity: {

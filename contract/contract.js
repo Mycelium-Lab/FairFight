@@ -46,6 +46,14 @@ export const networks = [
       contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
+  {
+      name: "Sapphire Test",
+      chainid: 23295,
+      rpc: 'https://testnet.sapphire.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0x64BB70e1e2f776D95dE00676D8332e6aD5217195',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
 ]
 
 export const contractAbi = [
