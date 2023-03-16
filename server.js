@@ -342,31 +342,33 @@ async function getCurrentInGameStatistics(gameID, address, chainid) {
 async function getStatistics(gameID, address, chainid) {
     try {
         const res = await pgClient.query(
-            "SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3",
-            [address, gameID, chainid]
+            "SELECT * FROM statistics WHERE gameid=$1 AND chainid=$2",
+            [gameID, chainid]
         )
-        if (res.rows.length !== 1) {
-            return {
-                gameid: gameID,
-                address: address,
-                chainid: 0,
-                contract: '',
-                amount: 0,
-                kills: 0,
-                deaths: 0,
-                remainingRounds: 0
-            }
+        if (res.rows.length === 0) {
+            return []
+            // {
+            //     gameid: gameID,
+            //     address: address,
+            //     chainid: 0,
+            //     contract: '',
+            //     amount: 0,
+            //     kills: 0,
+            //     deaths: 0,
+            //     remainingRounds: 0
+            // }
         }
-        return {
-            gameid: res.rows[0].gameid,
-            address: res.rows[0].player,
-            chainid: res.rows[0].chainid,
-            contract: res.rows[0].contract,
-            amount: res.rows[0].amount,
-            kills: res.rows[0].kills,
-            deaths: res.rows[0].deaths,
-            remainingRounds: res.rows[0].remainingrounds
-        }
+        return res.rows
+        // {
+        //     gameid: res.rows[0].gameid,
+        //     address: res.rows[0].player,
+        //     chainid: res.rows[0].chainid,
+        //     contract: res.rows[0].contract,
+        //     amount: res.rows[0].amount,
+        //     kills: res.rows[0].kills,
+        //     deaths: res.rows[0].deaths,
+        //     remainingRounds: res.rows[0].remainingrounds
+        // }
     } catch (error) {
         console.error(error)
     }
