@@ -9,8 +9,8 @@ abstract contract FairFightStorage is IFairFight {
 
     bytes32 internal constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    /// @notice Contains minimum token amount allowed for one round
-    /// @return minAmountPerRound minimum token amount for one round
+    /// @notice Contains minimum token amount allowed for one round.
+    /// @return minAmountPerRound - Minimum token amount for one round.
     uint256 public minAmountPerRound;
 
     address internal signer;
@@ -19,24 +19,28 @@ abstract contract FairFightStorage is IFairFight {
     
     uint256 internal fee;
 
-    /// @notice Contains of maximum players
-    /// @return maxPlayers
+    /// @notice Contains maximum players allowed to join fight.
+    /// @return maxPlayers - Maximum players to join.
     uint256 public maxPlayers;
 
-    /// @notice Contains the maximum number of consecutive deaths, which can be understood as rounds
-    /// @return maxDeath maximum number of consecutive deaths
+    /// @notice Contains the maximum number of rounds.
+    /// @return maxRounds - Maximum number of rounds.
     uint256 public maxRounds;
 
-    /// @notice User fights
-    mapping(address => uint256[]) public playerFullFights;
-    mapping(uint256 => bool) internal ownerAddedFight;
+    /// @notice PLayer full fights, by full means that fight was played with another players, not created and withdrawn.
+    mapping(address => uint256[]) internal playerFullFights;
+    
+    /// @notice Contains last played fight ID by player. This ID allows us to see current fight of player.
     mapping(address => uint256) public lastPlayerFight;
 
-    /// @notice Shoes if user currently busy
-    /// @dev User cant have more than 1 game in a moment
+    /// @notice Shoes if player currently busy.
+    /// @dev Player cant have more than one game in a moment.
     mapping(address => bool) public currentlyBusy;
 
-    mapping(address => mapping(uint256 => uint256)) public playerFightAmount;
+    /// @notice Contains data of claimed amount. If player finished game it will be true.
+    mapping(address => mapping(uint256 => bool)) public playerClaimed;
+
+    /// @notice Contains players of the fight.
     mapping(uint256 => address[]) public players;
 
     /// @notice Contains all fights

@@ -39,6 +39,19 @@ contract FairFight is
         fee = _fee;
         minAmountPerRound = _minAmountPerRound;
         maxPlayers = _maxPlayers;
+        //Create dummy Fight at index 0 with ID 0 to avoid collisions with default data type values.
+        Fight memory _fight = Fight({
+            ID: 0,
+            owner: address(0),
+            baseAmount: 0,
+            createTime: 0,
+            finishTime: 0,
+            amountPerRound: 0,
+            rounds: 0,
+            playersAmount: 0
+        });
+        emit CreateFight(0, address(0));
+        fights.push(_fight);
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {
@@ -49,6 +62,11 @@ contract FairFight is
         _unpause();
     }
 
+    /// @notice Creates new fight with provided params. Checks if sender is not busy and all the params are valid. Emits CreateFight event.
+    /// @param amountPerRound - Amount of native currency that we add/subtract to/from the base deposit for kill/death.
+    /// @param rounds - Amount of rounds to play.
+    /// @param playersAmount - Maximum amount of players to join this fight.
+    /// @return ID - Id of created fight.
     function create(
         uint256 amountPerRound,
         uint256 rounds,
@@ -79,11 +97,46 @@ contract FairFight is
         fights.push(_fight);
         players[ID].push(msg.sender);
         currentlyBusy[msg.sender] = true;
-        playerFightAmount[msg.sender][ID] = msg.value;
         lastPlayerFight[msg.sender] = ID;
         emit CreateFight(ID, msg.sender);
+        emit Gas(gasleft());
     }
 
+    /// @notice Allows player to join the fight if he can. Emits JoinFight event.
+    /// @param ID - Id of the fight.
+    function join(uint256 ID) external payable whenNotPaused {
+        Fight memory _fight = fights[ID];
+        require(
+            msg.value == _fight.rounds * _fight.amountPerRound,
+            "FairFight: Wrong amount"
+        );
+        require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
+        require(lastPlayerFight[msg.sender] != ID, "FairFight: You already in fight");
+        require(
+            players[ID].length < _fight.playersAmount,
+            "FairFight: Fight is full"
+        );
+        require(_fight.finishTime == 0, "FairFight: Fight is over");
+        require(_fight.owner != msg.sender, "FairFight: You fight's owner");
+        players[ID].push(msg.sender);
+        currentlyBusy[msg.sender] = true;
+        uint256 playerFullFightsLength = playerFullFights[_fight.owner].length;
+        if (playerFullFightsLength == 0 || playerFullFights[_fight.owner][playerFullFightsLength - 1] != ID) {
+            playerFullFights[_fight.owner].push(ID);
+        }
+        playerFullFights[msg.sender].push(ID);
+        lastPlayerFight[msg.sender] = ID;
+        emit JoinFight(ID, msg.sender);
+        emit Gas(gasleft());
+    }
+
+    /// @notice Finish fight, claim rewards. If amount more than baseAmount than send fee to feeCollector. Emits FinishFight event.
+    /// @dev If fight was already finished we will not update finish time.
+    /// @param ID - Id of the fight.
+    /// @param amount - Amount on the end of the fight.
+    /// @param r - Part of signature.
+    /// @param v - Part of signature.
+    /// @param s - Part of signature.
     function finish(
         uint256 ID,
         uint256 amount,
@@ -92,13 +145,13 @@ contract FairFight is
         bytes32 s
     ) external nonReentrant {
         require(check(ID, amount, r, v, s), 'FairFight: You dont have access');
-        Fight storage _fight = fights[ID];
+        Fight memory _fight = fights[ID];
         if (_fight.finishTime == 0) {
-            _fight.finishTime = block.timestamp;
+            fights[ID].finishTime = block.timestamp;
         }
-        if (playerFightAmount[msg.sender][ID] == 0)
-            revert("FairFight: Already sended or you not in game");
-        playerFightAmount[msg.sender][ID] = 0;
+        if (playerClaimed[msg.sender][ID])
+            revert("FairFight: Already sended");
+        playerClaimed[msg.sender][ID] = true;
         (uint256 toFeeCollector, uint256 toSend) = feeCalc(
             _fight.baseAmount,
             amount
@@ -108,111 +161,83 @@ contract FairFight is
         if (toFeeCollector != 0) {
             (success2, ) = feeCollector.call{value: toFeeCollector}("");
         }
-        require(success, "FairFight: Not success payment");
+        require(success && success2, "FairFight: Not success payment");
         currentlyBusy[msg.sender] = false;
         emit FinishFight(ID, msg.sender, amount);
+        emit Gas(gasleft());
     }
 
-    function join(uint256 ID) external payable whenNotPaused {
-        Fight memory _fight = fights[ID];
-        require(
-            msg.value == _fight.rounds * _fight.amountPerRound,
-            "FairFight: Wrong amount"
-        );
-        require(
-            players[ID].length < _fight.playersAmount,
-            "FairFight: Fight is full"
-        );
-        require(_fight.finishTime == 0, "FairFight: Fight is over");
-        require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
-        require(_fight.owner != msg.sender, "FairFight: You fight's owner");
-        require(
-            playerFightAmount[msg.sender][ID] == 0,
-            "FairFight: You already in it"
-        );
-        players[ID].push(msg.sender);
-        playerFightAmount[msg.sender][ID] = msg.value;
-        currentlyBusy[msg.sender] = true;
-        if (!ownerAddedFight[ID]) {
-            playerFullFights[_fight.owner].push(ID);
-            ownerAddedFight[ID] = true;
-        }
-        playerFullFights[msg.sender].push(ID);
-        lastPlayerFight[msg.sender] = ID;
-        emit JoinFight(ID, msg.sender);
-    }
-
+    /// @notice Withdraw baseAmount from fight and finish it if no one has joined it. Emits Withdraw event.
+    /// @param ID - Id of the fight.
     function withdraw(uint256 ID) external nonReentrant {
-        Fight storage _fight = fights[ID];
+        Fight memory _fight = fights[ID];
         require(
             _fight.owner == msg.sender,
             "FairFight: You're not fight's owner"
         );
         require(_fight.finishTime == 0, "FairFight: Fight is over");
         require(players[ID].length == 1, "FairFight: Fight has players");
-        _fight.finishTime = block.timestamp;
-        playerFightAmount[msg.sender][ID] = 0;
+        fights[ID].finishTime = block.timestamp;
         (bool success, ) = msg.sender.call{value: _fight.baseAmount}("");
         require(success, "FairFight: Not success payment");
         currentlyBusy[msg.sender] = false;
         emit Withdraw(ID, msg.sender);
+        emit Gas(gasleft());
     }
 
-    function userPastFights(
+    /// @notice Returns player's full fights.
+    /// @param player - Player whom fights to get.
+    /// @param amount - Amount of fights to return.
+    /// @return playerFights - Array of fights.
+    function getPlayerFullFights(
         address player,
-        uint256 amountToReturn
+        uint256 amount
     ) external view returns (Fight[] memory) {
-        Fight[] memory _fights = new Fight[](amountToReturn);
+        Fight[] memory playerFights = new Fight[](amount);
         uint256 length = playerFullFights[player].length ;
-        if (length < amountToReturn) {
-            amountToReturn = length;
+        uint256 startIndex = length > amount ? length - amount : 0;
+        for (uint256 i = startIndex; i < length; i++) {
+            uint256 fightId = playerFullFights[player][i];
+            playerFights[i - startIndex] = fights[fightId];
         }
-        uint256 counter;
-        for (
-            uint256 i = length - 1;
-            i >= length - amountToReturn;
-        ) {
-            _fights[counter] = fights[playerFullFights[player][i]];
-            if (i == 0) break;
-            unchecked { 
-                i--;
-                counter++;
-            }
-        }
-        return _fights;
+        return playerFights;
     }
 
-    /// @notice Returns chunk of fights
-    /// @param chunkIndex index of chunk in array
-    /// @dev chunkIndex for example if _fightsAmount = 30 and chunk index = 0 we will return chunk of battles with ids [29...20]
-    /// @dev chunkIndex for example if _fightsAmount = 30 and chunk index = 1 we will return chunk of battles with ids [19...10]
-    /// @dev chunkIndex for example if _fightsAmount = 30 and chunk index = 2 we will return chunk of battles with ids [9...0]
-    /// @param amountToReturn amount of fights to return in one chunk
-    /// @return Fight[]
+    /// @notice Returns chunk of fights.
+    /** 
+        @dev For example if _fightsAmount = 30 and chunk index = 0 we will return chunk of battles with ids [29...20];
+        if _fightsAmount = 30 and chunk index = 10 we will return chunk of battles with ids [19...10];
+        if _fightsAmount = 30 and chunk index = 20 we will return chunk of battles with ids [9...0].
+    **/
+    /// @param index - Index of chunk in array.
+    /// @param amount - Amount of fights to return in one chunk.
+    /// @return chunk - Chunk of Fights. 
     function getChunkFights(
-        uint256 chunkIndex,
-        uint256 amountToReturn
+        uint256 index,
+        uint256 amount
     ) external view returns (Fight[] memory) {
-        Fight[] memory _chunk = new Fight[](amountToReturn);
-        uint256 counter;
-        uint256 _fightsAmount = fights.length;
-        //it can be negative when for example _fightsAmount = 42, fights to return = 10, chunkindex = 5
-        int checkerIfMinus = int(_fightsAmount) -
-            1 -
-            int(chunkIndex) *
-            int(amountToReturn);
-        //create index of last element in chunk
-        uint256 i = checkerIfMinus >= 0
-            ? _fightsAmount - 1 - chunkIndex * amountToReturn
-            : _fightsAmount - 1 - (chunkIndex - 1) * amountToReturn;
-        //create index of first element in chunk
-        uint256 to = i > 10 ? i + 1 - amountToReturn : 0;
-        for (; i >= to; i--) {
-            _chunk[counter] = fights[i];
-            counter++;
-            if (i == 0) break;
+        Fight[] memory chunk = new Fight[](amount);
+        uint256 length = fights.length;
+        require(index < length, "Invalid index");
+
+        uint256 endIndex = length - index > amount ? index + amount : length;
+        for (uint256 i = index; i < endIndex; i++) {
+            chunk[i - index] = fights[length - i - 1];
         }
-        return _chunk;
+
+        return chunk;
+    }
+
+    /// @notice Returns fight players.
+    /// @param ID - Id of the fight.
+    /// @return fightPlayers - Addresses of players of the fight.
+    function getFightPlayers(uint256 ID) external view returns(address[] memory) {
+        uint256 length = players[ID].length;
+        address[] memory fightPlayers = new address[](length);
+        for (uint256 i; i < length; i++) {
+            fightPlayers[i] = players[ID][i];
+        }
+        return fightPlayers;
     }
 
     function check(
@@ -221,20 +246,13 @@ contract FairFight is
         bytes32 r,
         uint8 v,
         bytes32 s
-    ) public view returns (bool) {
+    ) private view returns (bool) {
         bytes32 hash = keccak256(
-            abi.encodePacked(
-                _ID,
-                amount,
-                block.chainid,
-                msg.sender
-            )
+            abi.encodePacked(_ID,amount,block.chainid,msg.sender,address(this))
         );
         return signer == ecrecover(
             keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)),
-            v,
-            r,
-            s
+            v,r,s
         );
     }
 

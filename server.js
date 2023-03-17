@@ -164,8 +164,8 @@ async function createLeaderboard() {
         for (let i = 0; i < (lastID / chunkSize); i++) {
             try {
                 const chunk = await contract.getChunkFinishedBattles(i, chunkSize)
-                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastWeek))]
-                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastMonth))]
+                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastWeek))]
+                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastMonth))]
             } catch (error) {
                 console.log(error)
             }
