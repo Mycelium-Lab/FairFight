@@ -167,7 +167,7 @@ describe("FairFight", function (){
 
     it("Should negative create() with zero", async () => {
         await expect(
-            game.create(amountForOneDeath, 10, 2, {value: '0'})
+            game.create(amountForOneDeath, 1, 2, {value: '0'})
         ).to.be.revertedWith('FairFight: Wrong amount') 
     })
 
@@ -180,7 +180,7 @@ describe("FairFight", function (){
     it("Should negative create() with wrong rounds", async () => {
         await expect(
             game.create(amountForOneDeath, 20, 2, {value: amountToPlay})
-        ).to.be.revertedWith("FairFight: Too much rounds")
+        ).to.be.revertedWith("FairFight: Wrong rounds amount")
     })
 
     it("Should negative create() with wrong amount of players", async () => {

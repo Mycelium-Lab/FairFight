@@ -51,7 +51,7 @@ contract AirDrop is ReentrancyGuard, Ownable {
     /// @param s one of the signature values
     function withdraw(address player, bytes32 r, uint8 v, bytes32 s) public payable nonReentrant isAirDropNotEnded {
         require(alreadyGetTokens[player] == false, "AirDrop: You already get tokens");
-        IFairFight.Fight[] memory userPastBattles = gameContract.userPastFights(player,minBattlesAmount);
+        IFairFight.Fight[] memory userPastBattles = gameContract.getPlayerFullFights(player,minBattlesAmount);
         bool fightsIsOk = true;
         for (uint256 i = 0; i < userPastBattles.length; i++) {
             if (userPastBattles[i].finishTime == 0) {

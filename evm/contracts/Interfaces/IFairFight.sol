@@ -43,7 +43,7 @@ interface IFairFight {
         bytes32 s
     ) external;
 
-    function userPastFights(
+    function getPlayerFullFights(
         address player,
         uint256 amount
     ) external view returns(Fight[] memory);

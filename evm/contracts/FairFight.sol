@@ -73,7 +73,7 @@ contract FairFight is
         uint256 playersAmount
     ) external payable whenNotPaused returns (uint256 ID) {
         require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
-        require(rounds <= maxRounds, "FairFight: Too much rounds");
+        require(rounds != 0 && rounds <= maxRounds, "FairFight: Wrong rounds amount");
         require(playersAmount <= maxPlayers, "FairFight: Too much players");
         require(
             amountPerRound >= minAmountPerRound,
