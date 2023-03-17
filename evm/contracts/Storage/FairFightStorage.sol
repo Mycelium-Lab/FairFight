@@ -38,7 +38,7 @@ abstract contract FairFightStorage is IFairFight {
     mapping(address => bool) internal currentlyBusy;
 
     /// @notice Contains data of claimed amount. If player finished game it will be true.
-    mapping(address => mapping(uint256 => bool)) internal playerClaimed;
+    mapping(address => mapping(uint256 => bool)) public playerClaimed;
 
     /// @notice Contains players of the fight.
     mapping(uint256 => address[]) internal players;

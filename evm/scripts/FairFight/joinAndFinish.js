@@ -4,15 +4,15 @@ const { sign } = require("../../test/utils/sign")
 async function main() {
     const [acc1, acc2] = await ethers.getSigners()
     const FairFight = await ethers.getContractFactory("FairFight")
-    const fairFight = FairFight.attach('0x64BB70e1e2f776D95dE00676D8332e6aD5217195')
+    const fairFight = FairFight.attach('0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0')
     let amountToPlay = ethers.utils.parseEther('1');
     let amountForOneDeath = ethers.utils.parseEther('0.1');
-    await fairFight.create(amountForOneDeath, 10, 2, {value: amountToPlay})
-    const lastGame = await fairFight.lastPlayerFight(acc1.address)
+    // await fairFight.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+    // const lastGame = await fairFight.lastPlayerFight(acc1.address)
     // const fight = await fairFight.fights(lastGame)
-    console.log(lastGame)
+    // console.log(lastGame)
     // const chainid = (await ethers.provider.getNetwork()).chainId
-    // await fairFight.changeSigner(acc1.address)
+    await fairFight.changeSigner(acc1.address)
     // await fairFight.connect(acc2).join(lastGame, {value: fight.baseAmount})
     // const signature1 = await sign(
     //     fight.ID, 

@@ -344,13 +344,15 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
+      console.log('here')
       let balance1;
       let balance2;
       let loserAddress;
       let winnerAddress;
       if (room.users[0] == undefined || room.users[1] == undefined) {
         const fight = await blockchain().contract.fights(room.getFightId())
-        const player2 = await blockchain().contract.players(room.getFightId(),1)
+        const players = await blockchain().contract.getFightPlayers(room.getFightId())
+        const player2 = players[1]
         const exists1 = await redisClient.get(createAmountRedisLink(fight.owner, room.getChainId(), room.getFightId()))
         const exists2 = await redisClient.get(createAmountRedisLink(player2, room.getChainId(), room.getFightId()))
         if (exists1 != null && exists2 != null) {
@@ -398,7 +400,7 @@ function handleSocket(socket) {
       ]
       for (let i = 0; i < signature.length; i++) {
         try {
-          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
+          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
             signatures[i].address,
             signatures[i].fightid,
             signatures[i].amount,
@@ -417,9 +419,9 @@ function handleSocket(socket) {
               `GameID: ${signatures[i].fightid}\n`,
               `Amount: ${signatures[i].amount}\n`,
               `ChainID: ${signatures[i].chainid}`,
-              `v1: ${v1}\n`,
-              `r1: ${r1}\n`,
-              `s1: ${s1}`
+              `v: ${signatures[i].v}\n`,
+              `r: ${signatures[i].r}\n`,
+              `s: ${signatures[i].s}`
             )
           console.log('-------------------')
         }
@@ -499,7 +501,8 @@ function handleSocket(socket) {
       }
 
       const fight = await blockchain().contract.fights(room.getFightId())
-      const player2 = await blockchain().contract.players(room.getFightId(), 1)
+      const players = await blockchain().contract.getFightPlayers(room.getFightId())
+      const player2 = players[1]
       room.amountToLose = fight.amountPerRound.toString()
       room.baseAmount = fight.baseAmount.toString()
       if ((fight.owner == joinData.walletAddress || player2 == joinData.walletAddress) && fight.finishTime == 0) {
@@ -692,14 +695,14 @@ function handleSocket(socket) {
 
   async function signature(amount, address) {
     const network = networks.find(n => n.chainid == room.getChainId())
-    const message = [room.getFightId(), amount, room.getChainId(), address]
-    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160"], message)
+    const message = [room.getFightId(), amount, room.getChainId(), address, network.contractAddress]
+    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160"], message)
     const sign = await blockchain().signer.signMessage(ethers.utils.arrayify(hashMessage));
     const r = sign.substr(0, 66)
     const s = '0x' + sign.substr(66, 64);
     const v = parseInt("0x" + sign.substr(130, 2));
     return {
-      contract: blockchain().contract.address, 
+      contract: network.contractAddress, 
       amount, 
       chainid: room.getChainId(), 
       fightid: room.getFightId(), 

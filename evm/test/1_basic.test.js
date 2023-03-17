@@ -1,7 +1,6 @@
 const { expect } = require("chai");
 const assert = require("assert");
 const { upgrades, ethers } = require("hardhat")
-const web3 = require("web3");
 const { sign } = require("./utils/sign");
 
 describe("FairFight", function (){
@@ -10,6 +9,8 @@ describe("FairFight", function (){
 	let acc2;
 	let acc3;
 	let game;
+    let ethCallGame;
+    let ethCallProvider;
     let amountToPlay = ethers.utils.parseEther('1');
     //if win 1.1 eth
     //amount win with fee equals

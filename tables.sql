@@ -1,33 +1,33 @@
-CREATE TABLE signatures(
-    player VARCHAR(255) NOT NULL,
+CREATE TABLE signatures (
     gameid INT NOT NULL,
-    amount VARCHAR(255) NOT NULL,
+    amount TEXT NOT NULL,
     chainid INT NOT NULL,
-    contract VARCHAR(255) NOT NULL,
+    player TEXT NOT NULL,
+    contract TEXT NOT NULL,
     v       INT NOT NULL,
-    r       VARCHAR(255) NOT NULL,
-    s       VARCHAR(255) NOT NULL
+    r       TEXT NOT NULL,
+    s       TEXT NOT NULL
 );
 
 CREATE TABLE statistics(
     gameid  INT NOT NULL,
-    player VARCHAR(255) NOT NULL,
+    player TEXT NOT NULL,
+    contract TEXT NOT NULL,
     chainid INT NOT NULL,
-    contract VARCHAR(255) NOT NULL,
-    amount VARCHAR(255) NOT NULL,
+    amount TEXT NOT NULL,
     kills  INT NOT NULL,
     deaths  INT NOT NULL,
     remainingRounds INT NOT NULL
 );
 
 CREATE TABLE leaderboard(
-    address TEXT NOT NULL,
+    player TEXT NOT NULL,
     games INT NOT NULL,
     wins INT NOT NULL,
     amountWon FLOAT NOT NULL,
     period INT NOT NULL,
     chainid INT NOT NULL,
-    contract VARCHAR(255) NOT NULL
+    contract TEXT NOT NULL
 );
 
 CREATE TABLE utils(
