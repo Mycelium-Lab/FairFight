@@ -53,6 +53,4 @@ interface IFairFight {
         uint256 amount
     ) external view returns (Fight[] memory);
 
-    event Gas(uint256 gas);
-
 }

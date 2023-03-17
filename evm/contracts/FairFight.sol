@@ -8,12 +8,12 @@ import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.
 
 import "./Storage/FairFightStorage.sol";
 
-contract FairFight is 
+contract FairFight is
     Initializable,
     PausableUpgradeable,
     AccessControlUpgradeable,
     ReentrancyGuardUpgradeable,
-    FairFightStorage 
+    FairFightStorage
 {
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
@@ -73,7 +73,10 @@ contract FairFight is
         uint256 playersAmount
     ) external payable whenNotPaused returns (uint256 ID) {
         require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
-        require(rounds != 0 && rounds <= maxRounds, "FairFight: Wrong rounds amount");
+        require(
+            rounds != 0 && rounds <= maxRounds,
+            "FairFight: Wrong rounds amount"
+        );
         require(playersAmount <= maxPlayers, "FairFight: Too much players");
         require(
             amountPerRound >= minAmountPerRound,
@@ -99,7 +102,6 @@ contract FairFight is
         currentlyBusy[msg.sender] = true;
         lastPlayerFight[msg.sender] = ID;
         emit CreateFight(ID, msg.sender);
-        emit Gas(gasleft());
     }
 
     /// @notice Allows player to join the fight if he can. Emits JoinFight event.
@@ -110,24 +112,25 @@ contract FairFight is
             msg.value == _fight.rounds * _fight.amountPerRound,
             "FairFight: Wrong amount"
         );
+        //it's also prevents from owner to join and another player to join twice
         require(!currentlyBusy[msg.sender], "FairFight: You have open fight");
-        require(lastPlayerFight[msg.sender] != ID, "FairFight: You already in fight");
         require(
             players[ID].length < _fight.playersAmount,
             "FairFight: Fight is full"
         );
         require(_fight.finishTime == 0, "FairFight: Fight is over");
-        require(_fight.owner != msg.sender, "FairFight: You fight's owner");
         players[ID].push(msg.sender);
         currentlyBusy[msg.sender] = true;
         uint256 playerFullFightsLength = playerFullFights[_fight.owner].length;
-        if (playerFullFightsLength == 0 || playerFullFights[_fight.owner][playerFullFightsLength - 1] != ID) {
+        if (
+            playerFullFightsLength == 0 ||
+            playerFullFights[_fight.owner][playerFullFightsLength - 1] != ID
+        ) {
             playerFullFights[_fight.owner].push(ID);
         }
         playerFullFights[msg.sender].push(ID);
         lastPlayerFight[msg.sender] = ID;
         emit JoinFight(ID, msg.sender);
-        emit Gas(gasleft());
     }
 
     /// @notice Finish fight, claim rewards. If amount more than baseAmount than send fee to feeCollector. Emits FinishFight event.
@@ -144,13 +147,12 @@ contract FairFight is
         uint8 v,
         bytes32 s
     ) external nonReentrant {
-        require(check(ID, amount, r, v, s), 'FairFight: You dont have access');
+        require(check(ID, amount, r, v, s), "FairFight: You dont have access");
         Fight memory _fight = fights[ID];
         if (_fight.finishTime == 0) {
             fights[ID].finishTime = block.timestamp;
         }
-        if (playerClaimed[msg.sender][ID])
-            revert("FairFight: Already sended");
+        if (playerClaimed[msg.sender][ID]) revert("FairFight: Already sended");
         playerClaimed[msg.sender][ID] = true;
         (uint256 toFeeCollector, uint256 toSend) = feeCalc(
             _fight.baseAmount,
@@ -164,7 +166,6 @@ contract FairFight is
         require(success && success2, "FairFight: Not success payment");
         currentlyBusy[msg.sender] = false;
         emit FinishFight(ID, msg.sender, amount);
-        emit Gas(gasleft());
     }
 
     /// @notice Withdraw baseAmount from fight and finish it if no one has joined it. Emits Withdraw event.
@@ -182,7 +183,6 @@ contract FairFight is
         require(success, "FairFight: Not success payment");
         currentlyBusy[msg.sender] = false;
         emit Withdraw(ID, msg.sender);
-        emit Gas(gasleft());
     }
 
     /// @notice Returns player's full fights.
@@ -194,7 +194,7 @@ contract FairFight is
         uint256 amount
     ) external view returns (Fight[] memory) {
         Fight[] memory playerFights = new Fight[](amount);
-        uint256 length = playerFullFights[player].length ;
+        uint256 length = playerFullFights[player].length;
         uint256 startIndex = length > amount ? length - amount : 0;
         for (uint256 i = startIndex; i < length; i++) {
             uint256 fightId = playerFullFights[player][i];
@@ -211,7 +211,7 @@ contract FairFight is
     **/
     /// @param index - Index of chunk in array.
     /// @param amount - Amount of fights to return in one chunk.
-    /// @return chunk - Chunk of Fights. 
+    /// @return chunk - Chunk of Fights.
     function getChunkFights(
         uint256 index,
         uint256 amount
@@ -231,7 +231,9 @@ contract FairFight is
     /// @notice Returns fight players.
     /// @param ID - Id of the fight.
     /// @return fightPlayers - Addresses of players of the fight.
-    function getFightPlayers(uint256 ID) external view returns(address[] memory) {
+    function getFightPlayers(
+        uint256 ID
+    ) external view returns (address[] memory) {
         uint256 length = players[ID].length;
         address[] memory fightPlayers = new address[](length);
         for (uint256 i; i < length; i++) {
@@ -248,32 +250,53 @@ contract FairFight is
         bytes32 s
     ) private view returns (bool) {
         bytes32 hash = keccak256(
-            abi.encodePacked(_ID,amount,block.chainid,msg.sender,address(this))
+            abi.encodePacked(
+                _ID,
+                amount,
+                block.chainid,
+                msg.sender,
+                address(this)
+            )
         );
-        return signer == ecrecover(
-            keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)),
-            v,r,s
-        );
+        return
+            signer ==
+            ecrecover(
+                keccak256(
+                    abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)
+                ),
+                v,
+                r,
+                s
+            );
     }
 
-    function feeCalc(uint256 _baseAmount, uint256 _amount) private view returns(uint256 _fee, uint256 _toSend) {
+    function feeCalc(
+        uint256 _baseAmount,
+        uint256 _amount
+    ) private view returns (uint256 _fee, uint256 _toSend) {
         if (_amount > _baseAmount) {
-            _toSend = _amount - _amount * fee / 10000;
+            _toSend = _amount - (_amount * fee) / 10000;
             _fee = _amount - _toSend;
         } else {
             _toSend = _amount;
         }
     }
 
-    function changeMinAmountPerRound(uint256 _minAmountPerRound) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeMinAmountPerRound(
+        uint256 _minAmountPerRound
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         minAmountPerRound = _minAmountPerRound;
     }
 
-    function changeSigner(address _signer) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeSigner(
+        address _signer
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         signer = _signer;
     }
 
-    function changeFeeCollector(address _feeCollector) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeFeeCollector(
+        address _feeCollector
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         feeCollector = _feeCollector;
     }
 
@@ -281,12 +304,15 @@ contract FairFight is
         fee = _fee;
     }
 
-    function changeMaxPlayers(uint256 _maxPlayers) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeMaxPlayers(
+        uint256 _maxPlayers
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         maxPlayers = _maxPlayers;
     }
 
-    function changeMaxRounds(uint256 _maxRounds) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeMaxRounds(
+        uint256 _maxRounds
+    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
         maxRounds = _maxRounds;
     }
-
 }

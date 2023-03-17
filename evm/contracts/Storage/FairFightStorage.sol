@@ -29,19 +29,19 @@ abstract contract FairFightStorage is IFairFight {
 
     /// @notice PLayer full fights, by full means that fight was played with another players, not created and withdrawn.
     mapping(address => uint256[]) internal playerFullFights;
-    
+
     /// @notice Contains last played fight ID by player. This ID allows us to see current fight of player.
     mapping(address => uint256) public lastPlayerFight;
 
     /// @notice Shoes if player currently busy.
     /// @dev Player cant have more than one game in a moment.
-    mapping(address => bool) public currentlyBusy;
+    mapping(address => bool) internal currentlyBusy;
 
     /// @notice Contains data of claimed amount. If player finished game it will be true.
-    mapping(address => mapping(uint256 => bool)) public playerClaimed;
+    mapping(address => mapping(uint256 => bool)) internal playerClaimed;
 
     /// @notice Contains players of the fight.
-    mapping(uint256 => address[]) public players;
+    mapping(uint256 => address[]) internal players;
 
     /// @notice Contains all fights
     Fight[] public fights;
