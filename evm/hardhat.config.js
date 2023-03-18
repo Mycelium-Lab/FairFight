@@ -34,6 +34,10 @@ module.exports = {
     sapphire_mainnet: {
       url: "https://sapphire.oasis.io",
       accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : []
+    },
+    scale: {
+      url: "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix",
+      accounts: [process.env.PRIVATE_KEY]
     }
   },
   solidity: {

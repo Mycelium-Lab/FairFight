@@ -54,6 +54,15 @@ export const networks = [
       contractAddress: '0x64BB70e1e2f776D95dE00676D8332e6aD5217195',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
+  {
+      name: "staging-fast-active-bellatrix",
+      chainid: 1351057110,
+      rpc: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
+      currency: 'sFUEL',
+      explorer: 'https://staging-fast-active-bellatrix.explorer.staging-v3.skalenodes.com',
+      contractAddress: '0xC8272b926504bf3bD1844e7444e1087c9f972283',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  }
 ]
 
 export const contractAbi = [
