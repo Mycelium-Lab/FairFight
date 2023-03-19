@@ -339,21 +339,17 @@ summary::-webkit-details-marker {
     -moz-border-sizing: border-box;
     border-sizing: border-box;
   }
-/* .dropdown {
+.dropdown {
     position: relative;
 }
 .dropdown a {
     text-decoration: none;
-} */
+}
 .dropdown [data-toggle="dropdown"] {
     display: block;
     color: white;
-    /* background: rgb(241, 91, 10);
-    -moz-box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
-    -webkit-box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
-    box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);*/
-    padding: 5px;
+    padding: 6px;
+    padding-right:13.5px;
 }
 
 .dropdown [data-toggle="dropdown"]:before {
@@ -362,8 +358,8 @@ summary::-webkit-details-marker {
     content: '\25BC';
     font-size: 0.7em;
     color: #fff;
-    top: 10px;
-    right: 10px; 
+    top: 12px;
+    right: 11px; 
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
@@ -449,6 +445,8 @@ summary::-webkit-details-marker {
     -webkit-transition: -webkit-transform 0.6s;
     transition: transform 0.6s;
 }
+ 
+
 
 @keyframes showAnimation {
 0% {
