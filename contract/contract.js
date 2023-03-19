@@ -43,7 +43,7 @@ export const networks = [
       chainid: 42262,
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
-      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      contractAddress: '0xD0f6192Bb423F31ff8468938FE97ed0fE2aF9b6e',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {

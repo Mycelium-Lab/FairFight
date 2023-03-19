@@ -2,7 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
-require('@oasisprotocol/sapphire-hardhat')
+require('@oasisprotocol/sapphire-paratime');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
