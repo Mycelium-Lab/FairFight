@@ -2,14 +2,11 @@
 <html>
 
 <head>
-	<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-TJQ72JV');</script>
-	<!-- End Google Tag Manager -->
-	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0VNYJWLM8"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -26,7 +23,6 @@
 	<link rel="stylesheet" href="/styles/custom.css">
 	<link rel="stylesheet" href="/media/fonts/stylesheet.css">
 	<link rel="icon" type="image/png" href="/media/favicon.png">
-	<!-- <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script> -->
 
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
 		integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
@@ -38,15 +34,14 @@
 	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
 	<script type="module" src="/index.js"></script>
 	<script type="module" src="/modules/airdrop.js"></script>
+	<script type="module" src="/modules/networks.js"></script>
 	<script type="module" src="/modules/leaderboard.js"></script>
 	<script src="/custom.js"></script>
 </head>
 
 <body>
-        <!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ72JV"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
 			
 	<div id="start">
 		<header id="header">
@@ -57,9 +52,18 @@
 			<button class="createGame btn btn-white btn-big" style="display: none;" id="airdrop-modal-open">
 				AirDrop
 			</button>
-			<button class="createGame btn btn-white btn-big" id="leaderboard-modal-open">
+			<!-- <button class="createGame btn btn-white btn-big" id="leaderboard-modal-open">
 				Leaderboard
 			</button>
+			<div class="dropdown createGame btn btn-white btn-big">
+					<input type="checkbox" />
+					<a href="#" data-toggle="dropdown" >Change Network</a>
+					<ul class="dropdown-menu" id="networks">
+						<li value="42262" class="network-deactive"><a href="/">Emerald</a></li>
+						<li value="31337" class="network-deactive"><a href="/?network=31337">Sapphire</a></li>
+						<li value="1351057110" class="network-deactive"><a href="/?network=1351057110">Scale</a></li>
+					</ul>
+			</div> -->
 			<div class="startBtn" id="disconnect" style="display:none">
 				<span>Oasis</span>
 				<span id="disconnect-address"></span>
@@ -144,7 +148,7 @@
 								<p>4. Bridging ROSE from Oasis Wallet to MetaMask.</p>
 								
 								</div>
-								<p class="howtobuy-video"><iframe src="//player.vimple.ru/iframe/61a462b8424e4aaca664fdce222ba5ef" width="390" height="250" frameborder="0" style="z-index:2147483647;" allowfullscreen></iframe></p>
+								<!-- <p class="howtobuy-video"><iframe src="//player.vimple.ru/iframe/61a462b8424e4aaca664fdce222ba5ef" width="390" height="250" frameborder="0" style="z-index:2147483647;" allowfullscreen></iframe></p> -->
 						</div>
 					</div>
 					<h1 id="walletHeaderDisconnect" style="display:none">Disconnect wallet</h1>

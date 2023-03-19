@@ -1,14 +1,56 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.16;
+pragma solidity 0.8.19;
 
 interface IFairFight {
+    struct Fight {
+        uint256 ID;
+        address owner;
+        uint256 baseAmount;
+        uint256 createTime;
+        uint256 finishTime;
+        uint256 amountPerRound;
+        uint256 rounds;
+        uint256 playersAmount;
+    }
 
-    function createBattle(uint256 amountForOneDeath, uint256 amount, address token) external;
-    function joinBattle(uint256 ID) external;
-    function finishBattle(uint256 ID) external;
-    
-    event CreateBattle(uint256 ID, uint256 amount, uint256 amountForOneDeath, address owner, uint256 battleCreatedTimestamp);
-    event JoinBattle(uint256 ID, address player2, uint256 timestamp);
-    event FinishBattle(uint256 ID, uint256 player1Amount, uint256 player2Amount, uint256 battleFinishedTimestamp);
+    event CreateFight(uint256 indexed ID, address indexed owner);
+
+    event JoinFight(uint256 indexed ID, address indexed player);
+
+    event FinishFight(
+        uint256 indexed ID,
+        address indexed player,
+        uint256 amount
+    );
+
+    event Withdraw(uint256 indexed ID, address indexed owner);
+
+    function create(
+        uint256 amountPerRound,
+        uint256 rounds,
+        uint256 playersAmount
+    ) external payable returns (uint256 ID);
+
+    function join (uint256 _ID) external payable;
+
+    function withdraw (uint256 ID) external;
+
+    function finish(
+        uint256 ID,
+        uint256 amount,
+        bytes32 r,
+        uint8 v,
+        bytes32 s
+    ) external;
+
+    function getPlayerFullFights(
+        address player,
+        uint256 amount
+    ) external view returns(Fight[] memory);
+
+    function getChunkFights(
+        uint256 index,
+        uint256 amount
+    ) external view returns (Fight[] memory);
 
 }

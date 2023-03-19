@@ -9,7 +9,7 @@ import ethers from "ethers"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
-import { contractAbi, contractAddress } from "./contract/contract.js"
+import { contractAbi, contractAddress, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 
 const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
@@ -164,8 +164,8 @@ async function createLeaderboard() {
         for (let i = 0; i < (lastID / chunkSize); i++) {
             try {
                 const chunk = await contract.getChunkFinishedBattles(i, chunkSize)
-                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastWeek))]
-                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => v.player2 !== ethers.constants.AddressZero && v.finished && parseInt(v.battleFinishedTimestamp) > unixDateLastMonth))]
+                allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastWeek))]
+                allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastMonth))]
             } catch (error) {
                 console.log(error)
             }
@@ -263,24 +263,30 @@ async function getLeaderboard(res) {
     }
 }
 
-async function getSignature(gameID, address) {
+async function getSignature(gameID, address, chainid) {
     try {
         const res = await pgClient.query(
-            'SELECT * FROM signatures WHERE address1=$1 AND gameid=$2',
-            [address, gameID]
+            'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
+            [address, gameID, chainid]
         )
         if (res.rows.length === 0) {
             return {
-                player1Amount: '',
-                player2Amount: '',
+                player: '',
+                gameid: '',
+                amount: '',
+                chainid: '',
+                contract: '',
                 v: '',
                 r: '',
                 s: '' 
             }
         }
         return {
-            player1Amount: res.rows[0].player1amount,
-            player2Amount: res.rows[0].player2amount,
+            player: res.rows[0].player,
+            amount: res.rows[0].amount,
+            gameid: res.rows[0].gameid,
+            contract: res.rows[0].contract,
+            chainid,
             v: res.rows[0].v,
             r: res.rows[0].r,
             s: res.rows[0].s
@@ -290,12 +296,12 @@ async function getSignature(gameID, address) {
     }
 }
 
-async function getCurrentInGameStatistics(gameID, address) {
+async function getCurrentInGameStatistics(gameID, address, chainid) {
     try {
-        const remainingRounds = await redisClient.get(gameID)
-        const kills = await redisClient.get(`${address}_kills`)
-        const deaths = await redisClient.get(`${address}_deaths`)
-        const balance = await redisClient.get(address)
+        const remainingRounds = await redisClient.get(`${gameID}&network=${chainid}`)
+        const kills = await redisClient.get(`${address}_${gameID}_${chainid}_kills`)
+        const deaths = await redisClient.get(`${address}_${gameID}_${chainid}_deaths`)
+        const balance = await redisClient.get(`${address}_${gameID}_${chainid}_amount`)
         if (
             remainingRounds == null 
             || 
@@ -303,10 +309,13 @@ async function getCurrentInGameStatistics(gameID, address) {
             || 
             deaths == null 
         ) {
-            const stats = await getStatistics(gameID, address)
+            const stats = await getStatistics(gameID, address, chainid)
             return {
                 gameid: stats.gameid,
                 address: stats.address,
+                chainid,
+                contract: stats.contract,
+                amount: stats.amount,
                 kills: stats.kills,
                 deaths: stats.deaths,
                 remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
@@ -316,6 +325,9 @@ async function getCurrentInGameStatistics(gameID, address) {
             return {
                 gameid: gameID,
                 address,
+                chainid,
+                contract: networks.find(n => n.chainid == chainid).contractAddress,
+                amount: 0,
                 kills,
                 deaths,
                 remainingRounds,
@@ -327,28 +339,36 @@ async function getCurrentInGameStatistics(gameID, address) {
     }
 }
 
-async function getStatistics(gameID, address) {
+async function getStatistics(gameID, address, chainid) {
     try {
         const res = await pgClient.query(
-            "SELECT * FROM statistics WHERE address=$1 AND gameid=$2",
-            [address, gameID]
+            "SELECT * FROM statistics WHERE gameid=$1 AND chainid=$2",
+            [gameID, chainid]
         )
-        if (res.rows.length !== 1) {
-            return {
-                gameid: gameID,
-                address: address,
-                kills: 0,
-                deaths: 0,
-                remainingRounds: 0
-            }
+        if (res.rows.length === 0) {
+            return []
+            // {
+            //     gameid: gameID,
+            //     address: address,
+            //     chainid: 0,
+            //     contract: '',
+            //     amount: 0,
+            //     kills: 0,
+            //     deaths: 0,
+            //     remainingRounds: 0
+            // }
         }
-        return {
-            gameid: res.rows[0].gameid,
-            address: res.rows[0].address,
-            kills: res.rows[0].kills,
-            deaths: res.rows[0].deaths,
-            remainingRounds: res.rows[0].remainingrounds
-        }
+        return res.rows
+        // {
+        //     gameid: res.rows[0].gameid,
+        //     address: res.rows[0].player,
+        //     chainid: res.rows[0].chainid,
+        //     contract: res.rows[0].contract,
+        //     amount: res.rows[0].amount,
+        //     kills: res.rows[0].kills,
+        //     deaths: res.rows[0].deaths,
+        //     remainingRounds: res.rows[0].remainingrounds
+        // }
     } catch (error) {
         console.error(error)
     }
@@ -377,7 +397,7 @@ server.get('/sign', async (req, res) => {
     ?
     res.redirect('/maintenance')
     :
-    res.json(await getSignature(req.query.gameID, req.query.address))
+    res.json(await getSignature(req.query.gameID, req.query.address, req.query.chainid))
 })
 
 server.get('/statistics', async (req, res) => {
@@ -385,7 +405,7 @@ server.get('/statistics', async (req, res) => {
     ?
     res.redirect('/maintenance')
     :
-    res.json(await getStatistics(req.query.gameID, req.query.address))
+    res.json(await getStatistics(req.query.gameID, req.query.address, req.query.chainid))
 })
 
 server.get('/balance', async (req, res) => {
@@ -393,7 +413,7 @@ server.get('/balance', async (req, res) => {
     ?
     res.redirect('/maintenance')
     :
-    res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address))
+    res.json(await getCurrentInGameStatistics(req.query.gameID, req.query.address, req.query.chainid))
 })
 
 server.get('/leaderboard', async (req, res) => {

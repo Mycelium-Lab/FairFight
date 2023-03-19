@@ -220,7 +220,8 @@ a {
 }
 
 #confirm_finish,
-#finishGame {
+#finishGame,
+#enemy_finishing_game_button {
   background: var(--color-btn);
   font-size: 20px;
   font-weight: 500;
