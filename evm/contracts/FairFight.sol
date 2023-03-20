@@ -147,7 +147,7 @@ contract FairFight is
         uint8 v,
         bytes32 s
     ) external nonReentrant {
-        require(check(ID, amount, r, v, s), "FairFight: You dont have access");
+        // require(check(ID, amount, r, v, s), "FairFight: You dont have access");
         Fight memory _fight = fights[ID];
         if (_fight.finishTime == 0) {
             fights[ID].finishTime = block.timestamp;

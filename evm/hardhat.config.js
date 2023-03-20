@@ -3,6 +3,7 @@ require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
 require('@oasisprotocol/sapphire-paratime');
+require('@oasisprotocol/sapphire-hardhat');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
     emerald_testnet: {
       url: "https://testnet.emerald.oasis.dev",
       accounts:
-        process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+        process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD,'f5567360ea204ac2d158f02b4385539dc68a9beb5a8a93bc44ee375b2d04caf9'] : [],
     },
     emerald_mainnet: {
       url: "https://emerald.oasis.dev",
@@ -37,7 +38,11 @@ module.exports = {
     },
     scale: {
       url: "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix",
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: [process.env.PRIVATE_KEY,'f5567360ea204ac2d158f02b4385539dc68a9beb5a8a93bc44ee375b2d04caf9']
+    },
+    scale1: {
+      url: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
+      accounts: [process.env.PRIVATE_KEY,'f5567360ea204ac2d158f02b4385539dc68a9beb5a8a93bc44ee375b2d04caf9']
     }
   },
   solidity: {

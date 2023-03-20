@@ -60,8 +60,17 @@ export const networks = [
       rpc: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
       currency: 'sFUEL',
       explorer: 'https://staging-fast-active-bellatrix.explorer.staging-v3.skalenodes.com',
-      contractAddress: '0xC8272b926504bf3bD1844e7444e1087c9f972283',
+      contractAddress: '0xB0993755B388c1223Da692A3F9622D7B7111E55e',
       privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+    name: 'Scale Test',
+    chainid: 503129905,
+    rpc: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
+    contractAddress: '0xDD5259328dBd630F3F2346af3Cc55CEf5364AFD1',
+    currency: 'sFUEL',
+    explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
+    privateKey: process.env.PRIVATE_KEY
   }
 ]
 
