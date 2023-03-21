@@ -391,10 +391,27 @@ summary::-webkit-details-marker {
     -moz-animation: hideAnimation 0.4s ease-out;
     -webkit-animation: hideAnimation 0.4s ease-out;
 }
-.dropdown > .dropdown-menu li {
+.network-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.dropdown-menu li {
+    display: flex;
+}
+
+.dropdown-menu li img {
+    margin-right: 10px;
+}
+
+/* .dropdown-menu li a {
+    display: inline-block;
+    float: left;
+} */
+.dropdown > .dropdown-menu a li {
     padding: 0;
 }
-.dropdown > .dropdown-menu li a {
+.dropdown > .dropdown-menu a {
     display: block;
     color: black;
     -moz-box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
@@ -402,7 +419,7 @@ summary::-webkit-details-marker {
     box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
     padding: 10px 10px;
 }
-.dropdown > .dropdown-menu li a:hover {
+.dropdown > .dropdown-menu a:hover {
     background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 .network-deactive {
