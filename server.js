@@ -136,11 +136,11 @@ async function sendTokensSecondTime(req, res) {
     }
 }
 
-cron.schedule("6 6 6 * * *", async () => {
-    await createLeaderboard()
-}, {
-    timezone: 'Europe/Moscow'
-})
+// cron.schedule("6 6 6 * * *", async () => {
+//     await createLeaderboard()
+// }, {
+//     timezone: 'Europe/Moscow'
+// })
 
 async function createLeaderboard() {
     try {

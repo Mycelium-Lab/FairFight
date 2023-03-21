@@ -436,7 +436,8 @@ function handleSocket(socket) {
       } catch (error) {
         console.log(error)
         console.log('-------------------')
-        console.log(
+        console.lo    console.log(networkSelect)
+        g(
           'Error with data statistics:\n',
           `GameID: ${room.getFightId()}`,
           `ChainID: ${room.getChainId()}`,
