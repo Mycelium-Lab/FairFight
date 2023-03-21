@@ -61,6 +61,8 @@
 					<ul class="dropdown-menu" id="networks">
 						<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Emerald</li></a>
 						<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Scale</li></a>
+						<a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>
+					
 					</ul>
 			</div>
 			<div class="startBtn" id="disconnect" style="display:none">
@@ -176,8 +178,15 @@
 								</div>
 							</div>
 							<div class="modal__row">
+								<div>Select a token: 
+									<div id="select-token-list" class="container-token">
+										
+									</div>
+								</div>
+							</div>
+							<div class="modal__row">
 								<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
-										id="amountPerDeath" placeholder="ROSE" required /></div>
+										id="amountPerDeath" name="amountPerDeath" required /></div>
 								<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
 										id="amountToPlay" min="1" max="255" required /></div>
 							</div>
@@ -188,7 +197,7 @@
 							</div>
 
 							<button class="createGame btn btn-white btn-big" disabled="disabled"
-								id="createGame">Create</button>
+								id="createGame"></button>
 						</div>
 					</div>
 					<div id="confirmation_modal" class="modal">

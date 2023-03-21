@@ -11,7 +11,7 @@ export const networks = [
       chainid: 31337,
       rpc: 'http://localhost:8545',
       currency: 'ETH',
-      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      contractAddress: '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9',
       privateKey: process.env.PRIVATE_KEY_TEST
   },
   {
@@ -94,6 +94,12 @@ export const contractAbi = [
         "internalType": "address",
         "name": "owner",
         "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "token",
+        "type": "address"
       }
     ],
     "name": "CreateFight",
@@ -119,6 +125,12 @@ export const contractAbi = [
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "token",
+        "type": "address"
       }
     ],
     "name": "FinishFight",
@@ -150,6 +162,12 @@ export const contractAbi = [
         "indexed": true,
         "internalType": "address",
         "name": "player",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "token",
         "type": "address"
       }
     ],
@@ -271,6 +289,12 @@ export const contractAbi = [
         "internalType": "address",
         "name": "owner",
         "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "contract IERC20",
+        "name": "token",
+        "type": "address"
       }
     ],
     "name": "Withdraw",
@@ -344,6 +368,11 @@ export const contractAbi = [
   {
     "inputs": [
       {
+        "internalType": "contract IERC20",
+        "name": "_token",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_minAmountPerRound",
         "type": "uint256"
@@ -383,6 +412,11 @@ export const contractAbi = [
         "internalType": "uint256",
         "name": "playersAmount",
         "type": "uint256"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "token",
+        "type": "address"
       }
     ],
     "name": "create",
@@ -414,6 +448,11 @@ export const contractAbi = [
       {
         "internalType": "address",
         "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IERC20",
+        "name": "token",
         "type": "address"
       },
       {
@@ -511,6 +550,11 @@ export const contractAbi = [
             "type": "address"
           },
           {
+            "internalType": "contract IERC20",
+            "name": "token",
+            "type": "address"
+          },
+          {
             "internalType": "uint256",
             "name": "baseAmount",
             "type": "uint256"
@@ -593,6 +637,11 @@ export const contractAbi = [
           {
             "internalType": "address",
             "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IERC20",
+            "name": "token",
             "type": "address"
           },
           {
@@ -792,7 +841,13 @@ export const contractAbi = [
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "name": "minAmountPerRound",
     "outputs": [
       {

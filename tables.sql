@@ -1,6 +1,7 @@
 CREATE TABLE signatures (
     gameid INT NOT NULL,
     amount TEXT NOT NULL,
+    token TEXT NOT NULL,
     chainid INT NOT NULL,
     player TEXT NOT NULL,
     contract TEXT NOT NULL,

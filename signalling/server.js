@@ -375,7 +375,8 @@ function handleSocket(socket) {
         loserAddress,
         winnerAddress,
         loserAmount: balance1,
-        winnerAmount: balance2
+        winnerAmount: balance2,
+        token: fight.token
       }).then(() => {
         Object.entries(room.sockets).forEach(([key, value]) => {
           if (value != null) {
@@ -400,7 +401,7 @@ function handleSocket(socket) {
       ]
       for (let i = 0; i < signature.length; i++) {
         try {
-          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
+          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
             signatures[i].address,
             signatures[i].fightid,
             signatures[i].amount,
@@ -408,7 +409,8 @@ function handleSocket(socket) {
             signatures[i].contract,
             signatures[i].v,
             signatures[i].r,
-            signatures[i].s
+            signatures[i].s,
+            data.token
           ])
         } catch (error) {
           console.log(error)
@@ -436,8 +438,7 @@ function handleSocket(socket) {
       } catch (error) {
         console.log(error)
         console.log('-------------------')
-        console.lo    console.log(networkSelect)
-        g(
+        console.log(
           'Error with data statistics:\n',
           `GameID: ${room.getFightId()}`,
           `ChainID: ${room.getChainId()}`,

@@ -675,3 +675,42 @@ summary::-webkit-details-marker {
     transform: scaleY(0);
 }
 }
+
+.container-token {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.figure {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.token-active {
+    border-color: #ff7c06;
+}
+
+.token-deactive {
+    border-color: #c6c6c6;
+}
+
+.figure img {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    margin: 5px 10px 5px 10px;
+}
+
+.caption {
+    font-size: 16px;
+    font-weight: 450;
+    text-align:justify;
+    margin-top: 3.5px;
+    margin-right: 10px;
+}
+  
