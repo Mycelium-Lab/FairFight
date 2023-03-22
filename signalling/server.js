@@ -87,6 +87,7 @@ function Room(name) {
   this.roomName = `ID=${fightid}&network=${chainid}`;
   this.fightid = fightid;
   this.chainid = chainid;
+  this.rounds = 0;
   this.users = [];
   this.sockets = {};
   this.finished = false;
@@ -94,6 +95,9 @@ function Room(name) {
 Room.prototype = {
   getName: function () {
     return this.roomName;
+  },
+  getRounds: function () {
+    return this.rounds;
   },
   getFightId: function () {
     return this.fightid;
@@ -219,13 +223,13 @@ function handleSocket(socket) {
           ])
           socket.emit("update_balance", {
             address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].amount, killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-            amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2
+            amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2, rounds: room.getRounds()
           })
         }, 1000)
       } else {
         socket.emit("update_balance", {
           address1: room.users[1].walletAddress, amount1: balance2.toString(), killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-          amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2
+          amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
         })
       }
     } catch (error) {
@@ -270,7 +274,7 @@ function handleSocket(socket) {
                   socket.to(value.id).emit("update_balance", {
                     address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
                     amountToLose: room.amountToLose,
-                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
                   })
                 }
               })
@@ -289,7 +293,7 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
             })
           }
         })
@@ -314,7 +318,7 @@ function handleSocket(socket) {
                 socket.to(value.id).emit("update_balance", {
                   address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
                   amountToLose: room.amountToLose,
-                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
                 })
               }
             })
@@ -330,7 +334,7 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
             })
           }
         })
@@ -509,6 +513,7 @@ function handleSocket(socket) {
       const player2 = players[1]
       room.amountToLose = fight.amountPerRound.toString()
       room.baseAmount = fight.baseAmount.toString()
+      room.rounds = fight.rounds.toString()
       if ((fight.owner == joinData.walletAddress || player2 == joinData.walletAddress) && fight.finishTime == 0) {
         const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress))
         const roundsExists = await redisClient.get(createRoundsRedisLink())
