@@ -55,8 +55,9 @@
 			<!-- <button class="createGame btn btn-white btn-big" id="leaderboard-modal-open">
 				Leaderboard
 			</button> -->
-			<div class="dropdown createGame btn btn-white btn-big">
-					<input type="checkbox" />
+			<div class="header-right">
+				<div class="dropdown createGame btn btn-white btn-big">
+					<input type="checkbox" id="dropdown-check"/>
 					<a href="#" data-toggle="dropdown" >Change Network</a>
 					<ul class="dropdown-menu" id="networks">
 						<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Emerald</li></a>
@@ -64,12 +65,13 @@
 						<a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>
 					
 					</ul>
+				</div>
+				<div class="startBtn" id="disconnect" style="display:none">
+					<span id="network_name">Oasis</span>
+					<span id="disconnect-address"></span>
+				</div>
+				<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
 			</div>
-			<div class="startBtn" id="disconnect" style="display:none">
-				<span id="network_name">Oasis</span>
-				<span id="disconnect-address"></span>
-			</div>
-			<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
 		</header>
 		<div id="wrapper">
 			<img src="/media/monetki.png" alt="" class="wrapper__monetki">

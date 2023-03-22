@@ -99,6 +99,14 @@ a {
   padding: 0 65px;
 }
 
+.header-right {
+  display: flex;
+}
+
+.header-right .createGame {
+  margin-right: 20px;
+}
+
 @media (max-width: 1023px) {
   #header {
     height: 70px;

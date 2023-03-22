@@ -13,6 +13,7 @@ CREATE TABLE signatures (
 CREATE TABLE statistics(
     gameid  INT NOT NULL,
     player TEXT NOT NULL,
+    token TEXT NOT NULL,
     contract TEXT NOT NULL,
     chainid INT NOT NULL,
     amount TEXT NOT NULL,

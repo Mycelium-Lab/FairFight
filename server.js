@@ -273,6 +273,7 @@ async function getSignature(gameID, address, chainid) {
             return {
                 player: '',
                 gameid: '',
+                token: '',
                 amount: '',
                 chainid: '',
                 contract: '',
@@ -285,6 +286,7 @@ async function getSignature(gameID, address, chainid) {
             player: res.rows[0].player,
             amount: res.rows[0].amount,
             gameid: res.rows[0].gameid,
+            token: res.rows[0].token,
             contract: res.rows[0].contract,
             chainid,
             v: res.rows[0].v,
@@ -298,10 +300,11 @@ async function getSignature(gameID, address, chainid) {
 
 async function getCurrentInGameStatistics(gameID, address, chainid) {
     try {
-        const remainingRounds = await redisClient.get(`${gameID}&network=${chainid}`)
+        const remainingRounds = await redisClient.get(`ID=${gameID}&network=${chainid}`)
         const kills = await redisClient.get(`${address}_${gameID}_${chainid}_kills`)
         const deaths = await redisClient.get(`${address}_${gameID}_${chainid}_deaths`)
         const balance = await redisClient.get(`${address}_${gameID}_${chainid}_amount`)
+        console.log(remainingRounds, kills, deaths, balance)
         if (
             remainingRounds == null 
             || 
@@ -309,17 +312,31 @@ async function getCurrentInGameStatistics(gameID, address, chainid) {
             || 
             deaths == null 
         ) {
-            const stats = await getStatistics(gameID, address, chainid)
-            return {
-                gameid: stats.gameid,
-                address: stats.address,
-                chainid,
-                contract: stats.contract,
-                amount: stats.amount,
-                kills: stats.kills,
-                deaths: stats.deaths,
-                remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
-                balance
+            const res = await pgClient.query(
+                "SELECT * FROM statistics WHERE gameid=$1 AND chainid=$2 AND player=$3",
+                [gameID, chainid, address]
+            )
+            if (res.rows.length != 0) {
+                const stats = res.rows[0]
+                return {
+                    gameid: stats.gameid,
+                    address: stats.player,
+                    token: stats.token,
+                    chainid,
+                    contract: stats.contract,
+                    amount: stats.amount,
+                    kills: stats.kills,
+                    deaths: stats.deaths,
+                    remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
+                    balance
+                }
+            } else {
+                console.log('here')
+                return {
+                    gameid: gameID,
+                    address: address,
+                    chainid
+                }
             }
         } else {
             return {
@@ -347,28 +364,8 @@ async function getStatistics(gameID, address, chainid) {
         )
         if (res.rows.length === 0) {
             return []
-            // {
-            //     gameid: gameID,
-            //     address: address,
-            //     chainid: 0,
-            //     contract: '',
-            //     amount: 0,
-            //     kills: 0,
-            //     deaths: 0,
-            //     remainingRounds: 0
-            // }
         }
         return res.rows
-        // {
-        //     gameid: res.rows[0].gameid,
-        //     address: res.rows[0].player,
-        //     chainid: res.rows[0].chainid,
-        //     contract: res.rows[0].contract,
-        //     amount: res.rows[0].amount,
-        //     kills: res.rows[0].kills,
-        //     deaths: res.rows[0].deaths,
-        //     remainingRounds: res.rows[0].remainingrounds
-        // }
     } catch (error) {
         console.error(error)
     }

@@ -68,10 +68,9 @@ const MessageType = {
   ERROR_USER_INITIALIZED: 'error_user_initialized'
 };
 
-function User(walletAddress, publicKey) {
+function User(walletAddress) {
   this.userId = ++lastUserId;
   this.walletAddress = walletAddress;
-  this.publicKey = publicKey;
 }
 User.prototype = {
   getId: function () {
@@ -79,16 +78,15 @@ User.prototype = {
   },
   getWalletAddress: function () {
     return this.walletAddress;
-  },
-  getPublicKey: function () {
-    return this.publicKey;
   }
 };
 
 function Room(name) {
-  this.roomName = name;
-  this.fightid = name.split('&')[0];
-  this.chainid = name.split('&')[1].slice(8);
+  const fightid = name.split('&')[0]
+  const chainid = name.split('&')[1].slice(8)
+  this.roomName = `ID=${fightid}&network=${chainid}`;
+  this.fightid = fightid;
+  this.chainid = chainid;
   this.users = [];
   this.sockets = {};
   this.finished = false;
@@ -349,8 +347,8 @@ function handleSocket(socket) {
       let balance2;
       let loserAddress;
       let winnerAddress;
+      const fight = await blockchain().contract.fights(room.getFightId())
       if (room.users[0] == undefined || room.users[1] == undefined) {
-        const fight = await blockchain().contract.fights(room.getFightId())
         const players = await blockchain().contract.getFightPlayers(room.getFightId())
         const player2 = players[1]
         const exists1 = await redisClient.get(createAmountRedisLink(fight.owner, room.getChainId(), room.getFightId()))
@@ -393,13 +391,17 @@ function handleSocket(socket) {
   async function createSignature(data) {
     try {
       //get this fight data
-      const fight = await blockchain().contract.fights(room.getFightId())
       const rounds = await redisClient.get(createRoundsRedisLink())
+      console.log(room.baseAmount, data.loserAmount, data.winnerAmount)
+      if (BigInt(room.baseAmount) < BigInt(data.loserAmount) + BigInt(data.winnerAmount)) {
+        data.loserAmount = room.baseAmount
+        data.winnerAmount = room.baseAmount
+      }
       const signatures = [
-        await signature(data.loserAmount, data.loserAddress),
-        await signature(data.winnerAmount, data.winnerAddress)
+        await signature(data.loserAmount, data.loserAddress, data.token),
+        await signature(data.winnerAmount, data.winnerAddress, data.token)
       ]
-      for (let i = 0; i < signature.length; i++) {
+      for (let i = 0; i < signatures.length; i++) {
         try {
           await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
             signatures[i].address,
@@ -433,8 +435,8 @@ function handleSocket(socket) {
       const killsWinner = await getKills(data.winnerAddress)
       const deathsWinner = await getDeaths(data.winnerAddress)
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", 
-        [room.getFightId(), data.loserAddress, room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds])
+        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
+        [room.getFightId(), data.loserAddress, room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds, data.token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -451,8 +453,8 @@ function handleSocket(socket) {
         console.log('-------------------')
       }
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", 
-        [room.getFightId(), data.winnerAddress, room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds])
+        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
+        [room.getFightId(), data.winnerAddress, room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds, data.token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -528,7 +530,7 @@ function handleSocket(socket) {
         }
 
         // Add a new user
-        room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
+        room.addUser(user = new User(joinData.walletAddress), socket);
 
         if (room.users.length === 1) {
           setTimeout(async () => {
@@ -553,7 +555,7 @@ function handleSocket(socket) {
         console.log(user)
         log('User %s joined room %s. Users in room: %d',
           user.getId(), room.getName(), room.numUsers());
-        log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
+        log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);
       } else {
         throw Error('User not in this fight or fight finished')
       }
@@ -695,10 +697,10 @@ function handleSocket(socket) {
     }
   }
 
-  async function signature(amount, address) {
+  async function signature(amount, address, token) {
     const network = networks.find(n => n.chainid == room.getChainId())
-    const message = [room.getFightId(), amount, room.getChainId(), address, network.contractAddress]
-    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160"], message)
+    const message = [room.getFightId(), amount, room.getChainId(), token, address, network.contractAddress]
+    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160", "uint160"], message)
     const sign = await blockchain().signer.signMessage(ethers.utils.arrayify(hashMessage));
     const r = sign.substr(0, 66)
     const s = '0x' + sign.substr(66, 64);
