@@ -43,7 +43,7 @@ export const networks = [
       chainid: 42262,
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
-      contractAddress: '0xD0f6192Bb423F31ff8468938FE97ed0fE2aF9b6e',
+      contractAddress: '0x1374837B4eb6873150E8792826407409BfAB82e8',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
@@ -67,7 +67,7 @@ export const networks = [
     name: 'Scale Test',
     chainid: 503129905,
     rpc: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
-    contractAddress: '0xDD5259328dBd630F3F2346af3Cc55CEf5364AFD1',
+    contractAddress: '0x372F2f33b9e6c1e1d48c2f872f75b1eeCd421C96',
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
     privateKey: process.env.PRIVATE_KEY

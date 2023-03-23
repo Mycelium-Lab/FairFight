@@ -8,11 +8,30 @@ async function getShortStr(slot, contractAddress) {
 
 async function main() {
     const [acc1, acc2, acc3] = await ethers.getSigners()
-    const FairFight = await ethers.getContractFactory("FairFight")
+    let FairFight = await ethers.getContractFactory("FairFight")
     // scale test MAIN CONTRACT
     // const fairFight = FairFight.attach('0xF9ff7BFd5bdd03B7B7ebAbaA1f43b9f5573a98f5')
     // scale test TEST CONTRACT
-    const fairFight = FairFight.attach('0x073068dEeC83535569B29452e0448B60836ae335')
+    const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
+    const wallet = new ethers.Wallet(account, ethers.provider)
+    FairFight = FairFight.connect(wallet)
+    const fairFight = FairFight.attach('0x372F2f33b9e6c1e1d48c2f872f75b1eeCd421C96')
+    let Token = await ethers.getContractFactory('TokenForTests')
+    Token = Token.connect(wallet)
+    let allowedTokensNames = ['USDC', 'DAI', 'BUSD']
+    let allowedTokens = []
+    for (let i = 0; i < 3; i++) {
+        const token = await Token.deploy('TokenForTests', allowedTokensNames[i])
+        await token.deployed()
+        allowedTokens.push({
+            address: token.address,
+            minAmount: ethers.utils.parseEther("1")
+        })
+    }
+    for (let i = 0; i < allowedTokens.length; i++) {
+        await fairFight.changeMinAmountPerRound(allowedTokens[i].address, allowedTokens[i].minAmount)
+        console.log(`Token: ${allowedTokens[i].address} allowed to use in game from amount: ${allowedTokens[i].minAmount}`)
+    }
     // console.log(await fairFight.getSigner())
     // console.log(await getShortStr(4, fairFight.address))
     // console.log(await fairFight.connect(acc3).check2(
@@ -25,38 +44,38 @@ async function main() {
     // const message = [2, '1000000000000', '1351057110', acc3.address, '0xF9ff7BFd5bdd03B7B7ebAbaA1f43b9f5573a98f5']
     // const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160"], message)
     // console.log(hashMessage)
-    let amountToPlay = ethers.utils.parseEther('0.000000001');
-    let amountForOneDeath = ethers.utils.parseEther('0.0000000001');
-    // await fairFight.create(amountForOneDeath, 10, 2, {value: amountToPlay})
-    // const lastGame = await fairFight.getPlayerFullFights(acc1.address,(1).toString())
-    // console.log(await fairFight.getChunkFights(0,10))
-    // await fairFight.withdraw(1)
-    const chainid = (await ethers.provider.getNetwork()).chainId
-    // await fairFight.changeSigner(acc1.address)
-    const fight = await fairFight.fights(1)
-    await fairFight.connect(acc2).join(1, {value: fight.baseAmount})
-    const signature1 = await sign(
-        fight.ID.toString(), 
-        fight.baseAmount.toString(), 
-        chainid,
-        wallet.address,
-        fairFight.address,
-        wallet
-    )
-    const signature2 = await sign(
-        fight.ID.toString(), 
-        fight.baseAmount.toString(), 
-        chainid,
-        acc2.address,
-        fairFight.address,
-        wallet
-    )
-    console.log(chainid, wallet.address)
-    console.log(await fairFight.connect(wallet).check2(1, fight.baseAmount.toString(), signature1.r, signature1.v, signature1.s))
-    console.log(await fairFight.getSigner())
-    await fairFight.connect(wallet).finish(fight.ID, fight.baseAmount, signature1.r, signature1.v, signature1.s)
-    // await fairFight.connect(acc2).finish(fight.ID, fight.baseAmount, signature2.r, signature2.v, signature2.s)
-    console.log(await fairFight.fights(1))
+    // let amountToPlay = ethers.utils.parseEther('0.000000001');
+    // let amountForOneDeath = ethers.utils.parseEther('0.0000000001');
+    // // await fairFight.create(amountForOneDeath, 10, 2, {value: amountToPlay})
+    // // const lastGame = await fairFight.getPlayerFullFights(acc1.address,(1).toString())
+    // // console.log(await fairFight.getChunkFights(0,10))
+    // // await fairFight.withdraw(1)
+    // const chainid = (await ethers.provider.getNetwork()).chainId
+    // // await fairFight.changeSigner(acc1.address)
+    // const fight = await fairFight.fights(1)
+    // await fairFight.connect(acc2).join(1, {value: fight.baseAmount})
+    // const signature1 = await sign(
+    //     fight.ID.toString(), 
+    //     fight.baseAmount.toString(), 
+    //     chainid,
+    //     wallet.address,
+    //     fairFight.address,
+    //     wallet
+    // )
+    // const signature2 = await sign(
+    //     fight.ID.toString(), 
+    //     fight.baseAmount.toString(), 
+    //     chainid,
+    //     acc2.address,
+    //     fairFight.address,
+    //     wallet
+    // )
+    // console.log(chainid, wallet.address)
+    // console.log(await fairFight.connect(wallet).check2(1, fight.baseAmount.toString(), signature1.r, signature1.v, signature1.s))
+    // console.log(await fairFight.getSigner())
+    // await fairFight.connect(wallet).finish(fight.ID, fight.baseAmount, signature1.r, signature1.v, signature1.s)
+    // // await fairFight.connect(acc2).finish(fight.ID, fight.baseAmount, signature2.r, signature2.v, signature2.s)
+    // console.log(await fairFight.fights(1))
     
 }
 

@@ -684,7 +684,8 @@ summary::-webkit-details-marker {
 }
 
 #select-token-list2 {
-    padding-left: 55px;
+    align-items: flex-end;
+    padding-left: 194px;
 }
 
 .figure {

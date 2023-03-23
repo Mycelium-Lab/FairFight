@@ -9,19 +9,17 @@ const { sign } = require("../../test/utils/sign");
 
 async function main() {
     const [acc1, acc2] = await ethers.getSigners()
-    const allowedTokens = []
     const chain = await ethers.provider.getNetwork()
     const chainid = chain.chainId
 
     let FairFight = await ethers.getContractFactory("FairFight");
-    FairFight = FairFight.connect(wallet)
     const fairFight = await upgrades.deployProxy(FairFight, 
       [
-        wallet.address, //signer
+        acc1.address, //signer
         10, //max rounds
         '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
         300, //fee
-        ethers.utils.parseEther("0.0000000001"), //min amount for one round
+        ethers.utils.parseEther("1"), //min amount for one round
         2 //max players
       ], 
     { initializer: "initialize" });
@@ -31,9 +29,6 @@ async function main() {
       `FairFight to ${fairFight.address} on chain ${chainid}`
     );
 
-    for (let i = 0; i < allowedTokens.length; i++) {
-      await fairFight.changeMinAmountPerRound(allowedTokens[i].address, allowedTokens[i].minAmount)
-    }
 }
 
 // We recommend this pattern to be able to use async/await everywhere

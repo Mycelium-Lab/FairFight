@@ -2,6 +2,7 @@ const { expect } = require("chai");
 const assert = require("assert");
 const { upgrades, ethers } = require("hardhat")
 const { sign } = require("./utils/sign");
+require('dotenv').config()
 
 describe("FairFight", function (){
     let chainid;
@@ -24,7 +25,17 @@ describe("FairFight", function (){
 
 	beforeEach(async function() {
 		[acc1, acc2, acc3] = await ethers.getSigners();
-		const Game = await ethers.getContractFactory("FairFight");
+        const chain = await ethers.provider.getNetwork()
+        chainid = chain.chainId
+        let Game = await ethers.getContractFactory("FairFight");
+        let Token = await ethers.getContractFactory("TokenForTests")
+        if (chainid != 31337) {
+            const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
+            const wallet = new ethers.Wallet(account, ethers.provider)
+            Game = Game.connect(wallet)
+            Token = Token.connect(wallet)
+            acc1 = wallet
+        }
 		game = await upgrades.deployProxy(Game, 
             [
             acc1.address, 
@@ -36,7 +47,6 @@ describe("FairFight", function (){
             ], 
         { initializer: "initialize" });
         await game.deployed()
-        const Token = await ethers.getContractFactory("TokenForTests")
         token = await Token.deploy('TokenForTests', 'TFT')
         await token.deployed()
         await game.changeMinAmountPerRound(token.address, minAmountPerRound)
@@ -46,8 +56,6 @@ describe("FairFight", function (){
         await token.approve(game.address, amountToPlay)
         await token.connect(acc2).approve(game.address, amountToPlay)
         await token.connect(acc3).approve(game.address, amountToPlay)
-        const chain = await ethers.provider.getNetwork()
-        chainid = chain.chainId
 	})
 
     describe('Initial', () => {
