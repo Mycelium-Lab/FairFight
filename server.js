@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import redis from "redis"
 import ethers from "ethers"
+import cors from "cors"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
@@ -371,6 +372,16 @@ async function getStatistics(gameID, address, chainid) {
     }
 }
 
+server.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': [
+        'http://localhost:5000',
+        'https://fairfight.fairprotocol.solutions/'
+    ],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}));
 server.use(express.static(path.join(__dirname,'/lib')))
 const maintenance = false
 server.get('/', (req, res) => {

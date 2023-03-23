@@ -4,7 +4,14 @@ const MAX_ROOM_USERS = 2;
 import fs from 'fs';
 const log = console.log.bind(console);
 import socketio from 'socket.io';
-const io = socketio(PORT)
+const io = socketio(PORT, {
+  cors: {
+    origin: [
+      'http://localhost:5000',
+      'https://fairfight.fairprotocol.solutions/'
+    ],
+  }
+})
 import redis from "redis"
 import pg from "pg"
 import ethers from "ethers"
@@ -26,14 +33,6 @@ const pgClient = new pg.Client({
   password: process.env.DB_PASSWORD,
   database: process.env.DB
 })
-
-const pgPool = new pg.Pool(
-  {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB
-  }
-)
 
 const rooms = {};
 let lastUserId = 0;
@@ -202,36 +201,48 @@ function handleSocket(socket) {
 
   async function onUpdateBalance() {
     try {
-      const balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
-      const balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
-      const killsAddress1 = await getKills(room.users[1].walletAddress)
-      const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
-      const killsAddress2 = await getKills(room.users[0].walletAddress)
-      const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
-      const remainingRounds = await redisClient.get(room.roomName)
-      if (balance1 == null || balance2 == null) {
-        setTimeout(async () => {
-          const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
-            room.users[0].walletAddress,
-            room.getFightId(),
-            room.getChainId()
-          ])
-          const oneAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
-            room.users[1].walletAddress,
-            room.getFightId(),
-            room.getChainId()
-          ])
-          socket.emit("update_balance", {
-            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].amount, killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-            amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2, rounds: room.getRounds()
-          })
-        }, 1000)
-      } else {
-        socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: balance2.toString(), killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-          amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
-        })
-      }
+      //ВРЕМЕННОЕ РЕШЕНИЕ
+      //setTimeout потому что данные еще не успели обновиться
+      setTimeout(async () => {
+        try {
+          const balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
+          const balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
+          const killsAddress1 = await getKills(room.users[1].walletAddress)
+          const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
+          const killsAddress2 = await getKills(room.users[0].walletAddress)
+          const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
+          const remainingRounds = await redisClient.get(room.roomName)
+          if (balance1 == null || balance2 == null) {
+            setTimeout(async () => {
+              try {
+                const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
+                  room.users[0].walletAddress,
+                  room.getFightId(),
+                  room.getChainId()
+                ])
+                const oneAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
+                  room.users[1].walletAddress,
+                  room.getFightId(),
+                  room.getChainId()
+                ])
+                socket.emit("update_balance", {
+                  address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].amount, killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+                  amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2, rounds: room.getRounds()
+                })
+              } catch (error) {
+                
+              }
+            }, 1000)
+          } else {
+            socket.emit("update_balance", {
+              address1: room.users[1].walletAddress, amount1: balance2.toString(), killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+            })
+          }
+        } catch (error) {
+          
+        }
+      }, 100)
     } catch (error) {
       console.error(error)
     }
@@ -240,7 +251,6 @@ function handleSocket(socket) {
   async function onDead(data) {
     try {
       console.log(`${data.walletAddress} dead`)
-      console.log(room.getChainId())
       const balance = await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()))
       const newBalance = BigInt(balance) - BigInt(room.amountToLose)
       await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
@@ -346,7 +356,6 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
-      console.log('here')
       let balance1;
       let balance2;
       let loserAddress;
@@ -397,7 +406,7 @@ function handleSocket(socket) {
       //get this fight data
       const rounds = await redisClient.get(createRoundsRedisLink())
       console.log(room.baseAmount, data.loserAmount, data.winnerAmount)
-      if (BigInt(room.baseAmount) < BigInt(data.loserAmount) + BigInt(data.winnerAmount)) {
+      if (BigInt(room.baseAmount) * BigInt(2) < BigInt(data.loserAmount) + BigInt(data.winnerAmount)) {
         data.loserAmount = room.baseAmount
         data.winnerAmount = room.baseAmount
       }
@@ -515,8 +524,9 @@ function handleSocket(socket) {
       room.baseAmount = fight.baseAmount.toString()
       room.rounds = fight.rounds.toString()
       if ((fight.owner == joinData.walletAddress || player2 == joinData.walletAddress) && fight.finishTime == 0) {
-        const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress))
+        const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         const roundsExists = await redisClient.get(createRoundsRedisLink())
+        console.log(exists, roundsExists)
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
           await redisClient.set(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), room.baseAmount)
         }

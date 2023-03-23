@@ -198,23 +198,6 @@
 
 				</button>
 			</div>
-			<!-- <div id="confirmation_modal" class="modal">
-				<div class="modal_content">
-					<span class="close_modal_window">
-						<img src="/media/svg/cross.svg" alt="">
-					</span>
-					<div class="modal__title">Finish the game</div>
-					<div>Are you sure that you want to complete game?</div>
-					<div>Players & stats:</div>
-					<div><span id="internal_balance_return"></span>(your in-game balance) will return to your wallet
-					</div>
-					<div id="yourStats">0x23d...P11t (you): 10 kills, 2 death</div>
-					<div id="yourAmountWinLose">Win 0 ROSE</div>
-					<div id="enemyStats">0x23d...P11t (you): 10 kills, 2 death</div>
-					<div id="enemyAmountWinLose">Win 0 ROSE</div>
-					<button id="finishGame" style="display:inherit">Confirm</button>
-				</div>
-			</div> -->
 			<div id="over_modal" class="modal">
 				<div class="modal_content">
 					<span class="close_modal_window">
@@ -223,14 +206,22 @@
 					<div class="modal__title">Finish the game</div>
 					<div class="modal__subtitle" id="sure_want_end">Are you sure that you want to complete game?</div>
 					<div class="modal__subtitle">Players & stats:</div>
-					<div class="modal__block">
-						<div id="yourStats" class="opengames__col"></div>
+					<div class="finish-stats">
+						<div id="yourStats">
+							<span id="finish_modal_your_address"></span>(you):
+							<span class="yourKills"></span> Kills,
+							<span class="yourDeaths"></span> Deaths
+						</div>
 						<div>
 							<span id="yourAmountWinLose"></span>
 						</div>
 					</div>
-					<div class="modal__block">
-						<div id="enemyStats" class="opengames__col"></div>
+					<div class="finish-stats">
+						<div id="enemyStats">
+							<span id="finish_modal_enemy_address"></span>(enemy):
+							<span class="enemyKills"></span> Kills,
+							<span class="enemyDeaths"></span> Deaths
+						</div>
 						<div>
 							<span id="enemyAmountWinLose"></span>
 						</div>
