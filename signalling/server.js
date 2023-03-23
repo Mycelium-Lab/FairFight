@@ -626,17 +626,25 @@ function handleSocket(socket) {
   }
 
   function onSdp(message) {
-    room.sendToId(message.userId, MessageType.SDP, {
-      userId: user.getId(),
-      sdp: message.sdp
-    });
+    try {
+      room.sendToId(message.userId, MessageType.SDP, {
+        userId: user.getId(),
+        sdp: message.sdp
+      });
+    } catch (error) {
+      
+    }
   }
 
   function onIceCandidate(message) {
-    room.sendToId(message.userId, MessageType.ICE_CANDIDATE, {
-      userId: user.getId(),
-      candidate: message.candidate
-    });
+    try {
+      room.sendToId(message.userId, MessageType.ICE_CANDIDATE, {
+        userId: user.getId(),
+        candidate: message.candidate
+      });
+    } catch (error) {
+      
+    }
   }
 
   function createAmountRedisLink(address, chainid, gameid) {
