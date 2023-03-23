@@ -679,7 +679,12 @@ summary::-webkit-details-marker {
 .container-token {
     display: flex;
     justify-content: space-between;
+    flex-flow: wrap;
     /* align-items: center; */
+}
+
+#select-token-list2 {
+    padding-left: 55px;
 }
 
 .figure {
@@ -689,6 +694,9 @@ summary::-webkit-details-marker {
     border: 2px solid;
     border-radius: 10px;
     margin-right: 10px;
+}
+.figure:nth-child(2n) {
+    page-break-after: always;
 }
 
 .token-active {
