@@ -322,3 +322,15 @@ input[type=number] {
     font-weight: bold;
     cursor: pointer;
 }
+
+#middle_your_stats {
+    z-index: 10;
+    position: fixed;
+    left: 2%;
+}
+
+#middle_enemy_stats {
+    z-index: 10;
+    position: fixed;
+    right: 2%;
+}
