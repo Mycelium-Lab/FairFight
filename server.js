@@ -57,7 +57,6 @@ const checkIfAddressIsNotNew = async (address) => {
         ...historyPolygon.result.map(v => parseInt(v.timeStamp))
     ]
     const timestamp = Math.min.apply(null, timestamps.filter(Boolean))
-    console.log(address, timestamp)
     if (timestamp !== Infinity) {
         const dateNow = Math.floor(Date.now() / 1000)
         return timestamp < (dateNow - 86400 * 30) //check if older than month
@@ -305,7 +304,6 @@ async function getCurrentInGameStatistics(gameID, address, chainid) {
         const kills = await redisClient.get(`${address}_${gameID}_${chainid}_kills`)
         const deaths = await redisClient.get(`${address}_${gameID}_${chainid}_deaths`)
         const balance = await redisClient.get(`${address}_${gameID}_${chainid}_amount`)
-        console.log(remainingRounds, kills, deaths, balance)
         if (
             remainingRounds == null 
             || 
@@ -332,7 +330,6 @@ async function getCurrentInGameStatistics(gameID, address, chainid) {
                     balance
                 }
             } else {
-                console.log('here')
                 return {
                     gameid: gameID,
                     address: address,

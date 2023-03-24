@@ -64,7 +64,8 @@ const MessageType = {
 
   // Errors... shit happens
   ERROR_ROOM_IS_FULL: 'error_room_is_full',
-  ERROR_USER_INITIALIZED: 'error_user_initialized'
+  ERROR_USER_INITIALIZED: 'error_user_initialized',
+  NOT_USER_ROOM: 'not_user_room'
 };
 
 function User(walletAddress) {
@@ -108,30 +109,48 @@ Room.prototype = {
     return this.users;
   },
   getUserById: function (id) {
-    return this.users.find(function (user) {
-      return user.getId() === id;
-    });
+    try {
+      return this.users.find(function (user) {
+        return user.getId() === id;
+      });
+    } catch (error) {
+      console.log(error)
+    }
   },
   numUsers: function () {
-    return this.users.length;
+    try {
+      return this.users.length;
+    } catch (error) {
+      console.log(error)
+    }
   },
   isEmpty: function () {
     return this.users.length === 0;
   },
   addUser: function (user, socket) {
-    this.users.push(user);
-    this.sockets[user.getId()] = socket;
+    try {
+      this.users.push(user);
+      this.sockets[user.getId()] = socket;
+    } catch (error) {
+      console.log(error)
+    }
   },
   removeUser: function (id) {
-    this.users = this.users.filter(function (user) {
-      return user.getId() !== id;
-    });
-    delete this.sockets[id];
+    try {
+      this.users = this.users.filter(function (user) {
+        return user.getId() !== id;
+      });
+      delete this.sockets[id];
+    } catch (error) {
+      console.log(error)
+    }
   },
   sendTo: function (user, message, data) {
     try {
-      var socket = this.sockets[user.getId()];
-      socket.emit(message, data);
+      if (user != null) {
+        var socket = this.sockets[user.getId()];
+        socket.emit(message, data);
+      }
     } catch (error) {
       console.error(error)
     }
@@ -144,11 +163,15 @@ Room.prototype = {
     }
   },
   broadcastFrom: function (fromUser, message, data) {
-    this.users.forEach(function (user) {
-      if (user.getId() !== fromUser.getId()) {
-        this.sendTo(user, message, data);
-      }
-    }, this);
+    try {
+      this.users.forEach(function (user) {
+        if (user.getId() !== fromUser.getId()) {
+          this.sendTo(user, message, data);
+        }
+      }, this);
+    } catch (error) {
+      console.log(error)
+    }
   }
 };
 
@@ -267,6 +290,10 @@ function handleSocket(socket) {
           await addKills(room.users[1].walletAddress)
           await addDeaths(room.users[0].walletAddress)
         }
+        const killsAddress1 = await getKills(data.walletAddress)
+        const deathsAddress1 = await getDeaths(data.walletAddress)
+        const killsAddress2 = await getKills(room.users[1].walletAddress)
+        const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
         //if balance == 0 -> user losed
         //create signature and add data to database
         if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
@@ -296,10 +323,6 @@ function handleSocket(socket) {
         //update balance
         //we send it each user in room
         //but its not works so on frontend we send it again from another user
-        const killsAddress1 = await getKills(data.walletAddress)
-        const deathsAddress1 = await getDeaths(data.walletAddress)
-        const killsAddress2 = await getKills(room.users[1].walletAddress)
-        const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
@@ -316,6 +339,10 @@ function handleSocket(socket) {
           await addKills(room.users[0].walletAddress)
           await addDeaths(room.users[1].walletAddress)
         }
+        const killsAddress1 = await getKills(data.walletAddress)
+        const deathsAddress1 = await getDeaths(data.walletAddress)
+        const killsAddress2 = await getKills(room.users[0].walletAddress)
+        const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
         if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
@@ -339,10 +366,6 @@ function handleSocket(socket) {
             room.finished = true;
           })
         }
-        const killsAddress1 = await getKills(data.walletAddress)
-        const deathsAddress1 = await getDeaths(data.walletAddress)
-        const killsAddress2 = await getKills(room.users[0].walletAddress)
-        const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
         Object.entries(room.sockets).forEach(([key, value]) => {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
@@ -578,6 +601,7 @@ function handleSocket(socket) {
           user.getId(), room.getName(), room.numUsers());
         log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);
       } else {
+        room.sendTo(user, MessageType.NOT_USER_ROOM);
         throw Error('User not in this fight or fight finished')
       }
 
@@ -609,16 +633,20 @@ function handleSocket(socket) {
       if (room === null) {
         return;
       }
-      room.removeUser(user.getId());
-      log('User %d left room %s. Users in room: %d',
-        user.getId(), room.getName(), room.numUsers());
-      if (room.isEmpty()) {
-        log('Room is empty - dropping room %s', room.getName());
-        delete rooms[room.getName()];
+      if (user != null) {
+        room.removeUser(user.getId());
+        log('User %d left room %s. Users in room: %d',
+          user.getId(), room.getName(), room.numUsers());
+        if (room.isEmpty()) {
+          log('Room is empty - dropping room %s', room.getName());
+          delete rooms[room.getName()];
+        }
+        room.broadcastFrom(user, MessageType.USER_LEAVE, {
+          userId: user.getId()
+        });
+      } else {
+        return;
       }
-      room.broadcastFrom(user, MessageType.USER_LEAVE, {
-        userId: user.getId()
-      });
     } catch (error) {
       console.error(error)
     }
