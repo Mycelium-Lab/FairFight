@@ -684,8 +684,8 @@ summary::-webkit-details-marker {
 }
 
 #select-token-list2 {
-    align-items: flex-end;
-    padding-left: 194px;
+    margin-left: auto; 
+    margin-right: 0;
 }
 
 .figure {
@@ -694,7 +694,7 @@ summary::-webkit-details-marker {
     background-color: white;
     border: 2px solid;
     border-radius: 10px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .figure:nth-child(2n) {
     page-break-after: always;
