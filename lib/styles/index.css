@@ -682,6 +682,9 @@ summary::-webkit-details-marker {
     flex-flow: wrap;
     /* align-items: center; */
 }
+.select-token-container {
+    margin-bottom: 0px;
+}
 
 #select-token-list2 {
     margin-left: auto; 

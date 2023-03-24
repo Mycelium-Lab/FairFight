@@ -475,11 +475,20 @@ a {
   gap: 20px 0;
 }
 
+.modal__row__tokens {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-top: 1px solid #c6c6c6;
+  gap: 10px 0;
+}
+
 .modal__row .active {
   color: var(--color-orange);
 }
 
-.modal__row div {
+.modal__row div,
+.modal__row__tokens div {
   display: flex;
   justify-content: space-between;
   align-items: center;
