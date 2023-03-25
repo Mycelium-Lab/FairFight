@@ -8,7 +8,7 @@ const io = socketio(PORT, {
   cors: {
     origin: [
       'http://localhost:5000',
-      'https://fairfight.fairprotocol.solutions/'
+      'https://fairfight.fairprotocol.solutions:8033/'
     ],
   }
 })
