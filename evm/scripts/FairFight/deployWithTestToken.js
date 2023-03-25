@@ -11,16 +11,16 @@ require('dotenv').config()
 async function main() {
     const chain = await ethers.provider.getNetwork()
     const chainid = chain.chainId
-    const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
-    const wallet = new ethers.Wallet(account, ethers.provider)
+    // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
+    // const wallet = new ethers.Wallet(account, ethers.provider)
     const [acc1, acc2] = await ethers.getSigners()
     let signerAddress = acc1.address;
     let Token = await ethers.getContractFactory('TokenForTests')
     let FairFight = await ethers.getContractFactory("FairFight");
-    if (chainid != 31337) {
-        FairFight = FairFight.connect(wallet)
-        Token = Token.connect(wallet)
-    }
+    // if (chainid != 31337) {
+    //     FairFight = FairFight.connect(wallet)
+    //     Token = Token.connect(wallet)
+    // }
     const token = await Token.deploy('TokenForTests', 'USDT')
     await token.deployed()
     const allowedTokens = [{
