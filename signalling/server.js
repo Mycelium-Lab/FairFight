@@ -5,12 +5,12 @@ import fs from 'fs';
 const log = console.log.bind(console);
 import socketio from 'socket.io';
 const io = socketio(PORT, {
-  cors: {
-    origin: [
-      'http://localhost:5000',
-      'https://fairfight.fairprotocol.solutions:8033/'
-    ],
-  }
+  // cors: {
+  //   origin: [
+  //     'http://localhost:5000',
+  //     'https://fairfight.fairprotocol.solutions:8033/'
+  //   ],
+  // }
 })
 import redis from "redis"
 import pg from "pg"
