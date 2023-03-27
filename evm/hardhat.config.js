@@ -2,7 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
-require('@oasisprotocol/sapphire-paratime');
+// require('@oasisprotocol/sapphire-paratime');
 require('@oasisprotocol/sapphire-hardhat');
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -43,7 +43,12 @@ module.exports = {
     scale1: {
       url: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
       accounts: [process.env.PRIVATE_KEY]
-    }
+    },
+    bnb: {
+      url: "https://bsc-dataseed.binance.org",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 56
+    },
   },
   solidity: {
     compilers: [

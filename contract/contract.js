@@ -71,7 +71,17 @@ export const networks = [
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
     privateKey: process.env.PRIVATE_KEY
+  },
+  {
+    name: 'BNB',
+    chainid: 56,
+    rpc: "https://bsc-dataseed.binance.org",
+    contractAddress: '0xCDcB3D4354486F0D4f8F776328aC9A21b27F0B5b',
+    currency: 'BNB',
+    explorer: 'https://bscscan.com/',
+    privateKey: process.env.PRIVATE_KEY
   }
+  
 ]
 
 export const contractAbi = [
