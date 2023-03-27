@@ -681,7 +681,15 @@ a {
   margin-bottom: 4px;
 }
 
+.rounds-head__col img {
+  margin-bottom: 4px;
+}
+
 .rounds-head__col > span:nth-child(2) {
+  margin-right: 20px;
+}
+
+.kills_deaths_row .yourKills{
   margin-right: 20px;
 }
 
