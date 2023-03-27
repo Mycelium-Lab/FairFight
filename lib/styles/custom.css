@@ -524,7 +524,8 @@ a {
 #pending_modal .modal_content,
 #confirmation_modal .modal_content,
 #wainting_modal .modal_content,
-#approve_modal .modal_content {
+#approve_modal .modal_content,
+#enemy_finishing_game_modal .modal_content {
   display: flex;
   flex-direction: column;
   gap: 20px;
