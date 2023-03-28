@@ -279,7 +279,6 @@ contract FairFight is
             abi.encodePacked(
                 _ID,
                 amount,
-                block.chainid,
                 token,
                 msg.sender,
                 address(this)

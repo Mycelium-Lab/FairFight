@@ -63,8 +63,8 @@ describe("FairFight", function (){
             const ID = 1
             const player1Amount = ethers.utils.parseEther('0.9');
             const player2Amount = ethers.utils.parseEther('1.1');
-            const signature1 = await sign(ID, player1Amount, chainid, acc1.address, ethers.constants.AddressZero,game.address, acc1)
-            const signature2 = await sign(ID, player2Amount, chainid, acc2.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature1 = await sign(ID, player1Amount, acc1.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature2 = await sign(ID, player2Amount, acc2.address, ethers.constants.AddressZero,game.address, acc1)
             const tx3 = await game.finish(ID, player1Amount, signature1.r, signature1.v, signature1.s)
             const tx4 = await game.connect(acc2).finish(ID, player2Amount, signature2.r, signature2.v, signature2.s)
             await expect(() => tx3).to.changeEtherBalance(acc1, player1Amount)
@@ -209,8 +209,8 @@ describe("FairFight", function (){
             const player2Amount = ethers.utils.parseEther('1.1');
             const player1WrongAmount = ethers.utils.parseEther('2');
             const player2WrongAmount = ethers.utils.parseEther('2');
-            const signature1 = await sign(ID, player1Amount, chainid, acc1.address, ethers.constants.AddressZero,game.address, acc1)
-            const signature2 = await sign(ID, player2Amount, chainid, acc2.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature1 = await sign(ID, player1Amount, acc1.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature2 = await sign(ID, player2Amount, acc2.address, ethers.constants.AddressZero,game.address, acc1)
             await expect(
                 game.finish(ID, player1WrongAmount, signature1.r, signature1.v, signature1.s)
               ).to.be.revertedWith("FairFight: You dont have access")
@@ -229,8 +229,8 @@ describe("FairFight", function (){
             const ID = 1
             const player1Amount = ethers.utils.parseEther('0.9');
             const player2Amount = ethers.utils.parseEther('1.1');
-            const signature1 = await sign(ID, player1Amount, chainid, acc1.address, ethers.constants.AddressZero,game.address, acc1)
-            const signature2 = await sign(ID, player2Amount, chainid, acc2.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature1 = await sign(ID, player1Amount, acc1.address, ethers.constants.AddressZero,game.address, acc1)
+            const signature2 = await sign(ID, player2Amount, acc2.address, ethers.constants.AddressZero,game.address, acc1)
             await game.finish(ID, player1Amount, signature1.r, signature1.v, signature1.s)
             await game.connect(acc2).finish(ID, player2Amount, signature2.r, signature2.v, signature2.s)
             await expect(
@@ -250,8 +250,8 @@ describe("FairFight", function (){
                 await game.connect(acc2).join(i+1, {value: amountToPlay})
                 const player1Amount = ethers.utils.parseEther('0.9');
                 const player2Amount = ethers.utils.parseEther('1.1');
-                const signature1 = await sign(i+1, player1Amount, chainid, acc1.address, ethers.constants.AddressZero,game.address, acc1)
-                const signature2 = await sign(i+1, player2Amount, chainid, acc2.address, ethers.constants.AddressZero,game.address, acc1)
+                const signature1 = await sign(i+1, player1Amount,  acc1.address, ethers.constants.AddressZero,game.address, acc1)
+                const signature2 = await sign(i+1, player2Amount,  acc2.address, ethers.constants.AddressZero,game.address, acc1)
                 await game.finish(i+1, player1Amount, signature1.r, signature1.v, signature1.s)
                 await game.connect(acc2).finish(i+1, player2Amount, signature2.r, signature2.v, signature2.s)
             }
@@ -280,8 +280,8 @@ describe("FairFight", function (){
                 await game.connect(acc2).join(i, {value: amountToPlay})
                 const player1Amount = ethers.utils.parseEther('0.9');
                 const player2Amount = ethers.utils.parseEther('1.1');
-                const signature1 = await sign(i, player1Amount, chainid, acc1.address, ethers.constants.AddressZero,game.address, acc1)
-                const signature2 = await sign(i, player2Amount, chainid, acc2.address, ethers.constants.AddressZero,game.address, acc1)
+                const signature1 = await sign(i, player1Amount,  acc1.address, ethers.constants.AddressZero,game.address, acc1)
+                const signature2 = await sign(i, player2Amount,  acc2.address, ethers.constants.AddressZero,game.address, acc1)
                 await game.finish(i, player1Amount, signature1.r, signature1.v, signature1.s)
                 await game.connect(acc2).finish(i, player2Amount, signature2.r, signature2.v, signature2.s)
             }

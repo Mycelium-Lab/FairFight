@@ -43,7 +43,7 @@ export const networks = [
       chainid: 42262,
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
-      contractAddress: '0x1374837B4eb6873150E8792826407409BfAB82e8',
+      contractAddress: '0x703a3203A7F5C5da04afE7a2af4f4DF3474f0609',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
@@ -67,7 +67,7 @@ export const networks = [
     name: 'Scale Test',
     chainid: 503129905,
     rpc: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
-    contractAddress: '0x372F2f33b9e6c1e1d48c2f872f75b1eeCd421C96',
+    contractAddress: '0xBeBF242338794e8ED107687F62d3AFfd05FfCf6F',
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
     privateKey: process.env.PRIVATE_KEY
@@ -76,7 +76,7 @@ export const networks = [
     name: 'BNB',
     chainid: 56,
     rpc: "https://bsc-dataseed.binance.org",
-    contractAddress: '0xCDcB3D4354486F0D4f8F776328aC9A21b27F0B5b',
+    contractAddress: '0x905E08cE63fb7D13cD44520015c557964E0200FF',
     currency: 'BNB',
     explorer: 'https://bscscan.com/',
     privateKey: process.env.PRIVATE_KEY

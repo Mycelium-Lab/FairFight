@@ -760,8 +760,8 @@ function handleSocket(socket) {
       token = fight.token
     }
     const network = networks.find(n => n.chainid == room.getChainId())
-    const message = [room.getFightId(), amount, room.getChainId(), token, address, network.contractAddress]
-    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160", "uint160"], message)
+    const message = [room.getFightId(), amount, token, address, network.contractAddress]
+    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint160", "uint160", "uint160"], message)
     const sign = await blockchain().signer.signMessage(ethers.utils.arrayify(hashMessage));
     const r = sign.substr(0, 66)
     const s = '0x' + sign.substr(66, 64);

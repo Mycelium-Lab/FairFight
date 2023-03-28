@@ -16,6 +16,7 @@ async function main() {
     const wallet = new ethers.Wallet(account, ethers.provider)
     let FairFight = await ethers.getContractFactory("FairFight");
     FairFight = FairFight.connect(wallet)
+    console.log(acc1.address)
     const fairFight = await upgrades.deployProxy(FairFight, 
       [
         acc1.address, //signer
@@ -32,29 +33,29 @@ async function main() {
       `FairFight to ${fairFight.address} on chain ${chainid}`
     );
 
-    const allowedTokens = [
-      {
-          symbol: 'USDT',
-          address: '0x55d398326f99059ff775485246999027b3197955'
-      },
-      {
-          symbol: 'USDC',
-          address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'
-      },
-      {
-          symbol: 'DAI',
-          address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3'
-      },
-      {
-          symbol: 'BUSD',
-          address: '0xe9e7cea3dedca5984780bafc599bd69add087d56'
-      }
-    ]
+    // const allowedTokens = [
+    //   {
+    //       symbol: 'USDT',
+    //       address: '0x55d398326f99059ff775485246999027b3197955'
+    //   },
+    //   {
+    //       symbol: 'USDC',
+    //       address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'
+    //   },
+    //   {
+    //       symbol: 'DAI',
+    //       address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3'
+    //   },
+    //   {
+    //       symbol: 'BUSD',
+    //       address: '0xe9e7cea3dedca5984780bafc599bd69add087d56'
+    //   }
+    // ]
 
-    for (let i = 0; i < allowedTokens.length; i++) {
-      await fairFight.changeMinAmountPerRound(allowedTokens[i].address, ethers.utils.parseEther('0.1'));
-      console.log(allowedTokens[i].symbol, 'allowed')
-    }
+    // for (let i = 0; i < allowedTokens.length; i++) {
+    //   await fairFight.changeMinAmountPerRound(allowedTokens[i].address, ethers.utils.parseEther('0.1'));
+    //   console.log(allowedTokens[i].symbol, 'allowed')
+    // }
 
 }
 
