@@ -31,8 +31,9 @@
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
 	</script>
+	<script src="/bundle.js"></script>
 	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
-	<script type="module" src="/index.js"></script>
+	<script type="module" src="/dist/main.js"></script>
 	<script type="module" src="/modules/airdrop.js"></script>
 	<script type="module" src="/modules/networks.js"></script>
 	<script type="module" src="/modules/leaderboard.js"></script>
@@ -61,6 +62,7 @@
 					<a href="#" data-toggle="dropdown" >Change Network</a>
 					<ul class="dropdown-menu" id="networks">
 						<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Emerald</li></a>
+						<a href="/?network=23294" id="network-23294" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Sapphire</li></a>
 						<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Scale</li></a>	
 						<a href="/?network=56" id="network-56"  class="network-deactive"><li ><img class="network-icon" src="/media/tokens/black/bnb.png"/>BNB</li></a>		
 						<a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>								

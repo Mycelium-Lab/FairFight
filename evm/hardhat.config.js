@@ -2,7 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
-// require('@oasisprotocol/sapphire-paratime');
+require('@oasisprotocol/sapphire-paratime');
 require('@oasisprotocol/sapphire-hardhat');
 
 /** @type import('hardhat/config').HardhatUserConfig */
@@ -34,7 +34,8 @@ module.exports = {
     },
     sapphire_mainnet: {
       url: "https://sapphire.oasis.io",
-      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : []
+      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+      chainId: 0x5afe
     },
     scale: {
       url: "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix",

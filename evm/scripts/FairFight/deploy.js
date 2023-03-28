@@ -15,7 +15,7 @@ async function main() {
     const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
     const wallet = new ethers.Wallet(account, ethers.provider)
     let FairFight = await ethers.getContractFactory("FairFight");
-    FairFight = FairFight.connect(wallet)
+    // FairFight = FairFight.connect(wallet)
     console.log(acc1.address)
     const fairFight = await upgrades.deployProxy(FairFight, 
       [
@@ -23,7 +23,7 @@ async function main() {
         10, //max rounds
         '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
         300, //fee
-        ethers.utils.parseEther("0.0003"), //min amount for one round
+        ethers.utils.parseEther("1"), //min amount for one round
         2 //max players
       ], 
     { initializer: "initialize" });

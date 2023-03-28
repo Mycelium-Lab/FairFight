@@ -15,7 +15,7 @@ async function main() {
     // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
     // const wallet = new ethers.Wallet(account, ethers.provider)
     // FairFight = FairFight.connect(wallet)
-    const fairFight = FairFight.attach('0x4B5f5999407dE76F8E9CC84B48a001e09b04F23d')
+    const fairFight = FairFight.attach('0x4770F1aD8bf24D4f211DC4273721A60f206E8417')
     // let Token = await ethers.getContractFactory('TokenForTests')
     // Token = Token.connect(wallet)
     // let allowedTokensNames = ['USDC', 'DAI', 'BUSD']
@@ -46,10 +46,12 @@ async function main() {
     // console.log(hashMessage)
     let amountToPlay = ethers.utils.parseEther('1');
     let amountForOneDeath = ethers.utils.parseEther('1');
-    // await fairFight.create(amountForOneDeath, 1, 2, ethers.constants.AddressZero,{value: amountToPlay})
+    await fairFight.create(amountForOneDeath, 1, 2, ethers.constants.AddressZero,{value: amountToPlay})
+    console.log('created')
     // // const lastGame = await fairFight.getPlayerFullFights(acc1.address,(1).toString())
     // console.log(await fairFight.getChunkFights(0,1))
-    // await fairFight.withdraw(1)
+    await fairFight.withdraw(1)
+    console.log('withdraw')
     // const chainid = (await ethers.provider.getNetwork()).chainId
     // // await fairFight.changeSigner(acc1.address)
     const fight = await fairFight.fights(1)

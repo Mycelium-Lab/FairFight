@@ -55,6 +55,15 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
+      name: "Sapphire",
+      chainid: 23294,
+      rpc: 'https://sapphire.oasis.io',
+      currency: 'ROSE',
+      contractAddress: '0xaBE08D013c1342e786c5964bc2e4E3f6b70797ea',
+      explorer: 'https://explorer.sapphire.oasis.io',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
       name: "staging-fast-active-bellatrix",
       chainid: 1351057110,
       rpc: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
