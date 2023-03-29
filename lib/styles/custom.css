@@ -37,7 +37,7 @@ a {
   position: relative;
   background-image: url("../media/background.jpg");
   background-size: cover;
-  padding: 0 65px;
+  /* padding: 0 65px; */
   flex: 1 0 auto;
   z-index: 10;
 }
@@ -630,7 +630,6 @@ a {
 }
 
 .canvasWrapper {
-  max-width: 1020px;
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -638,6 +637,7 @@ a {
 }
 
 #canvas {
+  max-width: 1020px;
   width: 100%;
   height: 870px;
   background-color: #d9d9d9;
@@ -654,6 +654,7 @@ a {
   color: var(--color-black);
   font-size: 18px;
   font-weight: 500;
+  max-width: 1020px;
   margin: 10px 0;
 }
 
@@ -680,19 +681,62 @@ a {
 
 .rounds-head__col svg {
   margin-bottom: 4px;
+  margin-right: 5px;
 }
 
 .rounds-head__col img {
   margin-bottom: 4px;
+  margin-right: 5px;
 }
 
-.rounds-head__col > span:nth-child(2) {
+.stats-box {
+  display: flex;
+}
+
+.stats-internal-box {
   margin-right: 20px;
 }
 
-.kills_deaths_row .yourKills{
+.middle-page {
+  display: flex;
+}
+
+#middle_your_stats, #middle_enemy_stats {
+  background-color: #FFFFFF;
+  color: var(--color-black);
+  border: 1px solid #FF7C06;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 11px 21px 11px 21px;
+  font-size: 18px;
+  font-weight: 500;
+  display: inline-block;
+  max-height: 200px;
+}
+
+#middle_your_stats .rounds-head__subtitle,
+#middle_enemy_stats .rounds-head__subtitle {
+  margin-bottom: 15px;
+}
+
+#middle_your_stats .stats-box {
+  flex-wrap: wrap;
+}
+
+#middle_enemy_stats .stats-box {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stats-internal-box-death {
+  margin-left: 20px;
+}
+
+.canvas-block {
+  margin-left: 20px;
   margin-right: 20px;
 }
+
 
 .inner-block {
   position: relative;
@@ -850,6 +894,7 @@ a {
 }
 
 .canvasWrapper__footer {
+  max-width: 1020px;
   width: 100%;
   display: flex;
   justify-content: space-between;
