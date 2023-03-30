@@ -371,17 +371,17 @@ async function getStatistics(gameID, address, chainid) {
 
 async function setCharacter(req, response) {
     try {
-        const address = req.query.address
-        const chainid = req.query.chainid
-        const characterid = req.query.characterid
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const characterid = req.body.characterid
         //TODO: добавить проверку chain'a (существует ли)
         await pgClient.query(
             "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
             [address, chainid, characterid]
         )
-        res.status(200).send()
+        response.status(200).send()
     } catch (error) {
-        res.status(500).send()
+        response.status(500).send()
     }
 }
 
