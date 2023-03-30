@@ -374,6 +374,7 @@ async function setCharacter(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const characterid = req.body.characterid
+        console.log(characterid)
         //TODO: добавить проверку chain'a (существует ли)
         await pgClient.query(
             "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
