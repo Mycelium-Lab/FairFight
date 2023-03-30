@@ -210,24 +210,6 @@
 								id="createGame"></button>
 						</div>
 					</div>
-					<div id="confirmation_modal" class="modal">
-						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img class="load" src="/media/svg/load.svg" alt="">
-							<div>Waiting for confirmation</div>
-							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
-								transaction in your wallet</div>
-						</div>
-					</div>
-					<div id="pending_modal" class="modal">
-						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img src="/media/svg/load.svg" alt="" class="load">
-							<div>Pending...</div>
-							<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
-								complete</div>
-						</div>
-					</div>
 					<div id="install_wallet_modal" class="modal">
 						<div class="modal_content">
 							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
@@ -248,13 +230,6 @@
 							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
 							<h3 style="color:#FF7C06">Error</h3>
 							<div id="error_modal_text" style="font-size: 16px; font-weight: 400;"></div>
-						</div>
-					</div>
-					<div id="approve_modal" class="modal">
-						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<div><span id="approved_token">Token</span> approved.</div>
-							<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;"></div>
 						</div>
 					</div>
 					
@@ -341,6 +316,7 @@
 							<div class="inventory-block__box" style="grid-area: item3"><img src="/media/svg/inventory/armor.svg" alt=""></div>
 							<div class="inventory-block__box" style="grid-area: item4"><img src="/media/svg/inventory/boots.svg" alt=""></div>
 						</div>
+						<button>Change</button>
 						<div class="inventory-block__footer">
 							<div class="inventory-block__box"></div>
 							<div class="inventory-block__box"></div>
@@ -462,6 +438,39 @@
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div id="approve_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<div><span id="approved_token">Token</span> approved.</div>
+							<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;"></div>
+						</div>
+					</div>
+					<div id="buy_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<div>You have successfully bought the NFT!</div>
+							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Now you can see it in the inventory.</div>
+						</div>
+					</div>
+
+					<div id="confirmation_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<img class="load" src="/media/svg/load.svg" alt="">
+							<div>Waiting for confirmation</div>
+							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
+								transaction in your wallet</div>
+						</div>
+					</div>
+					<div id="pending_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<img src="/media/svg/load.svg" alt="" class="load">
+							<div>Pending...</div>
+							<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
+								complete</div>
 						</div>
 					</div>
 
