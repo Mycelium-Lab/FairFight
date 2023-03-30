@@ -316,7 +316,7 @@
 							<div class="inventory-block__box" style="grid-area: item3"><img src="/media/svg/inventory/armor.svg" alt=""></div>
 							<div class="inventory-block__box" style="grid-area: item4"><img src="/media/svg/inventory/boots.svg" alt=""></div>
 						</div>
-						<button>Change</button>
+						<button id="change-character">Change</button>
 						<div class="inventory-block__footer">
 							<div class="inventory-block__box"></div>
 							<div class="inventory-block__box"></div>
@@ -440,6 +440,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div id="approve_modal" class="modal">
 						<div class="modal_content">
 							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
@@ -455,24 +456,6 @@
 						</div>
 					</div>
 
-					<div id="confirmation_modal" class="modal">
-						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img class="load" src="/media/svg/load.svg" alt="">
-							<div>Waiting for confirmation</div>
-							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
-								transaction in your wallet</div>
-						</div>
-					</div>
-					<div id="pending_modal" class="modal">
-						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img src="/media/svg/load.svg" alt="" class="load">
-							<div>Pending...</div>
-							<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
-								complete</div>
-						</div>
-					</div>
 
 					<div class="inner-block">
 						<div class="inner-block__head">
@@ -504,6 +487,36 @@
 								<div class="games__empty" id="pastgames_empty">Empty :(
 								</div>
 							</ul>
+						</div>
+					</div>
+					<div id="choose_character_modal" class="modal">
+						<div class="choose_character_modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h2 class="about__title">Characters</h2>
+							<div>
+								<div id="choose-character-modal-list" class="choose-character-modal-list">
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div id="confirmation_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<img class="load" src="/media/svg/load.svg" alt="">
+							<div>Waiting for confirmation</div>
+							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
+								transaction in your wallet</div>
+						</div>
+					</div>
+					<div id="pending_modal" class="modal">
+						<div class="modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<img src="/media/svg/load.svg" alt="" class="load">
+							<div>Pending...</div>
+							<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
+								complete</div>
 						</div>
 					</div>
 					<div class="inner-block inner-block--mobile">

@@ -369,6 +369,46 @@ async function getStatistics(gameID, address, chainid) {
     }
 }
 
+async function setCharacter(req, response) {
+    try {
+        const address = req.query.address
+        const chainid = req.query.chainid
+        const characterid = req.query.characterid
+        //TODO: добавить проверку chain'a (существует ли)
+        await pgClient.query(
+            "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
+            [address, chainid, characterid]
+        )
+        res.status(200).send()
+    } catch (error) {
+        res.status(500).send()
+    }
+}
+
+async function getInventory(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        //TODO: добавить проверку chain'a (существует ли)
+        const res = await pgClient.query(
+            "SELECT * FROM inventory WHERE player=$1 AND chainid=$2",
+            [address, chainid]
+        )
+        if (res.rows.length === 0) {
+            await pgClient.query(
+                "INSERT INTO inventory (player, chainid, characterid) VALUES($1, $2, $3)",
+                [address, chainid, 0]
+            )
+            response.status(200).json({
+                address, chainid, characterid:0
+            })
+        }
+        response.status(200).json(res.rows[0])
+    } catch (error) {
+        response.status(200).json({})
+    }
+}
+
 server.use(cors({
     'allowedHeaders': ['sessionId', 'Content-Type'],
     'exposedHeaders': ['sessionId'],
@@ -379,6 +419,8 @@ server.use(cors({
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
 }));
+server.use(express.urlencoded({extended: true}))
+server.use(express.json());
 server.use(express.static(path.join(__dirname,'/lib')))
 const maintenance = false
 server.get('/', (req, res) => {
@@ -460,6 +502,22 @@ server.get('/maintenance', async (req, res) => {
     res.redirect('/')
     :
     res.sendFile(__dirname+'/lib/public/maintenance.html')
+})
+
+server.post('/setcharacter', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setCharacter(req, res)
+})
+
+server.post('/getinventory', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getInventory(req, res)
 })
 
 server.listen(5000, async () => {

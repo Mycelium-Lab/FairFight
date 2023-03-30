@@ -38,3 +38,9 @@ CREATE TABLE utils(
 );
 
 INSERT INTO utils (id, currentleaderboardupdate) VALUES(0,0);
+
+CREATE TABLE inventory(
+    player TEXT NOT NULL,
+    chainid INT NOT NULL,
+    characterid INT NOT NULL
+);

@@ -1104,6 +1104,17 @@ a {
   font-weight: 500;
 }
 
+/* .choose_character_modal_content {
+  border-color: var(--color-orange);
+  border-width: 1px;
+  border-radius: 8px;
+  border-style: solid;
+  background-color: #f2f2f2;
+  padding: 0 10px;
+  padding-top: 2px;
+  width: 1000px;
+} */
+
 .bought {
   position: relative;
 }
@@ -1121,6 +1132,10 @@ a {
   -ms-transform:rotate(-5deg);
   -o-transform:rotate(-5deg);
   transform:rotate(-55deg);
+}
+
+.choose-character-modal-list {
+  display: flex;
 }
 
 .inventory-block__box--big {
