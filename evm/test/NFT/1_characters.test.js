@@ -49,8 +49,8 @@ describe("FairFightCharacterShop", function (){
         it('positive initial variables', async () => {
             const priceCharacter0 = await shop.allowedTokens(testUSDC.address, 0)
             const priceCharacter1 = await shop.allowedTokens(testUSDC.address, 1)
-            const _character0Uri = await shop.URIs(0)
-            const _character1Uri = await shop.URIs(1)
+            const _character0Uri = await shop.characterURIs(0)
+            const _character1Uri = await shop.characterURIs(1)
             assert(priceCharacter0.toString() === amountInUSDPerCharacter0.toString(), 'Price character 0')
             assert(priceCharacter1.toString() === amountInUSDPerCharacter1.toString(), 'Price character 1')
             assert(_character0Uri === character0Uri, 'Character 0 Uri')

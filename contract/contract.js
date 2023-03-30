@@ -1,4 +1,5 @@
 import dotenv from "dotenv"
+import { charactersShopAbi as _charactersShopAbi } from "./shop.js"
 dotenv.config()
 
 export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
@@ -12,6 +13,7 @@ export const networks = [
       rpc: 'http://localhost:8545',
       currency: 'ETH',
       contractAddress: '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9',
+      characterShopAddress: '0x5FC8d32690cc91D4c39d9d3abcBD16989F875707',
       privateKey: process.env.PRIVATE_KEY_TEST
   },
   {
@@ -92,6 +94,8 @@ export const networks = [
   }
   
 ]
+
+export const charactersShopAbi = _charactersShopAbi
 
 export const contractAbi = [
   {

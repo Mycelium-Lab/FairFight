@@ -1,30 +1,32 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract FairFightCharacter is ERC721, Ownable {
 
-    uint256 currentID;
-    /// @notice Token to character type
-    mapping(uint256 => uint256) public characters;
-    /// @notice Character to URI
-    mapping(uint256 => string) public URIs;
-
+    uint256 currentID = 1;
     constructor() ERC721("FairFightCharacter", "FFC") {}
 
     function mint(address _to, uint256 _character) internal returns(uint256 ID) {
+        require(addressTokenIds[_to][_character] == 0, "FairFightCharacter: You already have this character");
         ID = currentID;
         _safeMint(_to, ID);
-        characters[ID] = _character;
+        tokenCharacter[ID] = _character;
+        addressTokenIds[_to][_character] = ID;
         currentID += 1;
     }
 
     function setCharacterUri(uint256 character, string memory uri) external onlyOwner {
-        URIs[character] = uri;
+        characterURIs[character] = uri;
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        uint256 character = tokenCharacter[tokenId];
+        return characterURIs[character];
     }
 
 }
