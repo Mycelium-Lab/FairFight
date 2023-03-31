@@ -7,22 +7,22 @@
 const { upgrades, ethers } = require("hardhat")
 
 async function main() {
-  const [acc1] = await ethers.getSigners();
-  const Game = await ethers.getContractFactory("Game");
-  const game = await upgrades.deployProxy(Game, 
+  // const [acc1] = await ethers.getSigners();
+  const FairFight = await ethers.getContractFactory("FairFight");
+  const fairFight = await upgrades.deployProxy(FairFight, 
     [
       '0xD32a4f0dFE804D10c6cC4fAA87cfdBDAE915A2E0', //signer
-      15, //_amountUserGamesToReturn
-      255, //max rounds
+      10, //max rounds
       '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
       300, //fee
-      ethers.utils.parseEther("1") //min amount for one round
+      ethers.utils.parseEther("1"), //min amount for one round
+      2 //max players
     ], 
   { initializer: "initialize" });
-  await game.deployed()
+  await fairFight.deployed()
 
   console.log(
-    `Game deployed to ${game.address}`
+    `FairFight to ${fairFight.address}`
   );
 }
 

@@ -1,27 +1,23 @@
 const PORT = 8033;
 const MAX_ROOM_USERS = 2;
 
-const fs = require('fs');
+import fs from 'fs';
 const log = console.log.bind(console);
-const io = require('socket.io')(PORT);
-const redis = require("redis")
-const pg = require("pg")
-const ethers = require("ethers")
-const web3 = require("web3")
-require("dotenv").config()
+import socketio from 'socket.io';
+const io = socketio(PORT)
+import redis from "redis"
+import pg from "pg"
+import ethers from "ethers"
+import web3 from "web3"
+import dotenv from "dotenv"
+dotenv.config()
 
-const { contractAbi, contractAddress } = require("../contract/contract.js")
-// const provider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161")
-// const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
-// const provider = new ethers.providers.JsonRpcProvider("https://testnet.emerald.oasis.dev") 
-const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
-const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
-// const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
-const contract = new ethers.Contract(contractAddress, contractAbi, signer)
+import { contractAbi, contractAddress, networks } from "../contract/contract.js"
+
 const redisClient = redis.createClient({
   socket: {
-      host: 'localhost',
-      port: 6379
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT
   }
 })
 
@@ -78,68 +74,77 @@ function User(walletAddress, publicKey) {
   this.publicKey = publicKey;
 }
 User.prototype = {
-  getId: function() {
+  getId: function () {
     return this.userId;
   },
-  getWalletAddress: function() {
+  getWalletAddress: function () {
     return this.walletAddress;
   },
-  getPublicKey: function() {
+  getPublicKey: function () {
     return this.publicKey;
   }
 };
 
 function Room(name) {
   this.roomName = name;
+  this.fightid = name.split('&')[0];
+  this.chainid = name.split('&')[1].slice(8);
   this.users = [];
   this.sockets = {};
   this.finished = false;
 }
 Room.prototype = {
-  getName: function() {
+  getName: function () {
     return this.roomName;
   },
-  getUsers: function() {
+  getFightId: function () {
+    return this.fightid;
+  },
+  getChainId: function () {
+    return this.chainid;
+  },
+  getUsers: function () {
     return this.users;
   },
-  getUserById: function(id) {
-    return this.users.find(function(user) {
+  getUserById: function (id) {
+    return this.users.find(function (user) {
       return user.getId() === id;
     });
   },
-  numUsers: function() {
+  numUsers: function () {
     return this.users.length;
   },
-  isEmpty: function() {
+  isEmpty: function () {
     return this.users.length === 0;
   },
-  addUser: function(user, socket) {
+  addUser: function (user, socket) {
     this.users.push(user);
     this.sockets[user.getId()] = socket;
   },
-  removeUser: function(id) {
-    this.users = this.users.filter(function(user) {
+  removeUser: function (id) {
+    this.users = this.users.filter(function (user) {
       return user.getId() !== id;
     });
     delete this.sockets[id];
   },
-  sendTo: function(user, message, data) {
+  sendTo: function (user, message, data) {
     try {
+      console.log(user)
       var socket = this.sockets[user.getId()];
       socket.emit(message, data);
     } catch (error) {
       console.error(error)
     }
   },
-  sendToId: function(userId, message, data) {
+  sendToId: function (userId, message, data) {
     try {
       return this.sendTo(this.getUserById(userId), message, data);
     } catch (error) {
       console.error(error)
     }
   },
-  broadcastFrom: function(fromUser, message, data) {
-    this.users.forEach(function(user) {
+  broadcastFrom: function (fromUser, message, data) {
+    this.users.forEach(function (user) {
       if (user.getId() !== fromUser.getId()) {
         this.sendTo(user, message, data);
       }
@@ -195,8 +200,8 @@ function handleSocket(socket) {
 
   async function onUpdateBalance() {
     try {
-      const balance1 = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
-      const balance2 = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
+      const balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
+      const balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
       const killsAddress1 = await getKills(room.users[1].walletAddress)
       const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
       const killsAddress2 = await getKills(room.users[0].walletAddress)
@@ -204,23 +209,25 @@ function handleSocket(socket) {
       const remainingRounds = await redisClient.get(room.roomName)
       if (balance1 == null || balance2 == null) {
         setTimeout(async () => {
-          const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE address=$1 AND gameid=$2", [
+          const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
             room.users[0].walletAddress,
-            room.roomName
+            room.getFightId(),
+            room.getChainId()
           ])
-          const oneAddressData =await pgClient.query("SELECT * FROM statistics WHERE address=$1 AND gameid=$2", [
+          const oneAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
             room.users[1].walletAddress,
-            room.roomName
+            room.getFightId(),
+            room.getChainId()
           ])
           socket.emit("update_balance", {
-            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].playeramount, killsAddress1,deathsAddress1,remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-            amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].playeramount,killsAddress2,deathsAddress2
+            address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].amount, killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+            amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2
           })
         }, 1000)
       } else {
         socket.emit("update_balance", {
-          address1: room.users[1].walletAddress, amount1: balance2.toString(),killsAddress1,deathsAddress1,remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-          amountToLose:room.amountToLose,address2: room.users[0].walletAddress, amount2: balance1.toString(),killsAddress2,deathsAddress2
+          address1: room.users[1].walletAddress, amount1: balance2.toString(), killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+          amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2
         })
       }
     } catch (error) {
@@ -231,19 +238,20 @@ function handleSocket(socket) {
   async function onDead(data) {
     try {
       console.log(`${data.walletAddress} dead`)
-      const balance = await redisClient.get(`${data.walletAddress}_${room.roomName}`)
-      const newBalance = parseInt(balance) - parseInt(room.amountToLose)
-      await redisClient.set(`${data.walletAddress}_${room.roomName}`, newBalance)
-      const rounds = await redisClient.get(room.roomName)
+      console.log(room.getChainId())
+      const balance = await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()))
+      const newBalance = BigInt(balance) - BigInt(room.amountToLose)
+      await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
+      const rounds = await redisClient.get(createRoundsRedisLink())
       if (rounds != 0 || rounds != null) {
         await redisClient.set(room.roomName, parseInt(rounds) - 1)
       }
       //get from loser
       if (data.walletAddress == room.users[0].walletAddress) {
         //paste to winner
-        const balanceWinner = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
-        const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
-        await redisClient.set(`${room.users[1].walletAddress}_${room.roomName}`, newBalanceWinner)
+        const balanceWinner = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
+        const newBalanceWinner = BigInt(balanceWinner) + BigInt(room.amountToLose)
+        await redisClient.set(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
         if (room.finished == false) {
           await addKills(room.users[1].walletAddress)
           await addDeaths(room.users[0].walletAddress)
@@ -257,21 +265,21 @@ function handleSocket(socket) {
             loserAmount: newBalance.toString(),
             winnerAmount: newBalanceWinner.toString()
           })
-          .then(() => {
-            Object.entries(room.sockets).forEach(([key, value]) => {
-              if (value != null) {
-                socket.to(value.id).emit("finishing")
-                socket.to(value.id).emit("update_balance", {
-                  address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
-                  amountToLose:room.amountToLose, 
-                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
-                })
-              }
+            .then(() => {
+              Object.entries(room.sockets).forEach(([key, value]) => {
+                if (value != null) {
+                  socket.to(value.id).emit("finishing")
+                  socket.to(value.id).emit("update_balance", {
+                    address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
+                    amountToLose: room.amountToLose,
+                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
+                  })
+                }
+              })
             })
-          })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
           room.finished = true;
-        } 
+        }
         //update balance
         //we send it each user in room
         //but its not works so on frontend we send it again from another user
@@ -283,14 +291,14 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose:room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
             })
           }
         })
       } else {
-        const balanceWinner = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
-        const newBalanceWinner = parseInt(balanceWinner) + parseInt(room.amountToLose)
-        await redisClient.set(`${room.users[0].walletAddress}_${room.roomName}`, newBalanceWinner)
+        const balanceWinner = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
+        const newBalanceWinner = BigInt(balanceWinner) + BigInt(room.amountToLose)
+        await redisClient.set(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
         if (room.finished == false) {
           await addKills(room.users[0].walletAddress)
           await addDeaths(room.users[1].walletAddress)
@@ -306,8 +314,8 @@ function handleSocket(socket) {
               if (value != null) {
                 socket.to(value.id).emit("finishing")
                 socket.to(value.id).emit("update_balance", {
-                  address1: data.walletAddress, amount1: newBalance.toString(),remainingRounds: parseInt(rounds) - 1,
-                  amountToLose:room.amountToLose, 
+                  address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
+                  amountToLose: room.amountToLose,
                   address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString()
                 })
               }
@@ -315,7 +323,7 @@ function handleSocket(socket) {
           })
           room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
           room.finished = true;
-        } 
+        }
         const killsAddress1 = await getKills(data.walletAddress)
         const deathsAddress1 = await getDeaths(data.walletAddress)
         const killsAddress2 = await getKills(room.users[0].walletAddress)
@@ -323,8 +331,8 @@ function handleSocket(socket) {
         Object.entries(room.sockets).forEach(([key, value]) => {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
-              address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1,remainingRounds: parseInt(rounds) - 1,
-              amountToLose:room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
+              address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
+              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2
             })
           }
         })
@@ -334,87 +342,32 @@ function handleSocket(socket) {
     }
   }
 
-  async function addKills(address) {
-    try {
-      const exist = await redisClient.get(`${address}_kills_${room.roomName}`)
-      await redisClient.set(`${address}_kills_${room.roomName}`, parseInt(exist) + 1)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function addDeaths(address) {
-    try {
-      const exist = await redisClient.get(`${address}_deaths_${room.roomName}`)
-      await redisClient.set(`${address}_deaths_${room.roomName}`, parseInt(exist) + 1)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function getKills(address) {
-    try {
-      const exist = await redisClient.get(`${address}_kills_${room.roomName}`)
-      if (exist == null) {
-        await redisClient.set(`${address}_kills_${room.roomName}`, 0)
-      }
-      return await redisClient.get(`${address}_kills_${room.roomName}`)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function getDeaths(address) {
-    try {
-      const exist = await redisClient.get(`${address}_deaths_${room.roomName}`)
-      if (exist == null) {
-        await redisClient.set(`${address}_deaths_${room.roomName}`, 0)
-      }
-      return await redisClient.get(`${address}_deaths_${room.roomName}`)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function removeKills(address) {
-    try {
-      await redisClient.del(`${address}_kills_${room.roomName}`)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async function removeDeaths(address) {
-    try {
-      await redisClient.del(`${address}_deaths_${room.roomName}`)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   async function onFinishing(data) {
     try {
+      console.log('here')
       let balance1;
       let balance2;
       let loserAddress;
       let winnerAddress;
       if (room.users[0] == undefined || room.users[1] == undefined) {
-        const battle = await contract.battles(room.getName())
-        const exists1 = await redisClient.get(`${battle.player1}_${room.roomName}`)
-        const exists2 = await redisClient.get(`${battle.player2}_${room.roomName}`)
+        const fight = await blockchain().contract.fights(room.getFightId())
+        const players = await blockchain().contract.getFightPlayers(room.getFightId())
+        const player2 = players[1]
+        const exists1 = await redisClient.get(createAmountRedisLink(fight.owner, room.getChainId(), room.getFightId()))
+        const exists2 = await redisClient.get(createAmountRedisLink(player2, room.getChainId(), room.getFightId()))
         if (exists1 != null && exists2 != null) {
           balance1 = exists1
           balance2 = exists2
         } else {
-          balance1 = battle.player1Amount.toString()
-          balance2 = battle.player1Amount.toString()
+          balance1 = fight.baseAmount.toString()
+          balance2 = fight.baseAmount.toString()
         }
-        loserAddress = battle.player1
-        winnerAddress = battle.player2
+        loserAddress = fight.owner
+        winnerAddress = player2
       } else {
-        balance1 = await redisClient.get(`${room.users[0].walletAddress}_${room.roomName}`)
+        balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
         loserAddress = room.users[0].walletAddress
-        balance2 = await redisClient.get(`${room.users[1].walletAddress}_${room.roomName}`)
+        balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
         winnerAddress = room.users[1].walletAddress
       }
       //create signatures on finish button
@@ -438,127 +391,38 @@ function handleSocket(socket) {
 
   async function createSignature(data) {
     try {
-      //delete data from redis
-      await redisClient.del(`${data.winnerAddress}_${room.roomName}`)
-      await redisClient.del(`${data.loserAddress}_${room.roomName}`)
-      
-      //get this battle data
-      const battle = await contract.battles(room.roomName)
-      let message1;
-      let message2;
-      //create hash message and signatures
-      if (data.loserAddress == battle.player1) {
-        message1 = [room.roomName, data.loserAmount, data.winnerAmount, data.loserAddress]
-        message2 = [room.roomName, data.loserAmount, data.winnerAmount, data.winnerAddress]
-      } else {
-        message1 = [room.roomName, data.winnerAmount, data.loserAmount, data.winnerAddress]
-        message2 = [room.roomName, data.winnerAmount, data.loserAmount, data.loserAddress]
-      }
-      const hashMessage1 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message1)
-      const sign1 = await signer.signMessage(ethers.utils.arrayify(hashMessage1));
-      const r1 = sign1.substr(0, 66)
-      const s1 = '0x' + sign1.substr(66, 64);
-      const v1 = web3.utils.toDecimal("0x" + sign1.substr(130,2));
-      const hashMessage2 = ethers.utils.solidityKeccak256(["uint256","uint256","uint256","uint160"], message2)
-      const sign2 = await signer.signMessage(ethers.utils.arrayify(hashMessage2));
-      const r2 = sign2.substr(0, 66)
-      const s2 = '0x' + sign2.substr(66, 64);
-      const v2 = web3.utils.toDecimal("0x" + sign2.substr(130,2));
-      const rounds = await redisClient.get(room.roomName)
-      //add data to database
-      if (data.loserAddress == battle.player1) {
+      //get this fight data
+      const fight = await blockchain().contract.fights(room.getFightId())
+      const rounds = await redisClient.get(createRoundsRedisLink())
+      const signatures = [
+        await signature(data.loserAmount, data.loserAddress),
+        await signature(data.winnerAmount, data.winnerAddress)
+      ]
+      for (let i = 0; i < signature.length; i++) {
         try {
-          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-            data.loserAddress,
-            data.winnerAddress,
-            data.loserAmount,  
-            data.winnerAmount, 
-            room.roomName, v1, r1, s1])
+          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s) SELECT $1,$2,$3,$4,$5,$6,$7,$8 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
+            signatures[i].address,
+            signatures[i].fightid,
+            signatures[i].amount,
+            signatures[i].chainid,
+            signatures[i].contract,
+            signatures[i].v,
+            signatures[i].r,
+            signatures[i].s
+          ])
         } catch (error) {
           console.log(error)
           console.log('-------------------'),
-          console.log(
-            'Error with data signatures:\n', 
-            `Loser: ${data.loserAddress}\n`,
-            `Winner: ${data.winnerAddress}\n`,
-            `LoserAmount: ${data.loserAmount}\n`,
-            `WinnerAmount: ${data.winnerAmount}\n`,
-            `GameID: ${room.roomName}\n`,
-            `v1: ${v1}\n`,
-            `r1: ${r1}\n`,
-            `s1: ${s1}`
-          )
-          console.log('-------------------')
-        }
-        try {
-          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-            data.winnerAddress,
-            data.loserAddress,
-            data.loserAmount,  
-            data.winnerAmount, 
-            room.roomName,v2, r2, s2])
-        } catch (error) {
-          console.log(error)
-          console.log('-------------------'),
-          console.log(
-            'Error with data signatures:\n', 
-            `Loser: ${data.loserAddress}\n`,
-            `Winner: ${data.winnerAddress}\n`,
-            `LoserAmount: ${data.loserAmount}\n`,
-            `WinnerAmount: ${data.winnerAmount}\n`,
-            `GameID: ${room.roomName}\n`,
-            `v2: ${v2}\n`,
-            `r2: ${r2}\n`,
-            `s2: ${s2}`
-          )
-          console.log('-------------------')
-        }
-        
-      } else {
-        try {
-          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-            data.winnerAddress,
-            data.loserAddress,
-            data.winnerAmount,  
-            data.loserAmount,
-            room.roomName, v1, r1, s1])
-        } catch (error) {
-          console.log(error)
-          console.log('-------------------'),
-          console.log(
-            'Error with data signatures:\n', 
-            `Loser: ${data.loserAddress}\n`,
-            `Winner: ${data.winnerAddress}\n`,
-            `LoserAmount: ${data.loserAmount}\n`,
-            `WinnerAmount: ${data.winnerAmount}\n`,
-            `GameID: ${room.roomName}\n`,
-            `v1: ${v1}\n`,
-            `r1: ${r1}\n`,
-            `s1: ${s1}`
-          )
-          console.log('-------------------')
-        }
-        try {
-          await pgClient.query("INSERT INTO signatures (address1, address2, player1amount, player2amount, gameid, v, r, s) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", [
-            data.loserAddress,
-            data.winnerAddress,
-            data.winnerAmount,  
-            data.loserAmount,
-            room.roomName,v2, r2, s2])
-        } catch (error) {
-          console.log(error)
-          console.log('-------------------'),
-          console.log(
-            'Error with data signatures:\n', 
-            `Loser: ${data.loserAddress}\n`,
-            `Winner: ${data.winnerAddress}\n`,
-            `LoserAmount: ${data.loserAmount}\n`,
-            `WinnerAmount: ${data.winnerAmount}\n`,
-            `GameID: ${room.roomName}\n`,
-            `v2: ${v2}\n`,
-            `r2: ${r2}\n`,
-            `s2: ${s2}`
-          )
+            console.log(
+              'Error with data signatures:\n',
+              `Address: ${signatures[i].address}\n`,
+              `GameID: ${signatures[i].fightid}\n`,
+              `Amount: ${signatures[i].amount}\n`,
+              `ChainID: ${signatures[i].chainid}`,
+              `v: ${signatures[i].v}\n`,
+              `r: ${signatures[i].r}\n`,
+              `s: ${signatures[i].s}`
+            )
           console.log('-------------------')
         }
       }
@@ -567,13 +431,15 @@ function handleSocket(socket) {
       const killsWinner = await getKills(data.winnerAddress)
       const deathsWinner = await getDeaths(data.winnerAddress)
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.loserAddress, data.loserAmount, killsLoser, deathsLoser, rounds])
+        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", 
+        [room.getFightId(), data.loserAddress, room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
         console.log(
           'Error with data statistics:\n',
-          `GameID: ${room.roomName}`,
+          `GameID: ${room.getFightId()}`,
+          `ChainID: ${room.getChainId()}`,
           `Address: ${data.loserAddress}`,
           `Amount: ${data.loserAmount}`,
           `Kills: ${killsLoser}`,
@@ -583,13 +449,15 @@ function handleSocket(socket) {
         console.log('-------------------')
       }
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, address, playerAmount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6)", [room.roomName, data.winnerAddress, data.winnerAmount,killsWinner, deathsWinner, rounds])
+        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds) VALUES($1,$2,$3,$4,$5,$6,$7,$8)", 
+        [room.getFightId(), data.winnerAddress, room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
         console.log(
           'Error with data statistics:\n',
-          `GameID: ${room.roomName}`,
+          `GameID: ${room.getFightId()}`,
+          `ChainID: ${room.getChainId()}`,
           `Address: ${data.winnerAddress}`,
           `Amount: ${data.winnerAmount}`,
           `Kills: ${killsWinner}`,
@@ -602,7 +470,9 @@ function handleSocket(socket) {
       await removeKills(data.winnerAddress)
       await removeDeaths(data.loserAddress)
       await removeDeaths(data.winnerAddress)
-      await redisClient.del(room.roomName)
+      await redisClient.del(createRoundsRedisLink())
+      await redisClient.del(createAmountRedisLink(data.loserAddress, room.getChainId(), room.getFightId()))
+      await redisClient.del(createAmountRedisLink(data.winnerAddress, room.getChainId(), room.getFightId()))
     } catch (error) {
       console.error(error)
     }
@@ -629,36 +499,36 @@ function handleSocket(socket) {
           socket.to(value.id).emit("end_waiting_another_user")
         })
       }
-    
-      const battle = await contract.battles(room.getName())
-      room.amountToLose = battle.amountForOneDeath.toString()
-      room.baseAmount = battle.player1Amount.toString()
-      if ((battle.player1 == joinData.walletAddress || battle.player2 == joinData.walletAddress) && battle.finished == false) {
-        const exists = await redisClient.get(`${joinData.walletAddress}_${room.roomName}`)
-        const roundsExists = await redisClient.get(room.roomName)
+
+      const fight = await blockchain().contract.fights(room.getFightId())
+      const players = await blockchain().contract.getFightPlayers(room.getFightId())
+      const player2 = players[1]
+      room.amountToLose = fight.amountPerRound.toString()
+      room.baseAmount = fight.baseAmount.toString()
+      if ((fight.owner == joinData.walletAddress || player2 == joinData.walletAddress) && fight.finishTime == 0) {
+        const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress))
+        const roundsExists = await redisClient.get(createRoundsRedisLink())
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
-          await redisClient.set(`${joinData.walletAddress}_${room.roomName}`, room.baseAmount)
+          await redisClient.set(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), room.baseAmount)
         }
         if (roundsExists == null || isNaN(parseFloat(roundsExists))) {
-          const totalDeposit = parseInt(battle.player1Amount.toString()) + parseInt(battle.player1Amount.toString())
-          const rounds = totalDeposit / parseInt(battle.amountForOneDeath.toString()) / 2
-          await redisClient.set(room.roomName, rounds)
+          await redisClient.set(createRoundsRedisLink(), fight.rounds.toString())
         }
 
-        const existKills = await redisClient.get(`${joinData.walletAddress}_kills_${room.roomName}`)
+        const existKills = await redisClient.get(createKillsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         if (existKills == null || isNaN(parseFloat(existKills)) || existKills == 'NaN') {
-          await redisClient.set(`${joinData.walletAddress}_kills_${room.roomName}`, 0)
+          await redisClient.set(createKillsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), 0)
         }
 
-        const existDeath = await redisClient.get(`${joinData.walletAddress}_deaths_${room.roomName}`)
+        const existDeath = await redisClient.get(createDeathsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         if (existDeath == null || isNaN(parseFloat(existDeath)) || existDeath == 'NaN') {
-          await redisClient.set(`${joinData.walletAddress}_deaths_${room.roomName}`, 0)
+          await redisClient.set(createDeathsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), 0)
         }
 
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress, joinData.publicKey), socket);
 
-        if(room.users.length === 1) {
+        if (room.users.length === 1) {
           setTimeout(async () => {
             if (room.numUsers() === 1) {
               await onFinishing()
@@ -683,13 +553,13 @@ function handleSocket(socket) {
           user.getId(), room.getName(), room.numUsers());
         log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}, public key: ${user.getPublicKey()}`);
       } else {
-        throw Error('User not in this battle or battle finished')
+        throw Error('User not in this fight or fight finished')
       }
-      
+
     } catch (error) {
       console.error(error)
     }
-    
+
   }
 
 
@@ -697,7 +567,7 @@ function handleSocket(socket) {
     try {
       var room;
       if (!name) {
-        name =  ++lastRoomId + '_room';
+        name = ++lastRoomId + '_room';
       }
       if (!rooms[name]) {
         room = new Room(name);
@@ -727,7 +597,7 @@ function handleSocket(socket) {
     } catch (error) {
       console.error(error)
     }
-    
+
   }
 
   function onSdp(message) {
@@ -743,6 +613,112 @@ function handleSocket(socket) {
       candidate: message.candidate
     });
   }
+
+  function createAmountRedisLink(address, chainid, gameid) {
+    return `${address}_${gameid}_${chainid}_amount`
+  }
+
+  function createKillsRedisLink(address, chainid, gameid) {
+    return `${address}_${gameid}_${chainid}_kills`;
+  }
+
+  function createDeathsRedisLink(address, chainid, gameid) {
+    return `${address}_${gameid}_${chainid}_deaths`;
+  }
+
+  function createRoundsRedisLink() {
+    return room.getName()
+  }
+
+
+  async function addKills(address) {
+    try {
+      const link = createKillsRedisLink(address, room.getChainId(), room.getFightId())
+      const exist = await redisClient.get(link)
+      await redisClient.set(link, parseInt(exist) + 1)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function addDeaths(address) {
+    try {
+      const link = createDeathsRedisLink(address, room.getChainId(), room.getFightId())
+      const exist = await redisClient.get(link)
+      await redisClient.set(link, parseInt(exist) + 1)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getKills(address) {
+    try {
+      const link = createKillsRedisLink(address, room.getChainId(), room.getFightId())
+      const exist = await redisClient.get(link)
+      if (exist == null) {
+        await redisClient.set(link, 0)
+      }
+      return await redisClient.get(link)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getDeaths(address) {
+    try {
+      const link = createDeathsRedisLink(address, room.getChainId(), room.getFightId())
+      const exist = await redisClient.get(link)
+      if (exist == null) {
+        await redisClient.set(link, 0)
+      }
+      return await redisClient.get(link)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function removeKills(address) {
+    try {
+      await redisClient.del(createKillsRedisLink(address, room.getChainId(), room.getFightId()))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function removeDeaths(address) {
+    try {
+      await redisClient.del(createDeathsRedisLink(address, room.getChainId(), room.getFightId()))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function signature(amount, address) {
+    const network = networks.find(n => n.chainid == room.getChainId())
+    const message = [room.getFightId(), amount, room.getChainId(), address, network.contractAddress]
+    const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint256", "uint160", "uint160"], message)
+    const sign = await blockchain().signer.signMessage(ethers.utils.arrayify(hashMessage));
+    const r = sign.substr(0, 66)
+    const s = '0x' + sign.substr(66, 64);
+    const v = parseInt("0x" + sign.substr(130, 2));
+    return {
+      contract: network.contractAddress, 
+      amount, 
+      chainid: room.getChainId(), 
+      fightid: room.getFightId(), 
+      address, 
+      r, s, v
+    }
+  }
+
+  function blockchain() {
+    const network = networks.find(n => n.chainid == room.getChainId())
+    const provider = new ethers.providers.JsonRpcProvider(network.rpc)
+    const signer = new ethers.Wallet(network.privateKey, provider)
+    const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
+    return {contract: _contract, signer};
+  }
+
 }
 
 

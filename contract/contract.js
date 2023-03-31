@@ -1,74 +1,118 @@
-// const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+import dotenv from "dotenv"
+dotenv.config()
+
+export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
 // const contractAddress = '0xa061c2604F35352F8A7731d0c738f535DAa6411a'//goerli
 // const contractAddress = '0xe7cCffC4F633713C3ee7d8FEe46d1253a1261206' //emerald_test
-const contractAddress = '0x09ED6f33Fb905883eb29Ca83f5E591a1DDB3fd25' //emerald main
-const contractAbi = [
+// export const contractAddress = '0x09ED6f33Fb905883eb29Ca83f5E591a1DDB3fd25' //emerald main
+export const networks = [
+  {
+      name: "Hardhat",
+      chainid: 31337,
+      rpc: 'http://localhost:8545',
+      currency: 'ETH',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Ganache",
+      chainid: 1337,
+      rpc: 'http://localhost:7545',
+      currency: 'ETH',
+      contractAddress: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Goerli",
+      chainid: 5,
+      rpc: 'https://goerli.infura.io/v3',
+      currency: 'ETH',
+      contractAddress: '',
+      privateKey: process.env.PRIVATE_KEY_TEST
+  },
+  {
+      name: "Emerald Testnet",
+      chainid: 42261,
+      rpc: 'https://testnet.emerald.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0x231d86b4A0280DcAA9De6282F784B374525e03c3',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+      name: "Emerald Mainnet",
+      chainid: 42262,
+      rpc: 'https://emerald.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0xD0f6192Bb423F31ff8468938FE97ed0fE2aF9b6e',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+      name: "Sapphire Test",
+      chainid: 23295,
+      rpc: 'https://testnet.sapphire.oasis.dev',
+      currency: 'ROSE',
+      contractAddress: '0x64BB70e1e2f776D95dE00676D8332e6aD5217195',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+      name: "staging-fast-active-bellatrix",
+      chainid: 1351057110,
+      rpc: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
+      currency: 'sFUEL',
+      explorer: 'https://staging-fast-active-bellatrix.explorer.staging-v3.skalenodes.com',
+      contractAddress: '0xC8272b926504bf3bD1844e7444e1087c9f972283',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  }
+]
+
+export const contractAbi = [
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "ID",
         "type": "uint256"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountForOneDeath",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
         "name": "owner",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "battleCreatedTimestamp",
-        "type": "uint256"
       }
     ],
-    "name": "CreateBattle",
+    "name": "CreateFight",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "ID",
         "type": "uint256"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "player1Amount",
-        "type": "uint256"
+        "indexed": true,
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "player2Amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "battleFinishedTimestamp",
+        "name": "amount",
         "type": "uint256"
       }
     ],
-    "name": "FinishBattle",
+    "name": "FinishFight",
     "type": "event"
   },
   {
@@ -88,25 +132,19 @@ const contractAbi = [
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "uint256",
         "name": "ID",
         "type": "uint256"
       },
       {
-        "indexed": false,
+        "indexed": true,
         "internalType": "address",
-        "name": "player2",
+        "name": "player",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
       }
     ],
-    "name": "JoinBattle",
+    "name": "JoinFight",
     "type": "event"
   },
   {
@@ -211,6 +249,25 @@ const contractAbi = [
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "ID",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "Withdraw",
+    "type": "event"
+  },
+  {
     "inputs": [],
     "name": "DEFAULT_ADMIN_ROLE",
     "outputs": [
@@ -224,114 +281,11 @@ const contractAbi = [
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "PAUSER_ROLE",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "amountUserGamesToReturn",
-    "outputs": [
-      {
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_fee",
         "type": "uint256"
-      }
-    ],
-    "name": "battles",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "ID",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "player1",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "player2",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "winner",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "player1Amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "player2Amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "finished",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "battleCreatedTimestamp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "battleFinishedTimestamp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amountForOneDeath",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint8",
-        "name": "_new",
-        "type": "uint8"
-      }
-    ],
-    "name": "changeAmountUserGamesToReturn",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint16",
-        "name": "_new",
-        "type": "uint16"
       }
     ],
     "name": "changeFee",
@@ -343,11 +297,11 @@ const contractAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "_new",
+        "name": "_feeCollector",
         "type": "address"
       }
     ],
-    "name": "changeFeeAddress",
+    "name": "changeFeeCollector",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -355,12 +309,38 @@ const contractAbi = [
   {
     "inputs": [
       {
-        "internalType": "uint8",
-        "name": "_new",
-        "type": "uint8"
+        "internalType": "uint256",
+        "name": "_maxPlayers",
+        "type": "uint256"
       }
     ],
-    "name": "changeMaxDeathInARow",
+    "name": "changeMaxPlayers",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_maxRounds",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeMaxRounds",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_minAmountPerRound",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeMinAmountPerRound",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -369,7 +349,7 @@ const contractAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "_new",
+        "name": "_signer",
         "type": "address"
       }
     ],
@@ -382,87 +362,132 @@ const contractAbi = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "amountForOneDeath",
-        "type": "uint256"
-      }
-    ],
-    "name": "createBattle",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "currentlyBusy",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "fee",
-    "outputs": [
-      {
-        "internalType": "uint16",
-        "name": "",
-        "type": "uint16"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "feeAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "data",
-        "type": "bytes"
-      }
-    ],
-    "name": "finishBattle",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "chunkIndex",
+        "name": "amountPerRound",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amountBattlesToReturn",
+        "name": "rounds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "playersAmount",
         "type": "uint256"
       }
     ],
-    "name": "getChunkFinishedBattles",
+    "name": "create",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "ID",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "fights",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "ID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "baseAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "createTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "finishTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amountPerRound",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rounds",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "playersAmount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "ID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "r",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "uint8",
+        "name": "v",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "s",
+        "type": "bytes32"
+      }
+    ],
+    "name": "finish",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getChunkFights",
     "outputs": [
       {
         "components": [
@@ -473,51 +498,41 @@ const contractAbi = [
           },
           {
             "internalType": "address",
-            "name": "player1",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "player2",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "winner",
+            "name": "owner",
             "type": "address"
           },
           {
             "internalType": "uint256",
-            "name": "player1Amount",
+            "name": "baseAmount",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "player2Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "finished",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleCreatedTimestamp",
+            "name": "createTime",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "battleFinishedTimestamp",
+            "name": "finishTime",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "amountForOneDeath",
+            "name": "amountPerRound",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "rounds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "playersAmount",
             "type": "uint256"
           }
         ],
-        "internalType": "struct GameStorage.Battle[]",
+        "internalType": "struct IFairFight.Fight[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -528,77 +543,36 @@ const contractAbi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "ID",
+        "type": "uint256"
       }
     ],
-    "name": "getCurrentUserGame",
+    "name": "getFightPlayers",
     "outputs": [
       {
-        "components": [
-          {
-            "internalType": "uint256",
-            "name": "ID",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "player1",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "player2",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "winner",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "player1Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "player2Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "finished",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleCreatedTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleFinishedTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountForOneDeath",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct GameStorage.Battle",
+        "internalType": "address[]",
         "name": "",
-        "type": "tuple"
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "getOpenBattles",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPlayerFullFights",
     "outputs": [
       {
         "components": [
@@ -609,51 +583,41 @@ const contractAbi = [
           },
           {
             "internalType": "address",
-            "name": "player1",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "player2",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "winner",
+            "name": "owner",
             "type": "address"
           },
           {
             "internalType": "uint256",
-            "name": "player1Amount",
+            "name": "baseAmount",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "player2Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "finished",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleCreatedTimestamp",
+            "name": "createTime",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "battleFinishedTimestamp",
+            "name": "finishTime",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "amountForOneDeath",
+            "name": "amountPerRound",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "rounds",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "playersAmount",
             "type": "uint256"
           }
         ],
-        "internalType": "struct GameStorage.Battle[]",
+        "internalType": "struct IFairFight.Fight[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -675,77 +639,6 @@ const contractAbi = [
         "internalType": "bytes32",
         "name": "",
         "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "getUserPastBattles",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "uint256",
-            "name": "ID",
-            "type": "uint256"
-          },
-          {
-            "internalType": "address",
-            "name": "player1",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "player2",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "winner",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "player1Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "player2Amount",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "finished",
-            "type": "bool"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleCreatedTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "battleFinishedTimestamp",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amountForOneDeath",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct GameStorage.Battle[]",
-        "name": "",
-        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
@@ -801,28 +694,28 @@ const contractAbi = [
         "type": "address"
       },
       {
-        "internalType": "uint8",
-        "name": "_amountUserGamesToReturn",
-        "type": "uint8"
-      },
-      {
-        "internalType": "uint8",
-        "name": "_maxDeathInARow",
-        "type": "uint8"
+        "internalType": "uint256",
+        "name": "_maxRounds",
+        "type": "uint256"
       },
       {
         "internalType": "address",
-        "name": "_feeAddress",
+        "name": "_feeCollector",
         "type": "address"
       },
       {
-        "internalType": "uint16",
+        "internalType": "uint256",
         "name": "_fee",
-        "type": "uint16"
+        "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_minAmountForOneRound",
+        "name": "_minAmountPerRound",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_maxPlayers",
         "type": "uint256"
       }
     ],
@@ -835,31 +728,24 @@ const contractAbi = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_ID",
+        "name": "ID",
         "type": "uint256"
       }
     ],
-    "name": "joinBattle",
+    "name": "join",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "maxDeathInARow",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "address",
         "name": "",
-        "type": "uint8"
+        "type": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "minAmountForOneRound",
+    "name": "lastPlayerFight",
     "outputs": [
       {
         "internalType": "uint256",
@@ -872,11 +758,37 @@ const contractAbi = [
   },
   {
     "inputs": [],
-    "name": "openBattles",
+    "name": "maxPlayers",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "_value",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "maxRounds",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minAmountPerRound",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -893,6 +805,30 @@ const contractAbi = [
   {
     "inputs": [],
     "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "playerClaimed",
     "outputs": [
       {
         "internalType": "bool",
@@ -940,19 +876,6 @@ const contractAbi = [
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "signerAccess",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "bytes4",
@@ -981,25 +904,6 @@ const contractAbi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "userBattles",
-    "outputs": [
-      {
-        "internalType": "uint32",
-        "name": "",
-        "type": "uint32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "uint256",
         "name": "ID",
         "type": "uint256"
@@ -1007,12 +911,7 @@ const contractAbi = [
     ],
     "name": "withdraw",
     "outputs": [],
-    "stateMutability": "payable",
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]
-
-module.exports = {
-  contractAbi,
-  contractAddress
-}
