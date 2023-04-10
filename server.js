@@ -10,15 +10,15 @@ import cors from "cors"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
-import { contractAbi, contractAddress, networks } from "./contract/contract.js"
+import { contractAbi, charactersShopAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 
-const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
-const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
+// const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
+// const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
 // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 // const signer = new ethers.Wallet(process.env.PRIVATE_KEY_TEST, provider)
-const contract = new ethers.Contract(contractAddress, contractAbi, signer)
-const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
+// const contract = new ethers.Contract(contractAddress, contractAbi, signer)
+// const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
 const secondsInADay = 86400
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -374,16 +374,32 @@ async function setCharacter(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const characterid = req.body.characterid
-        console.log(characterid)
-        //TODO: добавить проверку chain'a (существует ли)
-        await pgClient.query(
-            "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
-            [address, chainid, characterid]
-        )
-        response.status(200).send()
+        const { shop } = blockchainConfig(chainid)
+        const exist = await shop.addressTokenIds(address, characterid === 0 ? characterid : characterid-1)
+        if (characterid === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, characterid]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
     } catch (error) {
         response.status(500).send()
     }
+}
+
+function blockchainConfig(chainid) {
+    const network = networks.find(n => n.chainid == chainid)
+    const provider = new ethers.providers.JsonRpcProvider(network.rpc)
+    const signer = new ethers.Wallet(network.privateKey, provider)
+    const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
+    let shop
+    if (network.characterShopAddress != undefined) {
+        shop = new ethers.Contract(network.characterShopAddress, charactersShopAbi, signer)
+    } 
+    return {contract: _contract, signer, shop};
 }
 
 async function getInventory(req, response) {
