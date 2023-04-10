@@ -440,12 +440,14 @@ server.use(express.urlencoded({extended: true}))
 server.use(express.json());
 server.use(express.static(path.join(__dirname,'/lib')))
 const maintenance = false
+server.use('/', express.static(path.join(__dirname,'/public')));
+server.use('/maintenance', express.static(path.join(__dirname,'/public')));
 server.get('/', (req, res) => {
     maintenance
     ?
     res.redirect('/maintenance')
     :
-    res.sendFile(__dirname+'/lib/public/index.html')
+    res.sendFile(__dirname+'/public/index.html')
 })
 
 server.get('/game', (req, res) => {
@@ -453,7 +455,7 @@ server.get('/game', (req, res) => {
     ?
     res.redirect('/maintenance')
     :
-    res.sendFile(__dirname+'/lib/public/game.html')
+    res.sendFile(__dirname+'/public/game.html')
 })
 
 server.get('/sign', async (req, res) => {
@@ -518,7 +520,7 @@ server.get('/maintenance', async (req, res) => {
     ?
     res.redirect('/')
     :
-    res.sendFile(__dirname+'/lib/public/maintenance.html')
+    res.sendFile(__dirname+'/public/maintenance.html')
 })
 
 server.post('/setcharacter', async (req, res) => {
