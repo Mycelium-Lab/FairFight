@@ -637,9 +637,9 @@ a {
 }
 
 #canvas {
-  max-width: 1020px;
+  /* max-width: 1020px; */
   width: 100%;
-  height: 870px;
+  /* height: 870px; */
   background-color: #d9d9d9;
 }
 
