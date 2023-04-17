@@ -8,8 +8,8 @@ html,body {
 }
 
 #canvas {
-    width: 1020px;
-    height: 100vh;
+    width: 2046px;
+    height: 770px;
     border: 1px solid #3b3d42;
     image-rendering: optimizeSpeed;
     -webkit-interpolation-mode: nearest-neighbor;
