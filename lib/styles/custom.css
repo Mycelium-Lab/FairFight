@@ -702,6 +702,7 @@ a {
 }
 
 #middle_your_stats, #middle_enemy_stats {
+  display: none;
   background-color: #FFFFFF;
   color: var(--color-black);
   border: 1px solid #FF7C06;
