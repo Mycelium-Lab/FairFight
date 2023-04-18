@@ -422,7 +422,37 @@ async function getInventory(req, response) {
         }
         response.status(200).json(res.rows[0])
     } catch (error) {
-        response.status(200).json({})
+        response.status(500).json({})
+    }
+}
+
+async function setGamesProperties(req, response) {
+    try {
+        const gameid = req.body.gameid
+        const chainid = req.body.chainid
+        const map = req.body.map
+        await pgClient.query(
+            "INSERT INTO gamesproperties (gameid, chainid, map) VALUES($1, $2, $3)",
+            [gameid, chainid, map]
+        )
+        response.status(200).send()
+    } catch (error) {
+        response.status(500).send()
+    }
+}
+
+async function getGamesProperties(req, response) {
+    try {
+        const gameid = req.query.gameid
+        const chainid = req.query.chainid
+        const res = await pgClient.query('SELECT map FROM gamesproperties WHERE gameid=$1 AND chainid=$2', [gameid, chainid])
+        if (res.rows.length === 0) {
+            response.status(404).json({map: 0})
+        } else {
+            response.status(200).json(res.rows[0])
+        }
+    } catch (error) {
+        response.status(500).json({map: 0})
     }
 }
 
@@ -537,6 +567,22 @@ server.post('/getinventory', async (req, res) => {
     res.redirect('/maintenance')
     :
     await getInventory(req, res)
+})
+
+server.post('/setgamesprops', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setGamesProperties(req, res)
+})
+
+server.get('/getgamesprops', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getGamesProperties(req, res)
 })
 
 server.listen(5000, async () => {

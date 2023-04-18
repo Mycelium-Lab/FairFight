@@ -44,3 +44,9 @@ CREATE TABLE inventory(
     chainid INT NOT NULL,
     characterid INT NOT NULL
 );
+
+CREATE TABLE gamesproperties(
+    gameid INT NOT NULL,
+    chainid INT NOT NULL,
+    map INT NOT NULL
+);
