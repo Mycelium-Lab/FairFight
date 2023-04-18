@@ -495,7 +495,7 @@ a {
   align-items: center;
 }
 
-.modal .modal_content input {
+.modal .modal_content input, select {
   border-color: var(--color-orange);
   border-width: 1px;
   border-radius: 8px;
@@ -509,6 +509,9 @@ a {
   background-repeat: no-repeat;
   background-position: right 6px center;
   padding-right: 25px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .modal .modal_content input::placeholder {
@@ -637,9 +640,9 @@ a {
 }
 
 #canvas {
-  max-width: 1020px;
+  /* max-width: 1020px; */
   width: 100%;
-  height: 870px;
+  /* height: 870px; */
   background-color: #d9d9d9;
 }
 
@@ -702,6 +705,7 @@ a {
 }
 
 #middle_your_stats, #middle_enemy_stats {
+  display: none;
   background-color: #FFFFFF;
   color: var(--color-black);
   border: 1px solid #FF7C06;
