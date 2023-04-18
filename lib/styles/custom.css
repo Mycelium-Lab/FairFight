@@ -495,7 +495,7 @@ a {
   align-items: center;
 }
 
-.modal .modal_content input {
+.modal .modal_content input, select {
   border-color: var(--color-orange);
   border-width: 1px;
   border-radius: 8px;
@@ -509,6 +509,9 @@ a {
   background-repeat: no-repeat;
   background-position: right 6px center;
   padding-right: 25px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .modal .modal_content input::placeholder {
