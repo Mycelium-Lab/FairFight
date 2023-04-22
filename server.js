@@ -10,7 +10,7 @@ import cors from "cors"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
-import { contractAbi, charactersShopAbi, networks } from "./contract/contract.js"
+import { contractAbi, shopAbi, nftAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 
 // const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
@@ -374,8 +374,8 @@ async function setCharacter(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const characterid = req.body.characterid
-        const { shop } = blockchainConfig(chainid)
-        const exist = await shop.addressTokenIds(address, characterid === 0 ? characterid : characterid-1)
+        const { characters } = blockchainConfig(chainid)
+        const exist = await characters.propertyToken(address, characterid === 0 ? characterid : characterid-1)
         if (characterid === 0 || exist.toString() !== '0') {
             await pgClient.query(
                 "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
@@ -396,10 +396,16 @@ function blockchainConfig(chainid) {
     const signer = new ethers.Wallet(network.privateKey, provider)
     const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
     let shop
-    if (network.characterShopAddress != undefined) {
-        shop = new ethers.Contract(network.characterShopAddress, charactersShopAbi, signer)
+    let characters
+    let armors
+    let weapons
+    if (network.shopAddress != undefined) {
+        shop = new ethers.Contract(network.shopAddress, shopAbi, signer)
+        characters = new ethers.Contract(network.charactersAddress, nftAbi, signer)
+        armors = new ethers.Contract(network.armorsAddress, nftAbi, signer)
+        weapons = new ethers.Contract(network.weaponsAddress, nftAbi, signer)
     } 
-    return {contract: _contract, signer, shop};
+    return {contract: _contract, signer, shop, characters, armors, weapons};
 }
 
 async function getInventory(req, response) {

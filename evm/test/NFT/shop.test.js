@@ -35,14 +35,6 @@ describe("FairFightShop", function (){
     let armors
     let weapons
 
-    //utils functions
-    const getIDFromBuyEvent = async(buyTx) => {
-        const events = (await buyTx.wait()).events
-        const buyEvent = events.find(e => e.event === 'Buy')
-        const tokenID = buyEvent.args.ID
-        return tokenID;
-    }
-
 	beforeEach(async function() {
 		[owner, buyer, collector] = await ethers.getSigners()
         const FFNFT = await ethers.getContractFactory("FairFightNFT")
@@ -70,62 +62,49 @@ describe("FairFightShop", function (){
         await characters.setAllowedMint(shop.address, true)
         await armors.setAllowedMint(shop.address, true)
         await weapons.setAllowedMint(shop.address, true)
+        await testUSDC.mint(buyer.address, ethers.utils.parseEther('10000000'))
 	})
 
     describe('Initial', async () => {
         it('positive initial variables', async () => {
-            console.log(await characters.tokenURI(0))
-            // const priceCharacter0 = await shop.allowedTokens(testUSDC.address, 0)
-            // const priceCharacter1 = await shop.allowedTokens(testUSDC.address, 1)
-            // const _character0Uri = await shop.characterURIs(0)
-            // const _character1Uri = await shop.characterURIs(1)
-            // assert(priceCharacter0.toString() === amountInUSDPerCharacter0.toString(), 'Price character 0')
-            // assert(priceCharacter1.toString() === amountInUSDPerCharacter1.toString(), 'Price character 1')
-            // assert(_character0Uri === character0Uri, 'Character 0 Uri')
-            // assert(_character1Uri === character1Uri, 'Character 1 Uri')
+            const characterURI = await characters.tokenURI(0)
+            const armorsURI = await armors.tokenURI(0)
+            const weaponsURI = await weapons.tokenURI(0)
+            assert(characterURI.includes(charactersBaseURI))
+            assert(armorsURI.includes(armorsBaseURI))
+            assert(weaponsURI.includes(weaponsBaseURI))
         })
     })
 
-    // describe('Buy', async () => {
-    //     it('positive buy character 0', async () => {
-    //         //check if collector balance equals 0 before buy
-    //         const collectorAmountBefore = await testUSDC.balanceOf(collector.address)
-    //         assert(collectorAmountBefore.toString() === '0', 'Collector balance = 0')
-    //         //get price character 0
-    //         const priceCharacter0 = await shop.connect(buyer).allowedTokens(testUSDC.address, 0)
-    //         //approve token to shop in amount price character 0
-    //         await testUSDC.connect(buyer).approve(shop.address, priceCharacter0)
-    //         //buy character
-    //         const buyTx = await shop.connect(buyer).buy(testUSDC.address, 0)
-    //         //get tokenID from event
-    //         const tokenID = await getIDFromBuyEvent(buyTx)
-    //         const tokenOwner = await shop.ownerOf(tokenID)
-    //         //check if collector got his tokens
-    //         const collectorAmountAfter = await testUSDC.balanceOf(collector.address)
-    //         assert(collectorAmountAfter.toString() === priceCharacter0.toString(), 'Collector balance = price character 0')
-    //         //check if buyer is token owner
-    //         assert(tokenOwner === buyer.address, 'Buyer 0 token owner')
-    //     })
+    describe('Buy', async () => {
+        it('positive buy character 0', async () => {
+            //check if collector balance equals 0 before buy
+            const collectorAmountBefore = await testUSDC.balanceOf(collector.address)
+            assert(collectorAmountBefore.toString() === '0', 'Collector balance = 0')
+            //get price character 0
+            const priceCharacter0 = await shop.connect(buyer).prices(characters.address, testUSDC.address, 0)
+            assert(priceCharacter0 > 0)
+            //approve token to shop in amount price character 0
+            await testUSDC.connect(buyer).approve(shop.address, priceCharacter0)
+            //buy character
+            const buyTx = await shop.connect(buyer).buy(characters.address, testUSDC.address, 0)
+            const tokenOwner = await characters.ownerOf(1)
+            //check if collector got his tokens
+            const collectorAmountAfter = await testUSDC.balanceOf(collector.address)
+            assert(collectorAmountAfter.toString() === priceCharacter0.toString(), 'Collector balance = price character 0')
+            //check if buyer is token owner
+            assert(tokenOwner === buyer.address, 'Buyer 0 token owner')
+        })
 
-    //     it('positive buy character 1', async () => {
-    //         //check if collector balance equals 0 before buy
-    //         const collectorAmountBefore = await testUSDC.balanceOf(collector.address)
-    //         assert(collectorAmountBefore.toString() === '0', 'Collector balance = 0')
-    //         //get price character 0
-    //         const priceCharacter1 = await shop.connect(buyer).allowedTokens(testUSDC.address, 1)
-    //         //approve token to shop in amount price character 0
-    //         await testUSDC.connect(buyer).approve(shop.address, priceCharacter1)
-    //         //buy character
-    //         const buyTx = await shop.connect(buyer).buy(testUSDC.address, 1)
-    //         //get tokenID from event
-    //         const tokenID = await getIDFromBuyEvent(buyTx)
-    //         const tokenOwner = await shop.ownerOf(tokenID)
-    //         //check if collector got his tokens
-    //         const collectorAmountAfter = await testUSDC.balanceOf(collector.address)
-    //         assert(collectorAmountAfter.toString() === priceCharacter1.toString(), 'Collector balance = price character 1')
-    //         //check if buyer is token owner
-    //         assert(tokenOwner === buyer.address, 'Buyer 0 token owner')
-    //     })
-    // })
+        it('negative buy character 2', async () => {
+            await expect(
+                shop.connect(buyer).prices(characters.address, testUSDC.address, 2)
+            ).to.be.reverted //because of array out of bonds
+            //still trying
+            await expect(
+                shop.connect(buyer).buy(characters.address, testUSDC.address, 2)
+            ).to.be.reverted //because of array out of bonds
+        })
+    })
 
 })

@@ -1063,7 +1063,9 @@ a {
   justify-content: center;
 }
 
-.characters-block__box {
+.characters-block__box,
+.armors-block__box,
+.weapons-block__box {
   width: 90px;
   height: 90px;
   border-radius: 8px;
@@ -1074,7 +1076,9 @@ a {
   justify-content: center;
 }
 
-.characters-block__box img {
+.characters-block__box img,
+.armors-block__box img,
+.weapons-block__box img {
   width: 90px;
   height: 90px;
 }

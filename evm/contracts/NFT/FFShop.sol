@@ -41,6 +41,7 @@ contract FairFightShop is Ownable {
         prices[weapons][token] = weaponsPrices;
         prices[armors][token] = armorsPrices;
         collector = _collector;
+        work = true;
     }
 
     function setAllPrices(IFFNFT propertyType, IERC20 token, uint256[] memory _prices) external onlyOwner {
