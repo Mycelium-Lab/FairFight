@@ -10,7 +10,7 @@ import cors from "cors"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
-import { contractAbi, charactersShopAbi, networks } from "./contract/contract.js"
+import { contractAbi, shopAbi, nftAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 
 // const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
@@ -374,8 +374,8 @@ async function setCharacter(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const characterid = req.body.characterid
-        const { shop } = blockchainConfig(chainid)
-        const exist = await shop.addressTokenIds(address, characterid === 0 ? characterid : characterid-1)
+        const { characters } = blockchainConfig(chainid)
+        const exist = await characters.propertyToken(address, characterid === 0 ? characterid : characterid-1)
         if (characterid === 0 || exist.toString() !== '0') {
             await pgClient.query(
                 "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
@@ -386,6 +386,70 @@ async function setCharacter(req, response) {
             response.status(401).send('Not exist')
         }
     } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setArmor(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const armor = req.body.armor
+        const { armors } = blockchainConfig(chainid)
+        const exist = await armors.propertyToken(address, armor)
+        if (armor === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, armor]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setWeapon(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const weapon = req.body.weapon
+        const { weapons } = blockchainConfig(chainid)
+        const exist = await weapons.propertyToken(address, weapon)
+        if (weapon === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, weapon]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setBoots(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const boot = req.body.boots
+        const { armors } = blockchainConfig(chainid)
+        const exist = await armors.propertyToken(address, boot)
+        if (boot === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, boot]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
         response.status(500).send()
     }
 }
@@ -396,10 +460,16 @@ function blockchainConfig(chainid) {
     const signer = new ethers.Wallet(network.privateKey, provider)
     const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
     let shop
-    if (network.characterShopAddress != undefined) {
-        shop = new ethers.Contract(network.characterShopAddress, charactersShopAbi, signer)
+    let characters
+    let armors
+    let weapons
+    if (network.shopAddress != undefined) {
+        shop = new ethers.Contract(network.shopAddress, shopAbi, signer)
+        characters = new ethers.Contract(network.charactersAddress, nftAbi, signer)
+        armors = new ethers.Contract(network.armorsAddress, nftAbi, signer)
+        weapons = new ethers.Contract(network.weaponsAddress, nftAbi, signer)
     } 
-    return {contract: _contract, signer, shop};
+    return {contract: _contract, signer, shop, characters, armors, weapons};
 }
 
 async function getInventory(req, response) {
@@ -559,6 +629,27 @@ server.post('/setcharacter', async (req, res) => {
     res.redirect('/maintenance')
     :
     await setCharacter(req, res)
+})
+server.post('/setarmor', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setArmor(req, res)
+})
+server.post('/setweapon', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setWeapon(req, res)
+})
+server.post('/setboots', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setBoots(req, res)
 })
 
 server.post('/getinventory', async (req, res) => {

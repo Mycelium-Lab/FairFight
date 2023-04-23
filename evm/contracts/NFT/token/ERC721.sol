@@ -22,12 +22,12 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     // ADDITIONAL
     //--------------------------------------
-    /// @notice Address to character to token
-    mapping(address => mapping(uint256 => uint256)) public addressTokenIds;
-    /// @notice Token to character type
-    mapping(uint256 => uint256) public tokenCharacter;
-    /// @notice Character to URI
-    mapping(uint256 => string) public characterURIs;
+    /// @notice Address to propertyID to token
+    mapping(address => mapping(uint256 => uint256)) public propertyToken;
+    /// @notice Token to propertyID
+    mapping(uint256 => uint256) public tokenProperty;
+    /// @notice propertyID baseURI
+    string public propertyBaseURI;
     //--------------------------------------
 
     // Token name
@@ -369,8 +369,8 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     ) internal virtual {
         require(ERC721.ownerOf(tokenId) == from, "ERC721: transfer from incorrect owner");
         require(to != address(0), "ERC721: transfer to the zero address");
-        uint256 character = tokenCharacter[tokenId];
-        require(addressTokenIds[to][character] == 0, "FairFightCharacter: You already have this character");
+        uint256 propertyID = tokenProperty[tokenId];
+        require(propertyToken[to][propertyID] == 0, "ERC721: You already have this property");
 
         _beforeTokenTransfer(from, to, tokenId, 1);
 
@@ -390,8 +390,8 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             _balances[to] += 1;
         }
         _owners[tokenId] = to;
-        addressTokenIds[from][character] = 0;
-        addressTokenIds[to][character] = tokenId;
+        propertyToken[from][propertyID] = 0;
+        propertyToken[to][propertyID] = tokenId;
 
         emit Transfer(from, to, tokenId);
 

@@ -1,0 +1,307 @@
+[{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/0.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "0"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "1"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/1.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "0"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "2"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/2.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "1"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "2"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/3.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "2"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "2"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/4.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "2"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "2"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/5.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "1"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "4"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/6.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "1"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "4"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/7.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "3"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "1"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/8.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "3"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "1"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/9.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "-1"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "10"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/10.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "-1"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "10"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/11.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "10"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "0"
+		}
+	]
+}
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/12.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "10"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "0"
+		}
+	]
+}
+
+,{
+	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/13.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Weapon"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Damage Bonus",
+			"value": "7"
+		},
+		{
+			"trait_type": "Bullets Bonus",
+			"value": "7"
+		}
+	]
+}
+]

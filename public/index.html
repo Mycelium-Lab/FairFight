@@ -318,9 +318,9 @@
 						</div>
 						<div class="inventory-block__middle">
 							<div class="inventory-block__box inventory-block__box--big" style="grid-area: item1"><img id="inventory-character-image" src="/media/characters/0.svg" width="140px" height="140px" alt=""></div>
-							<div class="inventory-block__box" style="grid-area: item2"><img src="/media/svg/inventory/weapon.svg" alt=""></div>
-							<div class="inventory-block__box" style="grid-area: item3"><img src="/media/svg/inventory/armor.svg" alt=""></div>
-							<div class="inventory-block__box" style="grid-area: item4"><img src="/media/svg/inventory/boots.svg" alt=""></div>
+							<div class="inventory-block__box" id="weapons-change" style="grid-area: item2"><img id="weapons-img" alt=""></div>
+							<div class="inventory-block__box" id="armors-change" style="grid-area: item3"><img id="armor-img" alt=""></div>
+							<div class="inventory-block__box" id="boots-change" style="grid-area: item4"><img id="boots-img" alt=""></div>
 						</div>
 						<button id="change-character" style="display: none;">Change</button>
 						<div class="inventory-block__footer">
@@ -357,69 +357,69 @@
 									<div class="characters-block__box">Soon</div>
 									<div class="characters-block__box">Soon</div>
 								</div>
+								<div class="inventory-block__footer">
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+								</div>
+								<div class="inventory-block__footer">
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+									<div class="characters-block__box">Soon</div>
+								</div>
 							</div>
 							<div id="armor-box" style="display: none;">
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="armors-block__box" id="armor-0"><img src="/media/armors/0.png"/></div>
+									<div class="armors-block__box" id="armor-1"><img src="/media/armors/1.png"/></div>
+									<div class="armors-block__box" id="armor-2"><img src="/media/armors/2.png"/></div>
+									<div class="armors-block__box" id="armor-3"><img src="/media/armors/3.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="armors-block__box" id="armor-4"><img src="/media/armors/4.png"/></div>
+									<div class="armors-block__box" id="armor-5"><img src="/media/armors/5.png"/></div>
+									<div class="armors-block__box" id="armor-6"><img src="/media/armors/6.png"/></div>
+									<div class="armors-block__box" id="armor-7"><img src="/media/armors/7.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="armors-block__box" id="armor-8"><img src="/media/armors/8.png"/></div>
+									<div class="armors-block__box" id="armor-9"><img src="/media/armors/9.png"/></div>
+									<div class="armors-block__box" id="armor-10"><img src="/media/armors/10.png"/></div>
+									<div class="armors-block__box" id="armor-11"><img src="/media/armors/11.png"/></div>
+								</div>
+								<div class="inventory-block__footer">
+									<div class="armors-block__box" id="armor-12"><img src="/media/armors/12.png"/></div>
+									<div class="armors-block__box" id="armor-13"><img src="/media/armors/13.png"/></div>
+									<div class="armors-block__box" id="armor-14"><img src="/media/armors/14.png"/></div>
+									<div class="armors-block__box" id="armor-15"><img src="/media/armors/15.png"/></div>
 								</div>
 							</div>
 							<div id="weapons-box" style="display: none;">
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="weapons-block__box" id="weapon-0"><img src="/media/weapons/0.png"/></div>
+									<div class="weapons-block__box" id="weapon-1"><img src="/media/weapons/1.png"/></div>
+									<div class="weapons-block__box" id="weapon-2"><img src="/media/weapons/2.png"/></div>
+									<div class="weapons-block__box" id="weapon-3"><img src="/media/weapons/3.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="weapons-block__box" id="weapon-4"><img src="/media/weapons/4.png"/></div>
+									<div class="weapons-block__box" id="weapon-5"><img src="/media/weapons/5.png"/></div>
+									<div class="weapons-block__box" id="weapon-6"><img src="/media/weapons/6.png"/></div>
+									<div class="weapons-block__box" id="weapon-7"><img src="/media/weapons/7.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
-									<div class="inventory-block__box">Soon</div>
+									<div class="weapons-block__box" id="weapon-8"><img src="/media/weapons/8.png"/></div>
+									<div class="weapons-block__box" id="weapon-9"><img src="/media/weapons/9.png"/></div>
+									<div class="weapons-block__box" id="weapon-10"><img src="/media/weapons/10.png"/></div>
+									<div class="weapons-block__box" id="weapon-11"><img src="/media/weapons/11.png"/></div>
+								</div>
+								<div class="inventory-block__footer">
+									<div class="weapons-block__box" id="weapon-12"><img src="/media/weapons/12.png"/></div>
+									<div class="weapons-block__box" id="weapon-13"><img src="/media/weapons/13.png"/></div>
+									<div class="weapons-block__box">Soon</div>
+									<div class="weapons-block__box">Soon</div>
 								</div>
 							</div>
 						</div>
@@ -501,6 +501,42 @@
 							<h2 class="about__title">Characters</h2>
 							<div>
 								<div id="choose-character-modal-list" class="choose-character-modal-list">
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div id="choose_weapon_modal" class="modal">
+						<div class="choose_character_modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h2 class="about__title">Weapons</h2>
+							<div>
+								<div id="choose-weapon-modal-list" class="choose-weapon-modal-list">
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div id="choose_armor_modal" class="modal">
+						<div class="choose_character_modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h2 class="about__title">Armors</h2>
+							<div>
+								<div id="choose-armor-modal-list" class="choose-armor-modal-list">
+									
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div id="choose_boots_modal" class="modal">
+						<div class="choose_character_modal_content">
+							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<h2 class="about__title">Boots</h2>
+							<div>
+								<div id="choose-boots-modal-list" class="choose-boots-modal-list">
 									
 								</div>
 							</div>

@@ -42,7 +42,10 @@ INSERT INTO utils (id, currentleaderboardupdate) VALUES(0,0);
 CREATE TABLE inventory(
     player TEXT NOT NULL,
     chainid INT NOT NULL,
-    characterid INT NOT NULL
+    characterid INT,
+    armor INT,
+    weapon INT,
+    boots INT
 );
 
 CREATE TABLE gamesproperties(
