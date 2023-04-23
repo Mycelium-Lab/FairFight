@@ -1,0 +1,32 @@
+[
+{
+	"image": "https://ipfs.io/ipfs/QmV83kUGKqTmoq7roj6epfht1CtpJBjMsBNk5GXiyU4rGz/1.png",
+	"name": "Piky",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Character"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		}
+	]
+}
+,
+	{
+	"image": "https://ipfs.io/ipfs/QmV83kUGKqTmoq7roj6epfht1CtpJBjMsBNk5GXiyU4rGz/2.png",
+	"name": "Butter",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Character"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		}
+	]
+}
+
+]

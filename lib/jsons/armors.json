@@ -1,0 +1,321 @@
+[
+	{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/0.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "10"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "0"
+		}
+	]
+	},{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/1.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "20"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "0"
+		}
+	]
+}
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/2.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "0"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "40"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/3.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "5"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "40"
+		}
+	]
+}
+
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/4.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "10"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "40"
+		}
+	]
+}
+
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/5.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "60"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "-20"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/6.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "80"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "20"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/7.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Boots"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Speed Bonus",
+			"value": "20"
+		},
+		{
+			"trait_type": "Jump Bonus",
+			"value": "80"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/8.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "5"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/9.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "3"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/10.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "1"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/11.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "5"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/12.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Legendary"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "5"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/13.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "3"
+		}
+	]
+}
+
+	,{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/14.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Epochal"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "3"
+		}
+	]
+}
+	,
+	{
+	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/15.png",
+	"attributes": [
+		{	
+			"trait_type": "Type",
+			"value": "Hat"
+		},
+		{
+			"trait_type": "Rarity",
+			"value": "Normal"
+		},
+		{
+			"trait_type": "Health Bonus",
+			"value": "1"
+		}
+	]
+}
+
+]

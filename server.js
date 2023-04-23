@@ -386,6 +386,70 @@ async function setCharacter(req, response) {
             response.status(401).send('Not exist')
         }
     } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setArmor(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const armor = req.body.armor
+        const { armors } = blockchainConfig(chainid)
+        const exist = await armors.propertyToken(address, armor)
+        if (armor === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, armor]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setWeapon(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const weapon = req.body.weapon
+        const { weapons } = blockchainConfig(chainid)
+        const exist = await weapons.propertyToken(address, weapon)
+        if (weapon === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, weapon]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setBoots(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const boot = req.body.boots
+        const { armors } = blockchainConfig(chainid)
+        const exist = await armors.propertyToken(address, boot)
+        if (boot === 0 || exist.toString() !== '0') {
+            await pgClient.query(
+                "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2",
+                [address, chainid, boot]
+            )
+            response.status(200).send()
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
         response.status(500).send()
     }
 }
@@ -565,6 +629,27 @@ server.post('/setcharacter', async (req, res) => {
     res.redirect('/maintenance')
     :
     await setCharacter(req, res)
+})
+server.post('/setarmor', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setArmor(req, res)
+})
+server.post('/setweapon', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setWeapon(req, res)
+})
+server.post('/setboots', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setBoots(req, res)
 })
 
 server.post('/getinventory', async (req, res) => {
