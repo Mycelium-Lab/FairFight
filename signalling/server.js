@@ -1,7 +1,6 @@
 const PORT = 8033;
 const MAX_ROOM_USERS = 2;
 
-import fs from 'fs';
 const log = console.log.bind(console);
 import socketio from 'socket.io';
 const io = socketio(PORT, {
@@ -15,11 +14,10 @@ const io = socketio(PORT, {
 import redis from "redis"
 import pg from "pg"
 import ethers from "ethers"
-import web3 from "web3"
 import dotenv from "dotenv"
 dotenv.config()
 
-import { contractAbi, contractAddress, networks } from "../contract/contract.js"
+import { contractAbi, networks } from "../contract/contract.js"
 
 const redisClient = redis.createClient({
   socket: {
@@ -33,6 +31,23 @@ const pgClient = new pg.Client({
   password: process.env.DB_PASSWORD,
   database: process.env.DB
 })
+
+const baseGameParams = {
+  maxWeapons: 8,
+  size: { x: 16, y: 28 },
+  offset: { x: 8, y: 4 },
+  maxVel: { x: 120, y: 480 },
+  accelDef: { ground: 400, air: 200 },
+  frictionDef: { ground: 400, air: 100 },
+  jump: 160,
+  bounciness: 0,
+  health: 30,
+  type: 1,
+  checkAgainst: 0,
+  collides: 2,
+  weaponsLeft: 3
+}
+
 
 const rooms = {};
 let lastUserId = 0;
@@ -58,6 +73,7 @@ const MessageType = {
   END_FINISHING: 'end_finishing',
   JUMP: 'jump',
   SHOOT: 'shoot',
+  CHECK: 'check',
   // WebRtc signalling info, session and ice-framework related
   SDP: 'sdp',
   ICE_CANDIDATE: 'ice_candidate',
@@ -68,9 +84,11 @@ const MessageType = {
   NOT_USER_ROOM: 'not_user_room'
 };
 
-function User(walletAddress) {
+function User(walletAddress, baseEntity) {
   this.userId = ++lastUserId;
   this.walletAddress = walletAddress;
+  console.log('where user est', baseEntity)
+  this.baseEntity = baseEntity
 }
 User.prototype = {
   getId: function () {
@@ -78,8 +96,20 @@ User.prototype = {
   },
   getWalletAddress: function () {
     return this.walletAddress;
+  },
+  check: function (checkedEntity) {
+    console.log(this.baseEntity, checkedEntity)
+    return areObjectsEqual(checkedEntity, this.baseEntity);
   }
 };
+function areObjectsEqual(obj1, obj2) {
+  for (let key in obj1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+  return true;
+}
 
 function Room(name) {
   const fightid = name.split('&')[0]
@@ -93,6 +123,10 @@ function Room(name) {
   this.finished = false;
 }
 Room.prototype = {
+  checkUser: function (entity) {
+    const _user = this.users.find(v => v.walletAddress == entity.address)
+    return _user.check(entity)
+  },
   getName: function () {
     return this.roomName;
   },
@@ -190,6 +224,7 @@ function handleSocket(socket) {
   socket.on(MessageType.SHOOT, onShoot);
   socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
   socket.on(MessageType.END_FINISHING, onEndFinishing)
+  socket.on(MessageType.CHECK, onCheck)
 
   async function onEndFinishing() {
     try {
@@ -208,6 +243,15 @@ function handleSocket(socket) {
       // })
     } catch (error) {
       console.error(error)
+    }
+  }
+
+  async function onCheck(player) {
+    try {
+      console.log(room.checkUser(player))
+      console.log('--------------------')
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -573,8 +617,36 @@ function handleSocket(socket) {
           await redisClient.set(createDeathsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), 0)
         }
 
+        const res = await pgClient.query(
+            `
+            SELECT 
+                inventory.characterid, 
+                inventory.armor, 
+                inventory.weapon, 
+                inventory.boots,
+                armor_bonuses.health, 
+                weapon_bonuses.damage, 
+                weapon_bonuses.bullets,
+                boots_bonuses.speed,
+                boots_bonuses.jump
+                FROM inventory 
+                LEFT JOIN armor_bonuses ON inventory.armor=armor_bonuses.id 
+                LEFT JOIN weapon_bonuses ON inventory.weapon=weapon_bonuses.id 
+                LEFT JOIN boots_bonuses ON inventory.boots=boots_bonuses.id 
+                WHERE player=$1 AND chainid=$2
+            `,
+            [joinData.walletAddress, room.getChainId()]
+        )
+        const inventory = res.rows[0]
+        const baseEntity = {...baseGameParams}
+        baseEntity.health = inventory.health == null ? 0 : inventory.health * 10
+        baseEntity.weaponsLeft += inventory.bullets == null ? 0 : inventory.bullets
+        baseEntity.maxWeapons += inventory.bullets == null ? 0 : inventory.bullets
+        baseEntity.jump += inventory.jump == null ? 0 : inventory.jump
+        baseEntity.maxVel.x += inventory.speed == null ? 0 : inventory.speed
+        console.log(baseGameParams)
         // Add a new user
-        room.addUser(user = new User(joinData.walletAddress), socket);
+        room.addUser(user = new User(joinData.walletAddress, baseEntity), socket);
 
         if (room.users.length === 1) {
           setTimeout(async () => {
@@ -596,7 +668,6 @@ function handleSocket(socket) {
           userId: user.getId(),
           user: user
         });
-        console.log(user)
         log('User %s joined room %s. Users in room: %d',
           user.getId(), room.getName(), room.numUsers());
         log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);
