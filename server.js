@@ -478,7 +478,23 @@ async function getInventory(req, response) {
         const chainid = req.body.chainid
         //TODO: добавить проверку chain'a (существует ли)
         const res = await pgClient.query(
-            "SELECT * FROM inventory WHERE player=$1 AND chainid=$2",
+            `
+            SELECT 
+                inventory.characterid, 
+                inventory.armor, 
+                inventory.weapon, 
+                inventory.boots,
+                armor_bonuses.health, 
+                weapon_bonuses.damage, 
+                weapon_bonuses.bullets,
+                boots_bonuses.speed,
+                boots_bonuses.jump
+                FROM inventory 
+                LEFT JOIN armor_bonuses ON inventory.armor=armor_bonuses.id 
+                LEFT JOIN weapon_bonuses ON inventory.weapon=weapon_bonuses.id 
+                LEFT JOIN boots_bonuses ON inventory.boots=boots_bonuses.id 
+                WHERE player=$1 AND chainid=$2
+            `,
             [address, chainid]
         )
         if (res.rows.length === 0) {
@@ -492,6 +508,7 @@ async function getInventory(req, response) {
         }
         response.status(200).json(res.rows[0])
     } catch (error) {
+        console.log(error)
         response.status(500).json({})
     }
 }

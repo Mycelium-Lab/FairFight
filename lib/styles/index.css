@@ -726,3 +726,7 @@ summary::-webkit-details-marker {
     margin-right: 10px;
 }
 
+#weapons-img, #armor-img, #boots-img {
+    width: 42px;
+    height: 42px;
+}

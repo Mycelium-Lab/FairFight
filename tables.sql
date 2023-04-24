@@ -53,3 +53,53 @@ CREATE TABLE gamesproperties(
     chainid INT NOT NULL,
     map INT NOT NULL
 );
+
+CREATE TABLE armor_bonuses(
+    id INT NOT NULL UNIQUE,
+    health INT
+);
+
+CREATE TABLE boots_bonuses(
+    id INT NOT NULL UNIQUE,
+    speed INT,
+    jump INT
+);
+
+CREATE TABLE weapon_bonuses(
+    id INT NOT NULL UNIQUE,
+    bullets INT,
+    damage INT
+);
+
+INSERT INTO armor_bonuses(id, health) VALUES(8, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(9, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(10, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(11, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(12, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(13, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(14, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(15, 1);
+
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(0, 10, 0);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(1, 20, 0);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(2, 0, 40);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(3, 5, 40);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(4, 10, 40);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(5, 60, -20);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(6, 80, 20);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(7, 20, 80);
+
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(0, 0, 1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(1, 0, 2);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(2, 1, 2);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(3, 2, 2);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(4, 2, 2);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(5, 1, 4);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(6, 1, 4);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(7, 3, 1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(8, 3, 1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(9, 10, -1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(10, 10, -1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(11, 0, 10);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(12, 0, 10);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(13, 7, 7);
