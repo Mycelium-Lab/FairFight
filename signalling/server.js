@@ -84,11 +84,13 @@ const MessageType = {
   NOT_USER_ROOM: 'not_user_room'
 };
 
-function User(walletAddress, baseEntity) {
+function User(walletAddress, baseEntity, lastUpdate, currentUpdate) {
   this.userId = ++lastUserId;
   this.walletAddress = walletAddress;
-  console.log('where user est', baseEntity)
   this.baseEntity = baseEntity
+  this.lastUpdate = lastUpdate
+  this.currentUpdate = currentUpdate
+  this.deleted = false
 }
 User.prototype = {
   getId: function () {
@@ -98,17 +100,48 @@ User.prototype = {
     return this.walletAddress;
   },
   check: function (checkedEntity) {
-    console.log(this.baseEntity, checkedEntity)
-    return areObjectsEqual(checkedEntity, this.baseEntity);
-  }
-};
-function areObjectsEqual(obj1, obj2) {
-  for (let key in obj1) {
-    if (obj1[key] !== obj2[key]) {
-      return false;
+    return areEntitiesEqual(checkedEntity, this.baseEntity);
+  },
+  setLastUpdate: function (lastUpdate) {
+    this.lastUpdate = lastUpdate
+  },
+  setCurrentUpdate: function (currentUpdate) {
+    this.currentUpdate = currentUpdate
+  },
+  getUpdate: function () {
+    return {
+      lastUpdate: this.lastUpdate,
+      currentUpdate: this.currentUpdate
     }
+  },
+  setDeleted: function (deleted) {
+    this.deleted = deleted
+  },
+};
+function areEntitiesEqual(checkedEntity, baseEntity) {
+  try {
+    if (checkedEntity.maxWeapons > baseEntity.maxWeapons) return false
+    if (checkedEntity.size.x !== baseEntity.size.x) return false
+    if (checkedEntity.size.y !== baseEntity.size.y) return false
+    if (checkedEntity.offset.x !== baseEntity.offset.x) return false
+    if (checkedEntity.offset.y !== baseEntity.offset.y) return false
+    if (checkedEntity.maxVel.x !== baseEntity.maxVel.x) return false
+    if (checkedEntity.maxVel.y !== baseEntity.maxVel.y) return false
+    if (checkedEntity.accelDef.ground !== baseEntity.accelDef.ground) return false
+    if (checkedEntity.accelDef.air !== baseEntity.accelDef.air) return false
+    if (checkedEntity.frictionDef.ground !== baseEntity.frictionDef.ground) return false
+    if (checkedEntity.frictionDef.air !== baseEntity.frictionDef.air) return false
+    if (checkedEntity.jump !== baseEntity.jump) return false
+    if (checkedEntity.bounciness !== baseEntity.bounciness) return false
+    if (checkedEntity.health > baseEntity.health) return false
+    if (checkedEntity.type !== baseEntity.type) return false
+    if (checkedEntity.checkAgainst !== baseEntity.checkAgainst) return false
+    if (checkedEntity.collides !== baseEntity.collides) return false
+    if (checkedEntity.weaponsLeft > baseEntity.maxWeapons) return false
+    return true
+  } catch (error) {
+    console.log(error)
   }
-  return true;
 }
 
 function Room(name) {
@@ -120,6 +153,7 @@ function Room(name) {
   this.rounds = 0;
   this.users = [];
   this.sockets = {};
+  this.userChecker = {}
   this.finished = false;
 }
 Room.prototype = {
@@ -172,6 +206,12 @@ Room.prototype = {
   removeUser: function (id) {
     try {
       this.users = this.users.filter(function (user) {
+        if (user.getId() !== id) {
+          return true
+        } else {
+          user.setDeleted(true)
+          return false
+        }
         return user.getId() !== id;
       });
       delete this.sockets[id];
@@ -246,10 +286,15 @@ function handleSocket(socket) {
     }
   }
 
-  async function onCheck(player) {
+  async function onCheck(entity) {
     try {
-      console.log(room.checkUser(player))
-      console.log('--------------------')
+      if (!room.checkUser(entity)) {
+        console.log('cheater')
+      } else {
+        const _user = room.users.find(v => v.walletAddress == entity.address)
+        const _update = _user.getUpdate()
+        _user.setCurrentUpdate(_update.currentUpdate + 1)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -638,15 +683,14 @@ function handleSocket(socket) {
             [joinData.walletAddress, room.getChainId()]
         )
         const inventory = res.rows[0]
-        const baseEntity = {...baseGameParams}
-        baseEntity.health = inventory.health == null ? 0 : inventory.health * 10
+        let baseEntity = JSON.parse(JSON.stringify(baseGameParams))
+        baseEntity.health += inventory.health == null ? 0 : inventory.health * 10
         baseEntity.weaponsLeft += inventory.bullets == null ? 0 : inventory.bullets
         baseEntity.maxWeapons += inventory.bullets == null ? 0 : inventory.bullets
         baseEntity.jump += inventory.jump == null ? 0 : inventory.jump
         baseEntity.maxVel.x += inventory.speed == null ? 0 : inventory.speed
-        console.log(baseGameParams)
         // Add a new user
-        room.addUser(user = new User(joinData.walletAddress, baseEntity), socket);
+        room.addUser(user = new User(joinData.walletAddress, baseEntity, 0, 0), socket);
 
         if (room.users.length === 1) {
           setTimeout(async () => {
@@ -656,6 +700,19 @@ function handleSocket(socket) {
             }
           }, 1000 * 60 * 3)
         }
+        //check if we are still checking player for right 
+        setInterval(() => {
+          const updates = user.getUpdate()
+          if (updates.currentUpdate == updates.lastUpdate) {
+            if (!user.deleted) {
+              console.log('cheater')
+            } else {
+              console.log('deleted')
+            }
+          } else {
+            user.setLastUpdate(updates.currentUpdate)
+          }
+        }, 1000 * 35)
 
         // Send room info to new user
         room.sendTo(user, MessageType.ROOM, {
@@ -762,6 +819,9 @@ function handleSocket(socket) {
     return room.getName()
   }
 
+  function createCheaterRedisLink(chainid, gameid) {
+    return `cheater_${chainid}_${gameid}`
+  }
 
   async function addKills(address) {
     try {
