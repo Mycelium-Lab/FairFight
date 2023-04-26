@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@oasisprotocol/sapphire-paratime": "^1.0.15"
+    "@oasisprotocol/sapphire-paratime": "^1.0.15",
+    "ethcall": "^6.0.0"
   },
   "devDependencies": {
     "webpack": "^5.76.3",
