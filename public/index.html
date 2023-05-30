@@ -37,7 +37,7 @@
 	<script type="module" src="/modules/airdrop.js"></script>
 	<script type="module" src="/modules/networks.js"></script>
 	<script type="module" src="/modules/leaderboard.js"></script>
-	<script src="/custom.js"></script>
+	<script src="custom.js"></script>
 </head>
 
 <body>
@@ -61,10 +61,10 @@
 					<input type="checkbox" id="dropdown-check"/>
 					<a href="#" data-toggle="dropdown" >Change Network</a>
 					<ul class="dropdown-menu" id="networks">
-						<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Emerald</li></a>
-						<a href="/?network=23294" id="network-23294" class="network-deactive"><li ><img class="network-icon" src="/media/oasis-black.png"/>Sapphire</li></a>
-						<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Scale</li></a>	
-						<a href="/?network=56" id="network-56"  class="network-deactive"><li ><img class="network-icon" src="/media/tokens/black/bnb.png"/>BNB</li></a>		
+						<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="media/oasis-black.png"/>Emerald</li></a>
+						<a href="/?network=23294" id="network-23294" class="network-deactive"><li ><img class="network-icon" src="media/oasis-black.png"/>Sapphire</li></a>
+						<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="media/scale-black.png"/>Scale</li></a>	
+						<a href="/?network=56" id="network-56"  class="network-deactive"><li ><img class="network-icon" src="media/tokens/black/bnb.png"/>BNB</li></a>		
 						<!-- <a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>								 -->
 					</ul>
 				</div>
@@ -76,7 +76,7 @@
 			</div>
 		</header>
 		<div id="wrapper">
-			<img src="/media/monetki.png" alt="" class="wrapper__monetki">
+			<img src="media/monetki.png" alt="" class="wrapper__monetki">
 			<div class="wrapper__gradient"></div>
 			<a href="#" id="about-show" class="wrapper__link link-first">About the game
 				<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,18 +85,9 @@
 						d="M15.36 18.54V21.62H12.22V18.54H15.36ZM9 11.94C9.01333 11.22 9.13333 10.56 9.36 9.96C9.6 9.36 9.92667 8.84 10.34 8.4C10.7667 7.96 11.2733 7.62 11.86 7.38C12.46 7.12667 13.1267 7 13.86 7C14.8067 7 15.5933 7.13333 16.22 7.4C16.86 7.65333 17.3733 7.97333 17.76 8.36C18.1467 8.74667 18.42 9.16667 18.58 9.62C18.7533 10.06 18.84 10.4733 18.84 10.86C18.84 11.5 18.7533 12.0267 18.58 12.44C18.42 12.8533 18.2133 13.2067 17.96 13.5C17.72 13.7933 17.4467 14.0467 17.14 14.26C16.8467 14.46 16.5667 14.6667 16.3 14.88C16.0333 15.08 15.7933 15.3133 15.58 15.58C15.38 15.8467 15.2533 16.18 15.2 16.58V17.34H12.5V16.44C12.54 15.8667 12.6467 15.3867 12.82 15C13.0067 14.6133 13.22 14.2867 13.46 14.02C13.7 13.74 13.9533 13.5 14.22 13.3C14.4867 13.1 14.7333 12.9 14.96 12.7C15.1867 12.5 15.3667 12.28 15.5 12.04C15.6467 11.8 15.7133 11.5 15.7 11.14C15.7 10.5267 15.5467 10.0733 15.24 9.78C14.9467 9.48667 14.5333 9.34 14 9.34C13.64 9.34 13.3267 9.41333 13.06 9.56C12.8067 9.69333 12.5933 9.88 12.42 10.12C12.26 10.3467 12.14 10.62 12.06 10.94C11.98 11.2467 11.94 11.58 11.94 11.94H9Z"
 						fill="#FF7C06" />
 				</svg>
-
-			</a>
-			<a href="#" class="wrapper__link link-second" id="inventory-show">Inventory
-				<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" clip-rule="evenodd"
-						d="M2.0126 0.129021C1.75665 0.334098 1.78395 0.686656 2.07824 0.977906L2.31476 1.21193L2.07824 1.4533C1.78478 1.75294 1.758 2.1006 2.0126 2.30464C2.2576 2.50088 2.48235 2.47402 2.72945 2.21884C2.84805 2.09637 2.97648 1.99617 3.01488 1.99617C3.05329 1.99617 3.2001 2.09637 3.34105 2.21884C3.63871 2.47743 3.90517 2.50289 4.11723 2.29306C4.33823 2.0744 4.30852 1.76615 4.04222 1.51372C3.91844 1.39637 3.81717 1.26277 3.81717 1.21683C3.81717 1.17089 3.91844 1.03728 4.04222 0.919939C4.30852 0.667507 4.33823 0.35926 4.11723 0.140599C3.90517 -0.0692287 3.63871 -0.0437702 3.34105 0.214822C3.2001 0.33729 3.05329 0.43749 3.01488 0.43749C2.97648 0.43749 2.84805 0.33729 2.72945 0.214822C2.48235 -0.040356 2.2576 -0.0672245 2.0126 0.129021ZM6.53836 1.37671C6.08624 1.5351 5.52212 2.06527 5.30893 2.53213L5.12994 2.92395V12.1276V21.3312L5.3117 21.6966C5.54358 22.1627 5.98662 22.6011 6.43154 22.8046L6.78028 22.9641H16.1197H25.4591L25.8034 22.8065C26.2636 22.596 26.6736 22.1765 26.9129 21.6716L27.1095 21.257V12.0905V2.92395L26.899 2.49985C26.7815 2.26322 26.5392 1.9457 26.3509 1.78174C25.7036 1.21787 26.3988 1.25327 16.0876 1.2598C8.09328 1.26485 6.81276 1.28059 6.53836 1.37671ZM25.4286 2.3891C25.6641 2.51038 25.808 2.65423 25.9289 2.889L26.0985 3.21869L26.0789 12.2139L26.0592 21.209L25.9023 21.4186C25.816 21.5338 25.6338 21.7032 25.4974 21.7951L25.2494 21.9621H16.1197H6.99003L6.73692 21.7933C6.59769 21.7005 6.40663 21.5113 6.31234 21.3728L6.14093 21.1212L6.1605 12.0597L6.18016 2.99818L6.36027 2.74827C6.45937 2.61088 6.67879 2.43624 6.84787 2.36023C7.14216 2.22804 7.53989 2.22203 16.1267 2.22047L25.0979 2.21884L25.4286 2.3891ZM21.9334 4.22025C20.9844 4.41479 20.1574 4.59797 20.0955 4.62729C20.0336 4.65661 18.312 6.54588 16.2697 8.82571C14.2274 11.1055 12.522 12.9732 12.4798 12.976C12.4376 12.9788 12.1177 12.6972 11.7688 12.3502C11.0151 11.6005 10.8772 11.5648 10.4677 12.0132C10.1309 12.3821 9.9331 13.0091 9.99379 13.5158C10.0455 13.9479 10.3394 14.509 10.6902 14.8454L10.9452 15.09L9.5263 16.5035C8.08863 17.9357 7.94385 18.1329 7.94385 18.6592C7.94385 19.4355 8.69498 20.1775 9.48084 20.1775C10.0516 20.1775 10.3843 19.945 11.7821 18.5698L13.1081 17.2651L13.5041 17.6078C13.9497 17.9935 14.4056 18.1767 14.9195 18.1767C15.6782 18.1767 16.4948 17.6904 16.4948 17.2386C16.4948 17.0667 16.3653 16.8956 15.8571 16.3954C15.5065 16.0502 15.2195 15.7461 15.2195 15.7196C15.2195 15.6932 17.1278 13.9909 19.4601 11.9368C21.7924 9.88271 23.7171 8.13343 23.7372 8.04948C23.9107 7.32403 24.4464 4.51588 24.4464 4.33181C24.4464 4.03054 24.2432 3.84966 23.9154 3.85916C23.7743 3.86324 22.8823 4.02572 21.9334 4.22025ZM7.52706 4.10818C7.21117 4.42073 7.31679 4.87431 7.7428 5.03455C8.31862 5.25114 8.75679 4.45829 8.27046 4.07983C8.00828 3.87571 7.75203 3.88551 7.52706 4.10818ZM1.30416 4.77886C1.2629 4.79251 1.13545 4.82413 1.02097 4.84915C0.906424 4.87416 0.680553 5.01281 0.51897 5.15724C-0.283395 5.87453 -0.133289 7.11643 0.816556 7.61862C1.26545 7.85599 1.94321 7.83119 2.33892 7.56295C3.16836 7.00057 3.28006 5.91417 2.57964 5.22115C2.2297 4.8749 1.63647 4.66923 1.30416 4.77886ZM23.3212 4.98965C23.3212 5.00316 23.2025 5.59597 23.0574 6.3071C22.8012 7.56325 22.7857 7.60771 22.5136 7.8712C22.3595 8.02039 20.4827 9.68298 18.3429 11.5659C15.2166 14.3167 14.4319 14.9725 14.3483 14.904C14.2911 14.857 14.2443 14.7807 14.2443 14.7346C14.2443 14.6884 16.1347 12.7804 18.4452 10.4947C22.2443 6.73619 22.646 6.31601 22.646 6.10143C22.646 5.83052 22.4262 5.63309 22.1245 5.63309C21.9761 5.63309 21.0433 6.51634 17.6924 9.82994C13.6728 13.8048 13.4418 14.0197 13.3255 13.8925C13.2095 13.7656 13.4073 13.5307 16.9067 9.64112L20.6106 5.52413L21.9097 5.25485C23.4576 4.93391 23.3212 4.95951 23.3212 4.98965ZM1.86677 5.92998C2.24913 6.30829 1.79003 6.98112 1.31751 6.73507C1.09599 6.61966 1.04408 6.52807 1.04273 6.24966C1.0407 5.83015 1.56161 5.62804 1.86677 5.92998ZM7.62518 6.56399C7.24388 6.77189 7.25693 7.32826 7.64776 7.52822C8.05412 7.73612 8.46813 7.4914 8.46813 7.04332C8.46813 6.59412 8.02839 6.34407 7.62518 6.56399ZM14.9495 17.1249C14.8405 17.1383 14.6636 17.1275 14.5564 17.1008C14.351 17.0498 11.6153 14.4274 11.2344 13.9164C11.0796 13.7085 11.0187 13.5412 11.0187 13.3231V13.0193L13.0832 15.0599C14.9475 16.9027 15.1284 17.1029 14.9495 17.1249ZM11.0392 17.8224C9.91885 18.9323 9.67258 19.1416 9.48751 19.1416C9.19615 19.1416 8.99324 18.9484 8.99324 18.6709C8.99324 18.4786 9.18633 18.2538 10.3221 17.1237L11.651 15.8015L12.011 16.1523L12.371 16.5032L11.0392 17.8224ZM20.101 17.6301C19.9078 17.8732 19.9046 18.0361 20.0889 18.2613C20.2323 18.4364 20.2328 18.4365 21.9991 18.4365C23.9185 18.4365 23.932 18.4337 24.0361 18.0134C24.0747 17.8576 24.0433 17.7711 23.8944 17.6238L23.7031 17.4345H21.9798H20.2564L20.101 17.6301ZM29.07 18.7759C28.7404 19.0324 28.81 19.537 29.1971 19.698C29.8031 19.9501 30.277 19.2629 29.8134 18.8043C29.5884 18.5816 29.3322 18.5718 29.07 18.7759ZM18.8203 18.9716C18.4189 19.1176 18.3004 19.6381 18.6211 19.8461C18.7721 19.9439 19.1514 19.9573 21.2949 19.9406L23.7927 19.921L23.9368 19.73C24.0404 19.5925 24.0662 19.481 24.0284 19.3323C23.9312 18.949 23.7187 18.9184 21.2044 18.9248C19.955 18.928 18.8821 18.9491 18.8203 18.9716ZM5.80508 24.1445C5.52302 24.2676 5.35536 24.4521 5.20781 24.8014C5.11682 25.017 5.09243 25.3939 5.09243 26.587C5.09243 28.0225 5.10121 28.1157 5.2652 28.4225C5.3844 28.6455 5.54133 28.7998 5.77155 28.9203C6.09719 29.0908 6.1449 29.0944 7.76898 29.0726C9.61774 29.0479 9.64962 29.0397 10.0247 28.4944C10.1873 28.258 10.1935 28.1887 10.1935 26.5816C10.1935 25.0207 10.1834 24.8962 10.0346 24.6344C9.94721 24.4806 9.74857 24.284 9.59306 24.1975C9.32856 24.0504 9.20485 24.0406 7.67026 24.0432C6.47797 24.0454 5.96869 24.073 5.80508 24.1445ZM11.4314 24.1572C10.7698 24.4986 10.7014 24.7451 10.7318 26.6819C10.7547 28.1479 10.7656 28.2491 10.9277 28.507C11.0301 28.6698 11.2323 28.8437 11.4287 28.9379C11.7391 29.0865 11.8533 29.0943 13.4085 29.073C15.2422 29.0479 15.2762 29.0391 15.6509 28.4944C15.8136 28.2578 15.8196 28.1891 15.8196 26.5704C15.8196 24.6627 15.7831 24.5114 15.2492 24.2085C14.9712 24.0509 14.8765 24.0427 13.3066 24.042C11.9549 24.0414 11.6156 24.0622 11.4314 24.1572ZM17.0443 24.16C16.4411 24.4542 16.3521 24.7573 16.3484 26.5268C16.3468 27.3024 16.3788 28.0554 16.4195 28.2001C16.5033 28.4985 16.8795 28.8915 17.1935 29.0087C17.3173 29.0549 18.04 29.0875 18.9401 29.0875C20.6368 29.0875 20.8244 29.0505 21.166 28.6489C21.4869 28.2716 21.5364 27.9381 21.5087 26.3407C21.4837 24.9057 21.4802 24.878 21.2837 24.5845C20.9431 24.0756 20.7887 24.0401 18.9215 24.042C17.5878 24.0434 17.238 24.0654 17.0443 24.16ZM22.6572 24.1642C22.519 24.2327 22.3164 24.4224 22.2071 24.5858C22.0125 24.8767 22.0079 24.9117 21.9822 26.2986C21.9512 27.9655 22.0151 28.3636 22.3674 28.6998C22.5 28.8264 22.7036 28.9654 22.8197 29.0087C23.1447 29.1299 26.0416 29.1123 26.3442 28.9872C26.7092 28.8363 27.0535 28.4065 27.1104 28.0306C27.1372 27.8541 27.1479 27.0761 27.1343 26.3018C27.1068 24.7403 27.064 24.5747 26.6042 24.2503C26.367 24.0829 26.3051 24.0769 24.634 24.0585C23.1432 24.0422 22.8744 24.0566 22.6572 24.1642ZM9.13577 25.1077C9.19525 25.1785 9.21536 25.6404 9.20125 26.6107L9.18078 28.0113H7.68047H6.18016L6.15975 26.5693C6.14408 25.4653 6.1617 25.1133 6.23477 25.0674C6.28728 25.0345 6.94209 25.007 7.69007 25.0063C8.75559 25.0055 9.06848 25.0274 9.13577 25.1077ZM14.7619 25.1077C14.8214 25.1785 14.8415 25.6404 14.8274 26.6107L14.8069 28.0113H13.3066H11.8063L11.7859 26.5693C11.7702 25.4653 11.7879 25.1133 11.8609 25.0674C11.9134 25.0345 12.5682 25.007 13.3162 25.0063C14.3817 25.0055 14.6946 25.0274 14.7619 25.1077ZM20.3881 25.1077C20.4476 25.1785 20.4677 25.6404 20.4536 26.6107L20.4331 28.0113H18.9328H17.4325L17.412 26.6107C17.3979 25.6404 17.418 25.1785 17.4775 25.1077C17.5448 25.0274 17.8601 25.0052 18.9328 25.0052C20.0054 25.0052 20.3208 25.0274 20.3881 25.1077ZM24.2344 25.177C24.1149 25.3029 24.0713 25.4417 24.0713 25.6965V26.0444H23.7198C23.4622 26.0444 23.322 26.0875 23.1947 26.2057L23.0211 26.3671V25.7752C23.0211 25.4138 23.0562 25.1487 23.1111 25.0943C23.1661 25.0399 23.4341 25.0052 23.7993 25.0052H24.3976L24.2344 25.177ZM26.0067 25.0943C26.0617 25.1487 26.0968 25.4138 26.0968 25.7752V26.3671L25.9232 26.2057C25.7959 26.0875 25.6557 26.0444 25.3981 26.0444H25.0465V25.6965C25.0465 25.4417 25.003 25.3029 24.8835 25.177L24.7203 25.0052H25.3185C25.6838 25.0052 25.9517 25.0399 26.0067 25.0943ZM23.6823 27.0654L24.0713 27.1023V27.4396C24.0713 27.6525 24.1182 27.8282 24.1984 27.9159C24.3218 28.0507 24.307 28.0542 23.6921 28.0331L23.0586 28.0113L23.0368 27.3498C23.0152 26.6954 23.0164 26.6902 23.154 26.8584C23.2564 26.9833 23.3963 27.0382 23.6823 27.0654ZM26.0649 27.9491C26.0371 28.0208 25.856 28.0484 25.4123 28.0484C24.8222 28.0484 24.803 28.0431 24.9224 27.9126C25.0006 27.8271 25.0465 27.6487 25.0465 27.4302V27.0835H25.3868C25.6404 27.0835 25.7693 27.0409 25.8932 26.9165L26.0592 26.7495L26.0814 27.2996C26.0935 27.6021 26.0862 27.8944 26.0649 27.9491Z"
-						fill="white" />
-				</svg>
-
 			</a>
 
-			<a href="#" id="shop-show" style="display: none;" class="wrapper__link link-third">Shop</a>
+			<!-- <a href="#" id="shop-show" style="display: none;" class="wrapper__link link-third">Shop</a> -->
 
 			<a href="#" id="howtobuy-show" class="wrapper__link link-third">How to buy ROSE
 				<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,23 +96,782 @@
 						d="M15.36 18.54V21.62H12.22V18.54H15.36ZM9 11.94C9.01333 11.22 9.13333 10.56 9.36 9.96C9.6 9.36 9.92667 8.84 10.34 8.4C10.7667 7.96 11.2733 7.62 11.86 7.38C12.46 7.12667 13.1267 7 13.86 7C14.8067 7 15.5933 7.13333 16.22 7.4C16.86 7.65333 17.3733 7.97333 17.76 8.36C18.1467 8.74667 18.42 9.16667 18.58 9.62C18.7533 10.06 18.84 10.4733 18.84 10.86C18.84 11.5 18.7533 12.0267 18.58 12.44C18.42 12.8533 18.2133 13.2067 17.96 13.5C17.72 13.7933 17.4467 14.0467 17.14 14.26C16.8467 14.46 16.5667 14.6667 16.3 14.88C16.0333 15.08 15.7933 15.3133 15.58 15.58C15.38 15.8467 15.2533 16.18 15.2 16.58V17.34H12.5V16.44C12.54 15.8667 12.6467 15.3867 12.82 15C13.0067 14.6133 13.22 14.2867 13.46 14.02C13.7 13.74 13.9533 13.5 14.22 13.3C14.4867 13.1 14.7333 12.9 14.96 12.7C15.1867 12.5 15.3667 12.28 15.5 12.04C15.6467 11.8 15.7133 11.5 15.7 11.14C15.7 10.5267 15.5467 10.0733 15.24 9.78C14.9467 9.48667 14.5333 9.34 14 9.34C13.64 9.34 13.3267 9.41333 13.06 9.56C12.8067 9.69333 12.5933 9.88 12.42 10.12C12.26 10.3467 12.14 10.62 12.06 10.94C11.98 11.2467 11.94 11.58 11.94 11.94H9Z"
 						fill="#FF7C06" />
 				</svg>
-
 			</a>
+
+			<!-- custom -->
+
+			<div class="wrapper__btns-wrap">
+				<button class="btns-wrap__btn" id="nft-shop-btn"></button>
+				<button class="btns-wrap__btn" id="inventory-btn"></button>
+			</div>
+
+			<div class="wrapper__banners-wrap">
+				<div class="banners-wrap__banner try-your-luck-banner">
+					<p class="banner__title">TRY YOUR LUCK</p>
+
+					<div class="banner__img-wrap">
+						<img src="media/svg/try-your-luck.png">
+					</div>
+
+					<button>Купить</button>
+				</div>
+
+				<div class="banners-wrap__banner new-characters-banner">
+					<p class="banner__title">NEW CHARACTERS</p>
+
+					<div class="banner__img-wrap">
+						<img src="media/svg/new-characters-left.png">
+						<img src="media/svg/new-characters-right.png">
+					</div>
+
+					<button>Купить</button>
+				</div>
+			</div>
+
+			<!-- NFT SHOP MODAL -->
+
+			<!-- <div class="wrapper__nft-shop-modal">
+				<button class="nft-shop-modal__btn-close"></button>
+
+				<div class="nft-shop-modal__left-title"></div>
+
+				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-characters nft-shop-modal__right-title_active"></div>
+				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-weapons"></div>
+				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-armor"></div>
+				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-boots"></div>
+
+				<div class="nft-shop-modal__header-title"></div>
+
+				<div class="nft-shop-modal__nav-wrap">
+					<nav class="nav-wrap__nav">
+						<input id="nft-shop__tab-1" type="radio" name="nft-shop__tab" checked>
+						<label for="nft-shop__tab-1">CHARACTERS</label>
+
+						<input id="nft-shop__tab-2" type="radio" name="nft-shop__tab">
+						<label for="nft-shop__tab-2">WEAPONS</label>
+
+						<input id="nft-shop__tab-3" type="radio" name="nft-shop__tab">
+						<label for="nft-shop__tab-3">ARMOR</label>
+
+						<input id="nft-shop__tab-4" type="radio" name="nft-shop__tab">
+						<label for="nft-shop__tab-4">BOOTS</label>
+					</nav>
+				</div>
+
+				<div class="nft-shop-modal__body">
+					<div class="body__item-list">
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-green.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-green.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-green.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-blue.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-orange.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-blue.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-pink.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-orange.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-purple.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-gold.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-silver.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-blue.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-silver.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-purple.svg">
+						</div>
+
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-blue.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-blue.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-silver.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-green.svg">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-silver.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-silver.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-purple.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
+							<img class="slot__item-icon slot__boots" src="media/characters/boots-orange.svg">
+						</div>
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-green.svg">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
+						</div>
+
+						<div class="item-list__slot">
+							<img class="slot__item-icon slot__armor" src="media/characters/armor-purple.svg">
+						</div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+						<div class="item-list__slot"></div>
+					</div>
+
+					<div class="body__item-detail">
+						<button class="item-detail__btn-close"></button>
+
+						<div class="item-detail__header item-detail__header-characters item-detail__header_active">
+							<div class="header__img-item">
+								<img src="media/characters/character-green.svg">
+							</div>
+
+							<div class="header__text-item">
+								<p class="text-item__name">Ghost Whisperer</p>
+								<p class="text-item__type">Legendary collection</p>
+							</div>
+						</div>
+
+						<div class="item-detail__header item-detail__header-weapons">
+							<div class="header__img-item">
+								<img src="media/characters/weapon-purple.svg">
+							</div>
+
+							<div class="header__text-item">
+								<p class="text-item__name">Name item</p>
+								<p class="text-item__type">Skin Assignments</p>
+							</div>
+						</div>
+
+						<div class="item-detail__header item-detail__header-armor">
+							<div class="header__img-item">
+								<img src="media/characters/armor-purple.svg">
+							</div>
+
+							<div class="header__text-item">
+								<p class="text-item__name">Name item</p>
+								<p class="text-item__type">Skin Assignments</p>
+							</div>
+						</div>
+
+						<div class="item-detail__header item-detail__header-boots">
+							<div class="header__img-item">
+								<img src="media/characters/boots-purple.svg">
+							</div>
+
+							<div class="header__text-item">
+								<p class="text-item__name">Name item</p>
+								<p class="text-item__type">Skin Assignments</p>
+							</div>
+						</div>
+
+						<p class="item-detail__description item-detail__description-characters item-detail__description_active">
+							"Ghost Whisperer" - a mysterious spirit in the guise of a small creature capable of quietly whispering predictions and warnings of impending dangers to the hero, but demanding sacrifices and gifts in exchange for his wisdom and help.
+						</p>
+
+						<p class="item-detail__description item-detail__description-weapons">
+							Небольшой сторитеил персонажа и если он нужен
+						</p>
+
+						<p class="item-detail__description item-detail__description-armor">
+							Небольшой сторитеил персонажа и если он нужен
+						</p>
+
+						<p class="item-detail__description item-detail__description-boots">
+							Небольшой сторитеил персонажа и если он нужен
+						</p>
+
+						<div class="item-detail__pricing">
+							<p class="pricing__title">5.25 <span>USDT</span></p>
+							<button>Buy now</button>
+						</div>
+					</div>
+				</div>
+
+			</div> -->
+
+			<!-- message modals -->
+
+			<div class="wrapper__message-modal-overlay">
+				<!-- Add in class wrapper__message-modal_active for display modal -->
+
+				<!-- 1 -->
+				<div class="wrapper__message-modal wrapper__message-modal_waiting">
+					<button class="message-modal__btn-close"></button>
+
+					<p class="message-modal__header-title">Purchace</p>
+
+					<div class="message-modal__loader">
+						<img src="media/svg/message-modal-loader.svg">
+					</div>
+
+					<div class="message-modal__text-wrap">
+						<p class="text-wrap__title">Give permission to spend USDT</p>
+						<p class="text-wrap__text">
+							To continue, you need to allow FAIR smart contracts to use the token. This has to be done only once for each token. Please, sign transaction in your wallet.
+						</p>
+					</div>
+
+					<div class="message-modal__btns-wrap">
+						<button>Close</button>
+					</div>
+				</div>
+
+				<!-- 2 -->
+				<div class="wrapper__message-modal wrapper__message-modal_progress">
+					<button class="message-modal__btn-close"></button>
+
+					<p class="message-modal__header-title">Purchace</p>
+
+					<div class="message-modal__loader">
+						<img src="media/svg/message-modal-loader.svg">
+					</div>
+
+					<div class="message-modal__text-wrap">
+						<p class="text-wrap__title">Transaction in progress</p>
+						<p class="text-wrap__text">Wait for the transaction to complete</p>
+					</div>
+				</div>
+
+				<!-- 3 -->
+				<div class="wrapper__message-modal wrapper__message-modal_confirm">
+					<button class="message-modal__btn-close"></button>
+
+					<p class="message-modal__header-title">Purchace</p>
+
+					<div class="message-modal__loader">
+						<img src="media/svg/message-modal-loader.svg">
+					</div>
+
+					<div class="message-modal__text-wrap">
+						<p class="text-wrap__title">Confirm transaction</p>
+						<p class="text-wrap__text">Please, sign transaction in your wallet</p>
+					</div>
+
+					<div class="message-modal__btns-wrap">
+						<button>Close</button>
+					</div>
+				</div>
+
+				<!-- 4 -->
+				<div class="wrapper__message-modal wrapper__message-modal_rejected">
+					<button class="message-modal__btn-close"></button>
+
+					<div class="message-modal__error">
+						<img src="media/svg/message-modal-error.svg">
+					</div>
+
+					<div class="message-modal__text-wrap_error">
+						<p class="text-wrap__title">Error</p>
+						<p class="text-wrap__text">Transaction was rejected by the user</p>
+					</div>
+
+					<div class="message-modal__btns-wrap">
+						<button>Try again</button>
+						<button>Close</button>
+					</div>
+				</div>
+
+				<!-- 5 -->
+				<div class="wrapper__message-modal wrapper__message-modal_error-eth">
+					<button class="message-modal__btn-close"></button>
+
+					<div class="message-modal__error">
+						<img src="media/svg/message-modal-error.svg">
+					</div>
+
+					<div class="message-modal__text-wrap_error">
+						<p class="text-wrap__title">Error</p>
+						<p class="text-wrap__text">Don't have enough ETH to pay gas fees</p>
+					</div>
+
+					<div class="message-modal__btns-wrap">
+						<button>Try again</button>
+						<button>Close</button>
+					</div>
+				</div>
+
+				<!-- 6 -->
+				<div class="wrapper__message-modal wrapper__message-modal_purchase-completed">
+					<button class="message-modal__btn-close"></button>
+
+					<div class="message-modal__completed">
+						<img src="media/characters/character-green.svg">
+					</div>
+
+					<div class="message-modal__text-wrap">
+						<p class="text-wrap__title">Purchase completed</p>
+						<p class="text-wrap__text">You have successfully purchased the NFT</p>
+					</div>
+
+					<a class="message-modal__link" href="#">View transaction on Blockchain Explorer</a>
+
+					<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
+						<button>Back to NFT shop</button>
+						<button>Go to inventory</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- nft-shop-modal-2 -->
+
+			<div class="wrapper__nft-shop-modal-overlay">
+				<div class="wrapper__nft-shop-modal">
+					<button class="nft-shop-modal__btn-close"></button>
+	
+					<div class="nft-shop-modal__left-title"></div>
+	
+					<div class="nft-shop-modal__right-title nft-shop-modal__right-title-characters nft-shop-modal__right-title_active"></div>
+					<div class="nft-shop-modal__right-title nft-shop-modal__right-title-weapons"></div>
+					<div class="nft-shop-modal__right-title nft-shop-modal__right-title-armor"></div>
+					<div class="nft-shop-modal__right-title nft-shop-modal__right-title-boots"></div>
+	
+					<div class="nft-shop-modal__header-title"></div>
+	
+					<div class="nft-shop-modal__nav-wrap">
+						<nav class="nav-wrap__nav">
+							<input id="nft-shop-2__tab-1" type="radio" name="nft-shop-2__tab" checked>
+							<label for="nft-shop-2__tab-1">CHARACTERS</label>
+	
+							<input id="nft-shop-2__tab-2" type="radio" name="nft-shop-2__tab">
+							<label for="nft-shop-2__tab-2">WEAPONS</label>
+	
+							<input id="nft-shop-2__tab-3" type="radio" name="nft-shop-2__tab">
+							<label for="nft-shop-2__tab-3">ARMOR</label>
+	
+							<input id="nft-shop-2__tab-4" type="radio" name="nft-shop-2__tab">
+							<label for="nft-shop-2__tab-4">BOOTS</label>
+						</nav>
+					</div>
+	
+					<div class="nft-shop-modal__params-wrap">
+						<div class="params-wrap__dropdown-list">
+							<div class="dropdown-list__overlay"></div>
+	
+							<button class="dropdown-list__btn">
+								<p class="btn__text">Sort</p>
+							</button>
+	
+							<ul class="dropdown-list__list">
+								<li id="ascending-price" class="dropdown-list-nft-shop-items">Ascending price</li>
+								<li id="descending-price" class="dropdown-list-nft-shop-items">Descending price</li>
+							</ul>
+						</div>
+	
+						<div class="params-wrap__filters">
+							<div class="filters__item">
+								<input id="bronze" type="checkbox">
+								<label for="bronze">
+									<div class="checkbox"></div>
+									<p>Bronze</p>
+								</label>
+							</div>
+	
+							<div class="filters__item">
+								<input id="silver" type="checkbox">
+								<label for="silver">
+									<div class="checkbox"></div>
+									<p>Silver</p>
+								</label>
+							</div>
+	
+							<div class="filters__item">
+								<input id="gold" type="checkbox">
+								<label for="gold">
+									<div class="checkbox"></div>
+									<p>Gold</p>
+								</label>
+							</div>
+	
+							<div class="filters__item">
+								<input id="platinum" type="checkbox">
+								<label for="platinum">
+									<div class="checkbox"></div>
+									<p>Platinum</p>
+								</label>
+							</div>
+	
+							<div class="filters__item">
+								<input id="legendary" type="checkbox">
+								<label for="legendary">
+									<div class="checkbox"></div>
+									<p>Legendary</p>
+								</label>
+							</div>
+						</div>
+					</div>
+	
+					<div class="nft-shop-modal__list-items-wrap">
+						<div id="nft-shop-characters-list" class="list-items-wrap__list-items">
+							
+						</div>
+						<div id="nft-shop-weapons-list" class="list-items-wrap__list-items" style="display: none;">
+							
+						</div>
+						<div id="nft-shop-armors-list" class="list-items-wrap__list-items" style="display: none;">
+							
+						</div>
+						<div id="nft-shop-boots-list" class="list-items-wrap__list-items" style="display: none;">
+							
+						</div>
+					</div>
+	
+				</div>
+			</div>
+
+			<!-- inventory modal -->
+
+			<div class="wrapper__inventory-modal-overlay">
+				<div class="wrapper__inventory-modal">
+					<button class="inventory-modal__btn-close"></button>
+	
+					<div class="inventory-modal__left-title"></div>
+	
+					<div class="inventory-modal__right-title inventory-modal__right-title-characters inventory-modal__right-title_active"></div>
+					<div class="inventory-modal__right-title inventory-modal__right-title-weapons"></div>
+					<div class="inventory-modal__right-title inventory-modal__right-title-armor"></div>
+					<div class="inventory-modal__right-title inventory-modal__right-title-boots"></div>
+	
+					<div class="inventory-modal__header-title"></div>
+	
+					<div class="inventory-modal__body">
+						<div class="body__left">
+							<p class="left__header-title">ITEMS</p>
+	
+							<div class="inventory-modal__nav-wrap">
+								<nav class="nav-wrap__nav">
+									<input id="inventory__tab-1" type="radio" name="inventory__tab">
+									<label for="inventory__tab-1">CHARACTERS</label>
+			
+									<input id="inventory__tab-2" type="radio" name="inventory__tab" checked>
+									<label for="inventory__tab-2">WEAPONS</label>
+			
+									<input id="inventory__tab-3" type="radio" name="inventory__tab">
+									<label for="inventory__tab-3">ARMOR</label>
+			
+									<input id="inventory__tab-4" type="radio" name="inventory__tab">
+									<label for="inventory__tab-4">BOOTS</label>
+								</nav>
+							</div>
+	
+							<div class="left__list-wrap">
+								<div class="list-wrap__item-list">
+									<div class="item-list__slot item-list__slot_silver" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-1.svg">
+									</div>
+									<div class="item-list__slot item-list__slot_purple" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-2.svg">
+									</div>
+									<div class="item-list__slot item-list__slot_blue" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-3.svg">
+									</div>
+									<div class="item-list__slot item-list__slot_orange" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-4.svg">
+									</div>
+			
+									<div class="item-list__slot item-list__slot_green" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-5.svg">
+									</div>
+									<div class="item-list__slot item-list__slot_silver" draggable="true">
+										<img class="inventory-items" src="media/svg/inventory-modal/weapon-6.svg">
+									</div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="body__right">
+							<p class="right__header-title">CHARACTER</p>
+	
+							<div class="right__character">
+								<div class="character__slots">
+									<div class="slots__slot-wrap">
+										<p class="slot-wrap__title">WEAPON</p>
+										<div class="slot-wrap__slot weapon-slot"></div>
+									</div>
+	
+									<div class="slots__slot-wrap">
+										<p class="slot-wrap__title">ARMOR</p>
+										<div class="slot-wrap__slot armor-slot"></div>
+									</div>
+	
+									<div class="slots__slot-wrap">
+										<p class="slot-wrap__title">BOOTS</p>
+										<div class="slot-wrap__slot boots-slot"></div>
+									</div>
+								</div>
+	
+								<div class="character__character-wrap">
+									<div class="character-wrap__img-wrap">
+										<img src="media/svg/inventory-modal/character.svg">
+									</div>
+	
+									<div class="character-wrap__props-wrap">
+										<div class="props-wrap__item">
+											<div class="item__prop-img-wrap">
+												<img src="media/svg/inventory-modal/heals.svg">
+											</div>
+											<p class="item__prop-value">100</p>
+										</div>
+	
+										<div class="props-wrap__item">
+											<div class="item__prop-img-wrap">
+												<img src="media/svg/inventory-modal/attack.svg">
+											</div>
+											<p class="item__prop-value">10</p>
+										</div>
+	
+										<div class="props-wrap__item">
+											<div class="item__prop-img-wrap">
+												<img src="media/svg/inventory-modal/speed.svg">
+											</div>
+											<p class="item__prop-value">10</p>
+										</div>
+	
+										<div class="props-wrap__item">
+											<div class="item__prop-img-wrap">
+												<img src="media/svg/inventory-modal/jump.svg">
+											</div>
+											<p class="item__prop-value">10</p>
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</div>
+	
+				</div>
+			</div>
+
+			<!-- item modal -->
+
+			<div class="wrapper__item-modal-overlay ">
+				<div class="body__item-detail">
+					<button class="item-detail__btn-close" id="btn-close-item-detail-modal"></button>
+
+					<div class="body__background-icon">
+						<img src="media/characters/weapon-purple.svg">
+					</div>
+	
+					<div class="item-detail__header item-detail__header-characters">
+						<div class="header__img-item">
+							<img src="media/characters/character-blue.svg">
+						</div>
+	
+						<div class="header__text-item">
+							<div>
+								<p class="text-item__name">Ghost Whisperer</p>
+								<p class="text-item__type">Legendary collection</p>
+							</div>
+
+							<div class="header__text-item__props-item">
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/heals-black.svg">
+									</div>
+									<p class="prop__title">Heals</p>
+									<p class="prop__value">150</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/attack-black.svg">
+									</div>
+									<p class="prop__title">Attack</p>
+									<p class="prop__value">10</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/speed-black.svg">
+									</div>
+									<p class="prop__title">Speed</p>
+									<p class="prop__value">10</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/defense-black.svg">
+									</div>
+									<p class="prop__title">Defense</p>
+									<p class="prop__value">10</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
+						<div class="header__img-item item-modal-img-wrap">
+							<img src="media/characters/weapon-purple.svg">
+						</div>
+	
+						<div class="header__text-item">
+							<div>
+								<p class="text-item__name">Name Item</p>
+								<p class="text-item__type">Legendary collection</p>
+							</div>
+
+							<div class="header__text-item__props-item">
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/attack-black.svg">
+									</div>
+									<p class="prop__title">Basic attack</p>
+									<p class="prop__value">+15</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/ammunition-quantity.svg">
+									</div>
+									<p class="prop__title">Ammunition quantity</p>
+									<p class="prop__value">+5</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/attack-speed.svg">
+									</div>
+									<p class="prop__title">Attack speed</p>
+									<p class="prop__value">+5</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="item-detail__header item-detail__header-armor">
+						<div class="header__img-item">
+							<img src="media/characters/armor-purple.svg">
+						</div>
+	
+						<div class="header__text-item">
+							<div>
+								<p class="text-item__name">Ghost Whisperer</p>
+								<p class="text-item__type">Legendary collection</p>
+							</div>
+
+							<div class="header__text-item__props-item">
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/heals-black.svg">
+									</div>
+									<p class="prop__title">Heals</p>
+									<p class="prop__value">150</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/attack-black.svg">
+									</div>
+									<p class="prop__title">Attack</p>
+									<p class="prop__value">10</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/speed-black.svg">
+									</div>
+									<p class="prop__title">Speed</p>
+									<p class="prop__value">10</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/defense-black.svg">
+									</div>
+									<p class="prop__title">Defense</p>
+									<p class="prop__value">10</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="item-detail__header item-detail__header-boots">
+						<div class="header__img-item">
+							<img src="media/characters/boots-purple.svg">
+						</div>
+	
+						<div class="header__text-item">
+							<div>
+								<p class="text-item__name">Name item</p>
+								<p class="text-item__type">Skin Assignments</p>
+							</div>
+
+							<div class="header__text-item__props-item">
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/speed-black.svg">
+									</div>
+									<p class="prop__title">Basic Speed</p>
+									<p class="prop__value">+15</p>
+								</div>
+								<div class="props-item__prop">
+									<div class="prop__img-wrap">
+										<img src="media/svg/props-items/heals-black.svg">
+									</div>
+									<p class="prop__title">Basic heal</p>
+									<p class="prop__value">+5</p>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<p class="item-detail__description item-detail__description-characters">
+						Небольшой сторитеил персонажа и если он нужен
+					</p>
+
+					<p class="item-detail__description item-detail__description-weapons item-detail__description_active">
+						"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
+					</p>
+	
+					<p class="item-detail__description item-detail__description-armor">
+						Небольшой сторитеил персонажа и если он нужен
+					</p>
+	
+					<p class="item-detail__description item-detail__description-boots">
+						Небольшой сторитеил персонажа и если он нужен
+					</p>
+	
+					<div class="item-detail__btns-wrap">
+						<button>Take it off</button>
+						<button>Use</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- custom -->
+
 			<body>
 				<div class="startContainer">
 					<div id="connect_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h1 id="walletHeader">Please connect wallet</h1>
 							<button>
-								<img src="/media/svg/meta.svg" alt="">
+								<img src="media/svg/meta.svg" alt="">
 								MetaMask
 							</button>
 						</div>
 					</div>
 					<div id="about_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">About the game</h2>
 							<div class="about__content">
 								<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
@@ -137,7 +887,7 @@
 					</div>
 					<div id="howtobuy_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">How to buy ROSE</h2>
 							<div class="about__content">
 								<h6 class="howtobuy_title">How to get rose tokens to your MetaMask wallet!</h6>
@@ -172,11 +922,11 @@
 
 
 					<button id="btn_modal_window">New game
-						<img src="/media/svg/btn-icn.svg" alt="">
+						<img src="media/svg/btn-icn.svg" alt="">
 					</button>
 					<div id="my_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div class="modal__title">New game</div>
 							<div class="modal__row">
 								<div>
@@ -206,7 +956,6 @@
 								<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
 										id="amountToPlay" min="1" max="255" required /></div>
 							</div>
-
 							<div class="modal__row">
 								<div>Total prize pool: <span id="totalPrizePool">-</span></div>
 								<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
@@ -218,10 +967,10 @@
 					</div>
 					<div id="install_wallet_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div class="modal__title modal__title--mode">To play please connect Web3 wallet</div>
 							<button>
-								<img src="/media/svg/meta.svg" alt="">
+								<img src="media/svg/meta.svg" alt="">
 								Connect MetaMask
 							</button>
 							<p>What is a wallet?</p>
@@ -233,7 +982,7 @@
 					</div>
 					<div id="error_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h3 style="color:#FF7C06">Error</h3>
 							<div id="error_modal_text" style="font-size: 16px; font-weight: 400;"></div>
 						</div>
@@ -241,7 +990,7 @@
 					
 					<div id="airdrop_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div class="modal__title">FairFight AirDrop</div>
 							<div class="airdrop_modal_text">
 								You can get your first ROSE tokens to play the FairFight absolutely for free!
@@ -261,7 +1010,7 @@
 					</div>
 					<div id="leaderboard_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div class="modal__title">FairFight leaderboard</div>
 							<div class="inner-block__head">
 								<button class="active" id="sevenleader-btn">In the last 7 days</button>
@@ -310,14 +1059,14 @@
 					</div> -->
 
 					<div class="inventory-block" id="inventory-block">
-						<span class="close_inventory"><img src="/media/svg/cross.svg" alt=""></span>
+						<span class="close_inventory"><img src="media/svg/cross.svg" alt=""></span>
 						<h2 class="inventory-block__title">Coming soon</h2>
 						<div class="inventory-block__head">
 							<span>Inventory</span>
-							<img src="/media/svg/inventory/item1.svg" alt="">
+							<img src="media/svg/inventory/item1.svg" alt="">
 						</div>
 						<div class="inventory-block__middle">
-							<div class="inventory-block__box inventory-block__box--big" style="grid-area: item1"><img id="inventory-character-image" src="/media/characters/0.svg" width="140px" height="140px" alt=""></div>
+							<div class="inventory-block__box inventory-block__box--big" style="grid-area: item1"><img id="inventory-character-image" src="media/characters/0.svg" width="140px" height="140px" alt=""></div>
 							<div class="inventory-block__box" id="weapons-change" style="grid-area: item2"><img id="weapons-img" alt=""></div>
 							<div class="inventory-block__box" id="armors-change" style="grid-area: item3"><img id="armor-img" alt=""></div>
 							<div class="inventory-block__box" id="boots-change" style="grid-area: item4"><img id="boots-img" alt=""></div>
@@ -337,7 +1086,7 @@
 
 					<div id="shop_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">NFT shop</h2>
 							<div class="inner-block__head">
 								<button class="active" id="characters-btn">Characters</button>
@@ -346,8 +1095,8 @@
 							</div>
 							<div id="characters-box" style="display: block;">
 								<div class="inventory-block__footer">
-									<div class="characters-block__box" id="character-0"><img src="/media/characters/1.png"/></div>
-									<div class="characters-block__box" id="character-1"><img src="/media/characters/2.png"/></div>
+									<div class="characters-block__box" id="character-0"><img src="media/characters/1.png"/></div>
+									<div class="characters-block__box" id="character-1"><img src="media/characters/2.png"/></div>
 									<div class="characters-block__box">Soon</div>
 									<div class="characters-block__box">Soon</div>
 								</div>
@@ -370,54 +1119,54 @@
 									<div class="characters-block__box">Soon</div>
 								</div>
 							</div>
-							<div id="armor-box" style="display: none;">
+							<!-- <div id="armor-box" style="display: none;">
 								<div class="inventory-block__footer">
-									<div class="armors-block__box" id="armor-0"><img src="/media/armors/0.png"/></div>
-									<div class="armors-block__box" id="armor-1"><img src="/media/armors/1.png"/></div>
-									<div class="armors-block__box" id="armor-2"><img src="/media/armors/2.png"/></div>
-									<div class="armors-block__box" id="armor-3"><img src="/media/armors/3.png"/></div>
+									<div class="armors-block__box" id="armor-0"><img src="media/armors/0.png"/></div>
+									<div class="armors-block__box" id="armor-1"><img src="media/armors/1.png"/></div>
+									<div class="armors-block__box" id="armor-2"><img src="media/armors/2.png"/></div>
+									<div class="armors-block__box" id="armor-3"><img src="media/armors/3.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="armors-block__box" id="armor-4"><img src="/media/armors/4.png"/></div>
-									<div class="armors-block__box" id="armor-5"><img src="/media/armors/5.png"/></div>
-									<div class="armors-block__box" id="armor-6"><img src="/media/armors/6.png"/></div>
-									<div class="armors-block__box" id="armor-7"><img src="/media/armors/7.png"/></div>
+									<div class="armors-block__box" id="armor-4"><img src="media/armors/4.png"/></div>
+									<div class="armors-block__box" id="armor-5"><img src="media/armors/5.png"/></div>
+									<div class="armors-block__box" id="armor-6"><img src="media/armors/6.png"/></div>
+									<div class="armors-block__box" id="armor-7"><img src="media/armors/7.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="armors-block__box" id="armor-8"><img src="/media/armors/8.png"/></div>
-									<div class="armors-block__box" id="armor-9"><img src="/media/armors/9.png"/></div>
-									<div class="armors-block__box" id="armor-10"><img src="/media/armors/10.png"/></div>
-									<div class="armors-block__box" id="armor-11"><img src="/media/armors/11.png"/></div>
+									<div class="armors-block__box" id="armor-8"><img src="media/armors/8.png"/></div>
+									<div class="armors-block__box" id="armor-9"><img src="media/armors/9.png"/></div>
+									<div class="armors-block__box" id="armor-10"><img src="media/armors/10.png"/></div>
+									<div class="armors-block__box" id="armor-11"><img src="media/armors/11.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="armors-block__box" id="armor-12"><img src="/media/armors/12.png"/></div>
-									<div class="armors-block__box" id="armor-13"><img src="/media/armors/13.png"/></div>
-									<div class="armors-block__box" id="armor-14"><img src="/media/armors/14.png"/></div>
-									<div class="armors-block__box" id="armor-15"><img src="/media/armors/15.png"/></div>
+									<div class="armors-block__box" id="armor-12"><img src="media/armors/12.png"/></div>
+									<div class="armors-block__box" id="armor-13"><img src="media/armors/13.png"/></div>
+									<div class="armors-block__box" id="armor-14"><img src="media/armors/14.png"/></div>
+									<div class="armors-block__box" id="armor-15"><img src="media/armors/15.png"/></div>
 								</div>
-							</div>
+							</div> -->
 							<div id="weapons-box" style="display: none;">
 								<div class="inventory-block__footer">
-									<div class="weapons-block__box" id="weapon-0"><img src="/media/weapons/0.png"/></div>
-									<div class="weapons-block__box" id="weapon-1"><img src="/media/weapons/1.png"/></div>
-									<div class="weapons-block__box" id="weapon-2"><img src="/media/weapons/2.png"/></div>
-									<div class="weapons-block__box" id="weapon-3"><img src="/media/weapons/3.png"/></div>
+									<div class="weapons-block__box" id="weapon-0"><img src="media/weapons/0.png"/></div>
+									<div class="weapons-block__box" id="weapon-1"><img src="media/weapons/1.png"/></div>
+									<div class="weapons-block__box" id="weapon-2"><img src="media/weapons/2.png"/></div>
+									<div class="weapons-block__box" id="weapon-3"><img src="media/weapons/3.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="weapons-block__box" id="weapon-4"><img src="/media/weapons/4.png"/></div>
-									<div class="weapons-block__box" id="weapon-5"><img src="/media/weapons/5.png"/></div>
-									<div class="weapons-block__box" id="weapon-6"><img src="/media/weapons/6.png"/></div>
-									<div class="weapons-block__box" id="weapon-7"><img src="/media/weapons/7.png"/></div>
+									<div class="weapons-block__box" id="weapon-4"><img src="media/weapons/4.png"/></div>
+									<div class="weapons-block__box" id="weapon-5"><img src="media/weapons/5.png"/></div>
+									<div class="weapons-block__box" id="weapon-6"><img src="media/weapons/6.png"/></div>
+									<div class="weapons-block__box" id="weapon-7"><img src="media/weapons/7.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="weapons-block__box" id="weapon-8"><img src="/media/weapons/8.png"/></div>
-									<div class="weapons-block__box" id="weapon-9"><img src="/media/weapons/9.png"/></div>
-									<div class="weapons-block__box" id="weapon-10"><img src="/media/weapons/10.png"/></div>
-									<div class="weapons-block__box" id="weapon-11"><img src="/media/weapons/11.png"/></div>
+									<div class="weapons-block__box" id="weapon-8"><img src="media/weapons/8.png"/></div>
+									<div class="weapons-block__box" id="weapon-9"><img src="media/weapons/9.png"/></div>
+									<div class="weapons-block__box" id="weapon-10"><img src="media/weapons/10.png"/></div>
+									<div class="weapons-block__box" id="weapon-11"><img src="media/weapons/11.png"/></div>
 								</div>
 								<div class="inventory-block__footer">
-									<div class="weapons-block__box" id="weapon-12"><img src="/media/weapons/12.png"/></div>
-									<div class="weapons-block__box" id="weapon-13"><img src="/media/weapons/13.png"/></div>
+									<div class="weapons-block__box" id="weapon-12"><img src="media/weapons/12.png"/></div>
+									<div class="weapons-block__box" id="weapon-13"><img src="media/weapons/13.png"/></div>
 									<div class="weapons-block__box">Soon</div>
 									<div class="weapons-block__box">Soon</div>
 								</div>
@@ -427,7 +1176,7 @@
 
 					<div id="character-modal" class="modal">
 						<div id="character-modal-content" class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title" id="character-modal-name">Character</h2>
 							<div class="characters-modal__box">
 								<img id="character-modal-img" src=""/>
@@ -449,14 +1198,14 @@
 					
 					<div id="approve_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div><span id="approved_token">Token</span> approved.</div>
 							<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;"></div>
 						</div>
 					</div>
 					<div id="buy_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<div>You have successfully bought the NFT!</div>
 							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Now you can see it in the inventory.</div>
 						</div>
@@ -497,7 +1246,7 @@
 					</div>
 					<div id="choose_character_modal" class="modal">
 						<div class="choose_character_modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">Characters</h2>
 							<div>
 								<div id="choose-character-modal-list" class="choose-character-modal-list">
@@ -509,7 +1258,7 @@
 					</div>
 					<div id="choose_weapon_modal" class="modal">
 						<div class="choose_character_modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">Weapons</h2>
 							<div>
 								<div id="choose-weapon-modal-list" class="choose-weapon-modal-list">
@@ -521,7 +1270,7 @@
 					</div>
 					<div id="choose_armor_modal" class="modal">
 						<div class="choose_character_modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">Armors</h2>
 							<div>
 								<div id="choose-armor-modal-list" class="choose-armor-modal-list">
@@ -533,7 +1282,7 @@
 					</div>
 					<div id="choose_boots_modal" class="modal">
 						<div class="choose_character_modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 							<h2 class="about__title">Boots</h2>
 							<div>
 								<div id="choose-boots-modal-list" class="choose-boots-modal-list">
@@ -545,8 +1294,8 @@
 					</div>
 					<div id="confirmation_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img class="load" src="/media/svg/load.svg" alt="">
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
+							<img class="load" src="media/svg/load.svg" alt="">
 							<div>Waiting for confirmation</div>
 							<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
 								transaction in your wallet</div>
@@ -554,8 +1303,8 @@
 					</div>
 					<div id="pending_modal" class="modal">
 						<div class="modal_content">
-							<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
-							<img src="/media/svg/load.svg" alt="" class="load">
+							<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
+							<img src="media/svg/load.svg" alt="" class="load">
 							<div>Pending...</div>
 							<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
 								complete</div>
