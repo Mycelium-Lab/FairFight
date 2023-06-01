@@ -71,14 +71,14 @@ CREATE TABLE weapon_bonuses(
     damage INT
 );
 
-INSERT INTO armor_bonuses(id, health) VALUES(8, 5);
-INSERT INTO armor_bonuses(id, health) VALUES(9, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(10, 1);
-INSERT INTO armor_bonuses(id, health) VALUES(11, 5);
-INSERT INTO armor_bonuses(id, health) VALUES(12, 5);
-INSERT INTO armor_bonuses(id, health) VALUES(13, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(14, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(15, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(0, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(1, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(2, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(3, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(4, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(5, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(6, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(7, 1);
 
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(0, 10, 0);
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(1, 20, 0);

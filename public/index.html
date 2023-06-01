@@ -299,126 +299,115 @@
 
 			<!-- message modals -->
 
-			<div class="wrapper__message-modal-overlay">
+			
 				<!-- Add in class wrapper__message-modal_active for display modal -->
 
 				<!-- 1 -->
-				<div class="wrapper__message-modal wrapper__message-modal_waiting">
-					<button class="message-modal__btn-close"></button>
+				<div id="new-approve-modal" class="wrapper__message-modal-overlay">
+					<div class="wrapper__message-modal wrapper__message-modal_waiting">
+						<button class="message-modal__btn-close new-approve-modal-close-button"></button>
 
-					<p class="message-modal__header-title">Purchace</p>
+						<p class="message-modal__header-title">Purchace</p>
 
-					<div class="message-modal__loader">
-						<img src="media/svg/message-modal-loader.svg">
-					</div>
+						<div class="message-modal__loader">
+							<img src="media/svg/message-modal-loader.svg">
+						</div>
 
-					<div class="message-modal__text-wrap">
-						<p class="text-wrap__title">Give permission to spend USDT</p>
-						<p class="text-wrap__text">
-							To continue, you need to allow FAIR smart contracts to use the token. This has to be done only once for each token. Please, sign transaction in your wallet.
-						</p>
-					</div>
+						<div class="message-modal__text-wrap">
+							<p class="text-wrap__title">Give permission to spend <span>USDT</span></p>
+							<p class="text-wrap__text">
+								To continue, you need to allow FAIR smart contracts to use the token. This has to be done only once for each token. Please, sign transaction in your wallet.
+							</p>
+						</div>
 
-					<div class="message-modal__btns-wrap">
-						<button>Close</button>
+						<div class="message-modal__btns-wrap">
+							<button class="new-approve-modal-close-button">Close</button>
+						</div>
 					</div>
 				</div>
+				<div id="new-progress-modal" class="wrapper__message-modal-overlay">
+					<!-- 2 -->
+					<div class="wrapper__message-modal wrapper__message-modal_progress">
+						<button class="message-modal__btn-close new-progress-modal-close-button" ></button>
 
-				<!-- 2 -->
-				<div class="wrapper__message-modal wrapper__message-modal_progress">
-					<button class="message-modal__btn-close"></button>
+						<p class="message-modal__header-title">Purchace</p>
 
-					<p class="message-modal__header-title">Purchace</p>
+						<div class="message-modal__loader">
+							<img src="media/svg/message-modal-loader.svg">
+						</div>
 
-					<div class="message-modal__loader">
-						<img src="media/svg/message-modal-loader.svg">
-					</div>
-
-					<div class="message-modal__text-wrap">
-						<p class="text-wrap__title">Transaction in progress</p>
-						<p class="text-wrap__text">Wait for the transaction to complete</p>
+						<div class="message-modal__text-wrap">
+							<p class="text-wrap__title">Transaction in progress</p>
+							<p class="text-wrap__text">Wait for the transaction to complete</p>
+						</div>
 					</div>
 				</div>
 
 				<!-- 3 -->
-				<div class="wrapper__message-modal wrapper__message-modal_confirm">
-					<button class="message-modal__btn-close"></button>
+				<div id="new-confirm-modal" class="wrapper__message-modal-overlay">
+					<div class="wrapper__message-modal wrapper__message-modal_confirm">
+						<button class="message-modal__btn-close new-confirm-modal-close-button"></button>
 
-					<p class="message-modal__header-title">Purchace</p>
+						<p class="message-modal__header-title">Purchace</p>
 
-					<div class="message-modal__loader">
-						<img src="media/svg/message-modal-loader.svg">
-					</div>
+						<div class="message-modal__loader">
+							<img src="media/svg/message-modal-loader.svg">
+						</div>
 
-					<div class="message-modal__text-wrap">
-						<p class="text-wrap__title">Confirm transaction</p>
-						<p class="text-wrap__text">Please, sign transaction in your wallet</p>
-					</div>
+						<div class="message-modal__text-wrap">
+							<p class="text-wrap__title">Confirm transaction</p>
+							<p class="text-wrap__text">Please, sign transaction in your wallet</p>
+						</div>
 
-					<div class="message-modal__btns-wrap">
-						<button>Close</button>
+						<div class="message-modal__btns-wrap">
+							<button class="new-confirm-modal-close-button">Close</button>
+						</div>
 					</div>
 				</div>
 
 				<!-- 4 -->
-				<div class="wrapper__message-modal wrapper__message-modal_rejected">
-					<button class="message-modal__btn-close"></button>
+				<div id="new-error-modal" class="wrapper__message-modal-overlay">
+					<div class="wrapper__message-modal wrapper__message-modal_rejected">
+						<button class="message-modal__btn-close new-error-modal-close-button"></button>
 
-					<div class="message-modal__error">
-						<img src="media/svg/message-modal-error.svg">
-					</div>
+						<div class="message-modal__error">
+							<img src="media/svg/message-modal-error.svg">
+						</div>
 
-					<div class="message-modal__text-wrap_error">
-						<p class="text-wrap__title">Error</p>
-						<p class="text-wrap__text">Transaction was rejected by the user</p>
-					</div>
+						<div class="message-modal__text-wrap_error">
+							<p class="text-wrap__title">Error</p>
+							<p id="new-error-modal-text" class="text-wrap__text">Transaction was rejected by the user</p>
+						</div>
 
-					<div class="message-modal__btns-wrap">
-						<button>Try again</button>
-						<button>Close</button>
-					</div>
-				</div>
-
-				<!-- 5 -->
-				<div class="wrapper__message-modal wrapper__message-modal_error-eth">
-					<button class="message-modal__btn-close"></button>
-
-					<div class="message-modal__error">
-						<img src="media/svg/message-modal-error.svg">
-					</div>
-
-					<div class="message-modal__text-wrap_error">
-						<p class="text-wrap__title">Error</p>
-						<p class="text-wrap__text">Don't have enough ETH to pay gas fees</p>
-					</div>
-
-					<div class="message-modal__btns-wrap">
-						<button>Try again</button>
-						<button>Close</button>
+						<div class="message-modal__btns-wrap">
+							<button>Try again</button>
+							<button class="new-error-modal-close-button">Close</button>
+						</div>
 					</div>
 				</div>
 
 				<!-- 6 -->
-				<div class="wrapper__message-modal wrapper__message-modal_purchase-completed">
-					<button class="message-modal__btn-close"></button>
+				<div id="new-success-modal" class="wrapper__message-modal-overlay">
+					<div class="wrapper__message-modal wrapper__message-modal_purchase-completed">
+						<button class="message-modal__btn-close new-success-modal-close-button"></button>
 
-					<div class="message-modal__completed">
-						<img src="media/characters/character-green.svg">
-					</div>
+						<div class="message-modal__completed">
+							<img id="new-success-modal-img" height="100px" width="100px" src="media/characters/character-green.svg">
+						</div>
 
-					<div class="message-modal__text-wrap">
-						<p class="text-wrap__title">Purchase completed</p>
-						<p class="text-wrap__text">You have successfully purchased the NFT</p>
-					</div>
+						<div class="message-modal__text-wrap">
+							<p class="text-wrap__title">Purchase completed</p>
+							<p id="new-success-modal-text" class="text-wrap__text">You have successfully purchased the NFT</p>
+						</div>
 
-					<a class="message-modal__link" href="#">View transaction on Blockchain Explorer</a>
+						<a id="new-success-modal-link" class="message-modal__link" href="#" target="_blank" rel="noreferrer">View transaction on Blockchain Explorer</a>
 
-					<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
-						<button>Back to NFT shop</button>
-						<button>Go to inventory</button>
+						<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
+							<button class="new-success-modal-close-button">Back to NFT shop</button>
+							<button>Go to inventory</button>
+						</div>
 					</div>
 				</div>
-			</div>
 
 			<!-- nft-shop-modal-2 -->
 
@@ -467,23 +456,23 @@
 	
 						<div class="params-wrap__filters">
 							<div class="filters__item">
-								<input id="bronze" type="checkbox">
-								<label for="bronze">
+								<input name="collection-check" value="normal" id="normal" type="checkbox">
+								<label for="normal">
 									<div class="checkbox"></div>
-									<p>Bronze</p>
+									<p>Normal</p>
 								</label>
 							</div>
 	
 							<div class="filters__item">
-								<input id="silver" type="checkbox">
-								<label for="silver">
+								<input name="collection-check" value="epochal" id="epochal" type="checkbox">
+								<label for="epochal">
 									<div class="checkbox"></div>
-									<p>Silver</p>
+									<p>Epochal</p>
 								</label>
 							</div>
 	
 							<div class="filters__item">
-								<input id="gold" type="checkbox">
+								<input name="collection-check" value="gold" id="gold" type="checkbox">
 								<label for="gold">
 									<div class="checkbox"></div>
 									<p>Gold</p>
@@ -491,7 +480,7 @@
 							</div>
 	
 							<div class="filters__item">
-								<input id="platinum" type="checkbox">
+								<input name="collection-check" value="platinum" id="platinum" type="checkbox">
 								<label for="platinum">
 									<div class="checkbox"></div>
 									<p>Platinum</p>
@@ -499,7 +488,7 @@
 							</div>
 	
 							<div class="filters__item">
-								<input id="legendary" type="checkbox">
+								<input name="collection-check" value="legendary" id="legendary" type="checkbox">
 								<label for="legendary">
 									<div class="checkbox"></div>
 									<p>Legendary</p>
@@ -547,10 +536,10 @@
 	
 							<div class="inventory-modal__nav-wrap">
 								<nav class="nav-wrap__nav">
-									<input id="inventory__tab-1" type="radio" name="inventory__tab">
+									<input id="inventory__tab-1" type="radio" name="inventory__tab" checked>
 									<label for="inventory__tab-1">CHARACTERS</label>
 			
-									<input id="inventory__tab-2" type="radio" name="inventory__tab" checked>
+									<input id="inventory__tab-2" type="radio" name="inventory__tab">
 									<label for="inventory__tab-2">WEAPONS</label>
 			
 									<input id="inventory__tab-3" type="radio" name="inventory__tab">
@@ -560,28 +549,103 @@
 									<label for="inventory__tab-4">BOOTS</label>
 								</nav>
 							</div>
-	
-							<div class="left__list-wrap">
+
+							<div class="left__list-wrap" id="left-inventory-characters-list">
 								<div class="list-wrap__item-list">
-									<div class="item-list__slot item-list__slot_silver" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-1.svg">
-									</div>
-									<div class="item-list__slot item-list__slot_purple" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-2.svg">
-									</div>
-									<div class="item-list__slot item-list__slot_blue" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-3.svg">
-									</div>
-									<div class="item-list__slot item-list__slot_orange" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-4.svg">
-									</div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
 			
-									<div class="item-list__slot item-list__slot_green" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-5.svg">
-									</div>
-									<div class="item-list__slot item-list__slot_silver" draggable="true">
-										<img class="inventory-items" src="media/svg/inventory-modal/weapon-6.svg">
-									</div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+								</div>
+							</div>
+						
+							<div class="left__list-wrap" id="left-inventory-weapons-list" style="display: none;">
+								<div class="list-wrap__item-list">
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+								</div>
+							</div>
+
+							<div class="left__list-wrap" id="left-inventory-armors-list" style="display: none;">
+								<div class="list-wrap__item-list">
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+								</div>
+							</div>
+
+							<div class="left__list-wrap" id="left-inventory-boots-list" style="display: none;">
+								<div class="list-wrap__item-list">
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
+			
+									<div class="item-list__slot"></div>
+									<div class="item-list__slot"></div>
 									<div class="item-list__slot"></div>
 									<div class="item-list__slot"></div>
 			
@@ -610,23 +674,23 @@
 								<div class="character__slots">
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">WEAPON</p>
-										<div class="slot-wrap__slot weapon-slot"></div>
+										<div id="weapon-slot" class="slot-wrap__slot weapon-slot"></div>
 									</div>
 	
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">ARMOR</p>
-										<div class="slot-wrap__slot armor-slot"></div>
+										<div id="armor-slot" class="slot-wrap__slot armor-slot"></div>
 									</div>
 	
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">BOOTS</p>
-										<div class="slot-wrap__slot boots-slot"></div>
+										<div id="boots-slot" class="slot-wrap__slot boots-slot"></div>
 									</div>
 								</div>
 	
-								<div class="character__character-wrap">
-									<div class="character-wrap__img-wrap">
-										<img src="media/svg/inventory-modal/character.svg">
+								<div class="character__character-wrap" id="character-slot1">
+									<div class="character-wrap__img-wrap" id="character-slot2">
+										<img src="media/svg/inventory-modal/character.svg" id="character-slot3">
 									</div>
 	
 									<div class="character-wrap__props-wrap">
