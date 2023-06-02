@@ -2516,16 +2516,16 @@ a {
     position: absolute;
     z-index: 1;
   }
-  
-  .wrapper__inventory-modal .weapon-slot::before {
+
+  .weapon__slot-background::before {
     background-image: url('../media/svg/inventory-modal/weapon-slot.svg');
   }
-  
-  .wrapper__inventory-modal .armor-slot::before {
+
+  .armor__slot-background::before {
     background-image: url('../media/svg/inventory-modal/armor-slot.svg');
   }
   
-  .wrapper__inventory-modal .boots-slot::before {
+  .boots__slot-background::before {
     background-image: url('../media/svg/inventory-modal/boots-slot.svg');
   }
 
@@ -2958,7 +2958,7 @@ a {
     font-size: 20px;
   }
 
-  .wrapper__inventory-modal .weapon-slot::before {
+  /* .wrapper__inventory-modal .weapon-slot::before {
     background-image: url('../media/svg/inventory-modal/weapon-slot-small.svg');
   }
   .wrapper__inventory-modal .armor-slot::before{
@@ -2966,7 +2966,7 @@ a {
   }
   .wrapper__inventory-modal .boots-slot::before{
     background-image: url('../media/svg/inventory-modal/boots-slot-small.svg');
-  }
+  } */
 
   .wrapper__nft-shop-modal-overlay_active,
   .wrapper__inventory-modal-overlay_active {
@@ -3028,4 +3028,9 @@ a {
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title{
     padding-bottom: 32px;
   }
+}
+
+.slot-wrap__slot img {
+  width: 63px;
+  height: 58px;
 }

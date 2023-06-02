@@ -404,7 +404,7 @@
 
 						<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
 							<button class="new-success-modal-close-button">Back to NFT shop</button>
-							<button>Go to inventory</button>
+							<button id="go-to-inventory-btn">Go to inventory</button>
 						</div>
 					</div>
 				</div>
@@ -517,7 +517,7 @@
 
 			<!-- inventory modal -->
 
-			<div class="wrapper__inventory-modal-overlay">
+			<div id="inventory-modal" class="wrapper__inventory-modal-overlay">
 				<div class="wrapper__inventory-modal">
 					<button class="inventory-modal__btn-close"></button>
 	
@@ -674,23 +674,23 @@
 								<div class="character__slots">
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">WEAPON</p>
-										<div id="weapon-slot" class="slot-wrap__slot weapon-slot"></div>
+										<div id="weapon-slot" class="slot-wrap__slot weapon-slot weapon__slot-background"></div>
 									</div>
 	
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">ARMOR</p>
-										<div id="armor-slot" class="slot-wrap__slot armor-slot"></div>
+										<div id="armor-slot" class="slot-wrap__slot armor-slot armor__slot-background"></div>
 									</div>
 	
 									<div class="slots__slot-wrap">
 										<p class="slot-wrap__title">BOOTS</p>
-										<div id="boots-slot" class="slot-wrap__slot boots-slot"></div>
+										<div id="boots-slot" class="slot-wrap__slot boots-slot boots__slot-background"></div>
 									</div>
 								</div>
 	
 								<div class="character__character-wrap" id="character-slot1">
 									<div class="character-wrap__img-wrap" id="character-slot2">
-										<img src="media/svg/inventory-modal/character.svg" id="character-slot3">
+										<img src="/media/characters/0.png" id="character-slot3">
 									</div>
 	
 									<div class="character-wrap__props-wrap">
@@ -733,71 +733,23 @@
 
 			<!-- item modal -->
 
-			<div class="wrapper__item-modal-overlay ">
+			<div id="inventory-item-modal" class="wrapper__item-modal-overlay">
 				<div class="body__item-detail">
 					<button class="item-detail__btn-close" id="btn-close-item-detail-modal"></button>
 
-					<div class="body__background-icon">
-						<img src="media/characters/weapon-purple.svg">
-					</div>
-	
-					<div class="item-detail__header item-detail__header-characters">
-						<div class="header__img-item">
-							<img src="media/characters/character-blue.svg">
-						</div>
-	
-						<div class="header__text-item">
-							<div>
-								<p class="text-item__name">Ghost Whisperer</p>
-								<p class="text-item__type">Legendary collection</p>
-							</div>
-
-							<div class="header__text-item__props-item">
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/heals-black.svg">
-									</div>
-									<p class="prop__title">Heals</p>
-									<p class="prop__value">150</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/attack-black.svg">
-									</div>
-									<p class="prop__title">Attack</p>
-									<p class="prop__value">10</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/speed-black.svg">
-									</div>
-									<p class="prop__title">Speed</p>
-									<p class="prop__value">10</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/defense-black.svg">
-									</div>
-									<p class="prop__title">Defense</p>
-									<p class="prop__value">10</p>
-								</div>
-							</div>
-						</div>
-					</div>
-	
 					<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
 						<div class="header__img-item item-modal-img-wrap">
-							<img src="media/characters/weapon-purple.svg">
+							<img id="inventory-item-modal-image" src="media/characters/weapon-purple.svg">
 						</div>
 	
 						<div class="header__text-item">
 							<div>
-								<p class="text-item__name">Name Item</p>
-								<p class="text-item__type">Legendary collection</p>
+								<p class="text-item__name" id="inventory-item-modal-name"></p>
+								<p class="text-item__type"><span id="inventory-item-modal-collection"></span> collection</p>
 							</div>
 
-							<div class="header__text-item__props-item">
-								<div class="props-item__prop">
+							<div id="inventory-item-modal-features" class="header__text-item__props-item">
+								<!-- <div class="props-item__prop">
 									<div class="prop__img-wrap">
 										<img src="media/svg/props-items/attack-black.svg">
 									</div>
@@ -817,104 +769,18 @@
 									</div>
 									<p class="prop__title">Attack speed</p>
 									<p class="prop__value">+5</p>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</div>
-	
-					<div class="item-detail__header item-detail__header-armor">
-						<div class="header__img-item">
-							<img src="media/characters/armor-purple.svg">
-						</div>
-	
-						<div class="header__text-item">
-							<div>
-								<p class="text-item__name">Ghost Whisperer</p>
-								<p class="text-item__type">Legendary collection</p>
-							</div>
 
-							<div class="header__text-item__props-item">
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/heals-black.svg">
-									</div>
-									<p class="prop__title">Heals</p>
-									<p class="prop__value">150</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/attack-black.svg">
-									</div>
-									<p class="prop__title">Attack</p>
-									<p class="prop__value">10</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/speed-black.svg">
-									</div>
-									<p class="prop__title">Speed</p>
-									<p class="prop__value">10</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/defense-black.svg">
-									</div>
-									<p class="prop__title">Defense</p>
-									<p class="prop__value">10</p>
-								</div>
-							</div>
-						</div>
-					</div>
-	
-					<div class="item-detail__header item-detail__header-boots">
-						<div class="header__img-item">
-							<img src="media/characters/boots-purple.svg">
-						</div>
-	
-						<div class="header__text-item">
-							<div>
-								<p class="text-item__name">Name item</p>
-								<p class="text-item__type">Skin Assignments</p>
-							</div>
-
-							<div class="header__text-item__props-item">
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/speed-black.svg">
-									</div>
-									<p class="prop__title">Basic Speed</p>
-									<p class="prop__value">+15</p>
-								</div>
-								<div class="props-item__prop">
-									<div class="prop__img-wrap">
-										<img src="media/svg/props-items/heals-black.svg">
-									</div>
-									<p class="prop__title">Basic heal</p>
-									<p class="prop__value">+5</p>
-								</div>
-							</div>
-						</div>
-					</div>
-	
-					<p class="item-detail__description item-detail__description-characters">
-						Небольшой сторитеил персонажа и если он нужен
-					</p>
-
-					<p class="item-detail__description item-detail__description-weapons item-detail__description_active">
+					<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">
 						"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
 					</p>
-	
-					<p class="item-detail__description item-detail__description-armor">
-						Небольшой сторитеил персонажа и если он нужен
-					</p>
-	
-					<p class="item-detail__description item-detail__description-boots">
-						Небольшой сторитеил персонажа и если он нужен
-					</p>
-	
+
 					<div class="item-detail__btns-wrap">
-						<button>Take it off</button>
-						<button>Use</button>
+						<button id="inventory-item-modal-takeitoff">Take it off</button>
+						<button id="inventory-item-modal-use">Use</button>
 					</div>
 				</div>
 			</div>
