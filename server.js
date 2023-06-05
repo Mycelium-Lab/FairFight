@@ -516,11 +516,11 @@ async function getInventory(req, response) {
                 inventory.armor, 
                 inventory.weapon, 
                 inventory.boots,
-                armor_bonuses.health, 
+                armor_bonuses.health as health_bonus, 
                 weapon_bonuses.damage, 
-                weapon_bonuses.bullets,
-                boots_bonuses.speed,
-                boots_bonuses.jump
+                weapon_bonuses.bullets as bullets_bonus,
+                boots_bonuses.speed as speed_bonus,
+                boots_bonuses.jump as jump_bonus
                 FROM inventory 
                 LEFT JOIN armor_bonuses ON inventory.armor=armor_bonuses.id 
                 LEFT JOIN weapon_bonuses ON inventory.weapon=weapon_bonuses.id 
