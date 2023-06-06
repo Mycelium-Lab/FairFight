@@ -79,14 +79,15 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
-    name: 'Scale Test',
+    name: 'Scale',
     chainid: 503129905,
     rpc: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
-    contractAddress: '0xBeBF242338794e8ED107687F62d3AFfd05FfCf6F',
-    charactersAddress: '0x7465C0684820CD97F5D5026Ea35d5150fa256c52',
-    armorsAddress: '0x00Dadf0af59F1822055313851b1c6ca4e1120ac0',
-    weaponsAddress: '0x70A222C27F5CB21B77D0014AbA3D721F068DA134',
-    shopAddress: '0x8Aa6A2EadA77FcbCD206b102e9212eB13224ae2e',
+    contractAddress: '0x176DC2E5cB86Ba5d7ee5819478bE1f4FA0931c54',
+    charactersAddress: '0x7f1c57CcF77c638C3274398C7b296338D7Cf849b',
+    armorsAddress: '0x7e8a5e2d6F5D460747CB0ffd3Def7aEaEC8681DC',
+    weaponsAddress: '0x72184aba9c75c360d9cFD79d6547ff4FE91e984b',
+    bootsAddress: '0xD437Fd7DEA156791CbA5cEDe7E1a3202CDFD65eE',
+    shopAddress: '0xd0314f751Dc470dD868573402b59d2da14C10B2F',
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
     privateKey: process.env.PRIVATE_KEY

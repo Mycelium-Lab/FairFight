@@ -1667,6 +1667,25 @@ a {
   margin-top: 58px;
   display: flex;
   justify-content: center;
+  animation: 1s linear 0s normal none infinite running loader;
+  -webkit-animation: 1s linear 0s normal none infinite running loader;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .wrapper__message-modal .message-modal__error {
