@@ -35,7 +35,7 @@ abstract contract FairFightStorage is IFairFight {
 
     /// @notice Shoes if player currently busy.
     /// @dev Player cant have more than one game in a moment.
-    mapping(address => bool) internal currentlyBusy;
+    mapping(address => bool) public currentlyBusy;
 
     /// @notice Contains data of claimed amount. If player finished game it will be true.
     mapping(address => mapping(uint256 => bool)) public playerClaimed;

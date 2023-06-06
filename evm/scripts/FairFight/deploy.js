@@ -12,8 +12,8 @@ async function main() {
     const chain = await ethers.provider.getNetwork()
     const chainid = chain.chainId
 
-    const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
-    const wallet = new ethers.Wallet(account, ethers.provider)
+    // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
+    // const wallet = new ethers.Wallet(account, ethers.provider)
     let FairFight = await ethers.getContractFactory("FairFight");
     // FairFight = FairFight.connect(wallet)
     console.log(acc1.address)

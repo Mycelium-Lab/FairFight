@@ -374,16 +374,21 @@ async function setCharacter(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const characterid = req.body.characterid
-        const { characters } = blockchainConfig(chainid)
-        const exist = await characters.propertyToken(address, characterid === 0 ? characterid : characterid-1)
-        if (characterid === 0 || exist.toString() !== '0') {
-            await pgClient.query(
-                "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
-                [address, chainid, characterid]
-            )
-            response.status(200).send()
+        const { characters, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            const exist = await characters.propertyToken(address, characterid == 0 ? characterid : characterid-1)
+            if (characterid === 0 || exist.toString() !== '0') {
+                await pgClient.query(
+                    "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
+                    [address, chainid, characterid]
+                )
+                response.status(200).send()
+            } else {
+                response.status(401).send('Not exist')
+            }
         } else {
-            response.status(401).send('Not exist')
+            response.status(400).send('Busy')
         }
     } catch (error) {
         console.log(error)
@@ -395,16 +400,25 @@ async function setArmor(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const armor = req.body.armor
-        const { armors } = blockchainConfig(chainid)
-        const exist = await armors.propertyToken(address, armor)
-        if (armor === 0 || exist.toString() !== '0') {
-            await pgClient.query(
-                "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2",
-                [address, chainid, armor]
-            )
-            response.status(200).send()
+        const { armors, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        console.log(armor)
+        if (!busy) {
+            let exist
+            if (armor !== null) {
+                exist = await armors.propertyToken(address, armor)
+            }
+            if (armor === null || exist.toString() !== '0') {
+                await pgClient.query(
+                    "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2",
+                    [address, chainid, armor]
+                )
+                response.status(200).send()
+            } else {
+                response.status(401).send('Not exist')
+            }
         } else {
-            response.status(401).send('Not exist')
+            response.status(400).send('Busy')
         }
     } catch (error) {
         console.log(error)
@@ -416,16 +430,24 @@ async function setWeapon(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const weapon = req.body.weapon
-        const { weapons } = blockchainConfig(chainid)
-        const exist = await weapons.propertyToken(address, weapon)
-        if (weapon === 0 || exist.toString() !== '0') {
-            await pgClient.query(
-                "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2",
-                [address, chainid, weapon]
-            )
-            response.status(200).send()
+        const { weapons, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            let exist
+            if (weapon !== null) {
+                exist = await weapons.propertyToken(address, weapon)
+            }
+            if (weapon === null || exist.toString() !== '0') {
+                await pgClient.query(
+                    "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2",
+                    [address, chainid, weapon]
+                )
+                response.status(200).send()
+            } else {
+                response.status(401).send('Not exist')
+            }
         } else {
-            response.status(401).send('Not exist')
+            response.status(400).send('Busy')
         }
     } catch (error) {
         console.log(error)
@@ -437,16 +459,24 @@ async function setBoots(req, response) {
         const address = req.body.address
         const chainid = req.body.chainid
         const boot = req.body.boots
-        const { armors } = blockchainConfig(chainid)
-        const exist = await armors.propertyToken(address, boot)
-        if (boot === 0 || exist.toString() !== '0') {
-            await pgClient.query(
-                "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2",
-                [address, chainid, boot]
-            )
-            response.status(200).send()
+        const { boots, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            let exist
+            if (boot !== null) {
+                exist = await boots.propertyToken(address, boot)
+            }
+            if (boot === null || exist.toString() !== '0') {
+                await pgClient.query(
+                    "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2",
+                    [address, chainid, boot]
+                )
+                response.status(200).send()
+            } else {
+                response.status(401).send('Not exist')
+            }
         } else {
-            response.status(401).send('Not exist')
+            response.status(400).send('Busy')
         }
     } catch (error) {
         console.log(error)
@@ -463,13 +493,15 @@ function blockchainConfig(chainid) {
     let characters
     let armors
     let weapons
+    let boots
     if (network.shopAddress != undefined) {
         shop = new ethers.Contract(network.shopAddress, shopAbi, signer)
         characters = new ethers.Contract(network.charactersAddress, nftAbi, signer)
         armors = new ethers.Contract(network.armorsAddress, nftAbi, signer)
         weapons = new ethers.Contract(network.weaponsAddress, nftAbi, signer)
+        boots = new ethers.Contract(network.bootsAddress, nftAbi, signer)
     } 
-    return {contract: _contract, signer, shop, characters, armors, weapons};
+    return {contract: _contract, signer, shop, characters, armors, weapons, boots};
 }
 
 async function getInventory(req, response) {
@@ -484,11 +516,11 @@ async function getInventory(req, response) {
                 inventory.armor, 
                 inventory.weapon, 
                 inventory.boots,
-                armor_bonuses.health, 
+                armor_bonuses.health as health_bonus, 
                 weapon_bonuses.damage, 
-                weapon_bonuses.bullets,
-                boots_bonuses.speed,
-                boots_bonuses.jump
+                weapon_bonuses.bullets as bullets_bonus,
+                boots_bonuses.speed as speed_bonus,
+                boots_bonuses.jump as jump_bonus
                 FROM inventory 
                 LEFT JOIN armor_bonuses ON inventory.armor=armor_bonuses.id 
                 LEFT JOIN weapon_bonuses ON inventory.weapon=weapon_bonuses.id 

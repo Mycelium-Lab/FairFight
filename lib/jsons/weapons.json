@@ -10,10 +10,6 @@
 			"value": "Normal"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "0"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "1"
 		}
@@ -29,11 +25,7 @@
 		},
 		{
 			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "0"
+			"value": "Gold"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -51,11 +43,7 @@
 		},
 		{
 			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "1"
+			"value": "Platinum"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -76,10 +64,6 @@
 			"value": "Normal"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "2"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "2"
 		}
@@ -96,10 +80,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Normal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "2"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -120,10 +100,6 @@
 			"value": "Normal"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "1"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "4"
 		}
@@ -140,10 +116,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Normal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "1"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -164,10 +136,6 @@
 			"value": "Normal"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "3"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "1"
 		}
@@ -184,10 +152,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Normal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "3"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -208,10 +172,6 @@
 			"value": "Epochal"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "-1"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "10"
 		}
@@ -228,10 +188,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Epochal"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "-1"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -252,10 +208,6 @@
 			"value": "Legendary"
 		},
 		{
-			"trait_type": "Damage Bonus",
-			"value": "10"
-		},
-		{
 			"trait_type": "Bullets Bonus",
 			"value": "0"
 		}
@@ -271,10 +223,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Legendary"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "10"
 		},
 		{
 			"trait_type": "Bullets Bonus",
@@ -293,10 +241,6 @@
 		{
 			"trait_type": "Rarity",
 			"value": "Legendary"
-		},
-		{
-			"trait_type": "Damage Bonus",
-			"value": "7"
 		},
 		{
 			"trait_type": "Bullets Bonus",

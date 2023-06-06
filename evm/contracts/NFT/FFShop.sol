@@ -24,22 +24,25 @@ contract FairFightShop is Ownable {
     address private collector;
     /// @dev isShop works
     bool private work;
-    /// @notice PropertyType(Character, Weapon, Armor) => token(ERC-20) => amounts[] (each propertyID)
+    /// @notice PropertyType(Character, Weapon, Armor, Boot) => token(ERC-20) => amounts[] (each propertyID)
     mapping (IFFNFT => mapping(IERC20 => uint256[])) public prices;
 
     constructor(
         IFFNFT characters,
         IFFNFT weapons,
         IFFNFT armors,
+        IFFNFT boots,
         IERC20 token,
         uint256[] memory charactersPrices,
         uint256[] memory weaponsPrices,
         uint256[] memory armorsPrices,
+        uint256[] memory bootsPrices,
         address _collector
     ) {
         prices[characters][token] = charactersPrices;
         prices[weapons][token] = weaponsPrices;
         prices[armors][token] = armorsPrices;
+        prices[boots][token] = bootsPrices;
         collector = _collector;
         work = true;
     }

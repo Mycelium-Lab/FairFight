@@ -4,10 +4,10 @@ const { sign } = require("../../test/utils/sign")
 async function main() {
     const [acc1, acc2, acc3] = await ethers.getSigners()
     let FairFight = await ethers.getContractFactory("FairFight")
-    const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
-    const wallet = new ethers.Wallet(account, ethers.provider)
-    FairFight = FairFight.connect(wallet)
-    const fairFight = FairFight.attach('0xBeBF242338794e8ED107687F62d3AFfd05FfCf6F')
+    // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
+    // const wallet = new ethers.Wallet(account, ethers.provider)
+    // FairFight = FairFight.connect(wallet)
+    const fairFight = FairFight.attach('0x176DC2E5cB86Ba5d7ee5819478bE1f4FA0931c54')
 
     const allowedTokens = [
       {
