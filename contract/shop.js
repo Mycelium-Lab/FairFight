@@ -15,6 +15,11 @@ export const nftAbi = [
         "internalType": "string",
         "name": "baseURI_",
         "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxSupply_",
+        "type": "uint256"
       }
     ],
     "stateMutability": "nonpayable",
@@ -416,6 +421,19 @@ export const nftAbi = [
       }
     ],
     "name": "setBaseUri",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "maxSupply_",
+        "type": "uint256"
+      }
+    ],
+    "name": "setMaxSupply",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

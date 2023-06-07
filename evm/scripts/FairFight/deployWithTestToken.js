@@ -34,7 +34,7 @@ async function main() {
         signerAddress, //signer
         10, //max rounds
         '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
-        300, //fee
+        500, //fee
         ethers.utils.parseEther("0.0000000001"), //min amount for one round
         2 //max players
       ], 
