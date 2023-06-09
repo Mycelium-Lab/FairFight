@@ -575,6 +575,21 @@ async function getGamesProperties(req, response) {
     }
 }
 
+async function getCharacterImage(req, response) {
+    try {
+        const chainid = req.query.chainid
+        const address = req.query.address
+        const isRival = req.query.isrival
+        let characterid = await pgClient.query('SELECT characterid FROM inventory WHERE player=$1 AND chainid=$2', [address, chainid]) 
+        characterid = characterid.rows[0].characterid
+        const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${characterid}.png`)
+        response.sendFile(imagePath)
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+
 server.use(cors({
     'allowedHeaders': ['sessionId', 'Content-Type'],
     'exposedHeaders': ['sessionId'],
@@ -723,6 +738,14 @@ server.get('/getgamesprops', async (req, res) => {
     res.redirect('/maintenance')
     :
     await getGamesProperties(req, res)
+})
+
+server.get('/getcharacterimage', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getCharacterImage(req, res)
 })
 
 server.listen(5000, async () => {
