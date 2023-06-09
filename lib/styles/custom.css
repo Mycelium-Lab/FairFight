@@ -97,6 +97,10 @@ a {
   display: none;
 }
 
+.link-first:hover {
+  color: white;
+}
+
 .link-second {
   left: 65px;
   bottom: 45px;
