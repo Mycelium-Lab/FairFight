@@ -13,7 +13,7 @@ contract FairFightNFT is IFFNFT, ERC721, Ownable {
     mapping(address => bool) private allowedMint;
     string public baseURI;
     uint256 currentID = 1;
-    uint256 maxSupply;
+    uint256 public maxSupply;
     constructor(
         string memory _name, 
         string memory _symbol,
