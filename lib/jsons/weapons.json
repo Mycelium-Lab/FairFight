@@ -1,251 +1,268 @@
-[{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/0.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "1"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/1.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Gold"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "2"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/2.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Platinum"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "2"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/3.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "2"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/4.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "2"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/5.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "4"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/6.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "4"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/7.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "1"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/8.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "1"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/9.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Epochal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "10"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/10.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Epochal"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "10"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/11.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "0"
-		}
-	]
-}
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/12.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "0"
-		}
-	]
-}
-
-,{
-	"image": "https://ipfs.io/ipfs/QmbNmHc4uJibrBsD6Kc6nCCu1ricKuAUWpZfQvfZyDcTKb/13.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Weapon"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Bullets Bonus",
-			"value": "7"
-		}
-	]
-}
+[
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/0.png",
+		"name": "Glock 18",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Regular"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "1"
+			}
+		],
+		"description": "The Glock 18 is a well-established brand known for its reliability and good killing power. The wood grip, low recoil, and high availability make it one of the most popular guns in the world. Pow!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/1.png",
+		"name": "T.T.",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Regular"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "1"
+			}
+		],
+		"description": "The Tula Tokarev is the most common weapon on the black market, available to everyone. Its simplicity, reliability and killing power made it a true leader in criminal circles. Take the T.T., and you won't go wrong!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/2.png",
+		"name": "Commando Pistol",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Superior"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "2"
+			}
+		],
+		"description": "The classic model in the service of the army. Years of proven combat system that allows you to hit your enemies in almost any environment. Superb accuracy, low weight and moderate recoil, just what the average soldier needs. Tested by thousands of soldiers, no misfires found."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/3.png",
+		"name": "T.T. Special Edition",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Superior"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "2"
+			}
+		],
+		"description": "A special version of the Tula Tokarev with lightened hull and upgraded to the maximum fighting characteristics available for this type of weapon. Made to perfection. Will not let you down, Tokarev guaranteed."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/4.png",
+		"name": "Commando-Stealth Pistol",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "2"
+			}
+		],
+		"description": "The classic model in the service of the army. Years of proven combat system designed for stealth missions, with less recoil and more accuracy than the classic model. A nice choice for elite units who prefer stealth and unquestionable reliability."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/5.png",
+		"name": "Desert Eagle Pistol",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "4"
+			}
+		],
+		"description": "A killer pistol for those who want to feel the incredible power in their hands. Every shot is a thunderbolt from out of the blue. The battlefield humbly awaits the owners of the Desert Eagle, giving them special privileges on the battlefield."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/6.png",
+		"name": "Vengeful Revolver",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "4"
+			}
+		],
+		"description": "A sinister firearm forged in the fires of vengeance, each shot from this weapon carries the weight of a thousand grudges. Its blackened barrel and engraved markings serve as a reminder to those in its crosshairs that retribution is inevitable and inescapable."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/7.png",
+		"name": "Uzi Mini",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "5"
+			}
+		],
+		"description": "Lightened version of the Uzi with slightly reduced features behind the immortal original, but it's far from a pistol and an excellent choice for those looking for the best value for money. Perfectly fits in your hand and you don't want to let it out for a second!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/8.png",
+		"name": "Crazy Shotgun",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "4"
+			}
+		],
+		"description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/9.png",
+		"name": "UZI",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "6"
+			}
+		],
+		"description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/10.png",
+		"name": "Shotgun \"Caliber\"",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Legendary"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "6"
+			}
+		],
+		"description": "The mere sound of reloading causes enemies to feel panic and confusion. The shot from this shotgun is stunning in its killing power capable of taking down the fattest bear. If you go hunting and the enemy is strong, take the shotgun and pull the trigger!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/11.png",
+		"name": "AK-47",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Legendary"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "7"
+			}
+		],
+		"description": "The most popular assault rifle in the world, appreciated for its simplicity and incredible reliability. Accuracy and killing power do not cause question, but rather cause admiration. The AK-47 is the standard of quality and quick elimination of the enemy under any conditions."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/12.png",
+		"name": "\"Golden Legend\" Revolver",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Epic"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "8"
+			}
+		],
+		"description": "Saving villages in the wild west from the robberies of wandering bandits , one of the sheriffs was awarded the highest award for valor, strength of mind and the exceptional qualities inherent in law enforcement. Now you too can become a legend and the owner of this unique weapon."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/13.png",
+		"name": "Golden Eagle Pistol",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Weapon"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Epic"
+			},
+			{
+				"trait_type": "Bullets Bonus",
+				"value": "9"
+			}
+		],
+		"description": "Rumor has it that Mablo Entobar himself was the customer of this exceptional weapon in both power and appearance. The sheen of pure gold blinds enemies, showing who the real boss is."
+	}
 ]

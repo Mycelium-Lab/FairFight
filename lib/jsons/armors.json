@@ -1,144 +1,155 @@
 [
 	{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/8.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "5"
-		}
-	]
-}
-
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/9.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Epochal"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "3"
-		}
-	]
-}
-
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/10.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Platinum"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "1"
-		}
-	]
-}
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/11.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "5"
-		}
-	]
-}
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/12.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Legendary"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "5"
-		}
-	]
-}
-
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/13.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Gold"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "3"
-		}
-	]
-}
-
-	,{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/14.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Epochal"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "3"
-		}
-	]
-}
-	,
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/0.png",
+		"name": "Courier Cap",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Regular"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "1"
+			}
+		],
+		"description": "Protects from the sun, gives a stylish appearance, keeps you from sunstroke in the hot season. Quality production, size adjustment, affordable price. Better with it than without it."
+	},
 	{
-	"image": "https://ipfs.io/ipfs/QmR34MLTgJbrkmL9hMSAUXuKnc1jaH7FG9mwhoh2fWix6E/15.png",
-	"attributes": [
-		{	
-			"trait_type": "Type",
-			"value": "Hat"
-		},
-		{
-			"trait_type": "Rarity",
-			"value": "Normal"
-		},
-		{
-			"trait_type": "Health Bonus",
-			"value": "1"
-		}
-	]
-}
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/1.png",
+		"name": "Unknown Rapper Cap",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Superior"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "3"
+			}
+		],
+		"description": "Rumor has it, he lived in a distant hip-hop country and has been freestyling since he was a kid. After years of wandering, his cap has soaked up the smell of the streets and seen a lot of flashy battles. The straight visor and red cross adds style and shows who grew up on the streets."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/2.png",
+		"name": "Butcher's Cap",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Superior"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "3"
+			}
+		],
+		"description": "BBQ? The meat specialties of the Texas butchers were made in this particular hood which was passed from father to son by inheritance. The soot and smoke gave the hood an incredible, knock-your-socks-off smell! Vegetarians are furious!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/3.png",
+		"name": "Hat of a French Lord",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "4"
+			}
+		],
+		"description": "Stylish accessory from France, belonging to one of the Lords of the Renaissance. We had it restored, replaced the feather, but kept the spirit of style and fashion that captivate the spirit and impress the high society."
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/4.png",
+		"name": "Magical Pilgrim's Hat",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "4"
+			}
+		],
+		"description": "Magic permeate this delightful headpiece, rumor has it that leaving the hat alone will start rabbits crawling out of it. The wearer is guarded by the spirit of the pilgrim and helps him overcome almost any obstacle in his path. It's just magic!"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/5.png",
+		"name": "Robin Hood's Hat",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Rare"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "5"
+			}
+		],
+		"description": "Dozens of daring robberies of wealthy merchants have seen this gimmick that helps with camouflage in the wilds and adds brutal charm to its wearer. The gold-plated buckle lets you adjust the size and adds a special shine. Are you ready for adventure with it?"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/6.png",
+		"name": "Legendary Sheriff's Hat",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Legendary"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "7"
+			}
+		],
+		"description": "Over 1000 criminals have been caught and sentenced by the legendary sheriff, and criminals are afraid to say his name out loud. This magnificent hat has imbibed the spirit of justice and law and order. Let's bring order in the wild west style, shall we?"
+	},
+	{
+		"image": "https://ipfs.io/ipfs/QmczaY8rSW8HAjVhCir2RFbsoubuamKYFQihKZ194ZUHTZ/7.png",
+		"name": "Crown of the Seven Kingdoms",
+		"attributes": [
+			{	
+				"trait_type": "Type",
+				"value": "Armor"
+			},
+			{
+				"trait_type": "Class",
+				"value": "Epic"
+			},
+			{
+				"trait_type": "Health Bonus",
+				"value": "9"
+			}
+		],
+		"description": "Legendary work of the finest smiths of the old world, inlaid with rubies, amethysts and emeralds to convey the majesty and power of the wearer. Shine with golden brilliance dazzling your enemies! Be the king - you are worthy of it!"
+	}
 
 ]

@@ -71,35 +71,35 @@ CREATE TABLE weapon_bonuses(
     damage INT
 );
 
-INSERT INTO armor_bonuses(id, health) VALUES(0, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(0, 1);
 INSERT INTO armor_bonuses(id, health) VALUES(1, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(2, 1);
-INSERT INTO armor_bonuses(id, health) VALUES(3, 5);
-INSERT INTO armor_bonuses(id, health) VALUES(4, 5);
-INSERT INTO armor_bonuses(id, health) VALUES(5, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(6, 3);
-INSERT INTO armor_bonuses(id, health) VALUES(7, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(2, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(3, 4);
+INSERT INTO armor_bonuses(id, health) VALUES(4, 4);
+INSERT INTO armor_bonuses(id, health) VALUES(5, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(6, 7);
+INSERT INTO armor_bonuses(id, health) VALUES(7, 9);
 
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(0, 10, 0);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(1, 20, 0);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(2, 0, 40);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(3, 5, 40);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(4, 10, 40);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(5, 60, -20);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(6, 80, 20);
-INSERT INTO boots_bonuses(id, speed, jump) VALUES(7, 20, 80);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(0, 180, 25);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(1, 360, 50);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(2, 460, 75);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(3, 420, 110);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(4, 500, 180);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(5, 750, 80);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(6, 1000, 130);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(7, 777, 222);
 
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(0, 1, 1);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(1, 2, 2);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(1, 1, 2);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(2, 2, 2);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(3, 2, 2);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(4, 2, 2);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(5, 4, 4);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(6, 4, 4);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(7, 1, 1);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(8, 1, 1);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(9, 10, -1);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(10, 10, -1);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(11, 0, 10);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(12, 0, 10);
-INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(13, 7, 7);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(7, 5, 1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(8, 4, 1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(9, 6, -1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(10, 6, -1);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(11, 7, 10);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(12, 8, 10);
+INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(13, 9, 7);
