@@ -2,10 +2,10 @@ const { ethers } = require("hardhat");
 
 async function main() {
     const collector = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
-    const charactersBaseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
-    const armorsBaseURI = 'https://ipfs.io/ipfs/QmThnGQ1MqwaPeE61o3QJUBVfKPbs3Pqd9F9pNwxH4oyqm/'
-    const bootsBaseURI = 'https://ipfs.io/ipfs/Qmd7NkqYyuR3K2uP1Go3xHtuTomKV2aHBUa8mcncbUDNm3/'
-    const weaponsBaseURI = 'https://ipfs.io/ipfs/QmSjXwvkd9jb46x4yJLHVQtBbthquJxEeeUaJuQpzMkGBs/'
+    const charactersBaseURI = 'https://ipfs.io/ipfs/QmdGpPVHvabzGmofEajr5okx4R5MyuyGBvQfTxnupDkrQ2/'
+    const armorsBaseURI = 'https://ipfs.io/ipfs/QmbkhgXUrv4UzvLzB21QJGqMtQMfmNdnQN22S7UH9HJSok/'
+    const bootsBaseURI = 'https://ipfs.io/ipfs/QmcBcszocmtgxtQfiBY5epoQkzXCnf6965NBmyN8JwnSqm/'
+    const weaponsBaseURI = 'https://ipfs.io/ipfs/QmX7Sk4UtnYtMnpqM1evVHyzwmTAkg1EXWGvJdS3yKGdNF/'
     const token = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
@@ -17,23 +17,51 @@ async function main() {
     await armors.deployed()
     await boots.deployed()
     await weapons.deployed()
-    let charactersPrices = []
-    let armorsPrices = []
-    let bootsPrices = []
-    let weaponsPrices = []
-    //set prices
-    for (let i = 0; i < 2; i++) {
-        charactersPrices.push(ethers.utils.parseEther(`${1 + i}`))
-    }
-    for (let i = 0; i < 8; i++) {
-        armorsPrices.push(ethers.utils.parseEther(`${1 + i}`))
-    }
-    for (let i = 0; i < 8; i++) {
-        bootsPrices.push(ethers.utils.parseEther(`${1 + i}`))
-    }
-    for (let i = 0; i < 14; i++) {
-        weaponsPrices.push(ethers.utils.parseEther(`${1 + i}`))
-    }
+    let charactersPrices = [
+        ethers.utils.parseEther(`50`),
+        ethers.utils.parseEther(`20`),
+        ethers.utils.parseEther(`15`),
+        ethers.utils.parseEther(`15`),
+        ethers.utils.parseEther(`5`),
+        ethers.utils.parseEther(`10`),
+        ethers.utils.parseEther(`15`),
+    ]
+    let armorsPrices = [
+        ethers.utils.parseEther(`9.99`),
+        ethers.utils.parseEther(`49.9`),
+        ethers.utils.parseEther(`49.9`),
+        ethers.utils.parseEther(`149.9`),
+        ethers.utils.parseEther(`149.9`),
+        ethers.utils.parseEther(`199.9`),
+        ethers.utils.parseEther(`499`),
+        ethers.utils.parseEther(`999`)
+    ]
+    let bootsPrices = [
+        ethers.utils.parseEther(`14.9`),
+        ethers.utils.parseEther(`41.9`),
+        ethers.utils.parseEther(`222`),
+        ethers.utils.parseEther(`145`),
+        ethers.utils.parseEther(`444`),
+        ethers.utils.parseEther(`499`),
+        ethers.utils.parseEther(`888`),
+        ethers.utils.parseEther(`999`)
+    ]
+    let weaponsPrices = [
+        ethers.utils.parseEther(`17.9`),
+        ethers.utils.parseEther(`14.9`),
+        ethers.utils.parseEther(`40`),
+        ethers.utils.parseEther(`39.9`),
+        ethers.utils.parseEther(`59.9`),
+        ethers.utils.parseEther(`149`),
+        ethers.utils.parseEther(`199.9`),
+        ethers.utils.parseEther(`499`),
+        ethers.utils.parseEther(`199`),
+        ethers.utils.parseEther(`599`),
+        ethers.utils.parseEther(`555`),
+        ethers.utils.parseEther(`580`),
+        ethers.utils.parseEther(`777`),
+        ethers.utils.parseEther(`888`),
+    ]
     const shop = await Shop.deploy(
         characters.address,
         weapons.address,
