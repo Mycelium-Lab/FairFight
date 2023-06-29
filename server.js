@@ -12,6 +12,7 @@ import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
 import { contractAbi, shopAbi, nftAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
+import { createMixingPicture } from './mixing/mixing.js'
 
 // const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
 // const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
@@ -379,11 +380,14 @@ async function setCharacter(req, response) {
         if (!busy) {
             const exist = await characters.propertyToken(address, characterid == 0 ? characterid : characterid-1)
             if (characterid === 0 || exist.toString() !== '0') {
-                await pgClient.query(
-                    "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2",
+                const res = await pgClient.query(
+                    "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                     [address, chainid, characterid]
                 )
-                response.status(200).send()
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -402,18 +406,20 @@ async function setArmor(req, response) {
         const armor = req.body.armor
         const { armors, contract } = blockchainConfig(chainid)
         const busy = await contract.currentlyBusy(address)
-        console.log(armor)
         if (!busy) {
             let exist
             if (armor !== null) {
                 exist = await armors.propertyToken(address, armor)
             }
             if (armor === null || exist.toString() !== '0') {
-                await pgClient.query(
-                    "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2",
+                const res = await pgClient.query(
+                    "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                     [address, chainid, armor]
                 )
-                response.status(200).send()
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -438,11 +444,14 @@ async function setWeapon(req, response) {
                 exist = await weapons.propertyToken(address, weapon)
             }
             if (weapon === null || exist.toString() !== '0') {
-                await pgClient.query(
-                    "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2",
+                const res = await pgClient.query(
+                    "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                     [address, chainid, weapon]
                 )
-                response.status(200).send()
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -467,11 +476,14 @@ async function setBoots(req, response) {
                 exist = await boots.propertyToken(address, boot)
             }
             if (boot === null || exist.toString() !== '0') {
-                await pgClient.query(
-                    "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2",
+                const res = await pgClient.query(
+                    "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                     [address, chainid, boot]
                 )
-                response.status(200).send()
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -530,6 +542,7 @@ async function getInventory(req, response) {
             [address, chainid]
         )
         if (res.rows.length === 0) {
+            await createMixingPicture(address, chainid, 0, undefined, undefined, undefined)
             await pgClient.query(
                 "INSERT INTO inventory (player, chainid, characterid) VALUES($1, $2, $3)",
                 [address, chainid, 0]
@@ -580,9 +593,7 @@ async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         const address = req.query.address
         const isRival = req.query.isrival
-        let characterid = await pgClient.query('SELECT characterid FROM inventory WHERE player=$1 AND chainid=$2', [address, chainid]) 
-        characterid = characterid.rows[0].characterid
-        const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${characterid}.png`)
+        const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
         response.sendFile(imagePath)
     } catch (error) {
         console.log(error)
