@@ -593,7 +593,8 @@ async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         const address = req.query.address
         const isRival = req.query.isrival
-        const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        // const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        const imagePath = path.join(__dirname, `media/characters/main`, `test3.png`)
         response.sendFile(imagePath)
     } catch (error) {
         console.log(error)
