@@ -322,9 +322,25 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
             _ctx.drawImage(weaponImage, _weaponSize.position.seventhFrames.x, _weaponSize.position.seventhFrames.y, _weaponSize.size.x, _weaponSize.size.y);
         }
         // Запись объединенного изображения в файл
-        const out = fs.createWriteStream(`${__basedir}/media/characters/players_${type}/${address}_${chainid}.png`);
-        const stream = _canvas.createPNGStream();
-        stream.pipe(out);
+        const filePath = `${__basedir}/media/characters/players_${type}/${address}_${chainid}.png`
+        fs.access(filePath, fs.constants.F_OK, (err) => {
+            if (!err) {
+                const out = fs.createWriteStream(filePath);
+                const stream = _canvas.createPNGStream();
+                stream.pipe(out);
+            } else {
+                // Создание пустого файла
+                fs.writeFile(filePath, '', (err) => {
+                  if (err) {
+                    console.error('Ошибка при создании файла:', err);
+                  } else {
+                    const out = fs.createWriteStream(filePath);
+                    const stream = _canvas.createPNGStream();
+                    stream.pipe(out);
+                  }
+                });
+            }
+          });
     }
 
     try {
