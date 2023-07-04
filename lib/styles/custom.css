@@ -3197,3 +3197,15 @@ a {
     transform: rotate(360deg);
   }
 }
+
+#character-background {
+  width: 190px;
+  height: 152px;
+  background-repeat: no-repeat;
+  animation: play-animation 2s steps(12) infinite;
+}
+
+@keyframes play-animation {
+  from { background-position: 0 0; }
+  to { background-position: -1826px 0; }
+}
