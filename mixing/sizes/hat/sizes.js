@@ -11,115 +11,112 @@ export const hatTypes = {
 
 export const hatSizes = {
     'elongated': {
-        position: {
-            firstFrames: {
-                x: -20,
-                y: -14
-            },
-            secondFrames: {
-                x: -20,
-                y: 50
-            },
-            thirdFrames: {
-                x: -20,
-                y: 113
-            },
-            forthFrames: {
-                x: -17,
-                y: 182
-            },
-            fifthFrames: {
-                x: -17,
-                y: 244
-            },
-            sixthFrames: {
-                x: -20,
-                y: 308
-            },
-            seventhFrames: {
-                x: -22,
-                y: 372
-            }
+      position: {
+        firstFrames: {
+          x: 52,
+          y: 56
         },
-        size: {
-            x: 100,
-            y: 55
-        } 
+        secondFrames: {
+          x: 52,
+          y: 210
+        },
+        thirdFrames: {
+          x: 52,
+          y: 358
+        },
+        forthFrames: {
+          x: 62,
+          y: 510
+        },
+        fifthFrames: {
+          x: 57,
+          y: 662
+        },
+        sixthFrames: {
+          x: 52,
+          y: 816
+        },
+        seventhFrames: {
+          x: 52,
+          y: 964
+        }
+      },
+      size: {
+        x: 85,
+        y: 55
+      }
     },
     'cowboy': {
-        position: {
-            firstFrames: {
-                x: -6,
-                y: -20
-            },
-            secondFrames: {
-                x: -6,
-                y: 44
-            },
-            thirdFrames: {
-                x: -6,
-                y: 108
-            },
-            forthFrames: {
-                '4': {
-                    x: -2,
-                    y: 170
-                },
-                x: -4,
-                y: 172
-            },
-            fifthFrames: {
-                x: -4,
-                y: 236
-            },
-            sixthFrames: {
-                x: -5,
-                y: 300
-            },
-            seventhFrames: {
-                x: -5,
-                y: 364
-            }
+      position: {
+        firstFrames: {
+          x: 47,
+          y: 54
         },
-        size: {
-            x: 70,
-            y: 70
-        } 
+        secondFrames: {
+          x: 47,
+          y: 206
+        },
+        thirdFrames: {
+          x: 47,
+          y: 354
+        },
+        forthFrames: {
+          x: 58,
+          y: 506
+        },
+        fifthFrames: {
+          x: 52,
+          y: 658
+        },
+        sixthFrames: {
+          x: 46,
+          y: 810
+        },
+        seventhFrames: {
+          x: 46,
+          y: 958
+        }
+      },
+      size: {
+        x: 90,
+        y: 65
+      }
     },
     'cap': {
-        position: {
-            firstFrames: {
-                x: 4,
-                y: -22
-            },
-            secondFrames: {
-                x: 1,
-                y: 42
-            },
-            thirdFrames: {
-                x: 3,
-                y: 104
-            },
-            forthFrames: {
-                x: 10,
-                y: 174.5
-            },
-            fifthFrames: {
-                x: 8,
-                y: 238.5
-            },
-            sixthFrames: {
-                x: 3,
-                y: 300
-            },
-            seventhFrames: {
-                x: 3,
-                y: 362
-            }
+      position: {
+        firstFrames: {
+          x: 48,
+          y: 46
         },
-        size: {
-            x: 60,
-            y: 60
-        } 
-    },
-}
+        secondFrames: {
+          x: 50,
+          y: 200
+        },
+        thirdFrames: {
+          x: 50,
+          y: 350
+        },
+        forthFrames: {
+          x: 64,
+          y: 503
+        },
+        fifthFrames: {
+          x: 54,
+          y: 655
+        },
+        sixthFrames: {
+          x: 50,
+          y: 806
+        },
+        seventhFrames: {
+          x: 50,
+          y: 954
+        }
+      },
+      size: {
+        x: 90,
+        y: 65
+      }
+    }
+  };
+  

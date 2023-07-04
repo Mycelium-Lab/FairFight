@@ -13,6 +13,7 @@ import { fileURLToPath } from 'url';
 import { contractAbi, shopAbi, nftAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
 import { createMixingPicture } from './mixing/mixing.js'
+import fs from 'fs'
 
 // const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
 // const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
@@ -386,8 +387,10 @@ async function setCharacter(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
-                response.status(200).sendFile(imagePath)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -418,8 +421,10 @@ async function setArmor(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
-                response.status(200).sendFile(imagePath)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -450,8 +455,10 @@ async function setWeapon(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
-                response.status(200).sendFile(imagePath)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -482,8 +489,10 @@ async function setBoots(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                const imagePath = path.join(__dirname, `media/characters/main`, `${address}_${chainid}.png`)
-                response.status(200).sendFile(imagePath)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -550,8 +559,10 @@ async function getInventory(req, response) {
             response.status(200).json({
                 address, chainid, characterid:0
             })
+        } else {
+            await createMixingPicture(address, chainid, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
+            response.status(200).json(res.rows[0])
         }
-        response.status(200).json(res.rows[0])
     } catch (error) {
         console.log(error)
         response.status(500).json({})
@@ -593,9 +604,12 @@ async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         const address = req.query.address
         const isRival = req.query.isrival
-        // const imagePath = path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
-        const imagePath = path.join(__dirname, `media/characters/main`, `test3.png`)
-        response.sendFile(imagePath)
+        const imagePath = path.join(__dirname, `media/characters/players_${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        if (fs.existsSync(imagePath)) {
+            response.sendFile(imagePath)
+        } else {
+            response.sendFile(path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `0.png`))
+        }
     } catch (error) {
         console.log(error)
         response.status(500).send()
