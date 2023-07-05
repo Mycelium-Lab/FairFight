@@ -390,7 +390,7 @@ async function setCharacter(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 500)
+                }, 1500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -424,7 +424,7 @@ async function setArmor(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 500)
+                }, 1500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -458,7 +458,7 @@ async function setWeapon(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 500)
+                }, 1500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -492,7 +492,7 @@ async function setBoots(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 500)
+                }, 1500)
             } else {
                 response.status(401).send('Not exist')
             }
