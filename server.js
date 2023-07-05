@@ -380,7 +380,7 @@ async function setCharacter(req, response) {
         const busy = await contract.currentlyBusy(address)
         if (!busy) {
             const exist = await characters.propertyToken(address, characterid == 0 ? characterid : characterid-1)
-            if (characterid === 0 || exist.toString() !== '0') {
+            if (characterid == 0 || exist.toString() !== '0') {
                 const res = await pgClient.query(
                     "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                     [address, chainid, characterid]
