@@ -3198,7 +3198,7 @@ a {
   }
 }
 
-#character-background {
+/* #character-background {
   width: 190px;
   height: 152px;
   background-repeat: no-repeat;
@@ -3208,4 +3208,4 @@ a {
 @keyframes play-animation {
   from { background-position: 0 0; }
   to { background-position: -1826px 0; }
-}
+} */
