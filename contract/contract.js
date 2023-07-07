@@ -49,8 +49,13 @@ export const networks = [
       chainid: 42262,
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
-      contractAddress: '0x703a3203A7F5C5da04afE7a2af4f4DF3474f0609',
-      privateKey: process.env.PRIVATE_KEY_EMERALD
+      privateKey: process.env.PRIVATE_KEY_EMERALD,
+      contractAddress: '0x739B9dedAc3aA99Dbe9102F97fE6cbAeBc66980C',
+      charactersAddress: '0xA18CEbC58aaA1B647cD20901892dfD7999ef9499',
+      armorsAddress: '0xc73f96FCec6883dFfaBe3f89b09dd8Fa0Fc3c17e',
+      weaponsAddress: '0x58C36887ce7293cC9CFbd809A23748A80Aabd840',
+      bootsAddress: '0x8513FA22e1b8e324Cd3aA4CdEC9168ff50d1991d',
+      shopAddress: '0xFEd863cAb6B070a64D3613bD055Be0E647E4D98d'
   },
   {
       name: "Sapphire Test",
