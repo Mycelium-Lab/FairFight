@@ -3143,8 +3143,8 @@ a {
     width: 73px;
   }
   .inventory-items, .character-slot__item img{
-    width: 63px;
-    height: 58px;
+    width: 57px;
+    height: 52px;
   }
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title{
     padding-bottom: 32px;
