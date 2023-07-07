@@ -65,7 +65,12 @@ export const networks = [
       chainid: 23294,
       rpc: 'https://sapphire.oasis.io',
       currency: 'ROSE',
-      contractAddress: '0xaBE08D013c1342e786c5964bc2e4E3f6b70797ea',
+      contractAddress: '0x927C8aF4282E507352088c52014bC8423367c610',
+      charactersAddress: '0x38278c038042c32441475E47750c90c2412c3D79',
+      armorsAddress: '0xe7cCffC4F633713C3ee7d8FEe46d1253a1261206',
+      weaponsAddress: '0x08ee54157DdAF89eEF5fB71a24E7c72C57a6640A',
+      bootsAddress: '0x9004eD0d122E3E7499Cd9c9515a17b06716bF8ca',
+      shopAddress: '0xBaCb197E601aCdeb56E401Bc27A23F4626315a82',
       explorer: 'https://explorer.sapphire.oasis.io',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
