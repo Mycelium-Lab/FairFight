@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack ./index.js",
-    "watch": "webpack --watch ./index.js"
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "watch:game": "webpack --watch --config game.webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@oasisprotocol/sapphire-paratime": "^1.0.15",
-    "ethcall": "^6.0.0"
+    "ethcall": "^6.0.0",
+    "pathfinding": "^0.4.18"
   },
   "devDependencies": {
     "webpack": "^5.76.3",
