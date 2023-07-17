@@ -99,7 +99,39 @@ export const weaponTypes = {
     '97': 'onehanded-pistol',
     '98': 'onehanded-pistol',
     '99': 'onehanded-pistol',
-    '100': 'onehanded-pistol'
+    '100': 'onehanded-pistol',
+    '101':'new-twohanded-machine',
+    '102':'new-twohanded-machine',
+    '103':'new-twohanded-machine',
+    '104':'new-twohanded-machine',
+    '105':'new-twohanded-machine',
+    '106':'new-twohanded-machine',
+    '107':'new-twohanded-machine',
+    '108':'new-twohanded-machine',
+    '109':'new-twohanded-machine',
+    '110':'new-twohanded-machine',
+    '111':'new-twohanded-machine',
+    '112':'new-twohanded-machine',
+    '113':'new-twohanded-machine',
+    '114':'new-twohanded-machine',
+    '115':'new-twohanded-machine',
+    '116':'new-twohanded-machine',
+    '117':'new-twohanded-machine',
+    '118':'new-twohanded-machine',
+    '119':'new-twohanded-machine',
+    '120':'new-twohanded-machine',
+    '121':'new-twohanded-machine',
+    '122':'new-twohanded-machine',
+    '123':'new-twohanded-machine',
+    '124':'new-twohanded-machine',
+    '125':'new-twohanded-machine',
+    '126':'new-twohanded-machine',
+    '127':'new-twohanded-machine',
+    '128':'new-twohanded-machine',
+    '129':'new-twohanded-machine',
+    '130':'new-twohanded-machine',
+    '131':'new-twohanded-machine',
+    '132':'new-twohanded-machine'
 }
 const smallOneHandedPistolSize = {
     x: 50,
@@ -122,41 +154,41 @@ export const weaponSizes = {
             },
             thirdFrames: {
                 '0': {
-                    x: 112,
+                    x: 114,
                     y: 416
                 },
                 '1': {
-                    x: 260,
+                    x: 262,
                     y: 414,
                     angle: 4 
                 },
                 '2': {
-                    x: 410,
+                    x: 412,
                     y: 413,
                     angle: 6    
                 },
                 '3': {
-                    x: 564,
+                    x: 566,
                     y: 414,
                     angle: 3
                 },
                 '4': {
-                    x: 721,
+                    x: 723,
                     y: 415,
                     angle: 1    
                 },
                 '5': {
-                    x: 867,
+                    x: 869,
                     y: 410,
                     angle: -5   
                 },
                 '6': {
-                    x: 1020,
+                    x: 1022,
                     y: 408,
                     angle: 5   
                 },
                 '7': {
-                    x: 1170,
+                    x: 1172,
                     y: 408,
                     angle: -4    
                 }
@@ -189,26 +221,26 @@ export const weaponSizes = {
             },
             fifthFrames: {
                 '0': {
-                    x: 110,
+                    x: 120,
                     y: 714
                 },
                 '1': {
-                    x: 260,
+                    x: 270,
                     y: 708,
                     angle: -5
                 },
                 '2': {
-                    x: 412,
+                    x: 422,
                     y: 706,
                     angle: -5    
                 },
                 '3': {
-                    x: 563,
+                    x: 573,
                     y: 706,
                     angle: -5
                 },
                 '4': {
-                    x: 716,
+                    x: 726,
                     y: 710,
                     angle: -1    
                 }
