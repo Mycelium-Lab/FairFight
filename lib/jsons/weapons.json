@@ -1,268 +1,2529 @@
 [
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/0.png",
-		"name": "Glock 18",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Regular"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "1"
-			}
-		],
-		"description": "The Glock 18 is a well-established brand known for its reliability and good killing power. The wood grip, low recoil, and high availability make it one of the most popular guns in the world. Pow!"
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/1.png",
-		"name": "T.T.",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Regular"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "1"
-			}
-		],
-		"description": "The Tula Tokarev is the most common weapon on the black market, available to everyone. Its simplicity, reliability and killing power made it a true leader in criminal circles. Take the T.T., and you won't go wrong!"
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/2.png",
-		"name": "Commando Pistol",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Superior"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "2"
-			}
-		],
-		"description": "The classic model in the service of the army. Years of proven combat system that allows you to hit your enemies in almost any environment. Superb accuracy, low weight and moderate recoil, just what the average soldier needs. Tested by thousands of soldiers, no misfires found."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/3.png",
-		"name": "T.T. Special Edition",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Superior"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "2"
-			}
-		],
-		"description": "A special version of the Tula Tokarev with lightened hull and upgraded to the maximum fighting characteristics available for this type of weapon. Made to perfection. Will not let you down, Tokarev guaranteed."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/4.png",
-		"name": "Commando-Stealth Pistol",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "2"
-			}
-		],
-		"description": "The classic model in the service of the army. Years of proven combat system designed for stealth missions, with less recoil and more accuracy than the classic model. A nice choice for elite units who prefer stealth and unquestionable reliability."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/5.png",
-		"name": "Desert Eagle Pistol",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "4"
-			}
-		],
-		"description": "A killer pistol for those who want to feel the incredible power in their hands. Every shot is a thunderbolt from out of the blue. The battlefield humbly awaits the owners of the Desert Eagle, giving them special privileges on the battlefield."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/6.png",
-		"name": "Vengeful Revolver",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "4"
-			}
-		],
-		"description": "A sinister firearm forged in the fires of vengeance, each shot from this weapon carries the weight of a thousand grudges. Its blackened barrel and engraved markings serve as a reminder to those in its crosshairs that retribution is inevitable and inescapable."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/7.png",
-		"name": "Uzi Mini",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "5"
-			}
-		],
-		"description": "Lightened version of the Uzi with slightly reduced features behind the immortal original, but it's far from a pistol and an excellent choice for those looking for the best value for money. Perfectly fits in your hand and you don't want to let it out for a second!"
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/8.png",
-		"name": "Crazy Shotgun",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "4"
-			}
-		],
-		"description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/9.png",
-		"name": "UZI",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Rare"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "6"
-			}
-		],
-		"description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/10.png",
-		"name": "Shotgun \"Caliber\"",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Legendary"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "6"
-			}
-		],
-		"description": "The mere sound of reloading causes enemies to feel panic and confusion. The shot from this shotgun is stunning in its killing power capable of taking down the fattest bear. If you go hunting and the enemy is strong, take the shotgun and pull the trigger!"
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/11.png",
-		"name": "AK-47",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Legendary"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "7"
-			}
-		],
-		"description": "The most popular assault rifle in the world, appreciated for its simplicity and incredible reliability. Accuracy and killing power do not cause question, but rather cause admiration. The AK-47 is the standard of quality and quick elimination of the enemy under any conditions."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/12.png",
-		"name": "\"Golden Legend\" Revolver",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Epic"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "8"
-			}
-		],
-		"description": "Saving villages in the wild west from the robberies of wandering bandits , one of the sheriffs was awarded the highest award for valor, strength of mind and the exceptional qualities inherent in law enforcement. Now you too can become a legend and the owner of this unique weapon."
-	},
-	{
-		"image": "https://ipfs.io/ipfs/QmPF5K3SLDg6nYkFWY6xkJzUnDktY7YL1LyNcm3PzM76zP/13.png",
-		"name": "Golden Eagle Pistol",
-		"attributes": [
-			{	
-				"trait_type": "Type",
-				"value": "Weapon"
-			},
-			{
-				"trait_type": "Class",
-				"value": "Epic"
-			},
-			{
-				"trait_type": "Bullets Bonus",
-				"value": "9"
-			}
-		],
-		"description": "Rumor has it that Mablo Entobar himself was the customer of this exceptional weapon in both power and appearance. The sheen of pure gold blinds enemies, showing who the real boss is."
-	}
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/0.png",
+    "name": "Glock 18",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "The Glock 18 is a well-established brand known for its reliability and good killing power. The wood grip, low recoil, and high availability make it one of the most popular guns in the world. Pow!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/1.png",
+    "name": "T.T.",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "The Tula Tokarev is the most common weapon on the black market, available to everyone. Its simplicity, reliability and killing power made it a true leader in criminal circles. Take the T.T., and you won't go wrong!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/2.png",
+    "name": "Commando Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "The classic model in the service of the army. Years of proven combat system that allows you to hit your enemies in almost any environment. Superb accuracy, low weight and moderate recoil, just what the average soldier needs. Tested by thousands of soldiers, no misfires found."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/3.png",
+    "name": "T.T. Special Edition",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "A special version of the Tula Tokarev with lightened hull and upgraded to the maximum fighting characteristics available for this type of weapon. Made to perfection. Will not let you down, Tokarev guaranteed."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/4.png",
+    "name": "Commando-Stealth Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "The classic model in the service of the army. Years of proven combat system designed for stealth missions, with less recoil and more accuracy than the classic model. A nice choice for elite units who prefer stealth and unquestionable reliability."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/5.png",
+    "name": "Desert Eagle Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "A killer pistol for those who want to feel the incredible power in their hands. Every shot is a thunderbolt from out of the blue. The battlefield humbly awaits the owners of the Desert Eagle, giving them special privileges on the battlefield."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/6.png",
+    "name": "Vengeful Revolver",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "A sinister firearm forged in the fires of vengeance, each shot from this weapon carries the weight of a thousand grudges. Its blackened barrel and engraved markings serve as a reminder to those in its crosshairs that retribution is inevitable and inescapable."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/7.png",
+    "name": "Uzi Mini",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "Lightened version of the Uzi with slightly reduced features behind the immortal original, but it's far from a pistol and an excellent choice for those looking for the best value for money. Perfectly fits in your hand and you don't want to let it out for a second!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/8.png",
+    "name": "Crazy Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/9.png",
+    "name": "UZI",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Crazy combination of power and portability. The Crazy Shotgun is a class of weapon that every warrior should try to appreciate this invention that has become a classic over the years. Bring madness to the battlefield, the Crazy Shotgun has been blessed by the Valkyries themselves."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/10.png",
+    "name": "Shotgun \"Caliber\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "The mere sound of reloading causes enemies to feel panic and confusion. The shot from this shotgun is stunning in its killing power capable of taking down the fattest bear. If you go hunting and the enemy is strong, take the shotgun and pull the trigger!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/11.png",
+    "name": "AK-47",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "The most popular assault rifle in the world, appreciated for its simplicity and incredible reliability. Accuracy and killing power do not cause question, but rather cause admiration. The AK-47 is the standard of quality and quick elimination of the enemy under any conditions."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/12.png",
+    "name": "\"Golden Legend\" Revolver",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "Saving villages in the wild west from the robberies of wandering bandits , one of the sheriffs was awarded the highest award for valor, strength of mind and the exceptional qualities inherent in law enforcement. Now you too can become a legend and the owner of this unique weapon."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/13.png",
+    "name": "Golden Eagle Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "9"
+      }
+    ],
+    "description": "Rumor has it that Mablo Entobar himself was the customer of this exceptional weapon in both power and appearance. The sheen of pure gold blinds enemies, showing who the real boss is."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/14.png",
+    "name": "Black Raven Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "This vulture has proven itself in combat in the best possible way and has become a legend in the special units of the GRU Special Forces. Optimal weight and high reliability coupled with excellent killing power capable of penetrating Kevlar made it the obvious choice for those who are preparing for serious combat."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/15.png",
+    "name": "Sand Coyote assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "Proven over time in the harshest of sandstorms and war among the Burhans, this baby has earned its status as one of the most formidable weapons for exterminating militants in Syria."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/16.png",
+    "name": "M16 Supra assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Used by counter-terrorist units around the world. This version uses a special type of optics and a silencer for covert operations with optimum performance."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/17.png",
+    "name": "AK47 assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "The most popular and reliable weapon in the world that needs no introduction. Quite strong recoil is a credit to its high killing power. The sound of this weapon is known all over the world. The standard not otherwise."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/18.png",
+    "name": "AK74 assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "A modified version of one of the most popular automatic rifles in the world from the Kalashnikov concern. Optics, additional grip and improved killing power characteristics will not leave even sophisticated warriors indifferent."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/19.png",
+    "name": "The \"Dog of War\" machine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Its appearance immediately speaks volumes about its ultimative capabilities on the battlefield. Some of the best workmanship in the world is represented in this incredible weapon. Take it in your hands and you will not want to let it go."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/20.png",
+    "name": "The Gill Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Rather compact and lightweight submachine gun, but it has excellent fighting characteristics, such as low recoil and high lethal force. Standard 7.62 caliber ammunition. Affordable companion designed for the mass market."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/21.png",
+    "name": "Automatic Hound Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "Gained this nickname after horrific events at a Colombian farm. The weapon was used by the guests of a famous Colombian harvester to chase people away, shooting them in the back. Unfortunately for them no one survived, fortunately for you this weapon may fall into your hands"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/22.png",
+    "name": "Inferno assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "After reading the combat characteristics, one can conclude that the designer of this weapon of death was the Devil himself. Inferno will blow the smoke not only to ordinary soldiers but also to the elite assault groups. A weapon that's hard for you to lose and hard for your enemies to win."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/23.png",
+    "name": "Mosin Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "This vulture has proven itself in combat in the best possible way and has become a legend in the special units of the GRU Special Forces. Optimal weight and high reliability coupled with excellent killing power capable of penetrating Kevlar made it the obvious choice for those who are preparing for serious combat."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/24.png",
+    "name": "Grad assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "High rate of fire combined with a lightweight grip and superb optics allows you to shoot a lot of bullets in a hail like manner without the problem of overheating and misfires. Deliver a hail storm to your enemies."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/25.png",
+    "name": "Cyclops Assault Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "The underbarrel laser aiming sight allows for quick and accurate focused fire, and the silencer dampens unnecessary noise that could attract extra attention. The carbon alloy construction makes it lightweight, and the sniper sight allows you to work effectively even at long distances."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/26.png",
+    "name": "Blacksmith Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Black as night, as simple as an AK47! An excellent choice for its affordable price and average fighting qualities. Take the forces of darkness into your own hands!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/27.png",
+    "name": "Burevestnik automatic rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "This assault rifle was launched into mass production in the 2000s and has become a classic among the SAS units. The standard of quality, for rapid response teams who have to work in difficult environments."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/28.png",
+    "name": "Dragunov 2020 Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "A legend among long-range weapons that has been reincarnated for the most modern realities of combat operations. This gun is brought up to the impressive heights of combat equipment in terms of its characteristics. See for yourself."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/29.png",
+    "name": "Compact Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Designed in the image and likeness of AK47, but in a more compact case for the positional battles where it is necessary not to lose speed. The lightweight design allows fighters to fight longer and move faster."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/30.png",
+    "name": "\"Hussar\" submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Carbon alloy with rare wood elements allow for excellent weight performance without sacrificing killing power. Even a seasoned fighter will love the noble build and combat performance."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/31.png",
+    "name": "Navigator Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Getting ready to storm your enemy's fortified positions? That was the idea behind this weapon, which has a high combat potential to crush the enemy who dares to come out of their entrenchments."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/32.png",
+    "name": "Blood Cannibal Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "Weapon that takes your breath away. Legend has it that a limited edition of these weapons was enchanted by the head of a forbidden cult. If the legend is to be believed, the bullets fired from these weapons are capable of finding the blood and flesh of your enemies themselves. We don't know if this is true, but it sounds ominous and impressive."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/33.png",
+    "name": "Uno Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "Compact problems with high killing power in a small package. Established itself as an element of surprise due to its compact size. Small ammunition, compensated by high power."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/34.png",
+    "name": "Woodsman Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Used for hunting in special reserves. Wild boar, deer, jay - he can do it all. A vicious violator of all established norms of greenpeace and pacifists. A weapon that has fulfilled its role for over 50 years."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/35.png",
+    "name": "Sniper rifle \"Point\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "This vulture has proven itself in combat in the best possible way and has become a legend in the special units of the GRU Special Forces. Optimal weight and high reliability coupled with excellent killing power capable of penetrating Kevlar made it the obvious choice for those who are preparing for serious combat."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/36.png",
+    "name": "Vassal Assault Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Gain control of territory at close range using a semi-automatic shotgun with an extra grip and carbon fiber body. A formidable melee weapon. Don't begrudge anyone who gets in your way."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/37.png",
+    "name": "Saiga submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "This vulture has proven itself in combat in the best possible way and has become a legend in the special units of the GRU Special Forces. Optimal weight and high reliability coupled with excellent killing power capable of penetrating Kevlar made it the obvious choice for those who are preparing for serious combat."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/38.png",
+    "name": "Lightning Assault Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Hit your enemies like a bolt of lightning, thanks to its high rate of fire and accuracy. Lightning is the choice of professionals who are not used to compromise. The best combat performance for the best!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/39.png",
+    "name": "Black Raven Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "This vulture has proven itself in combat in the best possible way and has become a legend in the special units of the GRU Special Forces. Optimal weight and high reliability coupled with excellent killing power capable of penetrating Kevlar made it the obvious choice for those who are preparing for serious combat."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/40.png",
+    "name": "Spectrum Plus Automatic Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "A new level of rapid-fire weapon that increases the combat potential of an entire assault team. Can also be used for solo use at the expense of automatics. Combat power is equal to the original with manual type of reloading."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/41.png",
+    "name": "Victory Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "Designed to eliminate obstacles at close range. The clang of its bolt will make any opponent hesitate to get in your way. The shot knows no mercy, and its owner inspires awe in even the most feared foe."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/42.png",
+    "name": "Epoch Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "The designers of this baby absorbed the experience of a whole era of different rifles and tried to create a new combat standard. In our humble opinion they succeeded. You can try it too."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/43.png",
+    "name": "Lightweight \"Korshun\" automatic rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "This compact little guy is endowed with the properties of a full-fledged assault rifle. Some things have a deceptive appearance this cannon is one of those things. Use it to deceive your enemy and make him pay for it."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/44.png",
+    "name": "Phoenix assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "According to the statistics, fighters possessing this weapon have lower death rate than other weapon of this price segment. There is a belief among the fighters that if you want to survive - choose Phoenix."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/45.png",
+    "name": "Nova Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Simple and reliable, rapid-fire and accurate. This rifle is an excellent buy for inexperienced warriors going into battle, due to its low killing power and large enough ammunition combined with its accessibility."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/46.png",
+    "name": "\"Novator\" automatic rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "An upgraded model of the Nova assault rifle with an extra grip and more ammo. A higher class weapon that can give a great advantage to an experienced fighter."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/47.png",
+    "name": "The Assault Automatic Immortal",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "In testing each batch, all models with even minor errors in combat standards are immediately eliminated as unsuitable for sale. Reliability and exact conformity to the declared characteristics is what is appreciated by the wars who have chosen this exceptionally weapon."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/48.png",
+    "name": "AUG Assault Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "The unique design and color of the camouflage is impressive. The unusual shape and appearance hides incredible combat potential and high ammunition. A great choice, regardless of your goals."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/49.png",
+    "name": "AUG-2 Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Improved twin brother of the first version AUG, which took into account the small disadvantages of the previous version, such as weight, as well as the presence of the sight for firing on the move. The choice of professionals who know a lot about guns."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/50.png",
+    "name": "Tin Man Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "This gun really has no heart, which contributes to the destruction of opponents without any hesitation. The high accuracy of the ammo and low recoil, deserves a special mention. Everything you need is in your hands."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/51.png",
+    "name": "Galil AR assault sniper rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "9"
+      }
+    ],
+    "description": "Advanced augmented reality technology is built into the sight and displays distance to target, windage correction, and allows you to switch to night vision mode. A new type of laser sight and silencer allow for fast and clear stealth missions."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/52.png",
+    "name": "MP 7 Light Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "This little guy, despite its small size, has an impressive ammunition and combat performance for its class. It has become one of the most popular weapons of deterrence in the era of civil unrest around the world."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/53.png",
+    "name": "MP 17 Light Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "An improved version of the MP 7, sharpened for stealth missions where silence, lightness, and close range fire with good optics are required. The lightweight carbon fiber grip allows for on-the-go combat and less recoil. Try it."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/54.png",
+    "name": "P90 submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "The impressive ammo makes up for the accuracy and recoil issues that can seem like an obstacle with automatic fire. With a little leaning, you'll discover how to handle this wonderful, but unruly-looking weapon."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/55.png",
+    "name": "P90S submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "A more balanced model of the P90, with refined combat characteristics reducing recoil. Suitable for both assault action and defending the facility and holding territory. Silencer included."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/56.png",
+    "name": "UMP-45 submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Moderate rate of fire is matched by high velocity of each round. Combat performance despite its light weight and small size can be considered one of the best in class. Try it."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/57.png",
+    "name": "UMP-55 submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Enhanced model UMP-45 with lengthened barrel, which greatly improved accuracy. Collimator sight allows you to aim even on the run. Excellent choice with decent features."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/58.png",
+    "name": "Rook Light Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Extremely simple and lightweight, an inexpensive but formidable choice on a small budget. The hinged grip allows for added convenience when fighting at medium ranges. Decent choice, on a small budget."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/59.png",
+    "name": "Carabella carbine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "High combat potential comes from the long barrel, reliable bump stock, and the external magazine adds a good amount of ammunition capacity. This carbine is ideal for cattle hunting, but can be used for any other application."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/60.png",
+    "name": "Winchester carbine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "It is a relative of the Karabella carbine, in which the creators decided to use more killing caliber and increase the capacity for ammunition, it turned out to be a great improvement with which you can go even on a bear."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/61.png",
+    "name": "Confession Light Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Confess your enemies by sending them on their last journey with this compact little guy. One of the best in its class of light machine guns, time-tested and in high demand."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/62.png",
+    "name": "Kraken Heavy Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Its ammunition is like the tentacles of a mythological monster that can find weak spots and literally tear enemy armor to shreds. The heavy weight of the weapon allows for less recoil while still having incredible killing power. Release the Kraken, he's hungry."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/63.png",
+    "name": "Turbo submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Rapid-firing relative of famous UZI which has a buttstock to make it easier to cope with recoil without loosing maneuverability. Turbo will surprise you with its rapid-firing, just pull the trigger."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/64.png",
+    "name": "Columbus machine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Explore the world of combat and discover the next generation of assault weapons. Everything you need you will find in this handsome man and maybe even more. Technology doesn't stand still, see for yourself."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/65.png",
+    "name": "UZI submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "A legendary weapon with an exceptional rate of fire which takes your breath away. Low close range and high recoil are compensated with good ammunition. Reliability is excellent."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/66.png",
+    "name": "Extra Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "A limited edition experimental deterrent weapon designed for night time special operations involving small groups. The main purpose is to provide ease of stealth missions."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/67.png",
+    "name": "SSG 08 Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Popularly called \"Scout\" for its light weight and exceptional accuracy. A renowned Australian manufacturer who tests every rifle before shipping it to our warehouses will help you create a real panic behind enemy lines."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/68.png",
+    "name": "SCAR-20 sniper rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "The rapid-fire sniper rifle is a great choice for those who don't want to risk wasting time manually reloading. The included silencer has excellent noise reduction capabilities, making this rifle one of the best choices for stealth operations at long ranges."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/69.png",
+    "name": "AWP Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "Want to kill an elephant? Take the AWP. The killing power is unmatched and makes this weapon truly legendary. The velocity of the cartridge is so high that virtually no windage correction is required. Every shot shakes the space and terrifies the enemies. Sniper with AWP is the real god of war."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/70.png",
+    "name": "Militant Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "A sniper weapon in a compact case designed to support assault groups from the flanks and provide effective cover. The new generation optics allows you to aim even in fog and smoke screens. A special filter, allows for a more effective focus and the fighter to act more effectively."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/71.png",
+    "name": "Combatant carbine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "Simple and reliable carbine designed for steppe hunting. Foxes, Wild Boars, and Deer are suitable targets. Don't venture into a bear's den, it's not a good idea."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/72.png",
+    "name": "Warrior carbine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "A more long-range version of its brother nicknamed \"Soldier\". This carbine differs primarily in optics, which allows you to fire at greater distances, otherwise it is a full analogue of his brother."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/73.png",
+    "name": "Pirate Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "With this weapon you will be able to stage a riot behind your enemy's back. Board the heads of your enemies and send them to the afterlife with precise shots."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/74.png",
+    "name": "Carbine \"Boar\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "The deafening sound of its shots is ensured by a special design, due to which it received its nickname. A small magazine will not allow you to fight for a long time, but the accuracy and killing power of this carbine make up for this drawback."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/75.png",
+    "name": "Maxim sniper rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Get the most out of positional warfare at long range. Everything you could need for grueling sniper fights is included. The excellent optics and laser sight will help you make every shot deadly."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/76.png",
+    "name": "Berserk Assault Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "It's easy to go into battle madness with this weapon, because it satisfies any fighter's whims. Posh ammunition and excellent fighting characteristics will not leave you unimpressed. Unleash your primal fury!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/77.png",
+    "name": "Eagle Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Originally designed for hunting wild birds in special protected areas where hunting is allowed. More than one kite has suffered... The long barrel and top-notch German-made optics are responsible for the high accuracy."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/78.png",
+    "name": "Rapid fire rifle \"Adam\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "This is the kind of weapon that has found the balance that makes you admire and feel elated. Sniper fights can be so incredible in nature and effectiveness that it's hard to believe, better to check it out in person."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/79.png",
+    "name": "Horizon Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Everything you see to the horizon is now in your hands. One of the most calibrated weapons for ranged combat, with low recoil and ample ammo. Look at the horizon in a new way."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/80.png",
+    "name": "Supra assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Full set of modifications for combat in any conditions at any time of the day. Sniper sight for long-range combat, laser sight for medium and short-range combat. A silencer to stay unnoticed. What more could you want?"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/81.png",
+    "name": "Cobra Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Very few people have survived after being bitten by a cobra... It is almost impossible to find an antidote for a cartridge fired from this weapon, as it pierces even the thickest layer of kevlar. Its high accuracy and killing power are what snipers all over the world value it for."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/82.png",
+    "name": "Peacekeeper Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "To establish peace, sometimes you have to go to war. In order to end the riot as quickly as possible and to incapacitate provocateurs and terrorists, a special model based on the Cobra rifle was developed. With a larger magazine and larger caliber of ammunition, the villains will have no luck. Let there be peace!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/83.png",
+    "name": "Japanese God Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Created in Japan as an experimental weapon for combat in difficult conditions. Incredible range and reliability has become legendary. The limited edition hit our warehouse and is still available for purchase."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/84.png",
+    "name": "King Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "Feel like a king on the battlefield, using the best expertise of Swiss engineers responsible for every parameter of this device adjusted to perfection. Meet the new era of war and become its king!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/85.png",
+    "name": "Makarov pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "This is a common handgun used by post-Soviet police forces. Nothing remarkable except for its reliability, which is widely praised in the last ten years. Makarov is a faithful companion of law enforcement agencies."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/86.png",
+    "name": "Beretta Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "One of the most popular European handguns which became the unofficial standard and the excellent assistant for police and special forces as an auxiliary weapon of quick access."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/87.png",
+    "name": "Spets gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "A special kind of pistol designed for elite fighters, Laser sight and collimator sight, as well as elongated barrel make it a formidable weapon which should not be underestimated. Spets lives up to its name and has been considered one of the best pistols of our time."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/88.png",
+    "name": "Soviet Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "Developed in USSR but never mass produced due to perestroika and collapse of the great Soviet Union. We managed to get a few batches for the needs of our soldiers. It is an excellent pistol and worth its money."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/89.png",
+    "name": "Bandit Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "Widely spread weapon among the criminals in the CIS. The low price and the fact that this gun is enough of an argument that you can go on a robbery, blackmail, or even murder."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/90.png",
+    "name": "Guardian Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "This is a new development of the Ministry of Internal Affairs, which was adopted by the police last year. First reviews say that the gun is reliable and has enough kill power to pierce through light armor. Nothing out of the ordinary, just a good gun."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/91.png",
+    "name": "Authoritet Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "A limited edition pistol that was created for the gangster world in the facilities of one famous factory. By coincidence, the criminal elements were identified and only a few dozen pistols made it to the market, most of which went to top crime bosses as gifts."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/92.png",
+    "name": "An upgraded Judge Dredd pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Put on a trial right on the battlefield. All the necessary duds are already included, and the killing power of this weapon knows no mercy. Pull the trigger and pass sentence on anyone who stands in your way."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/93.png",
+    "name": "\"Svoy\" pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "An affordable and easy to use pistol that has become the property of the criminal underworld. The black market knows its business and knows what the fastidious consumer wants. It is a weapon for this demand."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/94.png",
+    "name": "Gypsy Pistol",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "The gift edition of the pistol \"Svoy\" intended for the drug lords in charge of opium in the former Soviet Union. An expensive gift that is capable of killing. What else do you need?"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/95.png",
+    "name": "Revolver Law",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Feel like a sheriff in the heart of the wild west! The great killing power and gold plating make this gun not only powerful, but also beautiful, especially under the scorching sun."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/96.png",
+    "name": "Cowboy Revolver",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Shake the world of the wild west with this formidable weapon! The strong recoil is offset by the power. Feel like a cowboy as you spin the drum toward your enemies."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/97.png",
+    "name": "Needle gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "One of the cheapest pistols on the market, making it popular among young criminals. Gotta start somewhere, right? The needle has pierced more than one enemy's heart, take it with you and it will serve you faithfully."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/98.png",
+    "name": "Machine Gun Bishop",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "The best painkiller and a true assistant to the pathologist. Bishop will help your enemies find peace and forget about pain. Just pull the trigger."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/99.png",
+    "name": "Commendante automatic rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Strengthens the soldier's spirit and allows him to control dangerous terrain. The Commandant does not like trespassers and always answers them with a barrage of fire to their questions."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/100.png",
+    "name": "Cheetah Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "No one has ever escaped from this rifle... Its incredible bullet speed and His impressive cartridge speed and long range ability allow him to stay at an impressive distance from his target. Let the Cheetah go hunting, he is out for blood."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/101.png",
+    "name": "\"Trachetka\" Automatic machine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "Rapid fire combined with good killing qualities made this auto gun incredibly popular around the world. Excellent value for money will lead you to the best results and eliminate the target."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/102.png",
+    "name": "Fire Hyena Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Doomsday has come, because you are holding the ultimate weapon of the apocalypse. The hyena literally rips his enemies without mercy. You are lucky to hold this legend in your hands."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/103.png",
+    "name": "Lego Assault Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Incredible constructor of many elements designed for soldiers of secret units of the best soldiers in the world. To sweep the territory with a gat or to take the defense as in Stalingrad?"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/104.png",
+    "name": "\"Oneshot\" Long-barrelled  rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "One shot - one kill, not always but more often than not. The killing power of this baby can cause a dislocated shoulder and mild concussion. Be careful with this toy, it shoots like the King Cannon..."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/105.png",
+    "name": "MX-2000 Speed Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "Want to participate in an epic battle but not lose the dynamics and the ability to quickly aim fire? MX will serve you like no worse than a peasant to the king. Take it in your hands and you will understand everything without words."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/106.png",
+    "name": "Conductor Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Make the battlefield into a musical melody in which you are the chief conductor and your weapon is the real orchestra. The classics are immortal, but its enemies are the opposite..."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/107.png",
+    "name": "Assault Shotgun \"Rupture\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "How do you do without a good shotgun with great power in an assault? You cant! Take it and storm with a smile while your opponents are sweating listening to the clinking sound of the reload."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/108.png",
+    "name": "Sandstorm Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Unbreakable design and top-notch reliability have allowed the elite fighter to fight vigorously even in desert terrain. Set up a storm by smoothly pulling the trigger."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/109.png",
+    "name": "Commander Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Accuracy and high killing power will make your enemies obey your fighting style. Command not only your units but also your enemies, creating your own rules with this baby. Whoever has this cannon is in command!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/110.png",
+    "name": "Reaper rapid-fire rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "The dream of a maniac who wants to make a bloody mess this coming weekend! The Reaper follows on the heels of his enemies and will find no peace until he tastes fresh blood. To possess such power is both a gift and a curse. A gift for you, a curse for your enemies."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/111.png",
+    "name": "SWAT carbine",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Designed specifically for the assault units of elite squads, but over time has become the property of the black market and militants of various countries. Power and strength is what any mode counts with if you stay alive after an encounter with SWAT."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/112.png",
+    "name": "Vulcan Automaton",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "A special kind of weapon designed to suppress enemies in the hottest areas of the world. The best materials and killing characteristics await its few owners. Whether you become the lucky owner of this truly unique weapon is up to you to decide."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/113.png",
+    "name": "Lightweight \"MP5\" assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "Light, reliable and powerful enough to blow the brains out of fucking terrorists. Used in Switzerland by SAS units as a universal weapon suitable for any situation. Reliable as a Swiss watch."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/114.png",
+    "name": "Lightweight \"Sign\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "If you've been looking for a fight, here's the Sign. The lightweight grip and sights add comfort and literally fall in love with the owner. A simple but functional assault rifle will not let your enemies get bored."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/115.png",
+    "name": "The \"Phoenix\" machine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "6"
+      }
+    ],
+    "description": "You don't have to die to be reborn, just have the Phoenix in your hands and the will to live, everything else has already been taken care of by the designers of Fair. By pulling the trigger you're more likely to help your enemies be reborn, even if they didn't plan it."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/116.png",
+    "name": "Bumblebee Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "A good old shotgun that you can safely go after a bear (but that's not for sure). The rattle of the shot is enough to stun, and the buckshot will turn your enemy into a sieve. Try it, your enemies won't like it for sure."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/117.png",
+    "name": "Shotgun \"Rampage\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "2"
+      }
+    ],
+    "description": "Cause a commotion with a shotgun suddenly popping out from around a corner. The shot is like thunder in the sky and makes even special forces go numb. You can rest easy, because the commotion is in your hands."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/118.png",
+    "name": "Doomsday Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Doomsday has come, because you are holding that shotgun from the movie \"Terminator\". The legendary gun with which you can destroy not only people but also robots. If the robots rise up, you know what to do."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/119.png",
+    "name": "Shotgun \"Finder\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Regular"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "1"
+      }
+    ],
+    "description": "While others are looking for the right weapon for them, others are killing them with this shotgun. Shot once, shot twice!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/120.png",
+    "name": "Laser Rifle \"Laker\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "9"
+      }
+    ],
+    "description": "A futuristic weapon from the future that fires on new principles previously unavailable. The laser like blade cuts through the armor and flesh of your enemies. If you like the smell of barbecue, this is definitely your choice."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/121.png",
+    "name": "Plasma Rifle Lava",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "9"
+      }
+    ],
+    "description": "The plasma particles from this weapon can burn through up to 5cm of titanium, imagine what would happen if a beam of plasma hit a human? The only disadvantage of this weapon is that your enemies will be hard to recognize."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/122.png",
+    "name": "Cerberus Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Don't want to let your enemies get close? The Cerberus is great for ranged combat tasks and won't leave rank-and-file infantrymen a chance. Cerberus has been waiting for a walk for a long time, become his master."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/123.png",
+    "name": "Napalm Flamethrower",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "8"
+      }
+    ],
+    "description": "\"Burn! Burn them all\" shouted the Mad King from Game of Thrones to his dragons, we suggest you take matters into your own hands and use a flamethrower to solve such issues. Bake your enemies to a crisp!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/124.png",
+    "name": "Assault rifle \"Storm\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Any Stormtrooper would be happy to have such a toy in his arsenal, because the rapid fire and ammo allow him to fight in almost any environment. Make a real storm out of the clear sky. Everything is in your hands."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/125.png",
+    "name": "Rustling Light Machine Gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Planning a quiet kill, but a pistol isn't enough? The lightweight assault rifle is a great choice for a stealth operation where a low ammo supply can affect the outcome. The essential minimum available anytime, anywhere."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/126.png",
+    "name": "Rambo assault rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "7"
+      }
+    ],
+    "description": "Designed based on the famous movie . The main task of the designers was to create a universal weapon of revenge ready for any challenge and test. Make your opponents flee in terror or lie silent."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/127.png",
+    "name": "Unrestrained Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Burst into the rear of the enemy and make a real mess with this baby. Taking her in your hands, you just want to run screaming \"I'll take you all down!\". Be careful, with a toy like this it's easy to fall into a combat rush."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/128.png",
+    "name": "Wolverine Shotgun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Superior"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "4"
+      }
+    ],
+    "description": "Tear your enemies to shreds leaving no chance for them to survive the battle. Even serial killers are surprised by the power of this weapon. If you like spectacular killings or if you want your victim to be unrecognizable, take this shotgun in your hands."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/129.png",
+    "name": "King of the Mountain Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Legendary"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "A well-known saying among snipers is that you sit high and look far. If you can get a good position, you can count on dominating the enemy as far as the eye can see. Long range and accuracy strikes to the heart!"
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/130.png",
+    "name": "\"Petty Officer\" submachine gun",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "3"
+      }
+    ],
+    "description": "Everyone chooses weapons according to his taste, but this submachine gun is respected by those who know what the fight is not by hearsay, but by hard practice. The unique alloy makes this rifle a lightweight and its combat performance surpasses most standards."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/131.png",
+    "name": "Harpoon Sniper Rifle",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "5"
+      }
+    ],
+    "description": "You can use it to slay even the Kraken himself! If I were to describe this glorious weapon in one word - power! Take care of your shoulder, the recoil might make you think you shot yourself, but no, you've launched a harpoon that will drive your enemy right through."
+  },
+  {
+    "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/132.png",
+    "name": "Automaton \"Aztec Gold\"",
+    "attributes": [
+      {
+        "trait_type": "Type",
+        "value": "Weapon"
+      },
+      {
+        "trait_type": "Class",
+        "value": "Epic"
+      },
+      {
+        "trait_type": "Bullets Bonus",
+        "value": "9"
+      }
+    ],
+    "description": "A limited edition gun for the finest killers on the planet who consider guns to be true art. This gimmick will not leave indifferent even the most sophisticated gourmets walking with death in hand. We've got the gold, the Aztecs, just for you..."
+  }
 ]
