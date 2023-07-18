@@ -2608,10 +2608,10 @@ a {
     background-image: url('../media/svg/inventory-modal/boots-slot.svg');
   }
 
-  .wrapper__inventory-modal .character__character-wrap {
+  /* .wrapper__inventory-modal .character__character-wrap { */
     /* width: 460px;
     height: 430px; */
-  }
+  /* } */
   
   .wrapper__inventory-modal .character-wrap__img-wrap {
     margin-left: 25px;
