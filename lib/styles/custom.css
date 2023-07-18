@@ -3146,6 +3146,10 @@ a {
     width: 57px;
     height: 52px;
   }
+  .inventory-items-wider {
+    width: 64px;
+    height: 32px;
+  }
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title{
     padding-bottom: 32px;
   }
