@@ -322,3 +322,16 @@ input[type=number] {
     font-weight: bold;
     cursor: pointer;
 }
+
+
+.finish-stats {
+    margin-bottom: 15px;
+}
+
+.finish-stats div {
+    margin-bottom: 10px;
+}
+
+.orange {
+    color: #ff7c06;
+}

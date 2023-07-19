@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^1.0.2",
     "@oasisprotocol/sapphire-hardhat": "^1.0.3",
+    "@oasisprotocol/sapphire-paratime": "^1.0.15",
     "hardhat": "^2.11.0"
   },
   "dependencies": {

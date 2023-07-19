@@ -5,3 +5,5 @@ node_modules
 npm-debug.log
 dist/index.js
 .env
+/media/characters/players_main
+/media/characters/players_rival

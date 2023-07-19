@@ -3,14 +3,14 @@ const { upgrades, ethers } = require("hardhat")
 async function sign(
     ID,
     amount,
-    chainid,
     player,
+    tokenAddress,
     contractAddress,
     signer
 ) {
-    const message = [ID, amount, chainid, player,contractAddress]
+    const message = [ID, amount, tokenAddress, player,contractAddress]
     const hashMessage = ethers.utils.solidityKeccak256([
-        "uint256","uint256","uint256","uint160","uint160"
+        "uint256","uint256","uint160","uint160","uint160"
     ], message)
     const sign = await signer.signMessage(ethers.utils.arrayify(hashMessage));
     const r = sign.substr(0, 66)

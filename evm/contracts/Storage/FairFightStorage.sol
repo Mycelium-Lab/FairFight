@@ -9,10 +9,6 @@ abstract contract FairFightStorage is IFairFight {
 
     bytes32 internal constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    /// @notice Contains minimum token amount allowed for one round.
-    /// @return minAmountPerRound - Minimum token amount for one round.
-    uint256 public minAmountPerRound;
-
     address internal signer;
 
     address internal feeCollector;
@@ -27,6 +23,10 @@ abstract contract FairFightStorage is IFairFight {
     /// @return maxRounds - Maximum number of rounds.
     uint256 public maxRounds;
 
+    /// @notice Contains minimum token amount allowed for one round. Also if equals 0 means that token not allowed.
+    /// @return minAmountPerRound - Minimum token amount for one round.
+    mapping(IERC20 => uint256) public minAmountPerRound;
+
     /// @notice PLayer full fights, by full means that fight was played with another players, not created and withdrawn.
     mapping(address => uint256[]) internal playerFullFights;
 
@@ -35,7 +35,7 @@ abstract contract FairFightStorage is IFairFight {
 
     /// @notice Shoes if player currently busy.
     /// @dev Player cant have more than one game in a moment.
-    mapping(address => bool) internal currentlyBusy;
+    mapping(address => bool) public currentlyBusy;
 
     /// @notice Contains data of claimed amount. If player finished game it will be true.
     mapping(address => mapping(uint256 => bool)) public playerClaimed;

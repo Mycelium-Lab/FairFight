@@ -391,10 +391,27 @@ summary::-webkit-details-marker {
     -moz-animation: hideAnimation 0.4s ease-out;
     -webkit-animation: hideAnimation 0.4s ease-out;
 }
-.dropdown > .dropdown-menu li {
+.network-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.dropdown-menu li {
+    display: flex;
+}
+
+.dropdown-menu li img {
+    margin-right: 10px;
+}
+
+/* .dropdown-menu li a {
+    display: inline-block;
+    float: left;
+} */
+.dropdown > .dropdown-menu a li {
     padding: 0;
 }
-.dropdown > .dropdown-menu li a {
+.dropdown > .dropdown-menu a {
     display: block;
     color: black;
     -moz-box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
@@ -402,7 +419,7 @@ summary::-webkit-details-marker {
     box-shadow: 0 1px 0 rgb(241, 91, 10) inset, 0 -1px 0 rgb(241, 91, 10) inset;
     padding: 10px 10px;
 }
-.dropdown > .dropdown-menu li a:hover {
+.dropdown > .dropdown-menu a:hover {
     background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 .network-deactive {
@@ -657,4 +674,59 @@ summary::-webkit-details-marker {
     -webkit-transform: scaleY(0);
     transform: scaleY(0);
 }
+}
+
+.container-token {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    /* align-items: center; */
+}
+.select-token-container {
+    margin-bottom: 0px;
+}
+
+#select-token-list2 {
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.figure {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.figure:nth-child(2n) {
+    page-break-after: always;
+}
+
+.token-active {
+    border-color: #ff7c06;
+}
+
+.token-deactive {
+    border-color: #c6c6c6;
+}
+
+.figure img {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    margin: 5px 10px 5px 10px;
+}
+
+.caption {
+    font-size: 16px;
+    font-weight: 450;
+    text-align:justify;
+    margin-top: 3.5px;
+    margin-right: 10px;
+}
+
+#weapons-img, #armor-img, #boots-img {
+    width: 42px;
+    height: 42px;
 }

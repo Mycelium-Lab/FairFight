@@ -6,18 +6,21 @@ import dotenv from 'dotenv'
 dotenv.config()
 import redis from "redis"
 import ethers from "ethers"
+import cors from "cors"
 import cron from "node-cron"
 import fetch from "node-fetch"
 import { fileURLToPath } from 'url';
-import { contractAbi, contractAddress, networks } from "./contract/contract.js"
+import { contractAbi, shopAbi, nftAbi, networks } from "./contract/contract.js"
 import { airdropAddress, airdropAbi } from "./contract/airdrop.js"
+import { createMixingPicture } from './mixing/mixing.js'
+import fs from 'fs'
 
-const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
-const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
+// const provider = new ethers.providers.JsonRpcProvider("https://emerald.oasis.dev")
+// const signer = new ethers.Wallet(process.env.PRIVATE_KEY_EMERALD, provider)
 // const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545/")
 // const signer = new ethers.Wallet(process.env.PRIVATE_KEY_TEST, provider)
-const contract = new ethers.Contract(contractAddress, contractAbi, signer)
-const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
+// const contract = new ethers.Contract(contractAddress, contractAbi, signer)
+// const airdropContract = new ethers.Contract(airdropAddress, airdropAbi, signer)
 const secondsInADay = 86400
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -56,7 +59,6 @@ const checkIfAddressIsNotNew = async (address) => {
         ...historyPolygon.result.map(v => parseInt(v.timeStamp))
     ]
     const timestamp = Math.min.apply(null, timestamps.filter(Boolean))
-    console.log(address, timestamp)
     if (timestamp !== Infinity) {
         const dateNow = Math.floor(Date.now() / 1000)
         return timestamp < (dateNow - 86400 * 30) //check if older than month
@@ -136,11 +138,11 @@ async function sendTokensSecondTime(req, res) {
     }
 }
 
-cron.schedule("6 6 6 * * *", async () => {
-    await createLeaderboard()
-}, {
-    timezone: 'Europe/Moscow'
-})
+// cron.schedule("6 6 6 * * *", async () => {
+//     await createLeaderboard()
+// }, {
+//     timezone: 'Europe/Moscow'
+// })
 
 async function createLeaderboard() {
     try {
@@ -273,6 +275,7 @@ async function getSignature(gameID, address, chainid) {
             return {
                 player: '',
                 gameid: '',
+                token: '',
                 amount: '',
                 chainid: '',
                 contract: '',
@@ -285,6 +288,7 @@ async function getSignature(gameID, address, chainid) {
             player: res.rows[0].player,
             amount: res.rows[0].amount,
             gameid: res.rows[0].gameid,
+            token: res.rows[0].token,
             contract: res.rows[0].contract,
             chainid,
             v: res.rows[0].v,
@@ -298,7 +302,7 @@ async function getSignature(gameID, address, chainid) {
 
 async function getCurrentInGameStatistics(gameID, address, chainid) {
     try {
-        const remainingRounds = await redisClient.get(`${gameID}&network=${chainid}`)
+        const remainingRounds = await redisClient.get(`ID=${gameID}&network=${chainid}`)
         const kills = await redisClient.get(`${address}_${gameID}_${chainid}_kills`)
         const deaths = await redisClient.get(`${address}_${gameID}_${chainid}_deaths`)
         const balance = await redisClient.get(`${address}_${gameID}_${chainid}_amount`)
@@ -309,17 +313,30 @@ async function getCurrentInGameStatistics(gameID, address, chainid) {
             || 
             deaths == null 
         ) {
-            const stats = await getStatistics(gameID, address, chainid)
-            return {
-                gameid: stats.gameid,
-                address: stats.address,
-                chainid,
-                contract: stats.contract,
-                amount: stats.amount,
-                kills: stats.kills,
-                deaths: stats.deaths,
-                remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
-                balance
+            const res = await pgClient.query(
+                "SELECT * FROM statistics WHERE gameid=$1 AND chainid=$2 AND player=$3",
+                [gameID, chainid, address]
+            )
+            if (res.rows.length != 0) {
+                const stats = res.rows[0]
+                return {
+                    gameid: stats.gameid,
+                    address: stats.player,
+                    token: stats.token,
+                    chainid,
+                    contract: stats.contract,
+                    amount: stats.amount,
+                    kills: stats.kills,
+                    deaths: stats.deaths,
+                    remainingRounds: remainingRounds == null ? stats.remainingrounds : remainingRounds,
+                    balance
+                }
+            } else {
+                return {
+                    gameid: gameID,
+                    address: address,
+                    chainid
+                }
             }
         } else {
             return {
@@ -347,41 +364,280 @@ async function getStatistics(gameID, address, chainid) {
         )
         if (res.rows.length === 0) {
             return []
-            // {
-            //     gameid: gameID,
-            //     address: address,
-            //     chainid: 0,
-            //     contract: '',
-            //     amount: 0,
-            //     kills: 0,
-            //     deaths: 0,
-            //     remainingRounds: 0
-            // }
         }
         return res.rows
-        // {
-        //     gameid: res.rows[0].gameid,
-        //     address: res.rows[0].player,
-        //     chainid: res.rows[0].chainid,
-        //     contract: res.rows[0].contract,
-        //     amount: res.rows[0].amount,
-        //     kills: res.rows[0].kills,
-        //     deaths: res.rows[0].deaths,
-        //     remainingRounds: res.rows[0].remainingrounds
-        // }
     } catch (error) {
         console.error(error)
     }
 }
 
+async function setCharacter(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const characterid = req.body.characterid
+        const { characters, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            const exist = await characters.propertyToken(address, characterid == 0 ? characterid : characterid-1)
+            if (characterid == 0 || exist.toString() !== '0') {
+                const res = await pgClient.query(
+                    "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                    [address, chainid, characterid]
+                )
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 1500)
+            } else {
+                response.status(401).send('Not exist')
+            }
+        } else {
+            response.status(400).send('Busy')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setArmor(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const armor = req.body.armor
+        const { armors, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            let exist
+            if (armor !== null) {
+                exist = await armors.propertyToken(address, armor)
+            }
+            if (armor === null || exist.toString() !== '0') {
+                const res = await pgClient.query(
+                    "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                    [address, chainid, armor]
+                )
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 1500)
+            } else {
+                response.status(401).send('Not exist')
+            }
+        } else {
+            response.status(400).send('Busy')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setWeapon(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const weapon = req.body.weapon
+        const { weapons, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            let exist
+            if (weapon !== null) {
+                exist = await weapons.propertyToken(address, weapon)
+            }
+            if (weapon === null || exist.toString() !== '0') {
+                const res = await pgClient.query(
+                    "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                    [address, chainid, weapon]
+                )
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 1500)
+            } else {
+                response.status(401).send('Not exist')
+            }
+        } else {
+            response.status(400).send('Busy')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+async function setBoots(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        const boot = req.body.boots
+        const { boots, contract } = blockchainConfig(chainid)
+        const busy = await contract.currentlyBusy(address)
+        if (!busy) {
+            let exist
+            if (boot !== null) {
+                exist = await boots.propertyToken(address, boot)
+            }
+            if (boot === null || exist.toString() !== '0') {
+                const res = await pgClient.query(
+                    "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                    [address, chainid, boot]
+                )
+                const inventory = res.rows[0]
+                await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+                setTimeout(() => {
+                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    response.status(200).sendFile(imagePath)
+                }, 1500)
+            } else {
+                response.status(401).send('Not exist')
+            }
+        } else {
+            response.status(400).send('Busy')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+
+function blockchainConfig(chainid) {
+    const network = networks.find(n => n.chainid == chainid)
+    const provider = new ethers.providers.JsonRpcProvider(network.rpc)
+    const signer = new ethers.Wallet(network.privateKey, provider)
+    const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
+    let shop
+    let characters
+    let armors
+    let weapons
+    let boots
+    if (network.shopAddress != undefined) {
+        shop = new ethers.Contract(network.shopAddress, shopAbi, signer)
+        characters = new ethers.Contract(network.charactersAddress, nftAbi, signer)
+        armors = new ethers.Contract(network.armorsAddress, nftAbi, signer)
+        weapons = new ethers.Contract(network.weaponsAddress, nftAbi, signer)
+        boots = new ethers.Contract(network.bootsAddress, nftAbi, signer)
+    } 
+    return {contract: _contract, signer, shop, characters, armors, weapons, boots};
+}
+
+async function getInventory(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        //TODO: добавить проверку chain'a (существует ли)
+        const res = await pgClient.query(
+            `
+            SELECT 
+                inventory.characterid, 
+                inventory.armor, 
+                inventory.weapon, 
+                inventory.boots,
+                armor_bonuses.health as health_bonus, 
+                weapon_bonuses.damage, 
+                weapon_bonuses.bullets as bullets_bonus,
+                boots_bonuses.speed as speed_bonus,
+                boots_bonuses.jump as jump_bonus
+                FROM inventory 
+                LEFT JOIN armor_bonuses ON inventory.armor=armor_bonuses.id 
+                LEFT JOIN weapon_bonuses ON inventory.weapon=weapon_bonuses.id 
+                LEFT JOIN boots_bonuses ON inventory.boots=boots_bonuses.id 
+                WHERE player=$1 AND chainid=$2
+            `,
+            [address, chainid]
+        )
+        if (res.rows.length === 0) {
+            await createMixingPicture(address, chainid, 0, undefined, undefined, undefined)
+            await pgClient.query(
+                "INSERT INTO inventory (player, chainid, characterid) VALUES($1, $2, $3)",
+                [address, chainid, 0]
+            )
+            response.status(200).json({
+                address, chainid, characterid:0
+            })
+        } else {
+            await createMixingPicture(address, chainid, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
+            response.status(200).json(res.rows[0])
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).json({})
+    }
+}
+
+async function setGamesProperties(req, response) {
+    try {
+        const gameid = req.body.gameid
+        const chainid = req.body.chainid
+        const map = req.body.map
+        await pgClient.query(
+            "INSERT INTO gamesproperties (gameid, chainid, map) VALUES($1, $2, $3)",
+            [gameid, chainid, map]
+        )
+        response.status(200).send()
+    } catch (error) {
+        response.status(500).send()
+    }
+}
+
+async function getGamesProperties(req, response) {
+    try {
+        const gameid = req.query.gameid
+        const chainid = req.query.chainid
+        const res = await pgClient.query('SELECT map FROM gamesproperties WHERE gameid=$1 AND chainid=$2', [gameid, chainid])
+        if (res.rows.length === 0) {
+            response.status(404).json({map: 0})
+        } else {
+            response.status(200).json(res.rows[0])
+        }
+    } catch (error) {
+        response.status(500).json({map: 0})
+    }
+}
+
+async function getCharacterImage(req, response) {
+    try {
+        const chainid = req.query.chainid
+        const address = req.query.address
+        const isRival = req.query.isrival
+        const imagePath = path.join(__dirname, `media/characters/players_${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        if (fs.existsSync(imagePath)) {
+            response.sendFile(imagePath)
+        } else {
+            response.sendFile(path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `0.png`))
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+
+server.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': [
+        'http://localhost:5000',
+        'https://fairfight.fairprotocol.solutions/'
+    ],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}));
+server.use(express.urlencoded({extended: true}))
+server.use(express.json());
 server.use(express.static(path.join(__dirname,'/lib')))
 const maintenance = false
+server.use('/', express.static(path.join(__dirname,'/public')));
+server.use('/maintenance', express.static(path.join(__dirname,'/public')));
 server.get('/', (req, res) => {
     maintenance
     ?
     res.redirect('/maintenance')
     :
-    res.sendFile(__dirname+'/lib/public/index.html')
+    res.sendFile(__dirname+'/public/index.html')
 })
 
 server.get('/game', (req, res) => {
@@ -389,7 +645,7 @@ server.get('/game', (req, res) => {
     ?
     res.redirect('/maintenance')
     :
-    res.sendFile(__dirname+'/lib/public/game.html')
+    res.sendFile(__dirname+'/public/game.html')
 })
 
 server.get('/sign', async (req, res) => {
@@ -454,7 +710,68 @@ server.get('/maintenance', async (req, res) => {
     ?
     res.redirect('/')
     :
-    res.sendFile(__dirname+'/lib/public/maintenance.html')
+    res.sendFile(__dirname+'/public/maintenance.html')
+})
+
+server.post('/setcharacter', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setCharacter(req, res)
+})
+server.post('/setarmor', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setArmor(req, res)
+})
+server.post('/setweapon', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setWeapon(req, res)
+})
+server.post('/setboots', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setBoots(req, res)
+})
+
+server.post('/getinventory', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getInventory(req, res)
+})
+
+server.post('/setgamesprops', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await setGamesProperties(req, res)
+})
+
+server.get('/getgamesprops', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getGamesProperties(req, res)
+})
+
+server.get('/getcharacterimage', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await getCharacterImage(req, res)
 })
 
 server.listen(5000, async () => {

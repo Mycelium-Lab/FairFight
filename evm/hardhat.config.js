@@ -3,6 +3,7 @@ require('dotenv').config()
 require("@openzeppelin/hardhat-upgrades");
 require('hardhat-contract-sizer');
 require('@oasisprotocol/sapphire-paratime');
+require('@oasisprotocol/sapphire-hardhat');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -33,12 +34,22 @@ module.exports = {
     },
     sapphire_mainnet: {
       url: "https://sapphire.oasis.io",
-      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : []
+      accounts: process.env.PRIVATE_KEY_EMERALD !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+      chainId: 0x5afe
     },
     scale: {
       url: "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix",
       accounts: [process.env.PRIVATE_KEY]
-    }
+    },
+    scale1: {
+      url: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
+      accounts: [process.env.PRIVATE_KEY, 'f5567360ea204ac2d158f02b4385539dc68a9beb5a8a93bc44ee375b2d04caf9']
+    },
+    bnb: {
+      url: "https://bsc-dataseed.binance.org",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 56
+    },
   },
   solidity: {
     compilers: [
@@ -50,4 +61,7 @@ module.exports = {
       },
     ],
   },
+  mocha: {
+    timeout: 100000000
+  }
 };
