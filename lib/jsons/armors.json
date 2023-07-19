@@ -16,6 +16,7 @@
 				"value": "1"
 			}
 		],
+		"price": "2.99",
 		"description": "Protects from the sun, gives a stylish appearance, keeps you from sunstroke in the hot season. Quality production, size adjustment, affordable price. Better with it than without it."
 	},
 	{
@@ -35,6 +36,7 @@
 				"value": "3"
 			}
 		],
+		"price": "9.9",
 		"description": "Rumor has it, he lived in a distant hip-hop country and has been freestyling since he was a kid. After years of wandering, his cap has soaked up the smell of the streets and seen a lot of flashy battles. The straight visor and red cross adds style and shows who grew up on the streets."
 	},
 	{
@@ -54,6 +56,7 @@
 				"value": "3"
 			}
 		],
+		"price": "17.9",
 		"description": "BBQ? The meat specialties of the Texas butchers were made in this particular hood which was passed from father to son by inheritance. The soot and smoke gave the hood an incredible, knock-your-socks-off smell! Vegetarians are furious!"
 	},
 	{
@@ -73,6 +76,7 @@
 				"value": "4"
 			}
 		],
+		"price": "29.9",
 		"description": "Stylish accessory from France, belonging to one of the Lords of the Renaissance. We had it restored, replaced the feather, but kept the spirit of style and fashion that captivate the spirit and impress the high society."
 	},
 	{
@@ -92,6 +96,7 @@
 				"value": "4"
 			}
 		],
+		"price": "34.9",
 		"description": "Magic permeate this delightful headpiece, rumor has it that leaving the hat alone will start rabbits crawling out of it. The wearer is guarded by the spirit of the pilgrim and helps him overcome almost any obstacle in his path. It's just magic!"
 	},
 	{
@@ -111,6 +116,7 @@
 				"value": "5"
 			}
 		],
+		"price": "47.9",
 		"description": "Dozens of daring robberies of wealthy merchants have seen this gimmick that helps with camouflage in the wilds and adds brutal charm to its wearer. The gold-plated buckle lets you adjust the size and adds a special shine. Are you ready for adventure with it?"
 	},
 	{
@@ -130,6 +136,7 @@
 				"value": "7"
 			}
 		],
+		"price": "77.7",
 		"description": "Over 1000 criminals have been caught and sentenced by the legendary sheriff, and criminals are afraid to say his name out loud. This magnificent hat has imbibed the spirit of justice and law and order. Let's bring order in the wild west style, shall we?"
 	},
 	{
@@ -149,6 +156,7 @@
 				"value": "9"
 			}
 		],
+		"price": "99.9",
 		"description": "Legendary work of the finest smiths of the old world, inlaid with rubies, amethysts and emeralds to convey the majesty and power of the wearer. Shine with golden brilliance dazzling your enemies! Be the king - you are worthy of it!"
 	}
 
