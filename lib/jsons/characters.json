@@ -8,6 +8,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "50", 
 		"description": "This spades mischief-maker is full of surprises. Poker-Face is a confidant of the king of spades, capable of the most daring deeds. Don't pay attention to his smile, it's deceptive."
 	},
 	{
@@ -19,6 +20,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "20", 
 		"description":"One of the 108 who has chosen the path of the samurai. Fisherman Jie himself gave his blessing for this adventure, so let's see where his wanderings will lead."
 	},
 	{
@@ -30,6 +32,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "15", 
 		"description":"His lips are a weapon of vengeance . He is a little out of tune with himself, but probably it even served him well. He whistles as he breathes and restlessly stepping on the heels of his enemies. The deafening whistle is the last thing the eardrums of his stunned opponents hear. The Whistler is coming for you! The Whistler is here!"
 	},
 	{
@@ -41,6 +44,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "15", 
 		"description":"She is one and that's pretty much all there is to it... A lot of men have taken her hostage, literally and figuratively. She doesn't tolerate cheapskates or likes to party like Mite Byson in retirement. Her heart is open to all, but not available to everyone. A heartbreaker will take you into her arms and clean you out in the morning. Sneaky and passionate!"
 	},
 	{
@@ -52,6 +56,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "5", 
 		"description":"A difficult childhood in a broken home and the eternal desire of those around him to assemble what you need has led to deplorable results... A stone-faced psychopath, who slowly removed the perpendiculars and hated cosines and sines with all his heart. The cube isn't a rubik's cube - it's a cold-blooded killer who has set out on the path of Armageddon. Pray he doesn't come after you. The Cube Rubik never forgives."
 	},
 	{
@@ -63,6 +68,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "10", 
 		"description":"Each of his campaigns - a crusade, each of his enemies must be beaten, each of his battle as the last... Cristiano Cresti - native Portuguese with a spirit hot as a torch and a stubborn desire to conquer and enslave the weaker. In his eyes lurks a primal passion, and in his heart smolders the flame of the dragon. Cristiano Cresti is someone you will remember forever and can erase from your memory."
 	},
 	{
@@ -74,6 +80,7 @@
 				"value": "Character"
 			}
 		],
+		"price": "15", 
 		"description":"Fortune's Coin is a captivating and enigmatic character, reminiscent of a poker chip imbued with mystical powers. With its vibrant design, featuring intricate blue and red stripes, Fortune's Coin represents both luck and strategy in the world of high-stakes games. Its alluring presence draws the attention of gamblers and risk-takers, as it is said to bring both fortune and misfortune to those who dare to challenge its influence. "
 	}
 ]
