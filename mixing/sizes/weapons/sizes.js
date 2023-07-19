@@ -109,7 +109,7 @@ export const weaponTypes = {
     '107':'new-twohanded-machine',
     '108':'new-twohanded-machine',
     '109':'new-twohanded-machine',
-    '110':'new-twohanded-machine',
+    '110':'new-twohanded-small-machine',
     '111':'new-twohanded-machine',
     '112':'new-twohanded-machine',
     '113':'new-twohanded-machine',
