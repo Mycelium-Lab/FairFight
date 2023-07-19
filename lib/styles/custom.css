@@ -3155,9 +3155,14 @@ a {
   }
 }
 
-.slot-wrap__slot img {
+.slot-wrap__slot-img {
   width: 63px;
   height: 58px;
+}
+
+.slot-wrap__slot-img-wider {
+  width: 64px;
+  height: 32px;
 }
 
 .lds-dual-ring-big:after {
