@@ -3165,6 +3165,11 @@ a {
   height: 32px;
 }
 
+#armor-slot img, #boots-slot img {
+  width: 63px;
+  height: 58px;
+}
+
 .lds-dual-ring-big:after {
   content: "";
   display: block;

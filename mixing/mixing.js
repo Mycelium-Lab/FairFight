@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url';
 import { weaponSizes, weaponTypes } from './sizes/weapons/sizes.js';
 import { charactersLegsPlusX } from './frames/charactersLegs.js';
 import { charactersHats } from './frames/charactersHats.js';
+import { longWeapon } from './frames/longWeapon.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const __basedir = __dirname.slice(0, __dirname.length - 7)
@@ -47,7 +48,7 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
     if (!isNaN(parseInt(weaponId))) {
         weaponImage = await loadImage(`${__dirname}/basic_images/weapons/${weaponId}.png`);
         _weaponType = weaponTypes[`${weaponId}`]
-        _weaponSize = weaponSizes[`${_weaponType}`]
+        _weaponSize = JSON.parse(JSON.stringify(weaponSizes[`${_weaponType}`]));
         if (_weaponSize.size[`${weaponId}`]) {
             _weaponSize.size.x = _weaponSize.size[`${weaponId}`].x
             _weaponSize.size.y = _weaponSize.size[`${weaponId}`].y
@@ -55,57 +56,59 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
         if (_weaponSize.position.secondFrames[`id-${weaponId}`]) {
             _weaponSize.position.secondFrames = _weaponSize.position.secondFrames[`id-${weaponId}`]
         }
+        _weaponSize.size.x = _weaponSize.size.x - (longWeapon[`${weaponId}`] ? longWeapon[`${weaponId}`].x : 0)
+        _weaponSize.size.y = _weaponSize.size.y - (longWeapon[`${weaponId}`] ? longWeapon[`${weaponId}`].y : 0)
     }
     if (!isNaN(parseInt(armorId))) {
         hatImage = await loadImage(`${__dirname}/basic_images/armors/${armorId}.png`);
         _hatType = hatTypes[`${_hatNumber}`]
-        _hatSize = hatSizes[`${_hatType}`]
-        // if (charactersHats[`${characterId}`] && charactersHats[`${characterId}`][`${armorId}`]) {
-        //     _hatSize.position.firstFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
-        //     _hatSize.position.firstFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
+        _hatSize = JSON.parse(JSON.stringify(hatSizes[`${_hatType}`]))
+        if (charactersHats[`${characterId}`] && charactersHats[`${characterId}`][`${armorId}`]) {
+            _hatSize.position.firstFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
+            _hatSize.position.firstFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
 
-        //     _hatSize.position.secondFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
-        //     _hatSize.position.secondFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
+            _hatSize.position.secondFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
+            _hatSize.position.secondFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
             
-        //     _hatSize.position.thirdFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
-        //     _hatSize.position.thirdFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
+            _hatSize.position.thirdFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
+            _hatSize.position.thirdFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
             
-        //     _hatSize.position.forthFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
-        //     _hatSize.position.forthFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
+            _hatSize.position.forthFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
+            _hatSize.position.forthFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
             
-        //     _hatSize.position.fifthFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
-        //     _hatSize.position.fifthFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
+            _hatSize.position.fifthFrames.x += charactersHats[`${characterId}`][`${armorId}`].x
+            _hatSize.position.fifthFrames.y += charactersHats[`${characterId}`][`${armorId}`].y
             
-        // }
+        }
     }
     if (!isNaN(parseInt(bootsId))) {
         bootsImage = await loadImage(`${__dirname}/basic_images/boots/${bootsId}.png`);
         _bootsType = bootsTypes[`${bootsId}`]
-        _bootsSize = bootsSizes[`${_bootsType}`]
-        // if (charactersLegsPlusX[`${characterId}`]) {
-        //     _bootsSize.position.firstFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-        //     _bootsSize.position.firstFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+        _bootsSize = JSON.parse(JSON.stringify(bootsSizes[`${_bootsType}`]))
+        if (charactersLegsPlusX[`${characterId}`]) {
+            _bootsSize.position.firstFrames.left.x += charactersLegsPlusX[`${characterId}`].left
+            _bootsSize.position.firstFrames.right.x += charactersLegsPlusX[`${characterId}`].right
     
-        //     _bootsSize.position.secondFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-        //     _bootsSize.position.secondFrames.right.x += charactersLegsPlusX[`${characterId}`].right
-        //     for (let i = 0; i <= 7; i++) {
-        //         _bootsSize.position.thirdFrames[`${i}`].left.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].left
-        //         _bootsSize.position.thirdFrames[`${i}`].right.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].right
-        //     }
-        //     for (let i = 0; i <= 4; i++) {
-        //         _bootsSize.position.forthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
-        //         _bootsSize.position.forthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right    
-        //     }
-        //     for (let i = 0; i <= 4; i++) {
-        //         _bootsSize.position.fifthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
-        //         _bootsSize.position.fifthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right
-        //     }
-        //     _bootsSize.position.sixthFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-        //     _bootsSize.position.sixthFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+            _bootsSize.position.secondFrames.left.x += charactersLegsPlusX[`${characterId}`].left
+            _bootsSize.position.secondFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+            for (let i = 0; i <= 7; i++) {
+                _bootsSize.position.thirdFrames[`${i}`].left.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].left
+                _bootsSize.position.thirdFrames[`${i}`].right.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].right
+            }
+            for (let i = 0; i <= 4; i++) {
+                _bootsSize.position.forthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
+                _bootsSize.position.forthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right    
+            }
+            for (let i = 0; i <= 4; i++) {
+                _bootsSize.position.fifthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
+                _bootsSize.position.fifthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right
+            }
+            _bootsSize.position.sixthFrames.left.x += charactersLegsPlusX[`${characterId}`].left
+            _bootsSize.position.sixthFrames.right.x += charactersLegsPlusX[`${characterId}`].right
     
-        //     _bootsSize.position.seventhFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-        //     _bootsSize.position.seventhFrames.right.x += charactersLegsPlusX[`${characterId}`].right
-        // }
+            _bootsSize.position.seventhFrames.left.x += charactersLegsPlusX[`${characterId}`].left
+            _bootsSize.position.seventhFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+        }
     }
 
     function draw(_ctx, _canvas, type, image) {
