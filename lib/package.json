@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "@oasisprotocol/sapphire-paratime": "^1.0.15",
+    "@walletconnect/ethereum-provider": "^2.9.0",
+    "@walletconnect/modal": "^2.6.0",
     "ethcall": "^6.0.0"
   },
   "devDependencies": {
