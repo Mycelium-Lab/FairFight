@@ -3383,6 +3383,18 @@ a {
   height: 32px;
 }
 
+.lds-dual-ring-tryon:after {
+  content: "";
+  display: block;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  border: 6px solid #FF7C06;
+  border-color: #FF7C06 transparent;
+  animation: 1s linear 0s normal none infinite running lds-dual-ring;
+  -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
+}
+
 .lds-dual-ring-big:after {
   content: "";
   display: block;
