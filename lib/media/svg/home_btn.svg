@@ -1,0 +1,51 @@
+<svg width="178" height="60" viewBox="0 0 178 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2" y="17" width="174" height="37" fill="white"/>
+<rect x="174" y="54" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 54)" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 52)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 50)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 174 54)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 176 52)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 174 52)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 176 50)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 54)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 52)" fill="#AFAFAF"/>
+<rect width="166" height="2" transform="matrix(-1 0 0 1 172 56)" fill="#5A5A5A"/>
+<rect width="166" height="2" transform="matrix(-1 0 0 1 172 54)" fill="#AFAFAF"/>
+<rect x="174" y="15" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 15)" fill="black"/>
+<rect x="172" y="56" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 56)" fill="black"/>
+<rect x="6" y="58" width="166" height="2" fill="black"/>
+<rect x="176" y="17" width="2" height="37" fill="black"/>
+<rect width="2" height="37" transform="matrix(-1 0 0 1 2 17)" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M170 0H8V2H6V4H4V47H6V49H8V51H170V49H172V47H174V4H172V2H170V0ZM170 2V4H172V47H170V49H8V47H6V4H8V2H170Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M170 2H8V4H6V46H172V4H170V2Z" fill="#1FCC03"/>
+<rect x="6" y="4" width="2" height="2" fill="#D1FF96"/>
+<rect x="172" y="4" width="2" height="2" transform="rotate(90 172 4)" fill="#D1FF96"/>
+<rect x="172" y="41" width="2" height="2" transform="rotate(-180 172 41)" fill="#D1FF96"/>
+<rect x="6" y="41" width="2" height="2" transform="rotate(-90 6 41)" fill="#D1FF96"/>
+<rect x="6" y="47" width="6" height="2" transform="rotate(-90 6 47)" fill="#468C00"/>
+<rect x="8" y="4" width="2" height="2" fill="#039800"/>
+<rect x="172" y="6" width="2" height="2" transform="rotate(90 172 6)" fill="#039800"/>
+<rect x="170" y="41" width="2" height="2" transform="rotate(-180 170 41)" fill="#039800"/>
+<rect x="6" y="39" width="2" height="2" transform="rotate(-90 6 39)" fill="#039800"/>
+<rect x="6" y="6" width="2" height="2" fill="#039800"/>
+<rect x="170" y="4" width="2" height="2" transform="rotate(90 170 4)" fill="#039800"/>
+<rect x="172" y="39" width="2" height="2" transform="rotate(-180 172 39)" fill="#039800"/>
+<rect x="8" y="41" width="2" height="2" transform="rotate(-90 8 41)" fill="#039800"/>
+<rect x="172" y="47" width="2" height="6" transform="rotate(-180 172 47)" fill="#468C00"/>
+<rect x="170" y="49" width="162" height="5.99999" transform="rotate(-180 170 49)" fill="#468C00"/>
+<rect x="8" y="2" width="162" height="2" fill="#D1FF96"/>
+<rect x="8" y="41" width="162" height="2" fill="#D1FF96"/>
+<rect x="16" y="49" width="6" height="4" transform="rotate(-90 16 49)" fill="#E3FF95"/>
+<rect width="6" height="4" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 158 49)" fill="#E3FF95"/>
+<rect x="21" y="49" width="6" height="3" transform="rotate(-90 21 49)" fill="#E3FF95"/>
+<rect width="6" height="3" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 153 49)" fill="#E3FF95"/>
+<rect x="25" y="49" width="6" height="2" transform="rotate(-90 25 49)" fill="#E3FF95"/>
+<rect width="6" height="2" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 149 49)" fill="#E3FF95"/>
+<rect x="28" y="49" width="6" height="0.999999" transform="rotate(-90 28 49)" fill="#E3FF95"/>
+<rect width="6" height="0.999999" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 146 49)" fill="#E3FF95"/>
+<path d="M68.6 25.7H59.78V32H58.52H57.26V30.74V29.48V28.22V25.7V24.44V23.18V21.92V20.66V19.4V18.14V16.88H58.52H59.78V23.18H68.6V16.88H71.12V19.4V29.48V32H68.6V25.7ZM79.9467 19.4H78.6867H77.4267V20.66H76.1667V21.92V23.18V25.7V26.96V28.22H77.4267V29.48H78.6867H79.9467H81.2067H82.4667H83.7267V28.22H84.9867V26.96V25.7V21.92V20.66H83.7267V19.4H82.4667H81.2067H79.9467ZM87.5067 25.7V29.48H86.2467V30.74H84.9867V32H81.2067H79.9467H76.1667V30.74H74.9067V29.48H73.6467V26.96V25.7V24.44V23.18V19.4H74.9067V18.14H76.1667V16.88H78.6867H79.9467H81.2067H84.9867V18.14H86.2467V19.4H87.5067V21.92V25.7ZM92.5534 25.7V32H91.2934H90.0334V30.74V29.48V28.22V25.7V24.44V23.18V21.92V20.66V19.4V18.14V16.88H91.2934H92.5534V18.14H93.8134V19.4H95.0734V20.66H96.3334V21.92H97.5934V20.66H98.8534V19.4H100.113V18.14H101.373V16.88H103.893V18.14V19.4V29.48V32H101.373V25.7V21.92H100.113V23.18H98.8534V24.44H97.5934V25.7H96.3334V24.44H95.0734V23.18H93.8134V21.92H92.5534V25.7ZM106.42 19.4V18.14V16.88H107.68H108.94H112.72H120.28V19.4H119.02H117.76H115.24H113.98H112.72H110.2H108.94V23.18H117.76V25.7H108.94V29.48H110.2H112.72H113.98H115.24H117.76H119.02H120.28V32H112.72H108.94H107.68H106.42V30.74V29.48V28.22V25.7V24.44V23.18V21.92V20.66V19.4Z" fill="#393939"/>
+<path d="M68.6 23.7H59.78V30H58.52H57.26V28.74V27.48V26.22V23.7V22.44V21.18V19.92V18.66V17.4V16.14V14.88H58.52H59.78V21.18H68.6V14.88H71.12V17.4V27.48V30H68.6V23.7ZM79.9467 17.4H78.6867H77.4267V18.66H76.1667V19.92V21.18V23.7V24.96V26.22H77.4267V27.48H78.6867H79.9467H81.2067H82.4667H83.7267V26.22H84.9867V24.96V23.7V19.92V18.66H83.7267V17.4H82.4667H81.2067H79.9467ZM87.5067 23.7V27.48H86.2467V28.74H84.9867V30H81.2067H79.9467H76.1667V28.74H74.9067V27.48H73.6467V24.96V23.7V22.44V21.18V17.4H74.9067V16.14H76.1667V14.88H78.6867H79.9467H81.2067H84.9867V16.14H86.2467V17.4H87.5067V19.92V23.7ZM92.5534 23.7V30H91.2934H90.0334V28.74V27.48V26.22V23.7V22.44V21.18V19.92V18.66V17.4V16.14V14.88H91.2934H92.5534V16.14H93.8134V17.4H95.0734V18.66H96.3334V19.92H97.5934V18.66H98.8534V17.4H100.113V16.14H101.373V14.88H103.893V16.14V17.4V27.48V30H101.373V23.7V19.92H100.113V21.18H98.8534V22.44H97.5934V23.7H96.3334V22.44H95.0734V21.18H93.8134V19.92H92.5534V23.7ZM106.42 17.4V16.14V14.88H107.68H108.94H112.72H120.28V17.4H119.02H117.76H115.24H113.98H112.72H110.2H108.94V21.18H117.76V23.7H108.94V27.48H110.2H112.72H113.98H115.24H117.76H119.02H120.28V30H112.72H108.94H107.68H106.42V28.74V27.48V26.22V23.7V22.44V21.18V19.92V18.66V17.4Z" fill="white"/>
+</svg>
