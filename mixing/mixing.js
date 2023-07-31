@@ -23,7 +23,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const __basedir = __dirname.slice(0, __dirname.length - 7)
 
-export const createMixingPicture = async (address, chainid, characterId, armorId, bootsId, weaponId) => {
+/* 
+    @param isTryOn - means it's not full change of person image
+*/
+export const createMixingPicture = async (address, chainid, characterId, armorId, bootsId, weaponId, isTryOn) => {
     // Создание нового холста с указанными размерами
     const canvas = createCanvas(1826, 1060);
     const ctx = canvas.getContext('2d');
@@ -325,7 +328,10 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
             _ctx.drawImage(weaponImage, _weaponSize.position.seventhFrames.x, _weaponSize.position.seventhFrames.y, _weaponSize.size.x, _weaponSize.size.y);
         }
         // Запись объединенного изображения в файл
-        const filePath = `${__basedir}/media/characters/players_${type}/${address}_${chainid}.png`
+        let filePath = `${__basedir}/media/characters/players_${type}/${address}_${chainid}.png`
+        if (isTryOn) {
+            filePath = `${__basedir}/media/characters/tryon/${address}_${chainid}.png`
+        } 
         fs.access(filePath, fs.constants.F_OK, (err) => {
             if (!err) {
                 const out = fs.createWriteStream(filePath);
@@ -348,8 +354,10 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
 
     try {
         draw(ctx, canvas, 'main', personImage)
+        if (!isTryOn) { 
+            draw(ctxRival, canvasRival, 'rival', personRivalImage) 
+        }
     } catch (error) {
         console.log(error)
     }
-    draw(ctxRival, canvasRival, 'rival', personRivalImage)
 }
