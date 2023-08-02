@@ -640,7 +640,7 @@ async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         const address = req.query.address
         const isRival = req.query.isrival
-        const imagePath = path.join(__dirname, `media/characters/players_${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        const imagePath = path.join(__dirname, `media/characters/players_${isRival === 'true' ? 'rival' : 'main'}`, `testtt.png`)
         if (fs.existsSync(imagePath)) {
             response.sendFile(imagePath)
         } else {
