@@ -142,7 +142,11 @@ export const weaponSizes = {
         position: {
             firstFrames: {
                 x: 116,
-                y: 108
+                y: 108,
+                preview: {
+                    x: 348,
+                    y: 324
+                }
             },
             secondFrames: {
                 x: 120,
@@ -309,14 +313,22 @@ export const weaponSizes = {
             '97': smallOneHandedPistolSize,
             '98': smallOneHandedPistolSize,
             '99': smallOneHandedPistolSize,
-            '100': smallOneHandedPistolSize
+            '100': smallOneHandedPistolSize,
+            preview: {
+                x: 105,
+                y: 90
+            }
         }
     },
     'twohanded-machine': {
         position: {
             firstFrames: {
                 x: 75,
-                y: 98
+                y: 98,
+                preview: {
+                    x: 225,
+                    y: 294
+                }
             },
             secondFrames: {
                 x: 68,
@@ -426,14 +438,22 @@ export const weaponSizes = {
         },
         size: {
             x: 90,
-            y: 50
+            y: 50,
+            preview: {
+                x: 270,
+                y: 150
+            }
         }
     },
     'new-twohanded-machine' : {
         position: {
             firstFrames: {
                 x: 58,
-                y: 118
+                y: 118,
+                preview: {
+                    x: 174,
+                    y: 354
+                }
             },
             secondFrames: {
                 x: 50,
@@ -615,6 +635,10 @@ export const weaponSizes = {
             '86': {
                 x: 98,
                 y: 35,
+            },
+            preview: {
+                x: 300,
+                y: 105
             }
         }
     },
@@ -622,7 +646,11 @@ export const weaponSizes = {
         position: {
             firstFrames: {
                 x: 44,
-                y: 116
+                y: 116,
+                preview: {
+                    x: 132,
+                    y: 348
+                }
             },
             secondFrames: {
                 x: 40,
@@ -760,6 +788,10 @@ export const weaponSizes = {
             '10' : {
                 x: 100,
                 y: 55
+            },
+            preview: {
+                x: 360,
+                y: 120
             }
         }
     },
@@ -767,7 +799,11 @@ export const weaponSizes = {
         position: {
             firstFrames: {
                 x: 106,
-                y: 106
+                y: 106,
+                preview: {
+                    x: 318,
+                    y: 318
+                }
             },
             secondFrames: {
                 x: 112,
@@ -877,14 +913,22 @@ export const weaponSizes = {
         },
         size: {
             x: 40,
-            y: 40
+            y: 40,
+            preview: {
+                x: 120,
+                y: 120
+            }
         }
     },
     'new-onehanded-machine': {
         position: {
             firstFrames: {
                 x: 69,
-                y: 116
+                y: 116,
+                preview: {
+                    x: 207,
+                    y: 348
+                }
             },
             secondFrames: {
                 x: 70,
@@ -998,7 +1042,11 @@ export const weaponSizes = {
         },
         size: {
             x: 100,
-            y: 30
+            y: 30,
+            preview: {
+                x: 300,
+                y: 90
+            }
         }
     }
 }

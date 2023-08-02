@@ -14,7 +14,11 @@ export const hatSizes = {
       position: {
         firstFrames: {
           x: 52,
-          y: 56
+          y: 56,
+          preview: {
+            x: 156,
+            y: 168
+          }
         },
         secondFrames: {
           x: 52,
@@ -43,14 +47,22 @@ export const hatSizes = {
       },
       size: {
         x: 85,
-        y: 55
+        y: 55,
+        preview: {
+          x: 255,
+          y: 165
+        }
       }
     },
     'cowboy': {
       position: {
         firstFrames: {
           x: 47,
-          y: 54
+          y: 54,
+          preview: {
+            x: 141,
+            y: 162
+          }
         },
         secondFrames: {
           x: 47,
@@ -79,14 +91,22 @@ export const hatSizes = {
       },
       size: {
         x: 90,
-        y: 65
+        y: 65,
+        preview: {
+          x: 270,
+          y: 195
+        }
       }
     },
     'cap': {
       position: {
         firstFrames: {
           x: 48,
-          y: 46
+          y: 46,
+          preview: {
+            x: 144,
+            y: 138
+          }
         },
         secondFrames: {
           x: 50,
@@ -115,7 +135,11 @@ export const hatSizes = {
       },
       size: {
         x: 90,
-        y: 65
+        y: 65,
+        preview: {
+          x: 270,
+          y: 195
+        }
       }
     }
   };
