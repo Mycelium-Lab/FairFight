@@ -400,7 +400,7 @@ async function tryOn(req, response) {
         setTimeout(() => {
             const imagePath = path.join(__dirname, `media/characters/tryon`, `${address}_${chainid}.png`)
             response.status(200).sendFile(imagePath)
-        }, 1000)
+        }, 2000)
     } catch (error) {
         console.log(error)
         response.status(500).send()
