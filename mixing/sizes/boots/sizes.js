@@ -15,11 +15,19 @@ export const bootsSizes = {
           firstFrames: {
             left: {
               x: 70,
-              y: 129
+              y: 129,
+              preview: {
+                x: 210,
+                y: 390
+              }
             },
             right: {
               x: 92,
-              y: 129
+              y: 129,
+              preview: {
+                x: 276,
+                y: 390
+              }
             }
           },
           secondFrames: {
@@ -241,7 +249,11 @@ export const bootsSizes = {
         },
         size: {
           x: 32,
-          y: 32
+          y: 32,
+          preview: {
+            x: 96,
+            y: 96
+          }
         }
       },
     'normal': {
@@ -249,11 +261,19 @@ export const bootsSizes = {
             firstFrames: {
                 left: {
                     x: 71,
-                    y: 134
+                    y: 134,
+                    preview: {
+                        x: 213,
+                        y: 402
+                    }
                 },
                 right: {
                     x: 92,
-                    y: 134
+                    y: 134,
+                    preview: {
+                        x: 276,
+                        y: 402
+                    }
                 }
             },
             secondFrames: {
@@ -475,7 +495,11 @@ export const bootsSizes = {
         },
         size: {
             x: 28,
-            y: 28
+            y: 28,
+            preview: {
+                x: 84,
+                y: 84
+            }
         }
     },
     'high': {
@@ -483,11 +507,19 @@ export const bootsSizes = {
             firstFrames: {
                 left: {
                     x: 73,
-                    y: 128
+                    y: 128,
+                    preview: {
+                        x: 219,
+                        y: 384
+                    }
                 },
                 right: {
                     x: 94,
-                    y: 128
+                    y: 128,
+                    preview: {
+                        x: 282,
+                        y: 384
+                    }
                 }
             },
             secondFrames: {
@@ -709,7 +741,11 @@ export const bootsSizes = {
         },
         size: {
             x: 26,
-            y: 24
+            y: 24,
+            preview: {
+                x: 78,
+                y: 72
+            }
         }
     },
 }
