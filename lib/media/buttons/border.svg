@@ -1,0 +1,25 @@
+<svg width="178" height="45" viewBox="0 0 178 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="172" y="2" width="4" height="35" fill="white"/>
+<rect x="172" y="34" width="5.00001" height="166" transform="rotate(90 172 34)" fill="white"/>
+<rect x="2" y="2" width="4" height="39" fill="white"/>
+<rect x="174" y="39" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 39)" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 37)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 35)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 174 39)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 176 37)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 174 37)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 176 35)" fill="#AFAFAF"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 39)" fill="#5A5A5A"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 37)" fill="#AFAFAF"/>
+<rect width="166" height="2" transform="matrix(-1 0 0 1 172 41)" fill="#5A5A5A"/>
+<rect width="166" height="2" transform="matrix(-1 0 0 1 172 39)" fill="#AFAFAF"/>
+<rect x="174" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 4 0)" fill="black"/>
+<rect x="172" y="41" width="2" height="2" fill="black"/>
+<rect width="2" height="2" transform="matrix(-1 0 0 1 6 41)" fill="black"/>
+<rect x="6" y="43" width="166" height="2" fill="black"/>
+<rect x="176" y="2" width="2" height="37" fill="black"/>
+<rect width="2" height="37" transform="matrix(-1 0 0 1 2 2)" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6 0H4V32H6V34H8V36H170V34H172V32H174V0H172V32H170V34H8V32H6V0Z" fill="black"/>
+</svg>

@@ -7,3 +7,5 @@ dist/index.js
 .env
 /media/characters/players_main
 /media/characters/players_rival
+/media/characters/players_preview
+/media/characters/tryon

@@ -371,6 +371,42 @@ async function getStatistics(gameID, address, chainid) {
     }
 }
 
+//TryOn in NFT Shop
+//Testing new items on the character
+async function tryOn(req, response) {
+    try {
+        const address = req.body.address
+        const chainid = req.body.chainid
+        /*
+            {
+                characters: undefined | number
+                weapons: undefined | number
+                armors: undefined | number
+                boots: undefined | number
+            }
+        */
+        let inventory = req.body.inventory 
+        if (isNaN(parseInt(inventory.characters)) && isNaN(parseInt(inventory.weapons)) && isNaN(parseInt(inventory.armors))&& isNaN(parseInt(inventory.boots))) {
+            response.status(400).send('All cant be undefined')
+        }
+        const currentInventoryRes = await pgClient.query('SELECT * FROM inventory WHERE player=$1 AND chainid=$2', [address, chainid])
+        const currentInventory = currentInventoryRes.rows[0]
+        if (isNaN(parseInt(inventory.characters))) inventory.characters = currentInventory.characterid
+        if (isNaN(parseInt(inventory.weapons))) inventory.weapons = currentInventory.weapon
+        if (isNaN(parseInt(inventory.armors))) inventory.armors = currentInventory.armor
+        if (isNaN(parseInt(inventory.boots))) inventory.boots = currentInventory.boots
+        const isTryOn = true
+        await createMixingPicture(address, chainid, inventory.characters, inventory.armors, inventory.boots, inventory.weapons, isTryOn)
+        setTimeout(() => {
+            const imagePath = path.join(__dirname, `media/characters/tryon`, `${address}_${chainid}.png`)
+            response.status(200).sendFile(imagePath)
+        }, 1000)
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+
 async function setCharacter(req, response) {
     try {
         const address = req.body.address
@@ -388,7 +424,7 @@ async function setCharacter(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
                 }, 1500)
             } else {
@@ -422,7 +458,7 @@ async function setArmor(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
                 }, 1500)
             } else {
@@ -456,7 +492,7 @@ async function setWeapon(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
                 }, 1500)
             } else {
@@ -490,7 +526,7 @@ async function setBoots(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `media/characters/players_main`, `${address}_${chainid}.png`)
+                    const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
                 }, 1500)
             } else {
@@ -603,12 +639,12 @@ async function getCharacterImage(req, response) {
     try {
         const chainid = req.query.chainid
         const address = req.query.address
-        const isRival = req.query.isrival
-        const imagePath = path.join(__dirname, `media/characters/players_${isRival === 'true' ? 'rival' : 'main'}`, `${address}_${chainid}.png`)
+        const typeofimage = req.query.typeofimage
+        const imagePath = path.join(__dirname, `media/characters/players_${typeofimage}`, `${address}_${chainid}.png`)
         if (fs.existsSync(imagePath)) {
             response.sendFile(imagePath)
         } else {
-            response.sendFile(path.join(__dirname, `media/characters/${isRival === 'true' ? 'rival' : 'main'}`, `0.png`))
+            response.sendFile(path.join(__dirname, `mixing/basic_images/characters_${typeofimage}`, `0.png`))
         }
     } catch (error) {
         console.log(error)
@@ -719,6 +755,13 @@ server.post('/setcharacter', async (req, res) => {
     res.redirect('/maintenance')
     :
     await setCharacter(req, res)
+})
+server.post('/tryon', async (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    await tryOn(req, res)
 })
 server.post('/setarmor', async (req, res) => {
     maintenance
