@@ -128,15 +128,29 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
             if (!isNaN(parseInt(armorId))) {
                 _ctx.drawImage(
                     hatImage, 
-                    preview ? _hatSize.position.firstFrames.preview.x + (i * 456) : _hatSize.position.firstFrames.x + (i * 152), 
-                    preview ? _hatSize.position.firstFrames.preview.y + (movementInTimeFirstFrames[i] * 3) : _hatSize.position.firstFrames.y + movementInTimeFirstFrames[i],
+                    preview ? 
+                    (_hatSize.position.firstFrames.preview.x + (charactersHats[`${characterId}`][`${armorId}`] ? charactersHats[`${characterId}`][`${armorId}`].preview.x : 0)) + (i * 456) 
+                    : _hatSize.position.firstFrames.x + (i * 152), 
+                    preview ? (_hatSize.position.firstFrames.preview.y + (charactersHats[`${characterId}`][`${armorId}`] ? charactersHats[`${characterId}`][`${armorId}`].preview.y : 0)) + (movementInTimeFirstFrames[i] * 3) : _hatSize.position.firstFrames.y + movementInTimeFirstFrames[i],
                     preview ? _hatSize.size.preview.x : _hatSize.size.x, 
                     preview ? _hatSize.size.preview.y : _hatSize.size.y
                 );        
             }
             if (!isNaN(parseInt(bootsId))) {
-                _ctx.drawImage(bootsImage, _bootsSize.position.firstFrames.left.x + (i * 152), _bootsSize.position.firstFrames.left.y, _bootsSize.size.x, _bootsSize.size.y);
-                _ctx.drawImage(bootsImage, _bootsSize.position.firstFrames.right.x + (i * 152), _bootsSize.position.firstFrames.right.y, _bootsSize.size.x, _bootsSize.size.y);
+                _ctx.drawImage(
+                    bootsImage, 
+                    preview ? (_bootsSize.position.firstFrames.right.preview.x + charactersLegsPlusX[`${characterId}`].preview.right) + (i * 456) : _bootsSize.position.firstFrames.right.x + (i * 152), 
+                    preview ? _bootsSize.position.firstFrames.right.preview.y: _bootsSize.position.firstFrames.right.y, 
+                    preview ? _bootsSize.size.preview.x : _bootsSize.size.x, 
+                    preview ? _bootsSize.size.preview.y : _bootsSize.size.y
+                );
+                _ctx.drawImage(
+                    bootsImage, 
+                    preview ?  (_bootsSize.position.firstFrames.left.preview.x + charactersLegsPlusX[`${characterId}`].preview.left) + (i * 456) : _bootsSize.position.firstFrames.left.x + (i * 152), 
+                    preview ?  _bootsSize.position.firstFrames.left.preview.y: _bootsSize.position.firstFrames.left.y, 
+                    preview ? _bootsSize.size.preview.x : _bootsSize.size.x, 
+                    preview ? _bootsSize.size.preview.y : _bootsSize.size.y
+                );
             }
             if (!isNaN(parseInt(weaponId))) {
                 _ctx.drawImage(
