@@ -3450,6 +3450,17 @@ a {
   /*min-width: 350px;*/
 }
 
+#tryon-character-background {
+  width: 150%;
+  height: 400%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  max-height: 600px;
+  max-width: 650px;
+}
+
 .change_network {
   /*background-image: url("../media/svg/change_network_btn.svg");*/
   background-repeat: no-repeat;
