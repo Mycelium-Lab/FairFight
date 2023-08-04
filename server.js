@@ -400,7 +400,7 @@ async function tryOn(req, response) {
         setTimeout(() => {
             const imagePath = path.join(__dirname, `media/characters/tryon`, `${address}_${chainid}.png`)
             response.status(200).sendFile(imagePath)
-        }, 1000)
+        }, 2500)
     } catch (error) {
         console.log(error)
         response.status(500).send()
@@ -426,7 +426,7 @@ async function setCharacter(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 1500)
+                }, 2500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -460,7 +460,7 @@ async function setArmor(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 1500)
+                }, 2500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -494,7 +494,7 @@ async function setWeapon(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 1500)
+                }, 2500)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -528,7 +528,7 @@ async function setBoots(req, response) {
                 setTimeout(() => {
                     const imagePath = path.join(__dirname, `media/characters/players_preview`, `${address}_${chainid}.png`)
                     response.status(200).sendFile(imagePath)
-                }, 1500)
+                }, 2500)
             } else {
                 response.status(401).send('Not exist')
             }
