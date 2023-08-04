@@ -13,7 +13,7 @@ export const longWeapon = {
         y: 0
     },
     '22': {
-        x: 2,
+        x: 10,
         y: 4
     },
     '23': {
