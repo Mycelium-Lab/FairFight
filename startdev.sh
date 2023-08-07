@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Определение пути к папке "evm"
-evm_directory="/home/egor/Документы/Work/NodeJS/FairFight/evm"
-main_directory="/home/egor/Документы/Work/NodeJS/FairFight"
+evm_directory="./evm"
+main_directory="./"
 
 # Открываем новое окно терминала и переходим в папку "evm", запуская команду npx hardhat node
 gnome-terminal -- bash -c "cd $evm_directory && npx hardhat node" &
