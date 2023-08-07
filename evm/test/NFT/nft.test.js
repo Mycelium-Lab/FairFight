@@ -46,23 +46,15 @@ describe("FairFightNFT", function (){
             const nftOwner = await nft.ownerOf(tokenId)
             const tokenURI = await nft.tokenURI(tokenId)
             const mintedCharacterId = await nft.tokenProperty(tokenId)
-            const characterMintedToThisUser = await nft.propertyToken(owner.address, characterId)
-            //can't be zero
+            const tokenIndex = await nft.tokenIndex(tokenId)
+            const characterMintedToThisUser = await nft.ownerPropertyTokens(owner.address, characterId, tokenIndex)
+            // //can't be zero
             assert(BigInt(tokenId) > BigInt(0), "NFT Id")
             assert(nftOwner === owner.address, "NFT owner")
             assert(tokenURI === `${baseURI}${characterId}.json`, "NFT tokenURI")
             assert(parseInt(mintedCharacterId) === characterId, "NFT characterID")
             //if === 0 means not exist to this player
             assert(parseInt(characterMintedToThisUser) !== 0, "NFT exist to this user")
-        })
-        
-        it('Should mint token negative (err: already have this character)', async () => {
-            //mint first time
-            await nft.mint(owner.address, characterId)
-            //mint second time negative
-            await expect(
-                nft.mint(owner.address, characterId)
-            ).to.be.revertedWith('FairFightNFT: You already have this character')
         })
 
         it('Should mint token negative (err: not allowed to mint)', async () => {
@@ -157,25 +149,33 @@ describe("FairFightNFT", function (){
             //transfer to user
             await nft.transferFrom(owner.address, user.address, tokenId)
             const nftOwner = await nft.ownerOf(tokenId)
-            const characterTransferedToThisUser = await nft.propertyToken(user.address, characterId)
-            const characterTransferedFromThisUser = await nft.propertyToken(owner.address, characterId)
+            const tokenIndex = await nft.tokenIndex(tokenId)
+            const characterTransferedToThisUser = await nft.ownerPropertyTokens(user.address, characterId, tokenIndex)
             assert(nftOwner === user.address, "NFT new owner")
             //if === 0 means not exist to this player
             assert(parseInt(characterTransferedToThisUser) !== 0, "NFT character exist to this user")
-            assert(parseInt(characterTransferedFromThisUser) === 0, "NFT character not exist to this user")
+            //means already not exist
+            await expect(
+                nft.ownerPropertyTokens(owner.address, characterId, tokenIndex)
+            ).to.be.reverted
         })
 
-        it('Should transfer nft to user negative (err: already have this character)', async () => {
+        it('Should transfer nft to user positive (have two nft of one type)', async () => {
             let tx = await nft.mint(owner.address, characterId)
             //mint to user too
-            await nft.mint(user.address, characterId)
+            let tx1 = await nft.mint(user.address, characterId)
             tx = await tx.wait()
             const transferEvent = tx.events.find(v => v.event === 'Transfer')
             const tokenId = transferEvent.args.tokenId.toString()
-            //transfer to user
-            await expect(
-                nft.transferFrom(owner.address, user.address, tokenId)
-            ).to.be.revertedWith('ERC721: You already have this property')
+            tx1 = await tx1.wait()
+            const transferEvent1 = tx1.events.find(v => v.event === 'Transfer')
+            const tokenId1 = transferEvent1.args.tokenId.toString()
+            await nft.transferFrom(owner.address, user.address, tokenId)
+            const length = await nft.getOwnerPropertyTokensLength(user.address, characterId)
+            for (let i = 0; i < parseInt(length); i++) {
+                const characterTransferedToThisUser = await nft.ownerPropertyTokens(user.address, characterId, i)
+                assert(tokenId == characterTransferedToThisUser || tokenId1 == characterTransferedToThisUser)
+            }
         })
 
     })
