@@ -3424,6 +3424,8 @@ a {
   border-color: #FF7C06 transparent;
   animation: 1s linear 0s normal none infinite running lds-dual-ring;
   -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
+  position: relative;
+    top: 9%;
 }
 
 .lds-dual-ring-big:after {
