@@ -185,24 +185,27 @@ describe("FairFightLootbox", function (){
             const tx = await lootbox.connect(looter).loot(sign.r, sign.v, sign.s, sign.randomNumber)
             const waitedTx = await tx.wait()
             const lootedEvent = waitedTx.events.find(v => v.event === 'Loot')
-            console.log(lootedEvent)
-            // const nftAddressIndex = nftsArray.findIndex(v => v === lootedEvent.args.nft)
-            // const nftIds = propertiesArray[nftAddressIndex]
-            // const nftIdFinded = nftIds.find(v => v == lootedEvent.args.propertyId) 
-            // assert(!isNaN(parseInt(nftIdFinded)), "NFT exist")
+            const lootedNft = { nft: lootedEvent.args.nft, propertyId: lootedEvent.args.propertyId }
+            const regularRarityLooted = regularRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const superiorRarityLooted = superiorRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const rareRarityLooted = rareRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const legendaryRarityLooted = legendaryRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const epicRarityLooted = epicRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            assert(regularRarityLooted || superiorRarityLooted || rareRarityLooted || legendaryRarityLooted || epicRarityLooted, "NFT exist")
         })
-        // it('Should loot negative random nft (err: already rewarded)', async () => {
-        //     const sign = await signLootbox(looter.address, lootbox.address, signer)
-        //     await lootbox.connect(looter).loot(sign.r, sign.v, sign.s, sign.randomNum)
-        //     await expect(
-        //         lootbox.connect(looter).loot(sign.r, sign.v, sign.s, sign.randomNum)
-        //     ).to.be.revertedWith('FairFight Lootbox: Already rewarded')
-        // })
-        // it('Should loot negative random nft (err: not verified (wrong number))', async () => {
-        //     const sign = await signLootbox(looter.address, lootbox.address, signer)
-        //     await expect(
-        //         lootbox.connect(looter).loot(sign.r, sign.v, sign.s, 99)
-        //     ).to.be.revertedWith('FairFight Lootbox: Not verified')
-        // })
+        it('Should loot negative random nft (err: already rewarded)', async () => {
+            const sign = await signLootbox(looter.address, lootbox.address, signer)
+            await lootbox.connect(looter).loot(sign.r, sign.v, sign.s, sign.randomNumber)
+            await expect(
+                lootbox.connect(looter).loot(sign.r, sign.v, sign.s, sign.randomNumber)
+            ).to.be.revertedWith('FairFight Lootbox: Already rewarded')
+        })
+        it('Should loot negative random nft (err: not verified (wrong number))', async () => {
+            const counter = await lootbox.currentUserLoot(looter.address)
+            const sign = await signLootbox(looter.address, lootbox.address, counter.toString(), signer)
+            await expect(
+                lootbox.connect(looter).loot(sign.r, sign.v, sign.s, 99)
+            ).to.be.revertedWith('FairFight Lootbox: Not verified')
+        })
     })
 })
