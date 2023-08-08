@@ -3,7 +3,7 @@ const assert = require("assert");
 const { ethers } = require("hardhat");
 const { signLootbox } = require("../utils/sign");
 
-describe("FairFightLootbox", function (){
+describe("FairFightLootboxSapphire", function (){
 
     //signers
     let owner
@@ -33,7 +33,7 @@ describe("FairFightLootbox", function (){
 	beforeEach(async function() {
 		[owner, looter, signer] = await ethers.getSigners()
         const FFNFT = await ethers.getContractFactory("FairFightNFT")
-        const Lootbox = await ethers.getContractFactory("Lootbox")
+        const Lootbox = await ethers.getContractFactory("LootboxSapphire")
         characters = await FFNFT.deploy("FairFightCharacters", "FFC", charactersBaseURI, maxSupply)
         armors = await FFNFT.deploy("FairFightArmor", "FFA", armorsBaseURI, maxSupply)
         boots = await FFNFT.deploy("FairFightBoots", "FFB", bootsBaseURI, maxSupply)
