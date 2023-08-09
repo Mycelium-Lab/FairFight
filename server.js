@@ -9,6 +9,7 @@ import statisticsRouter from './server/statistics/controller.js'
 import leaderboardRouter from './server/leaderboard/controller.js'
 import gamePropertiesRouter from './server/gameproperties/controller.js'
 import airdropRouter from './server/airdrop/controller.js'
+import lootboxRouter from './server/lootbox/controller.js'
 
 const server = express()
 
@@ -39,6 +40,7 @@ server.use(statisticsRouter)
 server.use(leaderboardRouter)
 server.use(gamePropertiesRouter)
 server.use(airdropRouter)
+server.use(lootboxRouter)
 
 server.get('/', (req, res) => {
     maintenance

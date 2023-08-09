@@ -222,3 +222,21 @@ INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(129, 5, 0);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(130, 3, 0);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(131, 5, 0);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(132, 9, 0);
+
+CREATE TABLE lootbox_conditions (
+    id SERIAL PRIMARY KEY,
+    description TEXT
+);
+
+CREATE TABLE lootbox_signatures (
+    player TEXT NOT NULL,
+    chainid INT NOT NULL,
+    condition_id INT REFERENCES lootbox_conditions(id),
+    v       INT NOT NULL,
+    r       TEXT NOT NULL,
+    s       TEXT NOT NULL
+);
+
+INSERT INTO lootbox_conditions (description) VALUES('5 games played');
+INSERT INTO lootbox_conditions (description) VALUES('Won 5 games in a row');
+INSERT INTO lootbox_conditions (description) VALUES('100 kills');
