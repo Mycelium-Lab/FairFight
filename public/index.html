@@ -864,17 +864,25 @@
 
 
 				<div class="wrapper_banners">
-					<div class="wrapper__banner">
+					<div class="board wrapper__banner">
+						<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class=" board-edge_sm board-edge" src="media/svg/board-edge.svg">
 						<img src="media/buyblock.svg" alt="">
 						<button class="banner__buy"></button>
 					</div>
-					<div class="wrapper__banner">
+					<div class="board wrapper__banner">
+						<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
 						<img src="media/box1.png" alt="">
 						<button class="banner__buy"></button>
 					</div>
 				</div>
 
-				<div class="inner-block">
+				<div class="board inner-block">
 					<div class="inner-block__head">
 						<button class="active" id="opengames-btn">Open Games</button>
 						<button id="pastgames-btn">Past games</button>
@@ -893,6 +901,10 @@
 					<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
 					<div id="opengames" class="tabs__content active">
 						<ul id="opengames-list">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
 							<div class="games__empty" id="opengames_empty">Empty :(
 								<span>At the moment, there are no games available for joining. But you can always
 										start your own by clicking the "New game" button above.</span>
@@ -902,6 +914,7 @@
 					<div id="pastgames" class="tabs__content">
 						<ul id="pastgames-list">
 							<div class="games__empty" id="pastgames_empty">Empty :(
+								<span>That's where your game history will be listed.</span>
 							</div>
 						</ul>
 					</div>
@@ -1236,7 +1249,11 @@
 	</div>
 	<!-- 1 -->
 	<div id="new-approve-modal" class="wrapper__message-modal-overlay">
-		<div class="wrapper__message-modal wrapper__message-modal_waiting">
+		<div class="board wrapper__message-modal wrapper__message-modal_waiting">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close new-approve-modal-close-button"></button>
 
 			<p class="message-modal__header-title">Purchace</p>
@@ -1253,15 +1270,19 @@
 			</div>
 
 			<div class="message-modal__btns-wrap">
-				<button class="new-approve-modal-close-button">Close</button>
+				<buttton class="new-approve-modal-close-button close-button"></buttton>
 			</div>
 		</div>
 	</div>
 	<div id="new-progress-modal" class="wrapper__message-modal-overlay">
 		<!-- 2 -->
-		<div class="wrapper__message-modal wrapper__message-modal_progress">
+		<div class="board wrapper__message-modal wrapper__message-modal_progress">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close new-progress-modal-close-button" ></button>
-
+			
 			<p class="message-modal__header-title">Purchace</p>
 
 			<div class="message-modal__loader">
@@ -1277,7 +1298,11 @@
 
 	<!-- 3 -->
 	<div id="new-confirm-modal" class="wrapper__message-modal-overlay">
-		<div class="wrapper__message-modal wrapper__message-modal_confirm">
+		<div class="board wrapper__message-modal wrapper__message-modal_confirm">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close new-confirm-modal-close-button"></button>
 
 			<p class="message-modal__header-title">Purchace</p>
@@ -1292,14 +1317,18 @@
 			</div>
 
 			<div class="message-modal__btns-wrap">
-				<button class="new-confirm-modal-close-button">Close</button>
+				<button class="new-confirm-modal-close-button close-button">Close</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- 4 -->
 	<div id="new-error-modal" class="wrapper__message-modal-overlay">
-		<div class="wrapper__message-modal wrapper__message-modal_rejected">
+		<div class="board wrapper__message-modal wrapper__message-modal_rejected">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close new-error-modal-close-button"></button>
 
 			<div class="message-modal__error">
@@ -1313,14 +1342,18 @@
 
 			<div class="message-modal__btns-wrap">
 				<!-- <button id="try-again-button">Try again</button> -->
-				<button class="new-error-modal-close-button">Close</button>
+				<button class="new-error-modal-close-button close-button">Close</button>
 			</div>
 		</div>
 	</div>
 
 	<!-- 6 -->
 	<div id="new-success-modal" class="wrapper__message-modal-overlay">
-		<div class="wrapper__message-modal wrapper__message-modal_purchase-completed">
+		<div class="board wrapper__message-modal wrapper__message-modal_purchase-completed">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close new-success-modal-close-button"></button>
 
 			<div class="message-modal__completed">
@@ -1335,8 +1368,8 @@
 			<a id="new-success-modal-link" class="message-modal__link" href="#" target="_blank" rel="noreferrer">View transaction on Blockchain Explorer</a>
 
 			<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
-				<button class="new-success-modal-close-button">Back to NFT shop</button>
-				<button id="go-to-inventory-btn">Go to inventory</button>
+				<button class="new-success-modal-close-button back-nft-shop close-button">Back to NFT shop</button>
+				<button id="go-to-inventory-btn" class="go-inventory close-button">Go to inventory</button>
 			</div>
 		</div>
 	</div>
