@@ -3,7 +3,7 @@ const assert = require("assert");
 const { ethers } = require("hardhat");
 const { signLootbox } = require("../utils/sign");
 
-describe("FairFightLootboxSapphire", function (){
+describe("FairFightLootbox", function (){
 
     //signers
     let owner
@@ -11,10 +11,12 @@ describe("FairFightLootboxSapphire", function (){
     let signer
 
     //utils
-    let charactersBaseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
-    let armorsBaseURI = 'https://ipfs.io/ipfs/QmSYxh2K2fEpWUpeqs3K8hsE9JMWjViFhJdVHMHoo7aCy1/'
+    const charactersBaseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
+    const armorsBaseURI = 'https://ipfs.io/ipfs/QmSYxh2K2fEpWUpeqs3K8hsE9JMWjViFhJdVHMHoo7aCy1/'
     const bootsBaseURI = 'https://ipfs.io/ipfs/Qmd7NkqYyuR3K2uP1Go3xHtuTomKV2aHBUa8mcncbUDNm3/'
-    let weaponsBaseURI = 'https://ipfs.io/ipfs/QmSjXwvkd9jb46x4yJLHVQtBbthquJxEeeUaJuQpzMkGBs/'
+    const weaponsBaseURI = 'https://ipfs.io/ipfs/QmSjXwvkd9jb46x4yJLHVQtBbthquJxEeeUaJuQpzMkGBs/'
+    const maxSupply = 5
+    const price = ethers.utils.parseEther("10")
 
     //contracts
     let lootbox
@@ -22,22 +24,25 @@ describe("FairFightLootboxSapphire", function (){
     let armors
     let weapons
     let boots
-    let testProperty
+    let testToken
+
     let regularRarityPrizes = []
     let superiorRarityPrizes = []
     let rareRarityPrizes = []
     let legendaryRarityPrizes = []
     let epicRarityPrizes = []
-    const maxSupply = 5
 
 	beforeEach(async function() {
 		[owner, looter, signer] = await ethers.getSigners()
         const FFNFT = await ethers.getContractFactory("FairFightNFT")
         const Lootbox = await ethers.getContractFactory("LootboxSapphire")
+        const TestToken = await ethers.getContractFactory("TokenForTests")
+        testToken = await TestToken.deploy("TokenForTests", "TFT")
         characters = await FFNFT.deploy("FairFightCharacters", "FFC", charactersBaseURI, maxSupply)
         armors = await FFNFT.deploy("FairFightArmor", "FFA", armorsBaseURI, maxSupply)
         boots = await FFNFT.deploy("FairFightBoots", "FFB", bootsBaseURI, maxSupply)
         weapons = await FFNFT.deploy("FairFightWeapons", "FFW", weaponsBaseURI, maxSupply)
+        await testToken.deployed()
         await characters.deployed()
         await armors.deployed()
         await weapons.deployed()
@@ -158,9 +163,13 @@ describe("FairFightLootboxSapphire", function (){
             rareRarityPrizes,
             legendaryRarityPrizes,
             epicRarityPrizes,
-            signer.address
+            price,
+            signer.address,
+            owner.address,          //collector
+            testToken.address
         )
         await lootbox.deployed()
+        await testToken.mint(looter.address, ethers.utils.parseEther("10000"))
         await characters.setAllowedMint(lootbox.address, true)
         await armors.setAllowedMint(lootbox.address, true)
         await weapons.setAllowedMint(lootbox.address, true)
@@ -209,4 +218,23 @@ describe("FairFightLootboxSapphire", function (){
             ).to.be.revertedWith('FairFight Lootbox: Not verified')
         })
     })
+
+    describe('Buy', () => {
+        it('Should buy lootbox', async () => {
+            await testToken.connect(looter).approve(lootbox.address, price)
+            const tx = await lootbox.connect(looter).buy()
+            const waitedTx = await tx.wait()
+            const lootedEvent = waitedTx.events.find(v => v.event === 'Loot')
+            const lootedNft = { nft: lootedEvent.args.nft, propertyId: lootedEvent.args.propertyId }
+            const regularRarityLooted = regularRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const superiorRarityLooted = superiorRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const rareRarityLooted = rareRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const legendaryRarityLooted = legendaryRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const epicRarityLooted = epicRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            assert(regularRarityLooted || superiorRarityLooted || rareRarityLooted || legendaryRarityLooted || epicRarityLooted, "NFT exist")
+            const ownerBalance = await testToken.balanceOf(owner.address)
+            assert(ownerBalance.toString() === price.toString())
+        })
+    })
+
 })

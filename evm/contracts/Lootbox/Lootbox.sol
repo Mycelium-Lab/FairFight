@@ -2,10 +2,14 @@
 pragma solidity 0.8.19;
 
 import "../NFT/IFFNFT.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Lootbox is Pausable, Ownable {
+
+    using SafeERC20 for IERC20;
 
     enum Rarity {
         Regular,
@@ -16,30 +20,36 @@ contract Lootbox is Pausable, Ownable {
     }
 
     struct Prize {
-        IFFNFT nft;
+        IFFNFT  nft;
         uint256 propertyId;
     }
 
-    uint256 constant MAX_PERCENT = 10000;
-
-    address signer;
+    uint256 constant    MAX_PERCENT = 10000;
+    uint256 public      price;
+    address             signer;
+    address immutable   collector; 
+    IERC20  immutable   paymentToken;
 
     /// @notice chance to get nft
     /// @dev percent 0 - 10000 => 0.00% - 100.00%
-    mapping(Rarity => uint256) public rarityPercent;
-    mapping(Rarity => Prize[]) public prizesByRarity;
+    mapping(Rarity  => uint256) public rarityPercent;
     /// @notice Prevents using one signature few times
     mapping(address => uint256) public currentUserLoot;
+    mapping(Rarity  => Prize[]) public prizesByRarity;
 
     event Loot(address indexed looter, IFFNFT indexed nft, uint256 indexed propertyId);
+    event Buy(address indexed looter, IERC20 indexed token, uint256 price);
 
     constructor(
-        Prize[] memory regularRarityPrizes,
-        Prize[] memory superiorRarityPrizes,
-        Prize[] memory rareRarityPrizes,
-        Prize[] memory legendaryRarityPrizes,
-        Prize[] memory epicRarityPrizes,
-        address _signer
+        Prize[] memory  regularRarityPrizes,
+        Prize[] memory  superiorRarityPrizes,
+        Prize[] memory  rareRarityPrizes,
+        Prize[] memory  legendaryRarityPrizes,
+        Prize[] memory  epicRarityPrizes,
+        uint256         _price,
+        address         _signer,
+        address         _collector,
+        IERC20          _paymentToken
     ) {
         rarityPercent[Rarity.Regular] = 8000;   //80%
         rarityPercent[Rarity.Superior] = 2000;  //20%
@@ -62,16 +72,30 @@ contract Lootbox is Pausable, Ownable {
             prizesByRarity[Rarity.Epic].push(epicRarityPrizes[i]); 
         }
         signer = _signer;
+        paymentToken = _paymentToken;
+        price = _price;
+        collector = _collector;
     }
 
     /// @notice Allowes to loot some reward for user
-    /// @dev Only if user is verified
-    /// @param r - Part of signature.
-    /// @param v - Part of signature.
-    /// @param s - Part of signature.
-    /// @param somenumber - Some random number
+    /// @dev    Only if user is verified
+    /// @param  r - Part of signature.
+    /// @param  v - Part of signature.
+    /// @param  s - Part of signature.
+    /// @param  somenumber - Some random number
     function loot(bytes32 r, uint8 v, bytes32 s, uint256 somenumber) external whenNotPaused {
         require(_check(r, v, s, somenumber), "FairFight Lootbox: Not verified");
+        _loot(somenumber);
+    }
+
+    /// @notice Allows to buy lootboxes for a user for a certain price and token
+    function buy() external whenNotPaused {
+        paymentToken.safeTransferFrom(msg.sender, collector, price);
+        _loot(price);
+        emit Buy(msg.sender, paymentToken, price);
+    }
+
+    function _loot(uint256 somenumber) private {
         uint256 randomRarity = getPseudoRandomNumber(somenumber, msg.sender, MAX_PERCENT);
         Rarity rarity;
         if (randomRarity >= rarityPercent[Rarity.Superior])                                                 rarity = Rarity.Regular;
