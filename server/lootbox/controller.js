@@ -1,10 +1,8 @@
 import { Router } from "express";
-import { createSignatureForAmountOfGames } from "./service.js";
+import { getSignature } from "./service.js";
 
 const lootboxRouter = Router()
 
-lootboxRouter.post('/prizeforamount', async (req, res) => {
-    await createSignatureForAmountOfGames(req, res)
-})
+lootboxRouter.post('/lootbox_signature', async (req, res) => await getSignature(req, res))
 
 export default lootboxRouter

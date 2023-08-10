@@ -1,28 +1,60 @@
-import db from "../db/db.js"
-import { networks, lootboxAbi } from "../../contract/contract.js"
+import { getAmountOfGames, getAmountOfKills } from "./service/conditions.js"
+import { CONDITION_ID, amountOfGamesForPrize, amountOfKillsForPrize } from "./constants/constants.js"
+import { createSignature, getExistedSignature } from "./service/common.js"
 
-const pgClient = db()
-await pgClient.connect()
-
-const amountOfGamesForPrize = 10
-
-async function getAmountOfGames(chainid, address) {
-    try {
-        const res = await pgClient.query("SELECT COUNT(*) FROM statistics WHERE player=$1 AND chainid=$2", [address, chainid])
-        const count = parseInt(res.rows[0].count)
-        return { err: null, count }
-    } catch (error) {
-        console.log(error)
-        return { err: error, count: 0 }
+export async function getSignature(req, res) {
+    if (req.body.condition_id == CONDITION_ID.GAMES_AMOUNT_5) {
+        await getSignatureForAmountOfGames(req, res)
+    }
+    if (req.body.condition_id == CONDITION_ID.KILLS_AMOUNT_100) {
+        await getSignatureForAmountOfKills(req, res)
     }
 }
 
-export async function createSignatureForAmountOfGames(req, res) {
+async function getSignatureForAmountOfGames(req, res) {
     try {
-        const isOk = await getAmountOfGames(req.body.chainid, req.body.address)
-        res.status(isOk ? 200 : 401).json({isOk})
+        const existedSignature = await getExistedSignature(req.body.chainid, req.body.address, CONDITION_ID.GAMES_AMOUNT_5)
+        if (Object.entries(existedSignature.signature).length) {
+            res.status(200).json(existedSignature.signature)
+        } else {
+            const amountOfGames = await getAmountOfGames(req.body.chainid, req.body.address)
+            if (amountOfGames.count >= amountOfGamesForPrize) {
+                const signature = await createSignature(req.body.chainid, req.body.address, CONDITION_ID.GAMES_AMOUNT_5)
+                if (signature.err) {
+                    res.status(signature.status).send(signature.err)
+                } else {
+                    res.status(signature.status).json(signature.signature)
+                }
+            } else {
+                res.status(401).send("Not enough games")
+            }
+        }
     } catch (error) {
         console.log(error)
-        res.status(500).json({})
+        res.status(500).send(error.message)
+    }
+}
+
+async function getSignatureForAmountOfKills(req, res) {
+    try {
+        const existedSignature = await getExistedSignature(req.body.chainid, req.body.address, CONDITION_ID.KILLS_AMOUNT_100)
+        if (Object.entries(existedSignature.signature).length) {
+            res.status(200).json(existedSignature.signature)
+        } else {
+            const amountOfKills = await getAmountOfKills(req.body.chainid, req.body.address)
+            if (amountOfKills.count >= amountOfKillsForPrize) {
+                const signature = await createSignature(req.body.chainid, req.body.address, CONDITION_ID.KILLS_AMOUNT_100)
+                if (signature.err) {
+                    res.status(signature.status).send(signature.err)
+                } else {
+                    res.status(signature.status).json(signature.signature)
+                }
+            } else {
+                res.status(401).send("Not enough kills")
+            }
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send(error.message)
     }
 }
