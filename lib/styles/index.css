@@ -46,15 +46,13 @@ table {
     padding: 0 24px;
     border-radius: 50px;
     min-width: 200px;
-    height: 50px;
-    font-size: 18px;
-    background-color: rgb(241, 91, 10);
-    font-weight: 500;
-    color: #222;
+    background-image: url("../media/svg/cretae-button.svg") !important;
+    background-image: url(../media/svg/cretae-button.svg) !important;
+    background-repeat: no-repeat !important;
+    height: 50px !important;
+    min-width: 200px !important;
 }
-.createGame:hover {
-    background-color: rgb(168, 72, 20);
-}
+
 
 .inputName {
     padding: 1 em;

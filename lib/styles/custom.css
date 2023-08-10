@@ -153,6 +153,7 @@ a {
   margin-right: 20px;
 }
 
+
 @media (max-width: 1023px) {
   #header {
     height: 70px;
@@ -209,8 +210,16 @@ a {
   position: relative;
 }
 
+#connect{
+  background-image: url('../media/svg/connect_wallet_btn.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
 #header {
   min-height: 120px;
+  position: relative;
 }
 
 .logo {
@@ -254,6 +263,22 @@ a {
 
 #disconnect {
   padding-right: 40px
+}
+
+.contact_link_about{
+  position: absolute;
+  right: 50px;
+  top: 100px;
+}
+
+.contact_link_about .link__name {
+  color: rgba(57, 57, 57, 1);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.contact_link_about:hover .link__name {
+  color: rgba(57, 57, 57, 1);
 }
 
 .btn-white {
@@ -373,7 +398,6 @@ a {
 #pastgames.empty ul {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   height: 100%;
 }
@@ -405,15 +429,11 @@ a {
 }
 
 .opengames__btn {
+
   position: absolute;
-  bottom: 20px;
-  right: 0;
-  background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff;
-  border-radius: 8px;
-  margin-left: auto;
+  bottom: 30px;
+  right: 32px;
+
 }
 
 .pastgame__btn {
@@ -464,39 +484,53 @@ a {
 
 #install_wallet_modal .modal_content {
   background-image: none;
-  padding-top: 73px;
+  padding-top: 28px;
+  gap: 36px;
+  align-items: center;
 }
 
 #install_wallet_modal button {
   background-color: transparent;
   border: 1px solid var(--color-orange);
   border-radius: 8px;
-  height: 48px;
-  min-width: 290px;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-black);
+  height: 90px;
   align-self: center;
-  margin-top: 30px;
-  margin-bottom: 35px;
-  box-shadow: 0px 4px 5px 0px hsla(0, 0%, 0%, 0.1);
+  padding: 0px 15px;
+}
+
+#install_wallet_modal button:first-child{
+  background: #FFFFFF;
+}
+#install_wallet_modal button:last-child{
+  background: #4E92F0;
+  border: none;
+  height: 80px;
+  padding: 0px 10px;
+}
+
+.choose-wallet-header{
+  width: 216px;
 }
 
 #install_wallet_modal p {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 19px;
+  color: #000000;
 }
 
 #install_wallet_modal p:last-child {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #000000;
 }
 
 #install_wallet_modal a {
-  color: var(--color-orange);
+  color: #000000;
   display: block;
   text-decoration: underline;
+  margin-top: 15px;
 }
 
 #connect_modal .modal_content {
@@ -516,19 +550,35 @@ a {
 
 .modal .modal_content {
   position: relative;
-  background-color: #fff;
+  background-color: var(--bg-board);
   color: var(--color-black);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border: var(--border-board);
   max-width: 504px;
   width: 100%;
-  padding: 30px 40px;
-  background-image: url("../media/svg/player.svg");
+  padding: 30px 31px;
+  /*height: 410px;*/
+}
+
+.modal .modal_content_new-game {
+  height: 760px;
+  display: block;
+  background-position: 300px 530px;
+  background-image: url("../media/svg/player-visible.svg");
   background-repeat: no-repeat;
-  background-position: right bottom;
+}
+
+.modal .modal_content_waiting {
+  height: 239px;
+  width: 385px;
+  padding: 40px 23px;
+
+}
+.modal .modal_content_waiting .subtitle {
+  color: var(--color-sand)
 }
 
 .map-show {
@@ -567,7 +617,6 @@ a {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-  border-top: 1px solid #c6c6c6;
   gap: 20px 0;
 }
 
@@ -575,7 +624,6 @@ a {
   display: flex;
   flex-direction: column;
   padding: 20px 0;
-  border-top: 1px solid #c6c6c6;
   gap: 10px 0;
 }
 
@@ -588,6 +636,14 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal__row_value div {
+  gap: 5px;
+  justify-content: initial;
+}
+.modal__row_value div.active {
+  padding-bottom: 30px;
 }
 
 .modal .modal_content select {
@@ -670,6 +726,12 @@ a {
   }
 }
 
+.new-game-header{
+  display: block;
+  width: 132px;
+  margin: 0 auto;
+  margin-bottom: 34px;
+}
 .modal__title {
   font-size: 30px;
   font-weight: 700;
@@ -861,10 +923,10 @@ a {
   background-color: var(--bg-board);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
-  padding: 30px 80px;
+  padding: 30px 18px;
   color: var(--color-black);
   /*max-width: 864px;*/
-  max-width: 758px;
+  max-width: 846px;
   height: 513px;
   width: 100%;
   display: flex;
@@ -920,7 +982,7 @@ a {
 }
 
 .tabs__content::-webkit-scrollbar {
-  width: 7px;
+  width: 3px;
 }
 
 .tabs__content::-webkit-scrollbar-track {
@@ -929,8 +991,8 @@ a {
 
 .tabs__content::-webkit-scrollbar-thumb {
   background-color: #393939;
-  border-radius: 14px;
-  border: 7px solid #393939;
+  border-radius: 30px;
+  border: 40px solid rgba(255, 124, 6, 1);
 }
 
 .tabs__content li div {
@@ -946,6 +1008,10 @@ a {
 
 .games__item .active {
   color: var(--color-orange);
+}
+.creator-data{
+  font-weight: 300;
+  text-decoration: underline;
 }
 
 .howtobuy_title {
@@ -969,11 +1035,14 @@ a {
 
 .games__row {
   position: relative;
-  padding: 20px 0;
+  padding: 20px 38px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-bottom: 2px solid var(--color-black);
+  height: 174px;
+  background-image: url('../media/svg/game-rows.svg');
+  background-repeat: no-repeat;
 }
 
 .games__item p {
@@ -1865,6 +1934,13 @@ a {
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;
+  cursor: pointer;
+}
+
+.wallet-button-wrapper{
+  display: flex;
+  justify-content: center;
+  gap: 30px
 }
 
 .wrapper__message-modal .message-modal__header-title {
@@ -3715,7 +3791,6 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
   align-items: center;
 }
-
 .link__name {
   color: #fff;
   font-size: 20px;
@@ -3725,7 +3800,6 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 .link__name:hover {
   color: #fff;
 }
-
 .wrapper_banners {
   position: absolute;
   bottom: 0;
@@ -3870,6 +3944,14 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 .go-inventory{
   background-image: url('../media/svg/go-to-inventory-button.svg');
+}
+
+.about-header{
+  width: 320px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  border-bottom: 2px solid rgba(255, 124, 6, 1);
+  padding-bottom: 2px;
 }
 
 

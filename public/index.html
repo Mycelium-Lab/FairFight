@@ -58,8 +58,8 @@
             Leaderboard
         </button> -->
 		<div class="header-right">
-			<button class="dropdown-wrapper">
-			<div class="dropdown createGame btn btn-white btn-big change_network" onclick="changeSVG()">
+			<button class="dropdown-wrapper" style="display: none;">
+			<div class="dropdown btn btn-white btn-big change_network" onclick="changeSVG()">
 				<svg id="dropdown-check" width="165" height="45" viewBox="0 0 165 45" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<rect x="2" y="8" width="2" height="2" fill="black" class="dropdown-element"/>
 					<rect id="rect27" x="163" y="39" width="2" height="4" transform="rotate(-180 163 39)" fill="black" class="dropdown-element"/>
@@ -511,6 +511,8 @@
 					<a href="/?network=23294" id="network-23294" class="network-deactive"><li ><img class="network-icon" src="media/oasis-black.png"/>Sapphire</li></a>
 					<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="media/scale-black.png"/>SKALE</li></a>
 					<a href="/?network=56" id="network-56"  class="network-deactive"><li ><img class="network-icon" src="media/tokens/black/bnb.png"/>BNB</li></a>
+					<a href="/" id="network-disconnect"  class="network-deactive"><li>Disconnect</li></a>
+
 					<!-- <a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>								 -->
 				</ul>
 			</div>
@@ -520,8 +522,11 @@
 				<span id="disconnect-address"></span>
 			</div>
 			<button class="startBtn" id="connect" style="display:none">
-				<img src="media/svg/connect_wallet_btn.svg">
 			</button>
+		</div>
+		<div class="contact_link_about contact_link">
+			<img class="help__img" src="media/svg/help.svg" alt="">
+			<a data-modal="action" class="link__name">About the game</a>
 		</div>
 
 	</header>
@@ -533,7 +538,7 @@
 
 			<img src="media/game.png" alt="" class="wrapper__monetki">
 			<div class="wrapper__gradient"></div>
-						<a href="#" id="about-show" class="wrapper__link link-first" style="display: none">About the game
+						<a id="about-show" class="wrapper__link link-first" style="display: none">About the game
 							<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<circle cx="14" cy="14" r="14" fill="white" />
 								<path
@@ -586,10 +591,6 @@
 						<div class="contact_link">
 							<img class="help__img" src="media/svg/help.svg" alt="">
 							<a href="#" id="dressing-btn" class="link__name">Help center</a>
-						</div>
-						<div class="contact_link">
-							<img class="help__img" src="media/svg/help.svg" alt="">
-							<a href="#" class="link__name">About the game</a>
 						</div>
 					</div>
 				</div>
@@ -797,8 +798,8 @@
 			<body>
 			<div class="startContainer">
 				<div id="connect_modal" class="modal">
-					<div class="modal_content">
-						<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
+					<div class="board wrapper__message-modal modal_content">
+						<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button" data-button="close"></span>
 						<h1 id="walletHeader">Please connect wallet</h1>
 						<button>
 							<img src="media/svg/meta.svg" alt="">
@@ -806,19 +807,21 @@
 						</button>
 					</div>
 				</div>
-				<div id="about_modal" class="modal">
-					<div class="modal_content">
-						<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
-						<h2 class="about__title">About the game</h2>
+				<div id="about_modal" data-modal="about" class="modal" style="display: none;">
+					<div class="board wrapper__message-modal modal_content">
+						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+						<button class="message-modal__btn-close new-confirm-modal-close-button" data-modal="action"></button>
+						<img class="about-header" src="media/svg/about-header.svg">
 						<div class="about__content">
 							<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
 							<p>1. Users can create a new game or connect to an existing game session.</p>
-							<p>2. The game host chooses the number of rounds and the amount that he is ready to bet
-								on his victory in each round. Both users make the deposit, and Fair Protocol smart
-								contract makes sure everything is fair!</p>
+							<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!</p>
 							<p>3. Users receive rewards for each round they won.</p>
 							<p>4. Users can end the game any time and take the reward.</p>
-							<p>5. Fair Protocol charges 5% for each in-game transaction.</p>
+							<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
 						</div>
 					</div>
 				</div>
@@ -865,18 +868,18 @@
 
 				<div class="wrapper_banners">
 					<div class="board wrapper__banner">
-						<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class=" board-edge_sm board-edge" src="media/svg/board-edge.svg">
+						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 						<img src="media/buyblock.svg" alt="">
 						<button class="banner__buy"></button>
 					</div>
 					<div class="board wrapper__banner">
-						<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
+						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 						<img src="media/box1.png" alt="">
 						<button class="banner__buy"></button>
 					</div>
@@ -900,18 +903,21 @@
 
 					<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
 					<div id="opengames" class="tabs__content active">
+						<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
 						<ul id="opengames-list">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
 							<div class="games__empty" id="opengames_empty">Empty :(
-								<span>At the moment, there are no games available for joining. But you can always
-										start your own by clicking the "New game" button above.</span>
+								<span>At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
 							</div>
 						</ul>
 					</div>
 					<div id="pastgames" class="tabs__content">
+						<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+							<img class="board-edge" src="media/svg/board-edge.svg">
 						<ul id="pastgames-list">
 							<div class="games__empty" id="pastgames_empty">Empty :(
 								<span>That's where your game history will be listed.</span>
@@ -959,9 +965,14 @@
 
 	<!-- Add in class wrapper__message-modal_active for display modal -->
 	<div id="my_modal" class="modal">
-		<div class="modal_content">
-			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
-			<div class="modal__title">New game</div>
+		<div class="board wrapper__message-modal modal_content_new-game modal_content">
+			<img class="board-edge" src="media/svg/board-edge.svg">
+			<img class="board-edge" src="media/svg/board-edge.svg">
+			<img class="board-edge" src="media/svg/board-edge.svg">
+			<img class="board-edge" src="media/svg/board-edge.svg">
+			<button class="message-modal__btn-close close_modal_window"></button>
+			<img class="new-game-header" src="media/svg/new_game_header.svg">
+			<img src="/media/svg/devider.svg">
 			<div class="modal__row">
 				<div>
 					Map
@@ -976,6 +987,7 @@
 					</select>
 				</div>
 			</div>
+			<img src="/media/svg/devider.svg">
 			<div class="modal__row__tokens">
 				<div class="select-token-container">Select a token:
 					<div id="select-token-list" class="container-token">
@@ -987,46 +999,65 @@
 					</div>
 				</div>
 			</div>
+			<img src="/media/svg/devider.svg">
 			<div class="modal__row">
 				<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
 																						 id="amountPerDeath" name="amountPerDeath" required /></div>
 				<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
 																						  id="amountToPlay" min="1" max="255" required /></div>
 			</div>
-			<div class="modal__row">
+			<img src="/media/svg/devider.svg">
+			<div class="modal__row_value modal__row">
 				<div>Total prize pool: <span id="totalPrizePool">-</span></div>
 				<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
 			</div>
 
-			<button class="createGame btn btn-white btn-big" disabled="disabled"
-					id="createGame"></button>
+			<button class="createGame btn-white btn-big" disabled="disabled" id="createGame"></button>
 		</div>
 	</div>
 	<div id="install_wallet_modal" class="modal">
-		<div class="modal_content">
-			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
-			<div class="modal__title modal__title--mode">To play please connect Web3 wallet</div>
-			<button>
-				<img src="media/svg/meta.svg" alt="">
-				Connect MetaMask
-			</button>
+		<div class="board modal_content wrapper__message-modal">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button" data-button="close"></span>
+			<div class="wallet-button-wrapper">
+				<button id="metamask">
+					<img src="media/svg/meta.svg" alt="">
+				</button>
+				<button id="walletconnect">
+					<img src="media/svg/walletconnect.svg" alt="">
+				</button>
+			</div>
+			<img class="choose-wallet-header" src="media/svg/choose-wallet-header.svg">
 			<p>What is a wallet?</p>
 			<p>Wallets are used to send, receive, and store digital
 				assets. Connecting a wallet lets you interact with apps.
-				<a href="https://metamask.io/" target="_blank">Install the wallet.</a>
+				<a href="https://metamask.io/" target="_blank">Install the wallet</a>
 			</p>
 		</div>
 	</div>
 	<div id="error_modal" class="modal">
-		<div class="modal_content">
-			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
-			<h3 style="color:#FF7C06">Error</h3>
-			<div id="error_modal_text" style="font-size: 16px; font-weight: 400;"></div>
+		<div class="board wrapper__message-modal modal_content">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button close_modal_window"></span>
+			<div class="message-modal__error">
+				<img src="media/svg/message-modal-error.svg">
+			</div>
+
+			<div class="message-modal__text-wrap_error">
+				<p class="text-wrap__title">Error</p>
+				<div id="error_modal_text" class="text-wrap__text" ></div>
+			</div>
 		</div>
 	</div>
 
 	<div id="airdrop_modal" class="modal">
-		<div class="modal_content">
+		<div class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<div class="modal__title">FairFight AirDrop</div>
 			<div class="airdrop_modal_text">
@@ -1046,7 +1077,7 @@
 		</div>
 	</div>
 	<div id="leaderboard_modal" class="modal">
-		<div class="modal_content">
+		<div class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<div class="modal__title">FairFight leaderboard</div>
 			<div class="inner-block__head">
@@ -1122,7 +1153,7 @@
 	</div>
 
 	<div id="shop_modal" class="modal">
-		<div class="modal_content">
+		<div class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<h2 class="about__title">NFT shop</h2>
 			<div class="inner-block__head">
@@ -1212,7 +1243,7 @@
 	</div>
 
 	<div id="character-modal" class="modal">
-		<div id="character-modal-content" class="modal_content">
+		<div id="character-modal-content" class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<h2 class="about__title" id="character-modal-name">Character</h2>
 			<div class="characters-modal__box">
@@ -1234,14 +1265,14 @@
 	</div>
 
 	<div id="approve_modal" class="modal">
-		<div class="modal_content">
+		<div class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<div><span id="approved_token">Token</span> approved.</div>
 			<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;"></div>
 		</div>
 	</div>
 	<div id="buy_modal" class="modal">
-		<div class="modal_content">
+		<div class="board modal_content">
 			<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 			<div>You have successfully bought the NFT!</div>
 			<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Now you can see it in the inventory.</div>
@@ -1912,11 +1943,15 @@
 </div>
 </div>
 <div id="confirmation_modal" class="modal">
-	<div class="modal_content">
-		<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
+	<div class="board modal_content_waiting wrapper__message-modal modal_content">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<button class="message-modal__btn-close close_modal_window"></button>
 		<img class="load" src="media/svg/load.svg" alt="">
 		<div>Waiting for confirmation</div>
-		<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Please confirm this
+		<div class="subtitle" style="font-size: 16px; font-weight: 400;">Please confirm this
 			transaction in your wallet</div>
 	</div>
 </div>
