@@ -4,7 +4,7 @@ const { upgrades, ethers } = require("hardhat")
 const { sign } = require("./utils/sign");
 require('dotenv').config()
 
-describe("FairFight", function (){
+describe("FairFight With ERC20 token", function (){
     let chainid;
     let acc1;
 	let acc2;
