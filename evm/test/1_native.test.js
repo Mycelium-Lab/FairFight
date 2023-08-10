@@ -3,7 +3,7 @@ const assert = require("assert");
 const { upgrades, ethers } = require("hardhat")
 const { sign } = require("./utils/sign");
 
-describe("FairFight", function (){
+describe("FairFight With Native Currency", function (){
     let chainid;
     let acc1;
 	let acc2;

@@ -1,5 +1,5 @@
 import { ethers } from "ethers"
-import { contractAbi, networks, nftAbi, shopAbi } from "../../contract/contract.js"
+import { contractAbi, lootboxAbi, networks, nftAbi, shopAbi } from "../../contract/contract.js"
 
 export default function blockchainConfig(chainid) {
     const network = networks.find(n => n.chainid == chainid)
@@ -11,12 +11,16 @@ export default function blockchainConfig(chainid) {
     let armors
     let weapons
     let boots
-    if (network.shopAddress != undefined) {
+    let lootbox
+    if (network.shopAddress) {
         shop = new ethers.Contract(network.shopAddress, shopAbi, signer)
         characters = new ethers.Contract(network.charactersAddress, nftAbi, signer)
         armors = new ethers.Contract(network.armorsAddress, nftAbi, signer)
         weapons = new ethers.Contract(network.weaponsAddress, nftAbi, signer)
         boots = new ethers.Contract(network.bootsAddress, nftAbi, signer)
     } 
-    return {contract: _contract, signer, shop, characters, armors, weapons, boots};
+    if (network.lootboxAddress) {
+        lootbox = new ethers.Contract(network.lootboxAddress, lootboxAbi, signer)
+    }
+    return {contract: _contract, signer, shop, characters, armors, weapons, boots, lootbox};
 }

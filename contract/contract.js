@@ -1,5 +1,6 @@
 import dotenv from "dotenv"
 export { nftAbi, shopAbi} from "./shop.js"
+export { lootboxAbi } from './lootbox.js'
 dotenv.config()
 
 export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
@@ -18,6 +19,7 @@ export const networks = [
       bootsAddress: '0x8A791620dd6260079BF849Dc5567aDC3F2FdC318',
       weaponsAddress: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
       shopAddress: '0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e',
+      lootboxAddress: '0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1',
       privateKey: process.env.PRIVATE_KEY_TEST
   },
   {
