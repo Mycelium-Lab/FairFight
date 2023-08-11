@@ -452,8 +452,7 @@ a {
 }
 
 .opengames__col {
-  display: flex;
-  flex-direction: column;
+
 }
 
 /* modals */
@@ -1060,18 +1059,304 @@ a {
   background-repeat: no-repeat;
 }
 
+#pastgames-list .games__row{
+  padding: 0;
+  background-image: url('../media/svg/past-games-rows.svg');
+  background-repeat: no-repeat;
+  height: 179px;
+}
+#pastgames-list .games__row .games__item:nth-child(3){
+  padding: 20px;
+}
+#pastgames-list .games__row .games__item:nth-child(4){
+  padding: 20px;
+}
+
+
+.games__item__header{ 
+  /*justify-content: space-around;*/
+  position: relative;
+  top: 9px;
+}
+/*.games__item__header p:nth-child(3) {
+  position: relative;
+  right: 6px;
+}
+.games__item__header p:nth-child(4) {
+  position: relative;
+  right: 33px;
+}
+  
+.games__item__header p:nth-child(5) {
+  position: relative;
+  right: 53px;
+}
+.games__item__header p:nth-child(6) {
+  position: relative;
+  right: 33px;
+}*/
+/*.games__item__header p:nth-child(1){
+  position: absolute;
+  left: 16px;
+  top: 8px
+}
+.games__item__header p:nth-child(2) {
+  position: absolute;
+  left: 46px;
+  top: 8px
+}
+.games__item__header p:nth-child(3) {
+  position: absolute;
+  left: 76px;
+  top: 8px
+}
+.games__item__header p:nth-child(4) {
+  position: absolute;
+  left: 106px;
+  top: 8px;
+}
+  
+.games__item__header p:nth-child(5) {
+  position: absolute;
+  right: 53px;
+}
+.games__item__header p:nth-child(6) {
+  position: absolute;
+  right: 33px;
+}*/
 .games__item p {
   font-size: 16px;
   font-weight: 500;
   color: var(--color-black);
   margin-bottom: 0;
 }
+.games__item p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: 0;
+}
+#pastgames.games__item p {
+  font-size: 14px;
+}
+.games__item__header  p {
+  font-size: 12px;
+}
+.games__item__footer p {
+  font-size: 14px;
+}
+.games__item__header > p {
+  font-weight: 700;
+  width: 120px;
+}
+
+.games__item__header > p:first-child {
+  position: relative;
+  left: 24px;
+}
+.games__item__header > p:nth-child(2) {
+  position: relative;
+  left: 12px;
+}
+.games__item__header > p:nth-child(3) {
+  position: relative;
+  left: 8px;
+}
+.games__item__header > p:nth-child(4) {
+  position: relative;
+  left: 5px;
+}
+.games__item__header > p:last-child {
+  position: relative;
+  right: 6px;
+}
 .current_battle_rounds{
   color: rgba(57, 57, 57, 1) !important;
 }
 
+.games__item__footer{
+  padding: 31px 23px;
+}
+.you-stats-col, .enemy-stats-col{
+  display: flex;
+  gap: 20px;
+  padding-top: 6px;
+}
+
+.stats-col-title{
+  display: block;
+  position: absolute;
+  top: 65px;
+  left: 300px;
+  height: 13px;
+  width: 182px;
+}
+.stats-col-title-vs{
+  position: relative;
+  top: 14px;
+}
+.opengames__col_first p span, .opengames__col_last p span{
+  font-weight: 500;
+}
+
+.you-stats-col-header, .enemy-stats-col-header {
+  width: 250px;
+  position: absolute;
+  top: 62px;
+  border-bottom: 1px solid rgba(255, 200, 151, 1);
+  padding-bottom: 5px;
+}
+.you-stats-col-header p, .enemy-stats-col-header p{
+  color: rgba(255, 124, 6, 1);
+}
+.opengames__col_first p:nth-child(3), .opengames__col_last p:nth-child(3) {
+  position: absolute;
+}
+.opengames__col_last p:nth-child(3){
+  width: 160px;
+  right: 20px
+}
+.you-stats-col-header p:before, .you-stats-col .opengames__col_first .red::before, 
+.you-stats-col .opengames__col_first .green::before,
+.you-stats-col .opengames__col_first p:nth-child(2):before,
+.you-stats-col .opengames__col_first p:nth-child(3):before, 
+.you-stats-col .opengames__col_last p:nth-child(1):before,
+.you-stats-col .opengames__col_last p:nth-child(2):before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  background-image: url('../media/svg/past_games_user.svg');
+  background-size: 16px 15px;
+  margin-right: 5px;
+  margin-bottom: -3px;
+}
+.enemy-stats-col .opengames__col_last .red::before,
+.enemy-stats-col .opengames__col_last .green::before, 
+.enemy-stats-col .opengames__col_last p:nth-child(2):before,
+.enemy-stats-col .opengames__col_last p:nth-child(3):before, 
+.enemy-stats-col .opengames__col_first p:nth-child(1):before,
+.enemy-stats-col .opengames__col_first p:nth-child(2):before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  background-image: url('../media/svg/past_games_user.svg');
+  background-size: 16px 15px;
+  margin-right: 5px;
+  margin-bottom: -3px;
+}
+.enemy-stats-col .opengames__col_last .red::before{
+  background-image: url('../media/svg/lose.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_last .green::before{
+  background-image: url('../media/svg/win.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_last p:nth-child(2):before{
+  background-image: url('../media/svg/dep.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_last p:nth-child(3):before{
+  background-image: url('../media/svg/wallet.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_first p:nth-child(1):before {
+  background-image: url('../media/svg/sword.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_first p:nth-child(2):before {
+  background-image: url('../media/svg/scull.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col-header{
+  right: 23px;
+}
+.enemy-stats-col-header p {
+  text-align: end;
+}
+.enemy-stats-col-header p:after{
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  background-image: url('../media/svg/past_games_user.svg');
+  background-size: 16px 15px;
+  margin-left: 5px;
+  margin-bottom: -3px;
+}
+.enemy-stats-col .opengames__col_first {
+  text-align: end;
+}
+
+.you-stats-col .opengames__col_first .red::before{
+  background-image: url('../media/svg/lose.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+
+.you-stats-col .opengames__col_first .green::before{
+  background-image: url('../media/svg/win.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_first p:nth-child(2):before{
+  background-image: url('../media/svg/dep.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_first p:nth-child(3):before{
+  background-image: url('../media/svg/wallet.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_last p:nth-child(1):before {
+  background-image: url('../media/svg/sword.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_last p:nth-child(2):before {
+  background-image: url('../media/svg/scull.svg');
+  width: 11px;
+  height: 10px;
+  background-size: 11px 10px;
+  margin-bottom: 0px;
+}
 .opengames__col p {
   font-weight: 400;
+}
+
+.enemy-stats-col .opengames__col_last{
+  text-align: end;
 }
 
 .games__item span {
@@ -1088,6 +1373,7 @@ a {
 }
 
 .games__item .green {
+  font-weight: 700;
   color: var(--color-green);
 }
 
@@ -1096,6 +1382,7 @@ a {
 }
 
 .games__item .red {
+  font-weight: 700;
   color: var(--color-red);
 }
 
