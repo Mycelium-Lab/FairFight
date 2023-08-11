@@ -21,6 +21,7 @@
 		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="/styles/index.css">
 	<link rel="stylesheet" href="/styles/custom.css">
+	<link rel="stylesheet" href="/styles/media/custom.css">
 	<link rel="stylesheet" href="/media/fonts/stylesheet.css">
 	<link rel="icon" type="image/png" href="/media/favicon.png">
 
@@ -524,9 +525,9 @@
 			<button class="startBtn" id="connect" style="display:none">
 			</button>
 		</div>
-		<div class="contact_link_about contact_link">
+		<div class="contact_link_about contact_link" id="about_link">
 			<img class="help__img" src="media/svg/help.svg" alt="">
-			<a data-modal="action" class="link__name">About the game</a>
+			<a class="link__name">About the game</a>
 		</div>
 
 	</header>
@@ -807,24 +808,6 @@
 						</button>
 					</div>
 				</div>
-				<div id="about_modal" data-modal="about" class="modal" style="display: none;">
-					<div class="board wrapper__message-modal modal_content">
-						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-						<button class="message-modal__btn-close new-confirm-modal-close-button" data-modal="action"></button>
-						<img class="about-header" src="media/svg/about-header.svg">
-						<div class="about__content">
-							<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
-							<p>1. Users can create a new game or connect to an existing game session.</p>
-							<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!</p>
-							<p>3. Users receive rewards for each round they won.</p>
-							<p>4. Users can end the game any time and take the reward.</p>
-							<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
-						</div>
-					</div>
-				</div>
 				<div id="howtobuy_modal" class="modal">
 					<div class="modal_content">
 						<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
@@ -865,66 +848,66 @@
 
 
 
-
-				<div class="wrapper_banners">
-					<div class="board wrapper__banner">
-						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-						<img src="media/buyblock.svg" alt="">
-						<button class="banner__buy"></button>
+				<main class="main-container">
+					<div class="board inner-block">
+						<div class="inner-block__head">
+							<button class="active" id="opengames-btn">Open Games</button>
+							<button id="pastgames-btn">Past games</button>
+							<!-- <details>
+								<summary>
+									<h2>Past Games</h2>
+								</summary>
+								<h4 id="pastgames-empty">Empty</h4>
+								<div id="pastgames">
+									<ul id="pastgames-list">
+									</ul>
+								</div>
+							</details> -->
+						</div>
+	
+						<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
+						<div id="opengames" class="tabs__content active">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+							<ul id="opengames-list">
+								<div class="games__empty" id="opengames_empty">Empty :(
+									<span>At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
+								</div>
+							</ul>
+						</div>
+						<div id="pastgames" class="tabs__content">
+							<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+							<ul id="pastgames-list">
+								<div class="games__empty" id="pastgames_empty">Empty :(
+									<span>That's where your game history will be listed.</span>
+								</div>
+							</ul>
+						</div>
 					</div>
-					<div class="board wrapper__banner">
-						<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+					<div class="wrapper_banners">
+						<div class="board wrapper__banner">
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img src="media/buyblock.svg" alt="">
+							<button class="banner__buy"></button>
+						</div>
+						<div class="board wrapper__banner">
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-						<img src="media/box1.png" alt="">
-						<button class="banner__buy"></button>
+								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+							<img src="media/box1.png" alt="">
+							<button class="banner__buy"></button>
+						</div>
 					</div>
-				</div>
-
-				<div class="board inner-block">
-					<div class="inner-block__head">
-						<button class="active" id="opengames-btn">Open Games</button>
-						<button id="pastgames-btn">Past games</button>
-						<!-- <details>
-                            <summary>
-                                <h2>Past Games</h2>
-                            </summary>
-                            <h4 id="pastgames-empty">Empty</h4>
-                            <div id="pastgames">
-                                <ul id="pastgames-list">
-                                </ul>
-                            </div>
-                        </details> -->
-					</div>
-
-					<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
-					<div id="opengames" class="tabs__content active">
-						<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-						<ul id="opengames-list">
-							<div class="games__empty" id="opengames_empty">Empty :(
-								<span>At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
-							</div>
-						</ul>
-					</div>
-					<div id="pastgames" class="tabs__content">
-						<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-							<img class="board-edge" src="media/svg/board-edge.svg">
-						<ul id="pastgames-list">
-							<div class="games__empty" id="pastgames_empty">Empty :(
-								<span>That's where your game history will be listed.</span>
-							</div>
-						</ul>
-					</div>
-				</div>
+				</main>
 				<div id="choose_character_modal" class="modal">
 					<div class="choose_character_modal_content">
 						<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
@@ -1021,7 +1004,7 @@
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 							<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button" data-button="close"></span>
+			<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button"></span>
 			<div class="wallet-button-wrapper">
 				<button id="metamask">
 					<img src="media/svg/meta.svg" alt="">
@@ -1036,6 +1019,24 @@
 				assets. Connecting a wallet lets you interact with apps.
 				<a href="https://metamask.io/" target="_blank">Install the wallet</a>
 			</p>
+		</div>
+	</div>
+	<div id="about_modal" class="modal" >
+		<div class="board wrapper__message-modal modal_content_about modal_content">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<button class="message-modal__btn-close close_modal_window"></button>
+			<img class="about-header" src="media/svg/about-header.svg">
+			<div class="about__content">
+				<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+				<p>1. Users can create a new game or connect to an existing game session.</p>
+				<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!</p>
+				<p>3. Users receive rewards for each round they won.</p>
+				<p>4. Users can end the game any time and take the reward.</p>
+				<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
+			</div>
 		</div>
 	</div>
 	<div id="error_modal" class="modal">
@@ -1951,16 +1952,20 @@
 			<button class="message-modal__btn-close close_modal_window"></button>
 		<img class="load" src="media/svg/load.svg" alt="">
 		<div>Waiting for confirmation</div>
-		<div class="subtitle" style="font-size: 16px; font-weight: 400;">Please confirm this
+		<div class="subtitle">Please confirm this
 			transaction in your wallet</div>
 	</div>
 </div>
 <div id="pending_modal" class="modal">
-	<div class="modal_content">
-		<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
+	<div class="board modal_content_panding modal_content wrapper__message-modal">
+		<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<button class="message-modal__btn-close close_modal_window"></button>
 		<img src="media/svg/load.svg" alt="" class="load">
 		<div>Pending...</div>
-		<div style="color:#C6C6C6; font-size: 16px; font-weight: 400;">Wait for the transaction to
+		<div class="subtitle">Wait for the transaction to
 			complete</div>
 	</div>
 </div>

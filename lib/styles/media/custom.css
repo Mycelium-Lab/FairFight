@@ -1,0 +1,14 @@
+@media(max-width: 1410px) {
+    .main-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .container__left{
+        bottom: 180px;
+      }
+      .wrapper_banners{
+        flex-direction: row;
+        width: auto;
+        justify-content: center;
+      }
+}
