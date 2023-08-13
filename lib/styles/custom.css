@@ -2886,10 +2886,9 @@ a {
   .wrapper__inventory-modal {
     margin: 0 auto;
     border-radius: 16px;
-    padding: 60px 90px;
-    width: 1360px;
-    height: 890px;
-
+    padding: 43px 90px;
+    width: 918px;
+  
     background-color: var(--bg-board);
     position: relative;
     overflow-y: hidden;
@@ -2904,27 +2903,13 @@ a {
   .wrapper__inventory-modal_active {
     display: block;
   }
-  
-  .inventory-modal__btn-close {
-    top: 40px;
-    right: 43px;
-    border: none;
-    width: 30px;
-    height: 30px;
-    background-image: url('../media/svg/close.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    position: absolute;
-    z-index: 1;
-  }
-  
+   
   .inventory-modal__left-title {
     left: 0;
-    top: 0;
+    top: -100px;
     width: 90px;
     height: 855px;
-    background-image: url('../media/svg/nft-shop-left-title.svg');
+    background-image: url('../media/svg/inventory-left-title.svg');
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
@@ -2948,6 +2933,7 @@ a {
   
   .inventory-modal__right-title-characters {
     width: 80px;
+    top: -100px;
     background-image: url('../media/svg/nft-shop-characters-title.svg');
   }
   
@@ -2972,22 +2958,24 @@ a {
   }
   
   .inventory-modal__body {
-    margin-top: 85px;
+    margin-top: 32.43px;
     height: 100%;
     display: grid;
-    gap: 80px;
-    grid-template-columns: 495px 1fr;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
   }
   
   .wrapper__inventory-modal .body__left {
     position: relative;
+    width: 336px;
+    right: 15px
   }
   
   .wrapper__inventory-modal .body__left::after {
-    top: 110px;
-    right: -40px;
+    top: 80px;
+    right: -24px;
     width: 2px;
-    height: calc(100% - 215px);
+    height: calc(100% - 80px);
     content: '';
     background-color: #C6C6C6;
     display: block;
@@ -2996,16 +2984,16 @@ a {
   
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title {
     border-bottom: 5px solid #FF7C06;
-    padding-bottom: 35px;
+    padding-bottom: 15.57px;
     font-family: 'Teletactile';
-    font-size: 32px;
+    font-size: 21.67px;
     line-height: 32px;
     color: #FF7C06;
     text-align: center;
   }
   
   .inventory-modal__nav-wrap {
-    margin-top: 40px;
+    margin-top: 20.43px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3026,7 +3014,7 @@ a {
   .inventory-modal__nav-wrap .nav-wrap__nav label {
     border-bottom: 5px solid transparent;
     font-family: 'Teletactile';
-    font-size: 20px;
+    font-size: 13.54px;
     color: #393939;
     background-color: transparent;
     display: block;
@@ -3046,26 +3034,26 @@ a {
     margin-top: 22px;
     border-radius: 7px;
     border: 1px solid #C6C6C6;
-    padding: 15px;
-    height: calc(100% - 275px);
+    padding: 15px 15px 15px 10px;
+    height: 316px;
+    /*height: calc(100% - 300px);*/
     overflow: auto;
   }
   
   .inventory-modal__body .list-wrap__item-list {
     padding-bottom: 20px;
-    padding-right: 17px;
     width: 100%;
     height: 100%;
     display: grid;
-    gap: 22px;
-    grid-template-columns: repeat(4, 93px);
-    grid-template-rows: repeat(auto-fill, 93px);
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
     overflow: auto;
     overflow-x: hidden;
+    gap: 10px;
   }
   
   .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
   }
   
   .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar-track {
@@ -3080,11 +3068,10 @@ a {
   
   .inventory-modal__body .item-list__slot {
     border-radius: 9px;
-    border: 4px solid #B6BCC4;
+    border: 2px solid #B6BCC4;
     padding: 3px;
-    width: 93px;
-    height: 93px;
-    box-shadow: 0px 4.46855px 4.46855px rgba(0, 0, 0, 0.25);
+    width: 67.1px;
+    height: 67.1px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3175,7 +3162,7 @@ a {
   }
   
   .wrapper__inventory-modal .right__character {
-    margin-top: 40px;
+    margin-top: 20.43px;
     display: flex;
   }
   
@@ -3184,13 +3171,12 @@ a {
     width: 100px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px
   }
   
   .wrapper__inventory-modal .slots__slot-wrap {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .wrapper__inventory-modal .item__prop-img-wrap {
@@ -3209,21 +3195,20 @@ a {
   
   .wrapper__inventory-modal .slot-wrap__title {
     font-family: 'Teletactile';
-    font-size: 20px;
+    font-size: 13.54px;
     line-height: 20px;
     color: #393939;
   }
   
   .wrapper__inventory-modal .slot-wrap__slot {
-    margin-top: 10px;
+    margin-top: 5px;
     border-radius: 8px;
     border: 4px solid #FF7C06;
-    width: 100%;
-    height: 100px;
+    width: 67.1px;
+    height: 67.1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: relative;
   }
   
@@ -3262,12 +3247,11 @@ a {
   }
   
   .wrapper__inventory-modal .character-wrap__img-wrap {
-    margin-left: 25px;
     border-radius: 8px;
     border: 4px solid #FF7C06;
     padding: 27px 32px;
-    width: 490px;
-    height: 470px;
+    width: 300px;
+    height: 300px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: relative;
   }
@@ -3290,7 +3274,7 @@ a {
   }
   
   .wrapper__inventory-modal .character-wrap__props-wrap {
-   margin: 15px 0 0 25px;
+   margin-top: 33px;
    display: flex;
    gap: 20px;
    align-items: center;
@@ -3309,9 +3293,9 @@ a {
   
   .wrapper__inventory-modal .item__prop-value {
     font-family: 'Teletactile';
-    font-size: 24px;
+    font-size: 16.25px;
     line-height: 24px;
-    color: #E45C00;
+    color: #393939;
   }
 /* } */
 
@@ -3728,8 +3712,8 @@ a {
 
 @media (max-height: 900px) {
   .wrapper__inventory-modal {
-    width: 90vw;
-    height: 100%;
+    /*width: 90vw;*/
+    width: 918px;
   }
   .wrapper__nft-shop-modal {
     height: 100%;
@@ -3740,24 +3724,22 @@ a {
   .wrapper__inventory-modal .character-wrap__img-wrap{
     display: flex;
     justify-content: center;
-    height: 40vh;
-    width: calc(65vw - 490px);
+    /*height: 40vh;
+    width: calc(65vw - 490px);*/
+
   }
   .wrapper__inventory-modal .character-wrap__img-wrap img{
     height: 100%;
   }
   .wrapper__inventory-modal .slot-wrap__slot{
-    width: 70px;
-    height: 70px;
+    width: 67.1px;
+    height: 67.1px;
   }
   .wrapper__inventory-modal .slot-wrap__title{
-    font-size: 18px;
+    font-size: 13.54px;
   }
-  .wrapper__inventory-modal .character__slots{
-    gap: 20px
-  }
-
-   .wrapper__inventory-modal .item__prop-value{
+ 
+  .wrapper__inventory-modal .item__prop-value{
     font-size: 20px;
   }
 
@@ -3775,17 +3757,9 @@ a {
   .wrapper__inventory-modal-overlay_active {
   display: block;
 }
-
-.inventory-modal__body {
-  margin-top: 60px;
-}
-
-.inventory-modal__body .left__list-wrap{
-  height: 38.5vh;
-}
-
 .wrapper__inventory-modal .body__left::after{
-  height: 46.5vh;
+  top: 90px;
+  height: calc(100% - 90px);
 }
   
 
@@ -3799,9 +3773,8 @@ a {
   }*/
   .inventory-modal__left-title, .nft-shop-modal__left-title {
     left: 0;
-    top: 0;
+    top: -120px;
     width: 90px;
-    height: 90vh;
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
@@ -3809,19 +3782,15 @@ a {
 
   .inventory-modal__right-title-characters, .nft-shop-modal__right-title-characters {
     width: 80px;
-    height: 90vh;
-    /*background-image: url('../media/svg/nft-shop-characters-title-600h.svg');*/
+    top: -120px
   }
 
   .inventory-modal__body .list-wrap__item-list {
-    grid-template-columns: repeat(5, 73px);
-    grid-template-rows: repeat(auto-fill, 73px);
-    gap: 18px;
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
+    gap: 10px;
   }
-  .inventory-modal__body .item-list__slot{
-    height: 73px;
-    width: 73px;
-  }
+  
   .inventory-items, .character-slot__item img{
     width: 57px;
     height: 52px;
@@ -3831,7 +3800,7 @@ a {
     height: 32px;
   }
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title{
-    padding-bottom: 32px;
+    padding-bottom: 18.28px;
   }
 }
 
@@ -4202,6 +4171,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   flex-direction: column;
   align-items: end;
   position: relative;
+  top: 15px;
+  right: 10px;
 }
 .character__character-wrap img:nth-child(1){
   left: 5px;
