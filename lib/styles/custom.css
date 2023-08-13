@@ -2849,21 +2849,6 @@ a {
   align-items: center;
 }
 
-
-.dressing-modal__btn-close {
-  top: 15px;
-  right: 43px;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background-image: url('../media/svg/close.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  position: absolute;
-  z-index: 1;
-}
-
 .dressing-modal__header-title {
   width: 100%;
   height: 55px;
@@ -2905,7 +2890,7 @@ a {
     width: 1360px;
     height: 890px;
 
-    background-color: #fff;
+    background-color: var(--bg-board);
     position: relative;
     overflow-y: hidden;
   }
@@ -4207,11 +4192,32 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 
 .wrapper__inventory-modal .dressing_canvas_container {
-  width: 100%;
-  height: 100%;
+  width: 350px;
+  height: 314px;
   margin-left: 0;
 }
 
+.character__character-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: relative;
+}
+.character__character-wrap img:nth-child(1){
+  left: 5px;
+  top: -10px;
+}
+.character__character-wrap img:nth-child(2){
+  top: -10px;
+}
+.character__character-wrap img:nth-child(3){
+  right: -11px;
+  bottom: 35px;
+}
+.character__character-wrap img:nth-child(4){
+  left: 5px;
+  bottom: 34px;
+}
 .dressing-modal__btn-close {
   position: absolute;
   right: 0;
