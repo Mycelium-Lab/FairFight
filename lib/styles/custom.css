@@ -466,6 +466,31 @@ a {
   transform: rotate(270deg);
 }
 
+/*.board-edge_shop:nth-child(1) {
+ left: 235px;
+    top: 155px;
+    z-index: 100;
+}
+
+.board-edge_shop:nth-child(2) {
+  right: 235px;
+  top: 155px;
+ z-index: 100;
+}
+
+.board-edge_shop:nth-child(3) {
+  right: 235px;
+    bottom: 155px;
+     z-index: 100;
+ }
+
+ .board-edge_shop:nth-child(4) {
+  left: 235px;
+    bottom: 155px;
+     z-index: 100;
+ }*/
+
+
 /*.board-edge_sm{
   width: 30px;
   height: 20px;
@@ -558,9 +583,7 @@ a {
   margin-left: auto;
 }
 
-.opengames__col {
 
-}
 
 /* modals */
 .modal {
@@ -2931,7 +2954,7 @@ a {
   color: #393939;
 }
 
-.wrapper__nft-shop-modal .info__pricing button {
+/*.wrapper__nft-shop-modal .info__pricing button {
   border-radius: 8px;
   border: none;
   padding: 0px 12px;
@@ -2943,8 +2966,10 @@ a {
   background-image: url('../media/svg/frame-btn.svg');
   background-repeat: no-repeat;
   background-size: 100%;
+  height: 35px;
+  padding-bottom: 10px;
 }
-
+*/
 .wrapper__nft-shop-modal .item__right {
   width: 80%;
   height: 100%;
@@ -4128,48 +4153,59 @@ a {
 }
 
 .tryon {
-  font-size: 12px;
-  line-height: 14.32px;
-  text-decoration: underline;
-  color: #393939;
-  bottom: 0;
-  cursor: pointer;
+  width: 110px;
 }
 
-.tryon_collection-bronze,  .tryon_collection-character{
-  background-image: url('../media/svg/shop/bronze-collection/try-on-btn.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 30px;
+.tryon_collection-bronze, .tryon_collection-character {
+  background-image: url('../media/svg/shop/bronze-collection/try-on-btn.svg') !important;
 }
+
 .tryon_collection-silver {
-  background-image: url('../media/svg/shop/silver-collection/try-on-btn.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 30px;
+  background-image: url('../media/svg/shop/silver-collection/try-on-btn.svg') !important;
 }
 .tryon_collection-gold {
-  background-image: url('../media/svg/shop/gold-collection/try-on-btn.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 30px;
+  background-image: url('../media/svg/shop/gold-collection/try-on-btn.svg') !important;
 }
 .tryon_collection-platinum {
-  background-image: url('../media/svg/shop/platinum-collection/try-on-btn.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 30px;
+  background-image: url('../media/svg/shop/platinum-collection/try-on-btn.svg') !important;
 }
 .tryon_collection-legendary {
-  background-image: url('../media/svg/shop/legendary-collection/try-on-btn.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 30px;
+  background-image: url('../media/svg/frame-btn.svg') !important;
+}
+
+.tryon_collection-bronze:hover,  .tryon_collection-character:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/bronze-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-silver:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/silver-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-gold:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/gold-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-platinum:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/platinum-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-legendary:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/legendary-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
 }
 
 .dropdown-menu-network {
@@ -4417,15 +4453,34 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   margin-bottom: -20px;
 }
 
-.buy-now-btn:hover {
-  /*color: #212529 !important;
-  transition: all 0.2s ease;*/
+.buy-now-btn, .tryon  {
+  font-family: 'Teletactile';
+  border-radius: 8px;
+    border: none;
+    padding: 0px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #fff;
+    background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 35px;
+    padding-bottom: 10px;
+  transition: all 0.2s ease;
 }
 
-.buy-now-btn {
-  font-family: 'Teletactile';
-  /*transition: all 0.2s ease;*/
+.buy-now-btn{
+  background-image: url('../media/svg/frame-btn.svg');
 }
+.buy-now-btn:hover {
+  /*color: #212529 !important;*/
+      background-position: center 5px !important;
+  transition: all 0.2s ease;
+ background-image: url('../media/svg/orange-btn-press.svg') !important; 
+ padding-top: 5px;
+}
+
 
 .message-modal__btns-wrap button {
   transition: all 0.3s ease;
