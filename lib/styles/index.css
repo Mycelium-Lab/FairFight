@@ -84,14 +84,13 @@ input[type=number] {
     max-height: 1000px;
     justify-content: center;
 }
-/*.startBtn {
+.startBtn {
     display: inline-block;
     outline: 0;
     border: none;
     cursor: pointer;
     padding: 0 24px;
-    border-radius: 50px;
-    min-width: 200px;
+    min-width: 162px;
     height: 50px;
     font-size: 18px;
     background-color: #fd0;
@@ -101,7 +100,7 @@ input[type=number] {
 }
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
-}*/
+}
 .canvasWrapper {
     margin: 50px;
     display: flex;
@@ -167,14 +166,13 @@ input[type=number] {
     max-height: 1000px;
     justify-content: center;
 }
-/*.startBtn {
+.startBtn {
     display: inline-block;
     outline: 0;
     border: none;
     cursor: pointer;
     padding: 0 24px;
-    border-radius: 50px;
-    min-width: 200px;
+    min-width: 162px;
     height: 50px;
     font-size: 18px;
     background-color: #fd0;
@@ -184,7 +182,7 @@ input[type=number] {
 }
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
-}*/
+}
 .canvasWrapper {
     margin: 50px;
     display: flex;

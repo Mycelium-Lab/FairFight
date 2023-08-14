@@ -280,6 +280,16 @@ a {
   transition: all 0.1s ease;
 }
 
+.startBtn#disconnect:hover #dropdown-change-network{
+  transition: all 0.1s ease;
+ top: 49px;
+}
+
+.startBtn#disconnect:hover #status{
+  transition: all 0.1s ease;
+ top: 23px;
+}
+
 /*.startBtn#disconnect::after {
 
   content: '';
@@ -325,6 +335,46 @@ a {
   padding-right: 40px
 }
 
+.change-network-dropdown{
+  position: absolute;
+  right: 2px;
+  top: 40px;
+  z-index: 100;
+ background-image: url('../media/svg/dropdown.svg');
+  list-style: none;
+  width: 161px;
+  height: 82px;
+  background-repeat: no-repeat;
+  padding: 0px;
+  flex-direction: column;
+}
+
+.change-network-dropdown li{
+  font-family: 'Teletactile';
+  color: #787878;
+  text-transform: uppercase;
+  font-size: 9px;
+  line-height: 8.75px;
+}
+
+.change-network-item{
+  margin: 13px 18px 10px 17px;
+  border-bottom: 1px solid #FFC897;
+  margin: 13px 18px 10px 17px;
+  border-bottom: 1px solid #FFC897;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+}
+.disconnect-item{
+  margin: 0px 18px 0px 17px;
+}
+#status{
+  width: 14px;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  transition: all 0.1s ease;
+}
 .contact_link_about{
   position: absolute;
   right: 55px;
@@ -2330,10 +2380,28 @@ a {
 
 .network-deactive{
   background-image: url('../media/svg/connect-btn.svg');
-  background-size: 100% 100%;
   background-repeat: no-repeat;
   display: block;
   height: 46px;
+  transition: all 0.1s ease;
+  width: 165px
+}
+
+.network-deactive:hover{
+      background: url(../media/svg/connect-btn-press.svg) no-repeat center 0;
+      /*display: flex;
+      flex-direction: column;*/
+      position: relative;
+      transition: all 0.1s ease;
+      background-position: center 5px
+}
+.network-deactive:hover:hover li{
+  padding-top: 6px;
+  transition: all 0.1s ease;
+  color: #393939;
+}
+.network-deactive:hover:hover path {
+  fill: #393939;
 }
 .change-network_list{
   padding: 0px;
@@ -2346,16 +2414,20 @@ a {
 
 .change-network_list a{
   color: #FF7C06;
-    display: flex;
-    align-items: center;
-  
-    padding-left: 10px;
-  width: 150px;
+  padding-top: 8px;  
+  padding-left: 10px;
+
 }
 
 .change-network_list a{
   color: #FF7C06;
 }
+
+.network-deactive li{
+  padding-left: 5px;
+  transition: all 0.1s ease;
+}
+
 
 .message-modal__loader {
   margin-top: 58px;
