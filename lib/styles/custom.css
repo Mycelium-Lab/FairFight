@@ -2346,15 +2346,19 @@ a {
 }
 
 .wrapper__message-modal_confirm {
-  height: 381px;
+  height: 400px;
+  width: 413px;
 }
 
 .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth {
-  height: 371px;
+  height: 340px;
+  width: 340px;
 }
 
 .wrapper__message-modal_purchase-completed {
-  height: 433px;
+  height: 463px;
+  padding-top: 42px;
+  width: 380px;
 }
 
 .wrapper__message-modal_change-network{
@@ -2392,6 +2396,7 @@ a {
   line-height: 23px;
   text-align: center;
   color: #393939;
+  margin-bottom: 0px;
 }
 
 .wrapper__message-modal_change-network .message-modal__header-title {
@@ -2502,6 +2507,7 @@ a {
   line-height: 22.8px;
   text-align: center;
   color: #393939;
+  margin-bottom: 10px;
 }
 
 .wrapper__message-modal .text-wrap__text {
@@ -2536,13 +2542,14 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .message-modal__btns-wrap_completed {
   margin-top: 20px;
 }
 
-.message-modal__btns-wrap button {
+/*.message-modal__btns-wrap button {
   margin-top: 15px;
   min-width: 160px;
   font-size: 14px;
@@ -4453,11 +4460,11 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   margin-bottom: -20px;
 }
 
-.buy-now-btn, .tryon  {
+.buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory  {
   font-family: 'Teletactile';
   border-radius: 8px;
     border: none;
-    padding: 0px 12px;
+    padding: 0px 7px;
     font-size: 16px;
     font-weight: 500;
     line-height: 30px;
@@ -4467,23 +4474,58 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
     background-size: 100%;
     height: 35px;
     padding-bottom: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
-.buy-now-btn{
+.buy-now-btn, .close-button, .back-nft-shop, .go-inventory{
   background-image: url('../media/svg/frame-btn.svg');
 }
-.buy-now-btn:hover {
-  /*color: #212529 !important;*/
+.buy-now-btn:hover, .back-nft-shop:hover, .go-inventory:hover {
       background-position: center 5px !important;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
  background-image: url('../media/svg/orange-btn-press.svg') !important; 
  padding-top: 5px;
 }
 
+.close-button{
+  padding: 0 49.7395px;
+  height: 48px;
+  padding-bottom: 5px;
+}
+
+.back-nft-shop, .go-inventory {
+  padding: 0 12px;
+  height: 62px;
+  padding-bottom: 5px;
+}
+
+.back-nft-shop:hover, .go-inventory:hover {
+  padding-top: 10px;
+}
+
+/*.new-approve-modal-close-button .close-button {
+  padding-bottom: 0px;
+  padding-top: 7px
+}*/
+
+.close-button:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 10px;
+}
+
+/*.new-approve-modal-close-button .close-button:hover {
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 11px
+}*/
+
+
 
 .message-modal__btns-wrap button {
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 /*.message-modal__btns-wrap button:hover {
@@ -4492,21 +4534,6 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   color: #fff;
 }*/
 
-.close-button, .back-nft-shop, .go-inventory{
-  background-image: url('../media/svg/close-button.svg');
-  cursor: pointer;
-  width: 165px;
-  height: 45px;
-  background-repeat: no-repeat, no-repeat;
-  border: none;
-  color: transparent;
-}
-.back-nft-shop{
-  background-image: url('../media/svg/back-to-ntt-shop-button.svg');
-}
-.go-inventory{
-  background-image: url('../media/svg/go-to-inventory-button.svg');
-}
 
 .about-header{
   width: 320px;
