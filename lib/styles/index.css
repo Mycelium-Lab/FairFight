@@ -84,7 +84,7 @@ input[type=number] {
     max-height: 1000px;
     justify-content: center;
 }
-.startBtn {
+/*.startBtn {
     display: inline-block;
     outline: 0;
     border: none;
@@ -101,7 +101,7 @@ input[type=number] {
 }
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
-}
+}*/
 .canvasWrapper {
     margin: 50px;
     display: flex;
@@ -167,7 +167,7 @@ input[type=number] {
     max-height: 1000px;
     justify-content: center;
 }
-.startBtn {
+/*.startBtn {
     display: inline-block;
     outline: 0;
     border: none;
@@ -184,7 +184,7 @@ input[type=number] {
 }
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
-}
+}*/
 .canvasWrapper {
     margin: 50px;
     display: flex;
@@ -421,9 +421,7 @@ summary::-webkit-details-marker {
 .dropdown > .dropdown-menu a:hover {
     background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
-.network-deactive {
-    background: white;
-}
+
 .network-active {
     background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
