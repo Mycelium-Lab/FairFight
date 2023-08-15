@@ -409,7 +409,7 @@ a {
   width: 100%;
 }
 
-#confirm_finish,
+/*#confirm_finish,
 #finishGame,
 #enemy_finishing_game_button {
   background: var(--color-btn);
@@ -428,7 +428,7 @@ a {
 
 #finishGame {
   min-width: 220px;
-}
+}*/
 
 .banner {
   display: flex;
@@ -748,7 +748,7 @@ a {
   display: flex;
   flex-direction: column;
   border: var(--border-board);
-  max-width: 504px;
+  max-width: 520px;
   width: 100%;
   padding: 30px 31px;
 }
@@ -930,11 +930,12 @@ a {
   margin-bottom: 34px;
 }
 .modal__title {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-orange);
   text-align: center;
   margin-bottom: 20px;
+  font-family: 'Teletactile'
 }
 
 .modal__title--mode {
@@ -945,7 +946,7 @@ a {
 }
 
 .modal__subtitle {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--color-black);
   text-align: center;
@@ -954,9 +955,13 @@ a {
 
 #over_modal .modal_content {
   background-image: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-left: 70px;
   padding-right: 70px;
+}
+
+
+#over_modal .modal_content_finish {
+  height: 300px;
 }
 
 #over_modal .modal_content .modal__block div {
@@ -964,9 +969,6 @@ a {
   gap: 30px;
 }
 
-#over_modal .modal_content button {
-  margin-top: 40px;
-}
 
 #over_modal .green {
   color: var(--color-green);
@@ -998,10 +1000,12 @@ a {
 }
 
 .modal__wsad .modal_content {
-  max-width: 369px;
-  width: 100%;
-  padding: 40px 20px;
-  background-image: none;
+  max-width: 520px;
+      width: 100%;
+      padding: 40px 20px;
+      background-image: none;
+      height: 660px;
+      border: var(--border-board);
 }
 
 .canvasWrapper {
@@ -1022,7 +1026,7 @@ a {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--bg-board);
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 7px 20px;
@@ -1031,6 +1035,8 @@ a {
   font-weight: 500;
   max-width: 1020px;
   margin: 10px 0;
+  border: var(--border-board);
+  position: relative;
 }
 
 .ronds-head__title {
@@ -4650,6 +4656,13 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 .join-button, .claim-button {
   padding-bottom: 8px;
+}
+
+.close-button_finish-game{
+  position: absolute;
+  bottom: 30px;
+  left: 160px;
+  height: 51px;
 }
 
 .back-nft-shop, .go-inventory {

@@ -87,7 +87,11 @@
 	<!-- End Google Tag Manager (noscript) -->
 		<div class="canvasWrapper">
 			<!-- <span id="internalWallet" class="canvasHeader" style="display: inherit;">Your wallet: </span> -->
-			<div id="top_stats" class="rounds-head">
+			<div id="top_stats" class="board rounds-head">
+				<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 				<div class="rounds-head__col">
 					<div class="rounds-head__subtitle">You</div>
 					<div class="stats-box">
@@ -254,7 +258,7 @@
 							fill="white" />
 					</svg>
 				</button>
-				<button id="confirm_finish">Finish Game</button>
+				<button id="confirm_finish" class="close-button">finish</button>
 				<button id="full-screen">
 					Enter full screen
 					<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -266,13 +270,15 @@
 				</button>
 			</div>
 			<div id="over_modal" class="modal">
-				<div class="board modal_content">
-					<span class="close_modal_window">
-						<img src="/media/svg/cross.svg" alt="">
-					</span>
+				<div class="board modal_content_finish modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div class="modal__title">Finish the game</div>
 					<div class="modal__subtitle" id="sure_want_end">Are you sure that you want to complete game?</div>
-					<div class="modal__subtitle">Players & stats:</div>
+					<!--<div class="modal__subtitle">Players & stats:</div>
 					<div class="finish-stats">
 						<div id="yourStats">
 							<span id="finish_modal_your_address"></span>(you):
@@ -292,8 +298,9 @@
 						<div>
 							<span id="enemyAmountWinLose"></span>
 						</div>
-					</div>
-					<button id="finishGame" style="display:inherit">Confirm</button>
+					</div>-->
+					<div class="modal__subtitle">10 ROSE (your in-game balance) will return to your wallet</div>
+					<button id="finishGame"class='close-button_finish-game close-button'>confirm</button>
 				</div>
 			</div>
 			<div id="about_modal" class="modal">
@@ -312,7 +319,7 @@
 			</div>
 			<div id="wainting_modal" class="modal">
 				<div class="modal_content">
-					<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<img class="load" src="/media/svg/load.svg" alt="">
 					<div>Waiting for enemy...</div>
 					<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">The game will start when other
@@ -321,32 +328,32 @@
 			</div>
 			<div id="confirm_modal" class="modal">
 				<div class="modal_content">
-					<span class="close_modal_window">
-						<img src="/media/svg/cross.svg" alt="">
-					</span>
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Waiting for confirmation</div>
 				</div>
 			</div>
 			<div id="pending_modal" class="modal">
 				<div class="modal_content">
-					<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Pending</div>
 				</div>
 			</div>
 			<div id="enemy_finishing_game_modal" class="modal">
 				<div class="modal_content">
-					<span class="close_modal_window">
-						<img src="/media/svg/cross.svg" alt="">
-					</span>
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Your enemy is finishing the game</div>
 					<a href="/" id="enemy_finishing_game_href"><button id="enemy_finishing_game_button">To the main page</button></a>
 				</div>
 			</div>
-			<div class="modal modal__wsad" style="display: none" id="instruction_modal">
+			<div class="board modal modal__wsad" style="display: none" id="instruction_modal">
 				<div class="modal_content">
-					<span class="close_modal_window"><img src="/media/svg/cross.svg" alt=""></span>
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div id="info" style="display: inherit;">
-						<img src="/media/svg/arrows.svg" alt="">
+						<!--<img src="/media/svg/arrows.svg" alt="">
 						<img src="/media/svg/wasd.svg" alt="">
 
 
@@ -355,7 +362,8 @@
 
 						Spacebar to shoot<br />
 						Collect tubes to recharge weapon<br />
-						Be careful of lava burns!<br />
+						Be careful of lava burns!<br />-->
+						<img src="/media/control-keys-info.png">
 					</div>
 				</div>
 			</div>
