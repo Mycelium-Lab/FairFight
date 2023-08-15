@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+  blockchain: 
+    build: ./evm
+    ports:
+      - "8545:8545"
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ff
+      POSTGRES_USER: ffadmin
+      POSTGRES_PASSWORD: ffpassword
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./tables.sql:/docker-entrypoint-initdb.d/tables.sql
+  redis:
+    image: redis:latest
+  app: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: "postgres"
+      DB: "ff"
+      DB_USER: "ffadmin"
+      DB_PASSWORD: "ffpassword"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      PRIVATE_KEY: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+      PRIVATE_KEY_EMERALD: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+      PRIVATE_KEY_TEST: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+  signalling: 
+    build: ./signalling
+    ports:
+      - "8033:8033"
+    environment:
+      DB_HOST: "postgres"
+      DB: "ff"
+      DB_USER: "ffadmin"
+      DB_PASSWORD: "ffpassword"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      PRIVATE_KEY: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+      PRIVATE_KEY_EMERALD: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
+      PRIVATE_KEY_TEST: "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"

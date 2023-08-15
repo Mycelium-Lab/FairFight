@@ -19,7 +19,7 @@ import web3 from "web3"
 import dotenv from "dotenv"
 dotenv.config()
 
-import { contractAbi, contractAddress, networks } from "../contract/contract.js"
+import { contractAbi, contractAddress, networks } from "./contract/contract.js"
 
 const redisClient = redis.createClient({
   socket: {
@@ -29,6 +29,7 @@ const redisClient = redis.createClient({
 })
 
 const pgClient = new pg.Client({
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB
