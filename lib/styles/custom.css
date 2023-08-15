@@ -3333,6 +3333,27 @@ a {
     right: 0px;
   }
   
+.board-edge_fitting:nth-child(1)  {
+  left: 26.5px;
+  top: -12px;
+}
+.board-edge_fitting:nth-child(2)  {
+  right: -12.5px;
+  top: -12px;
+}
+.board-edge_fitting:nth-child(3)  {
+  right: -12.5px;
+    bottom: 52px;
+}
+.board-edge_fitting:nth-child(4)  {
+  left: 26.5px;
+  bottom: 52px;
+}
+
+.help__img{
+  width: 23px;
+}
+
   .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar {
     width: 3px;
   }
@@ -4438,7 +4459,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 .contact_link {
   display: flex;
-  grid-gap: 20px;
+  grid-gap: 15px;
   cursor: pointer;
 
   align-items: center;
@@ -4504,7 +4525,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 
 .wrapper__inventory-modal .dressing_canvas_container {
-  width: 350px;
+  width: 314px;
   height: 314px;
   margin-left: 0;
 }
