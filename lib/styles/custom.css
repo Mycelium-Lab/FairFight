@@ -4638,6 +4638,20 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding-bottom: 5px;
 }
 
+.withdraw-button{
+  width: 238px;
+  height: 63px;
+  position: absolute;
+  right: 31px;
+  bottom: 28px;
+  font-size: 14px;
+  padding: 0px;
+}
+
+.join-button, .claim-button {
+  padding-bottom: 8px;
+}
+
 .back-nft-shop, .go-inventory {
   padding: 0 12px;
   height: 62px;
