@@ -2362,54 +2362,67 @@
 	<!-- item modal -->
 
 	<div id="inventory-item-modal" class="wrapper__item-modal-overlay">
-		<div class="body__item-detail">
-			<button class="item-detail__btn-close" id="btn-close-item-detail-modal"></button>
+		<div class="board body__item-detail">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<span id="btn-close-item-detail-modal" class="item-detail__btn-close"></span>
 
-			<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
-				<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
-					<img id="inventory-item-modal-image" src="media/characters/weapon-purple.svg">
+			<h2 class="item-modal-info">Info</h2>
+
+			<div id="inventory-item-body">
+				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
+					<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
+						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
+						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
+						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
+						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
+						<img id="inventory-item-modal-image">
+					</div>
+	
+					<div class="header__text-item">
+						
+							<p class="text-item__name" id="inventory-item-modal-name"></p>
+							<p class="text-item__type"><span id="inventory-item-modal-collection"></span> collection</p>
+						
+	
+						<div id="inventory-item-modal-features" class="header__text-item__props-item">
+							<!-- <div class="props-item__prop">
+								<div class="prop__img-wrap">
+									<img src="media/svg/props-items/attack-black.svg">
+								</div>
+								<p class="prop__title">Basic attack</p>
+								<p class="prop__value">+15</p>
+							</div>
+							<div class="props-item__prop">
+								<div class="prop__img-wrap">
+									<img src="media/svg/props-items/ammunition-quantity.svg">
+								</div>
+								<p class="prop__title">Ammunition quantity</p>
+								<p class="prop__value">+5</p>
+							</div>
+							<div class="props-item__prop">
+								<div class="prop__img-wrap">
+									<img src="media/svg/props-items/attack-speed.svg">
+								</div>
+								<p class="prop__title">Attack speed</p>
+								<p class="prop__value">+5</p>
+							</div> -->
+						</div>
+					</div>
 				</div>
-
-				<div class="header__text-item">
-					<div>
-						<p class="text-item__name" id="inventory-item-modal-name"></p>
-						<p class="text-item__type"><span id="inventory-item-modal-collection"></span> collection</p>
-					</div>
-
-					<div id="inventory-item-modal-features" class="header__text-item__props-item">
-						<!-- <div class="props-item__prop">
-                            <div class="prop__img-wrap">
-                                <img src="media/svg/props-items/attack-black.svg">
-                            </div>
-                            <p class="prop__title">Basic attack</p>
-                            <p class="prop__value">+15</p>
-                        </div>
-                        <div class="props-item__prop">
-                            <div class="prop__img-wrap">
-                                <img src="media/svg/props-items/ammunition-quantity.svg">
-                            </div>
-                            <p class="prop__title">Ammunition quantity</p>
-                            <p class="prop__value">+5</p>
-                        </div>
-                        <div class="props-item__prop">
-                            <div class="prop__img-wrap">
-                                <img src="media/svg/props-items/attack-speed.svg">
-                            </div>
-                            <p class="prop__title">Attack speed</p>
-                            <p class="prop__value">+5</p>
-                        </div> -->
-					</div>
+	
+				<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">
+					"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
+				</p>
+	
+				<div class="item-detail__btns-wrap">
+					<button id="inventory-item-modal-takeitoff">Take it off</button>
+					<button id="inventory-item-modal-use">Use</button>
 				</div>
 			</div>
-
-			<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">
-				"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
-			</p>
-
-			<div class="item-detail__btns-wrap">
-				<button id="inventory-item-modal-takeitoff">Take it off</button>
-				<button id="inventory-item-modal-use">Use</button>
-			</div>
+			
 		</div>
 	</div>
 
