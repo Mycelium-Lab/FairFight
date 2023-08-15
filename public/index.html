@@ -519,7 +519,10 @@
 			</div>
 		</button>
 			<div class="startBtn" id="disconnect" style="display:none">
-				<span id="network_name">Oasis</span>
+				<div id="network-name-wrapper" class="network_name-wrapper">
+					<img id="network_icon">
+					<span id="network_name">Oasis</span>
+				</div>
 				<span id="disconnect-address"></span>
 				<img id="status" src="/media/svg/status.svg">
 				<ul id="dropdown-change-network" class="change-network-dropdown"  style="display:none">
@@ -531,7 +534,8 @@
 						disconnect</li></a>
 				</ul>
 			</div>
-			<button class="startBtn" id="connect" style="display:none">
+			<button class="connect-button close-button" id="connect" style="display:none">
+				connect wallet
 			</button>
 		</div>
 		<div class="contact_link_about contact_link" id="about_link">
@@ -1310,7 +1314,7 @@
 			</div>
 
 			<div class="message-modal__btns-wrap">
-				<buttton class="new-approve-modal-close-button close-button">close</buttton>
+				<buttton id="new-approve-modal-close" class="new-approve-modal-close-button close-button">close</buttton>
 			</div>
 		</div>
 	</div>

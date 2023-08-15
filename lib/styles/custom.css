@@ -202,22 +202,6 @@ a {
   line-height: 16.7px;
 }
 
-.startBtn#connect {
-  /*background: var(--color-btn);*/
-  color: #fff;
-  /*box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);*/
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 500;
-  position: relative;
-}
-
-#connect{
-  background-image: url('../media/svg/connect_wallet_btn.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right;
-}
 
 
 #header {
@@ -235,21 +219,21 @@ a {
 }
 
 .startBtn#disconnect {
- /* min-width: 220px;*/
-  background-color: #fff;
-  color: #000;
-  height: 50px;
-  /*background-image: url("/media/svg/dot.svg");*/
-   background: url("../media/svg/connect-btn.svg") no-repeat center 0;
-  /*background-size: 100% 100%;*/
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: all 0.1s ease;
-  padding: 0px;
-  margin: 0px;
-  width: 165px;
-}
+  /* min-width: 220px;*/
+   background-color: #fff;
+   color: #000;
+   height: 50px;
+   /*background-image: url("/media/svg/dot.svg");*/
+    background: url("../media/svg/connect-btn.svg") no-repeat center 0;
+   /*background-size: 100% 100%;*/
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   transition: all 0.1s ease;
+   padding: 0px;
+   margin: 0px;
+   width: 165px;
+ }
 
 .startBtn#disconnect:hover{
   /*min-width: 220px; */
@@ -275,16 +259,22 @@ a {
   min-width: 220px;*/
 }
 
-.startBtn#disconnect:hover #network_name{
-  padding-top: 15px;
+.startBtn#disconnect:hover .network_name-wrapper {
   transition: all 0.1s ease;
+  margin-top: 14px;
 }
-
+.startBtn#disconnect:hover #disconnect-address {
+  transition: all 0.1s ease;
+  bottom: 3px;
+}
 .startBtn#disconnect:hover #dropdown-change-network{
   transition: all 0.1s ease;
  top: 49px;
 }
 
+#network_icon{
+  width: 16px;
+}
 .startBtn#disconnect:hover #status{
   transition: all 0.1s ease;
  top: 23px;
@@ -312,9 +302,11 @@ a {
   font-weight: 500;
 }
 
-#network_name{
-  padding-top: 5px;
-  padding-left: 15px;
+.network_name-wrapper{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 4px;
   transition: all 0.1s ease;
 }
 
@@ -323,6 +315,8 @@ a {
   color: #000000;
   padding-left: 15px;
   transition: all 0.1s ease;
+  position: absolute;
+  bottom: 14px;
 }
 
 #disconnect-address::before{
@@ -2499,6 +2493,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin-top: 20px;
 }
 
 .change-network_list a{
@@ -2821,7 +2816,6 @@ a {
   display: flex;
   width: 100%;
   align-items: center;
-  border-right: 1px solid #C6C6C6;
   margin: 18px 0px 18px 20px;
 }
 
@@ -2927,10 +2921,11 @@ a {
   margin-left: 30px;
   width: 100%;
   display: flex;
-  height: 100%;
+  height: 120px;
   flex-direction: column;
   justify-content: space-between;
   padding-right: 12.39px;
+  border-right: 1px solid #C6C6C6;
 }
 
 .info__text{
@@ -3044,6 +3039,7 @@ a {
   padding: 20px;
   padding-left: 12px;
   max-width: 420px;
+  padding-top: 26px;
 }
 
 .wrapper__nft-shop-modal .item__line {
@@ -4409,9 +4405,6 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   width: 100%;
 }
 
-.startBtn#connect {
-  background-color: transparent;
-}
 
 .wrapper__contacts {
   /*position: absolute;*/
@@ -4612,7 +4605,9 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   margin-bottom: -20px;
 }
 
-.buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button  {
+.buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory, 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button,
+.bought-btn   {
   font-family: 'Teletactile';
     border: none;
     background-color: transparent;
@@ -4627,8 +4622,11 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
     padding-bottom: 10px;
   transition: all 0.1s ease;
 }
-
-.buy-now-btn, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button{
+.bought-btn{
+  width: 110px;
+  background-image: url('../media/svg/orange-btn-press.svg');  
+}
+.buy-now-btn, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button {
   background-image: url('../media/svg/frame-btn.svg');
 }
 .buy-now-btn:hover, .back-nft-shop:hover, .go-inventory:hover, .wrapper__item-modal-overlay .item-detail__btns-wrap button:hover {
@@ -4642,6 +4640,10 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding: 0 49.7395px;
   height: 48px;
   padding-bottom: 5px;
+}
+
+.buy-now-btn{
+  width: 110px;
 }
 
 .withdraw-button{
@@ -4665,6 +4667,13 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   height: 51px;
 }
 
+.connect-button {
+  padding: 0 10px;
+  padding-bottom: 9px;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
 .back-nft-shop, .go-inventory {
   padding: 0 12px;
   height: 62px;
@@ -4675,10 +4684,11 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding-top: 10px;
 }
 
-/*.new-approve-modal-close-button .close-button {
+#new-approve-modal-close {
   padding-bottom: 0px;
-  padding-top: 7px
-}*/
+  padding-top: 7px;
+  cursor: pointer;
+}
 
 .close-button:hover{
   background-position: center 5px !important;
@@ -4687,12 +4697,12 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding-top: 10px;
 }
 
-/*.new-approve-modal-close-button .close-button:hover {
+#new-approve-modal-close:hover {
   background-position: center 5px !important;
   transition: all 0.1s ease;
   background-image: url('../media/svg/orange-btn-press.svg') !important; 
   padding-top: 11px
-}*/
+}
 
 
 
