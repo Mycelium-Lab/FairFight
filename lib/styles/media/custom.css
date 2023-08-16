@@ -12,3 +12,53 @@
         justify-content: center;
       }
 }
+
+@media (max-height: 900px) {
+  .inventory__modal-content {
+    /*width: 90vw;*/
+    width: 918px;
+  }
+  .wrapper__nft-shop-modal {
+    height: 100%;
+  }
+  .character-wrap__img-wrap{
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper__nft-shop-modal-overlay_active,
+  .wrapper__inventory-modal-overlay_active {
+  display: block;
+}
+.body__inventory::after{
+  top: 90px;
+  height: calc(100% - 90px);
+}
+
+  .inventory-modal__left-title, .nft-shop-modal__left-title {
+    left: 0;
+    top: -120px;
+    width: 90px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+  }
+
+  .inventory-modal__right-title-characters, .nft-shop-modal__right-title-characters {
+    width: 80px;
+    top: -120px
+  }
+
+  .inventory-modal__body .list-wrap__item-list {
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
+    gap: 10px;
+  }
+  .inventory-items-wider {
+    width: 64px;
+    height: 32px;
+  }
+
+  .inventory-items .list-items__item_character {
+    background: none !important;
+  }
+}

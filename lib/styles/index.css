@@ -1,3 +1,5 @@
+@import url('./base/base.css');
+
 html,body {
     background-color: #333;
     color: #fff;
@@ -257,19 +259,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
 }
-/* Модальный (фон) */
-.modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed; /* Оставаться на месте */
-    z-index: 1; /* Сидеть на вершине */
-    left: 0;
-    top: 0;
-    width: 100%; /* Полная ширина */
-    height: 100%; /* Полная высота */
-    overflow: auto; /* Включите прокрутку, если это необходимо */
-    background-color: rgb(0,0,0); /* Цвет запасной вариант */
-    background-color: rgba(0,0,0,0.4); /* Черный с непрозрачностью */
-}
+
 
 /* Модальное содержание/коробка */
 .modal-content {
@@ -302,7 +292,7 @@ summary {
 summary::-webkit-details-marker {
     display: none;
 }
-.modal {
+/*.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -313,8 +303,8 @@ summary::-webkit-details-marker {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 1000;
-}
-.modal .modal_content {
+}*/
+/*.modal .modal_content {
     background-color: #000000;
     margin: 15% auto;
     padding: 20px;
@@ -329,7 +319,7 @@ summary::-webkit-details-marker {
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-}
+}*/
 
 *, *:before, *:after {
     -webkit-border-sizing: border-box;

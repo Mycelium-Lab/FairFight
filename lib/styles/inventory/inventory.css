@@ -1,0 +1,234 @@
+.inventory__modal-content{
+    width: 918px;
+
+}
+
+.modal__header-title_inventory{
+  width: 100%;
+  height: 55px;
+  background-image: url('../../media/svg/inventory-modal/inventory-modal-header.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.inventory-modal__left-title {
+    left: 0;
+    top: -100px;
+    width: 90px;
+    height: 855px;
+    background-image: url('../../media/svg/inventory-left-title.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    opacity: 0.1;
+}
+
+.inventory-modal__right-title{
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 855px;
+    top: -100px;
+    background-image: url('../../media/svg/nft-shop-characters-title.svg');
+}
+
+.body__inventory {
+    position: relative;
+    width: 336px;
+    right: 15px
+}
+
+.body__inventory::after {
+    top: 80px;
+    right: -24px;
+    width: 2px;
+    height: calc(100% - 80px);
+    content: '';
+    background-color: #C6C6C6;
+    display: block;
+    position: absolute;
+}
+
+.inventory__header-title{
+    border-bottom: 5px solid #FF7C06;
+    padding-bottom: 15.57px;
+    font-family: 'Teletactile';
+    font-size: 21.67px;
+    line-height: 32px;
+    color: #FF7C06;
+    text-align: center;
+}
+
+.inventory-modal__body {
+    margin-top: 32.43px;
+    height: 100%;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 339px 1fr;
+    padding: 0px 48.09px 0px 55px;
+  }
+
+.inventory__list-wrap {
+    margin-top: 22px;
+    border: 2px solid #393939;
+    padding: 15px 15px 15px 10px;
+    height: 316px;
+    position: relative;
+}
+.inventory-corner_topleft{
+    width: 15px;
+    top: -6px;
+    left: -6px;
+}
+.inventory-corner_topright{
+    width: 15px;
+    top: -6px;
+    right: -6px;
+}
+.inventory-corner_bottomright{
+    width: 15px;
+    bottom: -6px;
+    right: -6px;
+}
+.inventory-corner_bottomleft{
+    width: 15px;
+    bottom: -6px;
+    left: -6px;
+}
+.inventory-character{
+    gap: 21.67px
+}
+
+.inventory_slots{
+    width: 68px;
+    gap: 15px;
+    height: 100%;
+    margin-left: 3px;
+    transform: translateY(-10px);
+}
+.list-wrap__item-list {
+    padding-bottom: 20px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
+    overflow: auto;
+    overflow-x: hidden;
+    gap: 10px;
+  }
+
+  .item-list__slot {
+    border-radius: 9px;
+    border: 2px solid #B6BCC4;
+    padding: 3px;
+    width: 67.1px;
+    height: 67.1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  .item-list__slot:hover::before {
+    background-color: #B6BCC4;
+  }
+
+  .item-list__slot_silver:hover::before {
+    background-color: #B6BCC4;
+  }
+
+  .item-list__slot_green:hover::before {
+    background-color: #24B500;
+  }
+
+  .item-list__slot_blue:hover::before {
+    background-color: #03B8F1;
+  }
+
+  .item-list__slot_purple:hover::before {
+    background-color: #7000F2;
+  }
+
+  .item-list__slot_orange:hover::before {
+    background-color: #FF7C06;
+  }
+
+  .item-list__slot::before {
+    border-radius: 9px;
+    width: 100%;
+    height: 100%;
+    content: '';
+    filter: blur(3px);
+    display: block;
+    position: absolute;
+    z-index: -1;
+     background-image: url('../media/svg/slot-blick.svg');
+  }
+
+   .item-list__slot_silver {
+    border-radius: 9px;
+  }
+   .item-list__slot_silver::before {
+    border: 2px solid #B6BCC4;
+  }
+   .item-list__slot_orange {
+    border-radius: 9px;
+  }
+  .item-list__slot_orange::before {
+    border: 2px solid #FF7C06;
+  }
+  
+   .item-list__slot_purple {
+    border-radius: 9px;
+  }
+
+    .item-list__slot_character {
+    border-radius: 9px;
+    border: 2px solid #000000;
+  }
+  .item-list__slot_blue::before {
+    border: 2px solid #03B8F1;
+  }
+  .item-list__slot_purple::before {
+    border: 2px solid #7000F2;
+  }
+  .item-list__slot_blue {
+    border-radius: 9px;
+  }
+  .item-list__slot_green::before {
+    border: 2px solid #24B500;
+  }
+  .item-list__slot_green {
+    border-radius: 9px;
+  }
+
+  /* 
+  TODO: Избавиться от данной записи. Сделать чтобы 
+  специфичность была (0, 1, 0)
+  */
+  .list-wrap__item-list .board-edge_sm:nth-child(1)  {
+    left: -2.5px;
+    top: -2px
+  }
+  .list-wrap__item-list .board-edge_sm:nth-child(2)  {
+    right: -3px;
+    top: -2px;
+    transform: rotate(90deg);
+  }
+.list-wrap__item-list .board-edge_sm:nth-child(3)  {
+    right: -2.5px;
+    bottom: -2.65px;
+    transform: rotate(180deg);
+  }
+.list-wrap__item-list .board-edge_sm:nth-child(4)  {
+    bottom: -3px;
+    left: -2px;
+    right: 0px;
+    transform: rotate(270deg);
+  }
