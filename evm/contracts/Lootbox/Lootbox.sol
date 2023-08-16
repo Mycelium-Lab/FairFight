@@ -151,6 +151,13 @@ contract Lootbox is Pausable, Ownable {
         signer = _signer;
     }
 
+    function setPrice(
+        uint256 _price
+    ) external onlyOwner {
+        require(_price != 0, "FairFight Lootbox: Price is zero");
+        price = _price;
+    }
+
     function pause() external onlyOwner {
         _pause();
     }
