@@ -2407,7 +2407,7 @@ a {
 }
 
 .wrapper__nft-shop-modal .list-items__item {
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   position: relative;
   z-index: 10;
@@ -2415,8 +2415,8 @@ a {
   left: 30px;
 }
 
-.wrapper__nft-shop-modal .list-items__item:first-child {
-  margin-top: 0;
+.wrapper__nft-shop-modal .list-items__item:last-child {
+  margin-bottom: 34px;
 }
 .list-items-wrap__list-items{
   width: 77px;
