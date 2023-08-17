@@ -960,16 +960,17 @@
 	</div>
 
 	<!-- Add in class wrapper__message-modal_active for display modal -->
-	<div id="my_modal" class="modal">
+	<div id="my_modal" class="modal wrapper__message-modal-overlay">
 		<div class="board wrapper__message-modal modal_content_new-game modal_content">
 			<img class="board-edge" src="media/svg/board-edge.svg">
 			<img class="board-edge" src="media/svg/board-edge.svg">
 			<img class="board-edge" src="media/svg/board-edge.svg">
 			<img class="board-edge" src="media/svg/board-edge.svg">
-			<button class="message-modal__btn-close close_modal_window"></button>
+			<button class="close_modal_window modal__close-icon"></button>
 			<img class="new-game-header" src="media/svg/new_game_header.svg">
 			<img src="/media/svg/devider.svg">
 			<div class="modal__row">
+				
 				<div>
 					Map
 					<select id="map">
@@ -1010,7 +1011,7 @@
 			<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 		</div>
 	</div>
-	<div id="install_wallet_modal" class="modal">
+	<div id="install_wallet_modal" class="modal wrapper__message-modal-overlay">
 		<div class="board modal_content wrapper__message-modal">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -1033,7 +1034,7 @@
 			</p>
 		</div>
 	</div>
-	<div id="about_modal" class="modal" >
+	<div id="about_modal" class="modal wrapper__message-modal-overlay" >
 		<div class="board wrapper__message-modal modal_content_about modal_content">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -1051,13 +1052,13 @@
 			</div>
 		</div>
 	</div>
-	<div id="error_modal" class="modal">
-		<div class="board wrapper__message-modal modal_content">
+	<div id="error_modal" class="modal wrapper__message-modal-overlay">
+		<div class="board wrapper__message-modal modal_content-error modal_content">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button close_modal_window"></span>
+<span class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></span>
 			<div class="message-modal__error">
 				<img src="media/svg/message-modal-error.svg">
 			</div>
@@ -1469,11 +1470,11 @@
 
 	<div id="shop-block" class="wrapper__nft-shop-modal-overlay">
 		<div class="board wrapper__nft-shop-modal wrapper__message-modal">
-			<!--<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge_sm board-edge" src="media/svg/board-edge.svg">-->
-								<button class="nft-shop-modal__btn-close message-modal__btn-close close_modal_window"></button>
+			<img class="board-edge_sm modal-content__corner" src="media/svg/board-edge.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/board-edge.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/board-edge.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/board-edge.svg">
+								<button class="nft-shop-modal__btn-close modal__close-icon"></button>
 
 			<div class="nft-shop-modal__left-title"></div>
 
@@ -1579,17 +1580,16 @@
 
 	<div id="inventory-modal" class="modal-overlay">
 		<div class="inventory__modal-content modal-content_primary modal-content">
+			<img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-wrap-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 			<button id="inventory-close" class="inventory-modal__btn-close modal__close-icon"></button>
 
 			<div class="inventory-modal__left-title"></div>
 			<div class="inventory-modal__right-title"></div>
 
 			<div class="modal__header-title_inventory"></div>
-
-			<div class="inventory-modal__right-title inventory-modal__right-title-characters inventory-modal__right-title_active"></div>
-			<div class="inventory-modal__right-title inventory-modal__right-title-weapons"></div>
-			<div class="inventory-modal__right-title inventory-modal__right-title-armor"></div>
-			<div class="inventory-modal__right-title inventory-modal__right-title-boots"></div>
 
 			<div class="inventory-modal__body">
 				<div class="body__inventory">
@@ -1744,6 +1744,10 @@
 					</div>
 
 					<div class="inventory__list-wrap" id="left-inventory-weapons-list" style="display: none;">
+						<img class="inventory-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
@@ -1788,7 +1792,12 @@
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
 							</div>
-							<div class="item-list__slot"></div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+							</div>
 
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
@@ -1868,6 +1877,10 @@
 					</div>
 
 					<div class="inventory__list-wrap" id="left-inventory-armors-list" style="display: none;">
+						<img class="inventory-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
@@ -1996,6 +2009,10 @@
 					</div>
 
 					<div class="inventory__list-wrap" id="left-inventory-boots-list" style="display: none;">
+						<img class="inventory-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-middle-light.svg">
+					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
@@ -2132,19 +2149,34 @@
 						<div class="character__slots inventory_slots">
 							<div class="slots__slot-wrap">
 								<p class="slot-wrap__title">WEAPON</p>
+								<img class="inventory-slot__modal-corner_topleft_weapon modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_topright_weapon modal-content__corner_topright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomright_weapon modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomleft_weapon modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-light.svg">
 								<div id="weapon-slot" class="slot-wrap__slot weapon-slot  weapon__slot-background">
 								</div>
 							</div>
 
 							<div class="slots__slot-wrap">
 								<p class="slot-wrap__title">ARMOR</p>
+								<img class="inventory-slot__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-light.svg">
 								<div id="armor-slot" class="slot-wrap__slot armor-slot armor__slot-background">
-			
 								</div>
 							</div>
 
 							<div class="slots__slot-wrap">
 								<p class="slot-wrap__title">BOOTS</p>
+								<img class="inventory-slot__modal-corner_topleft_boots modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_topright_boots modal-content__corner_topright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomright_boots modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomleft_boots modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_topright modal-content__corner_topright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomright modal-content__corner_bottomright modal-content__corner" src="media/svg/corner-light.svg">
+								<img class="inventory-slot__modal-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-light.svg">
 								<div id="boots-slot" class="slot-wrap__slot boots-slot boots__slot-background">
 			
 								</div>
@@ -2360,10 +2392,10 @@
 
 	<div id="inventory-item-modal" class="wrapper__item-modal-overlay">
 		<div class="board body__item-detail">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<span id="btn-close-item-detail-modal" class="item-detail__btn-close"></span>
 
 			<h2 class="item-modal-info">Info</h2>
@@ -2371,10 +2403,10 @@
 			<div id="inventory-item-body">
 				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
 					<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
-						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
-						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
-						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
-						<img data-edge="inventory-item" class="board-edge_inventory-item board-edge">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner">
 						<img id="inventory-item-modal-image">
 					</div>
 	
@@ -2438,8 +2470,8 @@
 	</div>
 </div>
 </div>
-<div id="confirmation_modal" class="modal">
-	<div class="board modal_content_waiting wrapper__message-modal modal_content">
+<div id="confirmation_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -2451,7 +2483,7 @@
 			transaction in your wallet</div>
 	</div>
 </div>
-<div id="pending_modal" class="modal">
+<div id="pending_modal" class="modal wrapper__message-modal-overlay" style="display: show;">
 	<div class="board modal_content_panding modal_content wrapper__message-modal">
 		<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">

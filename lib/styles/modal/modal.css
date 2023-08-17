@@ -176,8 +176,11 @@
   .modal .modal_content_new-game {
     display: block;
     background-position: 300px 530px;
-    background-image: url("../media/svg/player-visible.svg");
+    background-image: url("../../media/svg/player-visible.svg");
     background-repeat: no-repeat;
+    background-size: 260px 220px;
+    background-position: 260px 500px;
+    position: relative;
   }
   .modal .modal_content_about {
     height: 401px;
@@ -426,4 +429,19 @@
         background-image: none;
         height: 660px;
         border: var(--border-board);
+  }
+
+  .modal .modal_content_new-game::before {
+    content: '';
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 260px;
+    height: 210px;
+    background-color: #FFF9E0;
+  }
+
+  .modal_content-error{
+    width: 410px;
   }

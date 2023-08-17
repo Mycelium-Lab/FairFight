@@ -36,7 +36,7 @@
 
   .inventory-modal__left-title, .nft-shop-modal__left-title {
     left: 0;
-    top: -120px;
+    top: -90px;
     width: 90px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -45,17 +45,13 @@
 
   .inventory-modal__right-title-characters, .nft-shop-modal__right-title-characters {
     width: 80px;
-    top: -120px
+    top: -10px
   }
 
   .inventory-modal__body .list-wrap__item-list {
     grid-template-columns: repeat(4, 67.1px);
     grid-template-rows: repeat(auto-fill, 67.1px);
     gap: 10px;
-  }
-  .inventory-items-wider {
-    width: 64px;
-    height: 32px;
   }
 
   .inventory-items .list-items__item_character {

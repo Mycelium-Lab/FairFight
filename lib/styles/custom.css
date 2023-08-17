@@ -439,10 +439,17 @@ a {
   position: relative;
 }
 
-/*.board-edge:nth-child(1) {
+.board-edge:nth-child(1) {
   position: absolute;
   left: -13px;
   top: -10px;
+}
+
+.board-edge:nth-child(2) {
+  position: absolute;
+  right: -13px;
+  top: -10px;
+  transform: rotate(90deg);
 }
 
 .board-edge_sm:nth-child(2) {
@@ -464,31 +471,8 @@ a {
   left: -13px;
   bottom: -10px;
   transform: rotate(270deg);
-}*/
-
-/*.board-edge_shop:nth-child(1) {
- left: 235px;
-    top: 155px;
-    z-index: 100;
 }
 
-.board-edge_shop:nth-child(2) {
-  right: 235px;
-  top: 155px;
- z-index: 100;
-}
-
-.board-edge_shop:nth-child(3) {
-  right: 235px;
-    bottom: 155px;
-     z-index: 100;
- }
-
- .board-edge_shop:nth-child(4) {
-  left: 235px;
-    bottom: 155px;
-     z-index: 100;
- }*/
 
 
 /*.board-edge_sm{
@@ -1713,17 +1697,10 @@ a {
 }
 
 .nft-shop-modal__btn-close {
-  top: 40px;
-  right: 43px;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background-image: url('../media/svg/close.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
   position: absolute;
-  z-index: 1;
+  right: 0;
+  margin-right: 25px;
+  top: 40px;
 }
 
 .nft-shop-modal__left-title {
@@ -2008,11 +1985,11 @@ a {
   flex-wrap: wrap;
   align-items: center;
 }
-/* 
-.wrapper__message-modal-overlay_active {
+ 
+/*.wrapper__message-modal-overlay_active {
  display: flex;
  flex-wrap: wrap;
-} */
+}*/
 
 .wrapper__message-modal {
   /* flex-shrink: 0; */
@@ -2239,6 +2216,21 @@ a {
 
 .message-modal__btns-wrap_completed {
   margin-top: 20px;
+}
+
+.message-modal__btn-close {
+  top: 17px;
+  right: 19px;
+  border: none;
+  width: 22px;
+  height: 22px;
+  background-image: url('../media/svg/close-pixel.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /*.message-modal__btns-wrap button {
@@ -2800,10 +2792,7 @@ a {
     background-image: url('../media/svg/nft-shop-boots-title.svg');
   }
 
-   .inventory-items, .character-slot__item img{
-    width: 57px;
-    height: 52px;
-  }
+
   
   .wrapper__inventory-modal .body__left {
     position: relative;
@@ -2910,127 +2899,7 @@ a {
     border-radius: 20px;
     background-color: #393939;
   }
-  
-  /*.inventory-modal__body .item-list__slot {
-    border-radius: 9px;
-    border: 2px solid #B6BCC4;
-    padding: 3px;
-    width: 67.1px;
-    height: 67.1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-  }*/
-
- /* .inventory-modal__body .item-list__slot:hover::before {
-    background-color: #B6BCC4;
-  }
-
-  .inventory-modal__body .item-list__slot_silver:hover::before {
-    background-color: #B6BCC4;
-  }
-
-  .inventory-modal__body .item-list__slot_green:hover::before {
-    background-color: #24B500;
-  }
-
-  .inventory-modal__body .item-list__slot_blue:hover::before {
-    background-color: #03B8F1;
-  }
-
-  .inventory-modal__body .item-list__slot_purple:hover::before {
-    background-color: #7000F2;
-  }
-
-  .inventory-modal__body .item-list__slot_orange:hover::before {
-    background-color: #FF7C06;
-  }
-
-  
-  .inventory-modal__body .item-list__slot .slot__item-icon {
-    max-height: 100%;
-    display: none;
-  }
-  */
-  /*.wrapper__inventory-modal .item-list__slot::before {
-    border-radius: 9px;
-    width: 100%;
-    height: 100%;
-    content: '';
-    filter: blur(3px);
-    display: block;
-    position: absolute;
-    z-index: -1;
-     background-image: url('../media/svg/slot-blick.svg');
-  }*/
-  
-  
-  
-  /*.wrapper__inventory-modal .item-list__slot_silver {
-    border-radius: 9px;
-  }
-  .wrapper__inventory-modal .item-list__slot_silver::before {
-    border: 2px solid #B6BCC4;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_orange {
-    border-radius: 9px;
-  }
-  .wrapper__inventory-modal .item-list__slot_orange::before {
-    border: 2px solid #FF7C06;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_purple {
-    border-radius: 9px;
-  }
-
-  .wrapper__inventory-modal .item-list__slot_character {
-    border-radius: 9px;
-    border: 2px solid #000000;
-  }
-  .wrapper__inventory-modal .item-list__slot_blue::before {
-    border: 2px solid #03B8F1;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_purple::before {
-    border: 2px solid #7000F2;
-  }
-  .wrapper__inventory-modal .item-list__slot_blue {
-    border-radius: 9px;
-  }
-
-  .wrapper__inventory-modal .item-list__slot_green::before {
-    border: 2px solid #24B500;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_green {
-    border-radius: 9px;
-  
-  }
-  */
-  
-  /*.wrapper__inventory-modal .right__character {
-    margin-top: 20.43px;
-    display: flex;
-  }*/
-  
-  /*.wrapper__inventory-modal .character__slots {
-    flex-shrink: 0;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px
-  }*/
-
-  
-  /*.wrapper__inventory-modal .slots__slot-wrap {
-    display: flex;
-    flex-direction: column;
-  }*/
-
+ 
 
   .wrapper__inventory-modal .item__prop-img-wrap {
     display: flex;
@@ -3340,7 +3209,6 @@ a {
 }
 
 .wrapper__item-modal-overlay .header__img-item {
-  border-radius: 9px;
   border: 1px solid #757575;
   /*padding: 40px;*/
   width: 150px;
@@ -4144,6 +4012,18 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
   color: #fff;
 }*/
+
+
+.board-edge_sm:nth-child(2) {
+  transform: rotate(90deg);
+}
+.board-edge_sm:nth-child(3) {
+  transform: rotate(180deg);
+}
+.board-edge_sm:nth-child(4) {
+  transform: rotate(270deg);
+}
+
 
 
 .about-header{
