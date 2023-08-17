@@ -3595,20 +3595,6 @@ z-index: -1;
   vertical-align: sub;
 }
 
-.slot-wrap__slot-img {
-  width: 63px;
-  height: 58px;
-  /*position: relative;
-  z-index: 10;*/
-}
-
-.slot-wrap__slot-img-wider {
-  width: 64px;
-  height: 32px;
-  /*position: relative;
-  z-index: 10*/
-}
-
 .lds-dual-ring-tryon:after {
   content: "";
   display: block;
