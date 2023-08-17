@@ -3077,30 +3077,7 @@ a {
     position: relative;
     z-index: 1;
   }
-  
-  /*.wrapper__inventory-modal .weapon-slot::before, .wrapper__inventory-modal .armor-slot::before, .wrapper__inventory-modal .boots-slot::before {
-    border-radius: 4px;
-    width: 100%;
-    height: 100%;
-    content: '';
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: absolute;
-    z-index: 1;
-  }*/
 
-  .weapon__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/weapon-slot.svg');
-  }
-
-  /*.armor__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/armor-slot.svg');
-  }*/
-  
-  .boots__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/boots-slot.svg');
-  }
-  
   /*.wrapper__inventory-modal .character-wrap__img-wrap {
     border: 3px solid #FF7C06;
     padding: 27px 32px;
@@ -3621,15 +3598,15 @@ z-index: -1;
 .slot-wrap__slot-img {
   width: 63px;
   height: 58px;
-  position: relative;
-  z-index: 10;
+  /*position: relative;
+  z-index: 10;*/
 }
 
 .slot-wrap__slot-img-wider {
   width: 64px;
   height: 32px;
-  position: relative;
-  z-index: 10
+  /*position: relative;
+  z-index: 10*/
 }
 
 .lds-dual-ring-tryon:after {
