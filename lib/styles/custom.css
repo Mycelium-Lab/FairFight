@@ -3939,18 +3939,23 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding-bottom: 5px;
 }
 
+.close-button_big{
+  background-image: url('../media/svg/big-frame-btn.svg');
+}
+
 .buy-now-btn{
   width: 110px;
 }
 
 .withdraw-button{
   width: 238px;
-  height: 63px;
   position: absolute;
   right: 31px;
   bottom: 28px;
   font-size: 14px;
   padding: 0px;
+  height: 50px;
+  padding-bottom: 5px;
 }
 
 .join-button, .claim-button {
@@ -3992,6 +3997,11 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   transition: all 0.1s ease;
   background-image: url('../media/svg/orange-btn-press.svg') !important; 
   padding-top: 10px;
+}
+
+.close-button_big:hover{
+  background-image: url('../media/svg/big-frame-btn-press.svg') !important;
+  transition: all 0.1s ease;
 }
 
 #new-approve-modal-close:hover {
