@@ -1692,7 +1692,6 @@ a {
   width: 918px;
   height: 890px;
   background-color: var(--bg-board);
-  overflow: hidden;
   position: relative;
 }
 
@@ -2030,7 +2029,7 @@ a {
 }
 
 .wrapper__message-modal_change-network{
-  width: 280px;
+  width: 350px;
 }
 
 /* .wrapper__message-modal_active {
@@ -2123,6 +2122,8 @@ a {
 .network-deactive li{
   padding-left: 5px;
   transition: all 0.1s ease;
+  display: flex;
+  gap: 13px;
 }
 
 
@@ -2380,7 +2381,7 @@ a {
 .nft-shop-modal__list-items-wrap {
   margin-top: 10px;
   padding-right: 20px;
-  height: calc(100% - 170px);
+  height: calc(100% - 200px);
   overflow: auto;
 }
 
