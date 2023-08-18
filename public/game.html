@@ -264,39 +264,68 @@
 
 				</button>
 			</div>
-			<div id="over_modal" class="modal">
-				<div class="board modal_content_finish modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+				<div id="over_modal" class="modal">
+		<div class="board modal_content_finish modal_content">
 			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div class="modal__title">Finish the game</div>
-					<div class="modal__subtitle" id="sure_want_end">Are you sure that you want to complete game?</div>
-					<!--<div class="modal__subtitle">Players & stats:</div>
-					<div class="finish-stats">
-						<div id="yourStats">
-							<span id="finish_modal_your_address"></span>(you):
-							<span class="yourKills"></span> Kills,
-							<span class="yourDeaths"></span> Deaths
-						</div>
-						<div>
-							<span id="yourAmountWinLose"></span>
-						</div>
-					</div>
-					<div class="finish-stats">
-						<div id="enemyStats">
-							<span id="finish_modal_enemy_address"></span>(enemy):
-							<span class="enemyKills"></span> Kills,
-							<span class="enemyDeaths"></span> Deaths
-						</div>
-						<div>
-							<span id="enemyAmountWinLose"></span>
-						</div>
-					</div>-->
-					<div class="modal__subtitle">10 ROSE (your in-game balance) will return to your wallet</div>
-					<button id="finishGame"class='close-button_finish-game close-button'>confirm</button>
+	<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+	<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+	<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+			<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+			<div class="modal__title">Game over</div>
+			<div class="modal__over-body">
+			<div class="modal__over-subtitle">Players & stats</div>
+			<div class="finish-stats">
+				<div class="yourStats__header"> 
+					<p>You</p>
 				</div>
+				<div id="yourStats">
+					<span id="yourAmountWinLose"></span>
+					<div>
+						<span class="yourKillsTitle">Kills:</span>
+						<span class="yourKills"></span>
+					</div>
+					<div>
+						<span class="yourDepTitle">Dep:</span>
+						<span id="yourDep"></span>
+					</div>
+					<div>
+						<span class="yourDeathsTitle">Deaths:</span>
+						<span class="yourDeaths"></span>
+					</div>
+				</div>
+				<div class="yourStats_address">
+					<span class="your_address">Wallet: </span>
+					<span id="finish_modal_your_address"></span>
+				</div>
+			</div>
+			<div class="stats-devider"></div>
+			<div class="finish-stats_enemy finish-stats">
+				<div class="enemyStats__header"> 
+					<p>Enemy</p>
+				</div>
+				<div id="enemyStats">
+					<div>
+						<span class="enemyKillsTitle">Kills:</span>
+						<span class="enemyKills"></span>
+					</div>
+					<span id="enemyAmountWinLose"></span>
+					<div>
+						<span class="enemyDeathsTitle">Deaths:</span>
+						<span class="enemyDeaths"></span>
+					</div>
+					<div>
+						<span class="enemyDepTitle">Dep:</span>
+						<span id="enemyDep"></span>
+					</div>
+				</div>
+				<div class="enemyStats_address">
+					<span class="enemy_address">Wallet: </span>
+					<span id="finish_modal_enemy_address"></span>
+				</div>
+			</div>
+			</div>
+			<!--<button id="finishGame" style="display:inherit">Confirm</button>-->
+			<button id="finishGame"class='close-button_finish-game close-button'>exit</button>
 			</div>
 			<div id="about_modal" class="modal wrapper__message-modal-overlay">
 				<div class="board wrapper__message-modal modal_content">

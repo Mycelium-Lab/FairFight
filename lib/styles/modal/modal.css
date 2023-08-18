@@ -376,18 +376,37 @@
     text-align: center;
     margin-bottom: 30px;
   }
-  
-  #over_modal .modal_content {
-    background-image: none;
-    padding-left: 70px;
-    padding-right: 70px;
-  }
+
   
   
-  #over_modal .modal_content_finish {
+  /*#over_modal .modal_content_finish {
     height: 300px;
   }
-  
+  */
+  .modal_content_finish{
+    align-items: center;
+    height: 573px;
+    width: 404px;
+  }
+  .modal__over-body{
+    flex-direction: column;
+    display: flex;
+    width: 306px;
+    height: 373px;
+    background-repeat: no-repeat;
+    align-items: center;
+    background-image: url(../../media/svg/game-over-frame.svg);
+    gap: 20px;
+    padding-top: 24px;
+    position: relative;
+  }
+
+.modal__over-subtitle{
+  color: #393939;
+  text-decoration: underline;
+  font-family: 'Teletactile';
+}
+
   #over_modal .modal_content .modal__block div {
     display: flex;
     gap: 30px;

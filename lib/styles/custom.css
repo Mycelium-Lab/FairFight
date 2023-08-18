@@ -1,6 +1,7 @@
 @import url('./modal/modal.css');
 @import url('./shop/fittingroom.css');
 @import url('./inventory/inventory.css');
+@import url('./game/game.css');
 
 @import url('./media/custom.css');
 
@@ -3995,10 +3996,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   height: 52.53px
 }
 .close-button_finish-game{
-  position: absolute;
-  bottom: 30px;
-  left: 160px;
-  height: 51px;
+  margin-top: 20px
 }
 
 .connect-button {
