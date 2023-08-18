@@ -358,6 +358,9 @@ a {
   line-height: 8.75px;
 }
 
+.change-network-dropdown li:hover{
+  color: #FFC897;
+}
 .change-network-item{
   margin: 13px 18px 10px 17px;
   border-bottom: 1px solid #FFC897;
@@ -3988,6 +3991,9 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   padding-bottom: 8px;
 }
 
+.claim-button { 
+  height: 52.53px
+}
 .close-button_finish-game{
   position: absolute;
   bottom: 30px;
