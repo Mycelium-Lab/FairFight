@@ -1782,7 +1782,7 @@ a {
 }
 
 .nft-shop-modal__nav-wrap {
-  margin-top: 45.9px;
+  margin-top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2026,7 +2026,7 @@ a {
   right: 0;
   border-radius: 20px;
   border: var(--border-board);
-  padding: 52px 27px 29px 27px;
+  padding: 48px 27px 29px 27px;
   z-index: 3;
   background-color: var(--bg-board);
   position: relative;
@@ -2278,7 +2278,7 @@ a {
 /* nft-shop-modal-2 */
 
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap {
-  margin: 27px auto 0;
+  margin: 40px auto 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -3770,8 +3770,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 .contacts__container {
   display: flex;
   grid-gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #BDBDBD;
+  padding-top: 20px;
+  border-top: 2px solid #FF7C06;
 }
 
 .contact__links {
@@ -3890,7 +3890,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   position: absolute;
   bottom: 0;
   left: 45px;
-  grid-gap: 64px;
+  grid-gap: 31px;
 }
 
 .main-container {
@@ -3996,7 +3996,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   height: 52.53px
 }
 .close-button_finish-game{
-  margin-top: 20px
+  margin-top: 15px;
+  padding-bottom: 8px;
 }
 
 .connect-button {

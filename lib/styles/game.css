@@ -331,3 +331,7 @@ input[type=number] {
 .orange {
     color: #ff7c06;
 }
+
+.modal__wsad{
+    align-items: center;
+}

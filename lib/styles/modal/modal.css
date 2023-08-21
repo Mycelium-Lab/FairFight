@@ -377,12 +377,6 @@
     margin-bottom: 30px;
   }
 
-  
-  
-  /*#over_modal .modal_content_finish {
-    height: 300px;
-  }
-  */
   .modal_content_finish{
     align-items: center;
     height: 573px;
@@ -392,7 +386,6 @@
     flex-direction: column;
     display: flex;
     width: 306px;
-    height: 373px;
     background-repeat: no-repeat;
     align-items: center;
     background-image: url(../../media/svg/game-over-frame.svg);
@@ -406,7 +399,13 @@
   text-decoration: underline;
   font-family: 'Teletactile';
 }
-
+#instruction_modal {
+  overflow: hidden;
+}
+#over_modal{
+  overflow: hidden;
+  align-items: center
+}
   #over_modal .modal_content .modal__block div {
     display: flex;
     gap: 30px;
@@ -447,7 +446,6 @@
         width: 100%;
         padding: 40px 20px;
         background-image: none;
-        height: 660px;
         border: var(--border-board);
   }
 
