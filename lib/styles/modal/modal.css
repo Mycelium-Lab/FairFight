@@ -1,0 +1,465 @@
+.modal-overlay {
+    padding: 45px 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    position: fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.modal-overlay_active {
+    display: flex;
+    align-items: center;
+}
+
+
+.modal-content {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+    background-color: rgba(255, 249, 224, 1) !important;
+    border-radius: 0px !important;
+}
+
+.modal-content_primary{
+   border: 4px solid rgba(57, 57, 57, 1) !important;
+}
+
+.modal-content__corner{
+    position: absolute;
+}
+
+.modal-content_secondary{
+    border: 2px solid rgba(57, 57, 57, 1);;
+}
+
+.modal-content__corner_topright{
+    transform: rotate(90deg);
+}
+.modal-content__corner_bottomright{
+    transform: rotate(180deg);
+}
+.modal-content__corner_bottomleft{
+    transform: rotate(270deg);
+}
+
+.modal__header-title{
+    width: 100%;
+    height: 55px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.modal__close-icon{
+    top: 17px;
+  right: 19px;
+  border: none;
+  width: 22px;
+  height: 22px;
+  background-image: url('../../media/svg/close-pixel.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+  
+  #connect_modal {
+    color: var(--color-black);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+  
+  #connect_modal button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-black);
+    min-width: 200px;
+    height: 40px;
+    border: 1px solid var(--color-orange);
+    border-radius: 8px;
+    background-color: #fff;
+    margin-top: 25px;
+  }
+  
+  #install_wallet_modal .modal_content {
+    background-image: none;
+    padding-top: 28px;
+    gap: 36px;
+    align-items: center;
+  }
+  
+  #install_wallet_modal button {
+    background-color: transparent;
+    border: 1px solid var(--color-orange);
+    border-radius: 8px;
+    height: 90px;
+    align-self: center;
+    padding: 0px 15px;
+  }
+  
+  #install_wallet_modal button:first-child{
+    background: #FFFFFF;
+  }
+  #install_wallet_modal button:last-child{
+    background: #4E92F0;
+    border: none;
+    height: 80px;
+    padding: 0px 10px;
+  }
+  
+  .choose-wallet-header{
+    width: 216px;
+  }
+  
+  #install_wallet_modal p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 19px;
+    color: #000000;
+  }
+  
+  #install_wallet_modal p:last-child {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #000000;
+  }
+  
+  #install_wallet_modal a {
+    color: #000000;
+    display: block;
+    text-decoration: underline;
+    margin-top: 15px;
+  }
+  
+  #connect_modal .modal_content {
+    background-image: none;
+    width: 308px;
+    min-height: 213px;
+    justify-content: flex-end;
+    padding: 42px 45px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  #walletHeader {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .svg-button{
+    box-shadow: none !important;
+  }
+  
+  .modal .modal_content {
+    position: relative;
+    background-color: var(--bg-board);
+    color: var(--color-black);
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    border: var(--border-board);
+    max-width: 520px;
+    width: 100%;
+    padding: 30px 31px;
+  }
+  
+  .modal .modal_content_new-game {
+    display: block;
+    background-position: 300px 530px;
+    background-image: url("../../media/svg/player-visible.svg");
+    background-repeat: no-repeat;
+    background-size: 260px 220px;
+    background-position: 260px 500px;
+    position: relative;
+  }
+  .modal .modal_content_about {
+    height: 401px;
+    width: 446px;
+    padding: 46px 21px 46px 31px;
+  }
+  
+  .modal .modal_content_waiting {
+    height: 239px;
+    width: 385px;
+    padding: 40px 23px;
+  
+  }
+  
+  .modal .modal_content_waiting .subtitle, .modal .modal_content_panding .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-sand)
+  }
+  
+  .map-show {
+    cursor: pointer;
+  }
+  
+  .modal__map {
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: none;
+    padding: 10px;
+    border: 1px solid var(--color-black);
+    border-radius: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    transition: all ease 0.3s;
+    z-index: 100;
+  }
+  
+  .modal__map.active {
+    opacity: 1;
+    transition: all ease 0.3s;
+    visibility: visible;
+  }
+  
+  /* .map-show:hover + .modal__map {
+    opacity: 1;
+    transition: all ease 0.3s;
+    visibility: visible;
+  } */
+  
+  .modal__row {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 20px 0;
+  }
+  
+  .modal__row__tokens {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 10px 0;
+  }
+  
+  .modal__row .active {
+    color: var(--color-orange);
+  }
+  
+  .modal__row div,
+  .modal__row__tokens div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal__row_value div {
+    gap: 5px;
+    justify-content: initial;
+  }
+  .modal__row_value div.active {
+    padding-bottom: 30px;
+  }
+  
+  .modal .modal_content select {
+    border-color: var(--color-orange);
+    border-width: 1px;
+    border-radius: 8px;
+    border-style: solid;
+    background-color: #f2f2f2;
+    height: 30px;
+    padding: 0 10px;
+    width: 156px;
+    padding-top: 2px;
+    background-image: url("../media/svg/select.svg");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    padding-right: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .modal .modal_content input {
+    border-color: var(--color-orange);
+    border-width: 1px;
+    border-radius: 8px;
+    border-style: solid;
+    background-color: #f2f2f2;
+    height: 30px;
+    padding: 0 10px;
+    width: 156px;
+    padding-top: 2px;
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    padding-right: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .modal .modal_content input::placeholder {
+    color: #b6bcc4;
+    font-weight: 300;
+  }
+  
+  .close_modal_window {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  #pending_modal .modal_content,
+  #confirmation_modal .modal_content,
+  #wainting_modal .modal_content,
+  #approve_modal .modal_content,
+  #enemy_finishing_game_modal .modal_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    background-image: none;
+  }
+  
+  #confirmation_modal .load,
+  #wainting_modal .load,
+  #pending_modal .load {
+    /* transition: 5s ease; */
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes rotate {
+    from {
+      trnasform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .new-game-header{
+    display: block;
+    width: 132px;
+    margin: 0 auto;
+    margin-bottom: 34px;
+  }
+  .modal__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-orange);
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Teletactile'
+  }
+  
+  .modal__title--mode {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 0;
+  }
+  
+  .modal__subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .modal_content_finish{
+    align-items: center;
+    height: 573px;
+    width: 404px;
+  }
+  .modal__over-body{
+    flex-direction: column;
+    display: flex;
+    width: 306px;
+    background-repeat: no-repeat;
+    align-items: center;
+    background-image: url(../../media/svg/game-over-frame.svg);
+    gap: 20px;
+    padding-top: 24px;
+    position: relative;
+  }
+
+.modal__over-subtitle{
+  color: #393939;
+  text-decoration: underline;
+  font-family: 'Teletactile';
+}
+#instruction_modal {
+  overflow: hidden;
+}
+#over_modal{
+  overflow: hidden;
+  align-items: center
+}
+  #over_modal .modal_content .modal__block div {
+    display: flex;
+    gap: 30px;
+  }
+  
+  
+  #over_modal .green {
+    color: var(--color-green);
+  }
+  
+  #over_modal .red {
+    color: var(--color-red);
+  }
+  
+  #over_modal .grey {
+    color: var(--color-grey);
+  }
+  
+  #info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .modal__block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .modal__wsad .modal_content {
+    max-width: 520px;
+        width: 100%;
+        padding: 40px 20px;
+        background-image: none;
+        border: var(--border-board);
+  }
+
+  .modal .modal_content_new-game::before {
+    content: '';
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 260px;
+    height: 210px;
+    background-color: #FFF9E0;
+  }
+
+  .modal_content-error{
+    width: 410px;
+  }

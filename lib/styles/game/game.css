@@ -1,0 +1,199 @@
+.modal_content_finish{
+    height: 560px;
+}
+.yourStats__header, .enemyStats__header{
+    border-bottom: 1px solid #FFC897;
+    height: 26px;
+}
+
+.yourStats__header p::before, .enemyStats__header p::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/user.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.yourStats__header p, .enemyStats__header p{
+color: rgba(255, 124, 6, 1);
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.09px;
+    margin-bottom: 0px !important;
+}
+
+.enemyStats__header p{
+    text-align: end;
+}
+
+.finish-stats{
+    width: 246px;
+    border-bottom: 1px solid #FFC897;
+}
+
+#yourStats{
+    display: flex;
+    gap: 5px 30px;
+    flex-wrap: wrap;
+    margin: 5px 0px;
+}
+
+
+#enemyStats{
+    display: flex;
+    gap: 5px 30px;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin: 5px 0px;
+}
+#over_modal .green::before {
+content: '';
+display: inline-block;
+width: 21px;
+height: 20px;
+background-image: url('../../media/svg/past-game/win.svg');
+background-size: 21px 20px;
+margin-bottom: -4px;
+margin-right: 5px
+}
+
+#over_modal .red::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/lose.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+    }
+ 
+.yourDepTitle, .yourKillsTitle, .yourDeaths, .your_address, 
+.enemyDepTitle, .enemyKillsTitle, .enemyDeaths, .enemy_address {
+    font-weight: 500;
+}
+
+
+#over_modal .yourKillsTitle::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/kills.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#over_modal .yourDeathsTitle:before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/deaths.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#over_modal .yourDepTitle:before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/dep.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+#over_modal .enemyDepTitle:before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/dep.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+.your_address:before{
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/wallet.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#over_modal .enemyKillsTitle:before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/kills.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#over_modal .enemyDeathsTitle:before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/deaths.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#over_modal .enemyDepTitile:before{
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/dep.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+#finish_modal_enemy_address:before{
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/wallet.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+}
+
+.yourStats_address{
+    margin-bottom: 5px
+}
+.enemyStats_address{
+    text-align: end;
+    margin-bottom: 5px
+}
+
+.stats-devider{
+    background-image: url(../../media/svg/vs.svg);
+    width: 51px;
+    height: 39px;
+    z-index: 10000;
+    position: absolute;
+    top: 195px;
+}
+
+.finish-stats_enemy{
+    margin-top: 20px;
+}
