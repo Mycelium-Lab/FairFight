@@ -58,6 +58,52 @@
   .wrapper_banners{
     margin-bottom: 0px;
   }
+  .games__row{
+    background-size: 100%;
+    gap: 15px;
+    height: auto;
+  }
+  .tabs__content{
+    width: auto;
+    padding-right: 0px;
+  }
+  .join-button, .claim-button{
+    top: 85px;
+  }
+  .games__item .right{
+    margin-left: 0px;
+  }
+  .games__item{
+    gap: 20px;
+  }
+  .join-button, .claim-button{
+    padding: 0 39.7395px;
+    height: 42px;
+  }
+}
+
+@media(max-width: 800px) {
+  /*.inner-block ul{
+    width: 600px;
+  }*/
+  .games__row{
+    padding: 20px 18px;
+    gap: 5px;
+  }
+  .games__item p{
+    font-size: 13px;
+  }
+  .games__item span{
+    font-size: 13px;
+  }
+  .join-button, .claim-button{
+    padding: 0 20px;
+    top: 65px;
+    display: flex;
+    font-size: 14px;
+    height: 29px;
+    align-items: center;
+  }
 }
 
 @media(max-width: 600px) {
@@ -323,9 +369,6 @@
   display: flex;
   justify-content: center;
 }
-.tabs__content{
-  padding-right: 0px;
-}
 .games__item .right {
  position: absolute;
  right: 0px;
@@ -336,7 +379,7 @@
   padding: 0 15px;
   height: 17.5px;
   font-size: 7.83px;
-  top: 64.5px;
+  top: 74.5px;
   right: 18px;
   display: flex;
   align-items: center;
@@ -367,6 +410,9 @@
   }
   .games__item{
     gap: 20px;
+  }
+  .join-button, .claim-button{
+    top: 64.5px;
   }
 }
 
