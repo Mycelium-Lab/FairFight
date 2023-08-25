@@ -28,16 +28,16 @@ export async function tryOn(req, response) {
         if (isNaN(parseInt(inventory.characters)) && isNaN(parseInt(inventory.weapons)) && isNaN(parseInt(inventory.armors))&& isNaN(parseInt(inventory.boots))) {
             response.status(400).send('All cant be undefined')
         }
-        const currentInventoryRes = await pgClient.query('SELECT * FROM inventory WHERE player=$1 AND chainid=$2', [address, chainid])
+        const currentInventoryRes = await pgClient.query('SELECT * FROM inventory WHERE player=$1 AND chainid=$2', [address.toLowerCase(), chainid])
         const currentInventory = currentInventoryRes.rows[0]
         if (isNaN(parseInt(inventory.characters))) inventory.characters = currentInventory.characterid
         if (isNaN(parseInt(inventory.weapons))) inventory.weapons = currentInventory.weapon
         if (isNaN(parseInt(inventory.armors))) inventory.armors = currentInventory.armor
         if (isNaN(parseInt(inventory.boots))) inventory.boots = currentInventory.boots
         const isTryOn = true
-        await createMixingPicture(address, chainid, inventory.characters, inventory.armors, inventory.boots, inventory.weapons, isTryOn)
+        await createMixingPicture(address.toLowerCase(), chainid, inventory.characters, inventory.armors, inventory.boots, inventory.weapons, isTryOn)
         setTimeout(() => {
-            const imagePath = path.join(__dirname, `../../../media/characters/tryon`, `${address}_${chainid}.png`)
+            const imagePath = path.join(__dirname, `../../../media/characters/tryon`, `${address.toLowerCase()}_${chainid}.png`)
             response.status(200).sendFile(imagePath)
         }, 2500)
     } catch (error) {

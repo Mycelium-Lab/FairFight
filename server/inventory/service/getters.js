@@ -35,19 +35,19 @@ export async function getInventory(req, response) {
                 LEFT JOIN boots_bonuses ON inventory.boots=boots_bonuses.id 
                 WHERE player=$1 AND chainid=$2
             `,
-            [address, chainid]
+            [address.toLowerCase(), chainid]
         )
         if (res.rows.length === 0) {
-            await createMixingPicture(address, chainid, 0, undefined, undefined, undefined)
+            await createMixingPicture(address.toLowerCase(), chainid, 0, undefined, undefined, undefined)
             await pgClient.query(
                 "INSERT INTO inventory (player, chainid, characterid) VALUES($1, $2, $3)",
-                [address, chainid, 0]
+                [address.toLowerCase(), chainid, 0]
             )
             response.status(200).json({
                 address, chainid, characterid:0
             })
         } else {
-            await createMixingPicture(address, chainid, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
+            await createMixingPicture(address.toLowerCase(), chainid, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
             response.status(200).json(res.rows[0])
         }
     } catch (error) {
@@ -62,7 +62,7 @@ export async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         const address = req.query.address
         const typeofimage = req.query.typeofimage
-        const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address}_${chainid}.png`)
+        const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address.toLowerCase()}_${chainid}.png`)
         try {
             await fs.access(imagePath)
             response.sendFile(imagePath)

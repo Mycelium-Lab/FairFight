@@ -7,7 +7,7 @@ export async function getSignature(gameID, address, chainid) {
     try {
         const res = await pgClient.query(
             'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
-            [address, gameID, chainid]
+            [address.toLowerCase(), gameID, chainid]
         )
         if (res.rows.length === 0) {
             return {

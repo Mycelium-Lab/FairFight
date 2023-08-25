@@ -11,9 +11,9 @@ await rsClient.connect()
 export async function getCurrentInGameStatistics(gameID, address, chainid) {
     try {
         const remainingRounds = await rsClient.get(`ID=${gameID}&network=${chainid}`)
-        const kills = await rsClient.get(`${address}_${gameID}_${chainid}_kills`)
-        const deaths = await rsClient.get(`${address}_${gameID}_${chainid}_deaths`)
-        const balance = await rsClient.get(`${address}_${gameID}_${chainid}_amount`)
+        const kills = await rsClient.get(`${address.toLowerCase()}_${gameID}_${chainid}_kills`)
+        const deaths = await rsClient.get(`${address.toLowerCase()}_${gameID}_${chainid}_deaths`)
+        const balance = await rsClient.get(`${address.toLowerCase()}_${gameID}_${chainid}_amount`)
         if (
             remainingRounds == null 
             || 
@@ -23,7 +23,7 @@ export async function getCurrentInGameStatistics(gameID, address, chainid) {
         ) {
             const res = await pgClient.query(
                 "SELECT * FROM statistics WHERE gameid=$1 AND chainid=$2 AND player=$3",
-                [gameID, chainid, address]
+                [gameID, chainid, address.toLowerCase()]
             )
             if (res.rows.length != 0) {
                 const stats = res.rows[0]
