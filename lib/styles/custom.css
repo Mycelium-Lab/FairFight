@@ -6,6 +6,8 @@
 
 @import url('./media/custom.css');
 
+@import url('./media/modal.css');
+
 :root {
   --color-orange: #ff7c06;
   --color-black: #393939;
