@@ -1,0 +1,66 @@
+@media(max-width: 600px) {
+    .modal .modal_content_new-game{
+        max-width: 90vw;
+        background-size: 230px 190px;
+        background-position: 45vw 480px;
+    }
+    .new-game-header{
+        margin-bottom: 20px;
+    }
+    .new-game-devider {
+        max-width: 77vw;
+    }
+    .modal .modal_content_new-game::before{
+        width: 250px;
+    }
+}
+
+@media(max-width: 500px) {
+    .modal .modal_content{
+        padding: 20px 25.16px;
+    }
+    .new-game-header{
+        width: 90px;
+      }
+    .modal__row div, .modal__row__tokens div{
+        font-size: 10.88px;
+        line-height: 12.98px;
+    }
+    .modal .modal_content select{
+        width: 106px;
+    }
+    .token-active, .token-deactive {
+        width: 70px;
+        padding: 0px;
+    }
+    .figure img{
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+    }
+    .modal .modal_content input{
+        width: 106px;
+    }
+    .modal__row, .modal__row__tokens{
+        padding: 8.32px 0px;
+    }
+    .modal__row{
+        gap: 13.6px;
+    }
+    .modal .modal_content_new-game{
+        background-size: 176px 172.7px;
+        background-position: 45vw 390px;
+    }
+    .modal .modal_content_new-game::before{
+        width: 44vw;
+    }
+    #createGame{
+        height: 34px;
+        padding: 0 19.7395px;
+        padding-bottom: 10px;
+    }
+    #createGame:hover{
+        padding-bottom: 0px;
+        padding-top: 5px;
+    }
+}

@@ -1606,6 +1606,10 @@ a {
   background-position: center 14px;
 }
 
+.new-game-devider {
+  max-width: 100%;
+}
+
 .newgame__btn {
   background: transparent url('../media/buttons/newgame.svg') no-repeat center 0;
   background-size: 328px;

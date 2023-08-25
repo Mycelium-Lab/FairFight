@@ -1,3 +1,5 @@
+@import url('./modal.css');
+
 @media(max-width: 1410px) {
     .main-container {
         display: flex;
