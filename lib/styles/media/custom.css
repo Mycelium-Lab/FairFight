@@ -245,6 +245,35 @@
   background-size: initial;
   background-position: center 10px;
 }
+#menu-home-btn{
+  background-image: url('../../media/buttons/home-mobile.svg');
+}
+#menu-nft-shop-btn{
+  background-image: url('../../media/buttons/nftshop-mobile.svg');
+}
+#menu-inventory-btn{
+  background-image: url('../../media/buttons/inventory-mobile.svg');
+}
+#menu-mystery-btn{
+  background-image: url('../../media/buttons/mystery-mobile.svg');
+}
+#menu-lottery-btn{
+  background-image: url('../../media/buttons/lottery-mobile.svg');
+}
+#menu-tournaments-btn{
+  background-image: url('../../media/buttons/tournaments-mobile.svg');
+}
+#menu-balance-btn{
+  background-image: url('../../media/buttons/balance-mobile.svg');
+}
+#menu-home-btn::after, #menu-nft-shop-btn::after, #menu-inventory-btn::after,
+#menu-mystery-btn::after, #menu-lottery-btn::after, #menu-tournaments-btn::after,
+#menu-balance-btn::after
+ {
+  background-image: url('../../media/buttons/border-mobile.svg');
+  background-size: initial;
+  background-position: center 11px;
+}
 .container__left{
   left: 0;
   bottom: 0;
@@ -253,6 +282,26 @@
 .contacts__container{
   gap: 10px;
   padding-top: 10px;
+}
+.change-network-item{
+  margin: 13px 10px 10px 10px;
+}
+.disconnect-item{
+  margin: 0px 10px 0px 10px;
+}
+.change-network-dropdown{
+  right: 10px;
+  width: 141px;
+  background-size: 141px;
+}
+.change-network-dropdown li{
+  font-size: 8px;
+}
+.startBtn#disconnect:hover #dropdown-change-network{
+  top: 39px;
+}
+.wrapper__btns-wrap .btns-wrap__btn{
+  margin-top: 0px;
 }
 }
 

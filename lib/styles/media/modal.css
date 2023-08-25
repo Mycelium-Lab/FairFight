@@ -1,4 +1,11 @@
 @media(max-width: 600px) {
+    .modal .modal_content{
+        max-width: 60vw;
+    }
+    .modal .modal_content_about {
+        max-width: 80vw;
+        height: auto;
+    }
     .modal .modal_content_new-game{
         max-width: 90vw;
         background-size: 230px 190px;
@@ -10,6 +17,7 @@
     .new-game-devider {
         max-width: 77vw;
     }
+  
     .modal .modal_content_new-game::before{
         width: 250px;
     }
@@ -18,6 +26,9 @@
 @media(max-width: 500px) {
     .modal .modal_content{
         padding: 20px 25.16px;
+    }
+    .modal .modal_content_new-game{
+        padding-bottom: 40px;
     }
     .new-game-header{
         width: 90px;
@@ -49,10 +60,10 @@
     }
     .modal .modal_content_new-game{
         background-size: 176px 172.7px;
-        background-position: 45vw 390px;
+        background-position: 45vw 370px;
     }
     .modal .modal_content_new-game::before{
-        width: 44vw;
+        width: 45vw;
     }
     #createGame{
         height: 34px;
@@ -62,5 +73,57 @@
     #createGame:hover{
         padding-bottom: 0px;
         padding-top: 5px;
+    }
+    .message-modal__error img{
+        width: 40px;
+    }
+    .wrapper__message-modal .text-wrap__title{
+        font-size: 16px;
+    }
+    .wrapper__message-modal .message-modal__text-wrap_error .text-wrap__text{
+        font-size: 12px;
+    }
+    .message-modal__btn-close{
+        width: 16px;
+        height: 16px;
+        background-size: 16px;
+    }
+    .modal .modal_content_new-game::before {
+        height: 170px;
+    }
+    #pending_modal .modal_content, #confirmation_modal .modal_content, #wainting_modal .modal_content, #approve_modal .modal_content, #enemy_finishing_game_modal .modal_content{
+        font-size: 14px;
+    }
+    .modal .modal_content_waiting .subtitle, .modal .modal_content_panding .subtitle{
+        font-size: 12px;
+        text-align: center;
+    }
+    .modal .modal_content_waiting{
+        height: auto;
+    }
+    #confirmation_modal .load, #wainting_modal .load, #pending_modal .load{
+        width: 40px;
+    }
+    .about-header{
+        width: 160px;
+        margin-bottom: 20px;
+    }
+    .about__content p {
+        font-size: 12px;
+        margin-bottom: 10px;
+        line-height: 13.7px;
+    }
+    .wrapper__message-modal_change-network{
+        padding-top: 10px;
+        padding-bottom: 0px;
+        width: 72vw;
+    }
+    .message-modal__btn-close{
+        top: 10px;
+    right: 10px;
+    }
+    .menu__box{
+        width: 50vw;
+        height: 490px;
     }
 }
