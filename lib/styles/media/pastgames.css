@@ -1,0 +1,111 @@
+@media (max-width: 1024px) {
+    /*#pastgames-table{
+       display: block;
+       background-image: url('../../media/mobile/pastgames-table.svg');
+       width: 331px;
+       height: 151px;
+       background-repeat: no-repeat;
+       margin-top: 14px;
+       
+    }*/
+    #pastgames-list{
+        margin-bottom: 0px !important;
+    }
+    #pastgames-table{
+        width: 100%;
+    }
+    .table__row{
+        display: flex;
+        padding: 11px 0px;
+        border-bottom: 1px solid #FFC897;
+        font-size: 12px;
+        justify-content: space-around;
+    }
+    .table__row td{
+        display: flex;
+        align-items: end;
+    }
+    .table__row:first-child{
+        padding-top: 20px;
+    }
+    .table__row:last-child{
+        padding-bottom: 9px;
+        border-bottom: none;
+    }
+    .table__row td:first-child::before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/calendar.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+    .table__row .red::before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/lose.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        margin-right: 5px;
+    }
+    .table__row .green::before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/win.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        margin-right: 5px;
+    }
+    .table__row td:nth-child(3):before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/kills.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        margin-right: 5px;
+    }
+    .table__row td:nth-child(4):before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/deaths.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        margin-right: 5px;
+    }
+    .table__row td:nth-child(5):before{
+        display: inline-block;
+        content: '';
+        background-image: url('../../media/svg/past-game/info.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 800px){
+    .table__row:first-child{
+        padding-top: 9px;
+    }
+}
+
+@media (max-width: 500px) {
+    #pastgames-table{
+        width: 100%;
+    }
+    /*#pastgames-table{
+        display: block;
+        background-image: url(../../media/mobile/pastgames-table.svg);
+        width: 83vw;
+       
+        background-repeat: no-repeat;
+        margin-top: 14px;
+        background-size: 100%;
+    }*/
+}

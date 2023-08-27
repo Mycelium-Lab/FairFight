@@ -1,7 +1,289 @@
-@media(max-width: 600px) {
-    .modal .modal_content{
-        max-width: 60vw;
+@media(max-width: 1024px) {
+    #info-content-top{
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 9px 0px ;
     }
+    #info-content-top p {
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    #info-content-top p:last-child {
+        margin-bottom: 0px;
+    }
+    #info-content-top p span{
+        font-weight: 400;
+    }
+    #info-content-top .col_left p:first-child:before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/id.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:first-child:before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/game.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_left p:nth-child(2):before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/dep.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:nth-child(2):before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/round.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_left p:nth-child(3):before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/calendar.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:nth-child(3):before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/map.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .info__title{
+        font-family: 'Teletactile';
+        font-size: 24px;
+        color: #FF7C06;
+        text-align: center;
+    }
+    .info__content{
+        background-image: url(../../media/svg/past-game/info__frame.svg);
+        background-repeat: no-repeat;
+        height: 356px;
+        background-size: contain;
+        margin-top: 10px;
+        width: 300px;
+        margin: 10px auto;    
+    }
+    .infoContent-bottom__title{
+        font-family: 'Teletactile';
+        font-size: 14px;
+        color: #393939;
+        text-align: center;
+        border-bottom: 1px solid #181425;
+        width: 175px;
+        margin: 27px auto 0px;
+    }
+    .infoContent-bottom__content-you, .infoContent-bottom__content-enemy{
+        display: flex;
+        padding: 5px 9px 0px;
+        font-size: 14px;
+    }
+    .infoContent-bottom__content-you p, .infoContent-bottom__content-enemy p {
+        margin-bottom: 0px;
+    }
+    .infoContent-bottom__you, .infoContent-bottom__enemy{
+        margin: 15px 9px 0px;
+        border-bottom: 1px solid #FFC897;
+        text-transform: uppercase;
+        color: #FF7C06;
+        font-weight: 700;
+    }
+    .infoContent-bottom__enemy{
+        margin: 0px 9px 0px;
+        text-align: end;
+    }
+    .infoContent-bottom__you::before, .infoContent-bottom__enemy::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/user.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    
+    .infoContent-bottom__content-enemy{
+        justify-content: end;
+    }
+    .infoContent-bottom__content-enemy div:last-child p{
+        text-align: end;
+    }
+    .infoContent-bottom__content-you div p span, .infoContent-bottom__content-enemy div p span{
+        font-weight: 500;
+    }
+    .infoContent-bottom__content-you .green, .infoContent-bottom__content-enemy .green{
+        color: #24B500;
+    }
+    .infoContent-bottom__content-you .green::before, .infoContent-bottom__content-enemy .green::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/win.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you .red, .infoContent-bottom__content-enemy .red{
+        color: #EE0000;
+    }
+    .infoContent-bottom__content-you .red::before, .infoContent-bottom__content-enemy .red::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/lose.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:first-child p:nth-child(2)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/dep.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:first-child p:nth-child(3)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/wallet.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:last-child p:nth-child(1)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/kills.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:last-child p:nth-child(2)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/deaths.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(1)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/kills.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(2)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/deaths.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    
+    .infoContent-bottom__content-you .red::before, .infoContent-bottom__content-enemy .red::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/lose.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(1)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/kills.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(2)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/deaths.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:last-child p:nth-child(2)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/dep.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:last-child p:nth-child(3)::before{
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('../../media/svg/past-game/wallet.svg');
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .modal .modal_content_info {
+        max-width: 420px;
+        height: auto;
+    }
+}
+@media(max-width: 600px) {
+
     .modal .modal_content_about {
         max-width: 80vw;
         height: auto;
@@ -24,8 +306,16 @@
 }
 
 @media(max-width: 500px) {
+    .info__title{
+     
+        font-size: 16px;
+       
+    }
     .modal .modal_content{
         padding: 20px 25.16px;
+    }
+    .modal .modal_content_info{
+        padding: 20px 20px;
     }
     .modal .modal_content_new-game{
         padding-bottom: 40px;
@@ -125,5 +415,14 @@
     .menu__box{
         width: 50vw;
         height: 490px;
+    }
+    .modal .modal_content_info {
+        max-width: 360px;
+    }
+}
+
+@media(max-width: 380px) {
+    .modal .modal_content_info {
+        max-width: 340px;
     }
 }
