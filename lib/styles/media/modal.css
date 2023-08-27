@@ -1,4 +1,7 @@
 @media(max-width: 1024px) {
+    .modal-content_primary{
+        border: 2px solid rgba(57, 57, 57, 1) !important;
+    }
     #info-content-top{
         display: flex;
         gap: 10px;

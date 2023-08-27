@@ -556,6 +556,14 @@
   gap: 5px;
  background-image: url('../../media/svg/game-rows-mobile-320.svg');
 }
+.wrapper__nft-shop-modal .list-items__item{
+  margin-bottom: 30px;
+  margin-right: 25px;
+  width: 87.71px;
+  height: 87.71px;
+  left: 5px;
+    display: inline-block;
+}
 }
 
 @media(max-width: 411px) {
