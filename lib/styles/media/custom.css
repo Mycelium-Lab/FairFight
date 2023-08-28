@@ -149,7 +149,7 @@
   width: 87.71px;
   height: 87.71px;
   left: 5px;
-    display: inline-block;
+  /*display: inline-block;*/
 }
 .wrapper__item-modal-overlay .header__text-item__props-item{
   margin-top: 9px !important;

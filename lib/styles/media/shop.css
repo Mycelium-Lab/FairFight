@@ -123,9 +123,8 @@
     .list-items-wrap__list-items{
         width: 100% !important;
        /* display: flex !important;*/
-        gap: 20px 25.51px !important;
+        gap: 5px 0px !important;
         flex-wrap: wrap !important;
-        justify-content: center !important;
         padding-top: 10px !important;
     }
     .wrapper__nft-shop-modal .item__left{
