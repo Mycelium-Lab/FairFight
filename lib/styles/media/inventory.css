@@ -1,0 +1,8 @@
+@media(max-width: 1024px) {
+    .inventory-modal__body {
+        grid-template-rows: 1fr 1fr;
+    }
+    .body__inventory{
+        order: 1 !important
+    }
+}

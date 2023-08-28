@@ -284,6 +284,11 @@
         max-width: 420px;
         height: auto;
     }
+    .modal__close-icon{
+        width: 16px;
+        height: 16px;
+        top: 10px;
+    }
 }
 @media(max-width: 600px) {
 

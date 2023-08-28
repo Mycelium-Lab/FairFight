@@ -1,0 +1,91 @@
+@media(max-width: 500px) {
+    .wrapper__item-modal-overlay .body__item-detail{
+        width: 351px !important;
+        height: 343px !important;
+        border-radius: 0px !important;
+        padding: 0px 20px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__btn-close{
+        width: 16px !important;
+        height: 16px !important;
+        top: 14px !important;
+        right: 17px !important;
+    }
+    .inventory-item-body_bronze,
+    .inventory-item-body_silver,
+    .inventory-item-body_gold,
+    .inventory-item-body_platinum,
+    .inventory-item-body_legendary
+    {
+        width: 308px;
+        height: 262px;
+    }
+    .wrapper__item-modal-overlay .header__img-item{
+        width: 101px !important;
+        height: 104px !important;
+    }
+    #inventory-item-modal-image {
+        width: 100px !important;
+    }
+    .text-item__bronze,
+    .text-item__silver,
+    .text-item__gold,
+    .text-item__platinum,
+    .text-item__legendary {
+        font-size: 14px !important;
+        margin-bottom: 0px !important;
+    }
+    .text-item__type{
+        font-size: 10px !important;
+        margin-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+    .body__item-detail .board-edge_sm:nth-child(1) {
+        left: -8px;
+        top: -8px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(2) {
+        right: -8px;
+        top: -8px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(3) {
+        right: -8px;
+        bottom: -8px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(4) {
+        left: -8px;
+        bottom: -8px;
+    }
+    .header__text-item{
+        transform: translateY(-8px);
+    }
+    .wrapper__item-modal-overlay .text-item__type{
+        border-width: 1px !important;
+    }
+    .prop__title, .prop__value{
+        font-size: 10px !important;
+    }
+    .prop__img-wrap{
+        width: 15.64px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__header{
+        border-width: 1px !important;
+    }
+    .wrapper__item-modal-overlay .prop__value{
+        vertical-align: inherit !important;
+    }
+    .wrapper__item-modal-overlay .prop__title {
+        margin-right: 38px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__header_active{
+        padding-bottom: 19px !important;
+        margin: 18px 18px 0px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__description{
+        font-size: 10px !important;
+        padding: 10px 18px 0px 18px !important;
+        line-height: 13px !important;
+        height: 60px !important;
+        margin-bottom: 16px !important;
+    }
+}

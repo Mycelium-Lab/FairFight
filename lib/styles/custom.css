@@ -8,6 +8,8 @@
 @import url('./media/modal.css');
 @import url('./media/pastgames.css');
 @import url('./media/shop.css');
+@import url('./media/shop_info.css');
+@import url('./media/fittingroom.css');
 
 :root {
   --color-orange: #ff7c06;

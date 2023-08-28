@@ -564,6 +564,19 @@
   left: 5px;
     display: inline-block;
 }
+.item-modal-info{
+  font-size: 21.67px !important;
+  margin-top: 14px !important;
+  margin-bottom: 15px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button{
+  width: 106.33px !important;
+  height: 31px !important;
+}
+.dressing-value{
+  font-size: 12.1px !important;
+  color: #24B500 !important;
+}
 }
 
 @media(max-width: 411px) {
@@ -610,6 +623,9 @@
   }
   .games__item{
     gap: 15px;
+  }
+  .dressing-value{
+    font-size: 10.1px !important;
   }
 }
 
