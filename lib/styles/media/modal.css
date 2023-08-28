@@ -292,11 +292,6 @@
     }
 }
 @media(max-width: 600px) {
-
-    .modal .modal_content_about {
-        max-width: 80vw;
-        height: auto;
-    }
     .modal .modal_content_new-game{
         max-width: 90vw;
         background-size: 230px 190px;
@@ -326,6 +321,7 @@
     }
     .modal .modal_content{
         padding: 20px 25.16px;
+        width: 380px;
     }
     .modal .modal_content_info{
         padding: 20px 20px;
@@ -408,13 +404,13 @@
         width: 40px;
     }
     .about-header{
-        width: 160px;
-        margin-bottom: 20px;
+        width: 160px !important;
+        margin-bottom: 20px !important;
     }
     .about__content p {
-        font-size: 12px;
-        margin-bottom: 10px;
-        line-height: 13.7px;
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+        line-height: 13.7px !important;
     }
     .wrapper__message-modal_change-network{
         padding-top: 10px;
@@ -491,7 +487,7 @@
 }
 
 @media(max-width: 380px) {
-    .modal .modal_content_info, .modal .modal_content_waiting, .wrapper__message-modal_waiting{
+    .modal .modal_content_info, .modal .modal_content_waiting, .wrapper__message-modal_waiting, .modal .modal_content{
         max-width: 340px;
     }
 }

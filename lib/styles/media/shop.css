@@ -60,9 +60,10 @@
     }
     .nft-shop-modal__nav-wrap{
         margin-top: 20px !important;
+        justify-content: initial;
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
-        gap: 10px !important;
+        gap: 15px !important;
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav input:checked + label{
         border-bottom-width: 4px !important;
@@ -106,7 +107,8 @@
         border-radius: 2.8px !important;
     }
     .wrapper__nft-shop-modal .params-wrap__dropdown-list button p{
-        font-size: 10px !important;
+        font-size: 12px !important;
+        padding-top: 2px !important;
     }
 
     .wrapper__nft-shop-modal .left__info{display: none !important;}
@@ -118,12 +120,12 @@
     }
     .nft-shop-modal__list-items-wrap{
         padding-right: 0px !important;
-        height: calc(100% - 100px) !important;
+        height: calc(100% - 120px) !important;
     }
     .list-items-wrap__list-items{
         width: 100% !important;
-       /* display: flex !important;*/
-        gap: 5px 0px !important;
+       /* display: flex !important; */
+       /* gap: 5px 0px !important; */
         flex-wrap: wrap !important;
         padding-top: 10px !important;
     }
@@ -187,6 +189,22 @@
         width: 64.57px !important;
         bottom: -10px !important;
     }
+    .nft-shop-modal__params-wrap{
+        gap: 20px
+    }
+    .wrapper__nft-shop-modal .params-wrap__dropdown-list button::after {
+        width: 7.58px !important;
+    }
+    .wrapper__nft-shop-modal .params-wrap__dropdown-list button, 
+    .wrapper__nft-shop-modal .dropdown-list__list{
+        border-color: #FF7C06 !important;
+    }
+}
+
+@media(max-width: 500px) {
+    .nft-shop-modal__nav-wrap .nav-wrap__nav{
+        gap: 17px !important;
+    }
 }
 @media (max-width: 411px) {
     .wrapper__nft-shop-modal{
@@ -197,6 +215,9 @@
     }
     .nft-shop-modal__header-title{
         transform: translateX(70px);
+    }
+    .nft-shop-modal__nav-wrap .nav-wrap__nav{
+        gap: 10px !important;
     }
 }
 @media (max-width: 380px) {

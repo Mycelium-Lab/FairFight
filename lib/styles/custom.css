@@ -4046,13 +4046,18 @@ margin-right: 60px;
 .buy-now-btn, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button {
   background-image: url('../media/svg/frame-btn.svg');
 }
-.buy-now-btn:hover, .back-nft-shop:hover, .go-inventory:hover, .wrapper__item-modal-overlay .item-detail__btns-wrap button:hover {
-      background-position: center 5px !important;
+.buy-now-btn:hover, .back-nft-shop:hover, .go-inventory:hover {
+  background-position: center 5px !important;
   transition: all 0.1s ease;
- background-image: url('../media/svg/orange-btn-press.svg') !important; 
- padding-top: 5px;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 5px;
 }
 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  padding-top: 5px;
+}
 .close-button{
   padding: 0 49.7395px;
   height: 48px;
