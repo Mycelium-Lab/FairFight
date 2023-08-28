@@ -285,9 +285,10 @@
         height: auto;
     }
     .modal__close-icon{
-        width: 16px;
-        height: 16px;
+        width: 22px;
+        height: 22px;
         top: 10px;
+        background-image: url('../../media/svg/close-pixel.svg');
     }
 }
 @media(max-width: 600px) {
@@ -310,6 +311,10 @@
   
     .modal .modal_content_new-game::before{
         width: 250px;
+    }
+    .modal__close-icon{
+        width: 16px;
+        height: 16px;
     }
 }
 

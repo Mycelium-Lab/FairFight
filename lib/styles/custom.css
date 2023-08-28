@@ -10,6 +10,7 @@
 @import url('./media/shop.css');
 @import url('./media/shop_info.css');
 @import url('./media/fittingroom.css');
+@import url('./media/inventory.css');
 
 :root {
   --color-orange: #ff7c06;

@@ -106,19 +106,24 @@
     .character-wrap__props-wrap{
         margin-top: 10.34px;
     }
-    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg{
+    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap img{
         width: 18.14px;
         height: 15.12px;
     }
-    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg{
+    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
+    {
         width: 28.26px;
         height: 17.58px;
     }
-    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg{
+    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap img{
         width: 23.69px;
         height: 16.82px;
     }
-    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg{
+    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
         width: 32.28px;
         height: 23.6px;
     }
