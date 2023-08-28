@@ -8,13 +8,13 @@
         height: auto !important;
     }
 }
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
     .wrapper__nft-shop-modal-overlay_active, .wrapper__inventory-modal-overlay_active{
         display: flex !important;
         align-items: center !important;
     }
     .wrapper__nft-shop-modal{
-        width: 400px !important;
+        width: 590px !important;
         height: 503px !important;
     }
     .inventory-wrap-corner_topleft{
@@ -62,7 +62,7 @@
         margin-top: 20px !important;
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
-        gap: 13px !important;
+        gap: 10px !important;
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav input:checked + label{
         border-bottom-width: 4px !important;
@@ -150,6 +150,44 @@
     .nft-shop-modal__header-title{
         transform: translateX(90px);
     }
+    .wrapper__nft-shop-modal{
+        width: 400px !important;
+    }
+    .nft-shop-boxes-corne_topleft, .nft-shop-boxes-corne_topright,
+    .nft-shop-boxes-corne_bottomright, .nft-shop-boxes-corne_bottomleft {
+        width: 11px !important;
+        height: 11px !important;
+    }
+    #nft-shop-boxes-list .nft-shop-boxes-corne_topleft{
+        top: -6px !important;
+        left: -6px !important;
+    }
+    #nft-shop-boxes-list .nft-shop-boxes-corne_topright{
+    top: -6px !important;
+    right: -6px !important;
+    }
+    #nft-shop-boxes-list .nft-shop-boxes-corne_bottomright{
+        bottom: -6px !important;
+        right: -6px !important;
+    }
+    #nft-shop-boxes-list .nft-shop-boxes-corne_bottomleft{
+        bottom: -6px !important;
+        left: -6px !important;
+    }
+    .nft-shop-boxes-price{
+        bottom: -7.4px !important;
+        font-size: 7.8px !important;
+        right: 32px !important; 
+    }
+    .nft-shop-boxes-price-symbol{
+        bottom: -5px !important;
+        right: 20px !important;
+        width: 8.75px !important;
+    }
+    .nft-shop-boxes-price-table{
+        width: 64.57px !important;
+        bottom: -10px !important;
+    }
 }
 @media (max-width: 411px) {
     .wrapper__nft-shop-modal{
@@ -179,4 +217,8 @@
     .nft-shop-modal__header-title{
         transform: translateX(60px);
     }
+    .nft-shop-modal__nav-wrap .nav-wrap__nav label{
+        font-size: 9.5px !important;
+    }
+    
 }

@@ -1,9 +1,9 @@
-@media(max-width: 500px) {
+@media(max-width: 1024px) {
     .wrapper__item-modal-overlay .body__item-detail{
         width: 351px !important;
-        height: 343px !important;
         border-radius: 0px !important;
         padding: 0px 20px !important;
+        padding-bottom: 30px !important;
     }
     .wrapper__item-modal-overlay .item-detail__btn-close{
         width: 16px !important;
@@ -18,7 +18,6 @@
     .inventory-item-body_legendary
     {
         width: 308px;
-        height: 262px;
     }
     .wrapper__item-modal-overlay .header__img-item{
         width: 101px !important;
@@ -87,5 +86,20 @@
         line-height: 13px !important;
         height: 60px !important;
         margin-bottom: 16px !important;
+    }
+    #inventory-nftbox-modal-name{
+        color: #967444;
+    }
+    .text-nftboxe__type{
+        color: #393939;
+    }
+    .props-item__prop-title{
+        font-family: 'Teletactile';
+        font-size: 10px;
+        color: #FF7C06;
+    }
+    #nventory-nftbox-body .props-item__prop img {
+        width: 18px;
+        height: 15px;
     }
 }

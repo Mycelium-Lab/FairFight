@@ -143,6 +143,25 @@
   height: 50px;
   padding-bottom: 15px;
 }
+.wrapper__nft-shop-modal .list-items__item{
+  margin-bottom: 30px;
+  margin-right: 20px;
+  width: 87.71px;
+  height: 87.71px;
+  left: 5px;
+    display: inline-block;
+}
+.wrapper__item-modal-overlay .header__text-item__props-item{
+  margin-top: 9px !important;
+  gap: 0px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap{
+  margin-bottom: 12px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button{
+  width: 106.33px !important;
+  height: 31px !important;
+}
 }
 
 @media(max-width: 800px) {
@@ -556,22 +575,16 @@
   gap: 5px;
  background-image: url('../../media/svg/game-rows-mobile-320.svg');
 }
-.wrapper__nft-shop-modal .list-items__item{
-  margin-bottom: 30px;
-  margin-right: 25px;
-  width: 87.71px;
-  height: 87.71px;
-  left: 5px;
-    display: inline-block;
-}
 .item-modal-info{
   font-size: 21.67px !important;
   margin-top: 14px !important;
   margin-bottom: 15px !important;
 }
-.wrapper__item-modal-overlay .item-detail__btns-wrap button{
-  width: 106.33px !important;
-  height: 31px !important;
+.wrapper__nft-shop-modal .list-items__item {
+  margin-right: 20px;
+}
+#nft-shop-boxes-list .list-items__item{
+  display: inline-block !important;
 }
 .dressing-value{
   font-size: 12.1px !important;
