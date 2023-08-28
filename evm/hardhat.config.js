@@ -15,7 +15,7 @@ module.exports = {
     goerli: {
       url: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       chainId: 5,
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     emerald_testnet: {
       url: "https://testnet.emerald.oasis.dev",
@@ -39,15 +39,15 @@ module.exports = {
     },
     scale: {
       url: "https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix",
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     scale1: {
       url: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
-      accounts: [process.env.PRIVATE_KEY]
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
     },
     bnb: {
       url: "https://bsc-dataseed.binance.org",
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       chainId: 56
     },
   },
