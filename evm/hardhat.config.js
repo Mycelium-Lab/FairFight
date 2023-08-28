@@ -43,7 +43,7 @@ module.exports = {
     },
     scale1: {
       url: 'https://staging-v3.skalenodes.com/v1/staging-faint-slimy-achird',
-      accounts: [process.env.PRIVATE_KEY, 'f5567360ea204ac2d158f02b4385539dc68a9beb5a8a93bc44ee375b2d04caf9']
+      accounts: [process.env.PRIVATE_KEY]
     },
     bnb: {
       url: "https://bsc-dataseed.binance.org",
