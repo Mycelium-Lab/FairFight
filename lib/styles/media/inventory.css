@@ -116,7 +116,7 @@
 @media(max-width: 500px) {
     .inventory__modal-content{
         width: 372.56px;
-        height: 869.64px;
+        height: 600.64px;
         padding-bottom: 0px;
     }
     .modal__header-title_inventory{
@@ -241,6 +241,7 @@
     .inventory__modal-content {
         width: 342.56px !important;
         height: 639.64px;
+        padding: 0px 10px;
     }
     .list-wrap__item-list{
         grid-template-columns: repeat(3, 77.1px) !important;
@@ -288,5 +289,20 @@
 }
 .inventory-slot__modal-corner_bottomleft_boots {
     top: 218px;
+}
+.body__inventory{
+    width: 300px !important; 
+}
+.inventory-modal__body .showcase{
+    width: 280px;
+}
+.inventory-modal__body .character-wrap__img-wrap{
+    width: 220px;
+}
+.inventory-character{
+    gap: 0px;
+}
+.character-wrap__props-wrap{
+    transform: translateX(0px);
 }
 }
