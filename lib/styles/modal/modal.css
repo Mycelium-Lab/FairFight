@@ -99,21 +99,24 @@
   
   #install_wallet_modal button {
     background-color: transparent;
-    border: 1px solid var(--color-orange);
-    border-radius: 8px;
     height: 90px;
     align-self: center;
     padding: 0px 15px;
+    border: none;
   }
   
   #install_wallet_modal button:first-child{
-    background: #FFFFFF;
+    /*background: #FFFFFF;*/
+    background-image: url('../../media/svg/metamask-wallet.svg');
+    width: 83px;
+    height: 82px;
+    background-repeat: no-repeat;
   }
   #install_wallet_modal button:last-child{
-    background: #4E92F0;
-    border: none;
-    height: 80px;
-    padding: 0px 10px;
+    background-image: url('../../media/svg/walletconnect.svg');
+    width: 83px;
+    height: 82px;
+    background-repeat: no-repeat;
   }
   
   .choose-wallet-header{
@@ -125,13 +128,11 @@
     font-weight: 500;
     line-height: 19px;
     color: #000000;
+    text-align: center;
   }
   
   #install_wallet_modal p:last-child {
     font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    color: #000000;
   }
   
   #install_wallet_modal a {

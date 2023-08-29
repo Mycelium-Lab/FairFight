@@ -108,7 +108,6 @@
     }
     .wrapper__nft-shop-modal .params-wrap__dropdown-list button p{
         font-size: 12px !important;
-        padding-top: 2px !important;
     }
 
     .wrapper__nft-shop-modal .left__info{display: none !important;}
@@ -194,10 +193,6 @@
     }
     .wrapper__nft-shop-modal .params-wrap__dropdown-list button::after {
         width: 7.58px !important;
-    }
-    .wrapper__nft-shop-modal .params-wrap__dropdown-list button, 
-    .wrapper__nft-shop-modal .dropdown-list__list{
-        border-color: #FF7C06 !important;
     }
 }
 

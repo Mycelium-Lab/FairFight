@@ -371,6 +371,9 @@ a {
 .change-network-dropdown li:hover{
   color: #FFC897;
 }
+.change-network-dropdown li:hover path{
+  fill: #FFC897;
+}
 .change-network-item{
   margin: 13px 18px 10px 17px;
   border-bottom: 1px solid #FFC897;
@@ -2232,9 +2235,9 @@ a {
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap {
   margin: 40px auto 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 751px;
+  width: 796px;
+  gap: 180px;
 }
 
 .wrapper__nft-shop-modal .params-wrap__dropdown-list {
@@ -2277,8 +2280,8 @@ a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  padding-top: 2px;
 }
-
 .wrapper__nft-shop-modal .params-wrap__dropdown-list button::after {
   margin-left: 10px;
   width: 17px;
@@ -2298,6 +2301,10 @@ a {
   position: absolute;
   display: none;
   z-index: 9999;
+}
+.wrapper__nft-shop-modal .params-wrap__dropdown-list button, 
+.wrapper__nft-shop-modal .dropdown-list__list{
+    border-color: #FF7C06;
 }
 
 .wrapper__nft-shop-modal .dropdown-list__list_active {
@@ -2363,7 +2370,6 @@ a {
   margin-top: 10px;
   padding-right: 20px;
   height: calc(100% - 200px);
-  overflow: auto;
 }
 
 .nft-shop-modal__list-items-wrap::-webkit-scrollbar {
@@ -2393,7 +2399,8 @@ a {
   margin-bottom: 34px;
 }
 .list-items-wrap__list-items{
-  width: 77px;
+  overflow: auto;
+  height: 100%;
 }
 .wrapper__nft-shop-modal .list-items__item_bronze, .wrapper__nft-shop-modal .list-items__item_character{
   background-image: url('../media/svg/shop/bronze-collection/frame.svg');
@@ -2588,21 +2595,9 @@ a {
   justify-content: space-between;
   padding-right: 20px;
   border-right: 1px solid #C6C6C6;
-  gap: 10px;
 }
 
-#nft-shop-characters-list .left__info{
-  gap: 55px;
-}
-#nft-shop-weapons-list .left__info{
-  gap: 38px;
-}
-#nft-shop-armors-list .left__info {
-  gap: 38px;
-}
-#nft-shop-boots-list .left__info{
-  gap: 38px;
-}
+
 
 .info__text{
   margin-top: 10px;
@@ -2687,7 +2682,6 @@ a {
 
 
 .wrapper__nft-shop-modal .info__pricing  {
-  margin-bottom: 3px;
   display: flex;
   gap: 15px;
   align-items: flex-end;
@@ -2707,6 +2701,10 @@ a {
   line-height: 16px;
   color: #393939;
 }
+wrapper__nft-shop-modal .info__pricing button {
+  height: 32px;
+}
+
 
 /*.wrapper__nft-shop-modal .info__pricing button {
   border-radius: 8px;
@@ -3943,6 +3941,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   bottom: 0;
   left: 45px;
   grid-gap: 31px;
+  top: 220px;
 }
 
 .main-container {
@@ -3989,9 +3988,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   background-repeat: no-repeat;
   height: 174px;
 }
-#nft-shop-boxes-list .info__pricing {
-  justify-content: end;
-}
+
 #nft-shop-boxes-list .right__props-wrap {
   margin-top: 25px;
 }

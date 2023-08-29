@@ -3,9 +3,6 @@
         display: flex;
         flex-direction: column;
       }
-      .container__left{
-        bottom: 180px;
-      }
       .wrapper_banners{
         flex-direction: row;
         width: auto;
