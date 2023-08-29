@@ -1490,7 +1490,7 @@ a {
 .wrapper__btns-wrap {
   z-index: 13;
   position: relative;
-  bottom: 200px;
+  bottom: 80px;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
@@ -2262,7 +2262,6 @@ a {
   display: flex;
   align-items: center;
   width: 796px;
-  gap: 180px;
 }
 
 .wrapper__nft-shop-modal .params-wrap__dropdown-list {
@@ -4065,10 +4064,20 @@ margin-right: 60px;
   width: 110px;
   background-image: url('../media/svg/orange-btn-press.svg');  
 }
-.buy-now-btn, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button {
+.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button {
   background-image: url('../media/svg/frame-btn.svg');
 }
-.buy-now-btn:hover, .back-nft-shop:hover, .go-inventory:hover {
+.back-nft-shop, .go-inventory {
+  background-image: url('../media/svg/frame-btn-back.svg')
+}
+.back-nft-shop:hover, .go-inventory:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  padding-top: 5px;
+  background-image: url('../media/svg/frame-btn-back-press.svg')
+}
+
+.buy-now-btn:hover {
   background-position: center 5px !important;
   transition: all 0.1s ease;
   background-image: url('../media/svg/orange-btn-press.svg') !important; 
@@ -4125,9 +4134,8 @@ margin-right: 60px;
 }
 
 .back-nft-shop, .go-inventory {
-  padding: 0 12px;
-  height: 62px;
-  padding-bottom: 5px;
+  height: 50px;
+  width: 238px;
 }
 
 .back-nft-shop:hover, .go-inventory:hover {

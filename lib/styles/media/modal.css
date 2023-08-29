@@ -109,6 +109,11 @@
         padding: 5px 9px 0px;
         font-size: 14px;
     }
+    .infoContent-bottom__content-you div:first-child p:last-child a,
+    .infoContent-bottom__content-enemy div:last-child p:last-child a{
+        text-decoration: underline;
+        color: #FF7C06;
+    }
     .infoContent-bottom__content-you p, .infoContent-bottom__content-enemy p {
         margin-bottom: 0px;
     }
@@ -438,9 +443,9 @@
     .wrapper__message-modal .message-modal__header-title{
         font-size: 16px !important;
     }
-    .wrapper__message-modal .text-wrap__title{
+   /* .wrapper__message-modal .text-wrap__title{
         font-size: 14px !important;
-    }
+    }*/
     .wrapper__message-modal .text-wrap__text{
         font-size: 12px !important;
     }
@@ -467,6 +472,9 @@
     .wrapper__message-modal_waiting {
         padding-bottom:  0px !important;
     }
+    .back-nft-shop, .go-inventory{
+        font-size: 14px !important;
+    }
 }
 
 /*@media(max-width: 420px) {
@@ -478,5 +486,8 @@
 @media(max-width: 380px) {
     .modal .modal_content_info, .modal .modal_content_waiting, .wrapper__message-modal_waiting, .modal .modal_content{
         max-width: 340px;
+    }
+    .wrapper__message-modal_purchase-completed{
+        width: 340px !important;
     }
 }
