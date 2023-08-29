@@ -34,6 +34,12 @@
 	</script>
 	<script src="/bundle.js"></script>
 	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
+	<script type="module" src="/dist/289.js"></script>
+	<script type="module" src="/dist/328.js"></script>
+	<script type="module" src="/dist/343.js"></script>
+	<script type="module" src="/dist/663.js"></script>
+	<script type="module" src="/dist/871.js"></script>
+	<script type="module" src="/dist/979.js"></script>
 	<script type="module" src="/dist/main.js"></script>
 	<script type="module" src="/modules/airdrop.js"></script>
 	<script type="module" src="/modules/networks.js"></script>
@@ -458,7 +464,7 @@
 					<a href="/?network=23294" id="network-23294" class="network-deactive"><li ><img class="network-icon" src="media/oasis-black.png"/>Sapphire</li></a>
 					<a href="/?network=503129905" id="network-503129905"  class="network-deactive"><li ><img class="network-icon" src="media/scale-black.png"/>SKALE</li></a>
 					<a href="/?network=56" id="network-56"  class="network-deactive"><li ><img class="network-icon" src="media/tokens/black/bnb.png"/>BNB</li></a>
-					<a href="/" id="network-disconnect"  class="network-deactive"><li>Disconnect</li></a>
+					<!-- <a href="#" id="network-disconnect"  class="network-deactive"><li>Disconnect</li></a> -->
 
 					<!-- <a href="/?network=31337" id="network-31337"  class="network-deactive"><li ><img class="network-icon" src="/media/scale-black.png"/>Hardhat</li></a>								 -->
 				</ul>
@@ -481,11 +487,10 @@
 						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7884 0.2121C14.0712 0.4949 14.0712 0.953409 13.7884 1.23621L12.3698 2.65481L12.5206 2.80563L12.5212 2.80618C12.7234 3.0079 12.8839 3.24752 12.9935 3.51135C13.1031 3.77542 13.1596 4.05853 13.1596 4.34446C13.1596 4.63038 13.1031 4.9135 12.9935 5.17756C12.8839 5.44144 12.7234 5.68111 12.521 5.88285L12.5206 5.88329L11.1609 7.24299C11.4144 7.52735 11.4047 7.96362 11.1319 8.23641C10.8491 8.51921 10.3906 8.51921 10.1078 8.23641L5.76288 3.89148C5.48008 3.60868 5.48008 3.15017 5.76288 2.86737C6.03604 2.59422 6.47312 2.5849 6.75746 2.83943L8.1171 1.47979L8.11758 1.47931C8.31931 1.277 8.55896 1.11647 8.82282 1.00691C9.08689 0.897263 9.37 0.84082 9.65593 0.84082C9.94186 0.84082 10.225 0.897263 10.489 1.00691C10.7529 1.11647 10.9925 1.27698 11.1942 1.47926L11.1948 1.47979L11.3457 1.6307L12.7643 0.2121C13.0471 -0.0707 13.5056 -0.0707 13.7884 0.2121ZM11.4983 4.8574L10.1376 6.21802L7.78236 3.86274L9.14299 2.50212C9.21026 2.43461 9.2902 2.38104 9.37823 2.34449C9.46625 2.30794 9.56062 2.28913 9.65593 2.28913C9.75124 2.28913 9.84561 2.30794 9.93363 2.34449C10.0217 2.38104 10.1016 2.43461 10.1689 2.50212L10.8126 3.14586C10.8193 3.15311 10.8262 3.16025 10.8332 3.16729C10.8402 3.17432 10.8474 3.18118 10.8546 3.18787L11.4974 3.83063L11.4983 3.83151C11.5658 3.89879 11.6193 3.97873 11.6559 4.06675C11.6924 4.15478 11.7113 4.24915 11.7113 4.34446C11.7113 4.43977 11.6924 4.53414 11.6559 4.62216C11.6193 4.71018 11.5658 4.79012 11.4983 4.8574ZM5.60758 7.48289L6.30251 6.78797C6.58531 6.50517 6.58531 6.04666 6.30251 5.76386C6.01971 5.48106 5.5612 5.48106 5.2784 5.76386L4.58348 6.45878L4.42379 6.2991C4.40907 6.28125 4.39336 6.26395 4.37667 6.24726C4.35998 6.23056 4.34267 6.21486 4.32483 6.20014L3.88855 5.76386C3.60575 5.48106 3.14724 5.48106 2.86444 5.76386C2.59046 6.03784 2.58192 6.47674 2.83881 6.76101L1.48272 8.1171L1.48224 8.11758C1.27993 8.31931 1.1194 8.55896 1.00984 8.82282C0.900193 9.08689 0.84375 9.37 0.84375 9.65593C0.84375 9.94186 0.900193 10.225 1.00984 10.489C1.1194 10.7529 1.27991 10.9925 1.48219 11.1942L1.48272 11.1948L1.63217 11.3442L0.2121 12.7643C-0.0707 13.0471 -0.0707 13.5056 0.2121 13.7884C0.4949 14.0712 0.953409 14.0712 1.23621 13.7884L2.65628 12.3683L2.80856 12.5206L2.80911 12.5212C3.01083 12.7234 3.25045 12.8839 3.51428 12.9935C3.77835 13.1031 4.06146 13.1596 4.34739 13.1596C4.63331 13.1596 4.91643 13.1031 5.18049 12.9935C5.44437 12.8839 5.68404 12.7234 5.88578 12.521L5.88621 12.5206L7.24264 11.1642C7.52706 11.4153 7.96152 11.4049 8.23348 11.1329C8.51628 10.8501 8.51628 10.3916 8.23348 10.1088L7.80318 9.67848C7.78846 9.66064 7.77275 9.64334 7.75606 9.62664C7.73937 9.60995 7.72206 9.59424 7.70422 9.57952L7.53971 9.41502L8.2361 8.71863C8.5189 8.43583 8.5189 7.97732 8.2361 7.69452C7.9533 7.41172 7.49479 7.41172 7.21199 7.69452L6.5156 8.39091L5.60758 7.48289ZM3.86226 7.78578L2.50505 9.14299C2.43754 9.21026 2.38397 9.2902 2.34742 9.37823C2.31087 9.46625 2.29206 9.56062 2.29206 9.65593C2.29206 9.75124 2.31087 9.84561 2.34742 9.93363C2.38397 10.0217 2.43754 10.1016 2.50505 10.1689L2.50594 10.1698L3.83444 11.4983C3.90172 11.5658 3.98166 11.6193 4.06968 11.6559C4.15771 11.6924 4.25208 11.7113 4.34739 11.7113C4.4427 11.7113 4.53707 11.6924 4.62509 11.6559C4.71311 11.6193 4.79305 11.5658 4.86033 11.4983L6.21754 10.1411L3.86226 7.78578Z" fill="#7E7E7E"/>
 							</svg>
-							
 						disconnect</li></a>
 				</ul>
 			</div>
-			<button class="connect-button close-button" id="connect" style="display:none">
+			<button class="connect-button close-button" id="connect">
 				connect wallet
 			</button>
 		</div>
@@ -1291,7 +1296,7 @@
 					</ul>
 				</div>
 
-				<div class="params-wrap__filters">
+				<div id="rarity-filter" class="params-wrap__filters">
 					<div class="filters__item">
 						<input name="collection-check" value="bronze" id="bronze" type="checkbox">
 						<label for="bronze">
@@ -1348,7 +1353,7 @@
 
 				</div>
 				<div id="nft-shop-boxes-list" class="list-items-wrap__list-items" style="display: none;">
-					<div data-price="10.30" data-collection="bronze" class="list-items__item list-items__item_bronze" style="display: flex;">
+					<!-- <div data-price="10.30" data-collection="bronze" class="list-items__item list-items__item_bronze" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
 								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
@@ -1683,7 +1688,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div data-price="10.30" data-collection="legendary" class="list-items__item list-items__item_legendary" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
@@ -1694,6 +1699,7 @@
 								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
 								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
 								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1705,7 +1711,7 @@
 									</p>
 								</div>
 								<div class="info__pricing">
-									<button class="buy-now-btn" data-button="action">Buy now</button>
+									<button class="buy-now-btn" data-button="action" id="lootbox-buy-btn">Buy now</button>
 								</div>
 							</div>
 						</div>

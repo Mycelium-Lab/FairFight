@@ -6,7 +6,7 @@ await pgClient.connect()
 
 export async function getAmountOfGames(chainid, address) {
     try {
-        const res = await pgClient.query("SELECT COUNT(*) FROM statistics WHERE player=$1 AND chainid=$2", [address, chainid])
+        const res = await pgClient.query("SELECT COUNT(*) FROM statistics WHERE player=$1 AND chainid=$2", [address.toLowerCase(), chainid])
         const count = parseInt(res.rows[0].count)
         return { err: null, count }
     } catch (error) {
@@ -17,7 +17,7 @@ export async function getAmountOfGames(chainid, address) {
 
 export async function getAmountOfKills(chainid, address) {
     try {
-        const res = await pgClient.query("SELECT SUM(kills) as count FROM statistics WHERE player=$1 AND chainid=$2", [address, chainid])
+        const res = await pgClient.query("SELECT SUM(kills) as count FROM statistics WHERE player=$1 AND chainid=$2", [address.toLowerCase(), chainid])
         const count = parseInt(res.rows[0].count)
         return { err: null, count }
     } catch (error) {
@@ -45,7 +45,7 @@ export async function getAmountOfWinsInARow(chainid, address) {
             WHERE s1.player = $1 AND s2.player != $1 AND s1.chainid=$2 AND s2.chainid=$2
             ORDER BY s1.gameid DESC
             LIMIT ${amountOfKillsForPrize};
-        `, [address, chainid])
+        `, [address.toLowerCase(), chainid])
         let allWins = true
         if (res.rows.length >= amountOfWinsInARowForPrize) {
             res.rows.forEach(v => {
