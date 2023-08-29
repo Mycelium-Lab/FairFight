@@ -293,19 +293,12 @@
 }
 @media(max-width: 600px) {
     .modal .modal_content_new-game{
-        max-width: 90vw;
+        max-width: 480px;
         background-size: 230px 190px;
-        background-position: 45vw 480px;
+        background-position: 45vw 60vh;
     }
     .new-game-header{
         margin-bottom: 20px;
-    }
-    .new-game-devider {
-        max-width: 77vw;
-    }
-  
-    .modal .modal_content_new-game::before{
-        width: 250px;
     }
     .modal__close-icon{
         width: 16px;
@@ -321,7 +314,7 @@
     }
     .modal .modal_content{
         padding: 20px 25.16px;
-        width: 380px;
+        max-width: 380px;
     }
     .modal .modal_content_info{
         padding: 20px 20px;
@@ -340,8 +333,7 @@
         width: 106px;
     }
     .token-active, .token-deactive {
-        width: 70px;
-        padding: 0px;
+        width: 80px;
     }
     .figure img{
         width: 18px;
@@ -357,17 +349,11 @@
     .modal__row{
         gap: 13.6px;
     }
-    .modal .modal_content_new-game{
-        background-size: 176px 172.7px;
-        background-position: 45vw 370px;
-    }
-    .modal .modal_content_new-game::before{
-        width: 45vw;
-    }
     #createGame{
         height: 34px;
         padding: 0 19.7395px;
         padding-bottom: 10px;
+        width: 116.8px !important;
     }
     #createGame:hover{
         padding-bottom: 0px;
@@ -386,9 +372,6 @@
         width: 16px !important;
         height: 16px !important;
         background-size: 16px !important;
-    }
-    .modal .modal_content_new-game::before {
-        height: 170px;
     }
     #pending_modal .modal_content, #confirmation_modal .modal_content, #wainting_modal .modal_content, #approve_modal .modal_content, #enemy_finishing_game_modal .modal_content{
         font-size: 14px;
@@ -485,6 +468,12 @@
         padding-bottom:  0px !important;
     }
 }
+
+/*@media(max-width: 420px) {
+    .modal .modal_content_new-game{
+
+    }
+}*/
 
 @media(max-width: 380px) {
     .modal .modal_content_info, .modal .modal_content_waiting, .wrapper__message-modal_waiting, .modal .modal_content{

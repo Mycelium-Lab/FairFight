@@ -287,7 +287,9 @@
   .connect-button{
     font-size: 14px;
   }
-
+  .player-visible{
+    left: 220px;
+  }
 }
 
 @media(max-width: 500px) {
@@ -590,8 +592,18 @@
   margin-bottom: 0px;
   margin-top: 5px;
 }
+.network_name-wrapper {
+  margin-left: 20px;
+}
 .connect-button:hover{
   padding-top: 8px;
+}
+.player-visible{
+  display: none;
+}
+.player-visible-mobile{
+  display: block;
+  left: 200px;
 }
 .item-modal-info{
   font-size: 21.67px !important;
@@ -657,6 +669,9 @@
   }
   .dressing-value{
     font-size: 10.1px !important;
+  }
+  .player-visible-mobile{
+    left: 170px;
   }
 }
 

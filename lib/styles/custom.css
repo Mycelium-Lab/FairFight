@@ -168,6 +168,12 @@ a {
   margin-right: 20px;
 }
 
+#createGame
+{
+  width: 178.8px;
+}
+
+
 
 @media (max-width: 1023px) {
   #header {
@@ -317,6 +323,17 @@ a {
   padding-left: 5px;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+.player-visible, .player-visible-mobile{
+  position: absolute;
+  bottom: 0px;
+  left: 260px;
+  opacity: 0.25;
+}
+
+.player-visible-mobile{
+  display: none;
 }
 
 .network_name-wrapper{
@@ -1240,6 +1257,7 @@ a {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  height: 60px;
 }
 
 .canvasWrapper__footer button:first-child,
@@ -1615,7 +1633,7 @@ a {
 }
 
 .new-game-devider {
-  max-width: 100%;
+  width: 100%;
 }
 
 .newgame__btn {
