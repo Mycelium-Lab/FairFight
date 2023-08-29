@@ -1,0 +1,199 @@
+@media(max-width: 500px) {
+    .fitting__modal-content{
+        width: 366.64px !important;
+        height: 443.64px !important;
+        padding: 0px 20px;
+    }
+    .modal__body_fitting{
+        margin-top: 0px;
+    }
+    .head__showcase-title{
+        font-size: 16.67px;
+        padding-bottom: 6.57px;
+        border-width: 1px;
+    }
+    .modal__header-title_fitting{
+        background-image: url('../../media/svg/shop/fitting-room-title-mobile.svg');
+        margin-top: 30px;
+        margin-bottom: 0px;
+    }
+    .slot-wrap__slot{
+        width: 52.29px;
+        height: 52.29px;
+        border-width: 2px;
+    }
+    .fitting-slot__modal-corner_topleft{
+        width: 7.6px;
+        height: 7.6px;
+        top: -4px;
+        left: -4px;
+    }
+    .fitting-slot__modal-corner_topright{
+        width: 7.6px;
+        height: 7.6px;
+        top: -4px;
+        right: -4px;
+    }
+    .fitting-slot__modal-corner_bottomright{
+        width: 7.6px;
+        height: 7.6px;
+        bottom: -4px;
+        right: -4px;
+    }
+    .fitting-slot__modal-corner_bottomleft{
+        width: 7.6px;
+        height: 7.6px;
+        bottom: -4px;
+        left: -3px;
+    }
+    .character__modal-corner_topleft{
+        width: 13.59px;
+        top: -8px;
+        left: -8px;
+    }
+    .character__modal-corner_topright{
+        width: 13.59px;
+        top: -8px;
+        right: -8px;
+    }
+    .character__modal-corner_bottomleft{
+        width: 13.59px;
+        bottom: -8px;
+        left: -8px;
+    }
+    .character__modal-corner_bottomright{
+        width: 13.59px;
+        bottom: -8px;
+        right: -8px;
+    }
+    .slot-wrap__title{
+        font-size: 10.56px;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+    .fitting_slots{
+        margin-left: 0px;
+        gap: 15px;
+        transform: translateY(-7px);
+    }
+    .slots__slot-wrap{
+        align-items: inherit;
+        width: 52px;
+    }
+    .weapon__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/weapon-slot-mobile.svg');
+    }
+    .armor__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/armor-slot-mobile.svg');
+    }
+    .boots__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/boots-slot-mobile.svg');
+    }
+    .character-wrap__img-wrap{
+        border: 2px solid #393939;
+        width: 249.94px;
+        height: 240.39px;
+    }
+    #tryon-character-background{
+        height: 200% !important;
+        transform: translate(-50%, -5%) !important;
+    }
+    .lds-dual-ring-tryon:after {
+        width: 130px !important;
+        height: 130px !important;
+        top: 14% !important;
+    }
+    .character-wrap__props-wrap{
+        margin-top: 10.34px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap img{
+        width: 18.14px;
+        height: 15.12px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
+    {
+        width: 28.26px;
+        height: 17.58px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap img{
+        width: 23.69px;
+        height: 16.82px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg,
+    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
+        width: 32.28px;
+        height: 23.6px;
+    }
+    .item__prop-value{
+        font-size: 12.1px;
+        color: #24B500;
+    }
+}
+
+@media(max-width: 380px) {
+    .fitting__modal-content{
+        width: 340.64px !important;
+        height: 443.64px !important;
+        /*padding: 46px 57px 44px 57px !important;*/
+    }
+    .character-wrap__img-wrap{
+        width: 223.39px;
+        height: 226.94px;
+    }
+    .slot-wrap__slot{
+        width: 42.29px;
+        height: 42.29px;
+        border-width: 1px;
+    }
+    .armor__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/armor-slot-mobile-xs.svg');
+    }
+   /* #tryon-character-background{
+        height: 230% !important;
+        transform: translate(-50%, -10%) !important;
+    }*/
+    .fitting_slots{
+        gap: 19.45px;
+        transform: translateY(-2);
+    }
+    .slot-wrap__title{
+        font-size: 9px;
+    }
+    .slot-wrap__slot-img-wider{
+        width: 44px;
+    }
+    .slots__slot-wrap{
+        width: 42px;
+    }
+    .slot-wrap__slot-img{
+        width: 48px;
+    }
+    .character-wrap__props-wrap{
+        margin-top: 20.34px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg{
+        width: 16.14px;
+        height: 13.12px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg{
+        width: 26.26px;
+        height: 15.58px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg{
+        width: 21.69px;
+        height: 14.82px;
+    }
+    .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg{
+        width: 30.28px;
+        height: 21.6px;
+    }
+    .item__prop-value{
+        font-size: 10.1px;
+    }
+    .props-wrap__item{
+        gap: 4px;
+    }
+}

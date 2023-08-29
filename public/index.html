@@ -54,10 +54,38 @@
 <div id="start" style="position: relative;">
 
 	<header id="header">
-		<a href="/" class="logo">
-			<img src="/media/svg/logofair.svg" alt="">
-		</a>
-
+		<div style="display: flex;">
+			<a href="/" class="logo">
+				<img src="/media/svg/logofair.svg" alt="">
+			</a>
+			<div id="hamburger" class="hamburger-menu">
+			
+				<div id="hamburger-overlay" class="modal-overlay"></div>
+				<input id="menu__toggle" type="checkbox" />
+				<label class="menu__btn" for="menu__toggle">
+				  <span></span>
+				</label>
+			
+				<div id="menu-body" class="board menu__box">
+					<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg" style="display: none;">
+					<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg" style="display: none;">
+					<span id="menu__close" class="message-modal__btn-close"></span>
+					<p class="menu__title">Menu</p>
+					<div id="menu-btns" class="wrapper__btns-wrap">
+						<button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-nft-shop-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-inventory-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-lottery-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-tournaments-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button>
+					</div>
+				</div>
+			  </div>
+	
+		</div>
 		<button class="createGame btn btn-white btn-big" style="display: none;" id="airdrop-modal-open">
 			AirDrop
 		</button>
@@ -430,88 +458,6 @@
 					}
 
 				</script>
-
-<!--				<svg id="dropdown-check" width="165" height="45" viewBox="0 0 165 45" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--					<rect width="100%" height="100%" fill="#f0f0f0" />-->
-<!--					<rect x="2" y="8" width="2" height="2" fill="black"/>-->
-<!--					<rect x="163" y="39" width="2" height="4" transform="rotate(-180 163 39)" fill="black"/>-->
-<!--					<rect x="4" y="35" width="4" height="2" transform="rotate(90 4 35)" fill="black"/>-->
-<!--					<rect id="anim17" x="10" y="33" width="2" height="2" transform="rotate(90 10 33)" fill="#FFBD82"/>-->
-<!--					<rect id="anim3" x="155" y="35" width="2.00001" height="145" transform="rotate(90 155 35)" fill="#FFBD82"/>-->
-
-<!--					<rect x="161" y="10" width="4" height="2" transform="rotate(-90 161 10)" fill="black"/>-->
-<!--					<rect x="2" y="6" width="2" height="2" fill="black"/>-->
-
-<!--					<rect x="161" y="41" width="2" height="2" transform="rotate(-180 161 41)" fill="black"/>-->
-<!--					<rect x="6" y="39" width="2" height="2" transform="rotate(90 6 39)" fill="black"/>-->
-<!--					<rect x="4" y="4" width="2" height="2" fill="black"/>-->
-<!--					<rect x="8" y="41" width="2" height="2" transform="rotate(90 8 41)" fill="black"/>-->
-<!--					<rect x="159" y="6" width="2" height="2" transform="rotate(-90 159 6)" fill="black"/>-->
-<!--					<rect x="6" y="2" width="4" height="2" fill="black"/>-->
-<!--					<rect x="159" y="43" width="4" height="2" transform="rotate(-180 159 43)" fill="black"/>-->
-<!--					<path id="anim" fill-rule="evenodd" clip-rule="evenodd" d="M4 35H2V29H4L4 31L6 31V33H8V35L10 35V37L155 37V35H157V33L159 33V31L161 31V29H163V35H161V39H159V41H155V43L10 43V41H6L6 39H4V37L4 35Z" fill="#EE7000"/>-->
-<!--					<rect x="10" y="41" width="2" height="2" transform="rotate(90 10 41)" fill="black"/>-->
-<!--					<rect x="155" y="4" width="2" height="4" transform="rotate(-90 155 4)" fill="black"/>-->
-<!--					<rect x="10" width="145" height="2" fill="black"/>-->
-<!--					<rect x="10" y="43" width="145" height="2" fill="black"/>-->
-<!--					<rect y="10" width="2" height="25" fill="black"/>-->
-
-<!--					<rect  x="165" y="35" width="2" height="25" transform="rotate(-180 165 35)" fill="black"/>-->
-<!--					<path id="anim1" fill-rule="evenodd" clip-rule="evenodd" d="M155 4L10 3.99999V2L155 2.00001V4ZM157 6L8 5.99999V4H155L157 4.00001V6ZM159 8L6 7.99999V6H157L159 6.00001V8ZM159 31H4L4 29L4 27L126.353 27L2 27V9.99999L158.965 10L4 9.99999L4 8H159L161 8.00001V10H163V27L161 27V29V31L159 31ZM155 33L159 33V31L6 31L6 33H155ZM155 33V35L10 35V33L155 33Z" fill="#FF9332"/>-->
-<!--					<rect id="anim2" x="155" y="2" width="2.00001" height="145" transform="rotate(90 155 2)" fill="#FFBD82"/>-->
-<!--					<rect id="anim10" x="6" y="6" width="2" height="2" transform="rotate(90 6 6)" fill="#FFBD82"/>-->
-<!--					<rect id="anim11" x="4" y="10" width="4" height="2" transform="rotate(90 4 10)" fill="#FFBD82"/>-->
-<!--					<rect id="anim12" x="8" y="4" width="2" height="2" transform="rotate(90 8 4)" fill="#FFBD82"/>-->
-<!--					<rect id="anim13" x="10" y="4" width="2" height="2" transform="rotate(90 10 4)" fill="#FFBD82"/>-->
-<!--					<rect id="anim14" x="159" y="4" width="2" height="4" transform="rotate(90 159 4)" fill="#FFBD82"/>-->
-<!--					<rect id="anim15" x="161" y="6" width="2" height="2" transform="rotate(90 161 6)" fill="#FFBD82"/>-->
-<!--					<rect id="anim16" x="163" y="10" width="4" height="2" transform="rotate(90 163 10)" fill="#FFBD82"/>-->
-<!--					<rect id="anim18" width="6" height="4" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 37 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim19" width="6" height="4" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 135 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim20" width="6" height="3" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 32 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim21" width="6" height="3" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 130 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim22" width="6" height="2" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 28 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim23" width="6" height="2" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 126 43)" fill="#FFDDBE"/>-->
-
-<!--					<rect id="anim24" width="6" height="0.999999" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 25 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim25" width="6" height="0.999999" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 123 43)" fill="#FFDDBE"/>-->
-<!--					<rect id="anim5" x="4" y="27" width="4" height="2" transform="rotate(90 4 27)" fill="#FFBD82"/>-->
-<!--					<rect id="anim6" x="8" y="33" width="2" height="2" transform="rotate(90 8 33)" fill="#FFBD82"/>-->
-<!--					<rect id="anim7" x="6" y="31" width="2" height="2" transform="rotate(90 6 31)" fill="#FFBD82"/>-->
-<!--					<rect id="anim8" x="159" y="35" width="4" height="2" transform="rotate(-180 159 35)" fill="#FFBD82"/>-->
-<!--					<rect id="anim9" x="161" y="33" width="2" height="2" transform="rotate(-180 161 33)" fill="#FFBD82"/>-->
-<!--					<rect id="anim4" x="163" y="29" width="2" height="4" transform="rotate(-180 163 29)" fill="#FFBD82"/>-->
-
-<!--					<path d="M16.8596 16.3095H16.0877H15.3158V17.0814H14.5438V17.8533V18.6252V20.1691V20.941V21.7129H15.3158V22.4849H16.0877H16.8596H17.6315H18.4035H19.1754V21.7129H19.9473V20.941H21.4912V22.4849H20.7192V23.2568H19.9473V24.0287H17.6315H16.8596H14.5438V23.2568H13.7719V22.4849H13V20.941V20.1691V19.3972V18.6252V16.3095H13.7719V15.5376H14.5438V14.7656H16.0877H16.8596H17.6315H19.9473V15.5376H20.7192V16.3095H21.4912V17.8533H19.9473V17.0814H19.1754V16.3095H18.4035H17.6315H16.8596Z" fill="#333333"/>-->
-<!--					<path d="M29.9865 20.1691H24.583V24.0287H23.8111H23.0391V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095V15.5376V14.7656H23.8111H24.583V18.6252H29.9865V14.7656H31.5303V16.3095V22.4849V24.0287H29.9865V20.1691Z" fill="#333333"/>-->
-<!--					<path d="M33.0783 23.2568V22.4849V20.941V19.3972V18.6252V17.8533H33.8502V17.0814H34.6221V16.3095H35.3941V15.5376H36.166V14.7656H38.4818V15.5376H39.2537V16.3095H40.0256V17.0814H40.7975V17.8533H41.5695V18.6252V19.3972V20.941V22.4849V23.2568V24.0287H40.7975H40.0256V23.2568V22.4849V20.941H34.6221V22.4849V23.2568V24.0287H33.8502H33.0783V23.2568ZM40.0256 19.3972V18.6252H39.2537V17.8533H38.4818V17.0814H37.7098V16.3095H36.9379V17.0814H36.166V17.8533H35.3941V18.6252H34.6221V19.3972H40.0256Z" fill="#333333"/>-->
-<!--					<path d="M50.0647 17.8533V15.5376V14.7656H51.6086V15.5376V16.3095V22.4849V24.0287H50.0647V22.4849H49.2928V21.7129H48.5209V20.941H47.749V20.1691H46.977V19.3972H46.2051V18.6252H45.4332V17.8533H44.6613V20.1691V24.0287H43.8893H43.1174V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095V15.5376V14.7656H43.8893H44.6613V15.5376H45.4332V16.3095H46.2051V17.0814H46.977V17.8533H47.749V18.6252H48.5209V19.3972H49.2928V20.1691H50.0647V17.8533Z" fill="#333333"/>-->
-<!--					<path d="M57.0162 16.3095H56.2443H55.4723V17.0814H54.7004V17.8533V18.6252V20.1691V20.941V21.7129H55.4723V22.4849H56.2443H57.0162H57.7881H58.56H59.332V21.7129H60.1039V20.941V20.1691H57.0162H56.2443V18.6252H57.0162H60.1039H61.6477V20.941V21.7129V22.4849H60.8758V23.2568H60.1039V24.0287H57.7881H57.0162H54.7004V23.2568H53.9285V22.4849H53.1566V20.941V20.1691V19.3972V18.6252V16.3095H53.9285V15.5376H54.7004V14.7656H56.2443H57.0162H57.7881H60.8758V15.5376H61.6477V17.0814H60.1039V16.3095H58.56H57.7881H57.0162Z" fill="#333333"/>-->
-<!--					<path d="M63.1957 16.3095V15.5376V14.7656H63.9676H64.7395H67.0553H71.6869V16.3095H70.9149H70.143H68.5992H67.8272H67.0553H65.5115H64.7395V18.6252H70.143V20.1691H64.7395V22.4849H65.5115H67.0553H67.8272H68.5992H70.143H70.9149H71.6869V24.0287H67.0553H64.7395H63.9676H63.1957V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095Z" fill="#333333"/>-->
-<!--					<path d="M90.2213 17.8533V15.5376V14.7656H91.7652V15.5376V16.3095V22.4849V24.0287H90.2213V22.4849H89.4494V21.7129H88.6775V20.941H87.9055V20.1691H87.1336V19.3972H86.3617V18.6252H85.5898V17.8533H84.8178V20.1691V24.0287H84.0459H83.274V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095V15.5376V14.7656H84.0459H84.8178V15.5376H85.5898V16.3095H86.3617V17.0814H87.1336V17.8533H87.9055V18.6252H88.6775V19.3972H89.4494V20.1691H90.2213V17.8533Z" fill="#333333"/>-->
-<!--					<path d="M93.3131 16.3095V15.5376V14.7656H94.085H94.857H97.1727H101.804V16.3095H101.032H100.26H98.7166H97.9447H97.1727H95.6289H94.857V18.6252H100.26V20.1691H94.857V22.4849H95.6289H97.1727H97.9447H98.7166H100.26H101.032H101.804V24.0287H97.1727H94.857H94.085H93.3131V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095Z" fill="#333333"/>-->
-<!--					<path d="M103.352 16.3095V15.5376V14.7656H104.124H104.896H107.212H111.072V16.3095H110.3H109.528H107.984V20.1691V24.0287H106.44V20.1691V16.3095H105.668H103.352Z" fill="#333333"/>-->
-<!--					<path d="M120.339 18.6252V14.7656H121.111H121.883V15.5376V16.3095V17.0814V18.6252V19.3972V20.1691V20.941V21.7129V22.4849V23.2568V24.0287H121.111H120.339V23.2568H119.567V22.4849H118.795V21.7129H118.023V20.941H117.251V21.7129H116.479V22.4849H115.707V23.2568H114.935V24.0287H113.391V23.2568V22.4849V16.3095V14.7656H114.935V18.6252V20.941H115.707V20.1691H116.479V19.3972H117.251V18.6252H118.023V19.3972H118.795V20.1691H119.567V20.941H120.339V18.6252Z" fill="#333333"/>-->
-<!--					<path d="M127.29 16.3095H126.518H125.746V17.0814H124.974V17.8533V18.6252V20.1691V20.941V21.7129H125.746V22.4849H126.518H127.29H128.062H128.834H129.606V21.7129H130.378V20.941V20.1691V17.8533V17.0814H129.606V16.3095H128.834H128.062H127.29ZM131.922 20.1691V22.4849H131.15V23.2568H130.378V24.0287H128.062H127.29H124.974V23.2568H124.202V22.4849H123.431V20.941V20.1691V19.3972V18.6252V16.3095H124.202V15.5376H124.974V14.7656H126.518H127.29H128.062H130.378V15.5376H131.15V16.3095H131.922V17.8533V20.1691Z" fill="#333333"/>-->
-<!--					<path d="M133.47 16.3095V15.5376V14.7656H134.242H135.014H137.329H140.417V15.5376H141.189V16.3095H141.961V17.8533V18.6252V19.3972H141.189V20.1691H140.417V20.941V21.7129H141.189V22.4849H141.961V23.2568V24.0287H140.417V23.2568H139.645V22.4849H138.873V21.7129H138.101V20.941H137.329H135.014V24.0287H133.47V20.941V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095ZM137.329 16.3095H135.785H135.014V18.6252V19.3972H135.785H136.557H137.329H138.101H138.873H139.645V18.6252H140.417V17.8533V17.0814H139.645V16.3095H138.873H138.101H137.329Z" fill="#333333"/>-->
-<!--					<path d="M152 16.3095H151.228V17.0814H150.456V17.8533H149.684V18.6252H148.912V19.3972V20.1691H149.684V20.941H150.456V21.7129H151.228V22.4849H152V24.0287H150.456V23.2568H149.684V22.4849H148.912V21.7129H148.14V20.941H147.368H146.597V21.7129H145.825V22.4849H145.053V24.0287H144.281H143.509V23.2568V22.4849V21.7129V20.1691V19.3972V18.6252V17.8533V17.0814V16.3095V15.5376V14.7656H144.281H145.053V20.1691H145.825V19.3972H146.597V18.6252H147.368V17.8533H148.14V17.0814H148.912V16.3095H149.684V15.5376H150.456V14.7656H151.228H152V15.5376V16.3095Z" fill="#333333"/>-->
-<!--					<path d="M16.8596 15.5438H16.0877H15.3158V16.3158H14.5438V17.0877V17.8596V19.4035V20.1754V20.9473H15.3158V21.7192H16.0877H16.8596H17.6315H18.4035H19.1754V20.9473H19.9473V20.1754H21.4912V21.7192H20.7192V22.4912H19.9473V23.2631H17.6315H16.8596H14.5438V22.4912H13.7719V21.7192H13V20.1754V19.4035V18.6315V17.8596V15.5438H13.7719V14.7719H14.5438V14H16.0877H16.8596H17.6315H19.9473V14.7719H20.7192V15.5438H21.4912V17.0877H19.9473V16.3158H19.1754V15.5438H18.4035H17.6315H16.8596Z" fill="white"/>-->
-<!--					<path d="M29.9865 19.4035H24.583V23.2631H23.8111H23.0391V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438V14.7719V14H23.8111H24.583V17.8596H29.9865V14H31.5303V15.5438V21.7192V23.2631H29.9865V19.4035Z" fill="white"/>-->
-<!--					<path d="M33.0783 22.4912V21.7192V20.1754V18.6315V17.8596V17.0877H33.8502V16.3158H34.6221V15.5438H35.3941V14.7719H36.166V14H38.4818V14.7719H39.2537V15.5438H40.0256V16.3158H40.7975V17.0877H41.5695V17.8596V18.6315V20.1754V21.7192V22.4912V23.2631H40.7975H40.0256V22.4912V21.7192V20.1754H34.6221V21.7192V22.4912V23.2631H33.8502H33.0783V22.4912ZM40.0256 18.6315V17.8596H39.2537V17.0877H38.4818V16.3158H37.7098V15.5438H36.9379V16.3158H36.166V17.0877H35.3941V17.8596H34.6221V18.6315H40.0256Z" fill="white"/>-->
-<!--					<path d="M50.0647 17.0877V14.7719V14H51.6086V14.7719V15.5438V21.7192V23.2631H50.0647V21.7192H49.2928V20.9473H48.5209V20.1754H47.749V19.4035H46.977V18.6315H46.2051V17.8596H45.4332V17.0877H44.6613V19.4035V23.2631H43.8893H43.1174V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438V14.7719V14H43.8893H44.6613V14.7719H45.4332V15.5438H46.2051V16.3158H46.977V17.0877H47.749V17.8596H48.5209V18.6315H49.2928V19.4035H50.0647V17.0877Z" fill="white"/>-->
-<!--					<path d="M57.0162 15.5438H56.2443H55.4723V16.3158H54.7004V17.0877V17.8596V19.4035V20.1754V20.9473H55.4723V21.7192H56.2443H57.0162H57.7881H58.56H59.332V20.9473H60.1039V20.1754V19.4035H57.0162H56.2443V17.8596H57.0162H60.1039H61.6477V20.1754V20.9473V21.7192H60.8758V22.4912H60.1039V23.2631H57.7881H57.0162H54.7004V22.4912H53.9285V21.7192H53.1566V20.1754V19.4035V18.6315V17.8596V15.5438H53.9285V14.7719H54.7004V14H56.2443H57.0162H57.7881H60.8758V14.7719H61.6477V16.3158H60.1039V15.5438H58.56H57.7881H57.0162Z" fill="white"/>-->
-<!--					<path d="M63.1957 15.5438V14.7719V14H63.9676H64.7395H67.0553H71.6869V15.5438H70.9149H70.143H68.5992H67.8272H67.0553H65.5115H64.7395V17.8596H70.143V19.4035H64.7395V21.7192H65.5115H67.0553H67.8272H68.5992H70.143H70.9149H71.6869V23.2631H67.0553H64.7395H63.9676H63.1957V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438Z" fill="white"/>-->
-<!--					<path d="M90.2213 17.0877V14.7719V14H91.7652V14.7719V15.5438V21.7192V23.2631H90.2213V21.7192H89.4494V20.9473H88.6775V20.1754H87.9055V19.4035H87.1336V18.6315H86.3617V17.8596H85.5898V17.0877H84.8178V19.4035V23.2631H84.0459H83.274V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438V14.7719V14H84.0459H84.8178V14.7719H85.5898V15.5438H86.3617V16.3158H87.1336V17.0877H87.9055V17.8596H88.6775V18.6315H89.4494V19.4035H90.2213V17.0877Z" fill="white"/>-->
-<!--					<path d="M93.3131 15.5438V14.7719V14H94.085H94.857H97.1727H101.804V15.5438H101.032H100.26H98.7166H97.9447H97.1727H95.6289H94.857V17.8596H100.26V19.4035H94.857V21.7192H95.6289H97.1727H97.9447H98.7166H100.26H101.032H101.804V23.2631H97.1727H94.857H94.085H93.3131V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438Z" fill="white"/>-->
-<!--					<path d="M103.352 15.5438V14.7719V14H104.124H104.896H107.212H111.072V15.5438H110.3H109.528H107.984V19.4035V23.2631H106.44V19.4035V15.5438H105.668H103.352Z" fill="white"/>-->
-<!--					<path d="M120.339 17.8596V14H121.111H121.883V14.7719V15.5438V16.3158V17.8596V18.6315V19.4035V20.1754V20.9473V21.7192V22.4912V23.2631H121.111H120.339V22.4912H119.567V21.7192H118.795V20.9473H118.023V20.1754H117.251V20.9473H116.479V21.7192H115.707V22.4912H114.935V23.2631H113.391V22.4912V21.7192V15.5438V14H114.935V17.8596V20.1754H115.707V19.4035H116.479V18.6315H117.251V17.8596H118.023V18.6315H118.795V19.4035H119.567V20.1754H120.339V17.8596Z" fill="white"/>-->
-<!--					<path d="M127.29 15.5438H126.518H125.746V16.3158H124.974V17.0877V17.8596V19.4035V20.1754V20.9473H125.746V21.7192H126.518H127.29H128.062H128.834H129.606V20.9473H130.378V20.1754V19.4035V17.0877V16.3158H129.606V15.5438H128.834H128.062H127.29ZM131.922 19.4035V21.7192H131.15V22.4912H130.378V23.2631H128.062H127.29H124.974V22.4912H124.202V21.7192H123.431V20.1754V19.4035V18.6315V17.8596V15.5438H124.202V14.7719H124.974V14H126.518H127.29H128.062H130.378V14.7719H131.15V15.5438H131.922V17.0877V19.4035Z" fill="white"/>-->
-<!--					<path d="M133.47 15.5438V14.7719V14H134.242H135.014H137.329H140.417V14.7719H141.189V15.5438H141.961V17.0877V17.8596V18.6315H141.189V19.4035H140.417V20.1754V20.9473H141.189V21.7192H141.961V22.4912V23.2631H140.417V22.4912H139.645V21.7192H138.873V20.9473H138.101V20.1754H137.329H135.014V23.2631H133.47V20.1754V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438ZM137.329 15.5438H135.785H135.014V17.8596V18.6315H135.785H136.557H137.329H138.101H138.873H139.645V17.8596H140.417V17.0877V16.3158H139.645V15.5438H138.873H138.101H137.329Z" fill="white"/>-->
-<!--					<path d="M152 15.5438H151.228V16.3158H150.456V17.0877H149.684V17.8596H148.912V18.6315V19.4035H149.684V20.1754H150.456V20.9473H151.228V21.7192H152V23.2631H150.456V22.4912H149.684V21.7192H148.912V20.9473H148.14V20.1754H147.368H146.597V20.9473H145.825V21.7192H145.053V23.2631H144.281H143.509V22.4912V21.7192V20.9473V19.4035V18.6315V17.8596V17.0877V16.3158V15.5438V14.7719V14H144.281H145.053V19.4035H145.825V18.6315H146.597V17.8596H147.368V17.0877H148.14V16.3158H148.912V15.5438H149.684V14.7719H150.456V14H151.228H152V14.7719V15.5438Z" fill="white"/>-->
-
-<!--				</svg>-->
-
-<!--				<input type="checkbox" id="dropdown-check"/>-->
 				<a href="#" data-toggle="dropdown" ></a>
 				<ul class="dropdown-menu-network" id="networks">
 					<a href="/" id="network-42262" class="network-deactive"><li ><img class="network-icon" src="media/oasis-black.png"/>Emerald</li></a>
@@ -533,10 +479,14 @@
 				<img id="status" src="/media/svg/status.svg">
 				<ul id="dropdown-change-network" class="change-network-dropdown"  style="display:none">
 					<li id="change-network" class="change-network-item">
-						<img src="/media/svg/change-network-icon.svg">
+						<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.42146 0C4.0767 0 3.74606 0.136967 3.50227 0.380768C3.25849 0.624569 3.12153 0.955234 3.12153 1.30002V1.82003C3.12153 2.25082 3.47073 2.60004 3.90149 2.60004C4.33225 2.60004 4.68145 2.25082 4.68145 1.82003V1.56003H11.4411V7.80013H5.26421L5.49295 7.57138C5.79754 7.26677 5.79754 6.77289 5.49295 6.46828C5.18836 6.16366 4.69451 6.16366 4.38992 6.46828L2.83001 8.0283C2.72465 8.13367 2.65574 8.26167 2.62327 8.39665C2.61512 8.43043 2.60918 8.46506 2.60559 8.50039C2.60293 8.52661 2.60156 8.55322 2.60156 8.58014C2.60156 8.80198 2.69416 9.00218 2.8428 9.14421L4.38992 10.6914C4.69451 10.996 5.18836 10.996 5.49295 10.6914C5.79754 10.3868 5.79754 9.89294 5.49295 9.58833L5.26479 9.36016H11.7011C12.0458 9.36016 12.3765 9.2232 12.6203 8.97939C12.864 8.73559 13.001 8.40492 13.001 8.06014V1.30002C13.001 0.955236 12.864 0.62457 12.6203 0.380768C12.3765 0.136966 12.0458 0 11.7011 0H4.42146ZM0.38074 4.02074C0.624524 3.77694 0.955166 3.63997 1.29993 3.63997H7.73784L7.50969 3.41181C7.2051 3.10719 7.2051 2.61332 7.50969 2.3087C7.81429 2.00409 8.30813 2.00409 8.61272 2.3087L10.1726 3.86873C10.4772 4.17334 10.4772 4.66722 10.1726 4.97183L8.61272 6.53186C8.30813 6.83647 7.81429 6.83647 7.50969 6.53186C7.2051 6.22725 7.2051 5.73337 7.50969 5.42875L7.73844 5.2H1.55991V11.4401H8.31954V11.1801C8.31954 10.7493 8.66874 10.4001 9.0995 10.4001C9.53026 10.4001 9.87946 10.7493 9.87946 11.1801V11.7001C9.87946 12.0449 9.74251 12.3756 9.49872 12.6194C9.25493 12.8632 8.92429 13.0001 8.57953 13.0001H1.29993C0.955168 13.0001 0.624525 12.8632 0.38074 12.6194C0.136956 12.3756 0 12.0449 0 11.7001V4.93999C0 4.5952 0.136957 4.26454 0.38074 4.02074Z" fill="#7E7E7E"/>
+							</svg>
 						change network</li>
-					<a href="#" id="network-disconnect"  class="disconnect-item"><li>
-						<img src="/media/svg/disconnect-icon.svg">
+					<a href="/" id="network-disconnect"  class="disconnect-item"><li>
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7884 0.2121C14.0712 0.4949 14.0712 0.953409 13.7884 1.23621L12.3698 2.65481L12.5206 2.80563L12.5212 2.80618C12.7234 3.0079 12.8839 3.24752 12.9935 3.51135C13.1031 3.77542 13.1596 4.05853 13.1596 4.34446C13.1596 4.63038 13.1031 4.9135 12.9935 5.17756C12.8839 5.44144 12.7234 5.68111 12.521 5.88285L12.5206 5.88329L11.1609 7.24299C11.4144 7.52735 11.4047 7.96362 11.1319 8.23641C10.8491 8.51921 10.3906 8.51921 10.1078 8.23641L5.76288 3.89148C5.48008 3.60868 5.48008 3.15017 5.76288 2.86737C6.03604 2.59422 6.47312 2.5849 6.75746 2.83943L8.1171 1.47979L8.11758 1.47931C8.31931 1.277 8.55896 1.11647 8.82282 1.00691C9.08689 0.897263 9.37 0.84082 9.65593 0.84082C9.94186 0.84082 10.225 0.897263 10.489 1.00691C10.7529 1.11647 10.9925 1.27698 11.1942 1.47926L11.1948 1.47979L11.3457 1.6307L12.7643 0.2121C13.0471 -0.0707 13.5056 -0.0707 13.7884 0.2121ZM11.4983 4.8574L10.1376 6.21802L7.78236 3.86274L9.14299 2.50212C9.21026 2.43461 9.2902 2.38104 9.37823 2.34449C9.46625 2.30794 9.56062 2.28913 9.65593 2.28913C9.75124 2.28913 9.84561 2.30794 9.93363 2.34449C10.0217 2.38104 10.1016 2.43461 10.1689 2.50212L10.8126 3.14586C10.8193 3.15311 10.8262 3.16025 10.8332 3.16729C10.8402 3.17432 10.8474 3.18118 10.8546 3.18787L11.4974 3.83063L11.4983 3.83151C11.5658 3.89879 11.6193 3.97873 11.6559 4.06675C11.6924 4.15478 11.7113 4.24915 11.7113 4.34446C11.7113 4.43977 11.6924 4.53414 11.6559 4.62216C11.6193 4.71018 11.5658 4.79012 11.4983 4.8574ZM5.60758 7.48289L6.30251 6.78797C6.58531 6.50517 6.58531 6.04666 6.30251 5.76386C6.01971 5.48106 5.5612 5.48106 5.2784 5.76386L4.58348 6.45878L4.42379 6.2991C4.40907 6.28125 4.39336 6.26395 4.37667 6.24726C4.35998 6.23056 4.34267 6.21486 4.32483 6.20014L3.88855 5.76386C3.60575 5.48106 3.14724 5.48106 2.86444 5.76386C2.59046 6.03784 2.58192 6.47674 2.83881 6.76101L1.48272 8.1171L1.48224 8.11758C1.27993 8.31931 1.1194 8.55896 1.00984 8.82282C0.900193 9.08689 0.84375 9.37 0.84375 9.65593C0.84375 9.94186 0.900193 10.225 1.00984 10.489C1.1194 10.7529 1.27991 10.9925 1.48219 11.1942L1.48272 11.1948L1.63217 11.3442L0.2121 12.7643C-0.0707 13.0471 -0.0707 13.5056 0.2121 13.7884C0.4949 14.0712 0.953409 14.0712 1.23621 13.7884L2.65628 12.3683L2.80856 12.5206L2.80911 12.5212C3.01083 12.7234 3.25045 12.8839 3.51428 12.9935C3.77835 13.1031 4.06146 13.1596 4.34739 13.1596C4.63331 13.1596 4.91643 13.1031 5.18049 12.9935C5.44437 12.8839 5.68404 12.7234 5.88578 12.521L5.88621 12.5206L7.24264 11.1642C7.52706 11.4153 7.96152 11.4049 8.23348 11.1329C8.51628 10.8501 8.51628 10.3916 8.23348 10.1088L7.80318 9.67848C7.78846 9.66064 7.77275 9.64334 7.75606 9.62664C7.73937 9.60995 7.72206 9.59424 7.70422 9.57952L7.53971 9.41502L8.2361 8.71863C8.5189 8.43583 8.5189 7.97732 8.2361 7.69452C7.9533 7.41172 7.49479 7.41172 7.21199 7.69452L6.5156 8.39091L5.60758 7.48289ZM3.86226 7.78578L2.50505 9.14299C2.43754 9.21026 2.38397 9.2902 2.34742 9.37823C2.31087 9.46625 2.29206 9.56062 2.29206 9.65593C2.29206 9.75124 2.31087 9.84561 2.34742 9.93363C2.38397 10.0217 2.43754 10.1016 2.50505 10.1689L2.50594 10.1698L3.83444 11.4983C3.90172 11.5658 3.98166 11.6193 4.06968 11.6559C4.15771 11.6924 4.25208 11.7113 4.34739 11.7113C4.4427 11.7113 4.53707 11.6924 4.62509 11.6559C4.71311 11.6193 4.79305 11.5658 4.86033 11.4983L6.21754 10.1411L3.86226 7.78578Z" fill="#7E7E7E"/>
+							</svg>
 						disconnect</li></a>
 				</ul>
 			</div>
@@ -555,8 +505,10 @@
 		<div class="blur"></div>
 
 		<div class="wrapper__container">
-
-			<img src="media/game.png" alt="" class="wrapper__monetki">
+			<img  srcset="media/mobile/game.png 345w, media/game.png 761w"
+			sizes="(max-width: 1024px) 345px,
+				761px"
+			src="elva-fairy-800w.jpg" alt="" class="wrapper__monetki">
 			<div class="wrapper__gradient"></div>
 						<a id="about-show" class="wrapper__link link-first" style="display: none">About the game
 							<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -581,35 +533,6 @@
 			</a>
 
 			<!-- custom -->
-
-			<div class="container__left">
-				<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
-					<button class="btns-wrap__btn" id="home-btn"></button>
-					<button class="btns-wrap__btn" id="nft-shop-btn"></button>
-					<button class="btns-wrap__btn" id="inventory-btn"></button>
-					<button class="btns-wrap__btn" id="mystery-btn"></button>
-					<button class="btns-wrap__btn" id="lottery-btn"></button>
-					<button class="btns-wrap__btn" id="tournaments-btn"></button>
-					<button class="btns-wrap__btn" id="balance-btn"></button>
-				</div>
-				<div class="wrapper__contacts">
-					<div class="contacts__container">
-						<a class="contact_btn" href="#">
-							<img src="media/social/telegram.svg" alt="">
-						</a>
-						<a class="contact_btn" href="#">
-							<img src="media/social/discord.svg" alt="">
-						</a>
-						<a class="contact_btn" href="#">
-							<img src="media/social/twitter.svg" alt="">
-						</a>
-						<a class="contact_btn" href="#">
-							<img src="media/social/in.svg" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-
 			<div class="wrapper__banners-wrap" style="display: none;">
 				<div class="banners-wrap__banner try-your-luck-banner" >
 					<p class="banner__title">TRY YOUR LUCK</p>
@@ -635,180 +558,8 @@
 
 			<!-- NFT SHOP MODAL -->
 
-			<!-- <div class="wrapper__nft-shop-modal">
-				<button class="nft-shop-modal__btn-close"></button>
-
-				<div class="nft-shop-modal__left-title"></div>
-
-				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-characters nft-shop-modal__right-title_active"></div>
-				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-weapons"></div>
-				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-armor"></div>
-				<div class="nft-shop-modal__right-title nft-shop-modal__right-title-boots"></div>
-
-				<div class="nft-shop-modal__header-title"></div>
-
-				<div class="nft-shop-modal__nav-wrap">
-					<nav class="nav-wrap__nav">
-						<input id="nft-shop__tab-1" type="radio" name="nft-shop__tab" checked>
-						<label for="nft-shop__tab-1">CHARACTERS</label>
-
-						<input id="nft-shop__tab-2" type="radio" name="nft-shop__tab">
-						<label for="nft-shop__tab-2">WEAPONS</label>
-
-						<input id="nft-shop__tab-3" type="radio" name="nft-shop__tab">
-						<label for="nft-shop__tab-3">ARMOR</label>
-
-						<input id="nft-shop__tab-4" type="radio" name="nft-shop__tab">
-						<label for="nft-shop__tab-4">BOOTS</label>
-					</nav>
-				</div>
-
-				<div class="nft-shop-modal__body">
-					<div class="body__item-list">
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-green.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-green.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-green.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-blue.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-orange.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-blue.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-pink.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-orange.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-purple.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-gold.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-silver.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-blue.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-silver.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-purple.svg">
-						</div>
-
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-blue.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-blue.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-silver.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__character slot__item-icon_active" src="media/characters/character-green.svg">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-silver.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-silver.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-green.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-purple.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
-							<img class="slot__item-icon slot__boots" src="media/characters/boots-orange.svg">
-						</div>
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__weapon" src="media/characters/weapon-green.svg">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-blue.svg">
-						</div>
-
-						<div class="item-list__slot">
-							<img class="slot__item-icon slot__armor" src="media/characters/armor-purple.svg">
-						</div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-						<div class="item-list__slot"></div>
-					</div>
-
-					<div class="body__item-detail">
-						<button class="item-detail__btn-close"></button>
-
-						<div class="item-detail__header item-detail__header-characters item-detail__header_active">
-							<div class="header__img-item">
-								<img src="media/characters/character-green.svg">
-							</div>
-
-							<div class="header__text-item">
-								<p class="text-item__name">Ghost Whisperer</p>
-								<p class="text-item__type">Legendary collection</p>
-							</div>
-						</div>
-
-						<div class="item-detail__header item-detail__header-weapons">
-							<div class="header__img-item">
-								<img src="media/characters/weapon-purple.svg">
-							</div>
-
-							<div class="header__text-item">
-								<p class="text-item__name">Name item</p>
-								<p class="text-item__type">Skin Assignments</p>
-							</div>
-						</div>
-
-						<div class="item-detail__header item-detail__header-armor">
-							<div class="header__img-item">
-								<img src="media/characters/armor-purple.svg">
-							</div>
-
-							<div class="header__text-item">
-								<p class="text-item__name">Name item</p>
-								<p class="text-item__type">Skin Assignments</p>
-							</div>
-						</div>
-
-						<div class="item-detail__header item-detail__header-boots">
-							<div class="header__img-item">
-								<img src="media/characters/boots-purple.svg">
-							</div>
-
-							<div class="header__text-item">
-								<p class="text-item__name">Name item</p>
-								<p class="text-item__type">Skin Assignments</p>
-							</div>
-						</div>
-
-						<p class="item-detail__description item-detail__description-characters item-detail__description_active">
-							"Ghost Whisperer" - a mysterious spirit in the guise of a small creature capable of quietly whispering predictions and warnings of impending dangers to the hero, but demanding sacrifices and gifts in exchange for his wisdom and help.
-						</p>
-
-						<p class="item-detail__description item-detail__description-weapons">
-							Небольшой сторитеил персонажа и если он нужен
-						</p>
-
-						<p class="item-detail__description item-detail__description-armor">
-							Небольшой сторитеил персонажа и если он нужен
-						</p>
-
-						<p class="item-detail__description item-detail__description-boots">
-							Небольшой сторитеил персонажа и если он нужен
-						</p>
-
-						<div class="item-detail__pricing">
-							<p class="pricing__title">5.25 <span>USDT</span></p>
-							<button>Buy now</button>
-						</div>
-					</div>
-				</div>
-
-			</div> -->
-
+		
 			<!-- message modals -->
-
-
-
-
-
-
 			<body>
 			<div class="startContainer">
 				<div id="connect_modal" class="modal">
@@ -896,6 +647,8 @@
 								<img class="board-edge" src="media/svg/board-edge.svg">
 								<img class="board-edge" src="media/svg/board-edge.svg">
 							<ul id="pastgames-list">
+								<table id="pastgames-table">
+								</table>
 								<div class="games__empty" id="pastgames_empty">Empty :(
 									<span>That's where your game history will be listed.</span>
 								</div>
@@ -908,7 +661,7 @@
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img src="media/buyblock.svg" alt="">
+							<img class="buyblock-image" src="media/buyblock.svg" alt="">
 							<button class="banner__buy"></button>
 						</div>
 						<div class="board wrapper__banner">
@@ -916,8 +669,35 @@
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img src="media/box1.png" alt="">
+							<img class="buyblock-image" src="media/box1.png" alt="">
 							<button class="banner__buy"></button>
+						</div>
+					</div>
+					<div id="container-left" class="container__left">
+						<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
+							<button class="btns-wrap__btn" id="home-btn"></button>
+							<button class="btns-wrap__btn" id="nft-shop-btn"></button>
+							<button class="btns-wrap__btn" id="inventory-btn"></button>
+							<button class="btns-wrap__btn" id="mystery-btn"></button>
+							<button class="btns-wrap__btn" id="lottery-btn"></button>
+							<button class="btns-wrap__btn" id="tournaments-btn"></button>
+							<button class="btns-wrap__btn" id="balance-btn"></button>
+						</div>
+						<div class="wrapper__contacts">
+							<div class="contacts__container">
+								<a class="contact_btn" href="#">
+									<img src="media/social/telegram.svg" alt="">
+								</a>
+								<a class="contact_btn" href="#">
+									<img src="media/social/discord.svg" alt="">
+								</a>
+								<a class="contact_btn" href="#">
+									<img src="media/social/twitter.svg" alt="">
+								</a>
+								<a class="contact_btn" href="#">
+									<img src="media/social/in.svg" alt="">
+								</a>
+							</div>
 						</div>
 					</div>
 				</main>
@@ -968,7 +748,7 @@
 			<img class="board-edge" src="media/svg/board-edge.svg">
 			<button class="close_modal_window modal__close-icon"></button>
 			<img class="new-game-header" src="media/svg/new_game_header.svg">
-			<img src="/media/svg/devider.svg">
+			<img class='new-game-devider' src="/media/svg/devider.svg">
 			<div class="modal__row">
 				
 				<div>
@@ -984,7 +764,7 @@
 					</select>
 				</div>
 			</div>
-			<img src="/media/svg/devider.svg">
+			<img class='new-game-devider' src="/media/svg/devider.svg">
 			<div class="modal__row__tokens">
 				<div class="select-token-container">Select a token:
 					<div id="select-token-list" class="container-token">
@@ -996,19 +776,21 @@
 					</div>
 				</div>
 			</div>
-			<img src="/media/svg/devider.svg">
+			<img class='new-game-devider' src="/media/svg/devider.svg">
 			<div class="modal__row">
 				<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
 																						 id="amountPerDeath" name="amountPerDeath" required /></div>
 				<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
 																						  id="amountToPlay" min="1" max="255" required /></div>
 			</div>
-			<img src="/media/svg/devider.svg">
+			<img class='new-game-devider' src="/media/svg/devider.svg">
 			<div class="modal__row_value modal__row">
 				<div>Total prize pool: <span id="totalPrizePool">-</span></div>
 				<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
+				<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 			</div>
-			<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
+			<img class="player-visible" src="/media/svg/player-visible.svg">
+			<img class="player-visible-mobile" src="/media/svg/player-visible-mobile.svg">
 		</div>
 	</div>
 	<div id="install_wallet_modal" class="modal wrapper__message-modal-overlay">
@@ -1020,18 +802,20 @@
 			<span class="close_modal_window message-modal__btn-close new-confirm-modal-close-button"></span>
 			<div class="wallet-button-wrapper">
 				<button id="metamask">
-					<img src="media/svg/meta.svg" alt="">
+					<!--<img src="media/svg/meta.svg" alt="">-->
 				</button>
 				<button id="walletconnect">
-					<img src="media/svg/walletconnect.svg" alt="">
+					<!--<img src="media/svg/walletconnect.svg" alt="">-->
 				</button>
 			</div>
 			<img class="choose-wallet-header" src="media/svg/choose-wallet-header.svg">
-			<p>What is a wallet?</p>
+			<div>
+				<p>What is a wallet?</p>
 			<p>Wallets are used to send, receive, and store digital
 				assets. Connecting a wallet lets you interact with apps.
 				<a href="https://metamask.io/" target="_blank">Install the wallet</a>
 			</p>
+			</div>
 		</div>
 	</div>
 	<div id="about_modal" class="modal wrapper__message-modal-overlay" >
@@ -1049,6 +833,25 @@
 				<p>3. Users receive rewards for each round they won.</p>
 				<p>4. Users can end the game any time and take the reward.</p>
 				<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
+			</div>
+		</div>
+	</div>
+	<div id="info_modal" class="modal wrapper__message-modal-overlay" >
+		<div class="board wrapper__message-modal modal_content_info modal_content">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+			<button id="info-close" class="message-modal__btn-close close_modal_window "></button>
+			<div class="info__title">Info</div>
+			<div id="info-content" class="info__content">
+				<div id="info-content-top">
+
+				</div>
+				<div id="info-content-bottom">
+
+				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -1201,32 +1004,6 @@
 					<div class="characters-block__box">Soon</div>
 				</div>
 			</div>
-			<!-- <div id="armor-box" style="display: none;">
-                <div class="inventory-block__footer">
-                    <div class="armors-block__box" id="armor-0"><img src="media/armors/0.png"/></div>
-                    <div class="armors-block__box" id="armor-1"><img src="media/armors/1.png"/></div>
-                    <div class="armors-block__box" id="armor-2"><img src="media/armors/2.png"/></div>
-                    <div class="armors-block__box" id="armor-3"><img src="media/armors/3.png"/></div>
-                </div>
-                <div class="inventory-block__footer">
-                    <div class="armors-block__box" id="armor-4"><img src="media/armors/4.png"/></div>
-                    <div class="armors-block__box" id="armor-5"><img src="media/armors/5.png"/></div>
-                    <div class="armors-block__box" id="armor-6"><img src="media/armors/6.png"/></div>
-                    <div class="armors-block__box" id="armor-7"><img src="media/armors/7.png"/></div>
-                </div>
-                <div class="inventory-block__footer">
-                    <div class="armors-block__box" id="armor-8"><img src="media/armors/8.png"/></div>
-                    <div class="armors-block__box" id="armor-9"><img src="media/armors/9.png"/></div>
-                    <div class="armors-block__box" id="armor-10"><img src="media/armors/10.png"/></div>
-                    <div class="armors-block__box" id="armor-11"><img src="media/armors/11.png"/></div>
-                </div>
-                <div class="inventory-block__footer">
-                    <div class="armors-block__box" id="armor-12"><img src="media/armors/12.png"/></div>
-                    <div class="armors-block__box" id="armor-13"><img src="media/armors/13.png"/></div>
-                    <div class="armors-block__box" id="armor-14"><img src="media/armors/14.png"/></div>
-                    <div class="armors-block__box" id="armor-15"><img src="media/armors/15.png"/></div>
-                </div>
-            </div> -->
 			<div id="weapons-box" style="display: none;">
 				<div class="inventory-block__footer">
 					<div class="weapons-block__box" id="weapon-0"><img src="media/weapons/0.png"/></div>
@@ -1374,7 +1151,7 @@
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-			<button class="message-modal__btn-close new-error-modal-close-button"></button>
+			<button class="message-modal__btn-close"></button>
 
 			<div class="message-modal__error">
 				<img src="media/svg/message-modal-error.svg">
@@ -1413,7 +1190,7 @@
 			<a id="new-success-modal-link" class="message-modal__link" href="#" target="_blank" rel="noreferrer">View transaction on Blockchain Explorer</a>
 
 			<div class="message-modal__btns-wrap message-modal__btns-wrap_completed">
-				<button class="new-success-modal-close-button back-nft-shop ">Back to NFT shop</button>
+				<button class="new-success-modal-close-button back-nft-shop">Back to NFT shop</button>
 				<button id="go-to-inventory-btn" class="go-inventory">Go to inventory</button>
 			</div>
 		</div>
@@ -1579,13 +1356,13 @@
 					<!-- <div data-price="10.30" data-collection="bronze" class="list-items__item list-items__item_bronze" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/bronze-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1621,13 +1398,13 @@
 					<div data-price="10.30" data-collection="bronze" class="list-items__item list-items__item_bronze" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/bronze-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1663,13 +1440,13 @@
 					<div data-price="10.30" data-collection="bronze" class="list-items__item list-items__item_bronze" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/bronze-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1705,13 +1482,13 @@
 					<div data-price="10.30"  data-collection="silver" class="list-items__item list-items__item_silver"  style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/silver-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1747,13 +1524,13 @@
 					<div data-price="10.30" data-collection="silver" class="list-items__item list-items__item_silver" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/silver-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/silver-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1789,13 +1566,13 @@
 					<div data-price="10.30" data-collection="gold" class="list-items__item list-items__item_gold" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/gold-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1831,13 +1608,13 @@
 					<div data-price="10.30" data-collection="gold" class="list-items__item list-items__item_gold" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/gold-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/gold-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1873,13 +1650,13 @@
 					<div data-price="10.30" data-collection="platinum" class="list-items__item list-items__item_platinum" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/platinum-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
-								<img src="media/svg/shop/platinum-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/platinum-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/platinum-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/platinum-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -1915,13 +1692,14 @@
 					<div data-price="10.30" data-collection="legendary" class="list-items__item list-items__item_legendary" style="display: flex;">
 						<div class="item__left">
 							<div class="left__img-wrap">
-								<img src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
-								<img src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
-								<p style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.00</p>
-								<img src="media/svg/shop/legendary-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
-								<img src="media/svg/shop/legendary-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
-								<img src="media/svg/shop/legendary-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
-								<img src="media/svg/shop/legendary-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+								<img class="nft-shop-boxes-price-table"  src="media/svg/shop/legendary-box-collection/price-table.svg" alt="" style="position: absolute; bottom: -13px; width: 84px;">
+								<img class="nft-shop-boxes-price-symbol"  src="media/svg/coin-symbol.svg" alt="" style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
+								<p class="nft-shop-boxes-price" style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">10.30</p>
+								<img class="nft-shop-boxes-corne_topleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
+								<img class="nft-shop-boxes-corne_topright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(90deg); top: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomright" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(180deg); bottom: -8px; right: -8px;">
+								<img class="nft-shop-boxes-corne_bottomleft" src="media/svg/shop/bronze-box-collection/corner.svg" alt="" style="position: absolute; width: 17.18px; height: 17.18px; transform: rotate(270deg); bottom: -8px; left: -8px;">
+
 								<img src="media/box-item.svg" alt="">
 								
 							</div>
@@ -2801,27 +2579,6 @@
 						
 	
 						<div id="inventory-item-modal-features" class="header__text-item__props-item">
-							<!-- <div class="props-item__prop">
-								<div class="prop__img-wrap">
-									<img src="media/svg/props-items/attack-black.svg">
-								</div>
-								<p class="prop__title">Basic attack</p>
-								<p class="prop__value">+15</p>
-							</div>
-							<div class="props-item__prop">
-								<div class="prop__img-wrap">
-									<img src="media/svg/props-items/ammunition-quantity.svg">
-								</div>
-								<p class="prop__title">Ammunition quantity</p>
-								<p class="prop__value">+5</p>
-							</div>
-							<div class="props-item__prop">
-								<div class="prop__img-wrap">
-									<img src="media/svg/props-items/attack-speed.svg">
-								</div>
-								<p class="prop__title">Attack speed</p>
-								<p class="prop__value">+5</p>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -2830,9 +2587,71 @@
 					"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
 				</p>
 	
-				<div class="item-detail__btns-wrap">
+				<div id="detail-buttons" class="item-detail__btns-wrap">
 					<button id="inventory-item-modal-takeitoff">Take it off</button>
 					<button id="inventory-item-modal-use">Use</button>
+					<button id="inventory-item-modal-tryon">Try on</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- nft-box modal -->
+
+	<div id="inventory-nftbox-modal" class="wrapper__item-modal-overlay">
+		<div class="board body__item-detail">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<span id="btn-close-nftbox-detail-modal" class="item-detail__btn-close"></span>
+
+			<h2 class="item-modal-info">Info</h2>
+
+			<div id="nventory-nftbox-body">
+				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
+					<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
+						<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+						<img class="nftbox-modal-image" src="media/box-item.svg">
+					</div>
+	
+					<div class="header__text-item">
+						
+							<p class="text-item__name" id="inventory-nftbox-modal-name">NFT Box</p>
+							<p class="text-nftboxe__type text-item__type"> Try your luck and get a guaranteed NFT of random rarity.</p>
+						
+	
+						<div id="inventory-item-modal-features" class="header__text-item__props-item">
+							<div class="props-item__prop">
+								<img src="media/svg/shop/character-icon.svg">
+								<span class="props-item__prop-title">Characters</span>
+							</div>
+							<div class="props-item__prop">
+								<img src="media/svg/shop/weapons-icon.svg">
+								<span class="props-item__prop-title">Weapons</span>
+							</div>
+							<div class="props-item__prop">
+								<img src="media/svg/shop/armor-icon.svg">
+								<span class="props-item__prop-title">Armor</span>
+							</div>
+							<div class="props-item__prop">
+								<img src="media/svg/shop/boots-icon.svg">
+								<span class="props-item__prop-title">Boots</span>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">
+					We've hidden our entire NFT collection in mysterious chests. Try your luck and get a guaranteed NFT of random rarity.
+				</p>
+	
+				<div id="detail-buttons" class="item-detail__btns-wrap">
+					<button id="inventory-item-modal-tryon">Appove</button>
 				</div>
 			</div>
 			
@@ -2879,11 +2698,6 @@
 		<div class="subtitle">Wait for the transaction to
 			complete</div>
 	</div>
-</div>
-<div class="inner-block inner-block--mobile">
-	<span>Unfortunately, so far the game is only available from a desktop browser</span>
-	<p>Please visit us from your personal computer or follow our <a href="">Discord</a> to be the
-		first to know when the game will be available on your phone</p>
 </div>
 </div>
 </body>

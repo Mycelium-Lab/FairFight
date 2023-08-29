@@ -1,0 +1,25 @@
+<svg width="183" height="90" viewBox="0 0 350 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="338" width="8" height="70" fill="white"/>
+<rect x="4" y="4" width="8" height="74" fill="white"/>
+<rect x="342" y="68" width="11" height="332" transform="rotate(90 342 68)" fill="white"/>
+<rect x="342.145" y="78" width="3.93257" height="4.00001" fill="black"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 7.87109 78)" fill="black"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 7.87109 74)" fill="#5A5A5A"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 7.87109 70)" fill="#AFAFAF"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 342.145 78)" fill="#5A5A5A"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 346.066 74)" fill="#5A5A5A"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 342.145 74)" fill="#AFAFAF"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 346.066 70)" fill="#AFAFAF"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 11.8008 78)" fill="#5A5A5A"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 11.8008 74)" fill="#AFAFAF"/>
+<rect width="326.404" height="4.00001" transform="matrix(-1 0 0 1 338.207 82.001)" fill="#5A5A5A"/>
+<rect width="326.404" height="4.00001" transform="matrix(-1 0 0 1 338.207 78)" fill="#AFAFAF"/>
+<rect x="342.145" width="3.93257" height="4.00001" fill="black"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 7.87109 0)" fill="black"/>
+<rect x="338.207" y="82.001" width="3.93257" height="4.00001" fill="black"/>
+<rect width="3.93257" height="4.00001" transform="matrix(-1 0 0 1 11.8008 82.001)" fill="black"/>
+<rect x="11.8008" y="86" width="326.404" height="4.00001" fill="black"/>
+<rect x="346.066" y="4" width="3.93257" height="74.0002" fill="black"/>
+<rect width="3.93257" height="74.0002" transform="matrix(-1 0 0 1 3.93359 4)" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 0H8V64H11.8086V68L15.7383 68V72H334.277V68L15.7412 68V64H12V0ZM338 0H342V64H338.21V68H334.277V64H338V0Z" fill="black"/>
+</svg>

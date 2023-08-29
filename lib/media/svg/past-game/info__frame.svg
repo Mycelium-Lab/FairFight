@@ -1,0 +1,31 @@
+<svg width="300" height="356" viewBox="0 0 300 356" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M296 3.00002V2.00001L2.00003 2V3.00002H1V353H2.00002V354L296 354V353H298V3.00002H296Z" fill="#FFFDF4"/>
+<rect x="4" width="292" height="1" fill="#FF7C06"/>
+<rect x="1" y="4" width="348" height="0.999985" transform="rotate(90 1 4)" fill="#FF7C06"/>
+<rect x="1" y="3" width="1" height="1" fill="#FF7C06"/>
+<rect x="2" y="2" width="1" height="1" fill="#FF7C06"/>
+<rect x="3" y="1" width="1" height="1" fill="#FF7C06"/>
+<rect x="1" y="353" width="1" height="1" transform="rotate(-90 1 353)" fill="#FF7C06"/>
+<rect x="2" y="354" width="1" height="1" transform="rotate(-90 2 354)" fill="#FF7C06"/>
+<rect x="3" y="355" width="1" height="1" transform="rotate(-90 3 355)" fill="#FF7C06"/>
+<rect x="4" y="356" width="1.00004" height="292" transform="rotate(-90 4 356)" fill="#FF7C06"/>
+<rect x="1" y="4" width="1" height="348" fill="#FFC897"/>
+<rect x="2" y="3" width="1" height="1" fill="#FFC897"/>
+<rect x="3" y="2" width="1" height="1" fill="#FFC897"/>
+<rect width="1" height="292" transform="matrix(-1.40769e-06 1 -1 -1.35732e-09 296 354)" fill="#FFC897"/>
+<rect x="4" y="353" width="1" height="1" transform="rotate(90 4 353)" fill="#FFC897"/>
+<rect x="3" y="352" width="1" height="1" transform="rotate(90 3 352)" fill="#FFC897"/>
+<rect x="4" y="1" width="292" height="1" fill="#FFC897"/>
+<rect x="296" y="1" width="1" height="1" fill="#FF7C06"/>
+<rect x="299" y="352" width="1" height="1" transform="rotate(90 299 352)" fill="#FF7C06"/>
+<rect x="296" y="2" width="1" height="1" fill="#FFC897"/>
+<rect x="298" y="352" width="1" height="1" transform="rotate(90 298 352)" fill="#FFC897"/>
+<rect x="297" y="3" width="1" height="1" fill="#FFC897"/>
+<rect x="297" y="353" width="1" height="1" transform="rotate(90 297 353)" fill="#FFC897"/>
+<rect x="298" y="4" width="1" height="348" fill="#FFC897"/>
+<rect x="297" y="2" width="1" height="1" fill="#FF7C06"/>
+<rect x="298" y="353" width="1" height="1" transform="rotate(90 298 353)" fill="#FF7C06"/>
+<rect x="298" y="3" width="1" height="1" fill="#FF7C06"/>
+<rect x="297" y="354" width="1" height="1" transform="rotate(90 297 354)" fill="#FF7C06"/>
+<rect x="299" y="4" width="1" height="348" fill="#FF7C06"/>
+</svg>
