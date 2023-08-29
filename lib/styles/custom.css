@@ -1489,6 +1489,8 @@ a {
 
 .wrapper__btns-wrap {
   z-index: 13;
+  position: relative;
+  bottom: 200px;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
@@ -3964,7 +3966,6 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   bottom: 0;
   left: 45px;
   /*grid-gap: 31px;*/
-  justify-content: space-between;
   top: 220px;
 }
 

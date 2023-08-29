@@ -8,6 +8,9 @@
         width: auto;
         justify-content: center;
       }
+      .wrapper__btns-wrap {
+        bottom: 400px;
+      }
 }
 
 @media(max-width: 1024px) {
@@ -16,6 +19,9 @@
   }
   #shop-inventory-btns{
     display: none;
+  }
+  .wrapper__btns-wrap {
+    bottom: 0px;
   }
   .wrapper__btns-wrap .btns-wrap__btn{
     margin-top: 16px;
@@ -42,7 +48,8 @@
   .container__left{
     position: relative;
     width: 200px;
-    bottom: 50px;
+    bottom: 0px;
+    top: 0px
   }
   .wrapper__contacts{
     position: static;
