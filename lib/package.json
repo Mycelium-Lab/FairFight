@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@oasisprotocol/sapphire-paratime": "^1.0.15",
+    "@oasisprotocol/sapphire-paratime": "1.1.1",
     "@walletconnect/ethereum-provider": "2.9.1",
     "@walletconnect/modal": "^2.6.0",
     "ethcall": "^6.0.0"
