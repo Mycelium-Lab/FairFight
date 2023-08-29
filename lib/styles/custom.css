@@ -1190,6 +1190,11 @@ a {
   background-size: 18px 18px;
   margin-bottom: 5px;
 }
+.you-stats-col .opengames__col_first p:last-child a,
+.enemy-stats-col .opengames__col_last p:last-child a{
+   text-decoration: underline;
+   color: var(--color-orange);
+}
 .you-stats-col .opengames__col_first p:nth-child(3):before{
   background-image: url('../media/svg/past-game/wallet.svg');
   width: 18px;
@@ -3958,7 +3963,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   position: absolute;
   bottom: 0;
   left: 45px;
-  grid-gap: 31px;
+  /*grid-gap: 31px;*/
+  justify-content: space-between;
   top: 220px;
 }
 
