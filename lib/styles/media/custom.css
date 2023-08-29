@@ -161,6 +161,12 @@
   width: 106.33px !important;
   height: 31px !important;
 }
+.connect-button{
+  font-size: 14px;
+}
+.contact_link{
+  grid-gap: 10px;
+}
 }
 
 @media(max-width: 800px) {
@@ -281,6 +287,10 @@
     font-size: 10px;
     padding-bottom: 8px;
   }
+  .connect-button{
+    font-size: 14px;
+  }
+
 }
 
 @media(max-width: 500px) {
@@ -311,9 +321,12 @@
     margin-bottom: 45px;
   }
   .contact_link_about{
-    right: 40px;
+    right: 25px;
     top: 62px;
     gap: 5px;
+  }
+  .contact_link_about .link__name{
+    font-size: 12px;
   }
   .help__img{
     width: 15px;
@@ -573,6 +586,15 @@
   height: 97px;
   gap: 5px;
  background-image: url('../../media/svg/game-rows-mobile-320.svg');
+}
+.connect-button{
+  height: 43px;
+  font-size: 10px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+.connect-button:hover{
+  padding-top: 8px;
 }
 .item-modal-info{
   font-size: 21.67px !important;
