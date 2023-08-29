@@ -2261,6 +2261,8 @@ a {
   display: flex;
   align-items: center;
   width: 796px;
+  gap: 178px;
+  margin-bottom: 28.96px;
 }
 
 .wrapper__nft-shop-modal .params-wrap__dropdown-list {

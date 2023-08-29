@@ -171,6 +171,10 @@
 .contact_link{
   grid-gap: 10px;
 }
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 15px 0px;
+  margin-bottom: 0px;
+}
 }
 
 @media(max-width: 800px) {
