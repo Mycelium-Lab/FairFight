@@ -11,6 +11,10 @@
       .wrapper__btns-wrap {
         bottom: 390px;
       }
+      .wrapper_banners  .wrapper__banner:first-child{
+        padding-bottom: 55px;
+        padding-top: 30px;
+      }
 }
 
 @media(max-width: 1024px) {
@@ -39,6 +43,7 @@
     background-image: url('../../media/buttons/border-game-sm.svg');
   }
   #btn_modal_window {
+    padding: 0px 6px;
     transform: translateY(-40px);
   }
   .inner-block{
@@ -407,6 +412,7 @@
   .inner-block__head button{
     font-size: 13.41px;
     text-transform: uppercase;
+    padding: 0px;
     font-family: 'Teletactile';
   }
   .games__empty {
@@ -462,6 +468,25 @@
 }
 .wrapper__banner:last-child {
   padding-bottom: 28px;
+}
+.wrapper__banner p{
+  font-size: 12px;
+}
+.wrapper_banners .wrapper__banner:first-child{
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+.wrapper__banner:last-child{
+  padding-bottom: 10px;
+}
+.wrapper__banner-boxes{
+  padding-top: 10px;
+}
+.wrapper_banners .wrapper__banner:first-child p{
+  margin-bottom: 8px;
+}
+.buyblock-image__boxes{
+  transform: translateY(-25px);
 }
 .buyblock-image{
   /*width: 35vw;*/
@@ -676,13 +701,16 @@
    background-image: url('../../media/svg/game-rows-mobile.svg');
   }
   .games__item{
-    gap: 15px;
+    gap: 10px;
   }
   .dressing-value{
     font-size: 10.1px !important;
   }
   .player-visible-mobile{
     left: 170px;
+  }
+  .wrapper__banner p{
+    font-size: 10px;
   }
 }
 

@@ -54,7 +54,7 @@
   }
   .menu__box_active{
     left: 0px;
-    top: 85px; 
+    top: 50px; 
   }
   .menu__item {
     display: block;
