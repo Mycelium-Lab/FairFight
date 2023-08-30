@@ -3324,17 +3324,17 @@ z-index: -1;
 }
 
 .inventory-item-body_gold .header__img-item::before{
-  border: 5px solid #03B8F1;
+  border: 5px solid #DA9100;
 }
 .inventory-item-body_platinum  .header__img-item::before{
-  border: 5px solid #7000F2;
+  border: 5px solid #C6C6C6;
 }
 .inventory-item-body_bronze  .header__img-item::before, 
 .inventory-item-body_character  .header__img-item::before{
-  border: 5px solid #B6BCC4;
+  border: 5px solid #967444;
 }
 .inventory-item-body_silver .header__img-item::before{
-  border: 5px solid #24B500;
+  border: 5px solid #C6C6C6;
 }
 .inventory-item-body_legendary .header__img-item::before{
   border: 5px solid #FF7C06;
@@ -3346,7 +3346,6 @@ z-index: -1;
 
 .wrapper__item-modal-overlay .text-item__type {
   border-bottom: 2px solid #C6C6C6;
-  margin: 10px 0 0 0;
   padding-bottom: 10px;
   font-size: 16px;
   font-weight: 300;
@@ -3356,22 +3355,22 @@ z-index: -1;
 }
 
 .wrapper__item-modal-overlay .text-item__platinum ~ .text-item__type {
-  color: #7000F2;
+  color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__gold ~ .text-item__type {
-  color: #03B8F1;
+  color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__bronze ~ .text-item__type {
-  color: #B6BCC4;
+  color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__character ~ .text-item__type {
-  color: #B6BCC4;
+  color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__silver ~ .text-item__type {
-  color: #24B500;
+  color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__legendary ~ .text-item__type {
-  color: #FF7C06;
+  color: #393939;
 }
 
 
@@ -3387,15 +3386,15 @@ z-index: -1;
 }
 
 .text-item__bronze, .text-item__character{
-  color: #B6BCC4;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
   width: 93%;
   word-wrap: break-word;
+  color: #393939;
 }
 .text-item__silver{
-  color: #24B500;
+  color: #393939;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3403,7 +3402,7 @@ z-index: -1;
   word-wrap: break-word;
 }
 .text-item__gold{
-  color: #03B8F1;
+  color: #393939;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3412,7 +3411,7 @@ z-index: -1;
 }
 
 .text-item__platinum{
-  color: #7000F2;
+  color: #393939;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3421,7 +3420,7 @@ z-index: -1;
 }
 
 .text-item__legendary{
-  color: #FF7C06;
+  color: #393939;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
