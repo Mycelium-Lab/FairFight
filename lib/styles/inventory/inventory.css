@@ -160,19 +160,20 @@
   }
 
   .item-list__slot_silver:hover::before {
-    background-color: #B6BCC4;
+    background-color: #967444;
+    
   }
 
   .item-list__slot_green:hover::before {
-    background-color: #24B500;
+    background-color: #C6C6C6;
   }
 
   .item-list__slot_blue:hover::before {
-    background-color: #03B8F1;
+    background-color: #DA9100;
   }
 
   .item-list__slot_purple:hover::before {
-    background-color: #7000F2;
+    background-color: #C6C6C6;
   }
 
   .item-list__slot_orange:hover::before {
@@ -192,7 +193,7 @@
 
 
    .item-list__slot_silver::before {
-    border: 2px solid #B6BCC4;
+    border: 2px solid #967444;
   }
   
   .item-list__slot_orange::before {
@@ -204,13 +205,13 @@
     border: 2px solid #000000;
   }
   .item-list__slot_blue::before {
-    border: 2px solid #03B8F1;
+    border: 2px solid #DA9100;
   }
   .item-list__slot_purple::before {
-    border: 2px solid #7000F2;
+    border: 2px solid #C6C6C6;
   }
   .item-list__slot_green::before {
-    border: 2px solid #24B500;
+    border: 2px solid #C6C6C6;
   }
 
 
