@@ -15,9 +15,34 @@
         padding-bottom: 55px;
         padding-top: 30px;
       }
+      .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
+        height: 280px;
+      }
+      .message-modal__btns-wrap{
+        margin-top: 20px;
+      }
+      .modal .modal_content_about{
+        height: 280px;
+        padding-bottom: 0px;
+        padding-top: 26px;
+      }
+      
+      .about__content{
+        height: 100%;
+        overflow-y: auto;
+      }
+      .about-header{
+        margin-bottom: 20px;
+      }
+      .wrapper__message-modal{
+        padding: 25px 27px 0px 27px;
+      }
 }
 
 @media(max-width: 1024px) {
+  .wrapper__nft-shop-modal{
+    padding-top: 20px;
+  }
   #wrapper {
     background-size: 100% auto;
   }
@@ -246,6 +271,9 @@
   top: 106px;
   left: 20px;
 }
+.choose-wallet-text{
+  overflow-y: auto;
+}
 }
 
 @media(max-width: 600px) {
@@ -305,6 +333,11 @@
   }
   .player-visible{
     left: 220px;
+  }
+  .modal__row-map{
+    flex-direction: column;
+    overflow-y: auto;
+    height: 90%;
   }
 }
 

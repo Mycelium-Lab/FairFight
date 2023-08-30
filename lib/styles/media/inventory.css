@@ -24,13 +24,10 @@
 
     .inventory__modal-content{
         width: 780px;
-        height: 700px;
+        height: 90vh;
     }
     .inventory-modal__body .character-wrap__img-wrap{
         width: 420px;
-    }
-    .inventory__modal-content{
-        padding-top: 39px;
     }
     .inventory__list-wrap{
         border: none;
@@ -116,8 +113,8 @@
 @media(max-width: 500px) {
     .inventory__modal-content{
         width: 372.56px;
-        height: 600.64px;
-        padding-bottom: 0px;
+        height: 90vh;
+        padding-bottom: 10px;
     }
     .modal__header-title_inventory{
         background-image: url('../../media/svg/inventory-modal/inventory-modal-header-mobile.svg');
@@ -239,9 +236,8 @@
 
 @media(max-width: 380px) {
     .inventory__modal-content {
-        width: 342.56px !important;
-        height: 639.64px;
-        padding: 0px 10px;
+        padding: 10px 10px;
+        width: 340px;
     }
     .list-wrap__item-list{
         grid-template-columns: repeat(3, 77.1px) !important;
