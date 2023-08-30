@@ -1489,7 +1489,7 @@ a {
 .wrapper__btns-wrap {
   z-index: 13;
   position: relative;
-  bottom: 190px;
+  bottom: 100px;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
@@ -2585,17 +2585,6 @@ a {
 .wrapper__nft-shop-modal .list-items__item_gold .left__img-wrap::before {
   border-radius: 9px;
   border: 5px solid #DA9100;
-  width: 100%;
-  height: 100%;
-  content: '';
-  filter: blur(8px);
-  display: block;
-  position: absolute;
-}
-
-.wrapper__nft-shop-modal .list-items__item_character .left__img-wrap::before {
-  border-radius: 9px;
-  border: 5px solid #D8D8D8;
   width: 100%;
   height: 100%;
   content: '';
