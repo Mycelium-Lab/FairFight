@@ -303,7 +303,7 @@
         background-position: 45vw 60vh;
     }
     .new-game-header{
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
     .modal__close-icon{
         width: 16px;
@@ -328,7 +328,7 @@
         padding-bottom: 40px;
     }
     .new-game-header{
-        width: 90px;
+        width: 130px;
       }
     .modal__row div, .modal__row__tokens div{
         font-size: 10.88px;

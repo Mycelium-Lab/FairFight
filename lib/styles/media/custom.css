@@ -9,11 +9,40 @@
         justify-content: center;
       }
       .wrapper__btns-wrap {
-        bottom: 300px;
+        bottom: 390px;
+      }
+      .wrapper_banners  .wrapper__banner:first-child{
+        padding-bottom: 55px;
+        padding-top: 30px;
+      }
+      .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
+        height: 280px;
+      }
+      .message-modal__btns-wrap{
+        margin-top: 20px;
+      }
+      .modal .modal_content_about{
+        height: 280px;
+        padding-bottom: 0px;
+        padding-top: 26px;
+      }
+      
+      .about__content{
+        height: 100%;
+        overflow-y: auto;
+      }
+      .about-header{
+        margin-bottom: 20px;
+      }
+      .wrapper__message-modal{
+        padding: 25px 27px 20px 27px;
       }
 }
 
 @media(max-width: 1024px) {
+  .wrapper__nft-shop-modal{
+    padding-top: 20px;
+  }
   #wrapper {
     background-size: 100% auto;
   }
@@ -39,6 +68,7 @@
     background-image: url('../../media/buttons/border-game-sm.svg');
   }
   #btn_modal_window {
+    padding: 0px 6px;
     transform: translateY(-40px);
   }
   .inner-block{
@@ -171,6 +201,10 @@
 .contact_link{
   grid-gap: 10px;
 }
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 15px 0px;
+  margin-bottom: 0px;
+}
 }
 
 @media(max-width: 800px) {
@@ -237,6 +271,9 @@
   top: 106px;
   left: 20px;
 }
+.choose-wallet-text{
+  overflow-y: auto;
+}
 }
 
 @media(max-width: 600px) {
@@ -296,6 +333,11 @@
   }
   .player-visible{
     left: 220px;
+  }
+  .modal__row-map{
+    flex-direction: column;
+    overflow-y: auto;
+    height: 90%;
   }
 }
 
@@ -403,6 +445,7 @@
   .inner-block__head button{
     font-size: 13.41px;
     text-transform: uppercase;
+    padding: 0px;
     font-family: 'Teletactile';
   }
   .games__empty {
@@ -458,6 +501,25 @@
 }
 .wrapper__banner:last-child {
   padding-bottom: 28px;
+}
+.wrapper__banner p{
+  font-size: 12px;
+}
+.wrapper_banners .wrapper__banner:first-child{
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+.wrapper__banner:last-child{
+  padding-bottom: 10px;
+}
+.wrapper__banner-boxes{
+  padding-top: 10px;
+}
+.wrapper_banners .wrapper__banner:first-child p{
+  margin-bottom: 8px;
+}
+.buyblock-image__boxes{
+  transform: translateY(-25px);
 }
 .buyblock-image{
   /*width: 35vw;*/
@@ -672,13 +734,16 @@
    background-image: url('../../media/svg/game-rows-mobile.svg');
   }
   .games__item{
-    gap: 15px;
+    gap: 10px;
   }
   .dressing-value{
     font-size: 10.1px !important;
   }
   .player-visible-mobile{
     left: 170px;
+  }
+  .wrapper__banner p{
+    font-size: 10px;
   }
 }
 

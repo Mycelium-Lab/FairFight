@@ -661,15 +661,17 @@
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+								<p>NEW Characters</p>
 							<img class="buyblock-image" src="media/buyblock.svg" alt="">
 							<button class="banner__buy"></button>
 						</div>
-						<div class="board wrapper__banner">
+						<div class="board wrapper__banner-boxes wrapper__banner">
 							<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-							<img class="buyblock-image" src="media/box1.png" alt="">
+							<p>Try your luck</p>
+							<img class="buyblock-image__boxes buyblock-image" src="media/box1.png" alt="">
 							<button class="banner__buy"></button>
 						</div>
 					</div>
@@ -749,48 +751,49 @@
 			<button class="close_modal_window modal__close-icon"></button>
 			<img class="new-game-header" src="media/svg/new_game_header.svg">
 			<img class='new-game-devider' src="/media/svg/devider.svg">
-			<div class="modal__row">
-				
-				<div>
-					Map
-					<select id="map">
-						<option value="0" selected>Steel plant</option>
-						<option value="1">Moon portals</option>
-					</select>
-				</div>
-				<div>Number of players (coming soon)
-					<select disabled="true">
-						<option value="0" selected>2 players</option>
-					</select>
-				</div>
-			</div>
-			<img class='new-game-devider' src="/media/svg/devider.svg">
-			<div class="modal__row__tokens">
-				<div class="select-token-container">Select a token:
-					<div id="select-token-list" class="container-token">
-
+			<!--<div class="modal__row-map">-->
+				<div class="modal__row">
+					<div>
+						Map
+						<select id="map">
+							<option value="0" selected>Steel plant</option>
+							<option value="1">Moon portals</option>
+						</select>
+					</div>
+					<div>Number of players (coming soon)
+						<select disabled="true">
+							<option value="0" selected>2 players</option>
+						</select>
 					</div>
 				</div>
-				<div class="select-token-container">
-					<div id="select-token-list2" class="container-token">
+				<img class='new-game-devider' src="/media/svg/devider.svg">
+				<div class="modal__row__tokens">
+					<div class="select-token-container">Select a token:
+						<div id="select-token-list" class="container-token">
+	
+						</div>
+					</div>
+					<div class="select-token-container">
+						<div id="select-token-list2" class="container-token">
+						</div>
 					</div>
 				</div>
-			</div>
-			<img class='new-game-devider' src="/media/svg/devider.svg">
-			<div class="modal__row">
-				<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
-																						 id="amountPerDeath" name="amountPerDeath" required /></div>
-				<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
-																						  id="amountToPlay" min="1" max="255" required /></div>
-			</div>
-			<img class='new-game-devider' src="/media/svg/devider.svg">
-			<div class="modal__row_value modal__row">
-				<div>Total prize pool: <span id="totalPrizePool">-</span></div>
-				<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
-				<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
-			</div>
-			<img class="player-visible" src="/media/svg/player-visible.svg">
-			<img class="player-visible-mobile" src="/media/svg/player-visible-mobile.svg">
+				<img class='new-game-devider' src="/media/svg/devider.svg">
+				<div class="modal__row">
+					<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
+																							 id="amountPerDeath" name="amountPerDeath" required /></div>
+					<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
+																							  id="amountToPlay" min="1" max="255" required /></div>
+				</div>
+				<img class='new-game-devider' src="/media/svg/devider.svg">
+				<div class="modal__row_value modal__row">
+					<div>Total prize pool: <span id="totalPrizePool">-</span></div>
+					<div class="active">Your deposit: <span id="yourDeposit">-</span></div>
+					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
+					<img class="player-visible" src="/media/svg/player-visible.svg">
+					<img class="player-visible-mobile" src="/media/svg/player-visible-mobile.svg">
+				</div>
+			<!--</div>-->
 		</div>
 	</div>
 	<div id="install_wallet_modal" class="modal wrapper__message-modal-overlay">
@@ -809,7 +812,7 @@
 				</button>
 			</div>
 			<img class="choose-wallet-header" src="media/svg/choose-wallet-header.svg">
-			<div>
+			<div class="choose-wallet-title">
 				<p>What is a wallet?</p>
 			<p>Wallets are used to send, receive, and store digital
 				assets. Connecting a wallet lets you interact with apps.
@@ -1779,128 +1782,128 @@
 					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
 					</div>
@@ -1912,128 +1915,128 @@
 					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
 					</div>
@@ -2045,127 +2048,127 @@
 					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
 					</div>
@@ -2177,128 +2180,128 @@
 					<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-							</div>
-							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 
 							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 							<div class="item-list__slot">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
-								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/bronze-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm  modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+							</div>
+							<div class="item-list__slot">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
+								<img class="board-edge_sm modal-content__corner" src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
 					</div>
@@ -2587,7 +2590,7 @@
 					"Immortal Thunder" is a pistol from the legendary collection, forged by the god of fire himself, capable of crushing enemies with lightning shots, its history goes back to the time of the ancient battles of the gods, and only a chosen hero can release its true power to change the course of war.
 				</p>
 	
-				<div id="detail-buttons" class="item-detail__btns-wrap">
+				<div class="detail-buttons item-detail__btns-wrap">
 					<button id="inventory-item-modal-takeitoff">Take it off</button>
 					<button id="inventory-item-modal-use">Use</button>
 					<button id="inventory-item-modal-tryon">Try on</button>
@@ -2650,7 +2653,7 @@
 					We've hidden our entire NFT collection in mysterious chests. Try your luck and get a guaranteed NFT of random rarity.
 				</p>
 	
-				<div id="detail-buttons" class="item-detail__btns-wrap">
+				<div class="item-detail__btns-wrap">
 					<button id="inventory-item-modal-tryon">Appove</button>
 				</div>
 			</div>
