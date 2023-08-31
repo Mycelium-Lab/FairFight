@@ -1,0 +1,25 @@
+@media(max-width: 1024px) {
+    .buttons {
+     order: 2;
+     position: relative;
+     right: 10px;
+     bottom: 10px;
+    }
+    .stats-devider{
+        display: none;
+    }
+    .modal_content_finish .modal__over-body{
+        gap: 0px;
+    }
+    .finish-stats{
+        margin-top: 15px;
+    }
+    #yourStats{
+        gap: 0px 30px;
+    }
+    .yourStats__header p::before, .enemyStats__header p::before{
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+    }
+}

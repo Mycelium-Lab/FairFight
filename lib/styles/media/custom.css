@@ -205,6 +205,27 @@
   gap: 15px 0px;
   margin-bottom: 0px;
 }
+.canvasWrapper__footer button:first-child,
+.canvasWrapper__footer button:last-child {
+  display: none !important;
+}
+.modal .modal_content_finish {
+  padding: 18px 31px;
+  height: 100vh;
+}
+#game-action{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+      bottom: 10px;
+    left: 0px;
+}
+.canvas-block{
+  position: relative;
+}
+.canvasWrapper__footer{
+  justify-content: center !important;
+}
 }
 
 @media(max-width: 800px) {

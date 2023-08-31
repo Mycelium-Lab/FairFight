@@ -1,3 +1,5 @@
+@import url('./media/game.css');
+
 html,body {
     background-color: #333;
     color: #fff;
@@ -334,13 +336,4 @@ input[type=number] {
 
 .modal__wsad{
     align-items: center;
-}
-
-.buttons {
-    /* bottom: 0; 
-    left: 0;
-    right: 0;  */
-	overflow: 'hidden';
-	position: 'absolute';
-    z-index: 10000;
 }
