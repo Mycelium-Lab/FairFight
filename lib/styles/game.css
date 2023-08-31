@@ -337,8 +337,9 @@ input[type=number] {
 }
 
 .buttons {
-    display: block;
-    bottom: 0; /* Align the buttons to the bottom of the screen */
+    bottom: 0; 
     left: 0;
-    right: 0;
+    right: 0; 
+	position: 'absolute';
+    z-index: 10000;
 }
