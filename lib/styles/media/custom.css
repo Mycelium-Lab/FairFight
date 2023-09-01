@@ -779,6 +779,18 @@ justify-content: space-between;
   font-size: 12.1px !important;
   color: #24B500 !important;
 }
+.lds-dual-ring-big:after {
+  position: relative !important;
+  padding-top: 50px !important;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 6px solid #FF7C06;
+  border-color: #FF7C06 transparent;
+  animation: 1s linear 0s normal none infinite running lds-dual-ring;
+  -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
+
+}
 }
 
 @media(max-width: 411px) {
