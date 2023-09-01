@@ -1,3 +1,5 @@
+@import url('./media/game.css');
+
 html,body {
     background-color: #333;
     color: #fff;
@@ -335,12 +337,46 @@ input[type=number] {
 .modal__wsad{
     align-items: center;
 }
-
-.buttons {
-    /* bottom: 0; 
-    left: 0;
-    right: 0;  */
-	overflow: 'hidden';
-	position: 'absolute';
-    z-index: 10000;
+#top_stats{
+    font-family: 'Teletactile';
+    color: #ffff;
+    font-size: 14px;
 }
+.stats-item{
+    background-image: url('../media/svg/game-stats-frame-desktop.svg');
+    background-repeat: no-repeat;
+    /*padding: 0px 4px 4px;*/
+    padding: 2px 10px;
+    background-size: 100%;
+    gap: 4px;
+}
+.stats-item img{
+    width: 18px;
+    height: 18px;
+}
+
+.stats-item__title{
+    background-image: url('../media/svg/game-stats-round-frame.svg') !important;
+    height: 100%;
+    background-size: 100%;
+    /* padding-bottom: 2px; */
+    gap: 0px;
+}
+.stats-item__enemy{
+    background-image: url('../media/svg/game-stats-frame-enemy.svg');
+}
+.stats-item-usdt{
+    padding: 0 8px;
+    padding-top: 2px;
+    background-image: url('../media/svg/game-stats-usdt-frame-desktop.svg');
+
+}
+.stats-item-usdt img, .stats-item__enemy-usdt img{
+    transform: translateY(-0.5px)
+}
+.stats-item__enemy-usdt{
+    padding: 0 8px;
+    padding-top: 2px;
+    background-image: url('../media/svg/game-stats-usdt-enemy-frame-desktop.svg');
+}
+

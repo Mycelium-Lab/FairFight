@@ -186,7 +186,10 @@
 }
 .wrapper__item-modal-overlay .header__text-item__props-item{
   margin-top: 9px !important;
-  gap: 0px !important;
+}
+#nventory-nftbox-body  .header__text-item__props-item{
+  padding: 0px 13px;
+  gap: 0px;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap{
   margin-bottom: 12px !important;
@@ -195,6 +198,16 @@
   width: 106.33px !important;
   height: 31px !important;
 }
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]  {
+  width: 190px !important;
+  padding-top: 0px;
+  height: 45px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]:hover{
+      padding-top: 6px;
+}
+
 .connect-button{
   font-size: 14px;
 }
@@ -205,6 +218,66 @@
   gap: 15px 0px;
   margin-bottom: 0px;
 }
+.canvasWrapper__footer button:first-child,
+.canvasWrapper__footer button:last-child {
+  display: none !important;
+}
+.modal .modal_content_finish {
+  padding: 18px 31px;
+  height: 100vh;
+  overflow-y: auto;
+}
+.modal .modal_content_finish .board-edge_sm{
+  display: none;
+}
+.close-button_finish-game{
+  margin-top: 50px !important;
+}
+#game-action{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+      bottom: 90px;
+    left: 0px;
+  width: 100%;
+}
+.canvas-block{
+  position: relative;
+}
+.canvasWrapper__footer{
+  transform: translateY(-50px);
+  justify-content: center !important;
+}
+#rounds_amount{
+  font-size: 11.32px !important;
+}
+.ronds-head__title {
+  font-size: 11.32px !important;
+}
+
+.stats-item__title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 60px;
+}
+#nventory-nftbox-body{
+  background-image: url('../../media/svg/default-frame.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.wrapper__item-modal-overlay .text-item-nft__type{
+  border-width: 0px !important;
+  font-size: 12px !important;
+  color: #393939;
+  padding-top: 15px;
+}
+#nventory-nftbox-body .props-item__prop img{
+  width: 21px;
+  height: 20px;
+}
+
 }
 
 @media(max-width: 800px) {
@@ -362,8 +435,20 @@
     transform: translate(-50%, 20%);
   }
   .logo {
-    width: 123px;
-    margin-bottom: 50px;
+   /* width: 123px;
+    margin-bottom: 50px;*/
+    display: none;
+  }
+  .logo-footer{
+    display: block;
+  }
+  .logo-footer img{
+    width: 130px;
+  }
+  .hamburger-menu {
+  
+    position: relative;
+    bottom: 30px
   }
   .header-right{
     margin-bottom: 45px;
@@ -566,12 +651,17 @@
 .container__left{
   left: 0;
   bottom: 0;
-  width: 180px;
+  width: 100%;
 }
 .contacts__container{
-  gap: 10px;
+justify-content: space-between;
   padding-top: 10px;
+
 }
+.contact_btn, .contact_btn img{
+  width: 28px;
+}
+
 .change-network-item{
   margin: 13px 10px 10px 10px;
 }
@@ -688,6 +778,18 @@
 .dressing-value{
   font-size: 12.1px !important;
   color: #24B500 !important;
+}
+.lds-dual-ring-big:after {
+  position: relative !important;
+  padding-top: 50px !important;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 6px solid #FF7C06;
+  border-color: #FF7C06 transparent;
+  animation: 1s linear 0s normal none infinite running lds-dual-ring;
+  -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
+
 }
 }
 

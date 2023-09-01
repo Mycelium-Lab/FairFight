@@ -687,19 +687,25 @@
 						</div>
 						<div class="wrapper__contacts">
 							<div class="contacts__container">
-								<a class="contact_btn" href="#">
-									<img src="media/social/telegram.svg" alt="">
-								</a>
-								<a class="contact_btn" href="#">
-									<img src="media/social/discord.svg" alt="">
-								</a>
-								<a class="contact_btn" href="#">
-									<img src="media/social/twitter.svg" alt="">
-								</a>
-								<a class="contact_btn" href="#">
-									<img src="media/social/in.svg" alt="">
+								<div>
+									<a class="contact_btn" href="#">
+										<img src="media/social/telegram.svg" alt="">
+									</a>
+									<a class="contact_btn" href="#">
+										<img src="media/social/discord.svg" alt="">
+									</a>
+									<a class="contact_btn" href="#">
+										<img src="media/social/twitter.svg" alt="">
+									</a>
+									<a class="contact_btn" href="#">
+										<img src="media/social/in.svg" alt="">
+									</a>
+								</div>
+								<a href="/" class="logo-footer">
+									<img src="/media/svg/logofair-white.svg" alt="">
 								</a>
 							</div>
+						
 						</div>
 					</div>
 				</main>
@@ -2594,6 +2600,7 @@
 					<button id="inventory-item-modal-takeitoff">Take it off</button>
 					<button id="inventory-item-modal-use">Use</button>
 					<button id="inventory-item-modal-tryon">Try on</button>
+					<button id="go-to-inventory-btn-from-loot" class="go-inventory_from-loot go-inventory" >Go to inventory</button>
 				</div>
 			</div>
 			
@@ -2624,34 +2631,39 @@
 	
 					<div class="header__text-item">
 						
-							<p class="text-item__name" id="inventory-nftbox-modal-name">NFT Box</p>
-							<p class="text-nftboxe__type text-item__type"> Try your luck and get a guaranteed NFT of random rarity.</p>
-						
-	
-						<div id="inventory-item-modal-features" class="header__text-item__props-item">
-							<div class="props-item__prop">
-								<img src="media/svg/shop/character-icon.svg">
-								<span class="props-item__prop-title">Characters</span>
-							</div>
-							<div class="props-item__prop">
-								<img src="media/svg/shop/weapons-icon.svg">
-								<span class="props-item__prop-title">Weapons</span>
-							</div>
-							<div class="props-item__prop">
-								<img src="media/svg/shop/armor-icon.svg">
-								<span class="props-item__prop-title">Armor</span>
-							</div>
-							<div class="props-item__prop">
-								<img src="media/svg/shop/boots-icon.svg">
-								<span class="props-item__prop-title">Boots</span>
-							</div>
-						</div>
+							<p class="text-item-nft__name text-item__name" id="inventory-nftbox-modal-name">NFT Box</p>
+							<p class="text-item-nft__type text-item__type"> Try your luck and get a guaranteed NFT of random rarity.</p>
+					
 					</div>
 				</div>
 	
 				<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">
 					We've hidden our entire NFT collection in mysterious chests. Try your luck and get a guaranteed NFT of random rarity.
 				</p>
+				<div id="inventory-item-modal-features" class="header__text-item__props-item">
+					<div style="display:flex; justify-content: space-between;">
+						<div class="props-item__prop">
+							<img src="media/svg/shop/character-icon.svg">
+							<span class="props-item__prop-title-nft props-item__prop-title">Characters</span>
+						</div>
+							<div class="props-item__prop">
+							<img src="media/svg/shop/armor-icon.svg">
+							<span class="props-item__prop-title-nft  props-item__prop-title">Armor</span>
+						</div>
+					</div>
+				
+					<div style="display:flex; justify-content: space-between;">
+						<div class="props-item__prop">
+							<img src="media/svg/shop/weapons-icon.svg">
+							<span class="props-item__prop-title-nft  props-item__prop-title">Weapons</span>
+						</div>
+						<div class="props-item__prop">
+							<img src="media/svg/shop/boots-icon.svg">
+							<span class="props-item__prop-title-nft  props-item__prop-title">Boots</span>
+						</div>
+					</div>
+
+				</div>
 	
 				<div class="item-detail__btns-wrap">
 					<button id="lootbox-buy-btn-mobile">Approve</button>
@@ -2663,6 +2675,21 @@
 
 	<!-- custom -->
 </div>
+
+<!--Splash screen-->
+<div id="splash-modal" class="wrapper__item-modal-overlay">
+	<div class="board body__item-detail">
+		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+		<span id="btn-close-splash" class="item-detail__btn-close"></span>
+		<video id="splash-video"  autoplay muted  width="100%">
+			<source src="/media/chest_open_animation_2.mp4" type="video/mp4">
+		</video>
+	</div>
+</div>
+
 
 <div id="choose_boots_modal" class="modal">
 	<div class="choose_character_modal_content">
