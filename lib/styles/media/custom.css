@@ -186,7 +186,10 @@
 }
 .wrapper__item-modal-overlay .header__text-item__props-item{
   margin-top: 9px !important;
-  gap: 0px !important;
+}
+#nventory-nftbox-body  .header__text-item__props-item{
+  padding: 0px 13px;
+  gap: 0px;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap{
   margin-bottom: 12px !important;
@@ -195,6 +198,16 @@
   width: 106.33px !important;
   height: 31px !important;
 }
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]  {
+  width: 190px !important;
+  padding-top: 0px;
+  height: 45px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]:hover{
+      padding-top: 6px;
+}
+
 .connect-button{
   font-size: 14px;
 }
@@ -219,13 +232,42 @@
   position: absolute;
       bottom: 10px;
     left: 0px;
+  width: 100%;
 }
 .canvas-block{
   position: relative;
 }
 .canvasWrapper__footer{
+  margin-top: 5px;
   justify-content: center !important;
 }
+.ronds-head__title {
+  color: #fff !important;
+  font-size: 11.32px !important;
+}
+.stats-item__title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 60px;
+}
+#nventory-nftbox-body{
+  background-image: url('../../media/svg/default-frame.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.wrapper__item-modal-overlay .text-item-nft__type{
+  border-width: 0px !important;
+  font-size: 12px !important;
+  color: #393939;
+  padding-top: 15px;
+}
+#nventory-nftbox-body .props-item__prop img{
+  width: 21px;
+  height: 20px;
+}
+
 }
 
 @media(max-width: 800px) {
