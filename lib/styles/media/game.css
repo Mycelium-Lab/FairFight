@@ -2,8 +2,7 @@
     .buttons {
      order: 2;
      position: relative;
-     right: 10px;
-     bottom: 10px;
+     /*right: 13px;*/
     }
     .stats-devider{
         display: none;
@@ -21,5 +20,53 @@
         width: 16px;
         height: 16px;
         background-size: 16px 16px;
+    }
+    .stats-item{
+        padding: 0 4px !important; 
+            background-image: url('../../media/svg/game-stats-frame.svg') !important;
+             height: 14px !important;
+             display: flex !important;
+             align-items: center;
+             padding-top: 1px !important;
+    }
+    #top_stats{
+        font-size: 9.7px !important;
+        gap: 4px;
+        padding:7px 20px;
+    }
+    .stats-item img{
+    width: 10px !important;
+    height: 10px !important;
+}
+.stats-item-usdt{
+     display: flex !important;
+    align-items: center !;
+    padding: 0 2px !important;
+    background-image: url('../../media/svg/game-stats-usdt-frame.svg') !important;
+}
+.stats-item__enemy-usdt{
+    display: flex !important;
+    padding: 0 2px !important;
+    align-items: center !important;
+    background-image: url('../../media/svg/game-stats-usdt-enemy-frame.svg') !important;
+}
+.stats-item__enemy{
+    background-image: url('../../media/svg/game-stats-frame-enemy.svg') !important;
+}
+.stats-item__title{
+    height: 100% !important;
+}
+#header{
+    display: none !important;
+}
+
+}
+
+@media(max-width: 500px) {
+    #top_stats {
+        font-size: 6.7px !important;
+    }
+    .stats-item__title{
+        margin: 0 10px !important;
     }
 }

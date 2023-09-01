@@ -20,8 +20,12 @@
         width: 308px;
     }
     .wrapper__item-modal-overlay .header__img-item{
-        width: 101px !important;
-        height: 104px !important;
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .text-item-nft__name{
+        text-transform: uppercase;
+        color: #FF7C06 !important;
     }
     #inventory-item-modal-image {
         width: 90px !important;
@@ -86,8 +90,15 @@
         height: 60px !important;
         margin-bottom: 16px !important;
     }
+    #nventory-nftbox-body .item-detail__description{
+        margin-bottom: 0px !important;
+        height: auto !important;
+    }
     #inventory-nftbox-modal-name{
         color: #967444;
+    }
+    #nventory-nftbox-body .item-detail__header_active {
+        padding-bottom: 13px;
     }
     .text-nftboxe__type{
         color: #393939;
@@ -96,6 +107,9 @@
         font-family: 'Teletactile';
         font-size: 10px;
         color: #FF7C06;
+    }
+    .props-item__prop-title-nft {
+        font-size: 15px;
     }
     #nventory-nftbox-body .props-item__prop img {
         width: 18px;
