@@ -685,6 +685,10 @@ a {
   transform: translateY(-100vh);
 }
 
+.logo-footer{
+  display: none;
+}
+
 .stats-item__title{
   display: flex;
   flex-direction: column;

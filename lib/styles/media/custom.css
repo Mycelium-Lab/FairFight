@@ -435,8 +435,20 @@
     transform: translate(-50%, 20%);
   }
   .logo {
-    width: 123px;
-    margin-bottom: 50px;
+   /* width: 123px;
+    margin-bottom: 50px;*/
+    display: none;
+  }
+  .logo-footer{
+    display: block;
+  }
+  .logo-footer img{
+    width: 130px;
+  }
+  .hamburger-menu {
+  
+    position: relative;
+    bottom: 30px
   }
   .header-right{
     margin-bottom: 45px;
@@ -639,12 +651,17 @@
 .container__left{
   left: 0;
   bottom: 0;
-  width: 180px;
+  width: 100%;
 }
 .contacts__container{
-  gap: 10px;
+justify-content: space-between;
   padding-top: 10px;
+
 }
+.contact_btn, .contact_btn img{
+  width: 28px;
+}
+
 .change-network-item{
   margin: 13px 10px 10px 10px;
 }
