@@ -678,7 +678,7 @@ a {
   font-size: 18px;
   font-weight: 500;
   max-width: 1020px;
-  margin: 10px 0;
+  margin: 10px auto;
   position: relative;
   top: 0;
   justify-content: space-between;
