@@ -12,14 +12,29 @@
     }
     .finish-stats{
         margin-top: 15px;
+        border: none !important;
+        margin-bottom: 0px !important;
+    }
+    .yourStats_address, .enemyStats_address{
+        margin-bottom: 0px !important;
     }
     #yourStats{
         gap: 0px 30px;
     }
-    .yourStats__header p::before, .enemyStats__header p::before{
-        width: 16px;
-        height: 16px;
-        background-size: 16px 16px;
+    .yourStats__header p::before, .enemyStats__header p::before, 
+    #over_modal .red::before, #over_modal .green::before,
+    #over_modal .yourKillsTitle::before,
+    #over_modal .yourDeathsTitle:before,
+    .your_address:before,  
+    #over_modal .yourDepTitle:before,
+    #over_modal .enemyDepTitle:before,
+    #finish_modal_enemy_address:before,
+    #over_modal .enemyDeathsTitle:before,
+    #over_modal .enemyKillsTitle:before 
+    {
+        width: 16px !important;
+        height: 16px !important;
+        background-size: 16px 16px !important;
     }
     .stats-item{
         padding: 0 4px !important; 
@@ -73,7 +88,14 @@
 .ronds-head__title{
     padding-top: 0px !important;
 }
-
+#yourStats, #enemyStats {
+    gap: 0px 30px !important;
+    margin: 0px !important;
+    margin-top: 5px !important;
+}
+.finish-stats_enemy{
+    margin-top: 0px !important;
+}
 }
 
 @media(max-width: 500px) {
