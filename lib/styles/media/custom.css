@@ -194,11 +194,15 @@
 .wrapper__item-modal-overlay .item-detail__btns-wrap{
   margin-bottom: 12px !important;
 }
-.wrapper__item-modal-overlay .item-detail__btns-wrap button{
+.wrapper__item-modal-overlay .item-detail__btns-wrap button, 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]{
   width: 106.33px !important;
   height: 31px !important;
 }
 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]{
+  background-image: url('../../media/buttons/take-it-off-mobile.svg');
+}
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]  {
   width: 190px !important;
   padding-top: 0px;
