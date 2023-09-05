@@ -333,17 +333,22 @@
     .modal__row div, .modal__row__tokens div{
         font-size: 10.88px;
         line-height: 12.98px;
+        margin-right: 0px;
     }
     .modal .modal_content select{
         width: 106px;
     }
     .token-active, .token-deactive {
         width: 80px;
+        padding-left: 0px;
+        justify-content: end;
+        gap: 5px;
+        padding-right: 10px;
     }
     .figure img{
         width: 18px;
         height: 18px;
-        margin-right: 5px;
+        margin-right: 0px;
     }
     .modal .modal_content input{
         width: 106px;
