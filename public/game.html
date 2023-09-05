@@ -52,7 +52,7 @@
 	<script src="/custom.js"></script>
 	<!-- <script src="/modules/statsVisible.js"></script> -->
 </head>
-<header id="header">
+<!-- <header id="header">
 	<a href="/" class="logo">
 		<img src="/media/svg/logofair-white.svg" alt="">
 	</a>
@@ -62,7 +62,7 @@
 		<img class="help__img" src="/media/svg/help.svg" alt="">
 		About the game
 	</a>
-</header>
+</header> -->
 <div id="wrapper">
 	<!-- <img src="/media/monetki.png" alt="" class="wrapper__monetki"> -->
 	<div class="wrapper__gradient"></div>
@@ -168,7 +168,7 @@
 									</div>
 
 									
-										<div class="stats-item stats-item__enemy">
+										<div style="display: none;" class="stats-item stats-item__enemy">
 											<span id="ammunition" class="ammunition" style="font-weight: 400">0</span>
 											<img src="/media/svg/bullet.svg"/>
 										</div>
@@ -179,7 +179,7 @@
 									<img src="/media/svg/kills.svg" />
 								</div>
 
-								<div class="stats-item stats-item__enemy">  
+								<div style="display: none;" class="stats-item stats-item__enemy">  
 									<span id="enemyHealth" class="enemyHealth" style="font-weight: 400">0</span>
 									<img src="/media/svg/health.svg"/>
 								</div>
@@ -199,6 +199,7 @@
 						<div class="buttons">
 							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn"/>
 							<img src="/media/attackBtn.png" style="display: none;" id="attack-btn"/>
+							<button id="fullscreen-btn">fullscreen</button>
 						</div>
 					</div>
 				</div>
@@ -241,7 +242,7 @@
 				</div> -->
 			</div>
 				
-			<div class="canvasWrapper__footer">
+			<div style="display: none;" class="canvasWrapper__footer">
 				<button id="controls-show">
 					Control keys info
 					<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
