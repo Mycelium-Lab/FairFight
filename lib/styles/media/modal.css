@@ -302,6 +302,9 @@
     .modal__title{
         margin-bottom: 5px;
     }
+    .wrapper__message-modal_confirm {
+        width: 340px !important;
+      }
 }
 @media(max-width: 600px) {
     .modal .modal_content_new-game{
