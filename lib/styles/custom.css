@@ -65,6 +65,9 @@ a {
   --border-board: 4px solid rgba(57, 57, 57, 1);
 }
 
+.menu-control{
+  display: none;
+}
 .wrapper__monetki {
   position: absolute;
   left: 50%;
@@ -174,12 +177,6 @@ a {
 }
 
 
-
-@media (max-width: 1023px) {
-  #header {
-    height: 70px;
-  }
-}
 
 /* .first-modal {
   display: flex;
@@ -3983,8 +3980,19 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   margin-bottom: 30px;
 }
 
+.buyblock-image{
+  background-image: url('../media/buyblock.svg');
+  width: 155px;
+  height: 73px;
+  background-repeat: no-repeat;
+}
+
 .buyblock-image__boxes{
   transform: translateY(-40px);
+  background-image: url('../media/box1.png');  
+  width: 214px;
+  height: 144px;
+  background-repeat: no-repeat;
 }
 .wrapper__banner-boxes{
   padding-bottom: 0px;

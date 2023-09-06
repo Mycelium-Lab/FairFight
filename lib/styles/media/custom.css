@@ -43,24 +43,55 @@
 }
 
 @media(max-width: 1024px) {
+  .main-container{
+    width: 95vw;
+    flex-direction: row !important;
+    justify-content: end !important;
+    gap: 16.7px !important;
+  }
+  .wrapper_banners{
+    flex-direction: column;
+  }
   .wrapper__nft-shop-modal{
     padding-top: 20px;
   }
   #wrapper {
+    background-image: url('../../media/mobile/bgfair-horizontal.jpg');
     background-size: 100% auto;
+    background-repeat: no-repeat;
+    z-index: initial;
   }
-  #shop-inventory-btns{
-    display: none;
+
+  .logo{
+    width: 144px;
+    margin-bottom: 60px;
   }
+  .header-right{
+    margin-bottom: 40px;
+  }
+  .contact_link_about{
+    right: 20px;
+    top: 70px;
+  }
+  .help__img{
+    width: 15.43px;
+  }
+
   .wrapper__btns-wrap {
+    
+    width: 132px;
     bottom: 0px;
+    top: 0px;
+    height: 208px;
+    overflow: auto;
   }
   .wrapper__btns-wrap .btns-wrap__btn{
-    margin-top: 16px;
+    margin-top: 0px;
   }
   .wrapper__monetki {
-    max-width: 551px;
+    max-width: 397px;
     transform: translate(-50%, 30%);
+    top: -30px;
   }
   .newgame__btn {
     background-image: url('../../media/buttons/newgame-sm.svg');
@@ -68,37 +99,105 @@
     background-size: 235px;
   }
   .newgame__btn::after {
+    width: 183px;
+    transform: translate(-10px, -4px);
     background-image: url('../../media/buttons/border-game-sm.svg');
   }
+  .startContainer{
+    padding-top: 265px;
+  }
   #btn_modal_window {
+    width: 175.16px;
+    background-size: 100%;
     padding: 0px 6px;
-    transform: translateY(-40px);
+    transform: translateY(-100px);
+    min-width: initial;
+    min-height: initial;
+    height: 100px;
   }
   .inner-block{
-    height: 460px;
+    height: 227.4px;
     gap: 14px;
+    width: 459.64px;
+    border-radius: 0px;
+    padding-top: 17px;
+    padding-bottom: 17px;
   }
   .container__left{
     position: relative;
     width: 200px;
-    bottom: 0px;
-    top: 0px
+    bottom: 140px;
+    left: 0px;
+  }
+  #header{
+    padding: 0px 15px;
+  }
+  #opengames .board-edge, #pastgames .board-edge{
+    width: 24.64px;
+    height: 24.64px;
+  }
+  #opengames .board-edge:nth-child(1),  #pastgames .board-edge:nth-child(1){
+    left: -4px;
+    top: -5px;
+  }
+  #opengames .board-edge:nth-child(2), #pastgames .board-edge:nth-child(2) {
+    right: -4px;
+    top: -5px;
+  }
+  #opengames .board-edge:nth-child(3), #pastgames .board-edge:nth-child(3) {
+    right: -4px;
+    bottom: -5px;
+  }
+  #opengames .board-edge:nth-child(4), #pastgames .board-edge:nth-child(4) {
+    left: -4px;
+    bottom: -5px;
+  }
+  .wrapper__btns-wrap .btns-wrap__btn{
+    width: 132px;
+    height: 44.44px;
+    background-size: 100%;
+  }
+  .wrapper_banners .board-edge_sm {
+    width: 13.1px;
+    height: 13.1px;
+  }
+
+  .wrapper_banners .board-edge_sm:nth-child(1) {
+    left: -6px;
+    top: -6px;
+  }
+  .wrapper_banners .board-edge_sm:nth-child(2) {
+    right: -6px;
+    top: -6px;
+  }
+
+  .wrapper_banners .board-edge_sm:nth-child(3) {
+    right: -6px;
+    bottom: -6px;
+  }
+  .wrapper_banners .board-edge_sm:nth-child(4) {
+    left: -6px;
+    bottom: -6px;
   }
   .wrapper__contacts{
-    position: static;
+    position: absolute;
     margin-bottom: 0px;
+    top: 250px;
   }
   .main-container{
     margin: 0px;
-    gap: 83px;
-    width: 100%;
+    height: 220px;
+    transform: translateY(-100px);
+  }
+  .blur{
+    z-index: inherit;
   }
   .wrapper_banners{
     margin-bottom: 0px;
   }
   .games__row{
     background-size: 100%;
-    gap: 15px;
+    gap: 4px;
     height: auto;
     margin-top: 0px;
   }
@@ -108,29 +207,32 @@
     display: flex;
     justify-content: center;
     display: block;
-    background-image: url(../../media/mobile/pastgames-table.svg);
-    width: 100%;
-    
+    background-image: url('../../media/mobile/pastgames-table-horizontal.svg');
+    width: 420px;
     background-repeat: no-repeat;
-    background-size: 100%;
   }
   #opengames {
     background-image: none;
   }
   .join-button, .claim-button{
-    top: 130px;
-    padding: 0 39.7395px;
-    height: 42px;
-    padding-bottom: 5px;
+    padding: 0px;
+    height: 29px;
+    bottom: 4px;
+    font-size: 7.83px;
+    right: 10px;
+    width: 70.29px;
+    background-size: 100% 100%;
+  }
+  .join-button:hover, .claim-button:hover{
+    padding-top: 5px;
   }
   .games__item .right {
     position: absolute;
-    right: 0px;
-    top: 140px;
-    left: 38px;
+    bottom: 10px;
+    left: 10px;
    }
   .games__item{
-    gap: 20px;
+    justify-content: space-between;
   }
 
   .tabs__content{
@@ -141,13 +243,13 @@
   }
   .games__empty span{
     font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
   }
   .table__row{
-    font-size: 16px;
+    font-size: 12px;
   }
-  .main-container{
-    width: 790px;
-  }
+ 
   #opengames-list{
     margin-bottom: 0px !important;
     display: flex;
@@ -157,28 +259,38 @@
 .games__item p{
   font-weight: 500;
   display: flex;
+  font-size: 10px;
 }
 .games__item p a, .games__item span{
   padding-left: 2px;
+  font-size: 10px;
 }
 .games__row{
-  background-image: url('../../media/svg/game-rows-mobile-746.svg');
-  padding-top: 10px;
-  height: 180px;
+  background-image: url('../../media/mobile/game-rows-mobile-horizontal.svg');
+  padding: 6px 10px;
+  height: 98px;
 }
 .games__item_last{
-  padding-bottom: 13px;
+  padding-bottom: 4.94px;
   border-bottom: 1px solid #FFC897;
 }
 .withdraw-button{
-  width: 180px;
+  width: 101.39px;
   position: absolute;
-  right: 31px;
-  bottom: -4px;
+  right: 6px;
+  bottom: 2px;
   font-size: 10px;
   padding: 0px;
-  height: 50px;
-  padding-bottom: 15px;
+  height: 30.17px;
+  font-size: 5.96px;
+  background-size: 100% 100%;
+}
+.close-button_big:hover {
+  padding-top: 6px;
+  width: 101px;
+  height: 30px;
+  background-size: 100% 100%;
+  bottom: 5px;
 }
 .wrapper__nft-shop-modal .list-items__item{
   margin-right: 20px;
@@ -293,7 +405,81 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   width: 21px;
   height: 20px;
 }
+.buyblock-image{
+  background-image: url('../../media/buyblock-mobile.svg');
+  width: 116.63px;
+  height: 54.79px;
+}
+.wrapper__banner{
+  padding-bottom: 0px; 
+  border-radius: 0px;
+}
+.buyblock-image__boxes{
+  background-image: url('../../media/box1-mobile.png');  
+  width: 162px;
+  height: 109px;
+}
 
+.wrapper__banner{
+  height: 136.19px;
+}
+.wrapper_banners{
+  width: 170.43px;
+  position: relative;
+  bottom: 60px;
+}
+.games__empty{
+  margin: 10px auto !important;
+  font-size: 36px;
+  gap: 24px;
+}
+.banner__buy{
+  width: 133px;
+  height: 45px;
+  background-size: 100%;
+}
+#home-btn, #menu-home-btn {
+  background-image: url('../../media/buttons/home-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#nft-shop-btn, #menu-nft-shop-btn {
+  background-image: url('../../media/buttons/nft-shop-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#inventory-btn, #menu-inventory-btn{
+  background-image: url('../../media/buttons/inventory-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#mystery-btn, #menu-mystery-btn{
+  background-image: url('../../media/buttons/mystery-box-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#lottery-btn, #menu-lottery-btn{
+  background-image: url('../../media/buttons/lottery-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#tournaments-btn, #menu-tournaments-btn{
+  background-image: url('../../media/buttons/tournaments-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+#balance-btn, #menu-balance-btn{
+  background-image: url('../../media/buttons/balance-mobile-horizontal.svg');
+  margin-bottom: 10px;
+}
+.menu-control{
+  display: block;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+.board {
+  --bg-board: rgba(255, 249, 224, 1);
+  --border-board: 2px solid rgba(57, 57, 57, 1);
+}
+.inner-block__head button{
+  font-size: 13.41px;
+  font-family: 'Teletactile';
+}
 }
 
 @media(max-width: 800px) {
@@ -438,6 +624,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   #wrapper{
     background-image: url('../../media/mobile/bgfair.jpg');
   }
+
   .wrapper__gradient{
     background: linear-gradient(3.25deg, #020202 9.97%, rgba(2, 2, 2, 0) 46.55%);
   }
@@ -448,7 +635,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   .wrapper__monetki {
     max-width: none;
     width: auto;
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 80%);
   }
   .logo {
    /* width: 123px;
@@ -485,7 +672,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     height: 16px;
   }
   #btn_modal_window {
-    transform: translateY(30px);
+    transform: translateY(-130px);
     background-image: url('../../media/buttons/newgame-mobile.svg');
     min-width: 183px;
     height: 95px;
@@ -496,6 +683,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   }
   .newgame__btn::after {
     background-image: url('../../media/buttons/border-game-mobile.svg');
+
   }
   .menu__btn > span::after {
     top: 5px
@@ -541,7 +729,8 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   .main-container{
     gap: 0px;
     width: 360px;
-    transform: translateY(55px);
+    transform: translateY(200px);
+    flex-direction: column !important;
   }
   .inner-block__head button{
     font-size: 13.41px;
@@ -596,9 +785,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   margin-top: 83px;
   margin-bottom: 40px;
   padding-bottom: 0px;
-}
-.wrapper__banner{
-  padding-bottom: 45px;
+  flex-direction: row;
 }
 .wrapper__banner:last-child {
   padding-bottom: 28px;
@@ -622,10 +809,11 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 .buyblock-image__boxes{
   transform: translateY(-25px);
 }
-.buyblock-image{
-  /*width: 35vw;*/
-  width: 100px;
-}
+/*.buyblock-image{
+  background-image: url('../../media/buyblock-mobile.svg');
+  width: 116.63px;
+  height: 54.79px;
+}*/
 .banner__buy{
   background-image: url('../../media/buttons/buy-mobile.svg');
   margin-bottom: -25px;
@@ -668,6 +856,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   left: 0;
   bottom: 0;
   width: 100%;
+  order: 3;
 }
 .contacts__container{
 justify-content: space-between;
@@ -805,7 +994,9 @@ justify-content: space-between;
   border-color: #FF7C06 transparent;
   animation: 1s linear 0s normal none infinite running lds-dual-ring;
   -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
-
+}
+#shop-inventory-btns{
+  display: none;
 }
 }
 
