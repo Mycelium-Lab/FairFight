@@ -200,9 +200,16 @@
   height: 31px !important;
 }
 
+/*.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button{
+  background-image: url('../../media/buttons/frame-btn-mobile.svg');
+}*/
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]{
   background-image: url('../../media/buttons/take-it-off-mobile.svg');
 }
+wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]{
+  background-image: url('../../media/svg/take-it-off-press-btn.svg');
+}
+
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]  {
   width: 190px !important;
   padding-top: 0px;
