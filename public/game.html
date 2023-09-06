@@ -85,6 +85,7 @@
 			
 	
 			<div class="middle-page">
+				<span id="internalBalance" class="internalBalance" style="display: none;font-weight: 400">0</span>
 				<!-- <div id="middle_your_stats">
 				<div style="text-align: center;">
 					<div class="rounds-head__subtitle">You</div>
@@ -198,7 +199,7 @@
 					<div id="game-action">
 						<div class="buttons">
 							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn"/>
-							<img src="/media/attackBtn.png" style="display: none;" id="attack-btn"/>
+							<img src="/media/attackBtn.png" style="display: none; width: 100px; height: 100px;" id="attack-btn"/>
 							<button id="fullscreen-btn">fullscreen</button>
 						</div>
 					</div>
@@ -207,6 +208,7 @@
 					<button style="display: none;" id="left-btn">LEFT</button>
 					<button style="display: none;" id="right-btn">RIGHT</button>
 				</div>
+				<span id="enemyBalance" class="enemyBalance"  style="display:none; font-weight: 400">0</span>
 				<!-- <div id="middle_enemy_stats" class="rounds-head__col">
 					<div style="text-align: center;">
 						<div class="rounds-head__subtitle">Enemy</div>
@@ -352,7 +354,7 @@
 					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<img class="load" src="/media/svg/load.svg" alt="">
 					<div>Waiting for enemy...</div>
-					<div style="color: #C6C6C6; font-size: 16px; font-weight: 400;">The game will start when other
+					<div style="color: #C6C6C6; font-size: 16px; font-weight: 400; text-align:center">The game will start when other
 						players join</div>
 				</div>
 			</div>

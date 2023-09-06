@@ -678,7 +678,7 @@ a {
   font-size: 18px;
   font-weight: 500;
   max-width: 1020px;
-  margin: 10px 0;
+  margin: 10px auto;
   position: relative;
   top: 0;
   justify-content: space-between;
@@ -3488,8 +3488,7 @@ z-index: -1;
  width: 169px !important;
 }
 
-.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]:hover,
-.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]:hover
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]:hover
 {
   background-image: url('../media/svg/orange-btn-press.svg');
 }
