@@ -39,6 +39,12 @@
         margin-right: 5px;
         margin-bottom: 2px;
     }
+    .table__row .red {
+        color: #EE0000;
+    }
+    .table__row .green {
+        color: #10D275;
+    }
     .table__row .red::before{
         display: inline-block;
         content: '';
