@@ -118,8 +118,8 @@
     background-size: 235px;
   }
   .newgame__btn::after{
-    width: 183px;
-    transform: translate(-10px, -4px);
+    width: 183.5px;
+    transform: translate(-10px, -5px);
     background-image: url('../../media/buttons/border-game-sm.svg');
   }
   .startContainer{
@@ -251,6 +251,9 @@
   }
   .join-button:hover, .claim-button:hover{
     padding-top: 5px;
+  }
+  .newgame__btn:hover{
+    background-position: center 5px;
   }
   .games__item .right {
     position: absolute;
@@ -583,7 +586,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     width: 320px;
   }
   .newgame__btn::after{
-    width: 173px;
+    width: 173.5px;
     background-position: center 26px;
   }
   
@@ -639,6 +642,9 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   .startContainer{
     padding-top: 70px;
   }
+  .newgame__btn::after{
+    transform: translate(-10px, -5.8px);
+  }
 }
 
 @media(max-width: 600px) {
@@ -673,6 +679,10 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     flex-direction: column;
     overflow-y: auto;
     height: 90%;
+  }
+  .newgame__btn::after {
+    width: 151.1px;
+    transform: translate(-9px, -5.8px);
   }
 }
 
@@ -743,11 +753,11 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     background-size: 163px;
   }
   .newgame__btn::after{
+    width: 153px;
     background-image: url('../../media/buttons/border-game-mobile.svg');
+    transform: translate(-10px, -1.8px);
   }
-  .newgame__btn:hover {
-    background-position: center 5px;
-  }
+
   .menu__btn > span::after {
     top: 5px
   }
