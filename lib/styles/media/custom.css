@@ -83,9 +83,9 @@
     width: 138px;
     bottom: 0px;
     top: 0px;
-    height: 208px;
+    /*height: 208px;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden;*/
   }
   .wrapper__btns-wrap {
     overflow: auto;
@@ -465,59 +465,66 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 }
 #home-btn, #menu-home-btn {
   background-image: url('../../media/buttons/home-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #nft-shop-btn, #menu-nft-shop-btn {
   background-image: url('../../media/buttons/nft-shop-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #inventory-btn, #menu-inventory-btn{
   background-image: url('../../media/buttons/inventory-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #mystery-btn, #menu-mystery-btn{
   background-image: url('../../media/buttons/mystery-box-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #lottery-btn, #menu-lottery-btn{
   background-image: url('../../media/buttons/lottery-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #tournaments-btn, #menu-tournaments-btn{
   background-image: url('../../media/buttons/tournaments-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #balance-btn, #menu-balance-btn{
   background-image: url('../../media/buttons/balance-mobile-horizontal.svg');
-  width: 134px;
+  width: 132.5px;
   height: 55px;
 }
 #home-btn::after, #menu-home-btn::after {
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #nft-shop-btn::after, #menu-nft-shop-btn::after{
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #inventory-btn::after, #menu-inventory-btn::after{
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #mystery-btn::after, #menu-mystery-bt::after {
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #lottery-btn::after, #menu-lottery-btn::after {
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #tournaments-btn::after, #menu-tournaments-btn::after{
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 #balance-btn::after, #menu-balance-btn::after{
   background-position: center 10px;
+  transform: translateX(0.2px);
 }
 .menu-control{
   display: block;
@@ -550,6 +557,9 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   position: relative;
   top: initial;
   grid-area: 1/2/2/3;
+}
+.slick-list{
+  height: 210px !important;
 }
 }
 

@@ -27,7 +27,17 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
 			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-
+			<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		  ></script>
+		  <script
+		  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+		  integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+		  crossorigin="anonymous"
+		  referrerpolicy="no-referrer"
+		></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
@@ -615,14 +625,29 @@
 				<main class="main-container">
 					<div id="container-left" class="container__left">
 						<img id="up-menu" class="menu-control" src="media/mobile/arrow-menu-up.svg">
-						<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
-							<button class="btns-wrap__btn" id="home-btn"></button>
-							<button class="btns-wrap__btn" id="nft-shop-btn"></button>
-							<button class="btns-wrap__btn" id="inventory-btn"></button>
-							<button class="btns-wrap__btn" id="mystery-btn"></button>
-							<button class="btns-wrap__btn" id="lottery-btn"></button>
-							<button class="btns-wrap__btn" id="tournaments-btn"></button>
-							<button class="btns-wrap__btn" id="balance-btn"></button>
+						<div id="slick-slider" class="wrapper__btns-wrap_mobile wrapper__btns-wrap" style="display: none;">
+							<div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="home-btn"></button>
+							 </div>
+							 <div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="nft-shop-btn"></button>
+							 </div>
+							 <div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="inventory-btn"></button>
+							 </div>
+							 <div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="mystery-btn"></button>
+							 </div>
+							 <div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="lottery-btn"></button>
+							 </div>
+							 <div class="slide">
+								<button class="btns-wrap__btn_mobile btns-wrap__btn" id="tournaments-btn"></button>
+							 </div>
+							 <div class="slide">
+														
+							<button class="btns-wrap__btn_mobile btns-wrap__btn" id="balance-btn"></button>
+							 </div>
 						</div>
 						<img id="down-menu" class="menu-control" src="media/mobile/arrow-menu-down.svg">
 						<div class="wrapper__contacts">
