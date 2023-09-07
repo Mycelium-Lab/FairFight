@@ -932,7 +932,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   margin-bottom: 8px;
 }
 .buyblock-image__boxes{
-  transform: translateY(-25px);
+  transform: translateY(-38px);
 }
 /*.buyblock-image{
   background-image: url('../../media/buyblock-mobile.svg');
@@ -942,6 +942,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 .banner__buy{
   background-image: url('../../media/buttons/buy-mobile.svg');
   width: 128px;
+  transform: translate(5px, 15px);
 }
 .banner__buy::after{
   /*background-image: url('../../media/buttons/border-mobile.svg');
@@ -1133,6 +1134,9 @@ justify-content: space-between;
 .wrapper__banner{
   width: 165px;
 }
+.banner__buy{
+  transform: translate(10px, 10px);
+}
 }
 
 @media(max-width: 411px) {
@@ -1165,6 +1169,9 @@ justify-content: space-between;
   }
   .wrapper__banner{
     width: 345px;
+  }
+  .banner__buy{
+    transform: translate(5px, 15px);
   }
   .wrapper__banner{
     width: 156px;
