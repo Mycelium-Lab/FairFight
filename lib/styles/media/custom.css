@@ -74,7 +74,7 @@
   }
   .contact_link_about{
     right: 20px;
-    top: 70px;
+    top: 55px;
   }
   .help__img{
     width: 15.43px;
@@ -138,6 +138,7 @@
     transform: inherit;
     margin: 0 auto;
     transform: translateY(-30px);
+    z-index: 0;
   }
   .inner-block{
     height: 227.4px;
@@ -213,7 +214,7 @@
   .wrapper__contacts{
     position: relative;
     margin-bottom: 0px;
-    /*top: 250px;*/
+    width: 138px;
     margin-top: 10px;
   }
   .main-container{
@@ -370,7 +371,8 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 }
 
 .connect-button{
-  font-size: 14px;
+  font-size: 11px;
+  height: 48px;
 }
 .contact_link{
   grid-gap: 10px;
@@ -516,31 +518,24 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 }
 #home-btn::after, #menu-home-btn::after {
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #nft-shop-btn::after, #menu-nft-shop-btn::after{
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #inventory-btn::after, #menu-inventory-btn::after{
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #mystery-btn::after, #menu-mystery-bt::after {
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #lottery-btn::after, #menu-lottery-btn::after {
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #tournaments-btn::after, #menu-tournaments-btn::after{
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 #balance-btn::after, #menu-balance-btn::after{
   background-position: center 10px;
-  transform: translateX(0.2px);
 }
 .menu-control{
   display: block;
@@ -598,6 +593,11 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 }
 .banner__buy::after{
   background-position: center 12px;
+}
+.close-button:hover{
+  background-position: initial;
+    transition: initial;
+    background-image: url('../../media/svg/frame-btn.svg') !important;
 }
 }
 
@@ -705,9 +705,6 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     width: 400px;
   }
 
-  .connect-button{
-    font-size: 14px;
-  }
   .player-visible{
     left: 220px;
   }
@@ -1136,6 +1133,9 @@ justify-content: space-between;
 }
 .banner__buy{
   transform: translate(10px, 10px);
+}
+.wrapper__contacts{
+  width: 100%;
 }
 }
 
