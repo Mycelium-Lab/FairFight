@@ -52,7 +52,7 @@
 	<script src="/custom.js"></script>
 	<!-- <script src="/modules/statsVisible.js"></script> -->
 </head>
-<header id="header">
+<header id="game-header">
 	<a href="/" class="logo">
 		<img src="/media/svg/logofair-white.svg" alt="">
 	</a>
@@ -131,9 +131,37 @@
 					<!-- <div>Click on screen to change size</div> -->
 					<div><canvas id="canvas" style="display: inherit;"></canvas></div>
 					<div id="top_stats" class="rounds-head">
-						
-								
-									<div class="stats-item stats-item-usdt">
+
+									<div class="you-stats">
+										<div class="you-character">
+											<div class="you-stats-skin">
+												<img src="/media/stats-character.svg">
+											</div>
+											<div class="you-stats-value">
+													<span class="you-stats-healf">
+														<img src="/media/red-healths.svg">
+														<span class="yourHealth">0</span>
+													</span>
+													<span class="you-stats-shoot">
+														<img src="/media/bullet.svg">
+														<span class="ammunition">0</span>
+													</span>
+													<span class="you-stats-kills">
+														<img src="/media/kills.svg">
+														<span class="yourKills">0</span>
+													</span>
+													<span class="you-stats-deaths">
+														<img src="/media/deaths.svg">
+														<span class="yourDeaths">0</span>
+													</span>
+											</div>
+										</div>
+										<div class="you-deps">
+											<img src="/media/svg/past-game/dep.svg">
+											<span id="yourDep">0 USD</span>
+										</div>
+									</div>
+									<!--<div class="stats-item stats-item-usdt">
 										<img src="/media/svg/dep.svg"/>
 										<span class="yourDep" style="font-weight: 400">0</span>
 										<span>USDT</span>
@@ -153,7 +181,7 @@
 									<div class="stats-item">
 										<img src="/media/svg/deaths.svg"/>
 										<span id="yourDeaths" class="yourDeaths" style="font-weight: 400">0</span>
-									</div>
+									</div>-->
 								
 					
 						
@@ -163,33 +191,27 @@
 							</div>
 					
 							
-									<div class="stats-item  stats-item__enemy">
-									<span id="enemyDeaths" class="enemyDeaths" style="font-weight: 400">0</span>
-									<img src="/media/svg/past-game/deaths.svg"/>
+							<div class="enemy-stats">
+								<div class="enemy-character">
+									<div class="enemy-stats-value">
+											<span class="enemy-stats-kills">
+												<span class="enemyKills">0</span>
+												<img src="/media/kills-2.svg">
+											</span>
+											<span class="enemy-stats-deaths">
+												<span class="enemyDeaths">0</span>
+												<img src="/media/deaths.svg">
+											</span>
 									</div>
-
-									
-										<div style="display: none;" class="stats-item stats-item__enemy">
-											<span id="ammunition" class="ammunition" style="font-weight: 400">0</span>
-											<img src="/media/svg/bullet.svg"/>
-										</div>
-									
-								
-								<div class="stats-item stats-item__enemy">
-									<span id="enemyKills" class="enemyKills" style="font-weight: 400">0</span>
-									<img src="/media/svg/kills.svg" />
+									<div class="enemy-stats-skin">
+										<img src="/media/stats-character.svg">
+									</div>
 								</div>
-
-								<div style="display: none;" class="stats-item stats-item__enemy">  
-									<span id="enemyHealth" class="enemyHealth" style="font-weight: 400">0</span>
-									<img src="/media/svg/health.svg"/>
+								<div class="you-deps">
+									<img src="/media/svg/past-game/dep.svg">
+									<span id="enemyDep">0 USD</span>
 								</div>
-
-								<div class="stats-item stats-item__enemy-usdt">
-									<span class="enemyDep" style="font-weight: 400">0</span>
-									<span>USDT</span>
-									<img src="/media/svg/dep.svg"/>
-								</div>
+							</div>
 							
 					
 					</div>

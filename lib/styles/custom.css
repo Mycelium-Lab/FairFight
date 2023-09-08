@@ -692,7 +692,7 @@ a {
   flex-direction: column;
 }
 .ronds-head__title {
-  color: #fff !important;
+  color: #393939 !important;
   font-size: 18px;
   font-weight: 500;
 }
@@ -1286,6 +1286,7 @@ a {
   font-size: 18px;
   text-align: center;
   transform: translateY(-6px);
+  color: #393939
 }
 
 @media (max-width: 1550px) {

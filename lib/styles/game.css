@@ -397,3 +397,66 @@ input[type=number] {
 .confirm_finish-game:hover{
     padding-top: 10px !important;
 }
+.you-stats, .enemy-stats{
+   display: flex;
+   flex-direction: column;
+   gap: 3.67px
+}
+/*.enemy-stats{
+    background-image: url('../media/stats-frame-enemy.svg');
+    background-repeat: no-repeat;
+    width: 88px;
+    height: 50px;
+    background-size: 100% 100%;
+}*/
+.you-character, .enemy-character{
+    display: flex;
+    background-image: url('../media/stats-frame.svg');
+    background-repeat: no-repeat;
+    width: 88px;
+    height: 50px;
+}
+.enemy-character{
+    background-image: url('../media/stats-frame-enemy.svg');
+    justify-content: end;
+}
+.you-stats-skin, .enemy-stats-skin{
+    display: flex;
+    align-items: center;
+}
+.you-stats-value, .enemy-stats-value{
+    display: flex;
+    flex-direction: column;
+    margin-left: 6px;
+    margin-top: 3px;
+}
+.enemy-stats-value {
+    margin-left: 0px;
+    margin-right: 5px;
+    justify-content: space-evenly;
+}
+
+.you-stats-value span, .enemy-stats-value span{
+    height: 11px;
+    color: #393939;
+}
+
+.you-stats-healf, .you-stats-shoot, .you-stats-kills, .you-stats-deaths,
+.enemy-stats-healf, .enemy-stats-shoot, .enemy-stats-kills, .enemy-stats-deaths{
+    display: flex;
+    align-items: center;
+    gap: 4.38px;
+}
+
+.you-stats-shoot{
+    gap: 7.38px;  
+}
+.enemy-stats-shoot{
+    gap: 5.38px;  
+}
+.enemy-stats-kills{
+    gap: 3.8px;  
+}
+.enemy-stats-skin img{
+    transform: scaleX(-1)
+}

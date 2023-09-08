@@ -38,19 +38,18 @@
     }
     .stats-item{
         padding: 0 4px !important; 
-            background-image: url('../../media/svg/game-stats-frame.svg') !important;
-             height: 14px !important;
+            background-image: url('../../media/round-frame.svg') !important;
+            
              display: flex !important;
              align-items: center;
-             padding-top: 0px !important;
-             background-size: 100% 13px;
-            width: 33px;
-            height: 13px !important;
+             padding: 6.48px 13.03px 2.99px 12.97px !important;
+          
     }
     #top_stats{
-        font-size: 9.7px !important;
+        font-size: 9.17px !important;
         gap: 4px;
         padding:7px 20px;
+        margin: 0px;
     }
     .stats-item img{
     width: 10px !important;
@@ -79,9 +78,9 @@
     height: 100% !important;
     width: auto;
 }
-/*#header{
+#game-header{
     display: none !important;
-}*/
+}
 .stats-item span{
     padding-top: 2px;
 }
