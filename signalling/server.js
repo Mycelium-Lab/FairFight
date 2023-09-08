@@ -488,7 +488,7 @@ function handleSocket(socket) {
           'Error with data statistics:\n',
           `GameID: ${room.getFightId()}`,
           `ChainID: ${room.getChainId()}`,
-          `Address: ${data.loserAddress}`,signatures
+          `Address: ${data.loserAddress}`,
           `Amount: ${data.loserAmount}`,
           `Kills: ${killsLoser}`,
           `Deaths: ${deathsLoser}`,
