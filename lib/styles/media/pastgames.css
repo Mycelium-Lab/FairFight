@@ -16,7 +16,7 @@
     }
     .table__row{
         display: flex;
-        padding: 11px 0px;
+        padding: 8px 0px;
         border-bottom: 1px solid #FFC897;
         font-size: 12px;
         justify-content: space-around;
@@ -24,9 +24,6 @@
     .table__row td{
         display: flex;
         align-items: end;
-    }
-    .table__row:first-child{
-        padding-top: 20px;
     }
     .table__row:last-child{
         padding-bottom: 9px;
@@ -41,6 +38,12 @@
         background-size: 16px 16px;
         margin-right: 5px;
         margin-bottom: 2px;
+    }
+    .table__row .red {
+        color: #EE0000;
+    }
+    .table__row .green {
+        color: #10D275;
     }
     .table__row .red::before{
         display: inline-block;

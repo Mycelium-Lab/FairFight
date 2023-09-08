@@ -27,7 +27,17 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
 			integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-
+			<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		  ></script>
+		  <script
+		  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+		  integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+		  crossorigin="anonymous"
+		  referrerpolicy="no-referrer"
+		></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
@@ -613,20 +623,50 @@
 
 
 				<main class="main-container">
+					<div id="container-left" class="container__left">
+						<img id="up-menu" class="menu-control" src="media/mobile/arrow-menu-up.svg" style="display: none;">
+						<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
+							<button class="btns-wrap__btn" id="home-btn"></button>
+							<button class="btns-wrap__btn" id="nft-shop-btn"></button>
+							<button class="btns-wrap__btn" id="inventory-btn"></button>
+							<button class="btns-wrap__btn" id="mystery-btn"></button>
+							<button class="btns-wrap__btn" id="lottery-btn"></button>
+							<button class="btns-wrap__btn" id="tournaments-btn"></button>
+							<button class="btns-wrap__btn" id="balance-btn"></button>
+						</div>
+						<img id="down-menu" class="menu-control" src="media/mobile/arrow-menu-down.svg" style="display: none;">
+						<div class="wrapper__contacts">
+							<div class="contacts__container">
+								<div>
+									<a class="contact_btn" href="#" style="display: none;">
+										<img src="media/social/telegram.svg" alt="">
+									</a>
+									<a class="contact_btn" href="https://discord.gg/S5Q5uErv" target="_blank" rel="noreferrer">
+										<img src="media/social/discord.svg" alt="">
+									</a>
+									<a class="contact_btn" href="https://twitter.com/FairProtocol" target="_blank" rel="noreferrer">
+										<img src="media/social/twitter.svg" alt="">
+									</a>
+									<a class="contact_btn" href="#" style="display: none;">
+										<img src="media/social/in.svg" alt="">
+									</a>
+								</div>
+								<a href="/" class="logo-footer">
+									<img src="/media/svg/logofair-white.svg" alt="">
+								</a>
+							</div>
+						
+						</div>
+					</div>
+					<img  srcset="media/mobile/game.png 345w, media/game.png 761w"
+			sizes="(max-width: 1024px) 345px,
+				761px"
+			src="elva-fairy-800w.jpg" alt="" class="wrapper__monetki_mobile wrapper__monetki">
+			<button id="btn_modal_window_mobile" class="newgame__btn_mobile newgame__btn"></button>
 					<div class="board inner-block">
 						<div class="inner-block__head">
 							<button class="active" id="opengames-btn">Open Games</button>
 							<button id="pastgames-btn">Past games</button>
-							<!-- <details>
-								<summary>
-									<h2>Past Games</h2>
-								</summary>
-								<h4 id="pastgames-empty">Empty</h4>
-								<div id="pastgames">
-									<ul id="pastgames-list">
-									</ul>
-								</div>
-							</details> -->
 						</div>
 	
 						<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
@@ -662,7 +702,7 @@
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<p>NEW Characters</p>
-							<img class="buyblock-image" src="media/buyblock.svg" alt="">
+							<div class="buyblock-image"></div>
 							<button id="new-characters-btn" class="banner__buy"></button>
 						</div>
 						<div class="board wrapper__banner-boxes wrapper__banner">
@@ -671,41 +711,8 @@
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 								<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 							<p>Try your luck</p>
-							<img class="buyblock-image__boxes buyblock-image" src="media/box1.png" alt="">
+							<div class="buyblock-image__boxes"></div>
 							<button id="try-luck-btn" class="banner__buy"></button>
-						</div>
-					</div>
-					<div id="container-left" class="container__left">
-						<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
-							<button class="btns-wrap__btn" id="home-btn"></button>
-							<button class="btns-wrap__btn" id="nft-shop-btn"></button>
-							<button class="btns-wrap__btn" id="inventory-btn"></button>
-							<button class="btns-wrap__btn" id="mystery-btn"></button>
-							<button class="btns-wrap__btn" id="lottery-btn"></button>
-							<button class="btns-wrap__btn" id="tournaments-btn"></button>
-							<button class="btns-wrap__btn" id="balance-btn"></button>
-						</div>
-						<div class="wrapper__contacts">
-							<div class="contacts__container">
-								<div>
-									<a class="contact_btn" href="#" style="display: none;">
-										<img src="media/social/telegram.svg" alt="">
-									</a>
-									<a class="contact_btn" href="https://discord.gg/S5Q5uErv" target="_blank" rel="noreferrer">
-										<img src="media/social/discord.svg" alt="">
-									</a>
-									<a class="contact_btn" href="https://twitter.com/FairProtocol" target="_blank" rel="noreferrer">
-										<img src="media/social/twitter.svg" alt="">
-									</a>
-									<a class="contact_btn" href="#" style="display: none;">
-										<img src="media/social/in.svg" alt="">
-									</a>
-								</div>
-								<a href="https://www.fairprotocol.solutions/" target="_blank" rel="noreferrer" class="logo-footer">
-									<img src="/media/svg/logofair-white.svg" alt="">
-								</a>
-							</div>
-						
 						</div>
 					</div>
 				</main>
@@ -2684,7 +2691,7 @@
 		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 		<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 		<span id="btn-close-splash" class="item-detail__btn-close"></span>
-		<video id="splash-video" autoplay="autoplay" loop="loop" muted defaultMuted playsinline  width="100%">
+		<video id="splash-video" muted defaultMuted playsinline  width="100%">
 			<source src="/media/chest_open_animation_2.mp4" type="video/mp4">
 		</video>
 	</div>

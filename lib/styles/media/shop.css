@@ -14,8 +14,9 @@
         align-items: center !important;
     }
     .wrapper__nft-shop-modal{
-        width: 590px !important;
-        height: 503px !important;
+        width: 484px !important;
+        height: 90vh !important;
+        
     }
     .inventory-wrap-corner_topleft{
         width: 24.6px;

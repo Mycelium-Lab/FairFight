@@ -38,19 +38,18 @@
     }
     .stats-item{
         padding: 0 4px !important; 
-            background-image: url('../../media/svg/game-stats-frame.svg') !important;
-             height: 14px !important;
+            background-image: url('../../media/round-frame.svg') !important;
+            
              display: flex !important;
              align-items: center;
-             padding-top: 0px !important;
-             background-size: 100% 13px;
-            width: 33px;
-            height: 13px !important;
+             padding: 6.48px 13.03px 2.99px 12.97px !important;
+          
     }
     #top_stats{
-        font-size: 9.7px !important;
+        font-size: 9.17px !important;
         gap: 4px;
         padding:7px 20px;
+        margin: 0px;
     }
     .stats-item img{
     width: 10px !important;
@@ -79,7 +78,7 @@
     height: 100% !important;
     width: auto;
 }
-#header{
+#game-header{
     display: none !important;
 }
 .stats-item span{
@@ -95,6 +94,69 @@
 }
 .finish-stats_enemy{
     margin-top: 0px !important;
+}
+.game-menu{
+    display: flex !important;
+    position: absolute;
+    top: 83px;
+    right: 12.9px;
+    flex-direction: column;
+    gap: 15px;
+}
+#pause_modal{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.game-menu__button{
+    border: none;
+    padding: 0px;
+    background: transparent;
+}
+.modal__pause-body{
+    background-image: url('../../media/control-keys-mobile.svg');
+    width: 332px;
+    height: 183px;
+    background-repeat: no-repeat;
+}
+.close_pause_modal{
+    top: 10px !important;
+}
+#confirm_finish{
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
+    width: 188px;
+    padding: 0 9.7395px;
+    font-size: 12.09px;
+    padding-bottom: 0px;
+    height: 36px;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+#confirm_finishgame_modal{
+    align-items: center;
+    overflow: hidden;
+}
+#confirm_finish:hover{
+    padding-top: 8px;
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
+}
+.confirm_finish-game{
+    width: 106.3px !important;
+    font-size: 11.83px !important;
+    padding: 0px  9.7395px !important;
+    padding-bottom: 20px !important;
+    margin: 0 auto !important;
+    height: 38px !important;
+}
+.confirm_finish-game:hover{
+    padding-top: 5px !important;
+}
+#modal__body_confirm_finish p {
+    text-align: center;
+    color: #393939;
+    font-size: 12px;
+    padding-bottom: 20.1px;
+    margin: 0px;
 }
 }
 
