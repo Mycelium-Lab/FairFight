@@ -670,11 +670,11 @@ a {
   display: flex;
   width: 100%;
   border-radius: 8px;
-  padding: 7px 20px;
+  padding: 0px 20px;
   font-size: 18px;
   font-weight: 500;
   max-width: 1020px;
-  margin: 10px auto;
+  margin: 0px auto;
   position: relative;
   top: 0;
   justify-content: space-between;
