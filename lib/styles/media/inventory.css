@@ -232,6 +232,30 @@
 .list-wrap__item-list{
     gap: 25px;
 }
+.inventory-wrap-corner_topleft{
+    width: 24.64px;
+    height: 24.64px;
+    top: -8px;
+    left: -8px;
+}
+.inventory-wrap-corner_topright{
+    width: 24.64px;
+    height: 24.64px;
+    top: -8px;
+    right: -8px;
+}
+.inventory-wrap-corner_bottomright{
+    width: 24.64px;
+    height: 24.64px;
+    bottom: -8px;
+    right: -8px;
+}
+.inventory-wrap-corner_bottomleft{
+    width: 24.64px;
+    height: 24.64px;
+    bottom: -8px;
+    left: -8px;
+}
 }
 
 @media(max-width: 380px) {

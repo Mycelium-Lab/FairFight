@@ -330,13 +330,14 @@
 }
 .wrapper__nft-shop-modal .list-items__item{
   margin-right: 20px;
-  width: 87.71px;
-  height: 87.71px;
+  width: 87.71px !important;
+  height: 87.71px !important;
   left: 5px;
   /*display: inline-block;*/
 }
 .wrapper__item-modal-overlay .header__text-item__props-item{
   margin-top: 9px !important;
+  gap: 0px !important;
 }
 #nventory-nftbox-body  .header__text-item__props-item{
   padding: 0px 13px;
@@ -599,8 +600,29 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     transition: initial;
     background-image: url('../../media/svg/frame-btn.svg') !important;
 }
+.dressing-value {
+  font-size: 10.2px !important;
+  color: #24B500 !important;
 }
-
+.item-modal-info{
+  margin-bottom: 10px !important;
+}
+#inventory-item-body .board-edge_sm:nth-child(1), #nventory-nftbox-body .board-edge_sm:nth-child(1){
+  width: 12.78px !important; 
+}
+#inventory-item-body .board-edge_sm:nth-child(2), #nventory-nftbox-body .board-edge_sm:nth-child(2){
+  width: 12.78px !important; 
+}
+#inventory-item-body .board-edge_sm:nth-child(3), #nventory-nftbox-body .board-edge_sm:nth-child(3){
+  width: 12.78px !important; 
+}
+#inventory-item-body .board-edge_sm:nth-child(4), #nventory-nftbox-body .board-edge_sm:nth-child(4){
+  width: 12.78px !important; 
+}
+.wrapper__item-modal-overlay .item-detail__header_active{
+  padding-bottom: 0px !important;
+}
+}
 @media(max-width: 830px) {
   .main-container{
     grid-template-rows: 138px 60px 1fr;
@@ -878,7 +900,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
     width: 24.6px;
   }
   .board-edge_sm{
-    width: 14.6px;
+    width: 12.78px;
   }
 
 .board-edge:nth-child(1) {
@@ -1093,7 +1115,10 @@ justify-content: space-between;
 .item-modal-info{
   font-size: 21.67px !important;
   margin-top: 14px !important;
-  margin-bottom: 15px !important;
+  margin-bottom: 5px !important;
+}
+.wrapper__item-modal-overlay .body__item-detail{
+  padding-bottom: 20px !important;
 }
 .wrapper__nft-shop-modal .list-items__item {
   margin-right: 20px;
@@ -1136,6 +1161,9 @@ justify-content: space-between;
 }
 .wrapper__contacts{
   width: 100%;
+}
+.wrapper__nft-shop-modal {
+  height: 475.15px !important;
 }
 }
 
@@ -1188,9 +1216,6 @@ justify-content: space-between;
   }
   .games__item{
     gap: 10px;
-  }
-  .dressing-value{
-    font-size: 10.1px !important;
   }
   .player-visible-mobile{
     left: 170px;

@@ -4,6 +4,7 @@
         border-radius: 0px !important;
         padding: 0px 20px !important;
         padding-bottom: 30px !important;
+        height: 343px !important;
     }
     .wrapper__item-modal-overlay .item-detail__btn-close{
         width: 16px !important;
@@ -43,20 +44,24 @@
         padding-bottom: 6px !important;
     }
     .body__item-detail .board-edge_sm:nth-child(1) {
-        left: -8px;
-        top: -8px;
+        width: 24.64px !important;
+        left: -6px;
+        top: -6px;
     }
     .body__item-detail .board-edge_sm:nth-child(2) {
-        right: -8px;
-        top: -8px;
+        width: 24.64px !important;
+        right: -6px;
+        top: -6px;
     }
     .body__item-detail .board-edge_sm:nth-child(3) {
-        right: -8px;
-        bottom: -8px;
+        width: 24.64px !important;
+        right: -6px;
+        bottom: -6px;
     }
     .body__item-detail .board-edge_sm:nth-child(4) {
-        left: -8px;
-        bottom: -8px;
+        width: 24.64px !important;
+        left: -6px;
+        bottom: -6px;
     }
     .header__text-item{
         transform: translateY(-8px);
