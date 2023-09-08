@@ -382,8 +382,7 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
   gap: 15px 0px;
   margin-bottom: 0px;
 }
-.canvasWrapper__footer button:first-child,
-.canvasWrapper__footer button:last-child {
+.canvasWrapper__footer {
   display: none !important;
 }
 .modal .modal_content_finish {
@@ -407,12 +406,6 @@ wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-mo
 }
 .canvas-block{
   position: relative;
-}
-.canvasWrapper__footer{
-  justify-content: center !important;
-  position: absolute;
-  bottom: 0px;
-  height: auto !important;
 }
 #rounds_amount{
   font-size: 11.32px !important;

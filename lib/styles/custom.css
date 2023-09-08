@@ -11,6 +11,7 @@
 @import url('./media/shop_info.css');
 @import url('./media/fittingroom.css');
 @import url('./media/inventory.css');
+@import url('./media/game.css');
 
 :root {
   --color-orange: #ff7c06;
@@ -1258,11 +1259,12 @@ a {
 }
 
 .canvasWrapper__footer {
-  max-width: 1020px;
+  /*max-width: 1020px;*/
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 60px;
+  margin-bottom: 50px;
 }
 
 .canvasWrapper__footer button:first-child,

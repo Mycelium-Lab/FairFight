@@ -382,4 +382,18 @@ input[type=number] {
     padding-top: 2px;
     background-image: url('../media/svg/game-stats-usdt-enemy-frame-desktop.svg');
 }
+.game-menu{
+    display: none;
+}
 
+#modal__body_confirm_finish p {
+    text-align: center;
+}
+.confirm_finish-game{
+    width: 165px;
+    margin: 0 auto !important;
+    padding: 0 30px !important;
+}
+.confirm_finish-game:hover{
+    padding-top: 10px !important;
+}
