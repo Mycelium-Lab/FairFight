@@ -27,7 +27,6 @@ const __basedir = __dirname.slice(0, __dirname.length - 7)
     @param isTryOn - means it's not full change of person image
 */
 export const createMixingPicture = async (address, chainid, characterId, armorId, bootsId, weaponId, isTryOn) => {
-    console.log(weaponId, isTryOn)
     // Создание нового холста с указанными размерами
     const canvas = createCanvas(1826, 1060);
     const ctx = canvas.getContext('2d');
