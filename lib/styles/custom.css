@@ -222,8 +222,6 @@ a {
   line-height: 16.7px;
 }
 
-
-
 #header {
   min-height: 120px;
   position: relative;
@@ -690,6 +688,8 @@ a {
 .stats-item__title{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 .ronds-head__title {
   color: #393939 !important;
@@ -1259,12 +1259,15 @@ a {
 }
 
 .canvasWrapper__footer {
-  /*max-width: 1020px;*/
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  height: 60px;
-  margin-bottom: 50px;
+    /* max-width: 1020px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    position: absolute;
+    margin-bottom: 50px;
+    z-index: 1000;
+    bottom: 0px;
 }
 
 .canvasWrapper__footer button:first-child,
