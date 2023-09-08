@@ -79,9 +79,9 @@
     height: 100% !important;
     width: auto;
 }
-#header{
+/*#header{
     display: none !important;
-}
+}*/
 .stats-item span{
     padding-top: 2px;
 }
