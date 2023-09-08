@@ -29,12 +29,25 @@
         margin-bottom: 0px;
         margin-left: 4px;
     }
+    .body__showcase_inventory .slot-wrap__title{
+        font-size: 13.72px;
+        text-align: center;
+        margin-left: 6px;
+        margin-bottom: 6px;
+    }
+    .body__showcase_inventory .slots__slot-wrap:first-child p {
+        margin-left: 0px;
+    }
     .fitting_slots .slots__slot-wrap:first-child p {
         margin-left: 0px;
     }
     .slot-wrap__slot{
         width: 44px;
         height: 44px;
+    }
+    .inventory-modal__body .slot-wrap__slot{
+        width: 67.93px;
+        height: 67.93px;
     }
     .fitting_slots{
         margin-left: 0px;
@@ -148,25 +161,49 @@
         width: 15.3px;
         height: 12.75px;
     }
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap img{
+            width: 23.57px;
+            height: 19.64px;
+        }
     .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
     .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
     {
         width: 23.82px;
         height: 14.82px;
     }
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
+    {
+        width: 36.71px;
+        height: 22.83px;
+    }
     .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg,
     .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap img{
         width: 19.97px;
         height: 14.18px;
+    }
+    .body__showcase_inventory  .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg,
+    .body__showcase_inventory  .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap img{
+        width: 30.77px;
+        height: 21.85px;
     }
     .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg,
     .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
         width: 27.21px;
         height: 18.89px;
     }
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
+        width: 40.57px;
+        height: 30.65px;
+    }
     .item__prop-value{
         font-size: 10.2px;
         color: #24B500;
+    }
+    .body__showcase_inventory .item__prop-value{
+        font-size: 15.71px;
     }
     .props-wrap__item{
         gap: 4px;
@@ -178,13 +215,13 @@
         width: 34.56px;
         height: 32.88px;
     }
-    .weapon__slot-background::before{
+    .modal__body_fitting .weapon__slot-background::before{
         background-image: url('../../media/svg/inventory-modal/weapon-slot-mobile-sm.svg');
     }
-    .armor__slot-background::before{
+    .modal__body_fitting .armor__slot-background::before{
         background-image: url('../../media/svg/inventory-modal/armor-slot-mobile-xs.svg');
     }
-    .boots__slot-background::before{
+    .modal__body_fitting .boots__slot-background::before{
         background-image: url('../../media/svg/inventory-modal/boots-slot-mobile-xs.svg');
     }
     #tryon-character-background{
@@ -195,6 +232,18 @@
         width: 44px;
         height: 22px;
     }
+    .body__showcase_inventory .slot-wrap__slot-img-wider{
+        width: 64px;
+        height: 42px;
+    }
+    .body__showcase_inventory .slot-wrap__slot-img{
+        width: 74.56px;
+        height: 72.88px;
+    }
+    .inventory-modal__body .head__showcase-title{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 @media(max-width: 500px) {
     .fitting__modal-content{
@@ -202,6 +251,11 @@
         height: 405.64px !important;
         padding: 0px 20px;
     }
+    .inventory-modal__body .slot-wrap__slot{
+        width: 44px;
+        height: 44px;
+    }
+   
     .modal__body_fitting{
         margin-top: 0px;
     }
@@ -279,13 +333,13 @@
         width: 52px;
     }
     .weapon__slot-background::before{
-        background-image: url('../../media/svg/inventory-modal/weapon-slot-mobile.svg');
+        background-image: url('../../media/svg/inventory-modal/weapon-slot-mobile-sm.svg');
     }
     .armor__slot-background::before{
-        background-image: url('../../media/svg/inventory-modal/armor-slot-mobile.svg');
+        background-image: url('../../media/svg/inventory-modal/armor-slot-mobile-xs.svg');
     }
     .boots__slot-background::before{
-        background-image: url('../../media/svg/inventory-modal/boots-slot-mobile.svg');
+        background-image: url('../../media/svg/inventory-modal/boots-slot-mobile-xs.svg');
     }
     .character-wrap__img-wrap{
         width: 249.94px;
@@ -307,6 +361,7 @@
         width: 18.14px;
         height: 15.12px;
     }
+
     .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
     .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
     {
@@ -342,5 +397,43 @@
         width: 44.56px;
         height: 42.88px;
     }    
+    .body__showcase_inventory .slot-wrap__title{
+        font-size: 10.56px;
+        margin-left: 0px;
+        margin-right: 6px;
+        margin-bottom: 0px;
+    }
+    .body__showcase_inventory .item__prop-value{
+        font-size: 12.1px;
+    }
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:first-child .item__prop-img-wrap img{
+            width: 18.14px;
+            height: 15.12px;
+        }
+        .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:nth-child(2) .item__prop-img-wrap img
+    {
+        width: 28.26px;
+        height: 17.8px;
+    }
+    .body__showcase_inventory  .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap svg,
+    .body__showcase_inventory  .character-wrap__props-wrap .props-wrap__item:nth-child(3) .item__prop-img-wrap img{
+        width: 23.69px;
+        height: 16.82px;
+    }
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap svg,
+    .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
+        width: 31.23px;
+        height: 23.6px;
+    }
+    .body__showcase_inventory .slot-wrap__slot-img-wider{
+        width: 44px;
+        height: 22px;
+    }
+    .body__showcase_inventory .slot-wrap__slot-img{
+        width: 44px;
+        height: 42px;
+    }
 }
 
