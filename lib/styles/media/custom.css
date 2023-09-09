@@ -770,7 +770,8 @@ border-radius: 0px;
 .hamburger-menu { 
   position: relative;
   bottom: 0px;
-  top: 10px;
+  top: 15px;
+  height: 23px;
 }
 .header-right{
   margin-bottom: 45px;
@@ -1126,10 +1127,11 @@ gap: 5px;
 background-image: url('../../media/svg/game-rows-mobile-320.svg');
 }
 .connect-button{
-height: 43px;
-font-size: 10px;
+height: 50px;
 margin-bottom: 0px;
 margin-top: 5px;
+margin-right: 8px;
+padding-bottom: 10px;
 }
 .network_name-wrapper {
 margin-left: 20px;
