@@ -50,6 +50,13 @@
   grid-template-columns: 135px 1fr 170px;
   grid-template-rows: 160px 60px 1fr; 
 }
+
+#new-approve-modal .wrapper__message-modal{
+  height: 328px;
+}
+.message-modal__loader{
+  margin-top: 18px;
+}
 .wrapper_banners{
   flex-direction: column;
   grid-area: 1/3/4/4;
@@ -627,6 +634,11 @@ width: 12.78px !important;
 .wrapper__item-modal-overlay .item-detail__header_active{
 padding-bottom: 0px !important;
 }
+.join-button:hover, .claim-button:hover {
+  padding-top: 0px !important;
+  background-image: url('../../media/svg/frame-btn.svg') !important;
+  background-position: initial !important;
+  }
 }
 @media(max-width: 830px) {
 .main-container{

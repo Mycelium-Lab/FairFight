@@ -448,6 +448,12 @@ summary::-webkit-details-marker {
     transition: transform 0.6s;
 }
  
+/* Disable Auto Zoom in Input "Text" tag - Safari on iPhone */
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px;
+}
 
 
 @keyframes showAnimation {
