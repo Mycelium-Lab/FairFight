@@ -1,0 +1,31 @@
+<svg width="420" height="98" viewBox="0 0 420 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 2.05566H418V95.0557H2V2.05566Z" fill="#FFFDF4"/>
+<rect x="4" y="0.0556641" width="412" height="1" fill="#FF7C06"/>
+<rect x="1" y="4.05566" width="89" height="0.999997" transform="rotate(90 1 4.05566)" fill="#FF7C06"/>
+<rect x="1" y="3.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="2" y="2.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="3" y="1.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="1" y="94.0557" width="1" height="1" transform="rotate(-90 1 94.0557)" fill="#FF7C06"/>
+<rect x="2" y="95.0557" width="1" height="1" transform="rotate(-90 2 95.0557)" fill="#FF7C06"/>
+<rect x="3" y="96.0557" width="1" height="1" transform="rotate(-90 3 96.0557)" fill="#FF7C06"/>
+<rect x="4" y="97.0557" width="1.00004" height="412" transform="rotate(-90 4 97.0557)" fill="#FF7C06"/>
+<rect x="1" y="4.05566" width="1" height="89" fill="#FFC897"/>
+<rect x="2" y="3.05566" width="1" height="1" fill="#FFC897"/>
+<rect x="3" y="2.05566" width="1" height="1" fill="#FFC897"/>
+<rect width="1" height="412" transform="matrix(-1.95591e-06 1 -1 -9.76878e-10 416 95.0557)" fill="#FFC897"/>
+<rect x="4" y="94.0557" width="1" height="1" transform="rotate(90 4 94.0557)" fill="#FFC897"/>
+<rect x="3" y="93.0557" width="1" height="1" transform="rotate(90 3 93.0557)" fill="#FFC897"/>
+<rect x="4" y="1.05566" width="412" height="1" fill="#FFC897"/>
+<rect x="416" y="1.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="419" y="93.0557" width="1" height="1" transform="rotate(90 419 93.0557)" fill="#FF7C06"/>
+<rect x="416" y="2.05566" width="1" height="1" fill="#FFC897"/>
+<rect x="418" y="93.0557" width="1" height="1" transform="rotate(90 418 93.0557)" fill="#FFC897"/>
+<rect x="417" y="3.05566" width="1" height="1" fill="#FFC897"/>
+<rect x="417" y="94.0557" width="1" height="1" transform="rotate(90 417 94.0557)" fill="#FFC897"/>
+<rect x="418" y="4.05566" width="1" height="89" fill="#FFC897"/>
+<rect x="417" y="2.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="418" y="94.0557" width="1" height="1" transform="rotate(90 418 94.0557)" fill="#FF7C06"/>
+<rect x="418" y="3.05566" width="1" height="1" fill="#FF7C06"/>
+<rect x="417" y="95.0557" width="1" height="1" transform="rotate(90 417 95.0557)" fill="#FF7C06"/>
+<rect x="419" y="4.05566" width="1" height="89" fill="#FF7C06"/>
+</svg>

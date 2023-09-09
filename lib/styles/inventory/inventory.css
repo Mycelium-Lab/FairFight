@@ -1,0 +1,336 @@
+.inventory__modal-content{
+    width: 918px;
+    padding-bottom: 40px;
+}
+
+.modal__header-title_inventory{
+  width: 100%;
+  height: 35px;
+  background-image: url('../../media/svg/inventory-modal/inventory-modal-header.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.inventory-modal__left-title {
+    left: 0;
+    top: -130px;
+    width: 90px;
+    height: 855px;
+    background-image: url('../../media/svg/inventory-left-title.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    opacity: 0.1;
+}
+
+.inventory-modal__right-title{
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 855px;
+    top: -130px;
+    background-image: url('../../media/svg/nft-shop-characters-title.svg');
+}
+
+.body__inventory {
+    position: relative;
+    width: 336px;
+    right: 15px
+}
+
+.body__inventory::after {
+    top: 80px;
+    right: -24px;
+    width: 2px;
+    height: calc(100% - 80px);
+    content: '';
+    background-color: #C6C6C6;
+    display: block;
+    position: absolute;
+}
+
+.inventory__header-title{
+    border-bottom: 5px solid #FF7C06;
+    padding-bottom: 15.57px;
+    font-family: 'Teletactile';
+    font-size: 21.67px;
+    line-height: 32px;
+    color: #FF7C06;
+    text-align: center;
+}
+
+.inventory-modal__body {
+    margin-top: 32.43px;
+    height: 100%;
+    display: grid;
+    gap: 23.01px;
+    grid-template-columns: 339px 1fr;
+    padding: 0px 48.09px 0px 68px;
+  }
+
+.inventory__list-wrap {
+    margin-top: 22px;
+    border: 2px solid #393939;
+    height: 316px;
+    position: relative;
+    padding: 10px 10px 10px 0px;
+}
+.inventory-corner_topleft{
+    width: 15px;
+    top: -6px;
+    left: -6px;
+}
+.inventory-corner_topright{
+    width: 15px;
+    top: -6px;
+    right: -6px;
+}
+.inventory-corner_bottomright{
+    width: 15px;
+    bottom: -6px;
+    right: -6px;
+}
+.inventory-corner_bottomleft{
+    width: 15px;
+    bottom: -6px;
+    left: -6px;
+}
+.inventory-character{
+    gap: 21.67px
+}
+ 
+.inventory-wrap-corner_topleft {
+  width: 52px;
+  top: -23px;
+  left: -23px;
+}
+.inventory-wrap-corner_topright {
+  width: 52px;
+  top: -23px;
+  right: -23px;
+}
+.inventory-wrap-corner_bottomright {
+  width: 52px;
+  bottom: -23px;
+  right: -23px;
+}
+.inventory-wrap-corner_bottomleft {
+  width: 52px;
+  bottom: -23px;
+  left: -23px;
+}
+
+.inventory_slots{
+    width: 68px;
+    gap: 15px;
+    height: 100%;
+    margin-left: 3px;
+    transform: translateY(-10px);
+}
+.list-wrap__item-list {
+  padding: 5px 5px 5px 10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
+    overflow: auto;
+    overflow-x: hidden;
+    gap: 10px;
+  }
+
+  .item-list__slot {
+    border: 2px solid #757575;
+    padding: 3px;
+    width: 67.1px;
+    height: 67.1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  .item-list__slot:hover::before {
+    background-color: #B6BCC4;
+  }
+
+  .item-list__slot_silver:hover::before {
+    background-color: #D8D8D8;
+    
+  }
+
+  .item-list__slot_green:hover::before {
+    background-color: #91EF7A;
+  }
+
+  .item-list__slot_blue:hover::before {
+    background-color: #7BDFFF;
+  }
+
+  .item-list__slot_purple:hover::before {
+    background-color: #CCA0FF;
+  }
+
+  .item-list__slot_orange:hover::before {
+    background-color: #FF7C06;
+  }
+
+  .item-list__slot::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    filter: blur(3px);
+    display: block;
+    position: absolute;
+    z-index: -1;
+    background-image: url('../../../media/svg/slot-blick.svg');
+  }
+
+
+   .item-list__slot_silver::before {
+    border: 2px solid #D8D8D8;
+  }
+  
+  .item-list__slot_orange::before {
+    border: 2px solid #FF7C06;
+  }
+
+
+    .item-list__slot_character {
+    border: 2px solid #000000;
+  }
+  .item-list__slot_blue::before {
+    border: 2px solid #7BDFFF;
+  }
+  .item-list__slot_purple::before {
+    border: 3px solid #CCA0FF;
+  }
+  .item-list__slot_green::before {
+    border: 2px solid #91EF7A;
+  }
+
+
+  /* 
+  TODO: Избавиться от данной записи. Сделать чтобы 
+  специфичность была (0, 1, 0)
+  */
+  .list-wrap__item-list .board-edge_sm:nth-child(1)  {
+    left: -4px;
+    top: -5px;
+  }
+  .list-wrap__item-list .board-edge_sm:nth-child(2)  {
+    right: -4px;
+    top: -5px;
+  }
+.list-wrap__item-list .board-edge_sm:nth-child(3)  {
+    right: -4px;
+    bottom: -5px;
+  }
+.list-wrap__item-list .board-edge_sm:nth-child(4)  {
+    bottom: -5px;
+    left: -4px;
+    right: 0px;
+  }
+
+  .inventory-slot__modal-corner_topleft{
+    top: 135px;
+    left: -3px;
+    width: 8.53px;
+  }
+  .inventory-slot__modal-corner_topright{
+    top: 135px;
+    right: -3px;
+    width: 8.53px;
+  }
+  .inventory-slot__modal-corner_bottomright{
+    top: 200px;
+    right: -3px;
+    width: 8.53px;
+  }
+  .inventory-slot__modal-corner_bottomleft{
+    top: 200px;
+    left: -3px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_topleft_weapon{
+    top: 24px;
+    left: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_topright_weapon{
+    top: 24px;
+    right: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_bottomright_weapon{
+    top: 90px;
+    right: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_bottomleft_weapon{
+    top: 90px;
+    left: -4px;
+    width: 8.53px;
+  }
+
+
+  .inventory-slot__modal-corner_topleft_boots{
+    top: 245px;
+    left: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_topright_boots{
+    top: 245px;
+    right: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_bottomright_boots{
+    top: 311px;
+    right: -4px;
+    width: 8.53px;
+  }
+
+  .inventory-slot__modal-corner_bottomleft_boots{
+    top: 311px;
+    left: -4px;
+    width: 8.53px;
+  }
+
+
+  .inventory-items, .character-slot__item img{
+    width: 57px;
+    height: 52px;
+  }
+
+  .inventory-items-wider {
+    width: 64px;
+    height: 32px;
+  }
+
+  .body__item-detail .board-edge_sm:nth-child(1){
+    left: -5px;
+    top: -5px;
+  }
+  .body__item-detail .board-edge_sm:nth-child(2){
+    right: -5px;
+    top: -5px;
+  }
+  .body__item-detail .board-edge_sm:nth-child(3){
+    right: -5px;
+    bottom: -5px;
+  }
+  .body__item-detail .board-edge_sm:nth-child(4){
+    left: -5px;
+    bottom: -5px;
+  }

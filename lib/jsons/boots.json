@@ -9,7 +9,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Regular"
+                "value": "Basic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -33,7 +33,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Superior"
+                "value": "Special"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -105,7 +105,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Legendary"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -129,7 +129,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Legendary"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -153,7 +153,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Legendary"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -177,7 +177,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Epic"
+                "value": "Legendary"
             },
             {
                 "trait_type": "Speed Bonus",

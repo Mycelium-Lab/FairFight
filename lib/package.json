@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack ./index.js",
-    "watch": "webpack --watch ./index.js"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@oasisprotocol/sapphire-paratime": "^1.0.15",
+    "@oasisprotocol/sapphire-paratime": "1.1.1",
+    "@walletconnect/ethereum-provider": "2.9.1",
+    "@walletconnect/modal": "^2.6.0",
     "ethcall": "^6.0.0"
   },
   "devDependencies": {

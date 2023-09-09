@@ -14,7 +14,7 @@ await pgClient.connect()
 //TODO заменить setTimeOut на приличное что-то
 export async function setCharacter(req, response) {
     try {
-        const address = req.body.address
+        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
         const characterid = req.body.characterid
         const { characters, contract } = blockchainConfig(chainid)
@@ -49,7 +49,7 @@ export async function setCharacter(req, response) {
 
 export async function setArmor(req, response) {
     try {
-        const address = req.body.address
+        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
         const armor = req.body.armor
         const { armors, contract } = blockchainConfig(chainid)
@@ -83,7 +83,7 @@ export async function setArmor(req, response) {
 }
 export async function setWeapon(req, response) {
     try {
-        const address = req.body.address
+        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
         const weapon = req.body.weapon
         const { weapons, contract } = blockchainConfig(chainid)
@@ -117,7 +117,7 @@ export async function setWeapon(req, response) {
 }
 export async function setBoots(req, response) {
     try {
-        const address = req.body.address
+        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
         const boot = req.body.boots
         const { boots, contract } = blockchainConfig(chainid)

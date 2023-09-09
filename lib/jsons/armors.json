@@ -9,7 +9,7 @@
 			},
 			{
 				"trait_type": "Class",
-				"value": "Regular"
+				"value": "Basic"
 			},
 			{
 				"trait_type": "Health Bonus",
@@ -29,7 +29,7 @@
 			},
 			{
 				"trait_type": "Class",
-				"value": "Superior"
+				"value": "Special"
 			},
 			{
 				"trait_type": "Health Bonus",
@@ -49,7 +49,7 @@
 			},
 			{
 				"trait_type": "Class",
-				"value": "Superior"
+				"value": "Special"
 			},
 			{
 				"trait_type": "Health Bonus",
@@ -129,7 +129,7 @@
 			},
 			{
 				"trait_type": "Class",
-				"value": "Legendary"
+				"value": "Epic"
 			},
 			{
 				"trait_type": "Health Bonus",
@@ -149,7 +149,7 @@
 			},
 			{
 				"trait_type": "Class",
-				"value": "Epic"
+				"value": "Legendary"
 			},
 			{
 				"trait_type": "Health Bonus",

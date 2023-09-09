@@ -9,7 +9,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -29,7 +29,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -49,7 +49,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -69,7 +69,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -209,7 +209,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -229,7 +229,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -241,7 +241,7 @@
   },
   {
     "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/12.png",
-    "name": "\"Golden Legend\" Revolver",
+    "name": "\"Rareen Legend\" Revolver",
     "attributes": [
       {
         "trait_type": "Type",
@@ -249,7 +249,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -261,7 +261,7 @@
   },
   {
     "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/13.png",
-    "name": "Golden Eagle Pistol",
+    "name": "Rareen Eagle Pistol",
     "attributes": [
       {
         "trait_type": "Type",
@@ -269,7 +269,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -349,7 +349,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -389,7 +389,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -409,7 +409,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -449,7 +449,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -469,7 +469,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -509,7 +509,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -529,7 +529,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -569,7 +569,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -589,7 +589,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -609,7 +609,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -629,7 +629,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -649,7 +649,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -669,7 +669,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -689,7 +689,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -749,7 +749,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -769,7 +769,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -789,7 +789,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -809,7 +809,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -829,7 +829,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -849,7 +849,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -869,7 +869,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -889,7 +889,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -909,7 +909,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -929,7 +929,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -949,7 +949,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -969,7 +969,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -989,7 +989,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1029,7 +1029,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1049,7 +1049,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1069,7 +1069,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1129,7 +1129,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1149,7 +1149,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1169,7 +1169,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1189,7 +1189,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1209,7 +1209,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1249,7 +1249,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1269,7 +1269,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1289,7 +1289,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1309,7 +1309,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1329,7 +1329,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1349,7 +1349,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1369,7 +1369,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1429,7 +1429,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1449,7 +1449,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1469,7 +1469,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1489,7 +1489,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1529,7 +1529,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1549,7 +1549,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1569,7 +1569,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1589,7 +1589,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1609,7 +1609,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1649,7 +1649,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1669,7 +1669,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1689,7 +1689,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1709,7 +1709,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1729,7 +1729,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1749,7 +1749,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1769,7 +1769,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1789,7 +1789,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1809,7 +1809,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1829,7 +1829,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1849,7 +1849,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1869,7 +1869,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1889,7 +1889,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1909,7 +1909,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1929,7 +1929,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -1949,7 +1949,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2009,7 +2009,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2029,7 +2029,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2049,7 +2049,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2069,7 +2069,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2109,7 +2109,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2129,7 +2129,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2149,7 +2149,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2169,7 +2169,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2209,7 +2209,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2229,7 +2229,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2249,7 +2249,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2269,7 +2269,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2289,7 +2289,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2309,7 +2309,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2329,7 +2329,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2349,7 +2349,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2369,7 +2369,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2389,7 +2389,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Regular"
+        "value": "Basic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2409,7 +2409,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2429,7 +2429,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2449,7 +2449,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2489,7 +2489,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2509,7 +2509,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2529,7 +2529,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2549,7 +2549,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2569,7 +2569,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Superior"
+        "value": "Special"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2589,7 +2589,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Legendary"
+        "value": "Epic"
       },
       {
         "trait_type": "Bullets Bonus",
@@ -2641,7 +2641,7 @@
   },
   {
     "image": "https://ipfs.io/ipfs/QmVrTDoxqodoxq1q1w7vKCr298Pd8ezDxWqjXwA7cDsqTE/132.png",
-    "name": "Automaton \"Aztec Gold\"",
+    "name": "Automaton \"Aztec Rare\"",
     "attributes": [
       {
         "trait_type": "Type",
@@ -2649,7 +2649,7 @@
       },
       {
         "trait_type": "Class",
-        "value": "Epic"
+        "value": "Legendary"
       },
       {
         "trait_type": "Bullets Bonus",

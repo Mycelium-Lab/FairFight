@@ -1,0 +1,31 @@
+<svg width="300" height="260" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M297 3.00004V2.00001L2 2L2 3.00004H1V256H1.99999L1.99999 258H297V256H298V3.00004H297Z" fill="#FFFDF4"/>
+<rect x="4" width="292" height="1" fill="#FF7C06"/>
+<rect x="1" y="4" width="252" height="0.999986" transform="rotate(90 1 4)" fill="#FF7C06"/>
+<rect x="1" y="3" width="1" height="1" fill="#FF7C06"/>
+<rect x="2" y="2" width="1" height="1" fill="#FF7C06"/>
+<rect x="3" y="1" width="1" height="1" fill="#FF7C06"/>
+<rect x="1" y="257" width="1" height="1" transform="rotate(-90 1 257)" fill="#FF7C06"/>
+<rect x="2" y="258" width="1" height="1" transform="rotate(-90 2 258)" fill="#FF7C06"/>
+<rect x="3" y="259" width="1" height="1" transform="rotate(-90 3 259)" fill="#FF7C06"/>
+<rect x="4" y="260" width="1.00004" height="292" transform="rotate(-90 4 260)" fill="#FF7C06"/>
+<rect x="1" y="4" width="1" height="252" fill="#FFC897"/>
+<rect x="2" y="3" width="1" height="1" fill="#FFC897"/>
+<rect x="3" y="2" width="1" height="1" fill="#FFC897"/>
+<rect width="1" height="292" transform="matrix(-1.40769e-06 1 -1 -1.35732e-09 296 258)" fill="#FFC897"/>
+<rect x="4" y="257" width="1" height="1" transform="rotate(90 4 257)" fill="#FFC897"/>
+<rect x="3" y="256" width="1" height="1" transform="rotate(90 3 256)" fill="#FFC897"/>
+<rect x="4" y="1" width="292" height="1" fill="#FFC897"/>
+<rect x="296" y="1" width="1" height="1" fill="#FF7C06"/>
+<rect x="299" y="256" width="1" height="1" transform="rotate(90 299 256)" fill="#FF7C06"/>
+<rect x="296" y="2" width="1" height="1" fill="#FFC897"/>
+<rect x="298" y="256" width="1" height="1" transform="rotate(90 298 256)" fill="#FFC897"/>
+<rect x="297" y="3" width="1" height="1" fill="#FFC897"/>
+<rect x="297" y="257" width="1" height="1" transform="rotate(90 297 257)" fill="#FFC897"/>
+<rect x="298" y="4" width="1" height="252" fill="#FFC897"/>
+<rect x="297" y="2" width="1" height="1" fill="#FF7C06"/>
+<path d="M298 257L298 258L297 258L297 257L298 257Z" fill="#FF7C06"/>
+<rect x="298" y="3" width="1" height="1" fill="#FF7C06"/>
+<rect x="297" y="258" width="1" height="1" transform="rotate(90 297 258)" fill="#FF7C06"/>
+<rect x="299" y="4" width="1" height="252" fill="#FF7C06"/>
+</svg>

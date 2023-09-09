@@ -1,3 +1,18 @@
+@import url('./modal/modal.css');
+@import url('./shop/fittingroom.css');
+@import url('./inventory/inventory.css');
+@import url('./game/game.css');
+@import url('./nav/nav.css');
+
+@import url('./media/custom.css');
+@import url('./media/modal.css');
+@import url('./media/pastgames.css');
+@import url('./media/shop.css');
+@import url('./media/shop_info.css');
+@import url('./media/fittingroom.css');
+@import url('./media/inventory.css');
+@import url('./media/game.css');
+
 :root {
   --color-orange: #ff7c06;
   --color-black: #393939;
@@ -5,6 +20,7 @@
   --color-green: #24b500;
   --color-grey: #c6c6c6;
   --color-red: #ee0000;
+  --color-sand: rgba(156, 153, 140, 1);
 }
 
 html,
@@ -45,6 +61,14 @@ a {
   width: 100%;
 }
 
+.board{
+  --bg-board: rgba(255, 249, 224, 1);
+  --border-board: 4px solid rgba(57, 57, 57, 1);
+}
+
+.menu-control{
+  display: none;
+}
 .wrapper__monetki {
   position: absolute;
   left: 50%;
@@ -141,17 +165,19 @@ a {
 .header-right {
   display: flex;
   grid-gap: 20px;
+  margin-bottom: 15px;
 }
 
 .header-right .createGame {
   margin-right: 20px;
 }
 
-@media (max-width: 1023px) {
-  #header {
-    height: 70px;
-  }
+#createGame
+{
+  width: 178.8px;
 }
+
+
 
 /* .first-modal {
   display: flex;
@@ -164,7 +190,7 @@ a {
   min-width: 160px;
 }
 
-#btn_modal_window {
+#btn_modal_window, #btn_modal_window_mobile {
   /*background: none;*/
   border-radius: 8px;
   color: #fff;
@@ -173,6 +199,7 @@ a {
   border: none;
   min-height: 60px;
   min-width: 237px;
+  transform: none;
 }
 
 #about_modal .modal_content {
@@ -188,27 +215,21 @@ a {
 }
 
 .about__content p {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   font-size: 14px;
   font-weight: 400;
-}
-
-.startBtn#connect {
-  /*background: var(--color-btn);*/
-  color: #fff;
-  /*box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);*/
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: 500;
-  position: relative;
+  color: rgba(0, 0, 0, 1);
+  line-height: 16.7px;
 }
 
 #header {
   min-height: 120px;
+  position: relative;
 }
 
 .logo {
   width: 200px;
+  margin-bottom: 20px;
 }
 
 .logo img {
@@ -217,37 +238,187 @@ a {
 }
 
 .startBtn#disconnect {
-  min-width: 220px;
+  /* min-width: 220px;*/
+   background-color: #fff;
+   color: #000;
+   height: 50px;
+   /*background-image: url("/media/svg/dot.svg");*/
+    background: url("../media/svg/connect-btn.svg") no-repeat center 0;
+   /*background-size: 100% 100%;*/
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   transition: all 0.1s ease;
+   padding: 0px;
+   margin: 0px;
+   width: 165px;
+ }
+
+.startBtn#disconnect:hover{
+  /*min-width: 220px; */
   background-color: #fff;
-  border: 1px solid #ff7c06;
-  border-radius: 8px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  font-weight: 300;
   color: #000;
-  height: 40px;
-  background-image: url("/media/svg/dot.svg");
-  background-size: 10px 10px;
-  background-repeat: no-repeat;
-  background-position: right 14px center;
+  /* height: 50px; */
+  /* background-image: url(/media/svg/dot.svg); */
+  background: url(../media/svg/connect-btn-press.svg) no-repeat center 0;
+  /*background-size: 100% 100%;*/
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.1s ease;
+  background-position: center 10px;
+  
+ /* background: url("../media/svg/connect-btn-press.svg");
+  background-position: center 10px;
+  background-size: 100% 100%;
+  transition: all 0.1s ease;
+  top: 10px;
+  background-position: center 10px;
+  height: 50px;
+  min-width: 220px;*/
 }
 
+.startBtn#disconnect:hover .network_name-wrapper {
+  transition: all 0.1s ease;
+  margin-top: 14px;
+}
+.startBtn#disconnect:hover #disconnect-address {
+  transition: all 0.1s ease;
+  bottom: 3px;
+}
+.startBtn#disconnect:hover #dropdown-change-network{
+  transition: all 0.1s ease;
+ top: 49px;
+}
+
+#network_icon{
+  width: 16px;
+}
+.startBtn#disconnect:hover #status{
+  transition: all 0.1s ease;
+ top: 23px;
+}
+
+/*.startBtn#disconnect::after {
+
+  content: '';
+  background: url("../media/svg/connect-bottom-btn.svg");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  position: relative;
+  z-index: 1;
+}*/
+
 .startBtn span {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 300;
-  color: #c6c6c6;
+  color: #FF7C06;
   padding-left: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.player-visible, .player-visible-mobile{
+  position: absolute;
+  bottom: 0px;
+  left: 260px;
+  opacity: 0.25;
+}
+
+.player-visible-mobile{
+  display: none;
+}
+
+.network_name-wrapper{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 4px;
+  transition: all 0.1s ease;
 }
 
 #disconnect-address {
+  font-weight: 300;
   color: #000000;
+  padding-left: 15px;
+  transition: all 0.1s ease;
+  position: absolute;
+  bottom: 14px;
+}
+
+#disconnect-address::before{
+  content: '• ';
+  margin-right: 4px;
+  text-decoration: none;
 }
 
 #disconnect {
   padding-right: 40px
+}
+
+.change-network-dropdown{
+  position: absolute;
+  right: 2px;
+  top: 40px;
+  z-index: 100;
+ background-image: url('../media/svg/dropdown.svg');
+  list-style: none;
+  width: 161px;
+  height: 82px;
+  background-repeat: no-repeat;
+  padding: 0px;
+  flex-direction: column;
+}
+
+.change-network-dropdown li{
+  font-family: 'Teletactile';
+  color: #787878;
+  text-transform: uppercase;
+  font-size: 9px;
+  line-height: 8.75px;
+}
+
+.change-network-dropdown li:hover{
+  color: #FFC897;
+}
+.change-network-dropdown li:hover path{
+  fill: #FFC897;
+}
+.change-network-item{
+  margin: 13px 18px 10px 17px;
+  border-bottom: 1px solid #FFC897;
+  margin: 13px 18px 10px 17px;
+  border-bottom: 1px solid #FFC897;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+}
+.disconnect-item{
+  margin: 0px 18px 0px 17px;
+}
+#status{
+  width: 14px;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  transition: all 0.1s ease;
+}
+.contact_link_about{
+  position: absolute;
+  right: 55px;
+  top: 85px;
+}
+
+.contact_link_about .link__name {
+  color: rgba(57, 57, 57, 1);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.contact_link_about:hover .link__name {
+  color: rgba(57, 57, 57, 1);
 }
 
 .btn-white {
@@ -259,16 +430,16 @@ a {
   align-self: center;
 }
 
-#btn_modal_window {
+#btn_modal_window, #btn_modal_window_mobile {
   position: relative;
   z-index: 100;
 }
 
-#btn_modal_window img {
+#btn_modal_window img, #btn_modal_window_mobile img {
   width: 100%;
 }
 
-#confirm_finish,
+/*#confirm_finish,
 #finishGame,
 #enemy_finishing_game_button {
   background: var(--color-btn);
@@ -287,20 +458,131 @@ a {
 
 #finishGame {
   min-width: 220px;
-}
+}*/
 
 .banner {
   display: flex;
   justify-content: center;
 }
 
-/* #opengames-list,
-#pastgame-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
+.opengames-list{
+  position: relative;
+}
+
+.board-edge:nth-child(1) {
+  position: absolute;
+  left: -13px;
+  top: -10px;
+}
+
+.board-edge:nth-child(2) {
+  position: absolute;
+  right: -13px;
+  top: -10px;
+  transform: rotate(90deg);
+}
+
+.board-edge_sm:nth-child(2) {
+  position: absolute;
+  right: -13px;
+  top: -10px;
+  transform: rotate(90deg);
+}
+
+.board-edge:nth-child(3) {
+  position: absolute;
+  right: -13px;
+  bottom: -10px;
+  transform: rotate(180deg);
+}
+
+.board-edge:nth-child(4) {
+  position: absolute;
+  left: -13px;
+  bottom: -10px;
+  transform: rotate(270deg);
+}
+
+
+
+/*.board-edge_sm{
+  width: 30px;
+  height: 20px;
+}*/
+
+.board-edge_sm:nth-child(1){
+  left: -9px;
+  top: -9px;
+}
+
+.board-edge_sm:nth-child(2){
+  right: -9px;
+  top: -9px;
+}
+
+.board-edge_sm:nth-child(3){
+  right: -9px;
+  bottom: -9px;
+}
+.board-edge_sm:nth-child(4){
+  left: -9px;
+  bottom: -9px;
+}
+
+.board-edge_xs {
+  width: 10px;
+  position: absolute;
+}
+
+.board-edge_xs:nth-child(1){
+  left: -3px;
+    top: -4px;
+}
+.board-edge_xs:nth-child(2){
+  right: -3px;
+  top: -4px
+}
+.board-edge_xs:nth-child(3){
+  right: -3px;
+    bottom: -4px;
+}
+.board-edge_xs:nth-child(4){
+  left: -4px;
+    bottom: -4px;
+}
+
+.body__left .board-edge_xs_first {
+  top: 121px;
+    left: -3px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+}
+.body__left .board-edge_xs_second {
+  top: 121px;
+    right: -3px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(90deg);
+}
+.body__left .board-edge_xs_third {
+  bottom: -2px;
+  right: -3px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(180deg);
+}
+.body__left .board-edge_xs_last {
+  bottom: -2px;
+  left: -3px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  transform: rotate(270deg);
+}
+
 
 .tabs__content {
   display: none;
@@ -320,21 +602,20 @@ a {
 #pastgames.empty ul {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   height: 100%;
 }
 
 #opengames.empty .games__empty,
 #pastgames.empty .games__empty {
-  display: flex !important;
+  display: flex;
 }
 
 .games__empty {
   margin: 80px auto;
-  font-size: 96px;
-  color: var(--color-grey);
-  font-weight: 100;
+  font-size: 50px;
+  color: var(--color-sand);
+  font-weight: 200;
   flex-direction: column;
   align-items: center;
   gap: 60px;
@@ -346,21 +627,17 @@ a {
 .games__empty span {
   font-size: 25px;
   font-weight: 400;
-  color: rgba(57, 57, 57, 0.5);
+  color: var(--color-sand);
   line-height: 30px;
   display: block;
 }
 
 .opengames__btn {
+
   position: absolute;
-  bottom: 20px;
-  right: 0;
-  background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
-  font-size: 20px;
-  font-weight: 500;
-  color: #fff;
-  border-radius: 8px;
-  margin-left: auto;
+  bottom: 30px;
+  right: 32px;
+
 }
 
 .pastgame__btn {
@@ -373,323 +650,6 @@ a {
   color: #fff;
   border-radius: 8px;
   margin-left: auto;
-}
-
-.opengames__col {
-  display: flex;
-  flex-direction: column;
-}
-
-/* modals */
-.modal {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#connect_modal {
-  color: var(--color-black);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-black);
-}
-
-#connect_modal button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  gap: 20px;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-black);
-  min-width: 200px;
-  height: 40px;
-  border: 1px solid var(--color-orange);
-  border-radius: 8px;
-  background-color: #fff;
-  margin-top: 25px;
-}
-
-#install_wallet_modal .modal_content {
-  background-image: none;
-  padding-top: 73px;
-}
-
-#install_wallet_modal button {
-  background-color: transparent;
-  border: 1px solid var(--color-orange);
-  border-radius: 8px;
-  height: 48px;
-  min-width: 290px;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-black);
-  align-self: center;
-  margin-top: 30px;
-  margin-bottom: 35px;
-  box-shadow: 0px 4px 5px 0px hsla(0, 0%, 0%, 0.1);
-}
-
-#install_wallet_modal p {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 19px;
-}
-
-#install_wallet_modal p:last-child {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-#install_wallet_modal a {
-  color: var(--color-orange);
-  display: block;
-  text-decoration: underline;
-}
-
-#connect_modal .modal_content {
-  background-image: none;
-  width: 308px;
-  min-height: 213px;
-  justify-content: flex-end;
-  padding: 42px 45px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#walletHeader {
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.modal .modal_content {
-  position: relative;
-  background-color: #fff;
-  color: var(--color-black);
-  font-size: 16px;
-  font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px;
-  max-width: 504px;
-  width: 100%;
-  padding: 30px 40px;
-  background-image: url("../media/svg/player.svg");
-  background-repeat: no-repeat;
-  background-position: right bottom;
-}
-
-.map-show {
-  cursor: pointer;
-}
-
-.modal__map {
-  opacity: 0;
-  visibility: hidden;
-  box-shadow: none;
-  padding: 10px;
-  border: 1px solid var(--color-black);
-  border-radius: 16px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  transition: all ease 0.3s;
-  z-index: 100;
-}
-
-.modal__map.active {
-  opacity: 1;
-  transition: all ease 0.3s;
-  visibility: visible;
-}
-
-/* .map-show:hover + .modal__map {
-  opacity: 1;
-  transition: all ease 0.3s;
-  visibility: visible;
-} */
-
-.modal__row {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  border-top: 1px solid #c6c6c6;
-  gap: 20px 0;
-}
-
-.modal__row__tokens {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  border-top: 1px solid #c6c6c6;
-  gap: 10px 0;
-}
-
-.modal__row .active {
-  color: var(--color-orange);
-}
-
-.modal__row div,
-.modal__row__tokens div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal .modal_content select {
-  border-color: var(--color-orange);
-  border-width: 1px;
-  border-radius: 8px;
-  border-style: solid;
-  background-color: #f2f2f2;
-  height: 30px;
-  padding: 0 10px;
-  width: 156px;
-  padding-top: 2px;
-  background-image: url("../media/svg/select.svg");
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-  padding-right: 25px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.modal .modal_content input {
-  border-color: var(--color-orange);
-  border-width: 1px;
-  border-radius: 8px;
-  border-style: solid;
-  background-color: #f2f2f2;
-  height: 30px;
-  padding: 0 10px;
-  width: 156px;
-  padding-top: 2px;
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-  padding-right: 25px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.modal .modal_content input::placeholder {
-  color: #b6bcc4;
-  font-weight: 300;
-}
-
-.close_modal_window {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-#pending_modal .modal_content,
-#confirmation_modal .modal_content,
-#wainting_modal .modal_content,
-#approve_modal .modal_content,
-#enemy_finishing_game_modal .modal_content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  font-size: 20px;
-  font-weight: 500;
-  background-image: none;
-}
-
-#confirmation_modal .load,
-#wainting_modal .load,
-#pending_modal .load {
-  /* transition: 5s ease; */
-  animation-name: rotate;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes rotate {
-  from {
-    trnasform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.modal__title {
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--color-orange);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.modal__title--mode {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: 0;
-}
-
-.modal__subtitle {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--color-black);
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#over_modal .modal_content {
-  background-image: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding-left: 70px;
-  padding-right: 70px;
-}
-
-#over_modal .modal_content .modal__block div {
-  display: flex;
-  gap: 30px;
-}
-
-#over_modal .modal_content button {
-  margin-top: 40px;
-}
-
-#over_modal .green {
-  color: var(--color-green);
-}
-
-#over_modal .red {
-  color: var(--color-red);
-}
-
-#over_modal .grey {
-  color: var(--color-grey);
-}
-
-#info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.modal__block {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.modal__wsad .modal_content {
-  max-width: 369px;
-  width: 100%;
-  padding: 40px 20px;
-  background-image: none;
 }
 
 .canvasWrapper {
@@ -708,29 +668,39 @@ a {
 
 .rounds-head {
   display: flex;
-  justify-content: space-between;
   width: 100%;
-  background-color: #fff;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 7px 20px;
-  color: var(--color-black);
+  padding: 0px 20px;
   font-size: 18px;
   font-weight: 500;
   max-width: 1020px;
-  margin: 10px 0;
+  margin: 0px auto;
+  position: relative;
+  top: 0;
+  justify-content: space-between;
+  transform: translateY(-100vh);
 }
 
+.logo-footer{
+  display: none;
+}
+
+.stats-item__title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
 .ronds-head__title {
-  color: var(--color-orange);
-  font-size: 32px;
+  color: #393939 !important;
+  font-size: 18px;
   font-weight: 500;
 }
 
 .rounds-head__subtitle {
   font-size: 20px;
   font-weight: 500;
-  color: var(--color-orange);
+  color: #fff !important;
   text-decoration: underline;
 }
 
@@ -748,8 +718,8 @@ a {
 }
 
 .rounds-head__col img {
-  margin-bottom: 4px;
-  margin-right: 5px;
+  width: 18px;
+  height: 18px;
 }
 
 .stats-box {
@@ -799,25 +769,27 @@ a {
 .canvas-block {
   margin-left: 20px;
   margin-right: 20px;
+  position: relative;
 }
 
 
 .inner-block {
   position: relative;
   z-index: 13;
-  background-color: #fff;
+  background-color: var(--bg-board);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
-  padding: 30px 80px;
+  padding: 30px 18px;
   color: var(--color-black);
   /*max-width: 864px;*/
-  max-width: 758px;
+  max-width: 846px;
   height: 513px;
-  width: 100%;
+  width: 846px;
+  /*width: 58.5vw;*/
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  border: var(--border-board);
 }
 
 .inner-block ul {
@@ -857,7 +829,8 @@ a {
 .tabs__content {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 20px;
   /* display: flex;
   flex-direction: column;
@@ -866,7 +839,7 @@ a {
 }
 
 .tabs__content::-webkit-scrollbar {
-  width: 7px;
+  width: 3px;
 }
 
 .tabs__content::-webkit-scrollbar-track {
@@ -875,8 +848,8 @@ a {
 
 .tabs__content::-webkit-scrollbar-thumb {
   background-color: #393939;
-  border-radius: 14px;
-  border: 7px solid #393939;
+  border-radius: 30px;
+  border: 40px solid rgba(255, 124, 6, 1);
 }
 
 .tabs__content li div {
@@ -892,6 +865,10 @@ a {
 
 .games__item .active {
   color: var(--color-orange);
+}
+.creator-data{
+  font-weight: 300;
+  text-decoration: underline;
 }
 
 .howtobuy_title {
@@ -915,22 +892,338 @@ a {
 
 .games__row {
   position: relative;
-  padding: 20px 0;
+  padding: 20px 38px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-bottom: 2px solid var(--color-black);
+  height: 174px;
+  width: 100%;
+  background-image: url('../media/svg/game-rows.svg');
+  background-repeat: no-repeat;
 }
 
+#pastgames-list .games__row{
+  padding: 0;
+  background-image: url('../media/svg/past-games-rows.svg');
+  background-repeat: no-repeat;
+  height: 179px;
+}
+#pastgames-list .games__row .games__item:nth-child(3){
+  padding: 20px;
+}
+#pastgames-list .games__row .games__item:nth-child(4){
+  padding: 20px;
+}
+
+
+.games__item__header{ 
+  /*justify-content: space-around;*/
+  position: relative;
+  top: 9px;
+}
+/*.games__item__header p:nth-child(3) {
+  position: relative;
+  right: 6px;
+}
+.games__item__header p:nth-child(4) {
+  position: relative;
+  right: 33px;
+}
+  
+.games__item__header p:nth-child(5) {
+  position: relative;
+  right: 53px;
+}
+.games__item__header p:nth-child(6) {
+  position: relative;
+  right: 33px;
+}*/
+/*.games__item__header p:nth-child(1){
+  position: absolute;
+  left: 16px;
+  top: 8px
+}
+.games__item__header p:nth-child(2) {
+  position: absolute;
+  left: 46px;
+  top: 8px
+}
+.games__item__header p:nth-child(3) {
+  position: absolute;
+  left: 76px;
+  top: 8px
+}
+.games__item__header p:nth-child(4) {
+  position: absolute;
+  left: 106px;
+  top: 8px;
+}
+  
+.games__item__header p:nth-child(5) {
+  position: absolute;
+  right: 53px;
+}
+.games__item__header p:nth-child(6) {
+  position: absolute;
+  right: 33px;
+}*/
 .games__item p {
   font-size: 16px;
   font-weight: 500;
   color: var(--color-black);
   margin-bottom: 0;
 }
+.games__item p {
+  font-size: 16px;
+  color: var(--color-black);
+  margin-bottom: 0;
+}
+#pastgames.games__item p {
+  font-size: 14px;
+}
+.games__item__header  p {
+  font-size: 12px;
+}
+.games__item__footer p {
+  font-size: 14px;
+}
+.games__item__header > p {
+  font-weight: 700;
+  width: 120px;
+}
 
+.games__item__header > p:first-child {
+  position: relative;
+  left: 24px;
+}
+.games__item__header > p:nth-child(2) {
+  position: relative;
+  left: 12px;
+}
+.games__item__header > p:nth-child(3) {
+  position: relative;
+  left: 8px;
+}
+.games__item__header > p:nth-child(4) {
+  position: relative;
+  left: 5px;
+}
+.games__item__header > p:last-child {
+  position: relative;
+  right: 6px;
+}
+.current_battle_rounds{
+  color: rgba(57, 57, 57, 1) !important;
+}
+
+.games__item__footer{
+  padding: 31px 23px;
+}
+.you-stats-col, .enemy-stats-col{
+  display: flex;
+  gap: 20px;
+  padding-top: 7px;
+}
+
+.opengames__col_first p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.opengames__col_last p{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stats-col-title{
+  display: block;
+  position: absolute;
+  top: 65px;
+  left: 300px;
+  height: 13px;
+  width: 182px;
+}
+.stats-col-title-vs{
+  position: relative;
+  top: 14px;
+}
+.opengames__col_first p span, .opengames__col_last p span{
+  font-weight: 500;
+}
+
+.you-stats-col-header, .enemy-stats-col-header {
+  width: 250px;
+  position: absolute;
+  top: 62px;
+  border-bottom: 1px solid rgba(255, 200, 151, 1);
+  padding-bottom: 5px;
+}
+.you-stats-col-header p, .enemy-stats-col-header p{
+  color: rgba(255, 124, 6, 1);
+}
+.opengames__col_first p:nth-child(3), .opengames__col_last p:nth-child(3) {
+  position: absolute;
+}
+.opengames__col_last p:nth-child(3){
+  right: 20px
+}
+.you-stats-col-header p:before, .you-stats-col .opengames__col_first .red::before, 
+.you-stats-col .opengames__col_first .green::before,
+.you-stats-col .opengames__col_first p:nth-child(2):before,
+.you-stats-col .opengames__col_first p:nth-child(3):before, 
+.you-stats-col .opengames__col_last p:nth-child(1):before,
+.you-stats-col .opengames__col_last p:nth-child(2):before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('../media/svg/past-game/user.svg');
+  background-size: 18px 18px;
+  margin-bottom: -3px;
+}
+.enemy-stats-col .opengames__col_last .red::before,
+.enemy-stats-col .opengames__col_last .green::before, 
+.enemy-stats-col .opengames__col_last p:nth-child(2):before,
+.enemy-stats-col .opengames__col_last p:nth-child(3):before, 
+.enemy-stats-col .opengames__col_first p:nth-child(1):before,
+.enemy-stats-col .opengames__col_first p:nth-child(2):before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('../media/svg/past-game/user.svg');
+  background-size: 18px 18px;
+  margin-bottom: -3px;
+}
+
+.enemy-stats-col .opengames__col_last .red::before{
+  background-image: url('../media/svg/past-game/lose.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_last .green::before{
+  background-image: url('../media/svg/past-game//win.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_last p:nth-child(2):before{
+  background-image: url('../media/svg/past-game/dep.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
+.enemy-stats-col .opengames__col_last p:nth-child(3):before{
+  background-image: url('../media/svg/past-game/wallet.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
+.enemy-stats-col .opengames__col_first p:nth-child(1):before {
+  background-image: url('../media/svg/past-game/kills.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+.enemy-stats-col .opengames__col_first p:nth-child(2):before {
+  background-image: url('../media/svg/past-game/deaths.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
+.enemy-stats-col-header{
+  right: 23px;
+}
+.enemy-stats-col-header p {
+  text-align: end;
+}
+.enemy-stats-col-header p:after{
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('../media/svg/past-game/user.svg');
+  background-size: 18px 18px;
+  margin-left: 5px;
+  margin-bottom: -3px;
+}
+
+.you-stats-col-header p:before {
+  margin-right: 5px;
+}
+
+.enemy-stats-col .opengames__col_first {
+  text-align: end;
+}
+
+/*.opengames__col_first p:last-child span {
+  padding-top: 10px;
+}*/
+
+.you-stats-col .opengames__col_first .red::before{
+  background-image: url('../media/svg/past-game/lose.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+
+.you-stats-col .opengames__col_first .green::before{
+  background-image: url('../media/svg/past-game/win.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_first p:nth-child(2):before{
+  background-image: url('../media/svg/past-game/dep.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
+.you-stats-col .opengames__col_first p:last-child a,
+.enemy-stats-col .opengames__col_last p:last-child a{
+   text-decoration: underline;
+   color: var(--color-orange);
+}
+.you-stats-col .opengames__col_first p:nth-child(3):before{
+  background-image: url('../media/svg/past-game/wallet.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
+.you-stats-col .opengames__col_last p:nth-child(1):before {
+  background-image: url('../media/svg/past-game/kills.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 0px;
+}
+.you-stats-col .opengames__col_last p:nth-child(2):before {
+  background-image: url('../media/svg/past-game/deaths.svg');
+  width: 18px;
+  height: 18px;
+  background-size: 18px 18px;
+  margin-bottom: 5px;
+}
 .opengames__col p {
   font-weight: 400;
+}
+
+.enemy-stats-col .opengames__col_last{
+  text-align: end;
 }
 
 .games__item span {
@@ -947,6 +1240,7 @@ a {
 }
 
 .games__item .green {
+  font-weight: 700;
   color: var(--color-green);
 }
 
@@ -955,15 +1249,25 @@ a {
 }
 
 .games__item .red {
+  font-weight: 700;
   color: var(--color-red);
 }
 
+.creator-link {
+  text-decoration: underline;
+  font-weight: 300;
+}
+
 .canvasWrapper__footer {
-  max-width: 1020px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+    /* max-width: 1020px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 60px;
+    position: absolute;
+    margin-bottom: 50px;
+    z-index: 1000;
+    bottom: 0px;
 }
 
 .canvasWrapper__footer button:first-child,
@@ -982,7 +1286,10 @@ a {
 }
 
 #rounds_amount {
+  font-size: 18px;
   text-align: center;
+  transform: translateY(-6px);
+  color: #393939
 }
 
 @media (max-width: 1550px) {
@@ -997,10 +1304,6 @@ a {
   }
 }
 
-.inner-block.inner-block--mobile {
-  display: none;
-}
-
 @media (max-width: 1024px) {
   .inner-block {
     width: 100%;
@@ -1009,60 +1312,6 @@ a {
   /* .inner-block > * {
     display: none !important;
   } */
-  #btn_modal_window,
-  .wrapper__link,
-  #header {
-    display: none;
-  }
-  #wrapper,
-  #header {
-    padding: 0 24px;
-  }
-  #wrapper {
-    background-size: 100% auto;
-  }
-  .startContainer {
-    padding: 0;
-    padding-top: 50%;
-  }
-
-  .inner-block {
-    display: none;
-  }
-
-  .inner-block.inner-block--mobile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 26px;
-    font-size: 24px;
-    font-weight: 500;
-    color: var(--color-black);
-    text-align: center;
-    gap: 50px;
-    height: 346px;
-  }
-
-  .inner-block.inner-block--mobile span {
-    font-size: 24px;
-    font-weight: 500;
-    color: var(--color-orange);
-    line-height: 29px;
-  }
-
-  .inner-block.inner-block--mobile p {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--color-black);
-    background-image: linear-gradient();
-    margin-bottom: 0;
-  }
-
-  .inner-block.inner-block--mobile a {
-    color: inherit;
-    text-decoration: underline;
-  }
 }
 
 .inventory-block {
@@ -1246,10 +1495,9 @@ a {
 /* nft shop modal */
 
 .wrapper__btns-wrap {
-  /*left: 45px;*/
-  /*top: 23%;*/
-  /*position: absolute;*/
   z-index: 13;
+  position: relative;
+  bottom: 100px;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
@@ -1335,67 +1583,71 @@ a {
   z-index: 1;
 }
 
-#nft-shop-btn {
+#nft-shop-btn, #menu-nft-shop-btn {
   background-image: url('../media/buttons/nftshop.svg');
 }
 
-#nft-shop-btn::after {
+#nft-shop-btn::after,  #menu-nft-shop-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#home-btn {
+#home-btn, #menu-home-btn{
   background-image: url('../media/buttons/home.svg');
 }
 
-#home-btn::after {
+#home-btn::after, #menu-home-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#mystery-btn {
+#mystery-btn, #menu-mystery-btn {
   background-image: url('../media/buttons/mystery.svg');
 }
 
-#mystery-btn::after {
+#mystery-btn::after, #menu-mystery-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#lottery-btn {
+#lottery-btn, #menu-lottery-btn {
   background-image: url('../media/buttons/lottery.svg');
 }
 
-#lottery-btn::after {
+#lottery-btn::after, #menu-lottery-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#tournaments-btn {
+#tournaments-btn, #menu-tournaments-btn {
   background-image: url('../media/buttons/tournaments.svg');
 }
 
-#tournaments-btn::after {
+#tournaments-btn::after, #menu-tournaments-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#balance-btn {
+#balance-btn, #menu-balance-btn{
   background-image: url('../media/buttons/balance.svg');
 }
 
-#balance-btn::after {
+#balance-btn::after, #menu-balance-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }
 
-#inventory-btn {
+#inventory-btn, #menu-inventory-btn {
   background-image: url('../media/buttons/inventory.svg');
 }
 
-#inventory-btn::after {
+#inventory-btn::after, #menu-inventory-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
+}
+
+.new-game-devider {
+  width: 100%;
 }
 
 .newgame__btn {
@@ -1450,27 +1702,20 @@ a {
   margin: 0 auto;
   left: 0;
   right: 0;
+  border: var(--border-board);
   border-radius: 16px;
-  padding: 30px 90px 60px;
-  width: 1360px;
+  padding: 30px 60px 60px;
+  width: 918px;
   height: 890px;
-  background-color: #fff;
-  overflow: hidden;
+  background-color: var(--bg-board);
   position: relative;
 }
 
 .nft-shop-modal__btn-close {
-  top: 40px;
-  right: 43px;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background-image: url('../media/svg/close.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
   position: absolute;
-  z-index: 1;
+  right: 0;
+  margin-right: 25px;
+  top: 40px;
 }
 
 .nft-shop-modal__left-title {
@@ -1482,14 +1727,13 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
-  opacity: 0.1;
 }
 
 .nft-shop-modal__right-title {
   right: 0;
   top: 0;
   width: 90px;
-  height: 855px;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   position: absolute;
@@ -1525,7 +1769,7 @@ a {
 }
 
 .nft-shop-modal__nav-wrap {
-  margin-top: 60px;
+  margin-top: 28.96px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1533,20 +1777,24 @@ a {
 
 .nft-shop-modal__nav-wrap .nav-wrap__nav {
   border-bottom: 3px solid #FF7C06;
-  width: 720px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 25px;
 }
 
 .nft-shop-modal__nav-wrap .nav-wrap__nav input {
   display: none;
 }
 
+.newgame__btn_mobile{
+  display: none;
+}
+
 .nft-shop-modal__nav-wrap .nav-wrap__nav label {
   border-bottom: 5px solid transparent;
   font-family: 'Teletactile';
-  font-size: 24px;
+  font-size: 18.72px;
   color: #393939;
   background-color: transparent;
   display: block;
@@ -1754,12 +2002,13 @@ a {
   position: fixed;
   display: none; 
   flex-wrap: wrap;
+  align-items: center;
 }
-/* 
-.wrapper__message-modal-overlay_active {
+ 
+/*.wrapper__message-modal-overlay_active {
  display: flex;
  flex-wrap: wrap;
-} */
+}*/
 
 .wrapper__message-modal {
   /* flex-shrink: 0; */
@@ -1767,15 +2016,15 @@ a {
   left: 0;
   right: 0;
   border-radius: 20px;
-  border: 1px solid #FF7C06;
-  padding: 52px 27px 29px 27px;
-  width: 361px;
+  border: var(--border-board);
+  padding: 35px 27px 20px 27px;
   z-index: 3;
-  background-color: #fff;
+  background-color: var(--bg-board);
   position: relative;
 }
 
 .wrapper__message-modal_waiting {
+  width: 410px;
   height: 428px;
 }
 
@@ -1784,32 +2033,48 @@ a {
 }
 
 .wrapper__message-modal_confirm {
-  height: 381px;
+  height: 400px;
+  width: 413px;
 }
 
 .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth {
-  height: 371px;
+  height: 340px;
+  width: 340px;
 }
 
 .wrapper__message-modal_purchase-completed {
-  height: 433px;
+  /*height: 463px;*/
+  padding-top: 42px;
+  width: 380px;
+}
+
+.wrapper__message-modal_change-network{
+  width: 350px;
 }
 
 /* .wrapper__message-modal_active {
   display: block;
 } */
 
-.wrapper__message-modal .message-modal__btn-close {
+/*.message-modal__btn-close {
   top: 17px;
   right: 19px;
   border: none;
   width: 22px;
   height: 22px;
-  background-image: url('../media/svg/close.svg');
+  background-image: url('../media/svg/close-pixel.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}*/
+
+.wallet-button-wrapper{
+  display: flex;
+  justify-content: center;
+  gap: 30px
 }
 
 .wrapper__message-modal .message-modal__header-title {
@@ -1818,7 +2083,69 @@ a {
   line-height: 23px;
   text-align: center;
   color: #393939;
+  margin-bottom: 0px;
 }
+
+.wrapper__message-modal_change-network .message-modal__header-title {
+  font-family: 'Teletactile';
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.network-deactive{
+  background-image: url('../media/svg/connect-btn.svg');
+  background-repeat: no-repeat;
+  display: block;
+  height: 46px;
+  transition: all 0.1s ease;
+  width: 165px
+}
+
+.network-deactive:hover{
+      background: url(../media/svg/connect-btn-press.svg) no-repeat center 0;
+      /*display: flex;
+      flex-direction: column;*/
+      position: relative;
+      transition: all 0.1s ease;
+      background-position: center 5px
+}
+.network-deactive:hover:hover li{
+  padding-top: 6px;
+  transition: all 0.1s ease;
+  color: #393939;
+}
+.network-deactive:hover:hover path {
+  fill: #393939;
+}
+.change-network_list{
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.change-network_list a{
+  color: #FF7C06;
+  padding-top: 8px;  
+  padding-left: 10px;
+
+}
+
+.change-network_list a{
+  color: #FF7C06;
+}
+
+.network-deactive li{
+  padding-left: 5px;
+  transition: all 0.1s ease;
+  display: flex;
+  gap: 13px;
+}
+
 
 .message-modal__loader {
   margin-top: 58px;
@@ -1870,6 +2197,7 @@ a {
   line-height: 22.8px;
   text-align: center;
   color: #393939;
+  margin-bottom: 10px;
 }
 
 .wrapper__message-modal .text-wrap__text {
@@ -1877,7 +2205,7 @@ a {
   font-size: 14px;
   line-height: 16px;
   text-align: center;
-  color: #C6C6C6;
+  color: var(--color-sand);
 }
 
 .wrapper__message-modal .message-modal__text-wrap_error .text-wrap__text {
@@ -1904,21 +2232,33 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .message-modal__btns-wrap_completed {
   margin-top: 20px;
 }
 
-.message-modal__btns-wrap button {
+.message-modal__btn-close {
+  top: 17px;
+  right: 19px;
+  border: none;
+  width: 22px;
+  height: 22px;
+  background-image: url('../media/svg/close-pixel.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/*.message-modal__btns-wrap button {
   margin-top: 15px;
-  border-radius: 8px;
-  border: 1px solid #FF7C06;
   min-width: 160px;
-  height: 40px;
   font-size: 14px;
   line-height: 100%;
-  color: #5B5B5B;
   background-color: transparent;
 }
 
@@ -1929,11 +2269,11 @@ a {
 /* nft-shop-modal-2 */
 
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap {
-  margin: 20px auto 0;
-  width: 990px;
+  margin: 28.96px auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  width: 796px;
+  gap: 178px;
 }
 
 .wrapper__nft-shop-modal .params-wrap__dropdown-list {
@@ -1976,8 +2316,8 @@ a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  padding-top: 2px;
 }
-
 .wrapper__nft-shop-modal .params-wrap__dropdown-list button::after {
   margin-left: 10px;
   width: 17px;
@@ -1997,6 +2337,10 @@ a {
   position: absolute;
   display: none;
   z-index: 9999;
+}
+.wrapper__nft-shop-modal .params-wrap__dropdown-list button, 
+.wrapper__nft-shop-modal .dropdown-list__list{
+    border-color: #FF7C06;
 }
 
 .wrapper__nft-shop-modal .dropdown-list__list_active {
@@ -2059,11 +2403,9 @@ a {
 }
 
 .nft-shop-modal__list-items-wrap {
-  margin: 10px 94px 0;
+  margin-top: 10px;
   padding-right: 20px;
-  width: 1017px;
-  height: calc(100% - 170px);
-  overflow: auto;
+  height: calc(100% - 200px);
 }
 
 .nft-shop-modal__list-items-wrap::-webkit-scrollbar {
@@ -2081,41 +2423,79 @@ a {
 }
 
 .wrapper__nft-shop-modal .list-items__item {
-  margin-top: 20px;
-  border-radius: 8px;
-  border: 2px solid #C6C6C6;
-  padding: 30px;
+  margin-bottom: 20px;
   display: flex;
-  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+  width: 776px;
+  left: 30px;
 }
 
-.wrapper__nft-shop-modal .list-items__item:first-child {
-  margin-top: 0;
+
+.wrapper__nft-shop-modal .list-items__item:last-child {
+  margin-bottom: 34px;
+}
+.list-items-wrap__list-items{
+  overflow: auto;
+  height: 100%;
+}
+.wrapper__nft-shop-modal .list-items__item_basic, .wrapper__nft-shop-modal .list-items__item_character{
+  background-image: url('../media/svg/shop/basic-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
+}
+.wrapper__nft-shop-modal .list-items__item_special{
+  background-image: url('../media/svg/shop/special-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
+}
+.wrapper__nft-shop-modal .list-items__item_rare{
+  background-image: url('../media/svg/shop/rare-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
+}
+.wrapper__nft-shop-modal .list-items__item_epic{
+  background-image: url('../media/svg/shop/epic-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
+}
+.wrapper__nft-shop-modal .list-items__item_legendary{
+  background-image: url('../media/svg/shop/legendary-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
 }
 
+#nft-shop-boxes-list .item__left {
+  width: auto;
+}
 .wrapper__nft-shop-modal .item__left {
   /*padding-right: 20px;*/
   display: flex;
   width: 100%;
+  align-items: center;
+  margin: 18px 0px 18px 20px;
 }
 
 .wrapper__nft-shop-modal .left__img-wrap {
   padding: 9px;
-  max-width: 140px;
+  max-width: 118px;
   width: 100%;
-  height: 140px;
+  height: 118px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  border: 3px solid #757575;
+  background: #ffff;
 }
+
 
 .wrapper__nft-shop-modal .left__img-wrap::before {
   border-radius: 9px;
   width: 100%;
   height: 100%;
   content: '';
-  filter: blur(5px);
+  filter: blur(17px);
   display: block;
   position: absolute;
 }
@@ -2131,9 +2511,82 @@ a {
   position: absolute;
 }
 
+#nft-shop-boxes-list .list-items__item_bronze .left__img-wrap::before{
+  border-radius: 9px;
+  border: 5px solid #967444;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+#nft-shop-boxes-list .list-items__item_silver .left__img-wrap::before{
+  border-radius: 9px;
+  border: 5px solid #C6C6C6;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+#nft-shop-boxes-list .list-items__item_gold .left__img-wrap::before{
+  border-radius: 9px;
+  border: 5px solid #DA9100;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+#nft-shop-boxes-list .list-items__item_platinum .left__img-wrap::before{
+  border-radius: 9px;
+  border: 5px solid #E5E1E6;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+#nft-shop-boxes-list .list-items__item_legendary .left__img-wrap::before{
+  border-radius: 9px;
+  border: 5px solid #FF7C06;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+.wrapper__nft-shop-modal .list-items__item_basic .left__img-wrap::before,
+.wrapper__nft-shop-modal .list-items__item_character .left__img-wrap::before{
+  border-radius: 9px;
+  border: 9px solid #D8D8D8;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+
+.wrapper__nft-shop-modal .list-items__item_special .left__img-wrap::before {
+  border-radius: 9px;
+  border: 9px solid #91EF7A;
+  width: 100%;
+  height: 100%;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+}
+
 .wrapper__nft-shop-modal .list-items__item_epic .left__img-wrap::before {
   border-radius: 9px;
-  border: 5px solid #7000F2;
+  border: 9px solid #CCA0FF;
   width: 100%;
   height: 100%;
   content: '';
@@ -2144,7 +2597,7 @@ a {
 
 .wrapper__nft-shop-modal .list-items__item_rare .left__img-wrap::before {
   border-radius: 9px;
-  border: 5px solid #B6BCC4;
+  border: 9px solid #7BDFFF;
   width: 100%;
   height: 100%;
   content: '';
@@ -2153,146 +2606,81 @@ a {
   position: absolute;
 }
 
-.wrapper__nft-shop-modal .list-items__item_regular .left__img-wrap::before {
-  border-radius: 9px;
-  border: 5px solid #24B500;
-  width: 100%;
-  height: 100%;
-  content: '';
-  filter: blur(8px);
-  display: block;
-  position: absolute;
+.wrapper__nft-shop-modal .list-items__item_special .text__title, .wrapper__nft-shop-modal .list-items__item_special .text__type {
+  color: #24B500 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_rare .text__title, .wrapper__nft-shop-modal .list-items__item_rare .text__type {
+  color: #03B8F1 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_epic .text__title, .wrapper__nft-shop-modal .list-items__item_epic .text__type {
+  color: #7000F2 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_legendary .text__title, .wrapper__nft-shop-modal .list-items__item_legendary .text__type {
+  color: #FF7C06 !important;
 }
 
-.wrapper__nft-shop-modal .list-items__item_superior .left__img-wrap::before {
-  border-radius: 9px;
-  border: 5px solid #03B8F1;
-  width: 100%;
-  height: 100%;
-  content: '';
-  filter: blur(8px);
-  display: block;
-  position: absolute;
-}
-
-.wrapper__nft-shop-modal .list-items__item_character .left__img-wrap::before {
-  border-radius: 9px;
-  border: 5px solid #000000;
-  width: 100%;
-  height: 100%;
-  content: '';
-  filter: blur(8px);
-  display: block;
-  position: absolute;
-}
 
 .wrapper__nft-shop-modal .left__img-wrap img {
   width: 100%;
 }
 
-.wrapper__nft-shop-modal .list-items__item_legendary .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #FF7C06;
+.wrapper__nft-shop-modal .list-items__item_character .left__img-wrap img {
+  width: 70.92px;
 }
-
-.wrapper__nft-shop-modal .list-items__item_epic .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #7000F2;
-}
-
-.wrapper__nft-shop-modal .list-items__item_rare .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #B6BCC4;
-}
-
-.wrapper__nft-shop-modal .list-items__item_regular .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #24B500;
-}
-
-.wrapper__nft-shop-modal .list-items__item_superior .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #03B8F1;
-}
-
-.wrapper__nft-shop-modal .list-items__item_character .left__img-wrap {
-  border-radius: 9px;
-  border: 5px solid #000000;
-}
-
 
 .wrapper__nft-shop-modal .left__info {
   margin-left: 30px;
-  width: 100%;
   display: flex;
+  height: 120px;
   flex-direction: column;
   justify-content: space-between;
+  padding-right: 20px;
+  border-right: 1px solid #C6C6C6;
 }
 
-.wrapper__nft-shop-modal .info__text .text__title {
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 30px;
+
+
+.info__text{
+  margin-top: 10px;
 }
 
-.wrapper__nft-shop-modal .list-items__item_legendary .text__title {
+#nft-shop-boxes-list .list-items__item_bronze .text__title {
+  color: #967444;
+}
+#nft-shop-boxes-list .list-items__item_silver .text__title {
+  color: #9F9F9F;
+}
+#nft-shop-boxes-list .list-items__item_gold .text__title {
+  color: #DA9100;
+}
+#nft-shop-boxes-list .list-items__item_platinum .text__title {
+  color: #E5E1E6;
+}
+#nft-shop-boxes-list .list-items__item_legendary .text__title {
   color: #FF7C06;
 }
-
-.wrapper__nft-shop-modal .list-items__item_epic .text__title {
-  color: #7000F2;
+.wrapper__nft-shop-modal .info__text .text__title {
+  font-weight: 500;
+  font-size: 19.14px;
+  line-height: 20px;
 }
 
-.wrapper__nft-shop-modal .list-items__item_rare .text__title {
-  color: #B6BCC4;
-}
-
-.wrapper__nft-shop-modal .list-items__item_regular .text__title {
-  color: #24B500;
-}
-
-.wrapper__nft-shop-modal .list-items__item_superior .text__title {
-  color: #03B8F1;
-}
-
-.wrapper__nft-shop-modal .list-items__item_character .text__title {
-  color: #000000;
+.wrapper__nft-shop-modal .list-items__item .text__title{
+  color: #393939;
 }
 
 .wrapper__nft-shop-modal .info__text .text__type {
   margin-top: 5px;
-  font-size: 14px;
-  line-height: 16.93px;
-  color: #C6C6C6;
+  font-size: 15.31px;
+  line-height: 18.51px;
+  font-weight: 300;
 }
 
-.wrapper__nft-shop-modal .list-items__item_legendary .text__type {
-  color: #FF7C06;
+.wrapper__nft-shop-modal .list-items__item .text__type{
+  color: #393939;
 }
-
-.wrapper__nft-shop-modal .list-items__item_epic .text__type {
-  color: #7000F2;
-}
-
-.wrapper__nft-shop-modal .list-items__item_rare .text__type {
-  color: #B6BCC4;
-}
-
-.wrapper__nft-shop-modal .list-items__item_regular .text__type {
-  color: #24B500;
-}
-
-.wrapper__nft-shop-modal .list-items__item_superior .text__type {
-  color: #03B8F1;
-}
-
-.wrapper__nft-shop-modal .list-items__item_character .text__type {
-  color: #000000;
-}
-
 
 .wrapper__nft-shop-modal .info__pricing  {
-  margin-top: 33px;
   display: flex;
   gap: 15px;
   align-items: flex-end;
@@ -2312,23 +2700,41 @@ a {
   line-height: 16px;
   color: #393939;
 }
+wrapper__nft-shop-modal .info__pricing button {
+  height: 32px;
+}
 
-.wrapper__nft-shop-modal .info__pricing button {
+
+/*.wrapper__nft-shop-modal .info__pricing button {
   border-radius: 8px;
   border: none;
-  padding: 5px 12px;
-  font-size: 24px;
+  padding: 0px 12px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 30px;
   color: #fff;
   background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+  background-image: url('../media/svg/frame-btn.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 35px;
+  padding-bottom: 10px;
 }
-
+*/
 .wrapper__nft-shop-modal .item__right {
   width: 80%;
   height: 100%;
-  padding-left: 30px;
+  padding: 20px;
+  padding-left: 12px;
   max-width: 420px;
+  padding-top: 26px;
+}
+
+.wrapper__banner p{
+  font-family: 'Teletactile';
+  font-size: 15px;
+  line-height: 17.86px;
+  color: #FF7C06;
 }
 
 .wrapper__nft-shop-modal .item__line {
@@ -2339,91 +2745,65 @@ a {
   top: 20px;
 }
 
-.wrapper__nft-shop-modal .right__props-wrap {
-  display: grid;
-  column-gap: 35px;
-  row-gap: 25px;
-  grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 20px;
+#nft-shop-boxes-list .props-wrap__prop-item{
+    font-family: 'Teletactile';
+    font-size: 18.37px;
+    line-height: 17.86px;
+    color: #FF7C06;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#nft-shop-boxes-list .props-wrap__prop-item::before{
+  content:'';
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
 }
 
 .wrapper__nft-shop-modal .props-wrap__prop-item {
-  display: grid;
-  grid-template-columns: auto 1fr 1fr;
-  height: 30px;
+  height: 35px;
+  display: inline-block;
+}
+
+.props-wrap__prop-item:nth-child(even) {
+  margin-left: 15px;
 }
 
 .wrapper__nft-shop-modal .prop-item__icon-wrap {
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
+  vertical-align: text-bottom;
 }
 
 .wrapper__nft-shop-modal .prop-item__title {
   margin-left: 10px;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 14.65px;
+  line-height: 17.71px;
   color: #393939;
+ 
 }
 
 .wrapper__nft-shop-modal .prop-item__value {
-  margin-left: 15px;
+  margin-left: 10px;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 14.65px;
+  line-height: 17.71px;
   text-align: left;
   color: #24B500;
+  
 }
 
 .wrapper__nft-shop-modal .right__description {
-  /*margin-top: 20px;*/
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 13.72px;
+  line-height: 15.98px;;
   color: #393939;
 }
 
 
-.wrapper__dressing-modal-overlay {
-  padding: 45px 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 500;
-  position: fixed;
-  display: none;
-  background-color: rgba(0, 0, 0, 0.3)
-}
-
-.wrapper__dressing-modal-overlay_active {
-  display: flex;
-  align-items: center;
-}
-
-
-.dressing-modal__btn-close {
-  top: 15px;
-  right: 43px;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background-image: url('../media/svg/close.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  position: absolute;
-  z-index: 1;
-}
-
-.dressing-modal__header-title {
-  width: 100%;
-  height: 55px;
-  background-image: url('../media/svg/dressing-room.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-}
 
 /* inventory-modal */
 
@@ -2454,13 +2834,11 @@ a {
   .wrapper__inventory-modal {
     margin: 0 auto;
     border-radius: 16px;
-    padding: 60px 90px;
-    width: 1360px;
-    height: 890px;
-
-    background-color: #fff;
+    padding: 43px 90px;
+    width: 918px;
+  
+    background-color: var(--bg-board);
     position: relative;
-    overflow-y: hidden;
   }
 
 
@@ -2472,52 +2850,21 @@ a {
   .wrapper__inventory-modal_active {
     display: block;
   }
-  
-  .inventory-modal__btn-close {
-    top: 40px;
-    right: 43px;
-    border: none;
-    width: 30px;
-    height: 30px;
-    background-image: url('../media/svg/close.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    position: absolute;
-    z-index: 1;
-  }
-  
-  .inventory-modal__left-title {
+   
+ /* .inventory-modal__left-title {
     left: 0;
-    top: 0;
+    top: -100px;
     width: 90px;
     height: 855px;
-    background-image: url('../media/svg/nft-shop-left-title.svg');
+    background-image: url('../media/svg/inventory-left-title.svg');
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
     opacity: 0.1;
   }
+  */
   
-  .inventory-modal__right-title {
-    right: 0;
-    top: 0;
-    width: 90px;
-    height: 855px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    display: none;
-  }
-  
-  .inventory-modal__right-title_active {
-   display: block;
-  }
-  
-  .inventory-modal__right-title-characters {
-    width: 80px;
-    background-image: url('../media/svg/nft-shop-characters-title.svg');
-  }
+
   
   .inventory-modal__right-title-weapons {
     background-image: url('../media/svg/nft-shop-weapons-title.svg');
@@ -2530,32 +2877,20 @@ a {
   .inventory-modal__right-title-boots {
     background-image: url('../media/svg/nft-shop-boots-title.svg');
   }
-  
-  .inventory-modal__header-title {
-    width: 100%;
-    height: 55px;
-    background-image: url('../media/svg/inventory-modal/inventory-modal-header.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-  
-  .inventory-modal__body {
-    margin-top: 85px;
-    height: 100%;
-    display: grid;
-    gap: 80px;
-    grid-template-columns: 495px 1fr;
-  }
+
+
   
   .wrapper__inventory-modal .body__left {
     position: relative;
+    width: 336px;
+    right: 15px
   }
   
   .wrapper__inventory-modal .body__left::after {
-    top: 110px;
-    right: -40px;
+    top: 80px;
+    right: -24px;
     width: 2px;
-    height: calc(100% - 215px);
+    height: calc(100% - 80px);
     content: '';
     background-color: #C6C6C6;
     display: block;
@@ -2564,16 +2899,16 @@ a {
   
   .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title {
     border-bottom: 5px solid #FF7C06;
-    padding-bottom: 35px;
+    padding-bottom: 15.57px;
     font-family: 'Teletactile';
-    font-size: 32px;
+    font-size: 21.67px;
     line-height: 32px;
     color: #FF7C06;
     text-align: center;
   }
   
   .inventory-modal__nav-wrap {
-    margin-top: 40px;
+    margin-top: 20.43px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2594,11 +2929,20 @@ a {
   .inventory-modal__nav-wrap .nav-wrap__nav label {
     border-bottom: 5px solid transparent;
     font-family: 'Teletactile';
-    font-size: 20px;
+    font-size: 10px;
     color: #393939;
     background-color: transparent;
     display: block;
     cursor: pointer;
+  }
+
+  #finishGame2{
+    margin-top: 0px;
+     padding-top: 5px;
+  }
+
+  #finishGame2:hover{
+    padding-top: 10px;
   }
 
   .inventory-modal__nav-wrap .nav-wrap__nav label:hover {
@@ -2610,30 +2954,35 @@ a {
     color: #FF7C06;
   }
   
-  .inventory-modal__body .left__list-wrap {
+  /*.inventory-modal__body .left__list-wrap {
     margin-top: 22px;
     border-radius: 7px;
-    border: 1px solid #C6C6C6;
-    padding: 15px;
-    height: calc(100% - 275px);
+    border: 2px solid #393939;
+    padding: 15px 15px 15px 10px;
+    height: 316px;
     overflow: auto;
-  }
+  }*/
   
-  .inventory-modal__body .list-wrap__item-list {
+  /*.inventory-modal__body .list-wrap__item-list {
     padding-bottom: 20px;
-    padding-right: 17px;
     width: 100%;
     height: 100%;
     display: grid;
-    gap: 22px;
-    grid-template-columns: repeat(4, 93px);
-    grid-template-rows: repeat(auto-fill, 93px);
+    grid-template-columns: repeat(4, 67.1px);
+    grid-template-rows: repeat(auto-fill, 67.1px);
     overflow: auto;
     overflow-x: hidden;
-  }
-  
+    gap: 10px;
+  }*/
+
+
+
+.help__img{
+  width: 23px;
+}
+
   .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
   }
   
   .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar-track {
@@ -2645,121 +2994,7 @@ a {
     border-radius: 20px;
     background-color: #393939;
   }
-  
-  .inventory-modal__body .item-list__slot {
-    border-radius: 9px;
-    border: 4px solid #B6BCC4;
-    padding: 3px;
-    width: 93px;
-    height: 93px;
-    box-shadow: 0px 4.46855px 4.46855px rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-  }
-
-  .inventory-modal__body .item-list__slot:hover::before {
-    background-color: #E07E25;
-  }
-  
-  .inventory-modal__body .item-list__slot:hover::after {
-    width: 100%;
-    height: 100%;
-    content: '';
-    background-color: #FF7C06;
-    opacity: 0.5;
-    display: block;
-    position: absolute;
-    z-index: -2;
-  }
-  
-  .inventory-modal__body .item-list__slot .slot__item-icon {
-    max-height: 100%;
-    display: none;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot::before {
-    border-radius: 9px;
-    width: 100%;
-    height: 100%;
-    content: '';
-    filter: blur(5px);
-    display: block;
-    position: absolute;
-    z-index: -1;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_silver::before {
-    border: 5px solid #B6BCC4;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_silver {
-    border-radius: 9px;
-    border: 5px solid #B6BCC4;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_orange::before {
-    border: 5px solid #FF7C06;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_orange {
-    border-radius: 9px;
-    border: 5px solid #FF7C06;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_purple::before {
-    border: 5px solid #7000F2;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_purple {
-    border-radius: 9px;
-    border: 5px solid #7000F2;
-  }
-
-  .wrapper__inventory-modal .item-list__slot_character {
-    border-radius: 9px;
-    border: 5px solid #000000;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_blue::before {
-    border: 5px solid #03B8F1;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_blue {
-    border-radius: 9px;
-    border: 5px solid #03B8F1;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_green::before {
-    border: 5px solid #24B500;
-  }
-  
-  .wrapper__inventory-modal .item-list__slot_green {
-    border-radius: 9px;
-    border: 5px solid #24B500;
-  }
-  
-  .wrapper__inventory-modal .right__character {
-    margin-top: 40px;
-    display: flex;
-  }
-  
-  .wrapper__inventory-modal .character__slots {
-    flex-shrink: 0;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  
-  .wrapper__inventory-modal .slots__slot-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ 
 
   .wrapper__inventory-modal .item__prop-img-wrap {
     display: flex;
@@ -2769,31 +3004,32 @@ a {
   
   .available-slot::before {
     background-color: rgba(36, 181, 0, 0.3);
+    background-image: none;
   }
   
   .dont-available-slot::before {
     background-color: rgba(255, 38, 38, 0.3);
+    background-image: none;
   }
   
-  .wrapper__inventory-modal .slot-wrap__title {
+  /*.wrapper__inventory-modal .slot-wrap__title {
     font-family: 'Teletactile';
-    font-size: 20px;
+    font-size: 13.54px;
     line-height: 20px;
     color: #393939;
-  }
+  }*/
   
-  .wrapper__inventory-modal .slot-wrap__slot {
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 4px solid #FF7C06;
-    width: 100%;
-    height: 100px;
+ /* .wrapper__inventory-modal .slot-wrap__slot {
+    margin-top: 5px;
+    border: 3px solid #FF7C06;
+    width: 67.1px;
+    height: 67.1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: relative;
   }
+  */
   
   .wrapper__inventory-modal .character-slot__item {
     width: 100%;
@@ -2805,8 +3041,18 @@ a {
     position: relative;
     z-index: 1;
   }
-  
-  .wrapper__inventory-modal .weapon-slot::before, .wrapper__inventory-modal .armor-slot::before, .wrapper__inventory-modal .boots-slot::before {
+
+  /*.wrapper__inventory-modal .character-wrap__img-wrap {
+    border: 3px solid #FF7C06;
+    padding: 27px 32px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+  }
+  */
+
+  /*.wrapper__inventory-modal .character-wrap__img-wrap::before{
     border-radius: 4px;
     width: 100%;
     height: 100%;
@@ -2814,60 +3060,41 @@ a {
     background-position: center center;
     background-repeat: no-repeat;
     position: absolute;
-    z-index: 1;
-  }
 
-  .weapon__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/weapon-slot.svg');
-  }
-
-  .armor__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/armor-slot.svg');
-  }
+    left: 0;
+    top: 0;
+    background-color: #FFFFFF;
+  }*/
   
-  .boots__slot-background::before {
-    background-image: url('../media/svg/inventory-modal/boots-slot.svg');
-  }
-  
-  .wrapper__inventory-modal .character-wrap__img-wrap {
-    margin-left: 25px;
-    border-radius: 8px;
-    border: 4px solid #FF7C06;
-    padding: 27px 32px;
-    width: 490px;
-    height: 470px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: relative;
-  }
-  
-  .wrapper__inventory-modal .character-wrap__img-wrap img {
+  /*.wrapper__inventory-modal .character-wrap__img-wrap img {
     max-width: 100%;
-  }
+  }*/
   
-  .wrapper__inventory-modal .character-wrap__props-wrap {
-   margin: 15px 0 0 25px;
+  /*.wrapper__inventory-modal .character-wrap__props-wrap {
+   margin-top: 15px;
    display: flex;
-   gap: 20px;
+   gap: 10px;
    align-items: center;
    justify-content: space-between;
-  }
+  }*/
   
-  .wrapper__inventory-modal .props-wrap__item {
+  
+  /*.wrapper__inventory-modal .props-wrap__item {
     display: flex;
     gap: 10px;
     align-items: center;
-  }
+  }*/
   
   .wrapper__inventory-modal .item__prop-img-wrap img {
    max-width: 100%;
   }
   
-  .wrapper__inventory-modal .item__prop-value {
+  /*.wrapper__inventory-modal .item__prop-value {
     font-family: 'Teletactile';
-    font-size: 24px;
+    font-size: 14.25px;
     line-height: 24px;
-    color: #E45C00;
-  }
+    color: #393939;
+  }*/
 /* } */
 
 /* banners */
@@ -2959,47 +3186,19 @@ a {
   }
 }
 
-/* @media (max-width: 1446.98px) {
-  .wrapper__banners-wrap {
-    width: 150px;
-  }
-
-  .wrapper__banners-wrap .banner__title {
-    font-size: 14px;
-    line-height: 14px;
-  }
-
-  .new-characters-banner .banner__img-wrap img {
-    max-width: 50%;
-  }
-
-  .wrapper__banners-wrap .banners-wrap__banner button {
-    font-size: 16px;
-    line-height: 16px;
-  }
-}
-
-@media (max-width: 1320.98px) {
-  .wrapper__banners-wrap {
-    width: 120px;
-  }
-
-  .wrapper__banners-wrap .banner__title {
-    font-size: 9px;
-    line-height: 9px;
-  }
-
-  .new-characters-banner .banner__img-wrap img {
-    max-width: 50%;
-  }
-
-  .wrapper__banners-wrap .banners-wrap__banner button {
-    font-size: 14px;
-    line-height: 14px;
-  }
-} */
 
 /* item detail modal */
+
+.item-modal-info{
+  font-family: 'Teletactile';
+  color: var(--color-orange);
+  font-weight: 400;
+  font-size: 24.67px;
+  text-align: center;
+  width: 100%;
+  margin-top: 18px !important;
+  margin-bottom: 20px !important;
+}
 
 .wrapper__item-modal-overlay {
   left: 0;
@@ -3021,16 +3220,50 @@ a {
 .wrapper__item-modal-overlay .body__item-detail * {
   margin: 0;
   padding: 0;
+  display: inline-block;
 }
 
 .wrapper__item-modal-overlay .body__item-detail {
   border-radius: 16px;
-  border: 2px solid #C6C6C6;
-  padding: 20px;
+  border: var(--border-board);
+  padding: 30px;
   width: 605px;
-  background-color: #fff;
+  background-color: var(--bg-board);
   position: relative;
+  border-width: 2px;
 }
+
+.inventory-item-body_basic, .inventory-item-body_character{
+  background-image: url('../media/svg/inventory-modal/frame-bronze.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.inventory-item-body_special{
+  background-image: url('../media/svg/inventory-modal/frame-silver.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.inventory-item-body_rare{
+  background-image: url('../media/svg/inventory-modal/frame-gold.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
+.inventory-item-body_epic{
+  background-image: url('../media/svg/inventory-modal/frame-platinum.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.inventory-item-body_legendary{
+  background-image: url('../media/svg/inventory-modal/frame-legendary.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 
 .wrapper__item-modal-overlay .body__background-icon {
   left: 0;
@@ -3045,15 +3278,16 @@ a {
 
 .wrapper__item-modal-overlay .item-detail__btn-close {
   top: 20px;
-  right: 20px;
+  right: 13px;
   border: none;
   width: 30px;
   height: 30px;
-  background-image: url('../media/svg/close.svg');
+  background-image: url('../media/svg/close-pixel.svg');
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
   position: absolute;
+  cursor: pointer;
 }
 
 .wrapper__item-modal-overlay .item-detail__header {
@@ -3061,102 +3295,168 @@ a {
   gap: 20px;
   align-items: flex-start;
   grid-template-columns: auto 1fr;
+  border-bottom: 2px solid #C6C6C6;
 }
 
 .wrapper__item-modal-overlay .item-detail__header_active {
   display: grid;
+  margin: 25px 25px 0px 25px;
+  padding-bottom: 25px;
 }
 
 .wrapper__item-modal-overlay .header__img-item {
-  border-radius: 9px;
-  border: 2px solid #C6C6C6;
-  padding: 40px;
-  width: 250px;
-  height: 250px;
+  border: 1px solid #757575;
+  /*padding: 40px;*/
+  width: 150px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 4.46855px 4.46855px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 4;
 }
 
-.wrapper__item-modal-overlay .header__img-item img {
+/*.wrapper__item-modal-overlay .header__img-item img {
   width: 100%;
+}*/
+
+.board-edge_inventory-item:nth-child(1) {
+  left: -4px;
+  top: -6px;
+}
+.board-edge_inventory-item:nth-child(2) {
+  right: -4px;
+    top: -6px;
+}
+.board-edge_inventory-item:nth-child(3) {
+  right: -6px;
+  bottom: -5px;
+}
+.board-edge_inventory-item:nth-child(4) {
+  left: -6px;
+  bottom: -5px;
 }
 
-.wrapper__item-modal-overlay .text-item__name {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
-  color: #AA3EE3;
+.wrapper__item-modal-overlay .header__img-item::before{
+  border-radius: 9px;
+width: 100%;
+height: 100%;
+content: '';
+border: 5px solid #FF7C06;
+filter: blur(8.44px);
+display: block;
+position: absolute;
+z-index: -1;
 }
 
-.wrapper__item-modal-overlay .text-item__character {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
-  color: #000000;
+.inventory-item-body_rare .header__img-item::before{
+  border: 5px solid #7BDFFF;
 }
-.wrapper__item-modal-overlay .text-item__legendary {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
-  color: #FF7C06;
+.inventory-item-body_epic  .header__img-item::before{
+  border: 5px solid #CCA0FF;
 }
-.wrapper__item-modal-overlay .text-item__epic {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
+.inventory-item-body_basic  .header__img-item::before, 
+.inventory-item-body_character  .header__img-item::before{
+  border: 5px solid #D8D8D8;
+}
+.inventory-item-body_special .header__img-item::before{
+  border: 5px solid #91EF7A;
+}
+.inventory-item-body_legendary .header__img-item::before{
+  border: 5px solid #FF7C06;
+}
+
+#inventory-item-modal-image{
+  width: 135px;
+}
+
+.wrapper__item-modal-overlay .text-item__type {
+  border-bottom: 2px solid #C6C6C6;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 18px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.wrapper__item-modal-overlay .text-item__epic ~ .text-item__type {
   color: #7000F2;
 }
-.wrapper__item-modal-overlay .text-item__rare {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
-  color: #B6BCC4;
-}
-.wrapper__item-modal-overlay .text-item__superior {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
+.wrapper__item-modal-overlay .text-item__rare ~ .text-item__type {
   color: #03B8F1;
 }
-.wrapper__item-modal-overlay .text-item__regular {
-  margin-top: 8px;
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 30px;
+.wrapper__item-modal-overlay .text-item__basic ~ .text-item__type {
+  color: #393939;
+}
+.wrapper__item-modal-overlay .text-item__character ~ .text-item__type {
+  color: #393939;
+}
+.wrapper__item-modal-overlay .text-item__special ~ .text-item__type {
   color: #24B500;
 }
-.wrapper__item-modal-overlay .text-item__type {
-  border-bottom: 1px solid #000;
-  margin: 10px 0 0 0;
-  padding-bottom: 10px;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px;
-  color: #C6C6C6;
+.wrapper__item-modal-overlay .text-item__legendary ~ .text-item__type {
+  color: #FF7C06;
 }
+
 
 .wrapper__item-modal-overlay .item-detail__description {
   margin: 0;
-  margin-top: 24px;
   padding-right: 20px;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 15.93px;
   color: #393939;
-  height: 120px;
+  /*height: 150px;*/
   overflow: auto;
   display: none;
 }
 
+.text-item__basic, .text-item__character{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.09px;
+  width: 93%;
+  word-wrap: break-word;
+  color: #393939;
+}
+.text-item__special{
+  color: #24B500;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.09px;
+  width: 93%;
+  word-wrap: break-word;
+}
+.text-item__rare{
+  color: #03B8F1;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.09px;
+  width: 93%;
+  word-wrap: break-word;
+}
+
+.text-item__epic{
+  color: #7000F2;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.09px;
+  width: 93%;
+  word-wrap: break-word;
+}
+
+.text-item__legendary{
+  color: #FF7C06;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.09px;
+  width: 93%;
+  word-wrap: break-word;
+}
+
 .wrapper__item-modal-overlay .item-detail__description_active {
   display: block;
+  padding: 25px;
 }
 
 .wrapper__item-modal-overlay .item-detail__description::-webkit-scrollbar {
@@ -3198,25 +3498,45 @@ a {
 }
 
 .wrapper__item-modal-overlay .item-detail__btns-wrap {
-  margin-top: 37px;
   display: flex;
   gap: 15px;
   justify-content: center;
   position: relative;
   z-index: 1;
+  margin-bottom: 25px;
 }
 
 .wrapper__item-modal-overlay .item-detail__btns-wrap button {
-  border-radius: 8px;
-  border: none;
-  width: 140px;
-  height: 40px;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 100%;
-  color: #fff;
-  background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+  height: 60px !important;
+  width: 198px !important;
+}
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"] {
+  height: 50px !important;
+  width: 138px !important;
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"] {
+ width: 169px !important;
+}
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]:hover{
+  background-image: url('../media/svg/orange-btn-press.svg');
+}
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]:hover
+{
+  background-image: url('../media/svg/orange-btn-press.svg');
+}
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]  {
+  width: 260px !important;
+  height: 46px !important;
+  padding-top: 6px;
+  background-image: url('../media/buttons/back-to-inventory-btn-wide-grame.svg');
+}
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]:hover{
+  padding-top: 13px;
 }
 
 /* .wrapper__item-modal-overlay .item-detail__btns-wrap button:first-child {
@@ -3226,161 +3546,43 @@ a {
 } */
 
 .wrapper__item-modal-overlay .header__text-item__props-item {
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 .wrapper__item-modal-overlay .props-item__prop {
-  display: grid;
-  grid-template-columns: 35px 1fr auto;
+  display: inline-block;
 }
 
 .wrapper__item-modal-overlay .prop__img-wrap img {
   max-width: 100%;
+  margin-top: 10px;
 }
 
 .wrapper__item-modal-overlay .prop__title {
   margin: 0;
   margin-left: 10px;
-  width: 200px;
+  margin-right: 15px;
   font-weight: 300;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   color: #393939;
+  vertical-align: text-top
 }
 
 .wrapper__item-modal-overlay .prop__value {
   margin: 0;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
   color: #24B500;
-}
-
-@media (max-height: 900px) {
-  .wrapper__inventory-modal {
-    width: 90vw;
-    height: 100%;
-  }
-  .wrapper__nft-shop-modal {
-    height: 100%;
-  }
-  .body__right{
-    height: 40%;
-  }
-  .wrapper__inventory-modal .character-wrap__img-wrap{
-    display: flex;
-    justify-content: center;
-    height: 40vh;
-    width: calc(65vw - 490px);
-  }
-  .wrapper__inventory-modal .character-wrap__img-wrap img{
-    height: 100%;
-  }
-  .wrapper__inventory-modal .slot-wrap__slot{
-    width: 70px;
-    height: 70px;
-  }
-  .wrapper__inventory-modal .slot-wrap__title{
-    font-size: 18px;
-  }
-  .wrapper__inventory-modal .character__slots{
-    gap: 20px
-  }
-
-   .wrapper__inventory-modal .item__prop-value{
-    font-size: 20px;
-  }
-
-  /* .wrapper__inventory-modal .weapon-slot::before {
-    background-image: url('../media/svg/inventory-modal/weapon-slot-small.svg');
-  }
-  .wrapper__inventory-modal .armor-slot::before{
-    background-image: url('../media/svg/inventory-modal/armor-slot-small.svg');
-  }
-  .wrapper__inventory-modal .boots-slot::before{
-    background-image: url('../media/svg/inventory-modal/boots-slot-small.svg');
-  } */
-
-  .wrapper__nft-shop-modal-overlay_active,
-  .wrapper__inventory-modal-overlay_active {
-  display: block;
-}
-
-.inventory-modal__body {
-  margin-top: 60px;
-}
-
-.inventory-modal__body .left__list-wrap{
-  height: 38.5vh;
-}
-
-.wrapper__inventory-modal .body__left::after{
-  height: 46.5vh;
-}
-  
-
-  /*.inventory-modal__body .item-list__slot{
-    width: 73px;
-    height: 73px;
-  }
-
-  .inventory-modal__body .list-wrap__item-list{
-    gap: 16px;
-  }*/
-  .inventory-modal__left-title, .nft-shop-modal__left-title {
-    left: 0;
-    top: 0;
-    width: 90px;
-    height: 90vh;
-    background-image: url('../media/svg/nft-shop-left-title-600h.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: absolute;
-    opacity: 0.1;
-  }
-
-  .inventory-modal__right-title-characters, .nft-shop-modal__right-title-characters {
-    width: 80px;
-    height: 90vh;
-    background-image: url('../media/svg/nft-shop-characters-title-600h.svg');
-  }
-
-  .inventory-modal__body .list-wrap__item-list {
-    grid-template-columns: repeat(5, 73px);
-    grid-template-rows: repeat(auto-fill, 73px);
-    gap: 18px;
-  }
-  .inventory-modal__body .item-list__slot{
-    height: 73px;
-    width: 73px;
-  }
-  .inventory-items, .character-slot__item img{
-    width: 57px;
-    height: 52px;
-  }
-  .inventory-items-wider {
-    width: 64px;
-    height: 32px;
-  }
-  .wrapper__inventory-modal .left__header-title, .wrapper__inventory-modal .right__header-title{
-    padding-bottom: 32px;
-  }
-}
-
-.slot-wrap__slot-img {
-  width: 63px;
-  height: 58px;
-}
-
-.slot-wrap__slot-img-wider {
-  width: 64px;
-  height: 32px;
+  height: 20px;
+  vertical-align: sub;
 }
 
 .lds-dual-ring-tryon:after {
@@ -3393,6 +3595,9 @@ a {
   border-color: #FF7C06 transparent;
   animation: 1s linear 0s normal none infinite running lds-dual-ring;
   -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
+  position: relative;
+  top: 9%;
+  left: 2%;
 }
 
 .lds-dual-ring-big:after {
@@ -3442,7 +3647,7 @@ a {
   height: 100%;
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 35%;
   transform: translate(-50%, 0%);
   max-height: 600px;
   max-width: 650px;
@@ -3456,7 +3661,7 @@ a {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translate(-50%, -5%);
   max-height: 600px;
   max-width: 650px;
 }
@@ -3467,7 +3672,55 @@ a {
   height: 45px;
   width: 165px;
   background: unset;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  padding: 0;
 }
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  color: #382b22;
+  text-transform: uppercase;
+  border-radius: 0.75em;
+  transition: transform 0.15s;
+  transform-style: preserve-3d;
+  width: 165px;
+  height: 45px;
+}
+
+.dropdown-wrapper::before{
+  position: absolute;
+    content: "";
+    width: 100%;
+    height: 38px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px #000000;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dropdown-wrapper:hover {
+  transform: translate(0, 0.25em);
+}
+.dropdown-wrapper:hover::before {
+  transform: translate3d(0, 0.5em, -1em);
+}
+
+
+
 #loadingRect {
   fill: #86F000; /* Заполняем прямоугольник зеленым цветом */
   transition: width 2s; /* Длительность анимации: 2 секунды */
@@ -3478,14 +3731,59 @@ a {
 }
 
 .tryon {
-  font-size: 12px;
-  line-height: 14.32px;
-  text-decoration: underline;
-  color: #393939;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: -25px;
-  cursor: pointer;
+  width: 110px;
+}
+
+.tryon_collection-basic, .tryon_collection-character {
+  background-image: url('../media/svg/shop/basic-collection/try-on-btn.svg') !important;
+}
+
+.tryon_collection-special {
+  background-image: url('../media/svg/shop/special-collection/try-on-btn.svg') !important;
+}
+.tryon_collection-rare {
+  background-image: url('../media/svg/shop/rare-collection/try-on-btn.svg') !important;
+}
+.tryon_collection-epic {
+  background-image: url('../media/svg/shop/epic-collection/try-on-btn.svg') !important;
+}
+.tryon_collection-legendary {
+  background-image: url('../media/svg/frame-btn.svg') !important;
+}
+
+.tryon_collection-basic:hover,  .tryon_collection-character:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/basic-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-special:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/special-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-rare:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/rare-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-epic:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/epic-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
+}
+
+.tryon_collection-legendary:hover {
+  background-position: center 5px !important;
+  transition: all 0.2s ease;
+  background-image: url('../media/svg/shop/legendary-collection/frame-btn-press.svg') !important;
+  padding-top: 5px;
 }
 
 .dropdown-menu-network {
@@ -3532,6 +3830,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 .change_network:hover {
   background-color: transparent;
+  /*transform: translate(0, 0.2em);*/
+
 }
 .dropdown [data-toggle="dropdown"]::before {
   content: ""
@@ -3539,13 +3839,9 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 #networks {
   top: 50px;
-  left: 24px;
   width: 100%;
 }
 
-.startBtn#connect {
-  background-color: transparent;
-}
 
 .wrapper__contacts {
   /*position: absolute;*/
@@ -3566,8 +3862,8 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 .contacts__container {
   display: flex;
   grid-gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #BDBDBD;
+  padding-top: 20px;
+  border-top: 2px solid #FF7C06;
 }
 
 .contact__links {
@@ -3579,12 +3875,11 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 .contact_link {
   display: flex;
-  grid-gap: 20px;
+  grid-gap: 15px;
   cursor: pointer;
 
   align-items: center;
 }
-
 .link__name {
   color: #fff;
   font-size: 20px;
@@ -3594,64 +3889,80 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 .link__name:hover {
   color: #fff;
 }
-
 .wrapper_banners {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   grid-gap: 38px;
   z-index: 13;
-  padding-bottom: 45px;
-  margin-right: 50px;
+  padding-bottom: 25px;
+  /*margin-right: 50px;*/
+  width: 226px;
 }
 
-.dressing_modal {
-  width: 562px;
-  height: 620px;
-  padding: 46px 57px 44px 57px;
-}
-.dressing-modal__body {
-  margin-top: 30px;
-  grid-template-columns: unset;
-}
-
-.dressing-title {
-  padding-bottom: 15px !important;
-}
-
-.dressing-character {
-  margin-top: 27px !important;
-  grid-gap: 17px;
-}
-
-.wrapper__inventory-modal .dressing_slots {
+/*.wrapper__inventory-modal .dressing_slots {
   width: 68px;
-  gap: 28px;
+  gap: 25px;
   height: 100%;
-}
+  margin-left: 3px;
+}*/
 
-.wrapper__inventory-modal .dressing_slot {
+/*.wrapper__inventory-modal .dressing_slot {
   height: 68px;
   margin-top: 6px;
 
-}
-.wrapper__inventory-modal .dressing_slot::before{
+}*/
+/*.wrapper__inventory-modal .dressing_slot::before{
   height: 58px;
   width: 58px;
   background-size: cover;
-}
+  border-radius: 9px;
+  border: 5px solid #FCFCFC;
+  content: '';
+  filter: blur(8px);
+  display: block;
+  position: absolute;
+  background-color: #fff;
+}*/
 
 
-.wrapper__inventory-modal .dressing_title {
+/*.wrapper__inventory-modal .dressing_title {
   font-size: 13.54px;
-}
+}*/
 
 .wrapper__inventory-modal .dressing_canvas_container {
-  width: 100%;
-  height: 100%;
+  width: 314px;
+  height: 314px;
   margin-left: 0;
+}
+
+
+/*.character__character-wrap img:nth-child(1){
+  left: 5px;
+  top: -10px;
+}
+.character__character-wrap img:nth-child(2){
+  top: -10px;
+}
+.character__character-wrap img:nth-child(3){
+  right: -11px;
+  bottom: 35px;
+}
+.character__character-wrap img:nth-child(4){
+  left: 5px;
+  bottom: 34px;
+}*/
+
+#character-slot2 .board-edge-sm:nth-child(1){
+  left: -10px;
+  top: -8px;
+}
+
+#character-slot2 .board-edge-sm:nth-child(3){
+  bottom: -8px;
+}
+#character-slot2 .board-edge-sm:nth-child(4){
+  left: -8px;
+    bottom: -8px;
 }
 
 .dressing-modal__btn-close {
@@ -3671,7 +3982,14 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   position: absolute;
   bottom: 0;
   left: 45px;
-  grid-gap: 64px;
+  /*grid-gap: 31px;*/
+}
+
+.main-container {
+  display: flex;
+  margin-left: 200px;
+  margin-top: 30px;
+  gap: 21px;
 }
 .wrapper_banners {
   margin-bottom: 19px;
@@ -3679,9 +3997,10 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 
 
 .wrapper__banner {
-  background: #fff;
+  background: var(--bg-board);
   border-radius: 15px;
-  padding: 17px 7px;
+  border: var(--border-board);
+  padding: 0px 7px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -3692,11 +4011,30 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   height: 100%;
   position: relative;
   /*margin-bottom: 45px;*/
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 }
 
-.wrapper__banner:last-child {
-  padding-bottom: 40px;
+.wrapper_banners  .wrapper__banner:first-child p{
+  margin-bottom: 30px;
+}
+
+.buyblock-image{
+  background-image: url('../media/buyblock.svg');
+  width: 155px;
+  height: 73px;
+  background-repeat: no-repeat;
+}
+
+.buyblock-image__boxes{
+  transform: translateY(-40px);
+  background-image: url('../media/box1.png');  
+  width: 214px;
+  height: 144px;
+  background-repeat: no-repeat;
+}
+.wrapper__banner-boxes{
+  padding-bottom: 0px;
+  padding-top: 25px;
 }
 
 .banner__buy {
@@ -3705,27 +4043,214 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
   margin-bottom: -20px;
 }
 
-.buy-now-btn:hover {
-  color: #212529 !important;
-  transition: all 0.2s ease;
+#nft-shop-boxes-list .list-items__item{
+  background-image: url('../media/svg/shop/basic-collection/frame.svg');
+  background-repeat: no-repeat;
+  height: 174px;
 }
 
-.buy-now-btn {
-  transition: all 0.2s ease;
+#nft-shop-boxes-list .right__props-wrap {
+  margin-top: 25px;
 }
+#nft-shop-boxes-list  .right__props-wrap_first .props-wrap__prop-item:nth-child(2) {
+margin-right: 60px;
+}
+#nft-shop-boxes-list  .right__props-wrap_last .props-wrap__prop-item:nth-child(2) {
+  margin-right: 60px;
+}
+#nft-shop-boxes-list  .right__props-wrap_first .props-wrap__prop-item:nth-child(1)::before{
+  background-image: url('../media/svg/shop/character-icon.svg');
+  transform: translateY(-4px);
+}
+#nft-shop-boxes-list  .right__props-wrap_first .props-wrap__prop-item:nth-child(2)::before{
+  background-image: url('../media/svg/shop/armor-icon.png');
+  width: 30px;
+  height: 15px;
+  transform: translateY(-2px);
+}
+#nft-shop-boxes-list  .right__props-wrap_last .props-wrap__prop-item:nth-child(1)::before{
+  background-image: url('../media/svg/shop/weapons-icon.svg');
+  transform: translateY(-2px);
+}
+#nft-shop-boxes-list  .right__props-wrap_last .props-wrap__prop-item:nth-child(2)::before{
+  background-image: url('../media/svg/shop/boots-icon.png');
+  width: 30px;
+  height: 21px;
+  transform: translateY(-4px);
+}
+
+.buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory, 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button,
+.bought-btn   {
+  font-family: 'Teletactile';
+    border: none;
+    background-color: transparent;
+    padding: 0px 7px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 35px;
+    padding-bottom: 10px;
+  transition: all 0.1s ease;
+}
+.bought-btn{
+  width: 110px;
+  background-image: url('../media/svg/orange-btn-press.svg');  
+}
+.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button {
+  background-image: url('../media/svg/frame-btn.svg');
+}
+.back-nft-shop, .go-inventory {
+  background-image: url('../media/svg/frame-btn-back.svg')
+}
+.back-nft-shop:hover, .go-inventory:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  padding-top: 5px;
+  background-image: url('../media/svg/frame-btn-back-press.svg')
+}
+
+.buy-now-btn:hover {
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 5px;
+}
+
+.wrapper__item-modal-overlay .item-detail__btns-wrap button:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  padding-top: 5px;
+}
+.close-button{
+  padding: 0 49.7395px;
+  height: 48px;
+  padding-bottom: 5px;
+}
+
+.close-button_big{
+  background-image: url('../media/svg/big-frame-btn.svg');
+}
+
+.buy-now-btn{
+  width: 110px;
+}
+
+.withdraw-button{
+  width: 238px;
+  position: absolute;
+  right: 31px;
+  bottom: 28px;
+  font-size: 14px;
+  padding: 0px;
+  height: 50px;
+  padding-bottom: 5px;
+}
+
+.join-button, .claim-button {
+  padding-bottom: 8px;
+}
+
+.claim-button { 
+  height: 52.53px
+}
+.close-button_finish-game{
+  margin-top: 15px;
+  padding-bottom: 8px;
+}
+
+.connect-button {
+  padding: 0 10px;
+  padding-bottom: 9px;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.back-nft-shop, .go-inventory {
+  height: 50px;
+  width: 238px;
+}
+
+.back-nft-shop:hover, .go-inventory:hover {
+  padding-top: 10px;
+}
+
+#new-approve-modal-close {
+  padding-bottom: 0px;
+  padding-top: 7px;
+  cursor: pointer;
+}
+
+.close-button:hover{
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 10px;
+}
+
+.close-button_big:hover{
+  background-image: url('../media/svg/big-frame-btn-press.svg') !important;
+  transition: all 0.1s ease;
+}
+
+#new-approve-modal-close:hover {
+  background-position: center 5px !important;
+  transition: all 0.1s ease;
+  background-image: url('../media/svg/orange-btn-press.svg') !important; 
+  padding-top: 11px
+}
+
+
 
 .message-modal__btns-wrap button {
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
-.message-modal__btns-wrap button:hover {
+/*.message-modal__btns-wrap button:hover {
   transition: all 0.3s ease;
   background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
   color: #fff;
+}*/
+
+
+.board-edge_sm:nth-child(2) {
+  transform: rotate(90deg);
 }
+.board-edge_sm:nth-child(3) {
+  transform: rotate(180deg);
+}
+.board-edge_sm:nth-child(4) {
+  transform: rotate(270deg);
+}
+
+
+
+.about-header{
+  width: 320px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  border-bottom: 2px solid rgba(255, 124, 6, 1);
+  padding-bottom: 2px;
+}
+
 
 #anim1, #anim, #anim3, #anim2 {
   transition: all 0.5s ease-out;
+}
+
+.dropdown-wrapper:hover .c3{
+  display: none;
+}
+
+.text__box{
+  color: #393939;
+  font-size: 12px;
+  width: 138px;
+  line-height: 14.32px;
+  margin-top: 6px;
 }
 
 #dropdown-check:hover #anim3,

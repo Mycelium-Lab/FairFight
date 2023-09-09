@@ -448,7 +448,7 @@ function handleSocket(socket) {
       for (let i = 0; i < signatures.length; i++) {
         try {
           await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
-            signatures[i].address,
+            signatures[i].address.toLowerCase(),
             signatures[i].fightid,
             signatures[i].amount,
             signatures[i].chainid,
@@ -480,7 +480,7 @@ function handleSocket(socket) {
       const deathsWinner = await getDeaths(data.winnerAddress)
       try {
         await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
-        [room.getFightId(), data.loserAddress, room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
+        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -498,7 +498,7 @@ function handleSocket(socket) {
       }
       try {
         await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
-        [room.getFightId(), data.winnerAddress, room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token])
+        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -676,15 +676,15 @@ function handleSocket(socket) {
   }
 
   function createAmountRedisLink(address, chainid, gameid) {
-    return `${address}_${gameid}_${chainid}_amount`
+    return `${address.toLowerCase()}_${gameid}_${chainid}_amount`
   }
 
   function createKillsRedisLink(address, chainid, gameid) {
-    return `${address}_${gameid}_${chainid}_kills`;
+    return `${address.toLowerCase()}_${gameid}_${chainid}_kills`;
   }
 
   function createDeathsRedisLink(address, chainid, gameid) {
-    return `${address}_${gameid}_${chainid}_deaths`;
+    return `${address.toLowerCase()}_${gameid}_${chainid}_deaths`;
   }
 
   function createRoundsRedisLink() {

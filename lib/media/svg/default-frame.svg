@@ -1,0 +1,31 @@
+<svg width="308" height="270" viewBox="0 0 308 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M305 1.00001V4.00001H307V266H305V268H3.00001V266H0V4.00001H3.00003L3.00003 1L305 1.00001Z" fill="#F5F5F5"/>
+<rect x="4" y="269" width="300" height="1" fill="#8B8B8B"/>
+<rect width="300" height="1" transform="matrix(1 0 0 -1 4 1)" fill="#8B8B8B"/>
+<rect x="1" y="4" width="262" height="0.99999" transform="rotate(90 1 4)" fill="#8B8B8B"/>
+<rect x="1" y="3" width="1" height="1" fill="#8B8B8B"/>
+<rect x="2" y="2" width="1" height="1" fill="#8B8B8B"/>
+<rect x="2" y="3" width="1" height="1" fill="#D8D8D8"/>
+<rect x="3" y="2" width="1" height="1" fill="#D8D8D8"/>
+<rect x="3" y="1" width="1" height="1" fill="#8B8B8B"/>
+<rect x="1" y="267" width="1" height="1" transform="rotate(-90 1 267)" fill="#8B8B8B"/>
+<rect x="2" y="268" width="1" height="1" transform="rotate(-90 2 268)" fill="#8B8B8B"/>
+<rect x="2" y="267" width="1" height="1" transform="rotate(-90 2 267)" fill="#D8D8D8"/>
+<rect x="3" y="268" width="1" height="1" transform="rotate(-90 3 268)" fill="#D8D8D8"/>
+<rect x="3" y="269" width="1" height="1" transform="rotate(-90 3 269)" fill="#8B8B8B"/>
+<rect x="1" y="4" width="1" height="262" fill="#D8D8D8"/>
+<rect x="4" y="268" width="300" height="1" fill="#D8D8D8"/>
+<rect width="300" height="1" transform="matrix(1 0 0 -1 4 2)" fill="#D8D8D8"/>
+<rect x="304" y="1" width="1" height="1" fill="#8B8B8B"/>
+<rect x="304" y="2" width="1" height="1" fill="#D8D8D8"/>
+<rect x="305" y="3" width="1" height="1" fill="#D8D8D8"/>
+<rect x="306" y="4" width="1" height="262" fill="#D8D8D8"/>
+<rect x="305" y="2" width="1" height="1" fill="#8B8B8B"/>
+<rect x="306" y="3" width="1" height="1" fill="#8B8B8B"/>
+<rect x="307" y="4" width="1" height="262" fill="#8B8B8B"/>
+<rect x="304" y="268" width="1" height="1" fill="#8B8B8B"/>
+<rect x="305" y="267" width="1" height="1" fill="#8B8B8B"/>
+<rect x="306" y="266" width="1" height="1" fill="#8B8B8B"/>
+<rect x="305" y="266" width="1" height="1" fill="#D8D8D8"/>
+<rect x="304" y="267" width="1" height="1" fill="#D8D8D8"/>
+</svg>
