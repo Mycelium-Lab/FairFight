@@ -53,6 +53,7 @@
         height: 16px;
         background-size: 16px 16px;
         margin-right: 5px;
+        margin-bottom: 2px;
     }
     .table__row .green::before{
         display: inline-block;
@@ -62,6 +63,7 @@
         height: 16px;
         background-size: 16px 16px;
         margin-right: 5px;
+        margin-bottom: 2px;
     }
     .table__row td:nth-child(3):before{
         display: inline-block;
@@ -71,6 +73,7 @@
         height: 16px;
         background-size: 16px 16px;
         margin-right: 5px;
+        margin-bottom: 2px;
     }
     .table__row td:nth-child(4):before{
         display: inline-block;
@@ -80,6 +83,7 @@
         height: 16px;
         background-size: 16px 16px;
         margin-right: 5px;
+        margin-bottom: 2px;
     }
     .table__row td:nth-child(5):before{
         display: inline-block;
@@ -89,6 +93,7 @@
         height: 16px;
         background-size: 16px 16px;
         text-align: center;
+        margin-bottom: 2px;
     }
 }
 
@@ -111,4 +116,27 @@
         margin-top: 14px;
         background-size: 100%;
     }*/
+    .table__row .red::before{
+     
+        margin-bottom: 0px;
+    }
+    .table__row .green::before{
+       
+        margin-bottom: 0px;
+    }
+    .table__row td:nth-child(3):before{
+       
+        margin-bottom: 0px;
+    }
+    .table__row td:nth-child(4):before{
+      
+        margin-bottom: 0px;
+    }
+    .table__row td:nth-child(5):before{
+       
+        margin-bottom: 0px;
+    }
+    .table__row td:first-child::before {
+        margin-bottom: 0px;
+    }
 }

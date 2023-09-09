@@ -9,7 +9,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Bronze"
+                "value": "Basic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -33,7 +33,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Silver"
+                "value": "Special"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -57,7 +57,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Gold"
+                "value": "Rare"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -81,7 +81,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Gold"
+                "value": "Rare"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -105,7 +105,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Platinum"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -129,7 +129,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Platinum"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",
@@ -153,7 +153,7 @@
             },
             {
                 "trait_type": "Class",
-                "value": "Platinum"
+                "value": "Epic"
             },
             {
                 "trait_type": "Speed Bonus",

@@ -103,7 +103,7 @@
         color: #967444;
     }
     #nventory-nftbox-body .item-detail__header_active {
-        padding-bottom: 13px;
+        padding-bottom: 13px !important;
     }
     .text-nftboxe__type{
         color: #393939;

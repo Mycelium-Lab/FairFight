@@ -294,6 +294,7 @@
         height: 22px;
         top: 10px;
         background-image: url('../../media/svg/close-pixel.svg');
+        right: 5px;
     }
     .modal__over-body{
         padding-top: 19px;

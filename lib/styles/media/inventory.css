@@ -3,7 +3,7 @@
         grid-template-rows: 1fr 1fr;
         grid-template-columns: none;
         overflow-y: auto;
-        height: 90%;
+        height: 92%;
         padding: 0px;
         margin-top: 0px;
     }
@@ -25,10 +25,13 @@
 
     .inventory__modal-content{
         width: 484px;
-        height: 340px;
-        top: 54px;
+        height: 100vh; /* Резервный вариант для браузеров, которые не поддерживают пользовательские свойства */
+        height: calc(var(--vh, 1vh) * 95);
+        /*top: 54px;*/
         padding-left: 30px;
         padding-right: 30px;
+        padding-bottom: 20px !important;
+        padding-top: 10px !important;
     }
     .inventory-modal__body .character-wrap__img-wrap{
         width: 303px !important;
@@ -47,6 +50,7 @@
    
     .list-wrap__item-list{
         grid-template-columns: repeat(5, 67.1px);
+        overflow: initial;
     }
     .inventory-wrap-corner_topright{
         width: 32px;
@@ -71,13 +75,12 @@
     .modal__header-title_inventory{
         background-image: url('../../media/svg/inventory-modal/inventory-modal-header-mobile.svg');
         margin: 0 auto;
-    }
-    .inventory-modal__nav-wrap .nav-wrap__nav label{
-        font-size: 12.99px !important;
+        width: 185px;
+        background-size: 100%;
     }
     .inventory-modal__nav-wrap .nav-wrap__nav{
-        justify-content: initial !important;
-        gap: 18px !important;
+        justify-content: space-between;
+       
     }
     .inventory__header-title{
         font-size: 21.85px;
@@ -174,10 +177,10 @@
 @media(max-width: 500px) {
     .inventory__modal-content{
         width: 372.56px;
-        height: 590px;
-        padding-bottom: 10px;
-        padding-top: 15px !important;
-        top: 54px;
+        height: 100vh; /* Резервный вариант для браузеров, которые не поддерживают пользовательские свойства */
+        height: calc(var(--vh, 1vh) * 90);
+        /*top: 54px;*/
+        padding-bottom: 0px !important;
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -275,7 +278,7 @@
     border-width: 1px;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav label{
-    font-size: 10px !important;
+    font-size: 9.7px !important;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav input:checked + label{
     border-width: 3px;

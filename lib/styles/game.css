@@ -342,28 +342,16 @@ input[type=number] {
     color: #ffff;
     font-size: 14px;
 }
-.stats-item{
-    background-image: url('../media/svg/game-stats-frame-desktop.svg');
-    background-repeat: no-repeat;
-    /*padding: 0px 4px 4px;*/
-    padding: 2px 10px;
-    background-size: 100%;
-    /*background-size: 100% 13px;*/
-    gap: 4px;
-    /*width: 100%;*/
-    /*height: 13px !important;*/
-}
+
 .stats-item img{
     width: 18px;
     height: 18px;
 }
 
 .stats-item__title{
-    background-image: url('../media/svg/game-stats-round-frame.svg') !important;
-    height: 100% !important;
-    background-size: 100%;
-    /* padding-bottom: 2px; */
-    gap: 0px;
+    background-image: url(../media/round-frame-desktop.svg);
+    width: 125px;
+    background-repeat: no-repeat;
 }
 .stats-item__enemy{
     background-image: url('../media/svg/game-stats-frame-enemy.svg');
@@ -411,33 +399,54 @@ input[type=number] {
 }*/
 .you-character, .enemy-character{
     display: flex;
-    background-image: url('../media/stats-frame.svg');
+    background-image: url('../media/stats-frame-desktop-142.svg');
     background-repeat: no-repeat;
-    width: 88px;
-    height: 50px;
+    width: 143px;
+    height: 81px;
 }
 .enemy-character{
-    background-image: url('../media/stats-frame-enemy.svg');
+    background-image: url('../media/stats-frame-enemy-desktop-142.svg');
     justify-content: end;
 }
 .you-stats-skin, .enemy-stats-skin{
     display: flex;
     align-items: center;
 }
+.you-stats-skin img, .enemy-stats-skin img{ 
+    width: 75px;
+}
+
+
+.you-stats-healf img, .enemy-stats-healf img{
+    width: 14px;
+}
+.you-stats-shoot img, .enemy-stats-shoot img{
+    width: 11px;
+}
+.you-stats-kills img, .enemy-stats-kills img {
+    width: 14px;
+}
+.you-stats-deaths img, .enemy-stats-deaths img{
+    width: 14px;
+}
+.you-deps img, .enemy-deps img{
+    width: 23px;
+}
 .you-stats-value, .enemy-stats-value{
     display: flex;
     flex-direction: column;
-    margin-left: 6px;
+    margin-left: 13px;
     margin-top: 3px;
 }
 .enemy-stats-value {
     margin-left: 0px;
-    margin-right: 5px;
+    margin-right: 12px;
+    /*margin-right: 5px;*/
     justify-content: space-evenly;
 }
 
 .you-stats-value span, .enemy-stats-value span{
-    height: 11px;
+    height: 18px;
     color: #393939;
 }
 
@@ -460,3 +469,15 @@ input[type=number] {
 .enemy-stats-skin img{
     transform: scaleX(-1)
 }
+
+#game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 120px;
+    padding: 0 50px 0 45px;
+    z-index: 12;
+    min-height: 120px;
+  position: relative;
+  }
