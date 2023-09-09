@@ -265,7 +265,7 @@ input[type=number] {
 .modal-content {
     display: block;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% сверху и по центру */
+    margin: 0 auto; /* 15% сверху и по центру */
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Может быть больше или меньше, в зависимости от размера экрана */
