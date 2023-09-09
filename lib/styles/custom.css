@@ -2922,6 +2922,15 @@ wrapper__nft-shop-modal .info__pricing button {
     cursor: pointer;
   }
 
+  #finishGame2{
+    margin-top: 0px;
+     padding-top: 5px;
+  }
+
+  #finishGame2:hover{
+    padding-top: 10px;
+  }
+
   .inventory-modal__nav-wrap .nav-wrap__nav label:hover {
     color: #FF7C06;
   }

@@ -401,6 +401,9 @@ top: 7px !important
 .close-button_finish-game{
 margin-top: 25px !important;
 }
+#finishGame2{
+  margin-top: 0px !important;
+  }
 #game-action{
 display: flex;
 justify-content: space-between;
