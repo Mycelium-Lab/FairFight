@@ -3520,6 +3520,9 @@ z-index: -1;
  width: 169px !important;
 }
 
+.wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-takeitoff"]:hover{
+  background-image: url('../media/svg/orange-btn-press.svg');
+}
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]:hover
 {
   background-image: url('../media/svg/orange-btn-press.svg');
