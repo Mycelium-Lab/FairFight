@@ -510,22 +510,22 @@ height: 55px;
 background-position: center 10px;
 }
 #nft-shop-btn::after, #menu-nft-shop-btn::after{
-background-position: center 10px;
+background-position: center 9px;
 }
 #inventory-btn::after, #menu-inventory-btn::after{
-background-position: center 10px;
+background-position: center 9px;
 }
 #mystery-btn::after, #menu-mystery-bt::after {
-background-position: center 10px;
+background-position: center 9px;
 }
 #lottery-btn::after, #menu-lottery-btn::after {
-background-position: center 10px;
+background-position: center 9px;
 }
 #tournaments-btn::after, #menu-tournaments-btn::after{
-background-position: center 10px;
+background-position: center 9px;
 }
 #balance-btn::after, #menu-balance-btn::after{
-background-position: center 10px;
+background-position: center 9px;
 }
 .menu-control{
 display: block;
@@ -537,10 +537,10 @@ position: relative;
 }
 
 #up-menu{
-bottom: 5px;
+transform: translate(4px, -5px);
 }
 #down-menu{
-top: 5px;
+transform: translate(4px, 4px);
 }
 .board {
 --bg-board: rgba(255, 249, 224, 1);
