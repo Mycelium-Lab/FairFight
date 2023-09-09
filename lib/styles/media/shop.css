@@ -51,8 +51,8 @@
         transform: translateX(60px);
     }
     .nft-shop-modal__btn-close{
-        margin-right: 19px !important;
-        top: 19px !important;
+        margin-right: 10px !important;
+        top: 10px !important;
         width: 16px !important;
         height: 16px !important;
     }
@@ -149,7 +149,7 @@
          width: 100% !important;
     }
     .nft-shop-modal__header-title{
-        transform: translateX(90px);
+        transform: translateX(80px);
     }
     .wrapper__nft-shop-modal{
         width: 400px !important;
@@ -229,9 +229,6 @@
     }
     .wrapper__nft-shop-modal{
         padding: 25px 6px 29px 6px !important;
-    }
-    .nft-shop-modal__header-title{
-        transform: translateX(60px);
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav label{
         font-size: 9.5px !important;
