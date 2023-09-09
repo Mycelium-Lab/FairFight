@@ -50,6 +50,13 @@
   grid-template-columns: 135px 1fr 170px;
   grid-template-rows: 160px 60px 1fr; 
 }
+
+#new-approve-modal .wrapper__message-modal{
+  height: 328px;
+}
+.message-modal__loader{
+  margin-top: 18px;
+}
 .wrapper_banners{
   flex-direction: column;
   grid-area: 1/3/4/4;
