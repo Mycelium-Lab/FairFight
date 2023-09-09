@@ -264,7 +264,7 @@
   bottom: 4px;
   font-size: 7.83px;
   right: 10px;
-  width: 70.29px;
+  width: 70px;
   background-size: 100% 100%;
 }
 .join-button:hover, .claim-button:hover{
@@ -333,11 +333,8 @@ font-size: 5.96px;
 background-size: 100% 100%;
 }
 .close-button_big:hover {
-padding-top: 6px;
-width: 101px;
-height: 30px;
-background-size: 100% 100%;
-bottom: 5px;
+  padding-top: 0px;
+  background-position: initial !important;
 }
 .wrapper__nft-shop-modal .list-items__item{
 margin-right: 20px;
@@ -607,10 +604,8 @@ text-align: center;
 background-position: center 12px;
 }
 .close-button_big:hover{
-background-position: initial;
-  transition: initial;
-  background-position: center 0px !important;
-  padding-top: 0px !important;
+
+  background-image: url('../../media/svg/big-frame-btn.svg') !important;
 }
 .dressing-value {
 font-size: 10.2px !important;
@@ -633,6 +628,7 @@ width: 12.78px !important;
 }
 .wrapper__item-modal-overlay .item-detail__header_active{
 padding-bottom: 0px !important;
+min-height: 116px;
 }
 .join-button:hover, .claim-button:hover {
   padding-top: 0px !important;
@@ -1117,10 +1113,7 @@ display: flex;
 align-items: center;
 bottom: 2px;
 }
-.join-button:hover, .claim-button:hover {
-background-position: center 2px !important;
-padding-top: 5px;
-}
+
 .withdraw-button{
 position: absolute;
 right: 20px;
