@@ -2439,23 +2439,23 @@ a {
   overflow: auto;
   height: 100%;
 }
-.wrapper__nft-shop-modal .list-items__item_bronze, .wrapper__nft-shop-modal .list-items__item_character{
-  background-image: url('../media/svg/shop/bronze-collection/frame.svg');
+.wrapper__nft-shop-modal .list-items__item_basic, .wrapper__nft-shop-modal .list-items__item_character{
+  background-image: url('../media/svg/shop/basic-collection/frame.svg');
   background-repeat: no-repeat;
   height: 174px;
 }
-.wrapper__nft-shop-modal .list-items__item_silver{
-  background-image: url('../media/svg/shop/silver-collection/frame.svg');
+.wrapper__nft-shop-modal .list-items__item_special{
+  background-image: url('../media/svg/shop/special-collection/frame.svg');
   background-repeat: no-repeat;
   height: 174px;
 }
-.wrapper__nft-shop-modal .list-items__item_gold{
-  background-image: url('../media/svg/shop/gold-collection/frame.svg');
+.wrapper__nft-shop-modal .list-items__item_rare{
+  background-image: url('../media/svg/shop/rare-collection/frame.svg');
   background-repeat: no-repeat;
   height: 174px;
 }
-.wrapper__nft-shop-modal .list-items__item_platinum{
-  background-image: url('../media/svg/shop/platinum-collection/frame.svg');
+.wrapper__nft-shop-modal .list-items__item_epic{
+  background-image: url('../media/svg/shop/epic-collection/frame.svg');
   background-repeat: no-repeat;
   height: 174px;
 }
@@ -2561,10 +2561,10 @@ a {
   display: block;
   position: absolute;
 }
-.wrapper__nft-shop-modal .list-items__item_bronze .left__img-wrap::before,
+.wrapper__nft-shop-modal .list-items__item_basic .left__img-wrap::before,
 .wrapper__nft-shop-modal .list-items__item_character .left__img-wrap::before{
   border-radius: 9px;
-  border: 5px solid #967444;
+  border: 9px solid #D8D8D8;
   width: 100%;
   height: 100%;
   content: '';
@@ -2573,9 +2573,9 @@ a {
   position: absolute;
 }
 
-.wrapper__nft-shop-modal .list-items__item_silver .left__img-wrap::before {
+.wrapper__nft-shop-modal .list-items__item_special .left__img-wrap::before {
   border-radius: 9px;
-  border: 5px solid #C6C6C6;
+  border: 9px solid #91EF7A;
   width: 100%;
   height: 100%;
   content: '';
@@ -2584,9 +2584,9 @@ a {
   position: absolute;
 }
 
-.wrapper__nft-shop-modal .list-items__item_platinum .left__img-wrap::before {
+.wrapper__nft-shop-modal .list-items__item_epic .left__img-wrap::before {
   border-radius: 9px;
-  border: 5px solid #C6C6C6;
+  border: 9px solid #CCA0FF;
   width: 100%;
   height: 100%;
   content: '';
@@ -2595,9 +2595,9 @@ a {
   position: absolute;
 }
 
-.wrapper__nft-shop-modal .list-items__item_gold .left__img-wrap::before {
+.wrapper__nft-shop-modal .list-items__item_rare .left__img-wrap::before {
   border-radius: 9px;
-  border: 5px solid #DA9100;
+  border: 9px solid #7BDFFF;
   width: 100%;
   height: 100%;
   content: '';
@@ -2605,6 +2605,20 @@ a {
   display: block;
   position: absolute;
 }
+
+.wrapper__nft-shop-modal .list-items__item_special .text__title, .wrapper__nft-shop-modal .list-items__item_special .text__type {
+  color: #24B500 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_rare .text__title, .wrapper__nft-shop-modal .list-items__item_rare .text__type {
+  color: #03B8F1 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_epic .text__title, .wrapper__nft-shop-modal .list-items__item_epic .text__type {
+  color: #7000F2 !important;
+}
+.wrapper__nft-shop-modal .list-items__item_legendary .text__title, .wrapper__nft-shop-modal .list-items__item_legendary .text__type {
+  color: #FF7C06 !important;
+}
+
 
 .wrapper__nft-shop-modal .left__img-wrap img {
   width: 100%;
@@ -2928,7 +2942,7 @@ wrapper__nft-shop-modal .info__pricing button {
   }
 
   #finishGame2:hover{
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   .inventory-modal__nav-wrap .nav-wrap__nav label:hover {
@@ -3219,25 +3233,26 @@ wrapper__nft-shop-modal .info__pricing button {
   border-width: 2px;
 }
 
-.inventory-item-body_bronze, .inventory-item-body_character{
+.inventory-item-body_basic, .inventory-item-body_character{
   background-image: url('../media/svg/inventory-modal/frame-bronze.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-.inventory-item-body_silver{
+.inventory-item-body_special{
   background-image: url('../media/svg/inventory-modal/frame-silver.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-.inventory-item-body_gold{
+.inventory-item-body_rare{
   background-image: url('../media/svg/inventory-modal/frame-gold.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-.inventory-item-body_platinum{
+
+.inventory-item-body_epic{
   background-image: url('../media/svg/inventory-modal/frame-platinum.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -3334,18 +3349,18 @@ position: absolute;
 z-index: -1;
 }
 
-.inventory-item-body_gold .header__img-item::before{
-  border: 5px solid #DA9100;
+.inventory-item-body_rare .header__img-item::before{
+  border: 5px solid #7BDFFF;
 }
-.inventory-item-body_platinum  .header__img-item::before{
-  border: 5px solid #C6C6C6;
+.inventory-item-body_epic  .header__img-item::before{
+  border: 5px solid #CCA0FF;
 }
-.inventory-item-body_bronze  .header__img-item::before, 
+.inventory-item-body_basic  .header__img-item::before, 
 .inventory-item-body_character  .header__img-item::before{
-  border: 5px solid #967444;
+  border: 5px solid #D8D8D8;
 }
-.inventory-item-body_silver .header__img-item::before{
-  border: 5px solid #C6C6C6;
+.inventory-item-body_special .header__img-item::before{
+  border: 5px solid #91EF7A;
 }
 .inventory-item-body_legendary .header__img-item::before{
   border: 5px solid #FF7C06;
@@ -3365,23 +3380,23 @@ z-index: -1;
   word-wrap: break-word;
 }
 
-.wrapper__item-modal-overlay .text-item__platinum ~ .text-item__type {
-  color: #393939;
+.wrapper__item-modal-overlay .text-item__epic ~ .text-item__type {
+  color: #7000F2;
 }
-.wrapper__item-modal-overlay .text-item__gold ~ .text-item__type {
-  color: #393939;
+.wrapper__item-modal-overlay .text-item__rare ~ .text-item__type {
+  color: #03B8F1;
 }
-.wrapper__item-modal-overlay .text-item__bronze ~ .text-item__type {
+.wrapper__item-modal-overlay .text-item__basic ~ .text-item__type {
   color: #393939;
 }
 .wrapper__item-modal-overlay .text-item__character ~ .text-item__type {
   color: #393939;
 }
-.wrapper__item-modal-overlay .text-item__silver ~ .text-item__type {
-  color: #393939;
+.wrapper__item-modal-overlay .text-item__special ~ .text-item__type {
+  color: #24B500;
 }
 .wrapper__item-modal-overlay .text-item__legendary ~ .text-item__type {
-  color: #393939;
+  color: #FF7C06;
 }
 
 
@@ -3396,7 +3411,7 @@ z-index: -1;
   display: none;
 }
 
-.text-item__bronze, .text-item__character{
+.text-item__basic, .text-item__character{
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3404,16 +3419,16 @@ z-index: -1;
   word-wrap: break-word;
   color: #393939;
 }
-.text-item__silver{
-  color: #393939;
+.text-item__special{
+  color: #24B500;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
   width: 93%;
   word-wrap: break-word;
 }
-.text-item__gold{
-  color: #393939;
+.text-item__rare{
+  color: #03B8F1;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3421,8 +3436,8 @@ z-index: -1;
   word-wrap: break-word;
 }
 
-.text-item__platinum{
-  color: #393939;
+.text-item__epic{
+  color: #7000F2;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3431,7 +3446,7 @@ z-index: -1;
 }
 
 .text-item__legendary{
-  color: #393939;
+  color: #FF7C06;
   font-weight: 500;
   font-size: 18px;
   line-height: 21.09px;
@@ -3716,48 +3731,48 @@ z-index: -1;
   width: 110px;
 }
 
-.tryon_collection-bronze, .tryon_collection-character {
-  background-image: url('../media/svg/shop/bronze-collection/try-on-btn.svg') !important;
+.tryon_collection-basic, .tryon_collection-character {
+  background-image: url('../media/svg/shop/basic-collection/try-on-btn.svg') !important;
 }
 
-.tryon_collection-silver {
-  background-image: url('../media/svg/shop/silver-collection/try-on-btn.svg') !important;
+.tryon_collection-special {
+  background-image: url('../media/svg/shop/special-collection/try-on-btn.svg') !important;
 }
-.tryon_collection-gold {
-  background-image: url('../media/svg/shop/gold-collection/try-on-btn.svg') !important;
+.tryon_collection-rare {
+  background-image: url('../media/svg/shop/rare-collection/try-on-btn.svg') !important;
 }
-.tryon_collection-platinum {
-  background-image: url('../media/svg/shop/platinum-collection/try-on-btn.svg') !important;
+.tryon_collection-epic {
+  background-image: url('../media/svg/shop/epic-collection/try-on-btn.svg') !important;
 }
 .tryon_collection-legendary {
   background-image: url('../media/svg/frame-btn.svg') !important;
 }
 
-.tryon_collection-bronze:hover,  .tryon_collection-character:hover {
+.tryon_collection-basic:hover,  .tryon_collection-character:hover {
   background-position: center 5px !important;
   transition: all 0.2s ease;
-  background-image: url('../media/svg/shop/bronze-collection/frame-btn-press.svg') !important;
+  background-image: url('../media/svg/shop/basic-collection/frame-btn-press.svg') !important;
   padding-top: 5px;
 }
 
-.tryon_collection-silver:hover {
+.tryon_collection-special:hover {
   background-position: center 5px !important;
   transition: all 0.2s ease;
-  background-image: url('../media/svg/shop/silver-collection/frame-btn-press.svg') !important;
+  background-image: url('../media/svg/shop/special-collection/frame-btn-press.svg') !important;
   padding-top: 5px;
 }
 
-.tryon_collection-gold:hover {
+.tryon_collection-rare:hover {
   background-position: center 5px !important;
   transition: all 0.2s ease;
-  background-image: url('../media/svg/shop/gold-collection/frame-btn-press.svg') !important;
+  background-image: url('../media/svg/shop/rare-collection/frame-btn-press.svg') !important;
   padding-top: 5px;
 }
 
-.tryon_collection-platinum:hover {
+.tryon_collection-epic:hover {
   background-position: center 5px !important;
   transition: all 0.2s ease;
-  background-image: url('../media/svg/shop/platinum-collection/frame-btn-press.svg') !important;
+  background-image: url('../media/svg/shop/epic-collection/frame-btn-press.svg') !important;
   padding-top: 5px;
 }
 
@@ -4026,7 +4041,7 @@ background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
 
 #nft-shop-boxes-list .list-items__item{
-  background-image: url('../media/svg/shop/bronze-collection/frame.svg');
+  background-image: url('../media/svg/shop/basic-collection/frame.svg');
   background-repeat: no-repeat;
   height: 174px;
 }

@@ -348,8 +348,8 @@ padding: 0px 13px;
 gap: 0px;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap{
-  margin-top: 5px !important;
-  margin-bottom: 0px !important;
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap button, 
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="inventory-item-modal-use"]{
@@ -386,6 +386,7 @@ grid-gap: 10px;
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
 gap: 15px 0px;
 margin-bottom: 0px;
+margin-left: 8px;
 }
 .canvasWrapper__footer {
 display: none !important;
@@ -429,6 +430,11 @@ background-image: url('../../media/svg/default-frame.svg');
 background-size: 100%;
 background-repeat: no-repeat;
 height: 270px;
+}
+
+.wrapper__item-modal-overlay #nventory-nftbox-body .item-detail__btns-wrap {
+  margin-top: 5px !important;
+  margin-bottom: 0px!important;
 }
 
 .wrapper__item-modal-overlay .text-item-nft__type{
