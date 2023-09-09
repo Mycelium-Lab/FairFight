@@ -1605,7 +1605,7 @@ a {
   background-image: url('../media/buttons/mystery.svg');
 }
 
-#mystery-btn::after, #menu-mystery-bt::after {
+#mystery-btn::after, #menu-mystery-btn::after {
   background-image: url('../media/buttons/border.svg');
   background-position: center 14px;
 }

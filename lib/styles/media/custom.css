@@ -106,6 +106,7 @@
   left: initial;
    transform: initial;
    margin: 0 auto;
+  z-index: initial;
 }
 .newgame__btn {
   display: none;
@@ -149,6 +150,7 @@
   padding-bottom: 17px;
   grid-area: 3/2/4/3;
   margin: 0 auto;
+  z-index: initial;
 }
 .container__left{
   position: relative;
@@ -216,6 +218,7 @@
   margin-bottom: 0px;
   width: 138px;
   margin-top: 10px;
+  z-index: initial;
 }
 .main-container{
   margin: 0px;
@@ -227,6 +230,7 @@
 }
 .wrapper_banners{
   margin-bottom: 0px;
+  z-index: initial;
 }
 .games__row{
   background-size: 100%;
@@ -515,7 +519,7 @@ background-position: center 9px;
 #inventory-btn::after, #menu-inventory-btn::after{
 background-position: center 9px;
 }
-#mystery-btn::after, #menu-mystery-bt::after {
+#mystery-btn::after, #menu-mystery-btn::after {
 background-position: center 9px;
 }
 #lottery-btn::after, #menu-lottery-btn::after {
@@ -811,6 +815,15 @@ border-radius: 0px;
 #header{
   padding: 0px 10px 0px 14px;
 }
+#up-menu{
+  display: none !important;
+  }
+  #down-menu{
+    display: none !important;
+  }
+  .wrapper__btns-wrap{
+    width: auto;
+  }
 .startBtn#disconnect{
   background: url('../../media/svg/connect-btn-mobile.svg') no-repeat center 0;
   width: 143px;
@@ -959,24 +972,52 @@ background-position: center 17px;
 }
 #menu-home-btn{
 background-image: url('../../media/buttons/home-mobile.svg');
+width: 132.4px;
 }
-/*#menu-nft-shop-btn{
+#home-btn::after, #menu-home-btn::after{
+  background-position: center 16px;
+}
+#menu-nft-shop-btn{
 background-image: url('../../media/buttons/nftshop-mobile.svg');
-}*/
+width: 132.4px;
+}
+#nft-shop-btn::after, #menu-nft-shop-btn::after{
+  background-position: center 16px;
+}
 #menu-inventory-btn{
 background-image: url('../../media/buttons/inventory-mobile.svg');
+width: 132.4px;
+}
+#inventory-btn::after, #menu-inventory-btn::after {
+  background-position: center 16px;
 }
 #menu-mystery-btn{
 background-image: url('../../media/buttons/mystery-mobile.svg');
+width: 132.4px;
+}
+#mystery-btn::after, #menu-mystery-btn::after {
+  background-position: center 16px;
 }
 #menu-lottery-btn{
 background-image: url('../../media/buttons/lottery-mobile.svg');
+width: 132.4px;
+}
+#lottery-btn::after, #menu-lottery-btn::after {
+  background-position: center 16px;
 }
 #menu-tournaments-btn{
 background-image: url('../../media/buttons/tournaments-mobile.svg');
+width: 132.4px;
+}
+#tournaments-btn::after, #menu-tournaments-btn::after {
+  background-position: center 16px;
 }
 #menu-balance-btn{
 background-image: url('../../media/buttons/balance-mobile.svg');
+width: 132.4px;
+}
+#balance-btn::after, #menu-balance-btn::after {
+  background-position: center 16px;
 }
 /*#menu-home-btn::after, #menu-nft-shop-btn::after, #menu-inventory-btn::after,
 #menu-mystery-btn::after, #menu-lottery-btn::after, #menu-tournaments-btn::after,
