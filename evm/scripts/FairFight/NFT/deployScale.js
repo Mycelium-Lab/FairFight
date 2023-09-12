@@ -2,12 +2,12 @@ const { ethers } = require("hardhat");
 
 async function main() {
     const decimals = 18
-    const collector = '0x6bC5db5C9C5CfedAf6adF8C938Ac72c9653Ff9f0'
+    const collector = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
     const charactersBaseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
     const armorsBaseURI = 'https://ipfs.io/ipfs/Qmd8U5jsHMqp4U4vVd5A4sb14WAsY6UWmHnpZef8G2jHv1/'
     const bootsBaseURI = 'https://ipfs.io/ipfs/Qmd7NkqYyuR3K2uP1Go3xHtuTomKV2aHBUa8mcncbUDNm3/'
     const weaponsBaseURI = 'https://ipfs.io/ipfs/QmSjXwvkd9jb46x4yJLHVQtBbthquJxEeeUaJuQpzMkGBs/'
-    const token = "0x6bC5db5C9C5CfedAf6adF8C938Ac72c9653Ff9f0"
+    const token = "0x6b59C68405B0216C2C8ba1EC1f8DCcBd47892c58"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
     const characters = await FFNFT.deploy("FairFightCharacters", "FFC", charactersBaseURI, ethers.constants.MaxUint256)
