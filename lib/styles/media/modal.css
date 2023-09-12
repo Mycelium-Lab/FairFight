@@ -509,6 +509,35 @@
     .back-nft-shop, .go-inventory{
         font-size: 14px !important;
     }
+    .modal_content_rotate{
+        border-radius: 0px !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 248.67px !important;
+        height: 207.64px !important;
+        padding: 23px 25px !important;
+        border-width: 2px !important;
+    }
+    .wrapper__message-modal-overlay_rotate{
+        background-color: #333;
+    }
+    #rotate_modal .board-edge_sm:nth-child(1) {
+        left: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(2) {
+        right: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(3) {
+        right: -6px;
+        bottom: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(4) {
+        left: -6px;
+        bottom: -6px;
+    }
 }
 
 /*@media(max-width: 420px) {

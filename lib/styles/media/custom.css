@@ -1228,6 +1228,11 @@ height: 475.15px !important;
 .close-button_big:hover{
   background-image: url(../../media/svg/big-frame-btn.svg) !important;
 }
+.rotate__content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }
 
 @media(max-width: 411px) {

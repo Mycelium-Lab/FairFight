@@ -204,6 +204,12 @@
     width: 90px;
     background-repeat: no-repeat;
 }
+.modal_waitin_enemy{
+    display: flex !important;
+}
+ .game-menu,  #canvas{
+        display: flex !important;
+    }
 }
 
 @media(max-width: 500px) {
@@ -220,5 +226,8 @@
     .stats-item__enemy-usdt {
         padding: 0 4px !important;
         width: 61px;
+    }
+    .game-menu, .modal_waiting_enemy, #canvas{
+        display: none !important;
     }
 }
