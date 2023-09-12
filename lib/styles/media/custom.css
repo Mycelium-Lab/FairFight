@@ -388,9 +388,11 @@ height: 48px;
 grid-gap: 10px;
 }
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
-gap: 15px 0px;
-margin-bottom: 0px;
-margin-left: 8px;
+  gap: 75px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  /* justify-content: space-around; */
+  width: 100%;
 }
 .canvasWrapper__footer {
 display: none !important;
@@ -662,6 +664,16 @@ min-height: 116px;
 
 #btn_modal_window_mobile{
 width: 165.16px;
+}
+.wrapper__nft-shop-modal .filters__item label p {
+  display: none;
+}
+
+.filter-name{
+  display: block;
+  font-size: 12px;
+  line-height: 14.32px;
+  color: rgba(57, 57, 57, 1);
 }
 }
 @media(max-width: 800px) {
