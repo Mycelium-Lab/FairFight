@@ -171,6 +171,7 @@
     background-repeat: no-repeat;
     width: 88px;
     height: 50px;
+    gap: 0px;
 }
 .enemy-character{
     background-image: url('../../media/stats-frame-enemy.svg');
@@ -195,15 +196,19 @@
 }
 .you-stats-value span, .enemy-stats-value span{
     height: 11px;
-}
-.you-stats-value, .enemy-stats-value{
-    margin-left: 6px;
+    gap: 2px;
 }
 .stats-item__title{
     background-image: url('../../media/round-frame.svg');
     width: 90px;
     background-repeat: no-repeat;
 }
+.modal_waitin_enemy{
+    display: flex !important;
+}
+ .game-menu,  #canvas{
+        display: flex !important;
+    }
 }
 
 @media(max-width: 500px) {
@@ -220,5 +225,8 @@
     .stats-item__enemy-usdt {
         padding: 0 4px !important;
         width: 61px;
+    }
+    .game-menu, .modal_waiting_enemy, #canvas{
+        display: none !important;
     }
 }

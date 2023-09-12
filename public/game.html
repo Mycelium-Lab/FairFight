@@ -86,7 +86,7 @@
 			<!-- <span id="internalWallet" class="canvasHeader" style="display: inherit;">Your wallet: </span> -->
 			
 	
-			<div class="middle-page">
+			<div id="md-page" class="middle-page">
 				<span id="internalBalance" class="internalBalance" style="display: none;font-weight: 400">0</span>
 				<!-- <div id="middle_your_stats">
 				<div style="text-align: center;">
@@ -129,7 +129,7 @@
 				Balance: <span id="internalBalance" class="internalBalance" style="font-weight: 400">0</span>
 			</div>
 		</div> -->
-				<div class="canvas-block">
+				<div id="canvas-parent" class="canvas-block">
 					<!-- <div>Click on screen to change size</div> -->
 					<div><canvas id="canvas" style="display: inherit;"></canvas></div>
 					<div id="top_stats" class="rounds-head">
@@ -142,19 +142,19 @@
 											<div class="you-stats-value">
 													<span class="you-stats-healf">
 														<img src="/media/red-healths.svg">
-														<span class="yourHealth">0</span>
+														<span class="you-stats-value-item yourHealth">0</span>
 													</span>
 													<span class="you-stats-shoot">
 														<img src="/media/bullet.svg">
-														<span class="ammunition">0</span>
+														<span class="you-stats-value-item ammunition">0</span>
 													</span>
 													<span class="you-stats-kills">
 														<img src="/media/kills.svg">
-														<span class="yourKills">0</span>
+														<span class="you-stats-value-item yourKills">0</span>
 													</span>
 													<span class="you-stats-deaths">
-														<img src="/media/deaths.svg">
-														<span class="yourDeaths">0</span>
+														<img class="you-stats-deaths_image" src="/media/deaths.svg">
+														<span class="you-stats-value-item yourDeaths">0</span>
 													</span>
 											</div>
 										</div>
@@ -354,7 +354,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="wainting_modal" class="modal wrapper__message-modal-overlay">
+			<div id="wainting_modal" class="modal_waiting_enemy modal wrapper__message-modal-overlay">
 				<div style="height: 290px;" class="board modal_content_waiting  wrapper__message-modal modal_content">
 						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
@@ -418,6 +418,18 @@
 						Collect tubes to recharge weapon<br />
 						Be careful of lava burns!<br />-->
 						<img src="/media/control-keys-info.png">
+					</div>
+				</div>
+			</div>
+			<div id="rotate_modal" class="modal wrapper__message-modal-overlay_rotate wrapper__message-modal-overlay">
+				<div class="board modal_content_rotate wrapper__message-modal modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button id="rotate_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+					<div class="rotate__content">
+						<img src="/media/svg/rotate-preview.svg">
 					</div>
 				</div>
 			</div>
