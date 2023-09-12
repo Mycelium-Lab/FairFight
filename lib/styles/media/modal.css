@@ -338,6 +338,16 @@
         width: 16px;
         height: 16px;
     }
+    .modal_content_rotate{
+        border-radius: 0px !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 248.67px !important;
+        height: 207.64px !important;
+        padding: 23px 25px !important;
+        border-width: 2px !important;
+    }
 }
 
 @media(max-width: 500px) {
@@ -508,16 +518,6 @@
     }
     .back-nft-shop, .go-inventory{
         font-size: 14px !important;
-    }
-    .modal_content_rotate{
-        border-radius: 0px !important;
-        flex-direction: row !important;
-        justify-content: center;
-        align-items: center;
-        width: 248.67px !important;
-        height: 207.64px !important;
-        padding: 23px 25px !important;
-        border-width: 2px !important;
     }
     .wrapper__message-modal-overlay_rotate{
         background-color: #333;
