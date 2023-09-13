@@ -3096,6 +3096,16 @@ wrapper__nft-shop-modal .info__pricing button {
     z-index: 1;
   }
 
+  .props-item__prop_nft-weapons{
+    width: 22.42px !important;
+    height: 18.97px !important;
+  }
+
+  .props-item__prop_nft-boots{
+    width: 25.87px !important;
+    height: 17.64px !important;
+  };
+
   /*.wrapper__inventory-modal .character-wrap__img-wrap {
     border: 3px solid #FF7C06;
     padding: 27px 32px;
@@ -3607,7 +3617,8 @@ z-index: -1;
 }
 
 .wrapper__item-modal-overlay .props-item__prop {
-  display: inline-block;
+  display: inline-flex;
+  gap: 5px;
 }
 
 .wrapper__item-modal-overlay .prop__img-wrap img {
@@ -4117,9 +4128,10 @@ margin-right: 60px;
   transform: translateY(-4px);
 }
 #nft-shop-boxes-list  .right__props-wrap_first .props-wrap__prop-item:nth-child(2)::before{
-  background-image: url('../media/svg/shop/armor-icon.png');
-  width: 30px;
-  height: 15px;
+  background-image: url('../media/svg/shop/armor-icon-1.png');
+  width: 25.86px;
+  height: 15.93px;
+  background-size: 100%;
   transform: translateY(-2px);
 }
 #nft-shop-boxes-list  .right__props-wrap_last .props-wrap__prop-item:nth-child(1)::before{
@@ -4128,9 +4140,10 @@ margin-right: 60px;
 }
 #nft-shop-boxes-list  .right__props-wrap_last .props-wrap__prop-item:nth-child(2)::before{
   background-image: url('../media/svg/shop/boots-icon.png');
-  width: 30px;
-  height: 21px;
+  width: 25.87px;
+  height: 17.64px;
   transform: translateY(-4px);
+  background-size: 100%;
 }
 
 .buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory, 
