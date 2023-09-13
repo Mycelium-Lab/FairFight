@@ -1261,6 +1261,10 @@ height: 475.15px !important;
 .sort-wrapper {
   margin-left: 4px;
 }
+.lds-dual-ring:after{
+  width: 30px;
+  height: 30px;
+}
 }
 
 @media(max-width: 411px) {
