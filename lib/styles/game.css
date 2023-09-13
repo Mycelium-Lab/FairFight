@@ -374,6 +374,23 @@ input[type=number] {
     display: none;
 }
 
+#you-stats-skin, #enemy-stats-skin {
+    width: 952px;
+    height: 152px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 80px;
+    background-size: 1322px 1052px;
+}
+#enemy-stats-skin{
+    left: 35px;
+}
+#you-stats-skin{
+    right: 35px;
+}
+
 #modal__body_confirm_finish p {
     text-align: center;
 }
@@ -409,13 +426,10 @@ input[type=number] {
     background-image: url('../media/stats-frame-enemy-desktop-153.svg');
     /*justify-content: end;*/
 }
-.you-stats-skin, .enemy-stats-skin{
-    display: flex;
-    align-items: center;
-}
-.you-stats-skin img, .enemy-stats-skin img{ 
+
+/*.you-stats-skin img, .enemy-stats-skin img{ 
     width: 75px;
-}
+}*/
 
 
 .you-stats-healf img, .enemy-stats-healf img{
@@ -438,10 +452,17 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+     position: relative;
+}
+.you-stats-value{
+    right: 20px;
+    bottom: 1px
 }
 .enemy-stats-value {
     margin-left: 0px;
     justify-content: center;
+    left: 20px;
+    bottom: 1px;
 }
 
 .you-stats-value span, .enemy-stats-value span{
@@ -467,7 +488,7 @@ input[type=number] {
 .enemy-stats-kills{
     gap: 3.8px;  
 }
-.enemy-stats-skin img{
+#enemy-stats-skin{
     transform: scaleX(-1)
 }
 

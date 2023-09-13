@@ -244,6 +244,27 @@
  .game-menu,  #canvas{
         display: flex !important;
     }
+    #you-stats-skin, #enemy-stats-skin {
+        width: 952px;
+        height: 152px;
+        bottom: 65px;
+        background-size: 732px 752px;
+    }
+    #enemy-stats-skin{
+        left: 20px;
+    }
+    #you-stats-skin{
+        right: 20px;
+    }
+    .you-stats-value{
+        right: 10px;
+    }
+    .enemy-stats-value{
+        left: 10px;
+    }
+    .you-stats-shoot{
+        gap: 4.8px !important;
+    }
 }
 
 @media(max-width: 500px) {
