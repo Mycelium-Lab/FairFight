@@ -205,14 +205,17 @@
 						</div>
 					</div>
 					<div class="game-menu">
-						<button id="openMap-btn" class="game-menu__button">
-							<img src="/media/open-map.svg"/>
-						</button>
 						<button id="pause-btn" class="game-menu__button">
-							<img src="/media/pause-game.svg"/>
+							<img src="/media/svg/game-menu.svg"/>
 						</button>
-						<button class="game-menu__button" id="fullscreen-btn">
-							<img src="/media/fullscreen.svg"/>
+						<button id="openMap-btn" class="game-menu__button">
+							<img src="/media/svg/open-map.svg"/>
+						</button>
+						<button class="game-menu__button" id="open-fullscreen-btn">
+							<img src="/media/svg/open-fullscreen.svg"/>
+						</button>
+							<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
+							<img src="/media/svg/close-fullscreen.svg"/>
 						</button>
 					</div>
 					<div id="pause_modal" class="modal" style="display: none;">
@@ -222,10 +225,26 @@
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<button id="close_pause_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title_pause modal__title">Pause</div>
+							<div class="modal__title_pause modal__title">Menu</div>
+							<!--<div class="modal__pause-body">
+							</div>-->
+							<button id="open_control_keys" class="close-button">control keys info</button>
+							<button id="confirm_finish" class="close-button">finish the game</button>
+							</div>
+						</div>
+					</div>
+					<div id="control_keys_mobile_modal" class="modal" style="display: none;">
+						<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<button id="close_control_keys_mobile_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+							<div class="modal__title_pause modal__title">Menu</div>
 							<div class="modal__pause-body">
 							</div>
-							<button id="confirm_finish" class="close-button">finish the game</button>
+							<!--<button id="confirm_finish" class="close-button">finish the game</button>-->
+							<button id="back_menu" class="close-button">back to menu</button>
 							</div>
 						</div>
 					</div>
@@ -236,12 +255,17 @@
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<button id="close_confirm_finish" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title-confirm_finish modal__title">finish the game</div>
+							<div class="modal__title_pause modal__title">Menu</div>
+							<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
 							<div id="modal__body_confirm_finish" class="modal__body">
-								<p>Are you sure that you want to complete the game?</p>
-								<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+								<p class="text_confirm_finish">you want to leave the game?</p>
+								<!--<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>-->
 							</div>
-							<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>
+							<div class="finish-btns">
+								<button id="finishGame3" class="close-button">yes</button>
+								<button id="no_btn" class="close-button">no</button>
+							</div>
+							<!--<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>-->
 							</div>
 						</div>
 					</div>
@@ -271,6 +295,22 @@
 						</svg>
 	
 					</button>
+				</div>
+			</div>
+			<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
+				<div class="board modal_content_confirm_finish modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button id="close_confirm_finish_desktop" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+					<div class="modal__title-confirm_finish modal__title">finish the game</div>
+					<div id="modal__body_confirm_finish" class="modal__body">
+						<p>Are you sure that you want to complete the game?</p>
+						<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+					</div>
+					<button id="finishGame4"class='confirm_finish-game close-button'>confirm</button>
+					</div>
 				</div>
 			</div>
 			<div id="over_modal" class="modal">

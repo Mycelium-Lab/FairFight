@@ -307,8 +307,8 @@
         width: 340px !important;
       }
       .modal_content_pause{
-        width: 369px !important;
-        height: 291px !important;
+        width: 310px !important;
+        height: 183px !important;
         padding: 10px 20px !important;
       }
       .modal__title_pause{
@@ -317,7 +317,7 @@
       .modal_content_confirm_finish{
         width: 335px !important;
         height: 193.27px !important;
-        padding: 20px 5px !important;
+        padding: 10px 5px !important;
       }
       .modal__title-confirm_finish{
         font-size: 18px !important;
@@ -449,12 +449,7 @@
         padding-bottom: 0px;
         width: 72vw;
     }
-    .message-modal__btn-close{
-        top: 10px;
-        right: 10px;
-        width: 16px;
-        height: 16px;
-    }
+
     .menu__box{
         width: 50vw;
         height: 490px;

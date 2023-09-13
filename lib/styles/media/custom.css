@@ -395,6 +395,13 @@ grid-gap: 10px;
   width: 100%;
 }
 
+#character {
+  width: 152px;
+  height: 152px;
+  background-image: url('../main_someaddress_somechain.png');
+  background-repeat: no-repeat;
+}
+
 .canvasWrapper__footer {
 display: none !important;
 }
@@ -405,6 +412,12 @@ max-width: 381px !important;
 }
 .modal .modal_content_finish .message-modal__btn-close {
 top: 7px !important
+}
+.message-modal__btn-close{
+  top: 10px !important;
+  right: 10px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 .close-button_finish-game{
 margin-top: 25px !important;
