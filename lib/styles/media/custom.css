@@ -422,6 +422,7 @@ top: 7px !important
   right: 10px !important;
   width: 16px !important;
   height: 16px !important;
+  padding: 0px !important;
 }
 .close-button_finish-game{
 margin-top: 25px !important;
