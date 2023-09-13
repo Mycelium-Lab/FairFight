@@ -395,10 +395,14 @@ grid-gap: 10px;
   width: 100%;
 }
 
+.wrapper__link_game{
+  display: none !important;
+}
+
 #character {
   width: 152px;
   height: 152px;
-  background-image: url('../main_someaddress_somechain.png');
+  background-image: url('.');
   background-repeat: no-repeat;
 }
 

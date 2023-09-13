@@ -100,6 +100,7 @@ a {
   align-items: center;
   z-index: 10;
   gap: 10px;
+  cursor: pointer;
 }
 
 .wrapper__link::before {
@@ -120,6 +121,12 @@ a {
   top: 35px;
   text-decoration: underline;
   z-index: 11;
+}
+
+.wrapper__link_game{
+  position: static;
+  margin: 0 20px 20px;
+  justify-content: end;
 }
 
 .link-first::before {
@@ -673,10 +680,8 @@ a {
   padding: 0px 20px;
   font-size: 18px;
   font-weight: 500;
-  max-width: 1020px;
-  margin: 0px auto;
   position: relative;
-  top: 0;
+  top: 10px;
   justify-content: space-between;
   transform: translateY(-100vh);
 }
@@ -1265,7 +1270,7 @@ a {
     justify-content: space-around;
     height: 60px;
     position: absolute;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     z-index: 1000;
     bottom: 0px;
 }

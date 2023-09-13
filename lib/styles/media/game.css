@@ -105,7 +105,7 @@
 .game-menu{
     display: flex !important;
     position: absolute;
-    top: 83px;
+    top: 93px;
     right: 12.9px;
     flex-direction: column;
     gap: 15px;
