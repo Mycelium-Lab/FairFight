@@ -2273,11 +2273,18 @@ a {
       display: flex;
       align-items: center;
       width: 100%;
-      gap: 210px;
-      margin-left: 30px;
+      gap: 230px;
+      margin-left: 35px;
 }
-
-.filter-name {
+#ascending-price-svg, #descending-price-svg{
+  cursor: pointer;
+}
+.sort-name, .filter-name{
+  display: block;
+  font-size: 16px;
+  color: rgba(57, 57, 57, 1);
+}
+.filter-name{
   display: none;
 }
 
@@ -2398,10 +2405,6 @@ a {
   background-size: 100% 100%;
 }
 
-
-.filter-name{
-  display: none;
-}
 
 
 .wrapper__nft-shop-modal .filters__item input:checked + label .checkbox::before {
