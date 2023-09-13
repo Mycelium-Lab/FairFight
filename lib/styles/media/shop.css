@@ -118,7 +118,7 @@
         padding-right: 0px !important;
         height: calc(100% - 120px) !important;
     }
-    .list-items-wrap__list-items{
+    .simplebar-content{
         width: 100% !important;
        /* display: flex !important; */
        /* gap: 5px 0px !important; */

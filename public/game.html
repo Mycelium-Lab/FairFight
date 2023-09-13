@@ -54,17 +54,6 @@
 	<script src="/custom.js"></script>
 	<!-- <script src="/modules/statsVisible.js"></script> -->
 </head>
-<header id="game-header">
-	<a href="/" class="logo">
-		<img src="/media/svg/logofair-white.svg" alt="">
-	</a>
-	<button class="startBtn" id="disconnect" style="display:none"></button>
-	<button class="startBtn" id="connect" style="display:none">Connect Wallet</button>
-	<a id="about-show" class="wrapper__link link-first">
-		<img class="help__img" src="/media/svg/help.svg" alt="">
-		About the game
-	</a>
-</header>
 <div id="wrapper">
 	<!-- <img src="/media/monetki.png" alt="" class="wrapper__monetki"> -->
 	<div class="wrapper__gradient"></div>
@@ -136,8 +125,8 @@
 
 									<div class="you-stats">
 										<div class="you-character">
-											<div class="you-stats-skin">
-												<img src="/media/stats-character.svg">
+											<div id="you-stats-skin">
+												<!--<img src="/media/stats-character.svg">-->
 											</div>
 											<div class="you-stats-value">
 													<span class="you-stats-healf">
@@ -160,7 +149,8 @@
 										</div>
 										<div class="you-deps">
 											<img src="/media/svg/past-game/dep.svg">
-											<span id="yourDep">0 USD</span>
+											<span class="yourDep" style="font-weight: 400">0</span>
+											<span>USDT</span>
 										</div>
 									</div>
 								
@@ -183,13 +173,14 @@
 												<img src="/media/deaths.svg">
 											</span>
 									</div>
-									<div class="enemy-stats-skin">
-										<img src="/media/stats-character.svg">
+									<div id="enemy-stats-skin">
+										<!--<img src="/media/stats-character.svg">-->
 									</div>
 								</div>
-								<div class="you-deps">
+								<div class="enemy-deps">
 									<img src="/media/svg/past-game/dep.svg">
-									<span id="enemyDep">0 USD</span>
+									<span class="enemyDep" style="font-weight: 400">0</span>
+									<span>USDT</span>
 								</div>
 							</div>
 							
@@ -205,14 +196,17 @@
 						</div>
 					</div>
 					<div class="game-menu">
-						<button id="openMap-btn" class="game-menu__button">
-							<img src="/media/open-map.svg"/>
-						</button>
 						<button id="pause-btn" class="game-menu__button">
-							<img src="/media/pause-game.svg"/>
+							<img src="/media/svg/game-menu.svg"/>
 						</button>
-						<button class="game-menu__button" id="fullscreen-btn">
-							<img src="/media/fullscreen.svg"/>
+						<button id="openMap-btn" class="game-menu__button">
+							<img src="/media/svg/open-map.svg"/>
+						</button>
+						<button class="game-menu__button" id="open-fullscreen-btn">
+							<img src="/media/svg/open-fullscreen.svg"/>
+						</button>
+							<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
+							<img src="/media/svg/close-fullscreen.svg"/>
 						</button>
 					</div>
 					<div id="pause_modal" class="modal" style="display: none;">
@@ -222,10 +216,26 @@
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<button id="close_pause_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title_pause modal__title">Pause</div>
+							<div class="modal__title_pause modal__title">Menu</div>
+							<!--<div class="modal__pause-body">
+							</div>-->
+							<button id="open_control_keys" class="close-button">control keys info</button>
+							<button id="confirm_finish" class="close-button">finish the game</button>
+							</div>
+						</div>
+					</div>
+					<div id="control_keys_mobile_modal" class="modal" style="display: none;">
+						<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<button id="close_control_keys_mobile_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+							<div class="modal__title_pause modal__title">Menu</div>
 							<div class="modal__pause-body">
 							</div>
-							<button id="confirm_finish" class="close-button">finish the game</button>
+							<!--<button id="confirm_finish" class="close-button">finish the game</button>-->
+							<button id="back_menu" class="close-button">back to menu</button>
 							</div>
 						</div>
 					</div>
@@ -236,41 +246,65 @@
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<button id="close_confirm_finish" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title-confirm_finish modal__title">finish the game</div>
+							<div class="modal__title_pause modal__title">Menu</div>
+							<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
 							<div id="modal__body_confirm_finish" class="modal__body">
-								<p>Are you sure that you want to complete the game?</p>
-								<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+								<p class="text_confirm_finish">you want to leave the game?</p>
+								<!--<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>-->
 							</div>
-							<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>
+							<div class="finish-btns">
+								<button id="finishGame3" class="close-button">yes</button>
+								<button id="no_btn" class="close-button">no</button>
+							</div>
+							<!--<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>-->
 							</div>
 						</div>
 					</div>
+					<div style="display: flex;" class="canvasWrapper__footer">
+						<button id="controls-show">
+							Control keys info
+							<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M29.9328 16.75H29.9203L27.8828 6.1875C27.8828 6.175 27.8828 6.175 27.8703 6.1625C27.5571 4.43434 26.6473 2.8709 25.2996 1.74474C23.9518 0.618578 22.2516 0.00111849 20.4953 0L9.49528 0.0374999C7.73075 0.0347841 6.02196 0.655333 4.67036 1.78967C3.31875 2.92401 2.41119 4.49925 2.10778 6.2375V6.2625L0.0702768 16.7375C-0.0339675 17.3196 -0.0221377 17.9165 0.105086 18.494C0.23231 19.0715 0.472419 19.6182 0.811611 20.1026C1.1508 20.587 1.58239 20.9995 2.08156 21.3166C2.58073 21.6336 3.13764 21.8489 3.72028 21.95C3.97553 22.0003 4.23511 22.0254 4.49528 22.025C5.6888 22.0225 6.83354 21.5511 7.68278 20.7125L7.73278 20.65L12.8203 15.025L17.1828 15L22.2578 20.6625L22.3203 20.725C23.1634 21.5652 24.305 22.0371 25.4953 22.0375C25.7596 22.0373 26.0232 22.0122 26.2828 21.9625C27.4564 21.7521 28.4991 21.0858 29.183 20.1091C29.8669 19.1325 30.1364 17.9248 29.9328 16.75ZM11.9953 8.5375H10.9953V9.5375C10.9953 9.80272 10.8899 10.0571 10.7024 10.2446C10.5148 10.4321 10.2605 10.5375 9.99528 10.5375C9.73006 10.5375 9.47571 10.4321 9.28817 10.2446C9.10063 10.0571 8.99528 9.80272 8.99528 9.5375V8.5375H7.99528C7.73006 8.5375 7.47571 8.43214 7.28817 8.24461C7.10063 8.05707 6.99528 7.80272 6.99528 7.5375C6.99528 7.27228 7.10063 7.01793 7.28817 6.83039C7.47571 6.64286 7.73006 6.5375 7.99528 6.5375H8.99528V5.5375C8.99528 5.27228 9.10063 5.01793 9.28817 4.83039C9.47571 4.64286 9.73006 4.5375 9.99528 4.5375C10.2605 4.5375 10.5148 4.64286 10.7024 4.83039C10.8899 5.01793 10.9953 5.27228 10.9953 5.5375V6.5375H11.9953C12.2605 6.5375 12.5148 6.64286 12.7024 6.83039C12.8899 7.01793 12.9953 7.27228 12.9953 7.5375C12.9953 7.80272 12.8899 8.05707 12.7024 8.24461C12.5148 8.43214 12.2605 8.5375 11.9953 8.5375ZM16.9953 7.5375C16.9953 7.27228 17.1006 7.01793 17.2882 6.83039C17.4757 6.64286 17.7301 6.5375 17.9953 6.5375H21.9953C22.2605 6.5375 22.5148 6.64286 22.7024 6.83039C22.8899 7.01793 22.9953 7.27228 22.9953 7.5375C22.9953 7.80272 22.8899 8.05707 22.7024 8.24461C22.5148 8.43214 22.2605 8.5375 21.9953 8.5375H17.9953C17.7301 8.5375 17.4757 8.43214 17.2882 8.24461C17.1006 8.05707 16.9953 7.80272 16.9953 7.5375ZM25.9328 20C25.5408 20.0688 25.138 20.0435 24.7577 19.9261C24.3774 19.8088 24.0304 19.6027 23.7453 19.325L19.8578 15.0125H20.4953C21.771 15.0137 23.026 14.6895 24.1415 14.0705C25.2571 13.4515 26.1963 12.5582 26.8703 11.475L27.9578 17.125C28.0668 17.7743 27.9153 18.4404 27.5362 18.9787C27.1571 19.517 26.5809 19.884 25.9328 20Z"
+									fill="white" />
+							</svg>
+						</button>
+						<button id="confirm_finish_desktop" class="close-button">finish</button>
+						<button id="full-screen">
+							Enter full screen
+							<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M22 1V6C22.0006 6.19743 21.9428 6.39062 21.8338 6.55523C21.7248 6.71984 21.5695 6.8485 21.3875 6.925C21.2642 6.97399 21.1327 6.99943 21 7C20.7345 6.99888 20.4795 6.89599 20.2875 6.7125L18.5 4.91251L14.7125 8.7125C14.5214 8.89732 14.2659 9.00064 14 9.00064C13.7341 9.00064 13.4786 8.89732 13.2875 8.7125C13.0997 8.52291 12.9944 8.26685 12.9944 8C12.9944 7.73316 13.0997 7.4771 13.2875 7.28751L17.0875 3.50001L15.2875 1.7125C15.1518 1.56792 15.0599 1.38788 15.0223 1.19321C14.9847 0.99855 15.003 0.797216 15.075 0.612505C15.1515 0.430504 15.2802 0.275219 15.4448 0.16622C15.6094 0.0572219 15.8026 -0.000612701 16 4.89514e-06H21C21.2652 4.89514e-06 21.5196 0.105362 21.7071 0.292898C21.8946 0.480435 22 0.734788 22 1ZM7.28751 13.2875L3.50001 17.0875L1.7125 15.2875C1.56792 15.1518 1.38788 15.0599 1.19321 15.0223C0.99855 14.9847 0.797216 15.003 0.612505 15.075C0.430504 15.1515 0.275219 15.2802 0.16622 15.4448C0.0572219 15.6094 -0.000612701 15.8026 4.89514e-06 16V21C4.89514e-06 21.2652 0.105362 21.5196 0.292898 21.7071C0.480435 21.8946 0.734788 22 1 22H6C6.19743 22.0006 6.39062 21.9428 6.55523 21.8338C6.71984 21.7248 6.8485 21.5695 6.925 21.3875C6.99705 21.2028 7.01533 21.0015 6.97772 20.8068C6.94012 20.6121 6.84816 20.4321 6.7125 20.2875L4.91251 18.5L8.7125 14.7125C8.87197 14.5182 8.95346 14.2715 8.94113 14.0205C8.9288 13.7694 8.82353 13.5319 8.64579 13.3542C8.46806 13.1765 8.23057 13.0712 7.97952 13.0589C7.72846 13.0465 7.4818 13.128 7.28751 13.2875ZM21.3875 15.075C21.2028 15.003 21.0015 14.9847 20.8068 15.0223C20.6121 15.0599 20.4321 15.1518 20.2875 15.2875L18.5 17.0875L14.7125 13.2875C14.5182 13.128 14.2715 13.0465 14.0205 13.0589C13.7694 13.0712 13.5319 13.1765 13.3542 13.3542C13.1765 13.5319 13.0712 13.7694 13.0589 14.0205C13.0465 14.2715 13.128 14.5182 13.2875 14.7125L17.0875 18.5L15.2875 20.2875C15.1518 20.4321 15.0599 20.6121 15.0223 20.8068C14.9847 21.0015 15.003 21.2028 15.075 21.3875C15.1515 21.5695 15.2802 21.7248 15.4448 21.8338C15.6094 21.9428 15.8026 22.0006 16 22H21C21.2652 22 21.5196 21.8946 21.7071 21.7071C21.8946 21.5196 22 21.2652 22 21V16C22.0006 15.8026 21.9428 15.6094 21.8338 15.4448C21.7248 15.2802 21.5695 15.1515 21.3875 15.075ZM4.91251 3.50001L6.7125 1.7125C6.84816 1.56792 6.94012 1.38788 6.97772 1.19321C7.01533 0.99855 6.99705 0.797216 6.925 0.612505C6.8485 0.430504 6.71984 0.275219 6.55523 0.16622C6.39062 0.0572219 6.19743 -0.000612701 6 4.89514e-06H1C0.734788 4.89514e-06 0.480435 0.105362 0.292898 0.292898C0.105362 0.480435 4.89514e-06 0.734788 4.89514e-06 1V6C-0.000612701 6.19743 0.0572219 6.39062 0.16622 6.55523C0.275219 6.71984 0.430504 6.8485 0.612505 6.925C0.735854 6.97399 0.867288 6.99943 1 7C1.26555 6.99888 1.52055 6.89599 1.7125 6.7125L3.50001 4.91251L7.28751 8.7125C7.47865 8.89732 7.73412 9.00064 8 9.00064C8.26589 9.00064 8.52136 8.89732 8.7125 8.7125C8.90029 8.52291 9.00563 8.26685 9.00563 8C9.00563 7.73316 8.90029 7.4771 8.7125 7.28751L4.91251 3.50001Z"
+									fill="white" />
+							</svg>
+		
+						</button>
+					</div>
+						<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
+							<img class="help__img" src="/media/svg/help.svg" alt="">
+							About the game
+						</a>
 				</div>
 				<div class="buttons">
 					<button style="display: none;" id="left-btn">LEFT</button>
 					<button style="display: none;" id="right-btn">RIGHT</button>
 				</div>
 				<span id="enemyBalance" class="enemyBalance"  style="display:none; font-weight: 400">0</span>
-				
-				<div style="display: flex;" class="canvasWrapper__footer">
-					<button id="controls-show">
-						Control keys info
-						<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M29.9328 16.75H29.9203L27.8828 6.1875C27.8828 6.175 27.8828 6.175 27.8703 6.1625C27.5571 4.43434 26.6473 2.8709 25.2996 1.74474C23.9518 0.618578 22.2516 0.00111849 20.4953 0L9.49528 0.0374999C7.73075 0.0347841 6.02196 0.655333 4.67036 1.78967C3.31875 2.92401 2.41119 4.49925 2.10778 6.2375V6.2625L0.0702768 16.7375C-0.0339675 17.3196 -0.0221377 17.9165 0.105086 18.494C0.23231 19.0715 0.472419 19.6182 0.811611 20.1026C1.1508 20.587 1.58239 20.9995 2.08156 21.3166C2.58073 21.6336 3.13764 21.8489 3.72028 21.95C3.97553 22.0003 4.23511 22.0254 4.49528 22.025C5.6888 22.0225 6.83354 21.5511 7.68278 20.7125L7.73278 20.65L12.8203 15.025L17.1828 15L22.2578 20.6625L22.3203 20.725C23.1634 21.5652 24.305 22.0371 25.4953 22.0375C25.7596 22.0373 26.0232 22.0122 26.2828 21.9625C27.4564 21.7521 28.4991 21.0858 29.183 20.1091C29.8669 19.1325 30.1364 17.9248 29.9328 16.75ZM11.9953 8.5375H10.9953V9.5375C10.9953 9.80272 10.8899 10.0571 10.7024 10.2446C10.5148 10.4321 10.2605 10.5375 9.99528 10.5375C9.73006 10.5375 9.47571 10.4321 9.28817 10.2446C9.10063 10.0571 8.99528 9.80272 8.99528 9.5375V8.5375H7.99528C7.73006 8.5375 7.47571 8.43214 7.28817 8.24461C7.10063 8.05707 6.99528 7.80272 6.99528 7.5375C6.99528 7.27228 7.10063 7.01793 7.28817 6.83039C7.47571 6.64286 7.73006 6.5375 7.99528 6.5375H8.99528V5.5375C8.99528 5.27228 9.10063 5.01793 9.28817 4.83039C9.47571 4.64286 9.73006 4.5375 9.99528 4.5375C10.2605 4.5375 10.5148 4.64286 10.7024 4.83039C10.8899 5.01793 10.9953 5.27228 10.9953 5.5375V6.5375H11.9953C12.2605 6.5375 12.5148 6.64286 12.7024 6.83039C12.8899 7.01793 12.9953 7.27228 12.9953 7.5375C12.9953 7.80272 12.8899 8.05707 12.7024 8.24461C12.5148 8.43214 12.2605 8.5375 11.9953 8.5375ZM16.9953 7.5375C16.9953 7.27228 17.1006 7.01793 17.2882 6.83039C17.4757 6.64286 17.7301 6.5375 17.9953 6.5375H21.9953C22.2605 6.5375 22.5148 6.64286 22.7024 6.83039C22.8899 7.01793 22.9953 7.27228 22.9953 7.5375C22.9953 7.80272 22.8899 8.05707 22.7024 8.24461C22.5148 8.43214 22.2605 8.5375 21.9953 8.5375H17.9953C17.7301 8.5375 17.4757 8.43214 17.2882 8.24461C17.1006 8.05707 16.9953 7.80272 16.9953 7.5375ZM25.9328 20C25.5408 20.0688 25.138 20.0435 24.7577 19.9261C24.3774 19.8088 24.0304 19.6027 23.7453 19.325L19.8578 15.0125H20.4953C21.771 15.0137 23.026 14.6895 24.1415 14.0705C25.2571 13.4515 26.1963 12.5582 26.8703 11.475L27.9578 17.125C28.0668 17.7743 27.9153 18.4404 27.5362 18.9787C27.1571 19.517 26.5809 19.884 25.9328 20Z"
-								fill="white" />
-						</svg>
-					</button>
-					<button id="confirm_finish_desktop" class="close-button">finish</button>
-					<button id="full-screen">
-						Enter full screen
-						<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M22 1V6C22.0006 6.19743 21.9428 6.39062 21.8338 6.55523C21.7248 6.71984 21.5695 6.8485 21.3875 6.925C21.2642 6.97399 21.1327 6.99943 21 7C20.7345 6.99888 20.4795 6.89599 20.2875 6.7125L18.5 4.91251L14.7125 8.7125C14.5214 8.89732 14.2659 9.00064 14 9.00064C13.7341 9.00064 13.4786 8.89732 13.2875 8.7125C13.0997 8.52291 12.9944 8.26685 12.9944 8C12.9944 7.73316 13.0997 7.4771 13.2875 7.28751L17.0875 3.50001L15.2875 1.7125C15.1518 1.56792 15.0599 1.38788 15.0223 1.19321C14.9847 0.99855 15.003 0.797216 15.075 0.612505C15.1515 0.430504 15.2802 0.275219 15.4448 0.16622C15.6094 0.0572219 15.8026 -0.000612701 16 4.89514e-06H21C21.2652 4.89514e-06 21.5196 0.105362 21.7071 0.292898C21.8946 0.480435 22 0.734788 22 1ZM7.28751 13.2875L3.50001 17.0875L1.7125 15.2875C1.56792 15.1518 1.38788 15.0599 1.19321 15.0223C0.99855 14.9847 0.797216 15.003 0.612505 15.075C0.430504 15.1515 0.275219 15.2802 0.16622 15.4448C0.0572219 15.6094 -0.000612701 15.8026 4.89514e-06 16V21C4.89514e-06 21.2652 0.105362 21.5196 0.292898 21.7071C0.480435 21.8946 0.734788 22 1 22H6C6.19743 22.0006 6.39062 21.9428 6.55523 21.8338C6.71984 21.7248 6.8485 21.5695 6.925 21.3875C6.99705 21.2028 7.01533 21.0015 6.97772 20.8068C6.94012 20.6121 6.84816 20.4321 6.7125 20.2875L4.91251 18.5L8.7125 14.7125C8.87197 14.5182 8.95346 14.2715 8.94113 14.0205C8.9288 13.7694 8.82353 13.5319 8.64579 13.3542C8.46806 13.1765 8.23057 13.0712 7.97952 13.0589C7.72846 13.0465 7.4818 13.128 7.28751 13.2875ZM21.3875 15.075C21.2028 15.003 21.0015 14.9847 20.8068 15.0223C20.6121 15.0599 20.4321 15.1518 20.2875 15.2875L18.5 17.0875L14.7125 13.2875C14.5182 13.128 14.2715 13.0465 14.0205 13.0589C13.7694 13.0712 13.5319 13.1765 13.3542 13.3542C13.1765 13.5319 13.0712 13.7694 13.0589 14.0205C13.0465 14.2715 13.128 14.5182 13.2875 14.7125L17.0875 18.5L15.2875 20.2875C15.1518 20.4321 15.0599 20.6121 15.0223 20.8068C14.9847 21.0015 15.003 21.2028 15.075 21.3875C15.1515 21.5695 15.2802 21.7248 15.4448 21.8338C15.6094 21.9428 15.8026 22.0006 16 22H21C21.2652 22 21.5196 21.8946 21.7071 21.7071C21.8946 21.5196 22 21.2652 22 21V16C22.0006 15.8026 21.9428 15.6094 21.8338 15.4448C21.7248 15.2802 21.5695 15.1515 21.3875 15.075ZM4.91251 3.50001L6.7125 1.7125C6.84816 1.56792 6.94012 1.38788 6.97772 1.19321C7.01533 0.99855 6.99705 0.797216 6.925 0.612505C6.8485 0.430504 6.71984 0.275219 6.55523 0.16622C6.39062 0.0572219 6.19743 -0.000612701 6 4.89514e-06H1C0.734788 4.89514e-06 0.480435 0.105362 0.292898 0.292898C0.105362 0.480435 4.89514e-06 0.734788 4.89514e-06 1V6C-0.000612701 6.19743 0.0572219 6.39062 0.16622 6.55523C0.275219 6.71984 0.430504 6.8485 0.612505 6.925C0.735854 6.97399 0.867288 6.99943 1 7C1.26555 6.99888 1.52055 6.89599 1.7125 6.7125L3.50001 4.91251L7.28751 8.7125C7.47865 8.89732 7.73412 9.00064 8 9.00064C8.26589 9.00064 8.52136 8.89732 8.7125 8.7125C8.90029 8.52291 9.00563 8.26685 9.00563 8C9.00563 7.73316 8.90029 7.4771 8.7125 7.28751L4.91251 3.50001Z"
-								fill="white" />
-						</svg>
-	
-					</button>
+			</div>
+			<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
+				<div class="board modal_content_confirm_finish modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button id="close_confirm_finish_desktop" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+					<div class="modal__title-confirm_finish modal__title">finish the game</div>
+					<div id="modal__body_confirm_finish" class="modal__body">
+						<p>Are you sure that you want to complete the game?</p>
+						<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+					</div>
+					<button id="finishGame4"class='confirm_finish-game close-button'>confirm</button>
+					</div>
 				</div>
 			</div>
 			<div id="over_modal" class="modal">

@@ -100,6 +100,7 @@ a {
   align-items: center;
   z-index: 10;
   gap: 10px;
+  cursor: pointer;
 }
 
 .wrapper__link::before {
@@ -120,6 +121,12 @@ a {
   top: 35px;
   text-decoration: underline;
   z-index: 11;
+}
+
+.wrapper__link_game{
+  position: static;
+  margin: 0 20px 20px;
+  justify-content: end;
 }
 
 .link-first::before {
@@ -673,10 +680,8 @@ a {
   padding: 0px 20px;
   font-size: 18px;
   font-weight: 500;
-  max-width: 1020px;
-  margin: 0px auto;
   position: relative;
-  top: 0;
+  top: 10px;
   justify-content: space-between;
   transform: translateY(-100vh);
 }
@@ -1265,7 +1270,7 @@ a {
     justify-content: space-around;
     height: 60px;
     position: absolute;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     z-index: 1000;
     bottom: 0px;
 }
@@ -2273,11 +2278,18 @@ a {
       display: flex;
       align-items: center;
       width: 100%;
-      gap: 210px;
-      margin-left: 30px;
+      gap: 230px;
+      margin-left: 35px;
 }
-
-.filter-name {
+#ascending-price-svg, #descending-price-svg{
+  cursor: pointer;
+}
+.sort-name, .filter-name{
+  display: block;
+  font-size: 16px;
+  color: rgba(57, 57, 57, 1);
+}
+.filter-name{
   display: none;
 }
 
@@ -2399,10 +2411,6 @@ a {
 }
 
 
-.filter-name{
-  display: none;
-}
-
 
 .wrapper__nft-shop-modal .filters__item input:checked + label .checkbox::before {
   border-radius: 1px;
@@ -2469,6 +2477,13 @@ background-color: #9F9F9F;
   width: 776px;
   left: 30px;
 }
+
+.sort-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 
 
 .wrapper__nft-shop-modal .list-items__item:last-child {

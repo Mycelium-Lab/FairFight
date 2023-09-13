@@ -105,7 +105,7 @@
 .game-menu{
     display: flex !important;
     position: absolute;
-    top: 83px;
+    top: 93px;
     right: 12.9px;
     flex-direction: column;
     gap: 15px;
@@ -122,14 +122,40 @@
 }
 .modal__pause-body{
     background-image: url('../../media/control-keys-mobile.svg');
-    width: 332px;
     height: 183px;
     background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .close_pause_modal{
     top: 10px !important;
 }
-#confirm_finish{
+.finish-btns{
+    display: flex;
+    justify-content: center;
+    gap: 80px
+}
+#finishGame3, #no_btn{
+    background-image: url('../../media/svg/mini-btn.svg');
+     width: 53px;
+     height: 38px;
+     background-size: 100% 100%;
+     padding: 0 6.7395px;
+}
+.text_confirm_finish{
+    width: 207px;
+    font-size: 14px !important;
+    color: #FF7C06 !important;
+    text-transform: uppercase;
+    font-family: 'Teletactile';
+    margin: 0 auto !important;
+    margin-top: 20px !important;
+    line-height: 110%;
+}
+.modal_content_control_keys_mobile {
+    height: 288px !important;
+    width: 364px !important;
+}
+#confirm_finish, #open_control_keys, #back_menu{
     background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
     width: 188px;
     padding: 0 9.7395px;
@@ -139,11 +165,20 @@
     margin: 0 auto;
     margin-top: 8px;
 }
+#open_control_keys{
+    margin-top: 16px;
+    margin-bottom: 15px;
+}
+#close_pause_modal{
+    width: 16px;
+    height: 16px;
+    top: 13px;
+}
 #confirm_finishgame_modal{
     align-items: center;
     overflow: hidden;
 }
-#confirm_finish:hover{
+#confirm_finish:hover, #open_control_keys:hover, #back_menu:hover{
     padding-top: 8px;
     background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
 }
@@ -208,6 +243,27 @@
 }
  .game-menu,  #canvas{
         display: flex !important;
+    }
+    #you-stats-skin, #enemy-stats-skin {
+        width: 952px;
+        height: 152px;
+        bottom: 65px;
+        background-size: 732px 752px;
+    }
+    #enemy-stats-skin{
+        left: 20px;
+    }
+    #you-stats-skin{
+        right: 20px;
+    }
+    .you-stats-value{
+        right: 10px;
+    }
+    .enemy-stats-value{
+        left: 10px;
+    }
+    .you-stats-shoot{
+        gap: 4.8px !important;
     }
 }
 
