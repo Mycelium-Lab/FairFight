@@ -2470,6 +2470,13 @@ background-color: #9F9F9F;
   left: 30px;
 }
 
+.sort-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
 
 .wrapper__nft-shop-modal .list-items__item:last-child {
   margin-bottom: 34px;

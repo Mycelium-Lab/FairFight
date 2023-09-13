@@ -388,12 +388,13 @@ height: 48px;
 grid-gap: 10px;
 }
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
-  gap: 75px;
+  gap: 96px;
   margin-bottom: 0px;
   margin-left: 0px;
   /* justify-content: space-around; */
   width: 100%;
 }
+
 .canvasWrapper__footer {
 display: none !important;
 }
@@ -637,9 +638,6 @@ min-height: 116px;
   background-image: url('../../media/svg/frame-btn.svg') !important;
   background-position: initial !important;
   }
-  /*.list-items-wrap__list-items{
-    overflow: initial;
-  }*/
 }
 @media(max-width: 830px) {
 .main-container{
@@ -1239,6 +1237,12 @@ height: 475.15px !important;
   justify-content: center;
   align-items: center;
 }
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 100px;
+}
+.sort-wrapper {
+  margin-left: 4px;
+}
 }
 
 @media(max-width: 411px) {
@@ -1255,6 +1259,9 @@ height: 475.15px !important;
 
 .inner-block{
   height: 219px;
+}
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 73px;
 }
 
 }
@@ -1294,6 +1301,15 @@ height: 475.15px !important;
 }
 .wrapper__banner p{
   font-size: 10px;
+}
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 60px
+}
+.sort-wrapper{
+  margin-left: 10px;
+}
+.list-items-wrap__list-items{
+  margin-left: 6px;
 }
 }
 
