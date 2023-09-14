@@ -360,7 +360,9 @@ gap: 0px;
 width: 106.33px !important;
 height: 31px !important;
 }
-
+.startBtn span {
+  padding-left: 3px;
+ }
 /*.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button{
 background-image: url('../../media/buttons/frame-btn-mobile.svg');
 }*/
@@ -993,6 +995,10 @@ padding-bottom: 28px;
 }
 .wrapper__banner p{
 font-size: 12px;
+}
+
+.startBtn span {
+ padding-left: 0px;
 }
 
 .wrapper_banners .wrapper__banner:first-child{

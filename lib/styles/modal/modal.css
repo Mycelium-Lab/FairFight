@@ -418,10 +418,12 @@
   
   
   #over_modal .green {
+    font-weight: 500;
     color: var(--color-green);
   }
   
   #over_modal .red {
+    font-weight: 500;
     color: var(--color-red);
   }
   
