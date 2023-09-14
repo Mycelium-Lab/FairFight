@@ -673,6 +673,9 @@ min-height: 116px;
   background-image: url('../../media/svg/frame-btn.svg') !important;
   background-position: initial !important;
   }
+  .inventory-modal__nav-wrap .nav-wrap__nav label {
+    font-size: 12px;
+  }
 }
 @media(max-width: 830px) {
 .main-container{

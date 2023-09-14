@@ -281,7 +281,7 @@
     border-width: 1px;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav label{
-    font-size: 9.7px !important;
+    font-size: 11px !important;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav input:checked + label{
     border-width: 3px;
