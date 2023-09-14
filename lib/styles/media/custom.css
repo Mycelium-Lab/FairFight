@@ -16,7 +16,7 @@
       padding-top: 30px;
     }
     .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
-      height: 280px;
+      height: auto;
     }
     .message-modal__btns-wrap{
       margin-top: 20px;
@@ -37,6 +37,9 @@
     .wrapper__message-modal{
       padding: 25px 27px 20px 27px;
     }
+    /*.wrapper__message-modal_waiting{
+      height: 340px;
+    }*/
 }
 
 @media(max-width: 1024px) {
@@ -231,6 +234,18 @@
   margin: 0px;
   /*height: 220px;*/
   transform: inherit;
+}
+#new-success-modal-img{
+  transform: translateY(-10px);
+}
+.message-modal__btns-wrap{
+  gap: 10px;
+}
+.wrapper__message-modal_purchase-completed .message-modal__text-wrap{
+  margin-top: 0px;
+}
+.wrapper__message-modal .message-modal__link{
+  margin-top: 10px;
 }
 .blur{
   z-index: inherit;

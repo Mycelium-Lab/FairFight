@@ -2034,22 +2034,25 @@ a {
 
 .wrapper__message-modal_waiting {
   width: 410px;
-  height: 428px;
+  /*height: 370px;*/
+  height: auto;
 }
 
 .wrapper__message-modal_progress {
-  height: 335px;
+  /*height: 335px;*/
+  height: auto;
 }
 
 .wrapper__message-modal_confirm {
-  height: 400px;
+  height: auto;
   width: 413px;
 }
 
 .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth {
-  height: 340px;
+  height: auto;
   width: 340px;
 }
+
 
 .wrapper__message-modal_purchase-completed {
   /*height: 463px;*/
@@ -2157,7 +2160,7 @@ a {
 
 
 .message-modal__loader {
-  margin-top: 58px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
   animation: 1s linear 0s normal none infinite running loader;
