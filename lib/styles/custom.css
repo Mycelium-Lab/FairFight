@@ -1724,7 +1724,6 @@ a {
   position: absolute;
   right: 0;
   margin-right: 25px;
-  top: 40px;
 }
 
 .nft-shop-modal__left-title {
@@ -3668,7 +3667,7 @@ z-index: -1;
   animation: 1s linear 0s normal none infinite running lds-dual-ring;
   -webkit-animation: 1s linear 0s normal none infinite running lds-dual-ring;
   position: relative;
-  top: 9%;
+  top: 5%;
   left: 2%;
 }
 

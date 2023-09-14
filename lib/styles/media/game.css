@@ -61,7 +61,7 @@
     background-size: 16px 16px;
     }
 
-.control_keys_mobile_modal{
+#control_keys_mobile_modal{
     align-items: center;
     overflow: hidden;
 }
@@ -270,7 +270,7 @@
         right: 10px;
     }
     .enemy-stats-value{
-        left: 10px;
+        left: 12px;
     }
     .you-stats-shoot{
         gap: 4.8px !important;
