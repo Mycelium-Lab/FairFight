@@ -16,7 +16,7 @@
       padding-top: 30px;
     }
     .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
-      height: 280px;
+      height: auto;
     }
     .message-modal__btns-wrap{
       margin-top: 20px;
@@ -37,6 +37,9 @@
     .wrapper__message-modal{
       padding: 25px 27px 20px 27px;
     }
+    /*.wrapper__message-modal_waiting{
+      height: 340px;
+    }*/
 }
 
 @media(max-width: 1024px) {
@@ -232,6 +235,18 @@
   /*height: 220px;*/
   transform: inherit;
 }
+#new-success-modal-img{
+  transform: translateY(-10px);
+}
+.message-modal__btns-wrap{
+  gap: 10px;
+}
+.wrapper__message-modal_purchase-completed .message-modal__text-wrap{
+  margin-top: 0px;
+}
+.wrapper__message-modal .message-modal__link{
+  margin-top: 10px;
+}
 .blur{
   z-index: inherit;
 }
@@ -360,7 +375,9 @@ gap: 0px;
 width: 106.33px !important;
 height: 31px !important;
 }
-
+.startBtn span {
+  padding-left: 3px;
+ }
 /*.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button{
 background-image: url('../../media/buttons/frame-btn-mobile.svg');
 }*/
@@ -422,6 +439,7 @@ top: 7px !important
   right: 10px !important;
   width: 16px !important;
   height: 16px !important;
+  padding: 0px !important;
 }
 .close-button_finish-game{
 margin-top: 25px !important;
@@ -654,6 +672,9 @@ min-height: 116px;
   padding-top: 0px !important;
   background-image: url('../../media/svg/frame-btn.svg') !important;
   background-position: initial !important;
+  }
+  .inventory-modal__nav-wrap .nav-wrap__nav label {
+    font-size: 12px;
   }
 }
 @media(max-width: 830px) {
@@ -994,6 +1015,10 @@ padding-bottom: 28px;
 font-size: 12px;
 }
 
+.startBtn span {
+ padding-left: 0px;
+}
+
 .wrapper_banners .wrapper__banner:first-child{
 padding-top: 0px;
 padding-bottom: 20px;
@@ -1260,6 +1285,10 @@ height: 475.15px !important;
 }
 .sort-wrapper {
   margin-left: 4px;
+}
+.lds-dual-ring:after{
+  width: 30px;
+  height: 30px;
 }
 }
 

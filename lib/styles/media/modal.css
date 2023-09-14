@@ -148,10 +148,12 @@
     .infoContent-bottom__content-you div p span, .infoContent-bottom__content-enemy div p span{
         font-weight: 500;
     }
-    .infoContent-bottom__content-you .green, .infoContent-bottom__content-enemy .green{
+    .infoContent-bottom__content-you .green, .infoContent-bottom__content-enemy .green, 
+    .infoContent-bottom__content-you .pg-active, .infoContent-bottom__content-enemy .pg-active{
         color: #24B500;
     }
-    .infoContent-bottom__content-you .green::before, .infoContent-bottom__content-enemy .green::before{
+    .infoContent-bottom__content-you .green::before, .infoContent-bottom__content-enemy .green::before,
+    .infoContent-bottom__content-you .pg-active::before, .infoContent-bottom__content-enemy .pg-active::before{
         content: '';
         display: inline-block;
         width: 16px;
@@ -323,7 +325,19 @@
         font-size: 18px !important;
         margin-bottom: 20px !important;
       }
-      
+      .modal_content_rotate{
+        border-radius: 0px !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 248.67px !important;
+        height: 207.64px !important;
+        padding: 23px 25px !important;
+        border-width: 2px !important;
+    }
+      .rotate__content img{
+        transform: translateX(5px);
+      }
 }
 @media(max-width: 600px) {
     .modal .modal_content_new-game{
@@ -338,24 +352,9 @@
         width: 16px;
         height: 16px;
     }
-    .modal_content_rotate{
-        border-radius: 0px !important;
-        flex-direction: row !important;
-        justify-content: center;
-        align-items: center;
-        width: 248.67px !important;
-        height: 207.64px !important;
-        padding: 23px 25px !important;
-        border-width: 2px !important;
-    }
 }
 
 @media(max-width: 500px) {
-    .info__title{
-     
-        font-size: 16px;
-       
-    }
     .modal .modal_content{
         padding: 20px 25.16px;
         max-width: 380px;

@@ -42,7 +42,7 @@
     .table__row .red {
         color: #EE0000;
     }
-    .table__row .green {
+    .table__row .green, .table__row .pg-active {
         color: #10D275;
     }
     .table__row .red::before{
@@ -55,7 +55,7 @@
         margin-right: 5px;
         margin-bottom: 2px;
     }
-    .table__row .green::before{
+    .table__row .green::before, .table__row .pg-active::before{
         display: inline-block;
         content: '';
         background-image: url('../../media/svg/past-game/win.svg');

@@ -82,6 +82,9 @@
         justify-content: space-between;
        
     }
+    .inventory-modal__btn-close {
+        right: 10px;
+    }
     .inventory__header-title{
         font-size: 21.85px;
         border-bottom: 1px solid #FF7C06;
@@ -188,7 +191,7 @@
         padding-top: 30px;
     }
     .inventory-slot__modal-corner_topleft_weapon {
-        top: 16.5px;
+        top: 17px;
         left: -3px;
         width: 8.53px;
     }
@@ -197,57 +200,57 @@
         margin-top: 6.43px !important;
     }
     .inventory-slot__modal-corner_topright_weapon {
-        top: 16.5px;
-        right: 20px;
+        top: 17px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomleft_weapon{
-        top: 59px;
+        top: 65px;
         left: -3px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomright_weapon{
-        top: 59px;
-    right: 20px;
+        top: 64px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_topleft {
-        top: 96px;
+        top: 103px;
         left: -3px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_topright {
-        top: 96px;
-        right: 20px;
+        top: 102px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomright {
-        top: 138px;
-        right: 20px;
+        top: 150px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomleft {
-    top: 138px;
+    top: 150px;
     left: -3px;
     width: 8.53px
 }
 .inventory-slot__modal-corner_topleft_boots {
-    top: 175px;
+    top: 187px;
     left: -3px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_topright_boots {
-    top: 175px;
-    right: 20px;
+    top: 187px;
+    right: 15px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_bottomright_boots {
-    top: 217px;
-    right: 20px;
+    top: 235px;
+    right: 15px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_bottomleft_boots {
-    top: 217px;
+    top: 235px;
     left: -3px;
     width: 8.53px;
 }
@@ -278,7 +281,7 @@
     border-width: 1px;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav label{
-    font-size: 9.7px !important;
+    font-size: 11px !important;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav input:checked + label{
     border-width: 3px;
@@ -345,41 +348,41 @@
     }
     .inventory-slot__modal-corner_topright_weapon {
         top: 16.5px;
-        right: 20px;
+        right: 14px;
         width: 8.53px;
     }
 
     .inventory-slot__modal-corner_bottomright_weapon{
-        top: 58px;
-        right: 20px;
+        top: 65px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_topleft {
-        top: 96px;
+        top: 102px;
     }
     .inventory-slot__modal-corner_topright {
-        top: 96px;
-        right: 20px;
+        top: 102px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_bottomright {
-        top: 138px;
-    right: 20px;
+        top: 150px;
+    right: 14px;
     }
     .inventory-slot__modal-corner_bottomleft {
-        top: 138px;
+        top: 150px;
     }
 .inventory-slot__modal-corner_topleft_boots {
-    top: 175px
+    top: 187px
 }
 .inventory-slot__modal-corner_topright_boots {
-    top: 175x;
-    right: 20px;
+    top: 187px;
+    right: 14px;
 }
 .inventory-slot__modal-corner_bottomright_boots {
-    top: 217px;
-    right: 20px;
+    top: 235px;
+    right: 14px;
 }
 .inventory-slot__modal-corner_bottomleft_boots {
-    top: 217px;
+    top: 235px;
 }
 .body__inventory{
     width: 300px !important; 

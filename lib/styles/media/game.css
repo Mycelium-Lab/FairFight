@@ -28,7 +28,7 @@
     .your_address:before,  
     #over_modal .yourDepTitle:before,
     #over_modal .enemyDepTitle:before,
-    #finish_modal_enemy_address:before,
+    .enemyStats_address:before,
     #over_modal .enemyDeathsTitle:before,
     #over_modal .enemyKillsTitle:before 
     {
@@ -54,6 +54,16 @@
     .stats-item img{
     width: 10px !important;
     height: 10px !important;
+}
+#over_modal .orange::before {
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    }
+
+.control_keys_mobile_modal{
+    align-items: center;
+    overflow: hidden;
 }
 .stats-item-usdt{
      display: flex !important;
