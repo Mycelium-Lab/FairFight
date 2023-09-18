@@ -275,7 +275,7 @@
 }
 .body__inventory {
     width: 308px !important;
-    margin-right: 30px;
+    /*margin-right: 30px;*/
 }
 .list-wrap__item-list {
     grid-template-columns: repeat(4, 1fr);
@@ -389,10 +389,9 @@
 }
 .body__inventory{
     width: 300px !important; 
+    transform: translateX(13px);
 }
-.inventory-modal__body .showcase{
-    width: 280px;
-}
+
 .inventory-modal__body .character-wrap__img-wrap{
     width: 220px;
 }
