@@ -932,52 +932,84 @@ a {
   position: relative;
   top: 9px;
 }
-/*.games__item__header p:nth-child(3) {
+.games__item__header .p__id::before {
+      content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+  background-image: url('../media/svg/past-game/id.svg');
+}
+.games__item__header .p__id p{
+  margin-left: 4px;
+}
+.games__item__header .p__status::before {
+  content: '';
+display: inline-block;
+width: 16px;
+height: 16px;
+background-image: url('../media/svg/past-game/game.svg');
+top: 3px;
+position: relative;
+  margin-right: 5px;
+}
+.games__item__header .p__status p{
+  margin-left: 1px;
+}
+.games__item__header .p__betPerRound::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../media/svg/past-game/dep.svg');
+  top: 3px;
   position: relative;
-  right: 6px;
+  margin-right: 5px;
 }
-.games__item__header p:nth-child(4) {
+.games__item__header .p__betPerRound p{
+  margin-left: 1px;
+}
+.games__item__header .p__date::before {
+  content: '';
+display: inline-block;
+width: 16px;
+height: 16px;
+top: 3px;
+  margin-right: 5px;
   position: relative;
-  right: 33px;
+background-image: url('../media/svg/past-game/calendar.svg');
 }
-  
-.games__item__header p:nth-child(5) {
-  position: relative;
-  right: 53px;
+.games__item__header .p__date p{
+  margin-left: 1px;
 }
-.games__item__header p:nth-child(6) {
-  position: relative;
-  right: 33px;
-}*/
-/*.games__item__header p:nth-child(1){
-  position: absolute;
-  left: 16px;
-  top: 8px
+.games__item__header .p__round::before {
+  content: '';
+display: inline-block;
+width: 16px;
+height: 16px;
+top: 3px;
+position: relative;
+  margin-right: 5px;
+background-image: url('../media/svg/past-game/round.svg');
 }
-.games__item__header p:nth-child(2) {
-  position: absolute;
-  left: 46px;
-  top: 8px
+.games__item__header .p__round p{
+  margin-left: 1px;
 }
-.games__item__header p:nth-child(3) {
-  position: absolute;
-  left: 76px;
-  top: 8px
+.games__item__header .p__map::before {
+  content: '';
+display: inline-block;
+width: 16px;
+height: 16px;
+top: 3px;
+position: relative;
+  margin-right: 5px;
+background-image: url('../media/svg/past-game/map.svg');
 }
-.games__item__header p:nth-child(4) {
-  position: absolute;
-  left: 106px;
-  top: 8px;
+.games__item__header .p__map p{
+  margin-left: 1px;
 }
-  
-.games__item__header p:nth-child(5) {
-  position: absolute;
-  right: 53px;
-}
-.games__item__header p:nth-child(6) {
-  position: absolute;
-  right: 33px;
-}*/
 .games__item p {
   font-size: 16px;
   font-weight: 500;
@@ -1006,22 +1038,27 @@ a {
 .games__item__header > p:first-child {
   position: relative;
   left: 24px;
+  bottom: 2px;
 }
 .games__item__header > p:nth-child(2) {
   position: relative;
   left: 12px;
+  bottom: 2px
 }
 .games__item__header > p:nth-child(3) {
   position: relative;
   left: 8px;
+  bottom: 2px
 }
 .games__item__header > p:nth-child(4) {
   position: relative;
   left: 5px;
+  bottom: 2px
 }
 .games__item__header > p:last-child {
   position: relative;
   right: 6px;
+  bottom: 2px
 }
 .current_battle_rounds{
   color: rgba(57, 57, 57, 1) !important;
