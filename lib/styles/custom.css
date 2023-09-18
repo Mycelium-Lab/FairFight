@@ -117,14 +117,14 @@ a {
 }
 
 .link-first {
-  right: 65px;
-  top: 35px;
+  right: 0px;
+  bottom: 30px;
   text-decoration: underline;
   z-index: 11;
 }
 
 .wrapper__link_game{
-  position: static;
+  position: absolute;
   margin: 0 20px 20px;
   justify-content: end;
 }
@@ -680,10 +680,10 @@ a {
   padding: 0px 20px;
   font-size: 18px;
   font-weight: 500;
-  position: relative;
+  position: absolute;
   top: 10px;
   justify-content: space-between;
-  transform: translateY(-100vh);
+
 }
 
 .logo-footer{

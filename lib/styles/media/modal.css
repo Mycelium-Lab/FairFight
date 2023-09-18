@@ -314,7 +314,7 @@
         padding: 10px 20px !important;
       }
       .modal__title_pause{
-        color: #393939;
+        font-size: 20px;
       }
       .modal_content_confirm_finish{
         width: 335px !important;
