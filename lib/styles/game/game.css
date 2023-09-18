@@ -37,21 +37,55 @@ color: rgba(255, 124, 6, 1);
 }
 
 #yourStats{
-    display: flex;
-    gap: 5px 30px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr ;
+    gap: 5px 10px;
     margin: 5px 0px;
+    grid-template-areas: 
+      "yourWinLose yourKills"
+      "yourDep yourDeaths"
 }
 
+#yourAmountWinLose{
+    grid-area: yourWinLose;
+}
+.yourKills_stat{
+    grid-area: yourKills;
+}
+.yourDep_stat{
+    grid-area: yourDep;
+}
+.yourDeaths_stat{
+    grid-area: yourDeaths;
+}
 
 #enemyStats{
-    display: flex;
-    gap: 5px 30px;
-    flex-wrap: wrap;
-    margin: 5px 0px;
-    /*margin-left: 30px;*/
-    justify-content: end;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px 10px;
+    margin: 5px 0px 3px;
+    grid-template-areas: 
+      "enemyKills enemyWinLose"
+      "enemyDeaths enemyDep"
 }
+
+#enemyAmountWinLose{
+    grid-area: enemyWinLose;
+}
+.enemyKills_stat{
+    grid-area: enemyKills;
+}
+.enemyDep_stat{
+    grid-area: enemyDep;
+}
+.enemyDeaths_stat{
+    grid-area: enemyDeaths;
+}
+
+
+
 #over_modal .green::before {
 content: '';
 display: inline-block;

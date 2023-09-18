@@ -105,9 +105,10 @@
     padding-top: 0px !important;
 }
 #yourStats, #enemyStats {
-    gap: 0px 30px !important;
-    margin: 0px !important;
-    margin-top: 5px !important;
+    /*gap: 0px 20px !important;*/
+    /*margin: 0px !important;
+    margin-top: 5px !important;*/
+    gap: 0px !important;
 }
 .finish-stats_enemy{
     margin-top: 0px !important;
