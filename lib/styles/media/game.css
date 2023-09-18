@@ -259,8 +259,8 @@
     #you-stats-skin, #enemy-stats-skin {
         width: 952px;
         height: 152px;
-        bottom: 65px;
-        background-size: 732px 752px;
+        bottom: 51px;
+        background-size: 732px 650px;
     }
     #enemy-stats-skin{
         left: 20px;
