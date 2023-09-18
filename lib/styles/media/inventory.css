@@ -39,6 +39,7 @@
     }
     .inventory__list-wrap{
         border: none;
+        padding: 10px 0px;
     }
     .inventory-corner_topleft, .inventory-corner_topright, 
     .inventory-corner_bottomright, .inventory-corner_bottomleft{
@@ -51,6 +52,8 @@
     .list-wrap__item-list{
         grid-template-columns: repeat(5, 67.1px);
         overflow: initial;
+        padding: 0px;
+        gap: 17px;
     }
     .inventory-wrap-corner_topright{
         width: 32px;
@@ -272,9 +275,12 @@
 }
 .body__inventory {
     width: 308px !important;
+    /*margin-right: 30px;*/
 }
 .list-wrap__item-list {
-    grid-template-columns: repeat(3, 67.1px);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+    padding-left: 0px;
 }
 .inventory__header-title{
     padding-bottom: 6.57px;
@@ -291,9 +297,6 @@
 }
 .inventory__list-wrap{
     margin-top: 9px;
-}
-.list-wrap__item-list{
-    gap: 25px;
 }
 .inventory-wrap-corner_topleft{
     width: 24.64px;
@@ -339,9 +342,9 @@
         padding-right: 10px;
         width: 340px;
     }
-    .list-wrap__item-list{
-        grid-template-columns: repeat(3, 77.1px) !important;
-        gap: 20px !important;
+    .list-wrap__item-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px 10px;
     }
     .inventory-modal__body .character-wrap__img-wrap {
         width: 215px;
@@ -386,10 +389,9 @@
 }
 .body__inventory{
     width: 300px !important; 
+    transform: translateX(13px);
 }
-.inventory-modal__body .showcase{
-    width: 280px;
-}
+
 .inventory-modal__body .character-wrap__img-wrap{
     width: 220px;
 }

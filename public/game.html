@@ -149,8 +149,8 @@
 										</div>
 										<div class="you-deps">
 											<img src="/media/svg/past-game/dep.svg">
-											<span class="yourDep" style="font-weight: 400">0</span>
-											<span>USDT</span>
+											<span id="yourDepTopBar" class="yourDep" style="font-weight: 400">0</span>
+											<!--<span>USDT</span>-->
 										</div>
 									</div>
 								
@@ -179,13 +179,17 @@
 								</div>
 								<div class="enemy-deps">
 									<img src="/media/svg/past-game/dep.svg">
-									<span class="enemyDep" style="font-weight: 400">0</span>
-									<span>USDT</span>
+									<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
+									<!--<span>USDT</span>-->
 								</div>
 							</div>
 							
 					
 					</div>
+					<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
+						<img class="help__img" src="/media/svg/help.svg" alt="">
+						About the game
+					</a>
 					<div id="noCanvas" style="display: none;"></div>
 					<h3 id="loadingStage" style="display: none;">Waiting another user(if you are waiting for a long time, try to
 					reload the page)</h3>
@@ -209,6 +213,7 @@
 							<img src="/media/svg/close-fullscreen.svg"/>
 						</button>
 					</div>
+					
 					<div id="pause_modal" class="modal" style="display: none;">
 						<div class="board modal_content_pause modal_content">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
@@ -260,7 +265,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="display: flex;" class="canvasWrapper__footer">
+					<!--<div style="display: flex;" class="canvasWrapper__footer">
 						<button id="controls-show">
 							Control keys info
 							<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -279,11 +284,7 @@
 							</svg>
 		
 						</button>
-					</div>
-						<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
-							<img class="help__img" src="/media/svg/help.svg" alt="">
-							About the game
-						</a>
+					</div>-->
 				</div>
 				<div class="buttons">
 					<button style="display: none;" id="left-btn">LEFT</button>
@@ -323,15 +324,15 @@
 						</div>
 						<div id="yourStats">
 							<span id="yourAmountWinLose"></span>
-							<div>
+							<div class="yourKills_stat">
 								<span class="yourKillsTitle">Kills:</span>
 								<span class="yourKills"></span>
 							</div>
-							<div>
+							<div class="yourDep_stat">
 								<span class="yourDepTitle">Dep:</span>
 								<span id="yourDep"></span>
 							</div>
-							<div>
+							<div class="yourDeaths_stat">
 								<span class="yourDeathsTitle">Deaths:</span>
 								<span class="yourDeaths"></span>
 							</div>
@@ -347,16 +348,16 @@
 							<p>Enemy</p>
 						</div>
 						<div id="enemyStats">
-							<div>
+							<div class="enemyKills_stat">
 								<span class="enemyKillsTitle">Kills:</span>
 								<span class="enemyKills"></span>
 							</div>
 							<span id="enemyAmountWinLose"></span>
-							<div>
+							<div class="enemyDeaths_stat">
 								<span class="enemyDeathsTitle">Deaths:</span>
 								<span class="enemyDeaths"></span>
 							</div>
-							<div>
+							<div clas="enemyDep_stat">
 								<span class="enemyDepTitle">Dep:</span>
 								<span id="enemyDep"></span>
 							</div>

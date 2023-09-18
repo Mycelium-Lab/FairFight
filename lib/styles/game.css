@@ -382,7 +382,51 @@ input[type=number] {
     background-image: url('../media/svg/game-stats-usdt-enemy-frame-desktop.svg');
 }
 .game-menu{
-    display: none;
+    display: flex !important;
+    position: absolute;
+    top: 250px;
+    right: 12.9px;
+    flex-direction: column;
+    gap: 15px;
+}
+.game-menu__button{
+    border: none;
+    padding: 0px;
+    background: transparent;
+    opacity: 0.7;
+}
+.game-menu__button img{
+  width: 55px;
+}
+.game-menu__button:hover{
+    opacity: 1;
+}
+
+#confirm_finish, #open_control_keys, #back_menu{
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
+    width: 188px;
+    padding: 0 9.7395px;
+    font-size: 12.09px;
+    padding-bottom: 0px;
+    height: 38px;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+#back_menu{
+    margin-top: 18px;
+}
+
+.modal__pause-body{
+    background-image: url(../../media/control-keys-info.png);
+    height: 183px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#confirm_finish:hover, #open_control_keys:hover, #back_menu:hover {
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
+    width: 188px;
+    padding-top: 8px;
 }
 
 #you-stats-skin, #enemy-stats-skin {
@@ -404,6 +448,33 @@ input[type=number] {
 
 #modal__body_confirm_finish p {
     text-align: center;
+}
+.text_confirm_finish{
+    width: 227px;
+    font-size: 16px !important;
+    color: #FF7C06 !important;
+    text-transform: uppercase;
+    font-family: 'Teletactile';
+    margin: 0 auto !important;
+    margin-top: 20px !important;
+    line-height: 110%;
+    padding-bottom: 30px;
+}
+#finishGame3, #no_btn{
+    background-image: url('../../media/svg/mini-btn.svg');
+     width: 53px;
+     height: 48px;
+     background-size: 100% 100%;
+     padding: 0 6.7395px;
+}
+#finishGame3:hover, #no_btn:hover {
+    background-image: url('../../media/svg/mini-btn-press.svg') !important;
+    padding-top: 10px;
+}
+.finish-btns{
+    display: flex;
+    justify-content: center;
+    gap: 80px
 }
 .confirm_finish-game{
     width: 165px;

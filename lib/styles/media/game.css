@@ -105,61 +105,43 @@
     padding-top: 0px !important;
 }
 #yourStats, #enemyStats {
-    gap: 0px 30px !important;
-    margin: 0px !important;
-    margin-top: 5px !important;
+    /*gap: 0px 20px !important;*/
+    /*margin: 0px !important;
+    margin-top: 5px !important;*/
+    gap: 0px !important;
 }
 .finish-stats_enemy{
     margin-top: 0px !important;
 }
 .game-menu{
-    display: flex !important;
-    position: absolute;
     top: 93px;
-    right: 12.9px;
-    flex-direction: column;
-    gap: 15px;
 }
+.game-menu__button img{
+    width: 39px;
+  }
 #pause_modal{
     display: flex;
     align-items: center;
     overflow: hidden;
 }
 .game-menu__button{
-    border: none;
-    padding: 0px;
-    background: transparent;
+    opacity: 0.5;
 }
 .modal__pause-body{
     background-image: url('../../media/control-keys-mobile.svg');
     height: 183px;
+    width: 302px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 .close_pause_modal{
     top: 10px !important;
 }
-.finish-btns{
-    display: flex;
-    justify-content: center;
-    gap: 80px
-}
-#finishGame3, #no_btn{
-    background-image: url('../../media/svg/mini-btn.svg');
-     width: 53px;
-     height: 38px;
-     background-size: 100% 100%;
-     padding: 0 6.7395px;
-}
+
+
 .text_confirm_finish{
     width: 207px;
     font-size: 14px !important;
-    color: #FF7C06 !important;
-    text-transform: uppercase;
-    font-family: 'Teletactile';
-    margin: 0 auto !important;
-    margin-top: 20px !important;
-    line-height: 110%;
 }
 .modal_content_control_keys_mobile {
     height: 288px !important;
@@ -257,8 +239,8 @@
     #you-stats-skin, #enemy-stats-skin {
         width: 952px;
         height: 152px;
-        bottom: 65px;
-        background-size: 732px 752px;
+        bottom: 51px;
+        background-size: 732px 650px;
     }
     #enemy-stats-skin{
         left: 20px;
