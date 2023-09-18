@@ -395,6 +395,9 @@ input[type=number] {
     background: transparent;
     opacity: 0.7;
 }
+.game-menu__button img{
+  width: 55px;
+}
 .game-menu__button:hover{
     opacity: 1;
 }

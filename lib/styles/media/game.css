@@ -116,6 +116,9 @@
 .game-menu{
     top: 93px;
 }
+.game-menu__button img{
+    width: 39px;
+  }
 #pause_modal{
     display: flex;
     align-items: center;
