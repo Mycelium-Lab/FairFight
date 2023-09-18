@@ -130,6 +130,7 @@
     border: none;
     padding: 0px;
     background: transparent;
+    opacity: 0.5;
 }
 .modal__pause-body{
     background-image: url('../../media/control-keys-mobile.svg');
