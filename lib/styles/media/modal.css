@@ -148,10 +148,12 @@
     .infoContent-bottom__content-you div p span, .infoContent-bottom__content-enemy div p span{
         font-weight: 500;
     }
-    .infoContent-bottom__content-you .green, .infoContent-bottom__content-enemy .green{
+    .infoContent-bottom__content-you .green, .infoContent-bottom__content-enemy .green, 
+    .infoContent-bottom__content-you .pg-active, .infoContent-bottom__content-enemy .pg-active{
         color: #24B500;
     }
-    .infoContent-bottom__content-you .green::before, .infoContent-bottom__content-enemy .green::before{
+    .infoContent-bottom__content-you .green::before, .infoContent-bottom__content-enemy .green::before,
+    .infoContent-bottom__content-you .pg-active::before, .infoContent-bottom__content-enemy .pg-active::before{
         content: '';
         display: inline-block;
         width: 16px;
@@ -307,23 +309,35 @@
         width: 340px !important;
       }
       .modal_content_pause{
-        width: 369px !important;
-        height: 291px !important;
+        width: 310px !important;
+        height: 183px !important;
         padding: 10px 20px !important;
       }
       .modal__title_pause{
-        color: #393939;
+        font-size: 20px;
       }
       .modal_content_confirm_finish{
         width: 335px !important;
         height: 193.27px !important;
-        padding: 20px 5px !important;
+        padding: 10px 5px !important;
       }
       .modal__title-confirm_finish{
         font-size: 18px !important;
         margin-bottom: 20px !important;
       }
-      
+      .modal_content_rotate{
+        border-radius: 0px !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 248.67px !important;
+        height: 207.64px !important;
+        padding: 23px 25px !important;
+        border-width: 2px !important;
+    }
+      .rotate__content img{
+        transform: translateX(5px);
+      }
 }
 @media(max-width: 600px) {
     .modal .modal_content_new-game{
@@ -341,11 +355,6 @@
 }
 
 @media(max-width: 500px) {
-    .info__title{
-     
-        font-size: 16px;
-       
-    }
     .modal .modal_content{
         padding: 20px 25.16px;
         max-width: 380px;
@@ -439,12 +448,7 @@
         padding-bottom: 0px;
         width: 72vw;
     }
-    .message-modal__btn-close{
-        top: 10px;
-        right: 10px;
-        width: 16px;
-        height: 16px;
-    }
+
     .menu__box{
         width: 50vw;
         height: 490px;
@@ -508,6 +512,25 @@
     }
     .back-nft-shop, .go-inventory{
         font-size: 14px !important;
+    }
+    .wrapper__message-modal-overlay_rotate{
+        background-color: #333;
+    }
+    #rotate_modal .board-edge_sm:nth-child(1) {
+        left: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(2) {
+        right: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(3) {
+        right: -6px;
+        bottom: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(4) {
+        left: -6px;
+        bottom: -6px;
     }
 }
 

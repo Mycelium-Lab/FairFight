@@ -22,8 +22,8 @@ html,body {
     height: 100vh;
     padding: 90px 32px;
     font-weight: bold;
-    border: 1px solid #3b3d42;
-    background-color: #D9D9D9;
+    /* border: 1px solid #3b3d42; */
+    /* background-color: #D9D9D9; */
 }
 
 .inputName{
@@ -331,8 +331,19 @@ input[type=number] {
 }
 
 .orange {
-    color: #ff7c06;
+    color: var(--color-green);
 }
+
+#over_modal .orange::before {
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url('../../media/svg/past-game/win.svg');
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px
+    }
 
 .modal__wsad{
     align-items: center;
@@ -371,11 +382,99 @@ input[type=number] {
     background-image: url('../media/svg/game-stats-usdt-enemy-frame-desktop.svg');
 }
 .game-menu{
-    display: none;
+    display: flex !important;
+    position: absolute;
+    top: 250px;
+    right: 12.9px;
+    flex-direction: column;
+    gap: 15px;
+}
+.game-menu__button{
+    border: none;
+    padding: 0px;
+    background: transparent;
+    opacity: 0.7;
+}
+.game-menu__button img{
+  width: 55px;
+}
+.game-menu__button:hover{
+    opacity: 1;
+}
+
+#confirm_finish, #open_control_keys, #back_menu{
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
+    width: 188px;
+    padding: 0 9.7395px;
+    font-size: 12.09px;
+    padding-bottom: 0px;
+    height: 38px;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+#back_menu{
+    margin-top: 18px;
+}
+
+.modal__pause-body{
+    background-image: url(../../media/control-keys-info.png);
+    height: 183px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#confirm_finish:hover, #open_control_keys:hover, #back_menu:hover {
+    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
+    width: 188px;
+    padding-top: 8px;
+}
+
+#you-stats-skin, #enemy-stats-skin {
+    width: 952px;
+    height: 152px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 80px;
+    background-size: 1322px 1052px;
+}
+#enemy-stats-skin{
+    left: 35px;
+}
+#you-stats-skin{
+    right: 35px;
 }
 
 #modal__body_confirm_finish p {
     text-align: center;
+}
+.text_confirm_finish{
+    width: 227px;
+    font-size: 16px !important;
+    color: #FF7C06 !important;
+    text-transform: uppercase;
+    font-family: 'Teletactile';
+    margin: 0 auto !important;
+    margin-top: 20px !important;
+    line-height: 110%;
+    padding-bottom: 30px;
+}
+#finishGame3, #no_btn{
+    background-image: url('../../media/svg/mini-btn.svg');
+     width: 53px;
+     height: 48px;
+     background-size: 100% 100%;
+     padding: 0 6.7395px;
+}
+#finishGame3:hover, #no_btn:hover {
+    background-image: url('../../media/svg/mini-btn-press.svg') !important;
+    padding-top: 10px;
+}
+.finish-btns{
+    display: flex;
+    justify-content: center;
+    gap: 80px
 }
 .confirm_finish-game{
     width: 165px;
@@ -399,22 +498,20 @@ input[type=number] {
 }*/
 .you-character, .enemy-character{
     display: flex;
-    background-image: url('../media/stats-frame-desktop-142.svg');
+    background-image: url('../media/stats-frame-desktop-153.svg');
     background-repeat: no-repeat;
-    width: 143px;
-    height: 81px;
+    width: 153px;
+    height: 87px;
+    gap: 10px;
 }
 .enemy-character{
-    background-image: url('../media/stats-frame-enemy-desktop-142.svg');
-    justify-content: end;
+    background-image: url('../media/stats-frame-enemy-desktop-153.svg');
+    /*justify-content: end;*/
 }
-.you-stats-skin, .enemy-stats-skin{
-    display: flex;
-    align-items: center;
-}
-.you-stats-skin img, .enemy-stats-skin img{ 
+
+/*.you-stats-skin img, .enemy-stats-skin img{ 
     width: 75px;
-}
+}*/
 
 
 .you-stats-healf img, .enemy-stats-healf img{
@@ -435,19 +532,25 @@ input[type=number] {
 .you-stats-value, .enemy-stats-value{
     display: flex;
     flex-direction: column;
-    margin-left: 13px;
-    margin-top: 3px;
+    justify-content: center;
+    width: 100%;
+     position: relative;
+}
+.you-stats-value{
+    right: 20px;
+    bottom: 1px
 }
 .enemy-stats-value {
     margin-left: 0px;
-    margin-right: 12px;
-    /*margin-right: 5px;*/
-    justify-content: space-evenly;
+    justify-content: center;
+    left: 22px;
+    bottom: 1px;
 }
 
 .you-stats-value span, .enemy-stats-value span{
     height: 18px;
     color: #393939;
+    justify-content: center;
 }
 
 .you-stats-healf, .you-stats-shoot, .you-stats-kills, .you-stats-deaths,
@@ -455,6 +558,7 @@ input[type=number] {
     display: flex;
     align-items: center;
     gap: 4.38px;
+    justify-content: space-between;
 }
 
 .you-stats-shoot{
@@ -466,7 +570,7 @@ input[type=number] {
 .enemy-stats-kills{
     gap: 3.8px;  
 }
-.enemy-stats-skin img{
+#enemy-stats-skin{
     transform: scaleX(-1)
 }
 
@@ -480,4 +584,9 @@ input[type=number] {
     z-index: 12;
     min-height: 120px;
   position: relative;
+  }
+
+  .enemyDeaths__mock, .enemyKills__mock, 
+  .yourHealth__mock, .ammunition__mock, .yourKills__mock, .yourDeaths__mock{
+    visibility: hidden;
   }

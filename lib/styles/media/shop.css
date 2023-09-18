@@ -74,7 +74,6 @@
         height: 20px !important;
     }
     .wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
-        flex-direction: column-reverse;
         margin-top: 19.85px !important;
         align-items: initial !important;
     }
@@ -82,27 +81,24 @@
         font-size: 12px !important;
         margin-left: 5px !important;
     }
-    .wrapper__nft-shop-modal .filters__item label .checkbox{
-        width: 8px !important;
-        height: 8px !important;
-        margin-top: 1px !important;
-    }
     .wrapper__nft-shop-modal .filters__item label{
         align-items: inherit !important;
     }
     .wrapper__nft-shop-modal .filters__item input:checked + label .checkbox::before{
-        width: 5.5px !important;
-        height: 5.5px !important;
-        right: 0.5px !important; 
-        bottom: 0.5px !important;
-        position: relative !important;
+        width: 8px !important;
+        height: 8px !important;
+        right: 3px !important;
+        bottom: 3px !important;
+        position: absolute !important;
     }
     .wrapper__nft-shop-modal .params-wrap__filters{
-        gap: 5px !important;
+        gap: 10px !important;
+        align-items: center;
     }
     .wrapper__nft-shop-modal .params-wrap__dropdown-list{
         width: 89px !important;
         height: 18px !important;
+        left: 4px;
     }
     .wrapper__nft-shop-modal .params-wrap__dropdown-list button {
         border-radius: 2.8px !important;
@@ -122,7 +118,7 @@
         padding-right: 0px !important;
         height: calc(100% - 120px) !important;
     }
-    .list-items-wrap__list-items{
+    .simplebar-content{
         width: 100% !important;
        /* display: flex !important; */
        /* gap: 5px 0px !important; */

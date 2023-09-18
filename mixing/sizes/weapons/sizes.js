@@ -619,7 +619,7 @@ export const weaponSizes = {
                     },
                     'id-109': {
                         x: 174,
-                        y: 352,
+                        y: 348,
                     },
                     'id-111': {
                         x: 174,
@@ -1175,6 +1175,14 @@ export const weaponSizes = {
                         y: 344
                     }
                 },
+                'id-115': {
+                    x: 48,
+                    y: 116,
+                    preview: {
+                        x: 132,
+                        y: 334
+                    }
+                },
                 preview: {
                     x: 132,
                     y: 348
@@ -1351,7 +1359,11 @@ export const weaponSizes = {
             },
             preview: {
                 x: 360,
-                y: 120
+                y: 120,
+                'id-110': {
+                    x: 335,
+                    y: 100
+                }
             }
         }
     },

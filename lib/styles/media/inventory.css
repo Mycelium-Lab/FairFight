@@ -39,6 +39,7 @@
     }
     .inventory__list-wrap{
         border: none;
+        padding: 10px 0px;
     }
     .inventory-corner_topleft, .inventory-corner_topright, 
     .inventory-corner_bottomright, .inventory-corner_bottomleft{
@@ -51,6 +52,8 @@
     .list-wrap__item-list{
         grid-template-columns: repeat(5, 67.1px);
         overflow: initial;
+        padding: 0px;
+        gap: 17px;
     }
     .inventory-wrap-corner_topright{
         width: 32px;
@@ -81,6 +84,9 @@
     .inventory-modal__nav-wrap .nav-wrap__nav{
         justify-content: space-between;
        
+    }
+    .inventory-modal__btn-close {
+        right: 10px;
     }
     .inventory__header-title{
         font-size: 21.85px;
@@ -188,7 +194,7 @@
         padding-top: 30px;
     }
     .inventory-slot__modal-corner_topleft_weapon {
-        top: 16.5px;
+        top: 17px;
         left: -3px;
         width: 8.53px;
     }
@@ -197,57 +203,57 @@
         margin-top: 6.43px !important;
     }
     .inventory-slot__modal-corner_topright_weapon {
-        top: 16.5px;
-        right: 20px;
+        top: 17px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomleft_weapon{
-        top: 59px;
+        top: 65px;
         left: -3px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomright_weapon{
-        top: 59px;
-    right: 20px;
+        top: 64px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_topleft {
-        top: 96px;
+        top: 103px;
         left: -3px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_topright {
-        top: 96px;
-        right: 20px;
+        top: 102px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomright {
-        top: 138px;
-        right: 20px;
+        top: 150px;
+        right: 15px;
         width: 8.53px;
     }
     .inventory-slot__modal-corner_bottomleft {
-    top: 138px;
+    top: 150px;
     left: -3px;
     width: 8.53px
 }
 .inventory-slot__modal-corner_topleft_boots {
-    top: 175px;
+    top: 187px;
     left: -3px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_topright_boots {
-    top: 175px;
-    right: 20px;
+    top: 187px;
+    right: 15px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_bottomright_boots {
-    top: 217px;
-    right: 20px;
+    top: 235px;
+    right: 15px;
     width: 8.53px;
 }
 .inventory-slot__modal-corner_bottomleft_boots {
-    top: 217px;
+    top: 235px;
     left: -3px;
     width: 8.53px;
 }
@@ -269,16 +275,19 @@
 }
 .body__inventory {
     width: 308px !important;
+    /*margin-right: 30px;*/
 }
 .list-wrap__item-list {
-    grid-template-columns: repeat(3, 67.1px);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+    padding-left: 0px;
 }
 .inventory__header-title{
     padding-bottom: 6.57px;
     border-width: 1px;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav label{
-    font-size: 9.7px !important;
+    font-size: 11px !important;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav input:checked + label{
     border-width: 3px;
@@ -288,9 +297,6 @@
 }
 .inventory__list-wrap{
     margin-top: 9px;
-}
-.list-wrap__item-list{
-    gap: 25px;
 }
 .inventory-wrap-corner_topleft{
     width: 24.64px;
@@ -336,57 +342,56 @@
         padding-right: 10px;
         width: 340px;
     }
-    .list-wrap__item-list{
-        grid-template-columns: repeat(3, 77.1px) !important;
-        gap: 20px !important;
+    .list-wrap__item-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px 10px;
     }
     .inventory-modal__body .character-wrap__img-wrap {
         width: 215px;
     }
     .inventory-slot__modal-corner_topright_weapon {
         top: 16.5px;
-        right: 20px;
+        right: 14px;
         width: 8.53px;
     }
 
     .inventory-slot__modal-corner_bottomright_weapon{
-        top: 58px;
-        right: 20px;
+        top: 65px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_topleft {
-        top: 96px;
+        top: 102px;
     }
     .inventory-slot__modal-corner_topright {
-        top: 96px;
-        right: 20px;
+        top: 102px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_bottomright {
-        top: 138px;
-    right: 20px;
+        top: 150px;
+    right: 14px;
     }
     .inventory-slot__modal-corner_bottomleft {
-        top: 138px;
+        top: 150px;
     }
 .inventory-slot__modal-corner_topleft_boots {
-    top: 175px
+    top: 187px
 }
 .inventory-slot__modal-corner_topright_boots {
-    top: 175x;
-    right: 20px;
+    top: 187px;
+    right: 14px;
 }
 .inventory-slot__modal-corner_bottomright_boots {
-    top: 217px;
-    right: 20px;
+    top: 235px;
+    right: 14px;
 }
 .inventory-slot__modal-corner_bottomleft_boots {
-    top: 217px;
+    top: 235px;
 }
 .body__inventory{
     width: 300px !important; 
+    transform: translateX(13px);
 }
-.inventory-modal__body .showcase{
-    width: 280px;
-}
+
 .inventory-modal__body .character-wrap__img-wrap{
     width: 220px;
 }

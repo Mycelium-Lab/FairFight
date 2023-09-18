@@ -17,6 +17,11 @@
 	</script>
 	<title>Fair Fight</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="/styles/index.css">
@@ -772,10 +777,15 @@
 				<div class="modal__row">
 					<div>
 						Map
-						<select id="map">
-							<option value="0" selected>Steel plant</option>
-							<option value="1">Moon portals</option>
-						</select>
+						<div id="map-wrapper" style="position: relative;">
+							<select id="map">
+								<option value="0" selected>Steel plant</option>
+								<option value="1">Moon portals</option>
+							</select>
+							<svg style="position: absolute; right: 7px" id="select-chevron" width="10" height="8" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M7.62674 1.23828L4.20204 4.66298L0.777344 1.23828" stroke="#B6BCC4" stroke-width="0.733864" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>							
+						</div>
 					</div>
 					<div>Number of players (coming soon)
 						<select disabled="true">
@@ -1296,14 +1306,51 @@
 
 					<input id="nft-shop-2__tab-4" type="radio" name="nft-shop-2__tab">
 					<label for="nft-shop-2__tab-4">BOOTS</label>
-
 					<input id="nft-shop-2__tab-5" type="radio" name="nft-shop-2__tab">
 					<label for="nft-shop-2__tab-5">NFT BOX</label>
 				</nav>
 			</div>
 
 			<div class="nft-shop-modal__params-wrap">
-				<div class="params-wrap__dropdown-list">
+				<div class="sort-wrapper">
+					<div class="sort-name">Sort</div>
+					<svg id="ascending-price-svg" width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g opacity="0.4">
+							<rect y="2" width="2" height="17" fill="#393939"/>
+							<rect x="25" y="2" width="2" height="17" fill="#393939"/>
+							<rect x="25" y="19" width="2" height="23" transform="rotate(90 25 19)" fill="#393939"/>
+							<rect x="25" width="2" height="23" transform="rotate(90 25 0)" fill="#393939"/>
+							<rect x="2" y="2" width="23" height="17" fill="white"/>
+							<path d="M17.0331 11.3581H17.8563V12.1813H18.6795H19.5027H20.326H21.1492V11.3581V10.5349H20.326H19.5027H17.0331V9.71166H16.2099V8.88845H15.3867V8.06525V7.24204H16.2099V6.41884H17.0331V5.59563H18.6795V3.94922H20.326V5.59563H21.9724V6.41884H22.7956V7.24204H23.6188V8.06525H21.9724H21.1492V7.24204H20.326H19.5027H18.6795H17.8563V8.06525V8.88845H18.6795H19.5027H20.326H21.9724V9.71166H22.7956V10.5349H23.6188V11.3581V12.1813H22.7956V13.0045H21.9724V13.8277H20.326V15.4741H18.6795V13.8277H17.0331V13.0045H16.2099V12.1813H15.3867V11.3581H17.0331Z" fill="#393939"/>
+							<rect x="8.05859" y="4.16699" width="2.33333" height="11.6667" fill="#FF7C06"/>
+							<rect x="9.70703" y="6.69922" width="2.33333" height="2.33333" fill="#FF7C06"/>
+							<rect x="11.3555" y="8.34863" width="2.33333" height="2.33333" fill="#FF7C06"/>
+							<rect x="6.40625" y="6.69922" width="2.33333" height="2.33333" fill="#FF7C06"/>
+							<rect x="4.75781" y="8.34961" width="2.33333" height="2.33333" fill="#FF7C06"/>
+						</g>
+						</svg>
+				
+						<svg id="descending-price-svg" width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g opacity="0.4">
+								<rect y="2" width="2" height="17" fill="#393939"/>
+							<rect x="25" y="2" width="2" height="17" fill="#393939"/>
+							<rect x="25" y="19" width="2" height="23" transform="rotate(90 25 19)" fill="#393939"/>
+							<rect x="25" width="2" height="23" transform="rotate(90 25 0)" fill="#393939"/>
+							<rect x="2" y="2" width="23" height="17" fill="white"/>
+							<path d="M16.8046 11.78H17.6698V12.6452H18.535H19.4002H20.2654H21.1306V11.78V10.9148H20.2654H19.4002H16.8046V10.0496H15.9394V9.18437H15.0742V8.31917V7.45397H15.9394V6.58877H16.8046V5.72357H18.535V3.99316H20.2654V5.72357H21.9958V6.58877H22.861V7.45397H23.7262V8.31917H21.9958H21.1306V7.45397H20.2654H19.4002H18.535H17.6698V8.31917V9.18437H18.535H19.4002H20.2654H21.9958V10.0496H22.861V10.9148H23.7262V11.78V12.6452H22.861V13.5104H21.9958V14.3756H20.2654V16.106H18.535V14.3756H16.8046V13.5104H15.9394V12.6452H15.0742V11.78H16.8046Z" fill="#393939"/>
+							<rect x="9.58203" y="16.5215" width="2.45237" height="12.2618" transform="rotate(-180 9.58203 16.5215)" fill="#FF7C06"/>
+							<rect x="7.85156" y="13.8604" width="2.45237" height="2.45237" transform="rotate(-180 7.85156 13.8604)" fill="#FF7C06"/>
+							<rect x="6.11328" y="12.127" width="2.45237" height="2.45237" transform="rotate(-180 6.11328 12.127)" fill="#FF7C06"/>
+							<rect x="11.3203" y="13.8604" width="2.45237" height="2.45237" transform="rotate(-180 11.3203 13.8604)" fill="#FF7C06"/>
+							<rect x="13.0508" y="12.126" width="2.45237" height="2.45237" transform="rotate(-180 13.0508 12.126)" fill="#FF7C06"/>
+							</g>
+							</svg>
+							
+				</div>
+			
+					
+				</button>
+				<div  class="params-wrap__dropdown-list" style="display: none">
 					<div class="dropdown-list__overlay"></div>
 
 					<button class="dropdown-list__btn">
@@ -1317,10 +1364,11 @@
 				</div>
 
 				<div id="rarity-filter" class="params-wrap__filters">
+					<div class="filter-name">Rarity</div>
 					<div class="filters__item">
 						<input name="collection-check" value="basic" id="basic" type="checkbox">
 						<label for="basic">
-							<div class="checkbox"></div>
+							<div class="checkbox__basic checkbox"></div>
 							<p>Basic</p>
 						</label>
 					</div>
@@ -1328,7 +1376,7 @@
 					<div class="filters__item">
 						<input name="collection-check" value="special" id="special" type="checkbox">
 						<label for="special">
-							<div class="checkbox"></div>
+							<div class="checkbox__special checkbox"></div>
 							<p>Special</p>
 						</label>
 					</div>
@@ -1336,7 +1384,7 @@
 					<div class="filters__item">
 						<input name="collection-check" value="rare" id="rare" type="checkbox">
 						<label for="rare">
-							<div class="checkbox"></div>
+							<div class="checkbox__rare checkbox"></div>
 							<p>Rare</p>
 						</label>
 					</div>
@@ -1344,7 +1392,7 @@
 					<div class="filters__item">
 						<input name="collection-check" value="epic" id="epic" type="checkbox">
 						<label for="epic">
-							<div class="checkbox"></div>
+							<div class="checkbox__epic checkbox"></div>
 							<p>Epic</p>
 						</label>
 					</div>
@@ -1352,7 +1400,7 @@
 					<div class="filters__item">
 						<input name="collection-check" value="legendary" id="legendary" type="checkbox">
 						<label for="legendary">
-							<div class="checkbox"></div>
+							<div class="checkbox__legendary checkbox"></div>
 							<p>Legendary</p>
 						</label>
 					</div>
@@ -1792,8 +1840,8 @@
 							<label for="inventory__tab-4">BOOTS</label>
 
 
-							<input id="inventory__tab-5" type="radio" name="inventory__tab">
-							<label for="inventory__tab-5">NFT BOX</label>
+
+
 						</nav>
 					</div>
 					<div class="inventory__list-wrap" id="left-inventory-characters-list">
@@ -2795,18 +2843,18 @@
 							<span class="props-item__prop-title-nft props-item__prop-title">Characters</span>
 						</div>
 							<div class="props-item__prop">
-							<img src="media/svg/shop/armor-icon.svg">
+							<img class="props-item__prop_nft-boots" src="media/svg/shop/armor-icon-1.png">
 							<span class="props-item__prop-title-nft  props-item__prop-title">Armor</span>
 						</div>
 					</div>
 				
 					<div style="display:flex; justify-content: space-between;">
 						<div class="props-item__prop">
-							<img src="media/svg/shop/weapons-icon.svg">
+							<img class="props-item__prop_nft-weapons" src="media/svg/shop/weapons-icon.png">
 							<span class="props-item__prop-title-nft  props-item__prop-title">Weapons</span>
 						</div>
 						<div class="props-item__prop">
-							<img src="media/svg/shop/boots-icon.svg">
+							<img  class="props-item__prop_nft-boots" src="media/svg/shop/boots-icon.png">
 							<span class="props-item__prop-title-nft  props-item__prop-title">Boots</span>
 						</div>
 					</div>

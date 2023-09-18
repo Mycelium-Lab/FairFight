@@ -16,7 +16,7 @@
       padding-top: 30px;
     }
     .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
-      height: 280px;
+      height: auto;
     }
     .message-modal__btns-wrap{
       margin-top: 20px;
@@ -37,6 +37,9 @@
     .wrapper__message-modal{
       padding: 25px 27px 20px 27px;
     }
+    /*.wrapper__message-modal_waiting{
+      height: 340px;
+    }*/
 }
 
 @media(max-width: 1024px) {
@@ -232,6 +235,18 @@
   /*height: 220px;*/
   transform: inherit;
 }
+#new-success-modal-img{
+  transform: translateY(-10px);
+}
+.message-modal__btns-wrap{
+  gap: 10px;
+}
+.wrapper__message-modal_purchase-completed .message-modal__text-wrap{
+  margin-top: 0px;
+}
+.wrapper__message-modal .message-modal__link{
+  margin-top: 10px;
+}
 .blur{
   z-index: inherit;
 }
@@ -360,7 +375,9 @@ gap: 0px;
 width: 106.33px !important;
 height: 31px !important;
 }
-
+.startBtn span {
+  padding-left: 3px;
+ }
 /*.buy-now-btn, .close-button, .wrapper__item-modal-overlay .item-detail__btns-wrap button{
 background-image: url('../../media/buttons/frame-btn-mobile.svg');
 }*/
@@ -388,20 +405,41 @@ height: 48px;
 grid-gap: 10px;
 }
 .wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
-gap: 15px 0px;
-margin-bottom: 0px;
-margin-left: 8px;
+  gap: 96px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  /* justify-content: space-around; */
+  width: 100%;
 }
+
+.wrapper__link_game{
+  display: none !important;
+}
+
+#character {
+  width: 152px;
+  height: 152px;
+  background-image: url('.');
+  background-repeat: no-repeat;
+}
+
 .canvasWrapper__footer {
 display: none !important;
 }
 .modal .modal_content_finish {
 padding: 8px 31px !important;
-height: 363px !important;
+height: 375px !important;
 max-width: 381px !important;
 }
 .modal .modal_content_finish .message-modal__btn-close {
 top: 7px !important
+}
+.message-modal__btn-close{
+  top: 10px !important;
+  right: 10px !important;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0px !important;
 }
 .close-button_finish-game{
 margin-top: 25px !important;
@@ -635,6 +673,9 @@ min-height: 116px;
   background-image: url('../../media/svg/frame-btn.svg') !important;
   background-position: initial !important;
   }
+  .inventory-modal__nav-wrap .nav-wrap__nav label {
+    font-size: 12px;
+  }
 }
 @media(max-width: 830px) {
 .main-container{
@@ -662,6 +703,20 @@ min-height: 116px;
 
 #btn_modal_window_mobile{
 width: 165.16px;
+}
+.wrapper__nft-shop-modal .filters__item label p {
+  display: none;
+}
+
+.filter-name{
+  display: block;
+}
+.sort-name, .filter-name {
+  font-size: 12px;
+  line-height: 14.32px;
+}
+.simplebar-scrollbar{
+  background-color: rgba(255, 124, 6, 1);
 }
 }
 @media(max-width: 800px) {
@@ -960,6 +1015,10 @@ padding-bottom: 28px;
 font-size: 12px;
 }
 
+.startBtn span {
+ padding-left: 0px;
+}
+
 .wrapper_banners .wrapper__banner:first-child{
 padding-top: 0px;
 padding-bottom: 20px;
@@ -1216,6 +1275,21 @@ height: 475.15px !important;
 .close-button_big:hover{
   background-image: url(../../media/svg/big-frame-btn.svg) !important;
 }
+.rotate__content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 100px;
+}
+.sort-wrapper {
+  margin-left: 4px;
+}
+.lds-dual-ring:after{
+  width: 30px;
+  height: 30px;
+}
 }
 
 @media(max-width: 411px) {
@@ -1232,6 +1306,9 @@ height: 475.15px !important;
 
 .inner-block{
   height: 219px;
+}
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 73px;
 }
 
 }
@@ -1271,6 +1348,15 @@ height: 475.15px !important;
 }
 .wrapper__banner p{
   font-size: 10px;
+}
+.wrapper__nft-shop-modal .nft-shop-modal__params-wrap{
+  gap: 60px
+}
+.sort-wrapper{
+  margin-left: 10px;
+}
+.list-items-wrap__list-items{
+  margin-left: 6px;
 }
 }
 
