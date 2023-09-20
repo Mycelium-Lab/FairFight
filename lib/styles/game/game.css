@@ -50,6 +50,10 @@ color: rgba(255, 124, 6, 1);
 #yourAmountWinLose{
     grid-area: yourWinLose;
 }
+#finish_modal_your_address, #finish_modal_enemy_address{
+    color: rgba(255, 124, 6, 1);
+    text-decoration: underline;
+}
 .yourKills_stat{
     grid-area: yourKills;
 }
