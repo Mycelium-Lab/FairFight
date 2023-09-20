@@ -1543,7 +1543,7 @@ background-image: url('../media/svg/past-game/map.svg');
 .wrapper__btns-wrap {
   z-index: 13;
   position: relative;
-  bottom: 100px;
+  bottom: 500px;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
