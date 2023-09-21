@@ -277,12 +277,16 @@ export const weaponSizes = {
                 x: 45,
                 y: 30
             },
+            '4' : {
+                x: 24,
+                y: 30
+            },
             '5' : {
-                x: 40,
+                x: 38,
                 y: 30
             },
             '6' : {
-                x: 40,
+                x: 34,
                 y: 30
             },
             '7' : {
@@ -294,11 +298,11 @@ export const weaponSizes = {
                 y: 40
             },
             '12' : {
-                x: 40,
+                x: 34,
                 y: 30
             },
             '13' : {
-                x: 40,
+                x: 34,
                 y: 30
             },
             '87': smallOneHandedPistolSize,
