@@ -338,6 +338,12 @@
       .rotate__content img{
         transform: translateX(5px);
       }
+      #new-approve-modal-close, #purchace-close{
+        width: 106px;
+    }
+    .new-approve-modal-close-button, .new-error-modal-close-button, #purchace-close{ 
+        padding: 0 21px !important;
+    }
 }
 @media(max-width: 600px) {
     .modal .modal_content_new-game{
@@ -466,9 +472,6 @@
     .text-wrap__text{
         margin-bottom: 0px !important;
     }
-    #new-approve-modal-close{
-        width: 106px;
-    }
     .message-modal__btns-wrap{
         margin-top: 20px !important;
     }
@@ -477,9 +480,6 @@
     }
     .wrapper__message-modal, .wrapper__message-modal_waiting, .wrapper__message-modal_rejected, .wrapper__message-modal_error-eth{
         height: auto !important;
-    }
-    .wrapper__message-modal .message-modal__header-title{
-        font-size: 16px !important;
     }
    /* .wrapper__message-modal .text-wrap__title{
         font-size: 14px !important;
@@ -490,9 +490,6 @@
     .buy-now-btn, .tryon, .close-button, .back-nft-shop, .go-inventory, .wrapper__item-modal-overlay .item-detail__btns-wrap button, .bought-btn{
         font-size: 16px;
         padding-top: 0px;
-    }
-    .new-approve-modal-close-button, .new-error-modal-close-button{ 
-        padding: 0 21px !important;
     }
     #new-approve-modal-close:hover, .new-error-modal-close-button:hover {
         padding-top: 4px !important;

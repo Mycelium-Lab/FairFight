@@ -95,13 +95,13 @@
 					<span id="menu__close" class="message-modal__btn-close"></span>
 					<p class="menu__title">Menu</p>
 					<div id="menu-btns" class="wrapper__btns-wrap">
-						<button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button>
+						<!--<button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button>-->
 						<button class="btns-wrap__btn" id="menu-nft-shop-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-inventory-btn" style="display: block;"></button>
-						<button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
+						<!--<button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-lottery-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-tournaments-btn" style="display: block;"></button>
-						<button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button>-->
 					</div>
 				</div>
 			</div>
@@ -528,7 +528,7 @@
 			sizes="(max-width: 1024px) 345px,
 				761px"
 			src="elva-fairy-800w.jpg" alt="" class="wrapper__monetki">
-			<div class="wrapper__gradient"></div>
+			<div id="wrapper__gradient_bg" class="wrapper__gradient"></div>
 						<a id="about-show" class="wrapper__link link-first" style="display: none">About the game
 							<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<circle cx="14" cy="14" r="14" fill="white" />
@@ -635,13 +635,13 @@
 					<div id="container-left" class="container__left">
 						<img id="up-menu" class="menu-control" src="media/mobile/arrow-menu-up.svg" style="display: none;">
 						<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
-							<button class="btns-wrap__btn" id="home-btn"></button>
+							<!--<button class="btns-wrap__btn" id="home-btn"></button>-->
 							<button class="btns-wrap__btn" id="nft-shop-btn"></button>
 							<button class="btns-wrap__btn" id="inventory-btn"></button>
-							<button class="btns-wrap__btn" id="mystery-btn"></button>
+							<!--<button class="btns-wrap__btn" id="mystery-btn"></button>
 							<button class="btns-wrap__btn" id="lottery-btn"></button>
 							<button class="btns-wrap__btn" id="tournaments-btn"></button>
-							<button class="btns-wrap__btn" id="balance-btn"></button>
+							<button class="btns-wrap__btn" id="balance-btn"></button>-->
 						</div>
 						<img id="down-menu" class="menu-control" src="media/mobile/arrow-menu-down.svg" style="display: none;">
 						<div class="wrapper__contacts">
@@ -685,8 +685,9 @@
 								<img class="board-edge" src="media/svg/board-edge.svg">
 								<img class="board-edge" src="media/svg/board-edge.svg">
 							<ul id="opengames-list">
-								<div class="games__empty" id="opengames_empty">Empty :(
-									<span>At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
+								<div class="games__empty" id="opengames_empty">
+									<span id="opengames_empty-title"></span>
+									<span id="opengames_empty-desc">Connect your wallet to start playing.</span>
 								</div>
 							</ul>
 						</div>
@@ -696,10 +697,9 @@
 								<img class="board-edge" src="media/svg/board-edge.svg">
 								<img class="board-edge" src="media/svg/board-edge.svg">
 							<ul id="pastgames-list">
-								<table id="pastgames-table">
-								</table>
-								<div class="games__empty" id="pastgames_empty">Empty :(
-									<span>That's where your game history will be listed.</span>
+								<div class="games__empty" id="pastgames_empty">
+									<span id="pastgames_empty-title"></span>
+									<span id="pastgames_empty-desc">Connect your wallet to start playing.</span>
 								</div>
 							</ul>
 						</div>
@@ -1169,7 +1169,7 @@
 			</div>
 
 			<div class="message-modal__btns-wrap">
-				<button class="new-confirm-modal-close-button close-button">close</button>
+				<button id="purchace-close" class="new-confirm-modal-close-button close-button">close</button>
 			</div>
 		</div>
 	</div>
@@ -2813,7 +2813,7 @@
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<span id="btn-close-nftbox-detail-modal" class="item-detail__btn-close"></span>
 
-			<h2 class="item-modal-info">Info</h2>
+			<h2 class="item-modal-info">Buy loot box</h2>
 
 			<div id="nventory-nftbox-body">
 				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
