@@ -197,9 +197,9 @@
   left: -4px;
   bottom: -5px;
 }
-.wrapper__btns-wrap .btns-wrap__btn{
-  /*width: 127px;*/
-  /*background-size: 100%;*/
+.lds-dual-ring:after{
+  width: 30px;
+  height: 30px;
 }
 .wrapper_banners .board-edge_sm {
   width: 13.1px;
@@ -1287,10 +1287,6 @@ height: 475.15px !important;
 }
 .sort-wrapper {
   margin-left: 4px;
-}
-.lds-dual-ring:after{
-  width: 30px;
-  height: 30px;
 }
 }
 

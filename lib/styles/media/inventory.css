@@ -35,7 +35,7 @@
     }
     .inventory-modal__body .character-wrap__img-wrap{
         width: 303px !important;
-        height: 303px !important;
+        height: 233px !important;
     }
     .inventory__list-wrap{
         border: none;
@@ -100,54 +100,56 @@
         transform: translateX(0px);
     }
     .inventory-slot__modal-corner_topleft_weapon {
-        top: 23px;
+        top: 17px;
         left: -3px;
     }
     .inventory-slot__modal-corner_bottomleft_weapon{
-        top: 88px;
+        top: 65px;
         left: -3px;
     }
     .inventory-slot__modal-corner_bottomright_weapon{
-        top: 88px;
-        right: -3px;
+        top: 65px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_topright_weapon{
-        top: 23px;
-        right: -3px;
+        top: 17px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_topleft{
-        top: 131px;
+        top: 103px;
     }
     .inventory-slot__modal-corner_topright{
-        top: 131px;
+        top: 102px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_bottomleft{
-        top: 197px;
+        top: 150px;
     }
     .inventory-slot__modal-corner_bottomright{
-        top: 197px
+        top: 150px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_topleft_boots{
-        top: 240px;
+        top: 187px;
         left: -3px;
     }
     .inventory-slot__modal-corner_topright_boots{
-        top: 240px;
-        right: -3px;
+        top: 187px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_bottomright_boots{
-        top: 306px;
-    right: -3px;
+        top: 235px;
+        right: 14px;
     }
     .inventory-slot__modal-corner_bottomleft_boots{
-        top: 306px;
+        top: 235px;
         left: -3px;
     }
     #character-background{
         left: 25% !important;
-        min-height: 430.71px !important;
-        min-width: 400.96px !important;
-        transform: translate(-50%, -25%) !important;
+        min-height: 260.71px !important;
+        min-width: 300.96px !important;
+        transform: translate(-50%, -10%) !important;
     }
     .inventory_slots{
         z-index: 1000;
@@ -202,7 +204,7 @@
         width: 309px !important;
         margin-top: 6.43px !important;
     }
-    .inventory-slot__modal-corner_topright_weapon {
+    .inventory-slot__modal-corner_topright {
         top: 17px;
         right: 15px;
         width: 8.53px;
