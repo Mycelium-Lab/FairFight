@@ -613,8 +613,8 @@ a {
   height: 100%;
 }
 
-#opengames.empty .games__empty,
-#pastgames.empty .games__empty {
+#opengames .games__empty,
+#pastgames .games__empty {
   display: flex;
 }
 
@@ -631,7 +631,8 @@ a {
   max-width: 515px;
 }
 
-.games__empty #opengames_empty-desc, #opengames_empty-title {
+.games__empty #opengames_empty-desc, #opengames_empty-title,
+.games__empty #pastgames_empty-desc, #pastgames_empty-title {
   font-size: 25px;
   font-weight: 400;
   color: var(--color-sand);
@@ -639,7 +640,8 @@ a {
   display: block;
 }
 
-.games__empty #opengames_empty-title{
+.games__empty #opengames_empty-title,
+.games__empty #pastgames_empty-title{
   font-size: inherit;
   font-weight: inherit;
 }
