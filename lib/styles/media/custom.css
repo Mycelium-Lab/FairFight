@@ -684,6 +684,9 @@ min-height: 116px;
   .wrapper__message-modal .text-wrap__title{
     font-size: 16px;
   }
+  .wrapper__item-modal-overlay .prop__title{
+    margin-top: 2px;
+  }
 }
 @media(max-width: 830px) {
 .main-container{
