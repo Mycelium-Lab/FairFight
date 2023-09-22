@@ -30,10 +30,10 @@
         margin-left: 4px;
     }
     .body__showcase_inventory .slot-wrap__title{
-        font-size: 13.72px;
+        font-size: 10.56px;
         text-align: center;
-        margin-left: 6px;
-        margin-bottom: 6px;
+        margin-left: 4px;
+        margin-bottom: 0px;
     }
     .body__showcase_inventory .slots__slot-wrap:first-child p {
         margin-left: 0px;
@@ -46,8 +46,8 @@
         height: 44px;
     }
     .inventory-modal__body .slot-wrap__slot{
-        width: 67.93px;
-        height: 67.93px;
+        width: 50px;
+        height: 50px;
     }
     .fitting_slots{
         margin-left: 0px;
@@ -197,13 +197,14 @@
     .body__showcase_inventory .character-wrap__props-wrap .props-wrap__item:last-child .item__prop-img-wrap img{
         width: 40.57px;
         height: 30.65px;
+        margin-bottom: 5px;
     }
     .item__prop-value{
         font-size: 10.2px;
         color: #24B500;
     }
     .body__showcase_inventory .item__prop-value{
-        font-size: 15.71px;
+        font-size: 12.71px;
     }
     .props-wrap__item{
         gap: 4px;
@@ -224,6 +225,15 @@
     .modal__body_fitting .boots__slot-background::before{
         background-image: url('../../media/svg/inventory-modal/boots-slot-mobile-xs.svg');
     }
+    .weapon__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/weapon-slot-mobile-sm.svg');
+    }
+    .armor__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/armor-slot-mobile-xs.svg');
+    }
+    .boots__slot-background::before{
+        background-image: url('../../media/svg/inventory-modal/boots-slot-mobile-xs.svg');
+    }
     #tryon-character-background{
         max-height: 400px !important;
         max-width: 450px !important;
@@ -233,12 +243,12 @@
         height: 22px;
     }
     .body__showcase_inventory .slot-wrap__slot-img-wider{
-        width: 64px;
-        height: 42px;
+        width: 44px;
+        height: 22px;
     }
     .body__showcase_inventory .slot-wrap__slot-img{
-        width: 74.56px;
-        height: 72.88px;
+        width: 44px;
+        height: 42px;
     }
     .inventory-modal__body .head__showcase-title{
         padding-top: 10px;
@@ -400,8 +410,6 @@
     .body__showcase_inventory .slot-wrap__title{
         font-size: 10.56px;
         margin-left: 0px;
-        margin-right: 6px;
-        margin-bottom: 0px;
     }
     .body__showcase_inventory .item__prop-value{
         font-size: 12.1px;
@@ -434,6 +442,9 @@
     .body__showcase_inventory .slot-wrap__slot-img{
         width: 44px;
         height: 42px;
+    }
+    .body__showcase_inventory .slots__slot-wrap:first-child p {
+        margin-left: 0px;
     }
 }
 

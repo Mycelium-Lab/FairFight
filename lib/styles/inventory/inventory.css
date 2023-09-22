@@ -244,41 +244,41 @@
   }
   .inventory-slot__modal-corner_topright{
     top: 135px;
-    right: -3px;
+    right: -4px;
     width: 8.53px;
   }
   .inventory-slot__modal-corner_bottomright{
     top: 200px;
-    right: -3px;
+    right: -4px;
     width: 8.53px;
   }
   .inventory-slot__modal-corner_bottomleft{
     top: 200px;
-    left: -3px;
-    width: 8.53px;
-  }
-
-  .inventory-slot__modal-corner_topleft_weapon{
-    top: 24px;
     left: -4px;
     width: 8.53px;
   }
 
+  .inventory-slot__modal-corner_topleft_weapon{
+    top: 25px;
+    left: -3px;
+    width: 8.53px;
+  }
+
   .inventory-slot__modal-corner_topright_weapon{
-    top: 24px;
+    top: 25px;
     right: -4px;
     width: 8.53px;
   }
 
   .inventory-slot__modal-corner_bottomright_weapon{
     top: 90px;
-    right: -4px;
+    right: -3px;
     width: 8.53px;
   }
 
   .inventory-slot__modal-corner_bottomleft_weapon{
     top: 90px;
-    left: -4px;
+    left: -3px;
     width: 8.53px;
   }
 
@@ -296,13 +296,13 @@
   }
 
   .inventory-slot__modal-corner_bottomright_boots{
-    top: 311px;
+    top: 310px;
     right: -4px;
     width: 8.53px;
   }
 
   .inventory-slot__modal-corner_bottomleft_boots{
-    top: 311px;
+    top: 310px;
     left: -4px;
     width: 8.53px;
   }

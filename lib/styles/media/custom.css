@@ -197,9 +197,9 @@
   left: -4px;
   bottom: -5px;
 }
-.wrapper__btns-wrap .btns-wrap__btn{
-  /*width: 127px;*/
-  /*background-size: 100%;*/
+.lds-dual-ring:after{
+  width: 30px;
+  height: 30px;
 }
 .wrapper_banners .board-edge_sm {
   width: 13.1px;
@@ -303,7 +303,7 @@
 .active{
   display: block;
 }
-.games__empty span{
+.games__empty #opengames_empty-desc, .games__empty #pastgames_empty-desc{
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -392,6 +392,8 @@ background-image: url('../../media/svg/take-it-off-press-btn.svg');
 width: 190px !important;
 padding-top: 0px;
 height: 45px !important;
+font-size: 14px;
+padding-bottom: 12px;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]:hover{
     padding-top: 6px;
@@ -523,6 +525,9 @@ margin: 10px auto !important;
 font-size: 36px;
 gap: 24px;
 }
+#pastgames .games__empty{
+  margin: 40px auto !important;
+  }
 .banner__buy{
 background: url('../../media/mobile/buy.svg') no-repeat center 0;
 width: 135px;
@@ -789,7 +794,7 @@ width: 165.16px;
 .games__empty{
   font-size: 30px;
 }
-.games__empty span{
+.games__empty  #opengames_empty-desc, .games__empty  #pastgames_empty-desc{
   font-size: 18px;
   line-height: 20px;
   width: 400px;
@@ -900,6 +905,10 @@ border-radius: 0px;
   .wrapper__btns-wrap{
     width: auto;
   }
+  .games__empty #opengames_empty-title, 
+  .games__empty #pastgames_empty-title{
+    margin-bottom: 15px;
+  }
 .startBtn#disconnect{
   background: url('../../media/svg/connect-btn-mobile.svg') no-repeat center 0;
   width: 143px;
@@ -964,7 +973,7 @@ border-radius: 0px;
   gap: 5px;
   margin: 21px auto;
 }
-.games__empty span{
+ .games__empty #opengames_empty-desc, .games__empty #pastgames_empty-desc{
   font-size: 12px;
   line-height: 14.32px;
   width: 280px;
@@ -1285,10 +1294,6 @@ height: 475.15px !important;
 }
 .sort-wrapper {
   margin-left: 4px;
-}
-.lds-dual-ring:after{
-  width: 30px;
-  height: 30px;
 }
 }
 

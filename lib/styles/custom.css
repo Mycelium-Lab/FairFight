@@ -613,8 +613,8 @@ a {
   height: 100%;
 }
 
-#opengames.empty .games__empty,
-#pastgames.empty .games__empty {
+#opengames .games__empty,
+#pastgames .games__empty {
   display: flex;
 }
 
@@ -631,12 +631,19 @@ a {
   max-width: 515px;
 }
 
-.games__empty span {
+.games__empty #opengames_empty-desc, #opengames_empty-title,
+.games__empty #pastgames_empty-desc, #pastgames_empty-title {
   font-size: 25px;
   font-weight: 400;
   color: var(--color-sand);
   line-height: 30px;
   display: block;
+}
+
+.games__empty #opengames_empty-title,
+.games__empty #pastgames_empty-title{
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .opengames__btn {
@@ -3660,8 +3667,8 @@ z-index: -1;
 }
 
 .wrapper__item-modal-overlay .props-item__prop {
-  display: inline-flex;
-  gap: 5px;
+  /*display: inline-flex;
+  gap: 5px;*/
 }
 
 .wrapper__item-modal-overlay .prop__img-wrap img {
@@ -3675,7 +3682,6 @@ z-index: -1;
   margin-right: 15px;
   font-weight: 300;
   font-size: 16px;
-  line-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
