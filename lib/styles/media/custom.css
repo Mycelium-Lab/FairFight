@@ -681,6 +681,9 @@ min-height: 116px;
   .inventory-modal__nav-wrap .nav-wrap__nav label {
     font-size: 12px;
   }
+  .wrapper__message-modal .text-wrap__title{
+    font-size: 16px;
+  }
 }
 @media(max-width: 830px) {
 .main-container{
