@@ -392,6 +392,8 @@ background-image: url('../../media/svg/take-it-off-press-btn.svg');
 width: 190px !important;
 padding-top: 0px;
 height: 45px !important;
+font-size: 14px;
+padding-bottom: 12px;
 }
 .wrapper__item-modal-overlay .item-detail__btns-wrap button[id="go-to-inventory-btn-from-loot"]:hover{
     padding-top: 6px;
