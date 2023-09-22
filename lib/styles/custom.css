@@ -3660,8 +3660,8 @@ z-index: -1;
 }
 
 .wrapper__item-modal-overlay .props-item__prop {
-  display: inline-flex;
-  gap: 5px;
+  /*display: inline-flex;
+  gap: 5px;*/
 }
 
 .wrapper__item-modal-overlay .prop__img-wrap img {
@@ -3675,7 +3675,6 @@ z-index: -1;
   margin-right: 15px;
   font-weight: 300;
   font-size: 16px;
-  line-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
