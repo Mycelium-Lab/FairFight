@@ -631,12 +631,17 @@ a {
   max-width: 515px;
 }
 
-.games__empty span {
+.games__empty #opengames_empty-desc, #opengames_empty-title {
   font-size: 25px;
   font-weight: 400;
   color: var(--color-sand);
   line-height: 30px;
   display: block;
+}
+
+.games__empty #opengames_empty-title{
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .opengames__btn {

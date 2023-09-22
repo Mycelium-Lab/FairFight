@@ -303,7 +303,7 @@
 .active{
   display: block;
 }
-.games__empty span{
+.games__empty #opengames_empty-desc{
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -791,7 +791,7 @@ width: 165.16px;
 .games__empty{
   font-size: 30px;
 }
-.games__empty span{
+.games__empty .games__empty #opengames_empty-desc{
   font-size: 18px;
   line-height: 20px;
   width: 400px;
@@ -902,6 +902,9 @@ border-radius: 0px;
   .wrapper__btns-wrap{
     width: auto;
   }
+  .games__empty #opengames_empty-title{
+    margin-bottom: 15px;
+  }
 .startBtn#disconnect{
   background: url('../../media/svg/connect-btn-mobile.svg') no-repeat center 0;
   width: 143px;
@@ -966,7 +969,7 @@ border-radius: 0px;
   gap: 5px;
   margin: 21px auto;
 }
-.games__empty span{
+ .games__empty #opengames_empty-desc{
   font-size: 12px;
   line-height: 14.32px;
   width: 280px;
