@@ -338,10 +338,10 @@
       .rotate__content img{
         transform: translateX(5px);
       }
-      #new-approve-modal-close{
+      #new-approve-modal-close, #purchace-close{
         width: 106px;
     }
-    .new-approve-modal-close-button, .new-error-modal-close-button{ 
+    .new-approve-modal-close-button, .new-error-modal-close-button, #purchace-close{ 
         padding: 0 21px !important;
     }
 }
