@@ -35,7 +35,7 @@
       margin-bottom: 20px;
     }
     .wrapper__message-modal{
-      padding: 25px 27px 20px 27px;
+      padding: 25px 27px 5px 27px;
     }
     /*.wrapper__message-modal_waiting{
       height: 340px;
@@ -66,6 +66,7 @@
 }
 .wrapper__nft-shop-modal{
   padding-top: 20px;
+  padding-bottom: 0px;
 }
 #wrapper {
   background-image: url('../../media/mobile/bgfair-horizontal.jpg');

@@ -497,7 +497,7 @@
         padding-bottom: 20px !important;
     }
      .wrapper__message-modal{
-        padding: 25px 23px 29px 23px !important;
+        padding: 25px 23px 0px 23px !important;
     }
      .wrapper__message-modal_rejected {
         padding-bottom: 0px !important;
