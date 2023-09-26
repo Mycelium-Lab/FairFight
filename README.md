@@ -19,6 +19,23 @@ Blockchain and smart contracts are available anywhere with an internet connectio
 
 Cross-platform means that the game can be playable on different types of devices such as computers, smartphones and tablets. This gives players the ability to choose the device of their choice to participate in the game, making it more convenient and accessible to a wider audience.
 
+### NFT Shop
+In this shop, players can purchase unique items in the form of NFTs for their characters, or the characters themselves.
+Each NFT is a unique item with certain characteristics and properties.
+Players use their cryptocurrency wallets to make purchases in the store.
+
+### Inventory
+
+Players have an inventory where they can store their NFT items.
+They can equip or unequip these items on their characters.
+The inventory can be accessible through the game's interface.
+
+### Lootboxes
+
+Loot boxes introduce an element of randomness into the game.
+Players can purchase loot boxes containing random NFT items.
+The NFTs are randomized using a random number generator (RNG) based on Sapphire technology or another algorithm on other networks.
+
 # Local deployment
 
 Follow the instructions in the [wiki](https://github.com/Mycelium-Lab/FairFight/wiki/For-developers:-launching-the-application).
