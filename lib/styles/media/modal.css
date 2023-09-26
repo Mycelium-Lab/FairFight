@@ -306,7 +306,7 @@
         margin-bottom: 5px;
     }
     .wrapper__message-modal_confirm {
-        width: 340px !important;
+        width: auto !important;
       }
       .modal_content_pause{
         width: 310px !important;
@@ -338,11 +338,10 @@
       .rotate__content img{
         transform: translateX(5px);
       }
-      #new-approve-modal-close, #purchace-close{
-        width: 106px;
-    }
+     
     .new-approve-modal-close-button, .new-error-modal-close-button, #purchace-close{ 
-        padding: 0 21px !important;
+        padding: 0 21px 21px !important;
+        height: 30px;
     }
 }
 @media(max-width: 600px) {
@@ -498,7 +497,7 @@
         padding-bottom: 20px !important;
     }
      .wrapper__message-modal{
-        padding: 25px 23px 29px 23px !important;
+        padding: 25px 23px 0px 23px !important;
     }
      .wrapper__message-modal_rejected {
         padding-bottom: 0px !important;
