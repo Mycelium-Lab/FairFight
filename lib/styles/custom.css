@@ -2069,7 +2069,7 @@ background-image: url('../media/svg/past-game/map.svg');
   right: 0;
   border-radius: 20px;
   border: var(--border-board);
-  padding: 35px 27px 20px 27px;
+  padding: 35px 27px 5px 27px;
   z-index: 3;
   background-color: var(--bg-board);
   position: relative;
