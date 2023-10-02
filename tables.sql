@@ -71,6 +71,16 @@ CREATE TABLE weapon_bonuses(
     damage INT
 );
 
+CREATE TABLE players(
+    player TEXT NOT NULL UNIQUE
+);
+
+INSERT INTO players(player) VALUES('0xf7c4bd295D9168879ff37431cd09Bdd470f75480');
+INSERT INTO players(player) VALUES('0xd63dac78e1b3913779991a81cb1aa4eba74ca4fe');
+INSERT INTO players(player) VALUES('0xae756b8946a2912d207f36e33a20fa02976ebb20');
+INSERT INTO players(player) VALUES('0xfbf2dff529720b803007ff0b1e181160f5d17bda');
+INSERT INTO players(player) VALUES('0x45d0d1a09509dc0c65ff9d4df0035fcea6a5ec62');
+
 INSERT INTO armor_bonuses(id, health) VALUES(0, 1);
 INSERT INTO armor_bonuses(id, health) VALUES(1, 3);
 INSERT INTO armor_bonuses(id, health) VALUES(2, 3);
