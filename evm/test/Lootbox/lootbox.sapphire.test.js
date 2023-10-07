@@ -235,6 +235,19 @@ describe("FairFightLootbox", function (){
             const ownerBalance = await testToken.balanceOf(owner.address)
             assert(ownerBalance.toString() === price.toString())
         })
+        it('Should buy lootbox with native', async () => {
+            const tx = await lootbox.connect(looter).buyNative({value: price})
+            const waitedTx = await tx.wait()
+            const lootedEvent = waitedTx.events.find(v => v.event === 'Loot')
+            const lootedNft = { nft: lootedEvent.args.nft, propertyId: lootedEvent.args.propertyId }
+            const regularRarityLooted = regularRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const superiorRarityLooted = superiorRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const rareRarityLooted = rareRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const legendaryRarityLooted = legendaryRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            const epicRarityLooted = epicRarityPrizes.find(v => v.nft === lootedNft.nft && v.propertyId == lootedNft.propertyId)
+            assert(regularRarityLooted || superiorRarityLooted || rareRarityLooted || legendaryRarityLooted || epicRarityLooted, "NFT exist")
+            await expect(() => tx).to.changeEtherBalance(owner, price)
+        })
     })
 
 })
