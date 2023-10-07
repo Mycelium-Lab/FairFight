@@ -72,7 +72,7 @@ export async function getPlayerSignature(gameID, address, chainid) {
                     const range = (fight.baseAmount - 0) / step
                     const randomIndex = Math.floor(Math.random() * (range + 1))
                     const amount0 = randomIndex * step
-                    const amount1 = fight.baseAmount - amount0
+                    const amount1 = (BigInt(fight.baseAmount.toString()) + BigInt(fight.baseAmount.toString())) - BigInt(amount0.toString())
                     //player0
                     const message = [gameID, amount0.toString(), fight.token, players[0], config.contract.address]
                     const hashMessage = ethers.utils.solidityKeccak256(["uint256", "uint256", "uint160", "uint160", "uint160"], message)

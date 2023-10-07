@@ -80,6 +80,14 @@ INSERT INTO players(player) VALUES('0xd63dac78e1b3913779991a81cb1aa4eba74ca4fe')
 INSERT INTO players(player) VALUES('0xae756b8946a2912d207f36e33a20fa02976ebb20');
 INSERT INTO players(player) VALUES('0xfbf2dff529720b803007ff0b1e181160f5d17bda');
 INSERT INTO players(player) VALUES('0x45d0d1a09509dc0c65ff9d4df0035fcea6a5ec62');
+INSERT INTO players(player) VALUES('0x33ab855a59912a230cd812fd1cb796869b37fb72');
+INSERT INTO players(player) VALUES('0x1a031637358876f3df9b394c79e3f9b4a9c96085');
+INSERT INTO players(player) VALUES('0x025de75026d886c3265e039cfc7d681e11a49aaf');
+INSERT INTO players(player) VALUES('0x14209c53039649e7e42279804fb14fa108bea962');
+INSERT INTO players(player) VALUES('0xa1fb308038d1376fe53f3fab87d639f0d77e1dbb');
+INSERT INTO players(player) VALUES('0x8faff9b78fec4d6d51dd020071a83a6098b12ab6');
+INSERT INTO players(player) VALUES('0xb75e00e6d45dccfacf60376fabdf57845046ecf9');
+INSERT INTO players(player) VALUES('0xfb2075f861d90248d2874d2446465605a7a85422');
 
 INSERT INTO armor_bonuses(id, health) VALUES(0, 1);
 INSERT INTO armor_bonuses(id, health) VALUES(1, 3);
