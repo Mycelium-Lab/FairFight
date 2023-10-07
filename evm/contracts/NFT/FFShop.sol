@@ -64,10 +64,16 @@ contract FairFightShop is Ownable {
         work = _work;
     }
 
-    function buy(IFFNFT propertyType, IERC20 token, uint256 propertyID) external checkWork {
+    function buy(IFFNFT propertyType, IERC20 token, uint256 propertyID) external payable checkWork {
         uint256 price = prices[propertyType][token][propertyID];
         if (price == 0) revert NotAllowedBuy();
-        token.safeTransferFrom(msg.sender, collector, price);
+        if (address(token) != address(0)) {
+            token.safeTransferFrom(msg.sender, collector, price);
+        } else {
+            require(msg.value == price, "FFShop: Value not equal price");
+            (bool success, ) = payable(collector).call{value: price}("");
+            require(success, "FFShop: Not success sending to collector");
+        }
         propertyType.mint(msg.sender, propertyID);
         emit Buy(msg.sender, propertyType, token, propertyID, price);
     }

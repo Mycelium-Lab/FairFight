@@ -98,6 +98,13 @@ contract LootboxSapphire is Pausable, Ownable {
         emit Buy(msg.sender, paymentToken, price);
     }
 
+    function buyNative() external payable whenNotPaused {
+        (bool success, ) = payable(collector).call{value: price}("");
+        require(success, "LootboxSapphire: Not success sending to collector");
+        _loot(price);
+        emit Buy(msg.sender, IERC20(address(0)), price);
+    }
+
     function _loot(uint256 somenumber) private {
         uint256 randomRarity = getPseudoRandomNumber(somenumber, msg.sender, MAX_PERCENT);
         Rarity rarity;

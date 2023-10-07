@@ -86,6 +86,10 @@ describe("FairFightShop", function (){
         await armors.setAllowedMint(shop.address, true)
         await weapons.setAllowedMint(shop.address, true)
         await testUSDC.mint(buyer.address, ethers.utils.parseEther('10000000'))
+        await shop.setAllPrices(characters.address, ethers.constants.AddressZero, charactersPrices)
+        await shop.setAllPrices(armors.address, ethers.constants.AddressZero, armorsPrices)
+        await shop.setAllPrices(weapons.address, ethers.constants.AddressZero, weaponsPrices)
+        await shop.setAllPrices(boots.address, ethers.constants.AddressZero, bootsPrices)
 	})
 
     describe('Initial', async () => {
@@ -100,7 +104,7 @@ describe("FairFightShop", function (){
     })
 
     describe('Buy', () => {
-        it('Should buy positive', async () => {
+        it('Should buy erc20 positive', async () => {
             //check if collector balance equals 0 before buy
             const collectorAmountBefore = await testUSDC.balanceOf(collector.address)
             assert(collectorAmountBefore.toString() === '0', 'Collector balance = 0')
@@ -119,6 +123,29 @@ describe("FairFightShop", function (){
             assert(tokenOwner === buyer.address, 'Buyer 0 token owner')
         })
 
+        it('Should buy native positive', async () => {
+            //get price character 0
+            const priceCharacter0 = await shop.connect(buyer).prices(characters.address, ethers.constants.AddressZero, 0)
+            assert(priceCharacter0 > 0)
+            //buy character
+            const tx = await shop.connect(buyer).buy(characters.address, ethers.constants.AddressZero, 0, { value: priceCharacter0 })
+            const tokenOwner = await characters.ownerOf(1)
+            //check if collector got his tokens
+            await expect(() => tx).to.changeEtherBalance(collector, priceCharacter0)
+            //check if buyer is token owner
+            assert(tokenOwner === buyer.address, 'Buyer 0 token owner')
+        })
+
+        it('Should buy native negative (err: value is empty)', async () => {
+            //get price character 0
+            const priceCharacter0 = await shop.connect(buyer).prices(characters.address, ethers.constants.AddressZero, 0)
+            assert(priceCharacter0 > 0)
+            //buy character
+            await expect(
+                shop.connect(buyer).buy(characters.address, ethers.constants.AddressZero, 0)
+            ).to.be.revertedWith("FFShop: Value not equal price")
+        })
+        
         it('Should buy negative (err: not exist)', async () => {
             await expect(
                 shop.connect(buyer).prices(characters.address, testUSDC.address, 2)
