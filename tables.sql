@@ -88,6 +88,27 @@ INSERT INTO players(player) VALUES('0xa1fb308038d1376fe53f3fab87d639f0d77e1dbb')
 INSERT INTO players(player) VALUES('0x8faff9b78fec4d6d51dd020071a83a6098b12ab6');
 INSERT INTO players(player) VALUES('0xb75e00e6d45dccfacf60376fabdf57845046ecf9');
 INSERT INTO players(player) VALUES('0xfb2075f861d90248d2874d2446465605a7a85422');
+insert into players(player) values('0xfb85e0d69e7a1cccbcec14e48c7505b4581cdada');
+insert into players(player) values('0x2496de3990ce3b9b2f2dd8c1c146a2b2ffcb7d0b');
+insert into players(player) values('0x4878f827a54b48b7869bbc27ea2d03a5abc3f4f9');
+insert into players(player) values('0x9cce9428a597e9a52a555f47760f56ae0d7f8ef2');
+insert into players(player) values('0x18b594a8fee1d7b657038c111c51b2bb18033002');
+insert into players(player) values('0x77160b296084815d30b0e49069270ba17a33e7e7');
+insert into players(player) values('0xf096102b8879469a95749807ce0ae1bed12beb9d');
+insert into players(player) values('0x704880d88a45de1746361805cbf40039aa38e246');
+insert into players(player) values('0x65b820f92003400b7a845286300f4660e4234214');
+insert into players(player) values('0x28d1347bb5ae4dceeb2f77332b915f3b5af680f1');
+insert into players(player) values('0x5e7d810946a4edde0bc757dec04836792106dc0c');
+insert into players(player) values('0x4bf6b485a152c01332d346fcfb12d8989a3a32c1');
+insert into players(player) values('0x9c85f122d962385aa36ab1607af317ef76a56456');
+insert into players(player) values('0x5063b3af605285c4e7ef011a1cc5cb731f77cca9');
+insert into players(player) values('0xef59c8427845bcad378fa28ad2cb11e2cca637a6');
+insert into players(player) values('0x29251c216cc908e3936a35555e94d6b1524205a6');
+insert into players(player) values('0x50269d383bf84a95697e39454dd94f3b6eca7140');
+insert into players(player) values('0xc038ce7c08e0e2d0a8a06effcb8985275210e6d6');
+insert into players(player) values('0x0e5abd7030b517c2ec01caabfc3a1e6e68394050');
+insert into players(player) values('0x4a78b726cfde00269a80a8a23ab5c8a5763a0b26');
+insert into players(player) values('0xaa3a92977559c334571181df1a7a77b4235c614f');
 
 INSERT INTO armor_bonuses(id, health) VALUES(0, 1);
 INSERT INTO armor_bonuses(id, health) VALUES(1, 3);
