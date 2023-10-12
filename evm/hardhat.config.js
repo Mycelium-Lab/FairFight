@@ -50,6 +50,11 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       chainId: 56
     },
+    polygon_mainnet: {
+      url: "https://polygon-rpc.com",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 137
+    },
   },
   solidity: {
     compilers: [

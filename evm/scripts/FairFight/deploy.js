@@ -23,7 +23,7 @@ async function main() {
         10, //max rounds
         '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4', //fee address,
         500, //fee
-        ethers.utils.parseEther("1"), //min amount for one round
+        ethers.utils.parseEther("0.1"), //min amount for one round
         2 //max players
       ], 
     { initializer: "initialize" });
@@ -33,29 +33,32 @@ async function main() {
       `FairFight to ${fairFight.address} on chain ${chainid}`
     );
 
-    // const allowedTokens = [
-    //   {
-    //       symbol: 'USDT',
-    //       address: '0x55d398326f99059ff775485246999027b3197955'
-    //   },
-    //   {
-    //       symbol: 'USDC',
-    //       address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d'
-    //   },
-    //   {
-    //       symbol: 'DAI',
-    //       address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3'
-    //   },
+    const allowedTokens = [
+      {
+          symbol: 'USDT',
+          address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+          decimals: 6
+      },
+      {
+          symbol: 'USDC',
+          address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+          decimals: 6
+      },
+      {
+          symbol: 'DAI',
+          address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+          decimals: 18
+      },
     //   {
     //       symbol: 'BUSD',
     //       address: '0xe9e7cea3dedca5984780bafc599bd69add087d56'
     //   }
-    // ]
+    ]
 
-    // for (let i = 0; i < allowedTokens.length; i++) {
-    //   await fairFight.changeMinAmountPerRound(allowedTokens[i].address, ethers.utils.parseEther('0.1'));
-    //   console.log(allowedTokens[i].symbol, 'allowed')
-    // }
+    for (let i = 0; i < allowedTokens.length; i++) {
+      await fairFight.changeMinAmountPerRound(allowedTokens[i].address, 0.1 * 10**allowedTokens[i].decimals);
+      console.log(allowedTokens[i].symbol, 'allowed')
+    }
 
 }
 

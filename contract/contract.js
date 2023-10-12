@@ -82,6 +82,20 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
+      name: "Polygon",
+      chainid: 137,
+      rpc: 'https://polygon-rpc.com',
+      currency: 'MATIC',
+      explorer: 'https://polygonscan.com',
+      contractAddress: '0xA983DcF554082d850c4f9308100aB3b412b8712E',
+      charactersAddress: '0xDa091ebf42532fA670F56205681E98ed7E5A386a',
+      armorsAddress: '0xc138f48191827CB9eBa84F581Cb43A5b4831dF65',
+      weaponsAddress: '0x0ECf7540D6A969AA8ba130167C2E526A377515F3',
+      bootsAddress: '0x03c1162f0161480a25fEB6abd9136D6b2727253F',
+      shopAddress: '0x808503A9b0F8Ff1dAD47BBD7fA99a5b56dED1dc9',
+      privateKey: process.env.PRIVATE_KEY
+  },
+  {
       name: "staging-fast-active-bellatrix",
       chainid: 1351057110,
       rpc: 'https://staging-v3.skalenodes.com/v1/staging-fast-active-bellatrix',
