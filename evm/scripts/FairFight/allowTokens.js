@@ -7,31 +7,31 @@ async function main() {
     // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
     // const wallet = new ethers.Wallet(account, ethers.provider)
     // FairFight = FairFight.connect(wallet)
-    const fairFight = FairFight.attach('0x176DC2E5cB86Ba5d7ee5819478bE1f4FA0931c54')
+    const fairFight = FairFight.attach('0xA983DcF554082d850c4f9308100aB3b412b8712E')
 
     const allowedTokens = [
-      {
-          symbol: 'USDT',
-          address: '0x6bC5db5C9C5CfedAf6adF8C938Ac72c9653Ff9f0'
-      },
-      {
-          symbol: 'USDC',
-          address: '0x6aC2d8F07CEA9431075Ba20d5EE7A5944179b6Ea'
-      },
-      {
-          symbol: 'DAI',
-          address: '0xED98091c7D2Fef365a4FE2BC14B2625813E056f6'
-      },
-      {
-          symbol: 'BUSD',
-          address: '0xBFaCA5eC344276F6ccce65602fbB62af0d5E3FeF'
-      }
+        {
+            symbol: 'USDT',
+            address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+            decimals: 6
+        },
+        {
+            symbol: 'USDC',
+            address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+            decimals: 6
+        },
+        {
+            symbol: 'DAI',
+            address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+            decimals: 18
+        }
     ]
 
-    for (let i = 0; i < allowedTokens.length; i++) {
-      await fairFight.changeMinAmountPerRound(allowedTokens[i].address, ethers.utils.parseEther('0.1'));
-      console.log(allowedTokens[i].symbol, 'allowed')
-    }
+    // for (let i = 0; i < allowedTokens.length; i++) {
+    //   await fairFight.changeMinAmountPerRound(allowedTokens[1].address, (0.1 * 10**allowedTokens[1].decimals).toString());
+    //   console.log(allowedTokens[1].symbol, 'allowed')
+    // // }
+    // console.log(await fairFight.minAmountPerRound(allowedTokens[0].address))
 }
 
 main()

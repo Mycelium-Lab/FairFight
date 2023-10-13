@@ -52,7 +52,7 @@ export const networks = [
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
       privateKey: process.env.PRIVATE_KEY_EMERALD,
-      contractAddress: '0x739B9dedAc3aA99Dbe9102F97fE6cbAeBc66980C',
+      contractAddress: '0x87b8BAe3f9C64d53167Ebc560FD73D0899215241',
       charactersAddress: '0xe30E4153BcF8420BA7d3FFC28b2772D9Fdb1b82A',
       armorsAddress: '0xC651C073E8D2f3eE28a9d2E1ac96ecbC8a90CcCB',
       weaponsAddress: '0xBcd0534481daB584ae3D458d274FDD65d537cDb7',
@@ -72,7 +72,7 @@ export const networks = [
       chainid: 23294,
       rpc: 'https://sapphire.oasis.io',
       currency: 'ROSE',
-      contractAddress: '0x927C8aF4282E507352088c52014bC8423367c610',
+      contractAddress: '0x87b8BAe3f9C64d53167Ebc560FD73D0899215241',
       charactersAddress: '0x560Eb55F9f633368d378b059d7Fd32a5f7a914bE',
       armorsAddress: '0x1ee6037Fc30Fb21cf488181e5E4a0FF4803e8C18',
       weaponsAddress: '0x4c04Eb1518Fa7395E954A0d7b6afe1cB226a21c6',
@@ -80,6 +80,20 @@ export const networks = [
       shopAddress: '0x6B1e14477a78D269d44F9b476Bd39adE1913fa30',
       explorer: 'https://explorer.sapphire.oasis.io',
       privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
+      name: "Polygon",
+      chainid: 137,
+      rpc: 'https://polygon-rpc.com',
+      currency: 'MATIC',
+      explorer: 'https://polygonscan.com',
+      contractAddress: '0xA983DcF554082d850c4f9308100aB3b412b8712E',
+      charactersAddress: '0xDa091ebf42532fA670F56205681E98ed7E5A386a',
+      armorsAddress: '0xc138f48191827CB9eBa84F581Cb43A5b4831dF65',
+      weaponsAddress: '0x0ECf7540D6A969AA8ba130167C2E526A377515F3',
+      bootsAddress: '0x03c1162f0161480a25fEB6abd9136D6b2727253F',
+      shopAddress: '0x808503A9b0F8Ff1dAD47BBD7fA99a5b56dED1dc9',
+      privateKey: process.env.PRIVATE_KEY
   },
   {
       name: "staging-fast-active-bellatrix",
@@ -102,7 +116,7 @@ export const networks = [
     shopAddress: '0xBB8072C0B33d919Fc4251B879c02a0538262855a',
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
-    privateKey: process.env.PRIVATE_KEY
+    privateKey: process.env.PRIVATE_KEY_SKALE
   },
   {
     name: 'BNB',
