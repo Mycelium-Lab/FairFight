@@ -47,12 +47,12 @@ module.exports = {
     },
     bnb: {
       url: "https://bsc-dataseed.binance.org",
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 56
     },
     polygon_mainnet: {
       url: "https://polygon-rpc.com",
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 137
     },
   },
