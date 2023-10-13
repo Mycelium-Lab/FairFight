@@ -34,21 +34,21 @@ async function main() {
     );
 
     const allowedTokens = [
-      {
-          symbol: 'USDT',
-          address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
-          decimals: 6
-      },
-      {
-          symbol: 'USDC',
-          address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
-          decimals: 6
-      },
-      {
-          symbol: 'DAI',
-          address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
-          decimals: 18
-      },
+      // {
+      //     symbol: 'USDT',
+      //     address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
+      //     decimals: 6
+      // },
+      // {
+      //     symbol: 'USDC',
+      //     address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+      //     decimals: 6
+      // },
+      // {
+      //     symbol: 'DAI',
+      //     address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
+      //     decimals: 18
+      // },
     //   {
     //       symbol: 'BUSD',
     //       address: '0xe9e7cea3dedca5984780bafc599bd69add087d56'

@@ -52,7 +52,7 @@ export const networks = [
       rpc: 'https://emerald.oasis.dev',
       currency: 'ROSE',
       privateKey: process.env.PRIVATE_KEY_EMERALD,
-      contractAddress: '0x739B9dedAc3aA99Dbe9102F97fE6cbAeBc66980C',
+      contractAddress: '0x87b8BAe3f9C64d53167Ebc560FD73D0899215241',
       charactersAddress: '0xe30E4153BcF8420BA7d3FFC28b2772D9Fdb1b82A',
       armorsAddress: '0xC651C073E8D2f3eE28a9d2E1ac96ecbC8a90CcCB',
       weaponsAddress: '0xBcd0534481daB584ae3D458d274FDD65d537cDb7',
@@ -72,7 +72,7 @@ export const networks = [
       chainid: 23294,
       rpc: 'https://sapphire.oasis.io',
       currency: 'ROSE',
-      contractAddress: '0x927C8aF4282E507352088c52014bC8423367c610',
+      contractAddress: '0x87b8BAe3f9C64d53167Ebc560FD73D0899215241',
       charactersAddress: '0x560Eb55F9f633368d378b059d7Fd32a5f7a914bE',
       armorsAddress: '0x1ee6037Fc30Fb21cf488181e5E4a0FF4803e8C18',
       weaponsAddress: '0x4c04Eb1518Fa7395E954A0d7b6afe1cB226a21c6',
@@ -116,7 +116,7 @@ export const networks = [
     shopAddress: '0xBB8072C0B33d919Fc4251B879c02a0538262855a',
     currency: 'sFUEL',
     explorer: 'https://staging-faint-slimy-achird.explorer.staging-v3.skalenodes.com',
-    privateKey: process.env.PRIVATE_KEY
+    privateKey: process.env.PRIVATE_KEY_SKALE
   },
   {
     name: 'BNB',
