@@ -7,10 +7,10 @@ async function main() {
     const price = 10*10**6
     const token = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F'
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
-    const characters = FFNFT.attach('0xDa091ebf42532fA670F56205681E98ed7E5A386a')
-    const armors = FFNFT.attach('0xc138f48191827CB9eBa84F581Cb43A5b4831dF65')
-    const boots = FFNFT.attach('0x03c1162f0161480a25fEB6abd9136D6b2727253F')
-    const weapons = FFNFT.attach('0x0ECf7540D6A969AA8ba130167C2E526A377515F3')
+    const characters = FFNFT.attach('0xe10cd6c65Af7637ad8329f0Adb161A968101bF86')
+    const armors = FFNFT.attach('0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae')
+    const boots = FFNFT.attach('0x03467ad8Efe8BB73c0Dde0c436b7efAfE9FC3E32')
+    const weapons = FFNFT.attach('0xDf82B488053b2F183D959969141B9896aB8C1efA')
     const Lootbox = await ethers.getContractFactory("Lootbox")
     const lootbox = await Lootbox.deploy(
         regularRarityPrizes(characters.address, weapons.address, boots.address, armors.address),
