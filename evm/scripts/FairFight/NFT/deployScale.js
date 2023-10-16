@@ -15,9 +15,13 @@ async function main() {
     const boots = await FFNFT.deploy("FairFightBoots", "FFB", bootsBaseURI, ethers.constants.MaxUint256)
     const weapons = await FFNFT.deploy("FairFightWeapons", "FFW", weaponsBaseURI, ethers.constants.MaxUint256)
     await characters.deployed()
+    console.log(`Characters deployed on address: ${characters.address}`)
     await armors.deployed()
+    console.log(`Armors deployed on address: ${armors.address}`)
     await boots.deployed()
+    console.log(`Boots deployed on address: ${boots.address}`)
     await weapons.deployed()
+    console.log(`Weapons deployed on address: ${weapons.address}`)
     let charactersPrices = [
         Math.round(50 * 10**decimals).toString(),
         Math.round(20 * 10**decimals).toString(),
@@ -195,10 +199,15 @@ async function main() {
         collector
     )
     await shop.deployed()
+    console.log(`Shop deployed on address: ${shop.address}`)
     await characters.setAllowedMint(shop.address, true)
+    console.log(`Set allowed mint characters`)
     await armors.setAllowedMint(shop.address, true)
+    console.log(`Set allowed mint armors`)
     await weapons.setAllowedMint(shop.address, true)
+    console.log(`Set allowed mint weapons`)
     await boots.setAllowedMint(shop.address, true)
+    console.log(`Set allowed mint boots`)
     console.log(`Characters deployed to ${characters.address}`)
     console.log(`Armors deployed to ${armors.address}`)
     console.log(`Boots deployed to ${boots.address}`)

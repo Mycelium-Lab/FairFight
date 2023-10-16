@@ -7,7 +7,7 @@ async function main() {
     // const account = ethers.utils.HDNode.fromMnemonic(process.env.MNEMONIC).derivePath(`m/44'/60'/0'/0/1`);
     // const wallet = new ethers.Wallet(account, ethers.provider)
     // FairFight = FairFight.connect(wallet)
-    const fairFight = FairFight.attach('0xA983DcF554082d850c4f9308100aB3b412b8712E')
+    const fairFight = FairFight.attach('0x58e29cF81dBBE7bB358CA16ACdd9d1d7EAE92BD2')
 
     const allowedTokens = [
         {
@@ -28,8 +28,8 @@ async function main() {
     ]
 
     // for (let i = 0; i < allowedTokens.length; i++) {
-    //   await fairFight.changeMinAmountPerRound(allowedTokens[1].address, (0.1 * 10**allowedTokens[1].decimals).toString());
-    //   console.log(allowedTokens[1].symbol, 'allowed')
+      await fairFight.changeMinAmountPerRound(allowedTokens[2].address, (0.1 * 10**allowedTokens[2].decimals).toString());
+      console.log(allowedTokens[2].symbol, 'allowed')
     // // }
     // console.log(await fairFight.minAmountPerRound(allowedTokens[0].address))
 }
