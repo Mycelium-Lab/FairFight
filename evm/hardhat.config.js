@@ -50,6 +50,11 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 56
     },
+    opbnb: {
+      url: "https://opbnb-mainnet-rpc.bnbchain.org",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+      chainId: 204
+    },
     polygon_mainnet: {
       url: "https://polygon-rpc.com",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
