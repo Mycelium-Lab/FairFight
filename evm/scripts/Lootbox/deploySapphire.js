@@ -5,12 +5,12 @@ async function main() {
     const collector = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
     const signer = await ethers.getSigner()
     const price = (10*10**18).toString()
-    const token = '0x55d398326f99059ff775485246999027b3197955'
+    const token = '0x9e5AAC1Ba1a2e6aEd6b32689DFcF62A509Ca96f3'
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
-    const characters = FFNFT.attach('0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4')
-    const armors = FFNFT.attach('0xe10cd6c65af7637ad8329f0adb161a968101bf86')
-    const boots = FFNFT.attach('0x2b9e270d12ba5ce62ece2c458db7b7b2939d19ae')
-    const weapons = FFNFT.attach('0x03467ad8efe8bb73c0dde0c436b7efafe9fc3e32')
+    const characters = FFNFT.attach('0x58e29cF81dBBE7bB358CA16ACdd9d1d7EAE92BD2')
+    const armors = FFNFT.attach('0x2784e030B259D6E79D5c33275296d478110129C0')
+    const boots = FFNFT.attach('0x159d80fcFaC328Cb0400E1265F4c79138C4dD376')
+    const weapons = FFNFT.attach('0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586')
     const Lootbox = await ethers.getContractFactory("Lootbox")
     const lootbox = await Lootbox.deploy(
         regularRarityPrizes(characters.address, weapons.address, boots.address, armors.address),

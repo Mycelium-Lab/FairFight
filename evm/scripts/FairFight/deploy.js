@@ -36,24 +36,24 @@ async function main() {
     const allowedTokens = [
       {
           symbol: 'USDT',
-          address: '0x55d398326f99059ff775485246999027b3197955',
+          address: '0x9e5AAC1Ba1a2e6aEd6b32689DFcF62A509Ca96f3',
           decimals: 18
       },
-      {
-          symbol: 'USDC',
-          address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
-          decimals: 18
-      },
-      {
-          symbol: 'DAI',
-          address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
-          decimals: 18
-      },
-      {
-          symbol: 'BUSD',
-          address: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
-          decimals: 18
-      }
+      // {
+      //     symbol: 'USDC',
+      //     address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
+      //     decimals: 18
+      // },
+      // {
+      //     symbol: 'DAI',
+      //     address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
+      //     decimals: 18
+      // },
+      // {
+      //     symbol: 'BUSD',
+      //     address: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
+      //     decimals: 18
+      // }
     ]
 
     for (let i = 0; i < allowedTokens.length; i++) {
