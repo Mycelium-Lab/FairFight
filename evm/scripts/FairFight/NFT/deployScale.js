@@ -1,13 +1,13 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-    const decimals = 6
+    const decimals = 18
     const collector = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
     const charactersBaseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
     const armorsBaseURI = 'https://ipfs.io/ipfs/Qmd8U5jsHMqp4U4vVd5A4sb14WAsY6UWmHnpZef8G2jHv1/'
     const bootsBaseURI = 'https://ipfs.io/ipfs/Qmd7NkqYyuR3K2uP1Go3xHtuTomKV2aHBUa8mcncbUDNm3/'
     const weaponsBaseURI = 'https://ipfs.io/ipfs/QmSjXwvkd9jb46x4yJLHVQtBbthquJxEeeUaJuQpzMkGBs/'
-    const token = "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+    const token = "0x55d398326f99059ff775485246999027b3197955"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
     const characters = await FFNFT.deploy("FairFightCharacters", "FFC", charactersBaseURI, ethers.constants.MaxUint256)

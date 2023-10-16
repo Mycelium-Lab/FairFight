@@ -3,13 +3,13 @@ const { ethers } = require("hardhat");
 async function main() {
     const decimals = 18
     const collector = '0xE8D562606F35CB14dA3E8faB1174F9B5AE8319c4'
-    const token = "0x6b59C68405B0216C2C8ba1EC1f8DCcBd47892c58"
+    const token = "0x55d398326f99059ff775485246999027b3197955"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
-    const characters = FFNFT.attach("0x560Eb55F9f633368d378b059d7Fd32a5f7a914bE")
-    const armors = FFNFT.attach("0x1ee6037Fc30Fb21cf488181e5E4a0FF4803e8C18")
-    const boots = FFNFT.attach("0xFF66c9aBBEE861D82C55658945E38DCC1A4780FC")
-    const weapons = FFNFT.attach("0x4c04Eb1518Fa7395E954A0d7b6afe1cB226a21c6")
+    const characters = FFNFT.attach("0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4")
+    const armors = FFNFT.attach("0xe10cd6c65af7637ad8329f0adb161a968101bf86")
+    const boots = FFNFT.attach("0x2b9e270d12ba5ce62ece2c458db7b7b2939d19ae")
+    const weapons = FFNFT.attach("0x03467ad8efe8bb73c0dde0c436b7efafe9fc3e32")
     let charactersPrices = [
         Math.round(50 * 10**decimals).toString(),
         Math.round(20 * 10**decimals).toString(),
@@ -191,10 +191,10 @@ async function main() {
     await armors.setAllowedMint(shop.address, true)
     await weapons.setAllowedMint(shop.address, true)
     await boots.setAllowedMint(shop.address, true)
-    await shop.setAllPrices(characters.address, ethers.constants.AddressZero, charactersPrices)
-    await shop.setAllPrices(armors.address, ethers.constants.AddressZero, armorsPrices)
-    await shop.setAllPrices(weapons.address, ethers.constants.AddressZero, weaponsPrices)
-    await shop.setAllPrices(boots.address, ethers.constants.AddressZero, bootsPrices)
+    // await shop.setAllPrices(characters.address, ethers.constants.AddressZero, charactersPrices)
+    // await shop.setAllPrices(armors.address, ethers.constants.AddressZero, armorsPrices)
+    // await shop.setAllPrices(weapons.address, ethers.constants.AddressZero, weaponsPrices)
+    // await shop.setAllPrices(boots.address, ethers.constants.AddressZero, bootsPrices)
     console.log(`Shop deployed to ${shop.address}`)
 }
 
