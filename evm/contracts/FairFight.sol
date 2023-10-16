@@ -2,16 +2,16 @@
 pragma solidity 0.8.19;
 
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
 import "./Storage/FairFightStorage.sol";
 
 contract FairFight is
     Initializable,
     PausableUpgradeable,
-    AccessControlUpgradeable,
+    OwnableUpgradeable,
     ReentrancyGuardUpgradeable,
     FairFightStorage
 {
@@ -30,10 +30,8 @@ contract FairFight is
         uint256 _maxPlayers
     ) public initializer {
         __Pausable_init();
-        __AccessControl_init();
+        __Ownable_init();
 
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _grantRole(PAUSER_ROLE, msg.sender);
         signer = _signer;
         maxRounds = _maxRounds;
         feeCollector = _feeCollector;
@@ -56,11 +54,11 @@ contract FairFight is
         fights.push(_fight);
     }
 
-    function pause() public onlyRole(PAUSER_ROLE) {
+    function pause() public onlyOwner() {
         _pause();
     }
 
-    function unpause() public onlyRole(PAUSER_ROLE) {
+    function unpause() public onlyOwner() {
         _unpause();
     }
 
@@ -311,35 +309,35 @@ contract FairFight is
     function changeMinAmountPerRound(
         IERC20 _token,
         uint256 _minAmountPerRound
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) external onlyOwner() {
         minAmountPerRound[_token] = _minAmountPerRound;
     }
 
     function changeSigner(
         address _signer
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) external onlyOwner() {
         signer = _signer;
     }
 
     function changeFeeCollector(
         address _feeCollector
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) external onlyOwner() {
         feeCollector = _feeCollector;
     }
 
-    function changeFee(uint256 _fee) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    function changeFee(uint256 _fee) external onlyOwner() {
         fee = _fee;
     }
 
     function changeMaxPlayers(
         uint256 _maxPlayers
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) external onlyOwner() {
         maxPlayers = _maxPlayers;
     }
 
     function changeMaxRounds(
         uint256 _maxRounds
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) {
+    ) external onlyOwner() {
         maxRounds = _maxRounds;
     }
 
