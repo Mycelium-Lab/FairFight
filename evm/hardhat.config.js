@@ -60,6 +60,11 @@ module.exports = {
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 137
     },
+    bitfinity_testnet: {
+      url: "https://testnet.bitfinity.network",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
+      chainId: 355113
+    }
   },
   solidity: {
     compilers: [
