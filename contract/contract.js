@@ -23,6 +23,20 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_TEST
   },
   {
+      name: "Bitfinity Testnet",
+      chainid: 355113,
+      rpc: 'https://testnet.bitfinity.network',
+      currency: 'BFT',
+      explorer: 'https://explorer.bitfinity.network/',
+      contractAddress: '0x178A6106339c4B56ED9BaB7CD2CA55f83aED8137',
+      charactersAddress: '0x2784e030B259D6E79D5c33275296d478110129C0',
+      armorsAddress: '0x159d80fcFaC328Cb0400E1265F4c79138C4dD376',
+      weaponsAddress: '0xe3D9c28e22f997eE3956C2fA839EA79cB214A76A',
+      bootsAddress: '0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586',
+      shopAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
+      lootboxAddress: '0xfa550EF42fb65aEDF52183129Ca9054D3552A77d'
+  },
+  {
       name: "Ganache",
       chainid: 1337,
       rpc: 'http://localhost:7545',
