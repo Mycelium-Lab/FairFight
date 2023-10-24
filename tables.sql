@@ -228,7 +228,6 @@ insert into players(player) values('0x2f74a22b652bf414dacc43b73ed8897dcf639140')
 insert into players(player) values('0x23dcb022b2608b42c3d14a4e587066ed993f1a93');
 insert into players(player) values('0x01548e209d2dfa7e1e4d06022e1f8a590b57af86');
 insert into players(player) values('0x63f50938aa46ac405d1322975cfa293c45365cea');
-
 insert into players(player) values('0x550644df222caaf68d5792efda43720c6f26657b');
 insert into players(player) values('0x05dc6a70fcace5f9e17abd6ad28be9b76cc60870');
 insert into players(player) values('0x82c0c77ea23b8228bab865cf87ad9a0327129f46');
@@ -240,6 +239,18 @@ insert into players(player) values('0x0d78dce3bbc4dbf1fe9f5dc8eb83681c776442f1')
 insert into players(player) values('0xd14a19d758554a0ae3775ab25e19507d32b22bd0');
 insert into players(player) values('0x044e546bc7da01186e484c0b06fff06675d4be0a');
 insert into players(player) values('0x95b3e93688409c6b198bf7761e338ce284bbdd11');
+
+insert into players(player) values('0xae1949d95572ed89394c52ff40294bc25a2ba948');
+insert into players(player) values('0x959e9e7628402864d1f2051dc420c84481cc1e73');
+insert into players(player) values('0x64b2974a0233722bfa2e103b26a7a0145053bb62');
+insert into players(player) values('0x73b79016381712d47add9a34fd0042ecec43bb49');
+insert into players(player) values('0x767da058c16a1b2fa7a01f0588f4f2150cc45bc7');
+insert into players(player) values('0xb57eee512afb6671a636a85dc680c710490a7c2e');
+insert into players(player) values('0x08e48736028616bb749effc148dcee8ab8271b7e');
+insert into players(player) values('0xd45c8df26f9a65b254bc4c3ef8ba0be576c230e3');
+insert into players(player) values('0x8e58096099cc1eed65509b9d2edb090bc1c8655f');
+insert into players(player) values('0x6e3bd507c94900df48cbdaf0a0aef315f13cd3d8');
+
 
 
 INSERT INTO armor_bonuses(id, health) VALUES(0, 1);
