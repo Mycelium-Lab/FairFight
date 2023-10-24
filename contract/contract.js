@@ -34,7 +34,8 @@ export const networks = [
       weaponsAddress: '0xe3D9c28e22f997eE3956C2fA839EA79cB214A76A',
       bootsAddress: '0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586',
       shopAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
-      lootboxAddress: '0xfa550EF42fb65aEDF52183129Ca9054D3552A77d'
+      lootboxAddress: '0xfa550EF42fb65aEDF52183129Ca9054D3552A77d',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
       name: "Ganache",
