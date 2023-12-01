@@ -53,6 +53,21 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
+      name: "Arbitrum",
+      chainid: 42161,
+      rpc: 'https://arb1.arbitrum.io/rpc',
+      currency: 'ETH',
+      explorer: 'https://explorer.arbitrum.io',
+      contractAddress: '0xd136b9EdC06E9d9464B22Efd78DE12b1B3d1C595',
+      charactersAddress: '0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586',
+      armorsAddress: '0xe3D9c28e22f997eE3956C2fA839EA79cB214A76A',
+      weaponsAddress: '0xe10cd6c65Af7637ad8329f0Adb161A968101bF86',
+      bootsAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
+      shopAddress: '0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae',
+      lootboxAddress: '0xaB585238D26a7D13a69B26f7Caa8d0047158da99',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
       name: "Ganache",
       chainid: 1337,
       rpc: 'http://localhost:7545',
