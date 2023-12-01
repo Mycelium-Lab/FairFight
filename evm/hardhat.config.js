@@ -64,6 +64,11 @@ module.exports = {
       url: "https://testnet.bitfinity.network",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 355113
+    },
+    bnbTest: {
+      url: 'https://bsc-testnet.publicnode.com',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 97
     }
   },
   solidity: {
