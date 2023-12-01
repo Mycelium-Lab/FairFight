@@ -64,6 +64,21 @@ module.exports = {
       url: "https://testnet.bitfinity.network",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY_EMERALD] : [],
       chainId: 355113
+    },
+    bnbTest: {
+      url: 'https://bsc-testnet.publicnode.com',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 97
+    },
+    arbitrum: {
+      url: 'https://arb1.arbitrum.io/rpc',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 42161
+    },
+    xrpDev: {
+      url: 'https://rpc-evm-sidechain.xrpl.org',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 1440002
     }
   },
   solidity: {
