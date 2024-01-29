@@ -65,7 +65,8 @@ const MessageType = {
   // Errors... shit happens
   ERROR_ROOM_IS_FULL: 'error_room_is_full',
   ERROR_USER_INITIALIZED: 'error_user_initialized',
-  NOT_USER_ROOM: 'not_user_room'
+  NOT_USER_ROOM: 'not_user_room',
+  SPAWN_USER: 'spawn_user'
 };
 
 function User(walletAddress) {
@@ -190,6 +191,17 @@ function handleSocket(socket) {
   socket.on(MessageType.SHOOT, onShoot);
   socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
   socket.on(MessageType.END_FINISHING, onEndFinishing)
+  socket.on(MessageType.SPAWN_USER, onSpawnUser)
+
+  async function onSpawnUser(user) {
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit(MessageType.SPAWN_USER, user)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   async function onEndFinishing() {
     try {
