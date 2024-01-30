@@ -730,6 +730,7 @@ function handleSocket(socket) {
   }
 
   function createRoundsRedisLink() {
+    //remaining rounds
     return room.getName()
   }
 
