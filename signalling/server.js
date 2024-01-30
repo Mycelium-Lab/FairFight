@@ -67,7 +67,8 @@ const MessageType = {
   ERROR_USER_INITIALIZED: 'error_user_initialized',
   NOT_USER_ROOM: 'not_user_room',
   SPAWN_USER: 'spawn_user',
-  MOVEMENT: 'movement'
+  MOVEMENT: 'movement',
+  COLLECT_WEAPON: 'collect_weapon'
 };
 
 function User(walletAddress) {
@@ -194,21 +195,30 @@ function handleSocket(socket) {
   socket.on(MessageType.END_FINISHING, onEndFinishing)
   socket.on(MessageType.SPAWN_USER, onSpawnUser)
   socket.on(MessageType.MOVEMENT, onMovement)
+  socket.on(MessageType.COLLECT_WEAPON, onCollectWeapon)
 
   async function onMovement(data) {
     try {
       Object.entries(room.sockets).forEach(([key, value]) => {
         socket.to(value.id).emit(MessageType.MOVEMENT, data)
       })
-    } catch (error) {
-      console.error(error)
-    }
+    } catch (error) {}
   }
 
   async function onSpawnUser(user) {
     try {
       Object.entries(room.sockets).forEach(([key, value]) => {
         socket.to(value.id).emit(MessageType.SPAWN_USER, user)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function onCollectWeapon(data) {
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit(MessageType.COLLECT_WEAPON, data)
       })
     } catch (error) {
       console.error(error)
