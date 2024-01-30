@@ -66,7 +66,8 @@ const MessageType = {
   ERROR_ROOM_IS_FULL: 'error_room_is_full',
   ERROR_USER_INITIALIZED: 'error_user_initialized',
   NOT_USER_ROOM: 'not_user_room',
-  SPAWN_USER: 'spawn_user'
+  SPAWN_USER: 'spawn_user',
+  MOVEMENT: 'movement'
 };
 
 function User(walletAddress) {
@@ -192,6 +193,17 @@ function handleSocket(socket) {
   socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
   socket.on(MessageType.END_FINISHING, onEndFinishing)
   socket.on(MessageType.SPAWN_USER, onSpawnUser)
+  socket.on(MessageType.MOVEMENT, onMovement)
+
+  async function onMovement(data) {
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit(MessageType.MOVEMENT, data)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   async function onSpawnUser(user) {
     try {
