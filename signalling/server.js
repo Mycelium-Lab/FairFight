@@ -235,14 +235,22 @@ function handleSocket(socket) {
     }
   }
 
-  async function onShoot(enemyAddress) {
-    // const key = `${enemyAddress}_health`
-    // const health = await redisClient.get(key) 
-    // if (health == null) {
-    //   await redisClient.set(key, 2)
-    // } else {
-    //   await redisClient.set(key, parseInt(health) - 1) 
-    // }
+  async function onShoot(data) {
+    /*
+          data: {
+            address,
+            x,
+            y,
+            flip: isFlip
+          }
+    */
+    try {
+      Object.entries(room.sockets).forEach(([key, value]) => {
+        socket.to(value.id).emit(MessageType.SHOOT, data)
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   async function onUpdateBalance() {
