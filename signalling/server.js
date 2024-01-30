@@ -352,7 +352,8 @@ function handleSocket(socket) {
                   socket.to(value.id).emit("update_balance", {
                     address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
                     amountToLose: room.amountToLose,
-                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
+                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds(),
+                    whosDead: data.walletAddress
                   })
                 }
               })
@@ -369,7 +370,8 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds(),
+              whosDead: data.walletAddress
             })
           }
         })
@@ -398,7 +400,8 @@ function handleSocket(socket) {
                 socket.to(value.id).emit("update_balance", {
                   address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
                   amountToLose: room.amountToLose,
-                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
+                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds(),
+                  whosDead: data.walletAddress
                 })
               }
             })
@@ -412,7 +415,8 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds(),
+              whosDead: data.walletAddress
             })
           }
         })
