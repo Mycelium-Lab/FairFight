@@ -68,7 +68,7 @@ const MessageType = {
   NOT_USER_ROOM: 'not_user_room',
   SPAWN_USER: 'spawn_user',
   MOVEMENT: 'movement',
-  COLLECT_WEAPON: 'collect_weapon'
+  COLLECT_WEAPON: 'collect_weapon',
 };
 
 function User(walletAddress) {
