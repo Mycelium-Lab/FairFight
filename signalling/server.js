@@ -199,9 +199,11 @@ function handleSocket(socket) {
 
   async function onMovement(data) {
     try {
-      Object.entries(room.sockets).forEach(([key, value]) => {
-        socket.to(value.id).emit(MessageType.MOVEMENT, data)
-      })
+      if (room && room.sockets) {
+        Object.entries(room.sockets).forEach(([key, value]) => {
+          socket.to(value.id).emit(MessageType.MOVEMENT, data)
+        })
+      }
     } catch (error) {}
   }
 
