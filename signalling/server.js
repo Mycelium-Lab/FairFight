@@ -272,34 +272,35 @@ function handleSocket(socket) {
 
   async function onDead(data) {
     try {
-      console.log(`${data.walletAddress} dead (network: ${room.getChainId()}, fight: ${room.getFightId()})`)
-      const balance = await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()))
-      const newBalance = BigInt(balance) - BigInt(room.amountToLose)
-      await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
-      const rounds = await redisClient.get(createRoundsRedisLink())
-      if (rounds != 0 || rounds != null) {
-        await redisClient.set(room.roomName, parseInt(rounds) - 1)
-      }
-      //get from loser
-      if (data.walletAddress == room.users[0].walletAddress) {
+      if (data.killerAddress) {
+        console.log(`${data.walletAddress} dead (network: ${room.getChainId()}, fight: ${room.getFightId()}, killer: ${data.killerAddress})`)
+        const balance = await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()))
+        const newBalance = BigInt(balance) - BigInt(room.amountToLose)
+        await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
+        const rounds = await redisClient.get(createRoundsRedisLink())
+        if (rounds != 0 || rounds != null) {
+          await redisClient.set(room.roomName, parseInt(rounds) - 1)
+        }
+        //get from loser
         //paste to winner
-        const balanceWinner = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
+        //winner room.users[1].walletAddress
+        const balanceWinner = await redisClient.get(createAmountRedisLink(data.killerAddress, room.getChainId(), room.getFightId()))
         const newBalanceWinner = BigInt(balanceWinner) + BigInt(room.amountToLose)
-        await redisClient.set(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
+        await redisClient.set(createAmountRedisLink(data.killerAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
         if (room.finished == false) {
-          await addKills(room.users[1].walletAddress)
-          await addDeaths(room.users[0].walletAddress)
+          await addKills(data.killerAddress)
+          await addDeaths(data.walletAddress)
         }
         const killsAddress1 = await getKills(data.walletAddress)
         const deathsAddress1 = await getDeaths(data.walletAddress)
-        const killsAddress2 = await getKills(room.users[1].walletAddress)
-        const deathsAddress2 = await getDeaths(room.users[1].walletAddress)
+        const killsAddress2 = await getKills(data.killerAddress)
+        const deathsAddress2 = await getDeaths(data.killerAddress)
         //if balance == 0 -> user losed
         //create signature and add data to database
         if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
           await createSignature({
             loserAddress: data.walletAddress,
-            winnerAddress: room.users[1].walletAddress,
+            winnerAddress: data.killerAddress,
             loserAmount: newBalance.toString(),
             winnerAmount: newBalanceWinner.toString()
           })
@@ -310,7 +311,7 @@ function handleSocket(socket) {
                   socket.to(value.id).emit("update_balance", {
                     address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
                     amountToLose: room.amountToLose,
-                    address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
+                    address2: data.killerAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
                   })
                 }
               })
@@ -327,50 +328,7 @@ function handleSocket(socket) {
           if (value != null) {
             socket.to(value.id).emit("update_balance", {
               address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
-            })
-          }
-        })
-      } else {
-        const balanceWinner = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
-        const newBalanceWinner = BigInt(balanceWinner) + BigInt(room.amountToLose)
-        await redisClient.set(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
-        if (room.finished == false) {
-          await addKills(room.users[0].walletAddress)
-          await addDeaths(room.users[1].walletAddress)
-        }
-        const killsAddress1 = await getKills(data.walletAddress)
-        const deathsAddress1 = await getDeaths(data.walletAddress)
-        const killsAddress2 = await getKills(room.users[0].walletAddress)
-        const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
-        if (newBalance == 0 || (parseInt(rounds) - 1) == 0) {
-          await createSignature({
-            loserAddress: data.walletAddress,
-            winnerAddress: room.users[0].walletAddress,
-            loserAmount: newBalance.toString(),
-            winnerAmount: newBalanceWinner.toString()
-          }).then(() => {
-            Object.entries(room.sockets).forEach(([key, value]) => {
-              if (value != null) {
-                socket.to(value.id).emit("finishing")
-                socket.to(value.id).emit("update_balance", {
-                  address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
-                  amountToLose: room.amountToLose,
-                  address2: room.users[1].walletAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
-                })
-              }
-            })
-          })
-          .then(() => {
-            room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
-            room.finished = true;
-          })
-        }
-        Object.entries(room.sockets).forEach(([key, value]) => {
-          if (value != null) {
-            socket.to(value.id).emit("update_balance", {
-              address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) - 1,
-              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+              amountToLose: room.amountToLose, address2: data.killerAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
             })
           }
         })
@@ -528,6 +486,7 @@ function handleSocket(socket) {
 
   async function onJoin(joinData) {
     try {
+      console.log(joinData)
       // Somehow sent join request twice?
       if (user !== null || room !== null) {
         room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
