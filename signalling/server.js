@@ -1,5 +1,5 @@
 const PORT = 8033;
-const MAX_ROOM_USERS = 3;
+const MAX_ROOM_USERS = 5;
 
 import fs from 'fs';
 const log = console.log.bind(console);
@@ -508,12 +508,14 @@ function handleSocket(socket) {
 
       const fight = await blockchain().contract.fights(room.getFightId())
       const players = await blockchain().contract.getFightPlayers(room.getFightId())
-      const player2 = players[1]
-      const player3 = players[2]
       room.amountToLose = fight.amountPerRound.toString()
       room.baseAmount = fight.baseAmount.toString()
       room.rounds = fight.rounds.toString()
-      if ((fight.owner == joinData.walletAddress || player2 == joinData.walletAddress || player3 == joinData.walletAddress) && fight.finishTime == 0) {
+      const res = await pgClient.query(
+        'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
+        [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
+      )
+      if (players.includes(joinData.walletAddress) && fight.finishTime == 0 && res.rows.length === 0) {
         const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         const roundsExists = await redisClient.get(createRoundsRedisLink())
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
@@ -522,17 +524,14 @@ function handleSocket(socket) {
         if (roundsExists == null || isNaN(parseFloat(roundsExists))) {
           await redisClient.set(createRoundsRedisLink(), fight.rounds.toString())
         }
-
         const existKills = await redisClient.get(createKillsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         if (existKills == null || isNaN(parseFloat(existKills)) || existKills == 'NaN') {
           await redisClient.set(createKillsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), 0)
         }
-
         const existDeath = await redisClient.get(createDeathsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         if (existDeath == null || isNaN(parseFloat(existDeath)) || existDeath == 'NaN') {
           await redisClient.set(createDeathsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), 0)
         }
-
         // Add a new user
         room.addUser(user = new User(joinData.walletAddress), socket);
 
