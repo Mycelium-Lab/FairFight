@@ -486,7 +486,6 @@ function handleSocket(socket) {
 
   async function onJoin(joinData) {
     try {
-      console.log(joinData)
       // Somehow sent join request twice?
       if (user !== null || room !== null) {
         room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
