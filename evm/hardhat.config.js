@@ -79,6 +79,11 @@ module.exports = {
       url: 'https://rpc-evm-sidechain.xrpl.org',
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       chainId: 1440002
+    },
+    coreTestnet: {
+      url: 'https://rpc.test.btcs.network',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 1115,
     }
   },
   solidity: {
