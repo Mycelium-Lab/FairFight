@@ -391,6 +391,48 @@ function handleSocket(socket) {
     }
   }
 
+  async function createSignatureOne(address) {
+    try {
+      const balance = await redisClient.get(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
+      const _signature = await signature(balance, address)
+      await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", 
+        [
+          _signature.address.toLowerCase(),
+          _signature.fightid,
+          _signature.amount,
+          _signature.chainid,
+          _signature.contract,
+          _signature.v,
+          _signature.r,
+          _signature.s,
+          _signature.token
+        ]
+      )
+      const kills = await getKills(address)
+      const deaths = await getDeaths(address)
+      const rounds = await redisClient.get(createRoundsRedisLink())
+
+      await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
+        [
+          _signature.fightid, 
+          _signature.address.toLowerCase(), 
+          _signature.chainid, 
+          _signature.contract, 
+          balance, 
+          kills, 
+          deaths, 
+          rounds, 
+          _signature.token
+        ]
+      )
+      await removeKills(address)
+      await removeDeaths(address)
+      await redisClient.del(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function createSignature(data) {
     try {
       //get this fight data
