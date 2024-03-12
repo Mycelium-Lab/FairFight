@@ -23,8 +23,8 @@ async function main() {
     // }
     const token = await Token.deploy('TokenForTests', 'USDT')
     await token.deployed()
-    // await token.mint('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266', ethers.utils.parseEther('1000000'))
-    // await token.mint('0xbDA5747bFD65F08deb54cb465eB87D40e51B197E', ethers.utils.parseEther('1000000'))
+    // await token.mint('0x71bE63f3384f5fb98995898A86B02Fb2426c5788', ethers.utils.parseEther('1000000'))
+    // await token.mint('0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc', ethers.utils.parseEther('1000000'))
     const allowedTokens = [{
         address: token.address,
         minAmount: ethers.utils.parseEther("1")
