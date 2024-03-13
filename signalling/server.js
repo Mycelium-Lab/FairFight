@@ -91,10 +91,14 @@ function Room(name) {
   this.users = [];
   this.sockets = {};
   this.finished = false;
+  this.playersBaseAmount = 2
 }
 Room.prototype = {
   getName: function () {
     return this.roomName;
+  },
+  getPlayerBaseAmount: function () {
+    return this.playersBaseAmount;
   },
   getRounds: function () {
     return this.rounds;
@@ -455,7 +459,7 @@ function handleSocket(socket) {
     try {
       //get this fight data
       const rounds = await redisClient.get(createRoundsRedisLink())
-      if (BigInt(room.baseAmount) * BigInt(2) < BigInt(data.loserAmount) + BigInt(data.winnerAmount)) {
+      if (BigInt(room.baseAmount) * BigInt(room.getPlayerBaseAmount()) < BigInt(data.loserAmount) + BigInt(data.winnerAmount)) {
         data.loserAmount = room.baseAmount
         data.winnerAmount = room.baseAmount
       }
@@ -570,6 +574,7 @@ function handleSocket(socket) {
       room.amountToLose = fight.amountPerRound.toString()
       room.baseAmount = fight.baseAmount.toString()
       room.rounds = fight.rounds.toString()
+      room.playersBaseAmount = parseInt(fight.playersAmount)
       const res = await pgClient.query(
         'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
         [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
