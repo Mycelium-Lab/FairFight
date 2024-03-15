@@ -314,10 +314,15 @@ function handleSocket(socket) {
         //create signature and add data to database
         // || (parseInt(rounds) - 1) == 0
         if (newBalance == 0 && room.numUsers() > 2) {
+          console.log('here')
           await createSignatureOne(data.walletAddress)
-          room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+          // room.broadcastFrom(user, MessageType.USER_LOSE_ALL, data.walletAddress);
+          Object.entries(room.sockets).forEach(([key, value]) => {
+            if (value != null) {
+              socket.to(value.id).emit(MessageType.USER_LOSE_ALL, data.walletAddress)
+            }
+          })
           const userToRemoveFromRoom = room.getUserByWalletAddress(data.walletAddress)
-          console.log(userToRemoveFromRoom.getId())
           room.removeUser(userToRemoveFromRoom.getId())
         } else if ((newBalance == 0 || (parseInt(rounds) - 1) == 0) && room.numUsers() == 2) {
           await createSignature({
