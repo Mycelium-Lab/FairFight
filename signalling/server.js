@@ -783,6 +783,7 @@ function handleSocket(socket) {
   }
 
   async function signature(amount, address, token) {
+    amount = amount < 0 ? 0 : amount
     if (token == undefined) {
       const fight = await blockchain().contract.fights(room.getFightId())
       token = fight.token
