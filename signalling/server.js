@@ -367,52 +367,54 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
-      let balance1;
-      let balance2;
-      let loserAddress;
-      let winnerAddress;
-      const fight = await blockchain().contract.fights(room.getFightId())
-      if (room.users[0] == undefined || room.users[1] == undefined) {
-        const players = await blockchain().contract.getFightPlayers(room.getFightId())
-        const player2 = players[1]
-        const exists1 = await redisClient.get(createAmountRedisLink(fight.owner, room.getChainId(), room.getFightId()))
-        const exists2 = await redisClient.get(createAmountRedisLink(player2, room.getChainId(), room.getFightId()))
-        if (exists1 != null && exists2 != null) {
-          balance1 = exists1
-          balance2 = exists2
-        } else {
-          balance1 = fight.baseAmount.toString()
-          balance2 = fight.baseAmount.toString()
-        }
-        loserAddress = fight.owner
-        winnerAddress = player2
-      } else {
-        balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
-        loserAddress = room.users[0].walletAddress
-        balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
-        winnerAddress = room.users[1].walletAddress
-      }
-      //create signatures on finish button
-      await createSignature({
-        loserAddress,
-        winnerAddress,
-        loserAmount: balance1,
-        winnerAmount: balance2,
-        token: fight.token
-      }).then(() => {
-        Object.entries(room.sockets).forEach(([key, value]) => {
-          if (value != null) {
-            socket.to(value.id).emit("finishing", {
-              address1: loserAddress,
-              address2: winnerAddress,
-              amount1: balance1,
-              amount2: balance2,
-              fromButton: data.fromButton
-            })
+      if (room.playersBaseAmount == 2) {
+        let balance1;
+        let balance2;
+        let loserAddress;
+        let winnerAddress;
+        const fight = await blockchain().contract.fights(room.getFightId())
+        if (room.users[0] == undefined || room.users[1] == undefined) {
+          const players = await blockchain().contract.getFightPlayers(room.getFightId())
+          const player2 = players[1]
+          const exists1 = await redisClient.get(createAmountRedisLink(fight.owner, room.getChainId(), room.getFightId()))
+          const exists2 = await redisClient.get(createAmountRedisLink(player2, room.getChainId(), room.getFightId()))
+          if (exists1 != null && exists2 != null) {
+            balance1 = exists1
+            balance2 = exists2
+          } else {
+            balance1 = fight.baseAmount.toString()
+            balance2 = fight.baseAmount.toString()
           }
+          loserAddress = fight.owner
+          winnerAddress = player2
+        } else {
+          balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
+          loserAddress = room.users[0].walletAddress
+          balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
+          winnerAddress = room.users[1].walletAddress
+        }
+        //create signatures on finish button
+        await createSignature({
+          loserAddress,
+          winnerAddress,
+          loserAmount: balance1,
+          winnerAmount: balance2,
+          token: fight.token
+        }).then(() => {
+          Object.entries(room.sockets).forEach(([key, value]) => {
+            if (value != null) {
+              socket.to(value.id).emit("finishing", {
+                address1: loserAddress,
+                address2: winnerAddress,
+                amount1: balance1,
+                amount2: balance2,
+                fromButton: data.fromButton
+              })
+            }
+          })
         })
-      })
-      room.finished = true;
+        room.finished = true;
+      } 
     } catch (error) {
       console.error(error)
     }
@@ -617,7 +619,8 @@ function handleSocket(socket) {
         room.sendTo(user, MessageType.ROOM, {
           userId: user.getId(),
           roomName: room.getName(),
-          users: room.getUsers()
+          users: room.getUsers(),
+          playersBaseAmount: parseInt(fight.playersAmount)
         });
         // Notify others of a new user joined
         room.broadcastFrom(user, MessageType.USER_JOIN, {
