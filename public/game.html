@@ -25,41 +25,41 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="/styles/game.css">
-	<link rel="stylesheet" href="/styles/custom.css">
-	<link rel="stylesheet" href="/media/fonts/stylesheet.css">
+	<link rel="stylesheet" href="../lib/styles/game.css">
+	<link rel="stylesheet" href="../lib/styles/custom.css">
+	<link rel="stylesheet" href="../lib/media/fonts/stylesheet.css">
 	<link rel="icon" type="image/png" href="/media/favicon.png">
 	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
 		integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 	<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
 	</script>
 	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
-	<script type="module" src="/dist/main_game.js"></script>
-	<script type="text/javascript" src="/net/socket.io.js"></script>
-	<script type="text/javascript" src="/net/adapter.js"></script>
-	<script type="text/javascript" src="/messages.js"></script>
-	<script type="text/javascript" src="/game.min.js"></script>
-	<script type="text/javascript" src="/game/plugins/minimap.js"></script>
-	<script type="text/javascript" src="/game/levels/main.js"></script>
-	<script type="text/javascript" src="/game/levels/moon.js"></script>
-	<script type="text/javascript" src="/game/levels/dungeon.js"></script>
-	<script type="text/javascript" src="/game/levels/farm.js"></script>
-	<script type="text/javascript" src="/game/events.js"></script>
-	<script type="text/javascript" src="/net/contract.js"></script>
-	<script type="text/javascript" src="/net/peer-connection.js"></script>
-	<script type="text/javascript" src="/net/room-connection.js"></script>
-	<script type="text/javascript" src="/game/entities/remote-player.js"></script>
-	<script type="text/javascript" src="/game/entities/player.js"></script>
-	<script type="text/javascript" src="/game/entities/pointer.js"></script>
-	<script type="text/javascript" src="/game/entities/weapon.js"></script>
-	<script type="text/javascript" src="/game/entities/trampoline.js"></script>
-	<script type="text/javascript" src="/game/entities/moving-platform.js"></script>
-	<script type="text/javascript" src="/game/main.js"></script>
-	<script src="/custom.js"></script>
-	<!-- <script src="/modules/statsVisible.js"></script> -->
+	<script type="module" src="../lib/dist/main_game.js"></script>
+	<script type="text/javascript" src="../lib/net/socket.io.js"></script>
+	<script type="text/javascript" src="../lib/net/adapter.js"></script>
+	<script type="text/javascript" src="../lib/messages.js"></script>
+	<script type="text/javascript" src="../lib/game.min.js"></script>
+	<script type="text/javascript" src="../lib/game/plugins/minimap.js"></script>
+	<script type="text/javascript" src="../lib/game/levels/main.js"></script>
+	<script type="text/javascript" src="../lib/game/levels/moon.js"></script>
+	<script type="text/javascript" src="../lib/game/levels/dungeon.js"></script>
+	<script type="text/javascript" src="../lib/game/levels/farm.js"></script>
+	<script type="text/javascript" src="../lib/game/events.js"></script>
+	<script type="text/javascript" src="../lib/net/contract.js"></script>
+	<script type="text/javascript" src="../lib/net/peer-connection.js"></script>
+	<script type="text/javascript" src="../lib/net/room-connection.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/remote-player.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/player.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/pointer.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/weapon.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/trampoline.js"></script>
+	<script type="text/javascript" src="../lib/game/entities/moving-platform.js"></script>
+	<script type="text/javascript" src="../lib/game/main.js"></script>
+	<script src="../lib/custom.js"></script>
+	<!-- <script src="../lib/modules/statsVisible.js"></script> -->
 </head>
 <div id="wrapper">
-	<!-- <img src="/media/monetki.png" alt="" class="wrapper__monetki"> -->
+	<!-- <img src="../lib/media/monetki.png" alt="" class="wrapper__monetki"> -->
 	<div id="wrapper__gradient_game" class="wrapper__gradient" style="background: #020202;"></div>
 	<!-- <a href="" class="wrapper__link link-second">Inventory
 		<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
 				<div class="stats-box">
 				<div class="stats-internal-box">
 					<div>
-						<img src="/media/health.png" width="12" height="12"/>
+						<img src="../lib/media/health.png" width="12" height="12"/>
 						Health: <span class="yourHealth" style="font-weight: 400">0</span>
 					</div>
 					<div>
@@ -103,7 +103,7 @@
 				</div>
 				<div>
 					<div>
-						<img src="/media/bullet.png" width="12" height="12"/>
+						<img src="../lib/media/bullet.png" width="12" height="12"/>
 						Bullets: <span id="ammunition" class="ammunition" style="font-weight: 400">0</span>
 					</div>
 					<div>
@@ -118,7 +118,7 @@
 				</div> -->
 			<!-- </div>
 			<div>
-				<img class="balance_coin" src="/media/coin.png" width="12" height="12"/>
+				<img class="balance_coin" src="../lib/media/coin.png" width="12" height="12"/>
 				Balance: <span id="internalBalance" class="internalBalance" style="font-weight: 400">0</span>
 			</div>
 		</div> -->
@@ -130,29 +130,29 @@
 									<div class="you-stats">
 										<div class="you-character">
 											<div id="you-stats-skin">
-												<!--<img src="/media/stats-character.svg">-->
+												<!--<img src="../lib/media/stats-character.svg">-->
 											</div>
 											<div class="you-stats-value">
 													<span class="you-stats-healf">
-														<img src="/media/red-healths.svg">
+														<img src="../lib/media/red-healths.svg">
 														<span class="you-stats-value-item yourHealth">0</span>
 													</span>
 													<span class="you-stats-shoot">
-														<img src="/media/bullet.svg">
+														<img src="../lib/media/bullet.svg">
 														<span class="you-stats-value-item ammunition">0</span>
 													</span>
 													<span class="you-stats-kills">
-														<img src="/media/kills.svg">
+														<img src="../lib/media/kills.svg">
 														<span class="you-stats-value-item yourKills">0</span>
 													</span>
 													<span class="you-stats-deaths">
-														<img class="you-stats-deaths_image" src="/media/deaths.svg">
+														<img class="you-stats-deaths_image" src="../lib/media/deaths.svg">
 														<span class="you-stats-value-item yourDeaths">0</span>
 													</span>
 											</div>
 										</div>
 										<div class="you-deps">
-											<img src="/media/svg/past-game/dep.svg">
+											<img src="../lib/media/svg/past-game/dep.svg">
 											<span id="yourDepTopBar" class="yourDep" style="font-weight: 400">0</span>
 											<!--<span>USDT</span>-->
 										</div>
@@ -170,19 +170,19 @@
 									<div class="enemy-stats-value">
 											<span class="enemy-stats-kills">
 												<span class="enemyKills">0</span>
-												<img src="/media/kills-2.svg">
+												<img src="../lib/media/kills-2.svg">
 											</span>
 											<span class="enemy-stats-deaths">
 												<span class="enemyDeaths">0</span>
-												<img src="/media/deaths.svg">
+												<img src="../lib/media/deaths.svg">
 											</span>
 									</div>
 									<div id="enemy-stats-skin">
-										<!--<img src="/media/stats-character.svg">-->
+										<!--<img src="../lib/media/stats-character.svg">-->
 									</div>
 								</div>
 								<div class="enemy-deps">
-									<img src="/media/svg/past-game/dep.svg">
+									<img src="../lib/media/svg/past-game/dep.svg">
 									<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
 									<!--<span>USDT</span>-->
 								</div>
@@ -191,7 +191,7 @@
 					
 					</div>
 					<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
-						<img class="help__img" src="/media/svg/help.svg" alt="">
+						<img class="help__img" src="../lib/media/svg/help.svg" alt="">
 						About the game
 					</a>
 					<div id="noCanvas" style="display: none;"></div>
@@ -199,31 +199,31 @@
 					reload the page)</h3>
 					<div id="game-action">
 						<div class="buttons">
-							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn"/>
-							<img src="/media/attackBtn.png" style="display: none; width: 100px; height: 100px;" id="attack-btn"/>
+							<img src="../lib/media/jumpBtn.png" style="display: none;" id="jump-btn"/>
+							<img src="../lib/media/attackBtn.png" style="display: none; width: 100px; height: 100px;" id="attack-btn"/>
 						</div>
 					</div>
 					<div class="game-menu">
 						<button id="pause-btn" class="game-menu__button">
-							<img src="/media/svg/game-menu.svg"/>
+							<img src="../lib/media/svg/game-menu.svg"/>
 						</button>
 						<button id="openMap-btn" class="game-menu__button">
-							<img src="/media/svg/open-map.svg"/>
+							<img src="../lib/media/svg/open-map.svg"/>
 						</button>
 						<button class="game-menu__button" id="open-fullscreen-btn">
-							<img src="/media/svg/open-fullscreen.svg"/>
+							<img src="../lib/media/svg/open-fullscreen.svg"/>
 						</button>
 							<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
-							<img src="/media/svg/close-fullscreen.svg"/>
+							<img src="../lib/media/svg/close-fullscreen.svg"/>
 						</button>
 					</div>
 					
 					<div id="pause_modal" class="modal" style="display: none;">
 						<div class="board modal_content_pause modal_content">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 							<button id="close_pause_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 							<div class="modal__title_pause modal__title">Menu</div>
 							<!--<div class="modal__pause-body">
@@ -235,10 +235,10 @@
 					</div>
 					<div id="control_keys_mobile_modal" class="modal" style="display: none;">
 						<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 							<button id="close_control_keys_mobile_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 							<div class="modal__title_pause modal__title">Menu</div>
 							<div class="modal__pause-body">
@@ -250,10 +250,10 @@
 					</div>
 					<div id="confirm_finishgame_modal" class="modal" style="display: none;">
 						<div class="board modal_content_confirm_finish modal_content">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 							<button id="close_confirm_finish" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 							<div class="modal__title_pause modal__title">Menu</div>
 							<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
@@ -298,10 +298,10 @@
 			</div>
 			<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
 				<div class="board modal_content_confirm_finish modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button id="close_confirm_finish_desktop" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div class="modal__title-confirm_finish modal__title">finish the game</div>
 					<div id="modal__body_confirm_finish" class="modal__body">
@@ -312,12 +312,12 @@
 					</div>
 				</div>
 			</div>
-			<div id="over_modal" class="modal">
+			<div id="over_modal" class="modal" style="display: none;">
 				<div class="board modal_content_finish modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div class="modal__title">Game over</div>
 					<div class="modal__over-body">
@@ -377,10 +377,10 @@
 			</div>
 			<div id="about_modal" class="modal wrapper__message-modal-overlay">
 				<div class="board wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button id="about_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<h2 class="about__title">About the game</h2>
 					<div class="about__content">
@@ -395,12 +395,12 @@
 			</div>
 			<div id="wainting_modal" class="modal_waiting_enemy modal wrapper__message-modal-overlay">
 				<div style="height: 290px;" class="board modal_content_waiting  wrapper__message-modal modal_content">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button style="display: none;" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<img class="load" src="/media/svg/load.svg" alt="">
+					<img class="load" src="../lib/media/svg/load.svg" alt="">
 					<div>Waiting for enemy...</div>
 					<div style="color: #C6C6C6; font-size: 16px; font-weight: 400; text-align:center">The game will start when other
 						players join</div>
@@ -409,30 +409,30 @@
 			</div>
 			<div id="confirm_modal" class="modal wrapper__message-modal-overlay">
 				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Waiting for confirmation</div>
 				</div>
 			</div>
 			<div id="pending_modal" class="modal wrapper__message-modal-overlay">
 				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Pending</div>
 				</div>
 			</div>
 			<div id="enemy_finishing_game_modal" class="modal wrapper__message-modal-overlay">
 				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div>Your enemy is finishing the game</div>
 					<a href="/" id="enemy_finishing_game_href"><button id="enemy_finishing_game_button">To the main page</button></a>
@@ -440,35 +440,35 @@
 			</div>
 			<div class="board modal modal__wsad" style="display: none" id="instruction_modal">
 				<div class="modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class=" board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button id="instruction_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div id="info" style="display: inherit;">
-						<!--<img src="/media/svg/arrows.svg" alt="">
-						<img src="/media/svg/wasd.svg" alt="">
+						<!--<img src="../lib/media/svg/arrows.svg" alt="">
+						<img src="../lib/media/svg/wasd.svg" alt="">
 
 
 						WSAD to move & jump<br />
-						<img src="/media/svg/spacebar.svg" alt="" style="margin-top: 5px;">
+						<img src="../lib/media/svg/spacebar.svg" alt="" style="margin-top: 5px;">
 
 						Spacebar to shoot<br />
 						Collect tubes to recharge weapon<br />
 						Be careful of lava burns!<br />-->
-						<img src="/media/control-keys-info.png">
+						<img src="../lib/media/control-keys-info.png">
 					</div>
 				</div>
 			</div>
 			<div id="rotate_modal" class="modal wrapper__message-modal-overlay_rotate wrapper__message-modal-overlay">
 				<div class="board modal_content_rotate wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<button id="rotate_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div class="rotate__content">
-						<img src="/media/svg/rotate-preview.svg">
+						<img src="../lib/media/svg/rotate-preview.svg">
 					</div>
 				</div>
 			</div>
