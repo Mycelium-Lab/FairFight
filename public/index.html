@@ -84,10 +84,12 @@
 
 
 				<div id="menu-body" class="board menu__box">
-					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg" style="display: none;">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg"
+						style="display: none;">
 					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
 					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg" style="display: none;">
+					<img class="board-edge_sm board-edge" src="../lib/media/svg/boarder-edge-sm.svg"
+						style="display: none;">
 					<span id="menu__close" class="message-modal__btn-close"></span>
 					<p class="menu__title">Menu</p>
 					<div id="menu-btns" class="wrapper__btns-wrap">
@@ -839,17 +841,17 @@
 							<div class="board inner-block">
 								<div class="inner-block__head">
 									<button class="active" id="opengames-btn">Open Games</button>
-									<button id="pastgames-btn">Past games</button>
+									<button class="" id="pastgames-btn">Past games</button>
 								</div>
 
 								<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
-								<div id="opengames" class="tabs__content active">
+								<div id="opengames" class="tabs__content ">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<ul id="opengames-list">
-										<div class="games__row" id="openbattle_2" value="2">
+										<div class="games__row border-style" id="openbattle_2" value="2">
 											<div class="games__item">
 												<p>id: <span>2</span></p>
 												<p>Creator: <a target="_blank"
@@ -879,31 +881,31 @@
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames" class="tabs__content">
+								<div id="pastgames" class="tabs__content active">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<img class="board-edge" src="../lib/media/svg/board-edge.svg">
 									<ul id="pastgames-list">
-										<div class="games__row" value="1">
+										<div class="games__row border-style" value="1">
 											<div class="games__item games__item__header">
 												<p class="p__id">Game ID
-												<p> 1</p>
+													<span> 1</span>
 												</p>
 												<p class="p__status">Status
-												<p> Game over</p>
+													<span> Game over</span>
 												</p>
 												<p class="p__date">Date
-												<p> 08.04.2024 12:45</p>
+													<span> 08.04.2024 12:45</span>
 												</p>
 												<p class="p__betPerRound">Bet per round
-												<p> 1 ETH</p>
+													<span> 1 ETH</span>
 												</p>
 												<p class="p__round">Round
-												<p>2/2</p>
+													<span>2/2</span>
 												</p>
 												<p class="p__map">Map
-												<p class="map-show">Steel plant</p>
+													<span class="map-show">Steel plant</span>
 												</p>
 											</div>
 											<div class="games__item games__item__footer">
@@ -924,8 +926,122 @@
 													</div>
 												</div>
 												<div class="decorate-stats-col"><img
-														src="../media/svg/players_and_stats.svg"
-														class="stats-col-title"><img src="../media/svg/vs.svg"
+														src="../lib//media/svg/players_and_stats.svg"
+														class="stats-col-title"><img src="../lib//media/svg/vs.svg"
+														class="stats-col-title-vs"></div>
+												<div class="enemy-stats-col">
+													<div class="enemy-stats-col-header">
+														<p>ENEMY</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p><span>Kills: </span>0</p>
+														<p><span>Deaths: </span>2</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p class="red"><span>Lose: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0x71be63f3384f5fb98995898a86b02fb2426c5788">0x71be...5788</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="games__item games__item__footer">
+												<div class="you-stats-col">
+													<div class="you-stats-col-header">
+														<p>YOU</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p class="green"><span>Win: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266">0xf39F...2266</a>
+														</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p><span>Kills: </span>2</p>
+														<p><span>Deaths: </span>0</p>
+													</div>
+												</div>
+												<div class="decorate-stats-col"><img
+														src="../lib//media/svg/players_and_stats.svg"
+														class="stats-col-title"><img src="../lib//media/svg/vs.svg"
+														class="stats-col-title-vs"></div>
+												<div class="enemy-stats-col">
+													<div class="enemy-stats-col-header">
+														<p>ENEMY</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p><span>Kills: </span>0</p>
+														<p><span>Deaths: </span>2</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p class="red"><span>Lose: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0x71be63f3384f5fb98995898a86b02fb2426c5788">0x71be...5788</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="games__item games__item__footer">
+												<div class="you-stats-col">
+													<div class="you-stats-col-header">
+														<p>YOU</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p class="green"><span>Win: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266">0xf39F...2266</a>
+														</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p><span>Kills: </span>2</p>
+														<p><span>Deaths: </span>0</p>
+													</div>
+												</div>
+												<div class="decorate-stats-col"><img
+														src="../lib//media/svg/players_and_stats.svg"
+														class="stats-col-title"><img src="../lib//media/svg/vs.svg"
+														class="stats-col-title-vs"></div>
+												<div class="enemy-stats-col">
+													<div class="enemy-stats-col-header">
+														<p>ENEMY</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p><span>Kills: </span>0</p>
+														<p><span>Deaths: </span>2</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p class="red"><span>Lose: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0x71be63f3384f5fb98995898a86b02fb2426c5788">0x71be...5788</a>
+														</p>
+													</div>
+												</div>
+											</div>
+											<div class="games__item games__item__footer">
+												<div class="you-stats-col">
+													<div class="you-stats-col-header">
+														<p>YOU</p>
+													</div>
+													<div class="opengames__col_first opengames__col">
+														<p class="green"><span>Win: </span>2 ETH</p>
+														<p><span>Dep: </span>2 ETH</p>
+														<p><span>Wallet: </span><a target="_blank"
+																href="https://etherscan.io/address/0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266">0xf39F...2266</a>
+														</p>
+													</div>
+													<div class="opengames__col_last opengames__col">
+														<p><span>Kills: </span>2</p>
+														<p><span>Deaths: </span>0</p>
+													</div>
+												</div>
+												<div class="decorate-stats-col"><img
+														src="../lib//media/svg/players_and_stats.svg"
+														class="stats-col-title"><img src="../lib//media/svg/vs.svg"
 														class="stats-col-title-vs"></div>
 												<div class="enemy-stats-col">
 													<div class="enemy-stats-col-header">
@@ -1024,7 +1140,7 @@
 				<!--<div class="modal__row-map">-->
 				<div class="modal__row">
 					<div>
-						Map
+						Ma (coming soon)
 						<div id="map-wrapper" style="position: relative;">
 							<select id="map">
 								<option value="0" selected>Steel plant</option>
@@ -1039,7 +1155,7 @@
 							</svg>
 						</div>
 					</div>
-					<div>Number of players
+					<div>Number of players (coming soon)
 						<select id="number-of-players">
 							<option value="2" selected>2</option>
 							<option value="3">3</option>
@@ -1062,10 +1178,23 @@
 				</div>
 				<img class='new-game-devider' src="../lib/media/svg/devider.svg">
 				<div class="modal__row">
-					<div id="amountPerDeathText" style="display: none;">Bet per round <input type="number"
+					<div id="amountPerDeathText" style="display: flex;">Bet per round <input type="number"
 							id="amountPerDeath" name="amountPerDeath" required /></div>
-					<div id="amountToPlayText" style="display: none;">Number of rounds <input type="number"
-							id="amountToPlay" min="1" max="255" required /></div>
+					<div id="amountToPlayText" style="display: flex;">Number of rounds
+						<!-- <input type="number" id="amountToPlay" min="1" max="255" required /> -->
+						<select name="" id="">
+							<option value="">1 ROUND</option>
+							<option value="">2 ROUNDS</option>
+							<option value="">3 ROUNDS</option>
+							<option value="">4 ROUNDS</option>
+							<option value="">5 ROUNDS</option>
+							<option value="">6 ROUNDS</option>
+							<option value="">7 ROUNDS</option>
+							<option value="">8 ROUNDS</option>
+							<option value="">9 ROUNDS</option>
+							<option value="">10 ROUNDS</option>
+						</select>
+					</div>
 				</div>
 				<img class='new-game-devider' src="../lib/media/svg/devider.svg">
 				<div class="modal__row_value modal__row">
@@ -1239,7 +1368,8 @@
 			</div>
 			<div class="inventory-block__middle">
 				<div class="inventory-block__box inventory-block__box--big" style="grid-area: item1"><img
-						id="inventory-character-image" src="../lib/media/characters/0.svg" width="140px" height="140px" alt="">
+						id="inventory-character-image" src="../lib/media/characters/0.svg" width="140px" height="140px"
+						alt="">
 				</div>
 				<div class="inventory-block__box" id="weapons-change" style="grid-area: item2"><img id="weapons-img"
 						alt=""></div>
@@ -1272,8 +1402,10 @@
 				</div>
 				<div id="characters-box" style="display: block;">
 					<div class="inventory-block__footer">
-						<div class="characters-block__box" id="character-0"><img src="../lib/media/characters/1.png" /></div>
-						<div class="characters-block__box" id="character-1"><img src="../lib/media/characters/2.png" /></div>
+						<div class="characters-block__box" id="character-0"><img src="../lib/media/characters/1.png" />
+						</div>
+						<div class="characters-block__box" id="character-1"><img src="../lib/media/characters/2.png" />
+						</div>
 						<div class="characters-block__box">Soon</div>
 						<div class="characters-block__box">Soon</div>
 					</div>
@@ -1638,7 +1770,8 @@
 
 	<div id="shop-block" class="modal-owelay wrapper__nft-shop-modal-overlay">
 		<div class=" wrapper__nft-shop-modal wrapper__message-modal modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="../lib/media/svg/corner-middle-light.svg">
+			<img class="inventory-wrap-corner_topleft modal-content__corner"
+				src="../lib/media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="../lib/media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
@@ -2203,7 +2336,8 @@
 
 	<div id="inventory-modal" class="modal-overlay">
 		<div class="inventory__modal-content modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="../lib/media/svg/corner-middle-light.svg">
+			<img class="inventory-wrap-corner_topleft modal-content__corner"
+				src="../lib/media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="../lib/media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
@@ -3438,7 +3572,8 @@
 
 	<div id="fittingroom-modal" class="modal-overlay">
 		<div class="fitting__modal-content modal-content_secondary modal-content">
-			<img class="fitting-wrap__modal-corner_topleft modal-content__corner" src="../lib/media/svg/corner-light.svg">
+			<img class="fitting-wrap__modal-corner_topleft modal-content__corner"
+				src="../lib/media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_topright modal-content__corner_topright modal-content__corner"
 				src="../lib/media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_bottomright modal-content__corner_bottomright modal-content__corner"
