@@ -170,7 +170,7 @@
 
 						<div class="enemy-stats">
 							<div class="enemy-character">
-								<button class="enemy-character__btn enemy-character__btn-prev">
+								<button id="enemy-character__btn-prev" class="enemy-character__btn enemy-character__btn-prev">
 									<img src="/media/svg/btn-prev.svg" alt="">
 								</button>
 								<div class="enemy-stats-value">
@@ -186,10 +186,11 @@
 								<div id="enemy-stats-skin">
 									<!--<img src="/media/stats-character.svg">-->
 								</div>
-								<button class="enemy-character__btn enemy-character__btn-next">
+								<button id="enemy-character__btn-next" class="enemy-character__btn enemy-character__btn-next">
 									<img src="/media/svg/btn-next.svg" alt="">
 								</button>
 							</div>
+							<div id="chosen_enemy_id" style="display: none;"></div>
 							<div class="enemy-deps">
 								<img src="/media/svg/past-game/dep.svg">
 								<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
