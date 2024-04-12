@@ -240,29 +240,43 @@ function handleSocket(socket) {
       //setTimeout потому что данные еще не успели обновиться
       setTimeout(async () => {
         try {
-          const balance1 = await redisClient.get(createAmountRedisLink(room.users[0].walletAddress, room.getChainId(), room.getFightId()))
-          const balance2 = await redisClient.get(createAmountRedisLink(room.users[1].walletAddress, room.getChainId(), room.getFightId()))
-          const killsAddress1 = await getKills(room.users[1].walletAddress)
-          const deathsAddress1 = await getDeaths(room.users[1].walletAddress)
-          const killsAddress2 = await getKills(room.users[0].walletAddress)
-          const deathsAddress2 = await getDeaths(room.users[0].walletAddress)
+          let usersStats = []
+          for (let i = 0; i < room.users.length; i++) {
+            const balance = await redisClient.get(createAmountRedisLink(room.users[i].walletAddress, room.getChainId(), room.getFightId()))
+            const kills = await getKills(room.users[i].walletAddress)
+            const deaths = await getDeaths(room.users[i].walletAddress)
+            usersStats.push({
+              address: room.users[i].walletAddress,
+              balance,
+              kills,
+              deaths
+            })
+          }
           const remainingRounds = await redisClient.get(room.roomName)
-          if (balance1 == null || balance2 == null) {
+          if (usersStats.some(user => Object.values(user).includes(null))) {
             setTimeout(async () => {
               try {
-                const zeroAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
-                  room.users[0].walletAddress,
-                  room.getFightId(),
-                  room.getChainId()
-                ])
-                const oneAddressData = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
-                  room.users[1].walletAddress,
-                  room.getFightId(),
-                  room.getChainId()
-                ])
+                let usersStatsDB = []
+                for (let i = 0; i < room.users.length; i++) {
+                  const data = await pgClient.query("SELECT * FROM statistics WHERE player=$1 AND gameid=$2 AND chainid=$3", [
+                    room.users[i].walletAddress,
+                    room.getFightId(),
+                    room.getChainId()
+                  ])
+                  usersStatsDB.push(
+                    {
+                      address: room.users[i].walletAddress,
+                      amount: data.rows[0].amount,
+                      kills: usersStats[i].kills,
+                      deaths: usersStats[i].deaths
+                    }
+                  )
+                }
                 socket.emit("update_balance", {
-                  address1: room.users[1].walletAddress, amount1: oneAddressData.rows[0].amount, killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-                  amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: zeroAddressData.rows[0].amount, killsAddress2, deathsAddress2, rounds: room.getRounds()
+                  usersStats: usersStatsDB,
+                  remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+                  amountToLose: room.amountToLose, 
+                  rounds: room.getRounds()
                 })
               } catch (error) {
                 
@@ -270,8 +284,10 @@ function handleSocket(socket) {
             }, 1000)
           } else {
             socket.emit("update_balance", {
-              address1: room.users[1].walletAddress, amount1: balance2.toString(), killsAddress1, deathsAddress1, remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-              amountToLose: room.amountToLose, address2: room.users[0].walletAddress, amount2: balance1.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+              usersStats,
+              remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+              amountToLose: room.amountToLose,
+              rounds: room.getRounds()
             })
           }
         } catch (error) {
