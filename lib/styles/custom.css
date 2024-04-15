@@ -936,8 +936,12 @@ a {
     /* background-repeat: no-repeat; */
     /* height: 179px; */
     /* height: 418px; */
-    padding-top: 0;
     background-color: #fffdf4;
+    padding: 0;
+}
+
+#pastgames-list .games__item {
+    gap: 0;
 }
 
 .border-style {
