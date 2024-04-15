@@ -954,22 +954,22 @@ a {
 .border-style .corn1 {
     left: -4px;
     top: -4px;
-    background-image: url("../../lib/media/svg/corners/corn1.svg");
+    background-image: url("../media/svg/corners/corn1.svg");
 }
 .border-style .corn2 {
     right: -4px;
     top: -4px;
-    background-image: url("../../lib/media/svg/corners/corn2.svg");
+    background-image: url("../media/svg/corners/corn2.svg");
 }
 .border-style .corn3 {
     left: -4px;
     bottom: -4px;
-    background-image: url("../../lib/media/svg/corners/corn3.svg");
+    background-image: url("../media/svg/corners/corn3.svg");
 }
 .border-style .corn4 {
     bottom: -4px;
     right: -4px;
-    background-image: url("../../lib/media/svg/corners/corn4.svg");
+    background-image: url("../media/svg/corners/corn4.svg");
 }
 .border-style::before {
     content: "";
