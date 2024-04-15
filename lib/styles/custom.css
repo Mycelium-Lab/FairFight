@@ -878,7 +878,7 @@ a {
 .games__item {
     display: flex;
     align-items: center;
-    /* gap: 30px; */
+    gap: 30px;
 }
 
 .games__item .pg-active {
@@ -915,7 +915,7 @@ a {
 
 .games__row {
     position: relative;
-    /* padding: 20px 38px; */
+    padding: 20px 38px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -924,6 +924,10 @@ a {
     width: 100%;
     /* background-image: url("../media/svg/game-rows.svg"); */
     /* background-repeat: no-repeat; */
+}
+
+#opengames-list .games__row {
+    background-color: #fffdf4;
 }
 
 #pastgames-list .games__row {
@@ -938,6 +942,34 @@ a {
 
 .border-style {
     border: 4px solid #ff7c06;
+}
+.border-style .corn {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+}
+.border-style .corn1 {
+    left: -4px;
+    top: -4px;
+    background-image: url("../../lib/media/svg/corners/corn1.svg");
+}
+.border-style .corn2 {
+    right: -4px;
+    top: -4px;
+    background-image: url("../../lib/media/svg/corners/corn2.svg");
+}
+.border-style .corn3 {
+    left: -4px;
+    bottom: -4px;
+    background-image: url("../../lib/media/svg/corners/corn3.svg");
+}
+.border-style .corn4 {
+    bottom: -4px;
+    right: -4px;
+    background-image: url("../../lib/media/svg/corners/corn4.svg");
 }
 .border-style::before {
     content: "";
