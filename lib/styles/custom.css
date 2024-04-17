@@ -4557,6 +4557,17 @@ wrapper__nft-shop-modal .info__pricing button {
     border: none;
 }
 
+@media (max-width: 1024px) {
+  .enemy-character__btn {
+    width: 20%;
+    height: 20px;
+  }  
+  .enemy-character__btn img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
 .enemy-character__btn-prev {
     left: 0;
     top: 50%;
