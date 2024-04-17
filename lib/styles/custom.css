@@ -1045,6 +1045,11 @@ a {
     padding: 4px 15px;
     z-index: 1;
 }
+@media (max-width: 1023px) {
+    .games__item.games__item__header > p {
+        padding: 4px 3px;
+    }
+}
 .games__item.games__item__header > p::after {
     content: "";
     position: absolute;

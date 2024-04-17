@@ -1,7 +1,9 @@
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="4" y="8" width="4" height="4" transform="rotate(-90 4 8)" fill="#FF7C06"/>
-<rect y="4" width="4" height="4" transform="rotate(-90 0 4)" fill="#FF7C06"/>
-<rect x="4" y="4" width="4" height="4" transform="rotate(-90 4 4)" fill="#FFC897"/>
-<rect x="8" y="8" width="4" height="4" transform="rotate(-90 8 8)" fill="#FFC897"/>
-<rect x="8" y="12" width="4" height="4" transform="rotate(-90 8 12)" fill="#FF7C06"/>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect y="16" width="16" height="16" transform="rotate(-90 0 16)" fill="#FFF9E0"/>
+<rect x="12" y="4" width="4" height="4" transform="rotate(-90 12 4)" fill="#FFFDF4"/>
+<rect x="8" y="4" width="4" height="4" transform="rotate(-90 8 4)" fill="#FFCC9E"/>
+<rect x="12" y="8" width="4" height="4" transform="rotate(-90 12 8)" fill="#FFCC9E"/>
+<rect x="12" y="12" width="4" height="4" transform="rotate(-90 12 12)" fill="#FF7C06"/>
+<rect x="8" y="8" width="4" height="4" transform="rotate(-90 8 8)" fill="#FF7C06"/>
+<rect x="4" y="4" width="4" height="4" transform="rotate(-90 4 4)" fill="#FF7C06"/>
 </svg>
