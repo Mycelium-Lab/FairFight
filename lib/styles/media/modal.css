@@ -364,7 +364,7 @@
     }
     .modal__over-body {
         padding-top: 19px;
-        background-image: url("../../media/svg/game-over-frame-mobile.svg");
+        /* background-image: url("../../media/svg/game-over-frame-mobile.svg"); */
     }
     .modal__title {
         margin-bottom: 5px;
