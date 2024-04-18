@@ -4401,7 +4401,8 @@ wrapper__nft-shop-modal .info__pricing button {
     width: 238px;
     position: absolute;
     right: 31px;
-    bottom: 28px;
+    /* bottom: 28px; */
+    bottom: 13px;
     font-size: 14px;
     padding: 0px;
     height: 50px;

@@ -305,6 +305,8 @@
     }
     .games__item {
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0 30px;
     }
 
     .tabs__content {

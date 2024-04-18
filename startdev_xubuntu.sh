@@ -18,3 +18,7 @@ xfce4-terminal --command "cd $main_directory && npm run dev:se" &
 
 # Открываем новое окно терминала и переходим в папку "evm", запуская команду npm run dev:si
 xfce4-terminal --command "cd $main_directory && npm run dev:si" &
+
+
+
+http://localhost:5000/?network=31337
