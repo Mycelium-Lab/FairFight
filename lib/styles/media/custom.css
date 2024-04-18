@@ -345,7 +345,8 @@
     .games__row {
         background-image: url("../../media/mobile/game-rows-mobile-horizontal.svg");
         padding: 6px 10px;
-        height: 98px;
+        /* height: 98px; */
+        height: 105px;
     }
     .games__item_last {
         padding-bottom: 4.94px;
@@ -1269,7 +1270,8 @@ background-position: center 11px;
         padding: 8px 20px;
         width: 320px;
         background-size: 100% auto;
-        height: 97px;
+        /* height: 97px; */
+        height: 105px;
         gap: 5px;
         background-image: url("../../media/svg/game-rows-mobile-320.svg");
     }
