@@ -428,7 +428,11 @@
     height: 573px;
     width: 404px;
 }
+
 .modal__over-body {
+    overflow-y: auto;
+}
+.modal__over-body__inner {
     flex-direction: column;
     display: flex;
     width: 306px;
@@ -438,7 +442,7 @@
     gap: 20px;
     padding-top: 24px;
     position: relative;
-    overflow-y: auto;
+    margin-right: 12px;
 }
 .modal__over-body::-webkit-scrollbar {
     width: 4px; /* ширина для вертикального скролла */

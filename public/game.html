@@ -170,7 +170,8 @@
 
 						<div class="enemy-stats">
 							<div class="enemy-character">
-								<button id="enemy-character__btn-prev" class="enemy-character__btn enemy-character__btn-prev">
+								<button id="enemy-character__btn-prev"
+									class="enemy-character__btn enemy-character__btn-prev">
 									<img src="/media/svg/btn-prev.svg" alt="">
 								</button>
 								<div class="enemy-stats-value">
@@ -186,7 +187,8 @@
 								<div id="enemy-stats-skin">
 									<!--<img src="/media/stats-character.svg">-->
 								</div>
-								<button id="enemy-character__btn-next" class="enemy-character__btn enemy-character__btn-next">
+								<button id="enemy-character__btn-next"
+									class="enemy-character__btn enemy-character__btn-next">
 									<img src="/media/svg/btn-next.svg" alt="">
 								</button>
 							</div>
@@ -337,34 +339,35 @@
 		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 		<div class="modal__title">Game over</div>
 		<div class="modal__over-body">
-			<div class="modal__over-subtitle">Players & stats</div>
-			<div class="finish-stats">
-				<div class="yourStats__header">
-					<p>You</p>
-				</div>
-				<div id="yourStats">
-					<span id="yourAmountWinLose"></span>
-					<div class="yourKills_stat">
-						<span class="yourKillsTitle">Kills:</span>
-						<span class="yourKills"></span>
+			<div class="modal__over-body__inner">
+				<div class="modal__over-subtitle">Players & stats</div>
+				<div class="finish-stats">
+					<div class="yourStats__header">
+						<p>You</p>
 					</div>
-					<div class="yourDep_stat">
-						<span class="yourDepTitle">Dep:</span>
-						<span id="yourDep"></span>
+					<div id="yourStats">
+						<span id="yourAmountWinLose"></span>
+						<div class="yourKills_stat">
+							<span class="yourKillsTitle">Kills:</span>
+							<span class="yourKills"></span>
+						</div>
+						<div class="yourDep_stat">
+							<span class="yourDepTitle">Dep:</span>
+							<span id="yourDep"></span>
+						</div>
+						<div class="yourDeaths_stat">
+							<span class="yourDeathsTitle">Deaths:</span>
+							<span class="yourDeaths"></span>
+						</div>
 					</div>
-					<div class="yourDeaths_stat">
-						<span class="yourDeathsTitle">Deaths:</span>
-						<span class="yourDeaths"></span>
+					<div class="yourStats_address">
+						<span class="your_address">Wallet: </span>
+						<a id="finish_modal_your_address"></a>
 					</div>
-				</div>
-				<div class="yourStats_address">
-					<span class="your_address">Wallet: </span>
-					<a id="finish_modal_your_address"></a>
-				</div>
-				<div class="yourStats__header">
-					<p>You</p>
-				</div>
-				<!-- <div id="yourStats">
+					<div class="yourStats__header">
+						<p>You</p>
+					</div>
+					<!-- <div id="yourStats">
 					<span id="yourAmountWinLose"></span>
 					<div class="yourKills_stat">
 						<span class="yourKillsTitle">Kills:</span>
@@ -383,30 +386,31 @@
 					<span class="your_address">Wallet: </span>
 					<a id="finish_modal_your_address"></a>
 				</div> -->
-			</div>
-			<div class="stats-devider"></div>
-			<div class="finish-stats_enemy finish-stats">
-				<div class="enemyStats__header">
-					<p>Enemy</p>
 				</div>
-				<div id="enemyStats">
-					<div class="enemyKills_stat">
-						<span class="enemyKillsTitle">Kills:</span>
-						<span class="enemyKills"></span>
+				<div class="stats-devider"></div>
+				<div class="finish-stats_enemy finish-stats">
+					<div class="enemyStats__header">
+						<p>Enemy</p>
 					</div>
-					<span id="enemyAmountWinLose"></span>
-					<div class="enemyDeaths_stat">
-						<span class="enemyDeathsTitle">Deaths:</span>
-						<span class="enemyDeaths"></span>
+					<div id="enemyStats">
+						<div class="enemyKills_stat">
+							<span class="enemyKillsTitle">Kills:</span>
+							<span class="enemyKills"></span>
+						</div>
+						<span id="enemyAmountWinLose"></span>
+						<div class="enemyDeaths_stat">
+							<span class="enemyDeathsTitle">Deaths:</span>
+							<span class="enemyDeaths"></span>
+						</div>
+						<div clas="enemyDep_stat">
+							<span class="enemyDepTitle">Dep:</span>
+							<span id="enemyDep"></span>
+						</div>
 					</div>
-					<div clas="enemyDep_stat">
-						<span class="enemyDepTitle">Dep:</span>
-						<span id="enemyDep"></span>
+					<div class="enemyStats_address">
+						<span class="enemy_address">Wallet: </span>
+						<a id="finish_modal_enemy_address"></span>
 					</div>
-				</div>
-				<div class="enemyStats_address">
-					<span class="enemy_address">Wallet: </span>
-					<a id="finish_modal_enemy_address"></span>
 				</div>
 			</div>
 		</div>

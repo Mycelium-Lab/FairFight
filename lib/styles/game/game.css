@@ -236,7 +236,8 @@
     height: 39px;
     z-index: 10000;
     position: absolute;
-    top: 195px;
+    /* top: 195px; */
+    top: 216px;
 }
 
 .finish-stats_enemy {
