@@ -54,7 +54,7 @@
     grid-area: yourWinLose;
 }
 #finish_modal_your_address,
-#finish_modal_enemy_address {
+.finish_modal_enemy_address {
     color: rgba(255, 124, 6, 1);
     text-decoration: underline;
 }
@@ -68,7 +68,7 @@
     grid-area: yourDeaths;
 }
 
-#enemyStats {
+.enemyStats {
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: 1fr 1fr;
