@@ -68,6 +68,15 @@ export const networks = [
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
+    name: "Base",
+    chainid: 8453,
+    rpc: 'https://mainnet.base.org',
+    currency: 'ETH',
+    explorer: 'https://basescan.org',
+    contractAddress: '0xd136b9EdC06E9d9464B22Efd78DE12b1B3d1C595',
+    privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
+  {
       name: "XRP EVM Devnet",
       chainid: 1440002,
       rpc: 'https://rpc-evm-sidechain.xrpl.org',

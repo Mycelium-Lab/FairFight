@@ -89,6 +89,11 @@ module.exports = {
       url: 'https://rpc.coredao.org',
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
       chainId: 1116
+    },
+    baseMainnet: {
+      url: 'https://mainnet.base.org',
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      chainId: 8453
     }
   },
   solidity: {
