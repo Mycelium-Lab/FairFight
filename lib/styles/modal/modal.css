@@ -438,7 +438,7 @@
     width: 306px;
     background-repeat: no-repeat;
     align-items: center;
-    background-image: url(../../media/svg/game-over-frame.svg);
+    /* background-image: url(../../media/svg/game-over-frame.svg); */
     gap: 20px;
     padding-top: 24px;
     position: relative;
