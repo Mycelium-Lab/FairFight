@@ -850,6 +850,7 @@ a {
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 20px;
+    padding-right: 0;
     /* display: flex;
   flex-direction: column;
   align-items: center;
