@@ -623,12 +623,12 @@ function handleSocket(socket) {
         room.addUser(user = new User(joinData.walletAddress), socket);
 
         if (room.users.length === 1) {
-          // setTimeout(async () => {
-          //   if (room.numUsers() === 1) {
-          //     await onFinishing()
-          //     room.sendTo(user, 'update_balance', {});
-          //   }
-          // }, 1000 * 60 * 3)
+          setTimeout(async () => {
+            if (room.numUsers() === 1) {
+              await onFinishing()
+              room.sendTo(user, 'update_balance', {});
+            }
+          }, 1000 * 60 * 3)
         }
 
         // Send room info to new user
