@@ -29,7 +29,9 @@ CREATE TABLE leaderboard(
     amountWon FLOAT NOT NULL,
     period INT NOT NULL,
     chainid INT NOT NULL,
-    contract TEXT NOT NULL
+    contract TEXT NOT NULL,
+    kills INT NOT NULL,
+    deaths INT NOT NULL
 );
 
 CREATE TABLE utils(
