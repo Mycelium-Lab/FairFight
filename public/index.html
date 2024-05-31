@@ -91,13 +91,13 @@
 					<span id="menu__close" class="message-modal__btn-close"></span>
 					<p class="menu__title">Menu</p>
 					<div id="menu-btns" class="wrapper__btns-wrap">
-						<!--<button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button>-->
+						<!-- <button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button> -->
 						<button class="btns-wrap__btn" id="menu-nft-shop-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-inventory-btn" style="display: block;"></button>
-						<!--<button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
-						<button class="btns-wrap__btn" id="menu-lottery-btn" style="display: block;"></button>
+						<!-- <button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
+						<button class="btns-wrap__btn" id="menu-lottery-btn" style="display: block;"></button> -->
 						<button class="btns-wrap__btn" id="menu-tournaments-btn" style="display: block;"></button>
-						<button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button>-->
+						<!-- <button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button> -->
 					</div>
 				</div>
 			</div>
@@ -802,9 +802,9 @@
 									<button class="btns-wrap__btn" id="nft-shop-btn"></button>
 									<button class="btns-wrap__btn" id="inventory-btn"></button>
 									<!--<button class="btns-wrap__btn" id="mystery-btn"></button>
-							<button class="btns-wrap__btn" id="lottery-btn"></button>
+							<button class="btns-wrap__btn" id="lottery-btn"></button>-->
 							<button class="btns-wrap__btn" id="tournaments-btn"></button>
-							<button class="btns-wrap__btn" id="balance-btn"></button>-->
+							<!--<button class="btns-wrap__btn" id="balance-btn"></button>-->
 								</div>
 								<img id="down-menu" class="menu-control" src="media/mobile/arrow-menu-down.svg"
 									style="display: none;">
@@ -1111,13 +1111,15 @@
 				</button>
 			</div>
 		</div>
-		<div id="leaderboard_modal" class="modal">
+		<div id="leaderboard_modal" class="modal wrapper__message-modal-overlay">
 			<div class="board modal_content">
 				<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
 				<div class="modal__title">FairFight leaderboard</div>
 				<div class="inner-block__head">
 					<button class="active" id="sevenleader-btn">In the last 7 days</button>
 					<button id="thirtyleader-btn">In the last 30 days</button>
+					<button id="sevenleader-multi-btn">In the last 7 days Multi</button>
+					<button id="thirtyleader-multi-btn">In the last 30 days Multi</button>
 				</div>
 				<div id="sevenleader">
 					<table id="sevenleader-table" class="compact ">
@@ -1127,7 +1129,9 @@
 								<th>Wallet</th>
 								<th>Games</th>
 								<th>Wins</th>
-								<th>Tokens won</th>
+								<th>$ won</th>
+								<th>Kills</th>
+								<th>Deaths</th>
 							</tr>
 						</thead>
 						<tbody id="sevenleader-tablebody">
@@ -1143,10 +1147,48 @@
 								<th>Wallet</th>
 								<th>Games</th>
 								<th>Wins</th>
-								<th>Tokens won</th>
+								<th>$ won</th>
+								<th>Kills</th>
+								<th>Deaths</th>
 							</tr>
 						</thead>
 						<tbody id="thirtyleader-tablebody">
+
+						</tbody>
+					</table>
+				</div>
+				<div id="sevenleader-multi">
+					<table id="sevenleader-multi-table" class="compact ">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Wallet</th>
+								<th>Games</th>
+								<th>Wins</th>
+								<th>$ won</th>
+								<th>Kills</th>
+								<th>Deaths</th>
+							</tr>
+						</thead>
+						<tbody id="sevenleader-multi-tablebody">
+
+						</tbody>
+					</table>
+				</div>
+				<div id="thirtyleader-multi">
+					<table id="thirtyleader-multi-table" class="compact ">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Wallet</th>
+								<th>Games</th>
+								<th>Wins</th>
+								<th>$ won</th>
+								<th>Kills</th>
+								<th>Deaths</th>
+							</tr>
+						</thead>
+						<tbody id="thirtyleader-multi-tablebody">
 
 						</tbody>
 					</table>
