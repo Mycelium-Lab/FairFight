@@ -5,6 +5,8 @@ import { erc20Abi } from "../../contract/erc20.js"
 import { calcAmountWithDecimals } from "../utils/utils.js"
 import { networks } from "../../contract/contract.js"
 
+const secondsInADay = 86400
+
 const pgClient = db()
 await pgClient.connect()
 
@@ -16,7 +18,7 @@ await pgClient.connect()
 
 export async function createLeaderboard(chainid) {
     // try {
-        const network = networks.find(v.chainid == chainid)
+        const network = networks.find(v => v.chainid == chainid)
         const priceRequest = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${network.currency}USDT`).then(res => res.json()).catch(err => {price: "3700"})
         const priceMainCurrency = priceRequest.price
         console.log(`Start creating leaderboard for chainid = ${chainid}`)
@@ -40,7 +42,7 @@ export async function createLeaderboard(chainid) {
         const unixDateLastMonth = unixDateNow - 30*secondsInADay
         for (let i = 0; i < (lastID / chunkSize); i++) {
             try {
-                const chunk = await contract.getChunkFinishedBattles(i, chunkSize)
+                const chunk = await contract.getChunkFights(i, chunkSize)
                 allBattlesWeek = [...allBattlesWeek, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastWeek))]
                 allBattlesMonth = [...allBattlesMonth, ...(chunk.filter(v => parseInt(v.finishTime) > unixDateLastMonth))]
             } catch (error) {
@@ -57,7 +59,7 @@ export async function createLeaderboard(chainid) {
         for (let i = 0; i < allBattlesWeek.length; i++) {
             const battle = allBattlesWeek[i]
             const tokenContract = new ethers.Contract(battle.token, erc20Abi, signer)
-            const decimals = await tokenContract.decimals()
+            const decimals = battle.token == ethers.constants.AddressZero ? 18 : await tokenContract.decimals()
             const baseAmount = calcAmountWithDecimals(battle.baseAmount, decimals)
             try {
                 const battleAllStats = await pgClient.query(
@@ -93,12 +95,12 @@ export async function createLeaderboard(chainid) {
                         period: battleAllStats.rows.length > 2 ? 2 : 0
                     }
                     await pgClient.query(
-                        "UPDATE leaderboard SET games=games+1, wins=wins+$1, amountwon=amountwon+$2, kills=kills+$3, deaths=deaths+$4 WHERE address=$5 AND period=$6 AND chainid = $7",
+                        "UPDATE leaderboard SET games=games+1, wins=wins+$1, amountwon=amountwon+$2, kills=kills+$3, deaths=deaths+$4 WHERE player=$5 AND period=$6 AND chainid = $7",
                         [data.isWin, data.winAmount, data.kills, data.deaths, data.player, data.period, chainid]
                     )
                     await pgClient.query(
-                        "INSERT INTO leaderboard (address, games, wins, amountwon, period, kills, deaths, chainid) SELECT $1,$2, $3, $4, $5, $6, $7, $8 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$5 AND chainid = $8)",
-                        [data.player, 1, data.isWin, data.winAmount, data.period, data.kills, data.deaths, chainid]
+                        "INSERT INTO leaderboard (player, games, wins, amountwon, period, kills, deaths, chainid, contract) SELECT $1,$2, $3, $4, $5, $6, $7, $8, $9 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE player=$1 AND period=$5 AND chainid = $8)",
+                        [data.player, 1, data.isWin, data.winAmount, data.period, data.kills, data.deaths, chainid, contract.address]
                     )
                 }
             } catch (error) {
@@ -108,7 +110,7 @@ export async function createLeaderboard(chainid) {
         for (let i = 0; i < allBattlesMonth.length; i++) {
             const battle = allBattlesMonth[i]
             const tokenContract = new ethers.Contract(battle.token, erc20Abi, signer)
-            const decimals = await tokenContract.decimals()
+            const decimals = battle.token == ethers.constants.AddressZero ? 18 : await tokenContract.decimals()
             const baseAmount = calcAmountWithDecimals(battle.baseAmount, decimals)
             try {
                 const battleAllStats = await pgClient.query(
@@ -144,12 +146,12 @@ export async function createLeaderboard(chainid) {
                         period: battleAllStats.rows.length > 2 ? 3 : 1
                     }
                     await pgClient.query(
-                        "UPDATE leaderboard SET games=games+1, wins=wins+$1, amountwon=amountwon+$2, kills=kills+$3, deaths=deaths+$4 WHERE address=$5 AND period=$6 AND chainid = $8",
+                        "UPDATE leaderboard SET games=games+1, wins=wins+$1, amountwon=amountwon+$2, kills=kills+$3, deaths=deaths+$4 WHERE player=$5 AND period=$6 AND chainid = $7",
                         [data.isWin, data.winAmount, data.kills, data.deaths, data.player, data.period, chainid]
                     )
                     await pgClient.query(
-                        "INSERT INTO leaderboard (address, games, wins, amountwon, period, kills, deaths, chainid) SELECT $1,$2, $3, $4, $5, $6, $7, $8 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE address=$1 AND period=$5 AND chainid = $8)",
-                        [data.player, 1, data.isWin, data.winAmount, data.period, data.kills, data.deaths, chainid]
+                        "INSERT INTO leaderboard (player, games, wins, amountwon, period, kills, deaths, chainid, contract) SELECT $1,$2, $3, $4, $5, $6, $7, $8, $9 WHERE NOT EXISTS (SELECT 1 FROM leaderboard WHERE player=$1 AND period=$5 AND chainid = $8)",
+                        [data.player, 1, data.isWin, data.winAmount, data.period, data.kills, data.deaths, chainid, contract.address]
                     )
                 }
             } catch (error) {
@@ -160,11 +162,11 @@ export async function createLeaderboard(chainid) {
 }
 
 export async function getLeaderboard(res) {
-    // try {
-    //     const leaderboard = await pgClient.query("SELECT * FROM leaderboard")
-    //     res.status(200).json({leaderboard: leaderboard.rows})
-    // } catch (error) {
-    //     res.status(500).send('Something went wrong')
-    // }
+    try {
+        const leaderboard = await pgClient.query("SELECT * FROM leaderboard")
+        res.status(200).json({leaderboard: leaderboard.rows})
+    } catch (error) {
+        res.status(500).send('Something went wrong')
+    }
 }
 
