@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from "cors"
 import path from 'path'
+import cron from 'node-cron'
 import { fileURLToPath } from 'url';
 
 import inventoryRouter from './server/inventory/index.js'
@@ -10,6 +11,17 @@ import leaderboardRouter from './server/leaderboard/controller.js'
 import gamePropertiesRouter from './server/gameproperties/controller.js'
 import airdropRouter from './server/airdrop/controller.js'
 import lootboxRouter from './server/lootbox/controller.js'
+import { createLeaderboard } from './server/leaderboard/service.js';
+
+cron.schedule("6 6 6 * * *", async () => {
+    try {
+        // await createLeaderboard(31337)
+    } catch (error) {
+        console.log(error)
+    }
+}, {
+    timezone: 'Europe/Moscow'
+})
 
 const server = express()
 
