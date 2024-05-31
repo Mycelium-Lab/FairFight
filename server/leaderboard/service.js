@@ -10,12 +10,6 @@ const secondsInADay = 86400
 const pgClient = db()
 await pgClient.connect()
 
-// cron.schedule("6 6 6 * * *", async () => {
-//     await createLeaderboard()
-// }, {
-//     timezone: 'Europe/Moscow'
-// })
-
 export async function createLeaderboard(chainid) {
     // try {
         const network = networks.find(v => v.chainid == chainid)
@@ -161,9 +155,11 @@ export async function createLeaderboard(chainid) {
         console.log(`LeaderBoard updated`)
 }
 
-export async function getLeaderboard(res) {
+export async function getLeaderboard(req, res) {
     try {
-        const leaderboard = await pgClient.query("SELECT * FROM leaderboard")
+        const query = req.query
+        const chainid = parseInt(query.chainid)
+        const leaderboard = await pgClient.query("SELECT * FROM leaderboard WHERE chainid = $1", [chainid])
         res.status(200).json({leaderboard: leaderboard.rows})
     } catch (error) {
         res.status(500).send('Something went wrong')
