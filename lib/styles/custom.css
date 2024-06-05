@@ -1934,6 +1934,7 @@ a {
 
 .nft-shop-modal__right-title_active {
     display: block;
+    z-index: -1;
 }
 
 .nft-shop-modal__right-title-characters {
