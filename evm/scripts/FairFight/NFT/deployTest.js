@@ -6,7 +6,7 @@ async function main() {
     const charactersBaseURI = 'https://ipfs.io/ipfs/QmdGpPVHvabzGmofEajr5okx4R5MyuyGBvQfTxnupDkrQ2/'
     const armorsBaseURI = 'https://ipfs.io/ipfs/QmbkhgXUrv4UzvLzB21QJGqMtQMfmNdnQN22S7UH9HJSok/'
     const bootsBaseURI = 'https://ipfs.io/ipfs/QmcBcszocmtgxtQfiBY5epoQkzXCnf6965NBmyN8JwnSqm/'
-    const weaponsBaseURI = 'https://ipfs.io/ipfs/QmX7Sk4UtnYtMnpqM1evVHyzwmTAkg1EXWGvJdS3yKGdNF/'
+    const weaponsBaseURI = 'https://ipfs.io/ipfs/QmQ9zM41VRfDWLNXQPcsYm55NyLHfoQJDdbyP2wKDrMMnV/'
     const token = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
