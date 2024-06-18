@@ -442,7 +442,7 @@ th.sorting {
 th.sorting::before {
     content: '' !important;
     opacity: 100% !important;
-    background-image: url("/lib/media/svg/leaderboard/lb_sorting.svg");
+    background-image: url("../media/svg/leaderboard/lb_sorting.svg");
     background-size: 100%;
     background-repeat: no-repeat;
     height: 20px;
