@@ -841,7 +841,7 @@ a {
 
 .inner-block__head .active {
     color: var(--color-orange);
-    border-bottom: 3px solid var(--color-orange);
+    /* border-bottom: 3px solid var(--color-orange); */
 }
 
 .tabs__content {
@@ -1969,7 +1969,7 @@ a {
 }
 
 .nft-shop-modal__nav-wrap .nav-wrap__nav {
-    border-bottom: 3px solid #ff7c06;
+    border-bottom: 2px solid #ff7c06;
     display: flex;
     align-items: center;
     justify-content: space-between;
