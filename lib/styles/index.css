@@ -278,6 +278,9 @@ input[type=number] {
     font-size: 28px;
     font-weight: bold;
 }
+.close_modal_window {
+    z-index: 10000;
+}
 
 .close:hover,
 .close:focus {
@@ -359,6 +362,9 @@ summary::-webkit-details-marker {
 }
 .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head {
     margin-bottom: 10px;
+}
+.inner-block__head_mid_wrap {
+    display: flex;
 }
 .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button {
     font-size: 12px;
@@ -525,6 +531,11 @@ th.sorting::after {
     }
     .wrapper__message-modal-overlay#leaderboard_modal .board input, select {
         padding: 10px !important;
+    }.wrapper__message-modal-overlay#leaderboard_modal .board {
+        max-width: calc(100% - 10px);
+    }
+    .inner-block__head_mid_wrap {
+        flex-direction: column;
     }
 }
 @media (max-width: 800px) {
