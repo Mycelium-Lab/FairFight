@@ -841,7 +841,7 @@ a {
 
 .inner-block__head .active {
     color: var(--color-orange);
-    /* border-bottom: 3px solid var(--color-orange); */
+    border-bottom: 3px solid var(--color-orange);
 }
 
 .tabs__content {
