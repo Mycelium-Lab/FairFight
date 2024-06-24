@@ -844,6 +844,10 @@ a {
     border-bottom: 3px solid var(--color-orange);
 }
 
+#sevenleader-btn, #thirtyleader-btn, #sevenleader-multi-btn, #thirtyleader-multi-btn {
+    border: none !important
+}
+
 .tabs__content {
     width: 100%;
     height: 100%;

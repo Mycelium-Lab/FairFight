@@ -419,7 +419,7 @@ th.sorting:nth-child(2) {
 }
 th.sorting:nth-child(3) {
     max-width: 80px;
-    width: 100%;
+    width: 80px !important;
 }
 th.sorting:nth-child(4) {
     max-width: 100px;
