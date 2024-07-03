@@ -6,7 +6,8 @@ export const bootsTypes = {
     '4': 'high',
     '5': 'high',
     '6': 'high',
-    '7': 'normal'
+    '7': 'normal',
+    '8': 'medium_new'
 }
 
 export const bootsSizes = {
@@ -748,4 +749,250 @@ export const bootsSizes = {
             }
         }
     },
+    'medium_new': {
+        position: {
+          firstFrames: {
+            left: {
+              x: 70,
+              y: 129,
+              preview: {
+                x: 210,
+                y: 390
+              }
+            },
+            right: {
+              x: 92,
+              y: 129,
+              preview: {
+                x: 276,
+                y: 390
+              }
+            }
+          },
+          secondFrames: {
+            left: {
+              x: 70,
+              y: 281
+            },
+            right: {
+              x: 92,
+              y: 281
+            }
+          },
+          thirdFrames: {
+            '0': {
+              left: {
+                x: 72,
+                y: 433
+              },
+              right: {
+                x: 90,
+                y: 433
+              }
+            },
+            '1': {
+              left: {
+                x: 228,
+                y: 431
+              },
+              right: {
+                x: 241,
+                y: 431
+              }
+            },
+            '2': {
+              left: {
+                x: 382,
+                y: 430
+              },
+              right: {
+                x: 384,
+                y: 428
+              }
+            },
+            '3': {
+              left: {
+                x: 532,
+                y: 433
+              },
+              right: {
+                x: 534,
+                y: 433
+              }
+            },
+            '4': {
+              left: {
+                x: 680,
+                y: 433
+              },
+              right: {
+                x: 698,
+                y: 433
+              }
+            },
+            '5': {
+              left: {
+                x: 830,
+                y: 432
+              },
+              right: {
+                x: 852,
+                y: 429
+              }
+            },
+            '6': {
+              left: {
+                x: 978,
+                y: 429
+              },
+              right: {
+                x: 1005,
+                y: 426
+              }
+            },
+            '7': {
+              left: {
+                x: 1135,
+                y: 429
+              },
+              right: {
+                x: 1152,
+                y: 432
+              }
+            }
+          },
+          forthFrames: {
+            '0': {
+              left: {
+                x: 70,
+                y: 585
+              },
+              right: {
+                x: 92,
+                y: 585
+              }
+            },
+            '1': {
+              left: {
+                x: 224,
+                y: 585
+              },
+              right: {
+                x: 243,
+                y: 585
+              }
+            },
+            '2': {
+              left: {
+                x: 374,
+                y: 585
+              },
+              right: {
+                x: 392,
+                y: 585
+              }
+            },
+            '3': {
+              left: {
+                x: 526,
+                y: 583
+              },
+              right: {
+                x: 544,
+                y: 583
+              }
+            },
+            '4': {
+              left: {
+                x: 676,
+                y: 580
+              },
+              right: {
+                x: 695,
+                y: 580
+              }
+            }
+          },
+          fifthFrames: {
+            '0': {
+              left: {
+                x: 70,
+                y: 737
+              },
+              right: {
+                x: 92,
+                y: 737
+              }
+            },
+            '1': {
+              left: {
+                x: 224,
+                y: 737
+              },
+              right: {
+                x: 243,
+                y: 737
+              }
+            },
+            '2': {
+              left: {
+                x: 374,
+                y: 737
+              },
+              right: {
+                x: 392,
+                y: 737
+              }
+            },
+            '3': {
+              left: {
+                x: 526,
+                y: 735
+              },
+              right: {
+                x: 544,
+                y: 735
+              }
+            },
+            '4': {
+              left: {
+                x: 676,
+                y: 732
+              },
+              right: {
+                x: 695,
+                y: 732
+              }
+            }
+          },
+          sixthFrames: {
+            left: {
+              x: 70,
+              y: 889
+            },
+            right: {
+              x: 90,
+              y: 889
+            }
+          },
+          seventhFrames: {
+            left: {
+              x: 69,
+              y: 1035
+            },
+            right: {
+              x: 89,
+              y: 1035
+            }
+          }
+        },
+        size: {
+          x: 32,
+          y: 32,
+          preview: {
+            x: 96,
+            y: 96
+          }
+        }
+      },
 }

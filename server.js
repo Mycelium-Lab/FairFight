@@ -12,6 +12,7 @@ import gamePropertiesRouter from './server/gameproperties/controller.js'
 import airdropRouter from './server/airdrop/controller.js'
 import lootboxRouter from './server/lootbox/controller.js'
 import { createLeaderboard } from './server/leaderboard/service.js';
+import { createMixingPicture } from './mixing/mixing.js';
 
 cron.schedule("6 6 6 * * *", async () => {
     try {
@@ -42,6 +43,7 @@ server.use(cors({
 }));
 server.use(express.urlencoded({extended: true}))
 server.use(express.json());
+await createMixingPicture('0x13d5bf04b0d393e0d026126bbdd44fc33e9a7555', 31337, 0, null, 8, null)
 
 server.use(express.static(path.join(__dirname,'/lib')))
 server.use('/', express.static(path.join(__dirname,'/public')));
