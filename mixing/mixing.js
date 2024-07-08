@@ -97,22 +97,37 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
         _bootsSize = JSON.parse(JSON.stringify(bootsSizes[`${_bootsType}`]))
         if (charactersLegsPlusX[`${characterId}`]['all'] || charactersLegsPlusX[`${characterId}`][`${bootsId}`]) {
             let characterLegPlus = charactersLegsPlusX[`${characterId}`][`${bootsId}`] ? charactersLegsPlusX[`${characterId}`][`${bootsId}`] : charactersLegsPlusX[`${characterId}`]['all']
-            _bootsSize.position.firstFrames.left.x += characterLegPlus.left
-            _bootsSize.position.firstFrames.right.x += characterLegPlus.right
+            _bootsSize.position.firstFrames.left.x += characterLegPlus['1'] ? characterLegPlus['1'].left : characterLegPlus.left
+            _bootsSize.position.firstFrames.right.x += characterLegPlus['1'] ? characterLegPlus['1'].right : characterLegPlus.right
     
-            _bootsSize.position.secondFrames.left.x += characterLegPlus.left
-            _bootsSize.position.secondFrames.right.x += characterLegPlus.right
+            _bootsSize.position.secondFrames.left.x += characterLegPlus['2'] ? characterLegPlus['2'].left : characterLegPlus.left
+            _bootsSize.position.secondFrames.right.x += characterLegPlus['2'] ? characterLegPlus['2'].right : characterLegPlus.right
             for (let i = 0; i <= 7; i++) {
-                _bootsSize.position.thirdFrames[`${i}`].left.x += i === 3 ? 2 : characterLegPlus.left
-                _bootsSize.position.thirdFrames[`${i}`].right.x += i === 3 ? 2 : characterLegPlus.right
+                let characterLegSpecial = (characterLegPlus['3'] && characterLegPlus['3'][`${i}`]) ? characterLegPlus['3'][`${i}`] : characterLegPlus
+                _bootsSize.position.thirdFrames[`${i}`].left.x += characterLegSpecial.left
+                _bootsSize.position.thirdFrames[`${i}`].right.x += characterLegSpecial.right
+                if (!isNaN(characterLegSpecial.upLeft) && !isNaN(characterLegSpecial.upRight)) {
+                    _bootsSize.position.thirdFrames[`${i}`].left.y += characterLegSpecial.upLeft
+                    _bootsSize.position.thirdFrames[`${i}`].right.y += characterLegSpecial.upRight
+                }
             }
             for (let i = 0; i <= 4; i++) {
-                _bootsSize.position.forthFrames[`${i}`].left.x += i === 4 ? 2 : characterLegPlus.left
-                _bootsSize.position.forthFrames[`${i}`].right.x += i === 4 ? 2 : characterLegPlus.right    
+                let characterLegSpecial = (characterLegPlus['4'] && characterLegPlus['4'][`${i}`]) ? characterLegPlus['4'][`${i}`] : characterLegPlus
+                _bootsSize.position.forthFrames[`${i}`].left.x += characterLegSpecial.left
+                _bootsSize.position.forthFrames[`${i}`].right.x += characterLegSpecial.right
+                if (!isNaN(characterLegSpecial.upLeft) && !isNaN(characterLegSpecial.upRight)) {
+                    _bootsSize.position.forthFrames[`${i}`].left.y += characterLegSpecial.upLeft
+                    _bootsSize.position.forthFrames[`${i}`].right.y += characterLegSpecial.upRight
+                }
             }
             for (let i = 0; i <= 4; i++) {
-                _bootsSize.position.fifthFrames[`${i}`].left.x += i === 4 ? 2 : characterLegPlus.left
-                _bootsSize.position.fifthFrames[`${i}`].right.x += i === 4 ? 2 : characterLegPlus.right
+                let characterLegSpecial = (characterLegPlus['5'] && characterLegPlus['5'][`${i}`]) ? characterLegPlus['5'][`${i}`] : characterLegPlus
+                _bootsSize.position.fifthFrames[`${i}`].left.x += characterLegSpecial.left
+                _bootsSize.position.fifthFrames[`${i}`].right.x += characterLegSpecial.right
+                if (!isNaN(characterLegSpecial.upLeft) && !isNaN(characterLegSpecial.upRight)) {
+                    _bootsSize.position.fifthFrames[`${i}`].left.y += characterLegSpecial.upLeft
+                    _bootsSize.position.fifthFrames[`${i}`].right.y += characterLegSpecial.upRight
+                }
             }
             _bootsSize.position.sixthFrames.left.x += characterLegPlus.left
             _bootsSize.position.sixthFrames.right.x += characterLegPlus.right
@@ -146,16 +161,17 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
             }
             if (!isNaN(parseInt(bootsId))) {
                 try {
+                    let charactersLegsPlus = charactersLegsPlusX[`${characterId}`][`${bootsId}`] ? charactersLegsPlusX[`${characterId}`][`${bootsId}`] : charactersLegsPlusX[`${characterId}`]['all']
                     _ctx.drawImage(
                         bootsImage, 
-                        preview ? (_bootsSize.position.firstFrames.right.preview.x + charactersLegsPlusX[`${characterId}`].preview.right) + (i * 456) : _bootsSize.position.firstFrames.right.x + (i * 152), 
+                        preview ? (_bootsSize.position.firstFrames.right.preview.x + charactersLegsPlus.preview.right) + (i * 456) : _bootsSize.position.firstFrames.right.x + (i * 152), 
                         preview ? _bootsSize.position.firstFrames.right.preview.y: _bootsSize.position.firstFrames.right.y, 
                         preview ? _bootsSize.size.preview.x : _bootsSize.size.x, 
                         preview ? _bootsSize.size.preview.y : _bootsSize.size.y
                     );
                     _ctx.drawImage(
                         bootsImage, 
-                        preview ?  (_bootsSize.position.firstFrames.left.preview.x + charactersLegsPlusX[`${characterId}`].preview.left) + (i * 456) : _bootsSize.position.firstFrames.left.x + (i * 152), 
+                        preview ?  (_bootsSize.position.firstFrames.left.preview.x + charactersLegsPlus.preview.left) + (i * 456) : _bootsSize.position.firstFrames.left.x + (i * 152), 
                         preview ?  _bootsSize.position.firstFrames.left.preview.y: _bootsSize.position.firstFrames.left.y, 
                         preview ? _bootsSize.size.preview.x : _bootsSize.size.x, 
                         preview ? _bootsSize.size.preview.y : _bootsSize.size.y
