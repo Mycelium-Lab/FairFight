@@ -95,29 +95,30 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
         bootsImage = await loadImage(`${__dirname}/basic_images/boots/${bootsId}.png`);
         _bootsType = bootsTypes[`${bootsId}`]
         _bootsSize = JSON.parse(JSON.stringify(bootsSizes[`${_bootsType}`]))
-        if (charactersLegsPlusX[`${characterId}`]) {
-            _bootsSize.position.firstFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-            _bootsSize.position.firstFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+        if (charactersLegsPlusX[`${characterId}`]['all'] || charactersLegsPlusX[`${characterId}`][`${bootsId}`]) {
+            let characterLegPlus = charactersLegsPlusX[`${characterId}`][`${bootsId}`] ? charactersLegsPlusX[`${characterId}`][`${bootsId}`] : charactersLegsPlusX[`${characterId}`]['all']
+            _bootsSize.position.firstFrames.left.x += characterLegPlus.left
+            _bootsSize.position.firstFrames.right.x += characterLegPlus.right
     
-            _bootsSize.position.secondFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-            _bootsSize.position.secondFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+            _bootsSize.position.secondFrames.left.x += characterLegPlus.left
+            _bootsSize.position.secondFrames.right.x += characterLegPlus.right
             for (let i = 0; i <= 7; i++) {
-                _bootsSize.position.thirdFrames[`${i}`].left.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].left
-                _bootsSize.position.thirdFrames[`${i}`].right.x += i === 3 ? 2 : charactersLegsPlusX[`${characterId}`].right
+                _bootsSize.position.thirdFrames[`${i}`].left.x += i === 3 ? 2 : characterLegPlus.left
+                _bootsSize.position.thirdFrames[`${i}`].right.x += i === 3 ? 2 : characterLegPlus.right
             }
             for (let i = 0; i <= 4; i++) {
-                _bootsSize.position.forthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
-                _bootsSize.position.forthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right    
+                _bootsSize.position.forthFrames[`${i}`].left.x += i === 4 ? 2 : characterLegPlus.left
+                _bootsSize.position.forthFrames[`${i}`].right.x += i === 4 ? 2 : characterLegPlus.right    
             }
             for (let i = 0; i <= 4; i++) {
-                _bootsSize.position.fifthFrames[`${i}`].left.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].left
-                _bootsSize.position.fifthFrames[`${i}`].right.x += i === 4 ? 2 : charactersLegsPlusX[`${characterId}`].right
+                _bootsSize.position.fifthFrames[`${i}`].left.x += i === 4 ? 2 : characterLegPlus.left
+                _bootsSize.position.fifthFrames[`${i}`].right.x += i === 4 ? 2 : characterLegPlus.right
             }
-            _bootsSize.position.sixthFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-            _bootsSize.position.sixthFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+            _bootsSize.position.sixthFrames.left.x += characterLegPlus.left
+            _bootsSize.position.sixthFrames.right.x += characterLegPlus.right
     
-            _bootsSize.position.seventhFrames.left.x += charactersLegsPlusX[`${characterId}`].left
-            _bootsSize.position.seventhFrames.right.x += charactersLegsPlusX[`${characterId}`].right
+            _bootsSize.position.seventhFrames.left.x += characterLegPlus.left
+            _bootsSize.position.seventhFrames.right.x += characterLegPlus.right
         }
     }
 
