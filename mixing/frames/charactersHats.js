@@ -65,7 +65,79 @@ export const charactersHats = {
                 x: -3,
                 y: 6
             }
-        }
+        },
+        '13': {
+            x: 0,
+            y: 0,
+            preview: {
+                x: 0,
+                y: 9
+            }
+        },
+        '14': {
+            x: 0,
+            y: 3,
+            preview: {
+                x: 0,
+                y: 12
+            }
+        },
+        '16': {
+            x: 0,
+            y: 3,
+            preview: {
+                x: 0,
+                y: 9
+            }
+        },
+        '17': {
+            x: 0,
+            y: 3,
+            preview: {
+                x: 0,
+                y: 9
+            }
+        },
+        '19': {
+            x: 0,
+            y: 3,
+            preview: {
+                x: 0,
+                y: 9
+            }
+        },
+        '21': {
+            x: 2,
+            y: 2,
+            preview: {
+                x: 4,
+                y: 4
+            }
+        },
+        '28': {
+            x: 0,
+            y: 1,
+            preview: {
+                x: 0,
+                y: 5
+            }
+        },
+        '30': {
+            x: 0,
+            y: 1,
+            preview: {
+                x: 0,
+                y: 5
+            }
+        },
+        '31': {
+            x: 0,
+            y: 1,
+            preview: {
+                x: 0,
+                y: 5
+            }
+        },
     },
     '2': {
         '0': {
@@ -404,16 +476,16 @@ export const charactersHats = {
             x: 4,
             y: 2,
             preview: {
-                x: 3,
-                y: 0
+                x: 12,
+                y: 8
             }
         },
         '1': {
             x: 3,
             y: 2,
             preview: {
-                x: 3,
-                y: 0
+                x: 12,
+                y: 8
             }
         },
         '7': {
@@ -428,8 +500,8 @@ export const charactersHats = {
             x: 1,
             y: 3,
             preview: {
-                x: 3,
-                y: 0
+                x: 0,
+                y: 8
             }
         },
         '9': {
@@ -580,7 +652,7 @@ export const charactersHats = {
             x: 0,
             y: 3,
             preview: {
-                x: 3,
+                x: -2,
                 y: 0
             }
         }
@@ -591,7 +663,7 @@ export const charactersHats = {
             y: 4,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '1': {
@@ -599,7 +671,7 @@ export const charactersHats = {
             y: 4,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '2': {
@@ -607,7 +679,7 @@ export const charactersHats = {
             y: 5,
             preview: {
                 x: 0,
-                y: 0
+                y: 12
             }
         },
         '3': {
@@ -615,7 +687,7 @@ export const charactersHats = {
             y: 0,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '4': {
@@ -623,7 +695,7 @@ export const charactersHats = {
             y: 0,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '5': {
@@ -631,7 +703,7 @@ export const charactersHats = {
             y: 0,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '7': {
@@ -639,7 +711,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '8': {
@@ -647,7 +719,7 @@ export const charactersHats = {
             y: 3,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '9': {
@@ -655,7 +727,7 @@ export const charactersHats = {
             y: 2,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '10': {
@@ -663,7 +735,7 @@ export const charactersHats = {
             y: 2,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '11': {
@@ -671,7 +743,7 @@ export const charactersHats = {
             y: 4,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '12': {
@@ -679,7 +751,7 @@ export const charactersHats = {
             y: 2,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '13': {
@@ -687,7 +759,7 @@ export const charactersHats = {
             y: 5,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '14': {
@@ -695,7 +767,7 @@ export const charactersHats = {
             y: 5,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '15': {
@@ -703,7 +775,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '16': {
@@ -711,7 +783,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '17': {
@@ -719,7 +791,7 @@ export const charactersHats = {
             y: 3,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '18': {
@@ -727,7 +799,7 @@ export const charactersHats = {
             y: 5,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '19': {
@@ -735,7 +807,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '20': {
@@ -743,7 +815,7 @@ export const charactersHats = {
             y: 4,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '21': {
@@ -751,7 +823,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '22': {
@@ -759,7 +831,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '23': {
@@ -767,7 +839,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '24': {
@@ -775,7 +847,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '25': {
@@ -783,7 +855,7 @@ export const charactersHats = {
             y: 7,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '26': {
@@ -791,7 +863,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '27': {
@@ -799,7 +871,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '28': {
@@ -807,7 +879,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '29': {
@@ -815,7 +887,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '30': {
@@ -823,7 +895,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '31': {
@@ -831,7 +903,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         },
         '32': {
@@ -839,7 +911,7 @@ export const charactersHats = {
             y: 6,
             preview: {
                 x: 3,
-                y: 0
+                y: 12
             }
         }
     },
