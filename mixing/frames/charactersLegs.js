@@ -936,8 +936,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 0,
+                right: -19
             }
         },
         '1': {
@@ -1040,8 +1040,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '2': {
@@ -1144,8 +1144,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '3': {
@@ -1248,8 +1248,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '4': {
@@ -1352,8 +1352,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '5': {
@@ -1456,8 +1456,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '6': {
@@ -1560,8 +1560,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '7': {
@@ -1664,8 +1664,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '8': {
@@ -1768,8 +1768,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '9': {
@@ -1872,8 +1872,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '10': {
@@ -1976,8 +1976,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '11': {
@@ -2080,8 +2080,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
         '12': {
@@ -2184,8 +2184,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 10,
-                right: -14
+                left: 2,
+                right: -19
             }
         },
     },
@@ -2299,7 +2299,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '1': {
@@ -2403,7 +2403,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '2': {
@@ -2507,7 +2507,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '3': {
@@ -2611,7 +2611,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '4': {
@@ -2715,7 +2715,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '5': {
@@ -2819,7 +2819,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '6': {
@@ -2923,7 +2923,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '7': {
@@ -3027,7 +3027,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '8': {
@@ -3131,7 +3131,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '9': {
@@ -3235,7 +3235,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '10': {
@@ -3339,7 +3339,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '11': {
@@ -3443,7 +3443,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '12': {
@@ -3547,7 +3547,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         }
     },
@@ -3847,7 +3847,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '1': {
@@ -3951,7 +3951,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '2': {
@@ -4055,7 +4055,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '3': {
@@ -4159,7 +4159,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '4': {
@@ -4263,7 +4263,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '5': {
@@ -4367,7 +4367,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '6': {
@@ -4471,7 +4471,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '7': {
@@ -4575,7 +4575,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '8': {
@@ -4679,7 +4679,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '9': {
@@ -4783,7 +4783,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '10': {
@@ -4887,7 +4887,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '11': {
@@ -4991,7 +4991,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         },
         '12': {
@@ -5095,7 +5095,7 @@ export const charactersLegsPlusX = {
             right: -6,
             preview: {
                 left: 0,
-                right: 0
+                right: -20
             }
         }
     },
@@ -5208,8 +5208,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '1': {
@@ -5312,8 +5312,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '2': {
@@ -5416,8 +5416,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '3': {
@@ -5520,8 +5520,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '4': {
@@ -5624,8 +5624,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '5': {
@@ -5728,8 +5728,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '6': {
@@ -5832,8 +5832,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '7': {
@@ -5936,8 +5936,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '8': {
@@ -6040,8 +6040,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '9': {
@@ -6144,8 +6144,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '10': {
@@ -6248,8 +6248,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '11': {
@@ -6352,8 +6352,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
         '12': {
@@ -6456,8 +6456,8 @@ export const charactersLegsPlusX = {
             left: 3,
             right: -6,
             preview: {
-                left: 0,
-                right: 0
+                left: 10,
+                right: -14
             }
         },
     },
@@ -6499,7 +6499,7 @@ export const charactersLegsPlusX = {
             right: 0,
             preview: {
                 left: 0,
-                right: 0
+                right: -5
             }
         },
         '2': {
@@ -6523,7 +6523,7 @@ export const charactersLegsPlusX = {
             right: 0,
             preview: {
                 left: 0,
-                right: 0
+                right: -5
             }
         },
         '8': {
@@ -6547,7 +6547,7 @@ export const charactersLegsPlusX = {
             right: 0,
             preview: {
                 left: 0,
-                right: 0
+                right: -5
             }
         },
         '9': {
@@ -6571,7 +6571,7 @@ export const charactersLegsPlusX = {
             right: 0,
             preview: {
                 left: 0,
-                right: 0
+                right: -5
             }
         },
         '10': {
@@ -6595,7 +6595,7 @@ export const charactersLegsPlusX = {
             right: 0,
             preview: {
                 left: 0,
-                right: 0
+                right: -5
             }
         },
         '11': {
@@ -6740,8 +6740,8 @@ export const charactersLegsPlusX = {
             left: 2,
             right: -4,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '1': {
@@ -6802,8 +6802,8 @@ export const charactersLegsPlusX = {
             left: 2,
             right: -4,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '2': {
@@ -6912,8 +6912,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '3': {
@@ -7022,8 +7022,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '4': {
@@ -7132,8 +7132,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '5': {
@@ -7242,8 +7242,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '6': {
@@ -7352,8 +7352,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '7': {
@@ -7462,8 +7462,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '8': {
@@ -7572,8 +7572,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '9': {
@@ -7682,8 +7682,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '10': {
@@ -7792,8 +7792,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '11': {
@@ -7902,8 +7902,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         },
         '12': {
@@ -8012,8 +8012,8 @@ export const charactersLegsPlusX = {
             left: 0,
             right: 0,
             preview: {
-                left: 0,
-                right: 0
+                left: 14,
+                right: -14
             }
         }
     },
@@ -8159,7 +8159,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '1': {
@@ -8295,7 +8295,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '2': {
@@ -8431,7 +8431,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '3': {
@@ -8567,7 +8567,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '4': {
@@ -8703,7 +8703,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '5': {
@@ -8839,7 +8839,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '6': {
@@ -8975,7 +8975,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '7': {
@@ -9111,7 +9111,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '8': {
@@ -9247,7 +9247,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '9': {
@@ -9383,7 +9383,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '10': {
@@ -9519,7 +9519,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '11': {
@@ -9655,7 +9655,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
             '12': {
@@ -9791,7 +9791,7 @@ export const charactersLegsPlusX = {
                 right: -4,
                 preview: {
                     left: 0,
-                    right: 0
+                    right: -20
                 }
             },
     },
