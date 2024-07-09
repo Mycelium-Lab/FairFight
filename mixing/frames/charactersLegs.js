@@ -2197,10 +2197,1538 @@ export const charactersLegsPlusX = {
                 left: 0,
                 right: -18
             }
+        },
+        '0': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '1': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '2': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '3': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '4': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '5': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '6': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '7': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '8': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '9': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '10': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '11': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '12': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
         }
     },
     '4': {
         'all': {
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '0': {
+            '3': {
+                '7': {
+                    left: 0,
+                    right: 1,
+                    upLeft: 0,
+                    upRight: 1
+                }
+            },
+            '4': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '2': {
+            '4': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '8': {
+            '4': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '9': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '10': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '11': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '12': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
             left: 0,
             right: 0,
             preview: {
@@ -2217,6 +3745,1358 @@ export const charactersLegsPlusX = {
                 left: 0,
                 right: -20
             }
+        },
+        '0': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '1': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '2': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '3': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '4': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '5': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '6': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '7': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '8': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '9': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '10': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '11': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '12': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 4,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
         }
     },
     '6': {
@@ -2227,7 +5107,1359 @@ export const charactersLegsPlusX = {
                 left: 10,
                 right: -20
             }
-        }
+        },
+        '0': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '1': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 2,
+                    right: -4,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 6,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 1,
+                    right: -1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '2': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '3': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '4': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '5': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '6': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '7': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '8': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -1,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '9': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -4,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '10': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -4,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '11': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -4,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '12': {
+            '3': {
+                '1': {
+                    left: 1,
+                    right: -2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: -4,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '5': {
+                    left: 4,
+                    right: -2,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '6': {
+                    left: 3,
+                    right: -3,
+                    upLeft: 2,
+                    upRight: 2
+                },
+                '7': {
+                    left: 2,
+                    right: 1,
+                    upLeft: 3,
+                    upRight: 0
+                }
+            },
+            '4': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '1': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '2': {
+                    left: 0,
+                    right: -3,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '3': {
+                    left: 0,
+                    right: -5,
+                    upLeft: 0,
+                    upRight: 0
+                },
+                '4': {
+                    left: 2,
+                    right: 0,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 3,
+            right: -6,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
     },
     '7': {
         'all': {
@@ -2236,6 +6468,182 @@ export const charactersLegsPlusX = {
             preview: {
                 left: 0,
                 right: -5
+            }
+        },
+        '0': {
+            '3': {
+                '7': {
+                    left: 0,
+                    right: 1,
+                    upLeft: 0,
+                    upRight: 1
+                }
+            },
+            '4': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '2': {
+            '4': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: -1,
+                    right: 0,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '8': {
+            '4': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '9': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: -1,
+                    upRight: -1
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '10': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '11': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
+            }
+        },
+        '12': {
+            '4': {
+                '4': {
+                    left: 2,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            '5': {
+                '4': {
+                    left: 1,
+                    right: 2,
+                    upLeft: 0,
+                    upRight: 0
+                }
+            },
+            left: 0,
+            right: 0,
+            preview: {
+                left: 0,
+                right: 0
             }
         }
     },
