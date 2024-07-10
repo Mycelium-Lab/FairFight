@@ -19,6 +19,7 @@ import { weaponSizes, weaponTypes } from './sizes/weapons/sizes.js';
 import { charactersLegsPlusX } from './frames/charactersLegs.js';
 import { charactersHats } from './frames/charactersHats.js';
 import { longWeapon } from './frames/longWeapon.js';
+import { characterOnWeaponCorrection } from './sizes/weapons/characterCorrection.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const __basedir = __dirname.slice(0, __dirname.length - 7)
@@ -63,8 +64,16 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
         if (_weaponSize.position.firstFrames[`id-${weaponId}`]) {
             _weaponSize.position.firstFrames = _weaponSize.position.firstFrames[`id-${weaponId}`]
         }
+        if (characterOnWeaponCorrection[`${characterId}`] && characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`] && characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['1']) {
+                _weaponSize.position.firstFrames.x += characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['1'].x
+                _weaponSize.position.firstFrames.y += characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['1'].y
+        }
         if (_weaponSize.position.secondFrames[`id-${weaponId}`]) {
             _weaponSize.position.secondFrames = _weaponSize.position.secondFrames[`id-${weaponId}`]
+        }
+        if (characterOnWeaponCorrection[`${characterId}`] && characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`] && characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['2']) {
+            _weaponSize.position.secondFrames.x += characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['2'].x
+            _weaponSize.position.secondFrames.y += characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]['2'].y
         }
         _weaponSize.size.x = _weaponSize.size.x - (longWeapon[`${weaponId}`] ? longWeapon[`${weaponId}`].x : 0)
         _weaponSize.size.y = _weaponSize.size.y - (longWeapon[`${weaponId}`] ? longWeapon[`${weaponId}`].y : 0)
@@ -181,13 +190,22 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
                 }
             }
             if (!isNaN(parseInt(weaponId))) {
+                let previewX
+                let previewY
+                if (preview) {
+                    if (characterOnWeaponCorrection[`${characterId}`] && characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`]) {
+                        previewX = characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`].preview.x + (i * 456)
+                        previewY = characterOnWeaponCorrection[`${characterId}`][`${weaponTypes[`${weaponId}`]}`].preview.y + (movementInTimeFirstFramesWeapons[i] * 3)
+                    } else {
+                        previewX = _weaponSize.position.firstFrames.preview.x + (i * 456)
+                        previewY = (_weaponSize.position.firstFrames.preview[`id-${weaponId}`] ? _weaponSize.position.firstFrames.preview[`id-${weaponId}`].y + (movementInTimeFirstFramesWeapons[i] * 3) : _weaponSize.position.firstFrames.preview.y + (movementInTimeFirstFramesWeapons[i] * 3) )
+                    }
+                }
                 try {
                     _ctx.drawImage(
                         weaponImage, 
-                        preview ? _weaponSize.position.firstFrames.preview.x + (i * 456):  _weaponSize.position.firstFrames.x + (i * 152), 
-                        preview ? 
-                        (_weaponSize.position.firstFrames.preview[`id-${weaponId}`] ? _weaponSize.position.firstFrames.preview[`id-${weaponId}`].y + (movementInTimeFirstFramesWeapons[i] * 3) : _weaponSize.position.firstFrames.preview.y + (movementInTimeFirstFramesWeapons[i] * 3) )
-                        : _weaponSize.position.firstFrames.y + movementInTimeFirstFramesWeapons[i],
+                        preview ? previewX : _weaponSize.position.firstFrames.x + (i * 152), 
+                        preview ? previewY : _weaponSize.position.firstFrames.y + movementInTimeFirstFramesWeapons[i],
                         preview ? (_weaponSize.size.preview[`id-${weaponId}`] ? _weaponSize.size.preview[`id-${weaponId}`].x : _weaponSize.size.preview.x) : _weaponSize.size.x,
                         preview ? (_weaponSize.size.preview[`id-${weaponId}`] ? _weaponSize.size.preview[`id-${weaponId}`].y : _weaponSize.size.preview.y) : _weaponSize.size.y
                     );
