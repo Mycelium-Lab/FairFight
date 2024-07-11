@@ -11,7 +11,23 @@ export const bootsTypes = {
     '9': 'high_new',
     '10': 'medium_new_custom',
     '11': 'medium_new',
-    '12': 'medium_new_custom'
+    '12': 'medium_new_custom',
+    '13': 'high',
+    '14': 'high',
+    '15': 'high',
+    '16': 'high',
+    '17': 'high',
+    '18': 'high',
+    '19': 'high',
+    '20': 'high',
+    '21': 'high',
+    '22': 'high',
+    '23': 'high',
+    '24': 'high',
+    '25': 'high',
+    '26': 'high',
+    '27': 'high',
+    '28': 'high'
 }
 
 export const bootsSizes = {

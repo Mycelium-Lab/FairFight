@@ -47,7 +47,7 @@ server.use(express.json());
 server.use(express.static(path.join(__dirname,'/lib')))
 server.use('/', express.static(path.join(__dirname,'/public')));
 server.use('/maintenance', express.static(path.join(__dirname,'/public')));
-await createMixingPicture('0x13d5bf04b0d393e0d026126bbdd44fc33e9a7555', 31337, 9, 0, 0, 0)
+await createMixingPicture('0x13d5bf04b0d393e0d026126bbdd44fc33e9a7555', 31337, 0, null, 14, null)
 
 
 server.use(inventoryRouter)
