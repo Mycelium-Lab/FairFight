@@ -3,21 +3,24 @@
 
 <head>
 	<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-TJQ72JV');</script>
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-TJQ72JV');</script>
 	<!-- End Google Tag Manager -->
-	
+
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0VNYJWLM8"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-B0VNYJWLM8');
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-B0VNYJWLM8');
 	</script>
 	<title>Fair Fight</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,14 +45,27 @@
 	<script type="text/javascript" src="/game/plugins/minimap.js"></script>
 	<script type="text/javascript" src="/game/levels/main.js"></script>
 	<script type="text/javascript" src="/game/levels/moon.js"></script>
+	<script type="text/javascript" src="/game/levels/dungeon.js"></script>
+	<script type="text/javascript" src="/game/levels/farm.js"></script>
+	<script type="text/javascript" src="/game/levels/city.js"></script>
 	<script type="text/javascript" src="/game/events.js"></script>
 	<script type="text/javascript" src="/net/contract.js"></script>
 	<script type="text/javascript" src="/net/peer-connection.js"></script>
 	<script type="text/javascript" src="/net/room-connection.js"></script>
+	<script type="text/javascript" src="/game/entities/teleport.js"></script>
+	<script type="text/javascript" src="/game/entities/mole.js"></script>
+	<script type="text/javascript" src="/game/entities/dynamite.js"></script>
+	<script type="text/javascript" src="/game/entities/bursting.js"></script>
+	<script type="text/javascript" src="/game/entities/igniting.js"></script>
+	<script type="text/javascript" src="/game/entities/stun.js"></script>
+	<script type="text/javascript" src="/game/entities/invisible.js"></script>
+	<script type="text/javascript" src="/game/entities/shield.js"></script>
 	<script type="text/javascript" src="/game/entities/remote-player.js"></script>
 	<script type="text/javascript" src="/game/entities/player.js"></script>
 	<script type="text/javascript" src="/game/entities/pointer.js"></script>
 	<script type="text/javascript" src="/game/entities/weapon.js"></script>
+	<script type="text/javascript" src="/game/entities/trampoline.js"></script>
+	<script type="text/javascript" src="/game/entities/moving-platform.js"></script>
 	<script type="text/javascript" src="/game/main.js"></script>
 	<script src="/custom.js"></script>
 	<!-- <script src="/modules/statsVisible.js"></script> -->
@@ -68,13 +84,13 @@
 
 	<body oncontextmenu="return false;">
 		<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ72JV"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ72JV" height="0" width="0"
+				style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
 		<div class="canvasWrapper">
 			<!-- <span id="internalWallet" class="canvasHeader" style="display: inherit;">Your wallet: </span> -->
-			
-	
+
+
 			<div id="md-page" class="middle-page">
 				<span id="internalBalance" class="internalBalance" style="display: none;font-weight: 400">0</span>
 				<!-- <div id="middle_your_stats">
@@ -112,7 +128,7 @@
 						Death: <span id="yourDeaths" class="yourDeaths" style="font-weight: 400">0</span>
 					</div>
 				</div> -->
-			<!-- </div>
+				<!-- </div>
 			<div>
 				<img class="balance_coin" src="/media/coin.png" width="12" height="12"/>
 				Balance: <span id="internalBalance" class="internalBalance" style="font-weight: 400">0</span>
@@ -123,149 +139,163 @@
 					<div><canvas id="canvas" style="display: inherit;"></canvas></div>
 					<div id="top_stats" class="rounds-head">
 
-									<div class="you-stats">
-										<div class="you-character">
-											<div id="you-stats-skin">
-												<!--<img src="/media/stats-character.svg">-->
-											</div>
-											<div class="you-stats-value">
-													<span class="you-stats-healf">
-														<img src="/media/red-healths.svg">
-														<span class="you-stats-value-item yourHealth">0</span>
-													</span>
-													<span class="you-stats-shoot">
-														<img src="/media/bullet.svg">
-														<span class="you-stats-value-item ammunition">0</span>
-													</span>
-													<span class="you-stats-kills">
-														<img src="/media/kills.svg">
-														<span class="you-stats-value-item yourKills">0</span>
-													</span>
-													<span class="you-stats-deaths">
-														<img class="you-stats-deaths_image" src="/media/deaths.svg">
-														<span class="you-stats-value-item yourDeaths">0</span>
-													</span>
-											</div>
-										</div>
-										<div class="you-deps">
-											<img src="/media/svg/past-game/dep.svg">
-											<span id="yourDepTopBar" class="yourDep" style="font-weight: 400">0</span>
-											<!--<span>USDT</span>-->
-										</div>
-									</div>
-								
-						
-							<div class="stats-item__title stats-item">
-								<span class="ronds-head__title">Round</span>
-								<span id="rounds_amount">Loading</span>
-							</div>
-					
-							
-							<div class="enemy-stats">
-								<div class="enemy-character">
-									<div class="enemy-stats-value">
-											<span class="enemy-stats-kills">
-												<span class="enemyKills">0</span>
-												<img src="/media/kills-2.svg">
-											</span>
-											<span class="enemy-stats-deaths">
-												<span class="enemyDeaths">0</span>
-												<img src="/media/deaths.svg">
-											</span>
-									</div>
-									<div id="enemy-stats-skin">
-										<!--<img src="/media/stats-character.svg">-->
-									</div>
+						<div class="you-stats">
+							<div class="you-character">
+								<div id="you-stats-skin">
+									<!--<img src="/media/stats-character.svg">-->
 								</div>
-								<div class="enemy-deps">
-									<img src="/media/svg/past-game/dep.svg">
-									<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
-									<!--<span>USDT</span>-->
+								<div class="you-stats-value">
+									<span class="you-stats-healf">
+										<img src="/media/red-healths.svg">
+										<span class="you-stats-value-item yourHealth">0</span>
+									</span>
+									<span class="you-stats-shoot">
+										<img src="/media/bullet.svg">
+										<span class="you-stats-value-item ammunition">0</span>
+									</span>
+									<span class="you-stats-kills">
+										<img src="/media/kills.svg">
+										<span class="you-stats-value-item yourKills" id="yourKillsTopBar">0</span>
+									</span>
+									<span class="you-stats-deaths">
+										<img class="you-stats-deaths_image" src="/media/deaths.svg">
+										<span class="you-stats-value-item yourDeaths" id="yourDeathsTopBar">0</span>
+									</span>
 								</div>
 							</div>
-							
-					
+							<div class="you-deps">
+								<img src="/media/svg/past-game/dep.svg">
+								<span id="yourDepTopBar" class="yourDep" style="font-weight: 400">0</span>
+								<!--<span>USDT</span>-->
+							</div>
+						</div>
+
+
+						<div class="stats-item__title stats-item">
+							<span class="ronds-head__title">Round</span>
+							<span id="rounds_amount">Loading</span>
+						</div>
+
+
+						<div class="enemy-stats">
+							<div class="enemy-character">
+								<button id="enemy-character__btn-prev"
+									class="enemy-character__btn enemy-character__btn-prev">
+									<img src="/media/svg/btn-prev.svg" alt="">
+								</button>
+								<div class="enemy-stats-value">
+									<span class="enemy-stats-kills">
+										<span class="enemyKills" id="enemyKillsLive">0</span>
+										<img src="/media/kills-2.svg">
+									</span>
+									<span class="enemy-stats-deaths">
+										<span class="enemyDeaths" id="enemyDeathsLive">0</span>
+										<img src="/media/deaths.svg">
+									</span>
+								</div>
+								<div id="enemy-stats-skin">
+									<!--<img src="/media/stats-character.svg">-->
+								</div>
+								<button id="enemy-character__btn-next"
+									class="enemy-character__btn enemy-character__btn-next">
+									<img src="/media/svg/btn-next.svg" alt="">
+								</button>
+							</div>
+							<div id="chosen_enemy_id" style="display: none;"></div>
+							<div class="enemy-deps">
+								<img src="/media/svg/past-game/dep.svg">
+								<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
+								<!--<span>USDT</span>-->
+							</div>
+						</div>
+
+
 					</div>
 					<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
 						<img class="help__img" src="/media/svg/help.svg" alt="">
 						About the game
 					</a>
 					<div id="noCanvas" style="display: none;"></div>
-					<h3 id="loadingStage" style="display: none;">Waiting another user(if you are waiting for a long time, try to
-					reload the page)</h3>
+					<h3 id="loadingStage" style="display: none;">Waiting another user(if you are waiting for a long
+						time, try to
+						reload the page)</h3>
 					<div id="game-action">
 						<div class="buttons">
-							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn"/>
-							<img src="/media/attackBtn.png" style="display: none; width: 100px; height: 100px;" id="attack-btn"/>
+							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn" />
+							<img src="/media/attackBtn.png" style="display: none; width: 100px; height: 100px;"
+								id="attack-btn" />
 						</div>
 					</div>
 					<div class="game-menu">
 						<button id="pause-btn" class="game-menu__button">
-							<img src="/media/svg/game-menu.svg"/>
+							<img src="/media/svg/game-menu.svg" />
 						</button>
 						<button id="openMap-btn" class="game-menu__button">
-							<img src="/media/svg/open-map.svg"/>
+							<img src="/media/svg/open-map.svg" />
 						</button>
 						<button class="game-menu__button" id="open-fullscreen-btn">
-							<img src="/media/svg/open-fullscreen.svg"/>
+							<img src="/media/svg/open-fullscreen.svg" />
 						</button>
-							<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
-							<img src="/media/svg/close-fullscreen.svg"/>
+						<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
+							<img src="/media/svg/close-fullscreen.svg" />
 						</button>
 					</div>
-					
+
 					<div id="pause_modal" class="modal" style="display: none;">
 						<div class="board modal_content_pause modal_content">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<button id="close_pause_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+							<button id="close_pause_modal"
+								class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 							<div class="modal__title_pause modal__title">Menu</div>
 							<!--<div class="modal__pause-body">
 							</div>-->
 							<button id="open_control_keys" class="close-button">control keys info</button>
 							<button id="confirm_finish" class="close-button">finish the game</button>
-							</div>
 						</div>
 					</div>
-					<div id="control_keys_mobile_modal" class="modal" style="display: none;">
-						<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<button id="close_control_keys_mobile_modal" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title_pause modal__title">Menu</div>
-							<div class="modal__pause-body">
-							</div>
-							<!--<button id="confirm_finish" class="close-button">finish the game</button>-->
-							<button id="back_menu" class="close-button">back to menu</button>
-							</div>
+				</div>
+				<div id="control_keys_mobile_modal" class="modal" style="display: none;">
+					<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<button id="close_control_keys_mobile_modal"
+							class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+						<div class="modal__title_pause modal__title">Menu</div>
+						<div class="modal__pause-body">
 						</div>
+						<!--<button id="confirm_finish" class="close-button">finish the game</button>-->
+						<button id="back_menu" class="close-button">back to menu</button>
 					</div>
-					<div id="confirm_finishgame_modal" class="modal" style="display: none;">
-						<div class="board modal_content_confirm_finish modal_content">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-							<button id="close_confirm_finish" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title_pause modal__title">Menu</div>
-							<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
-							<div id="modal__body_confirm_finish" class="modal__body">
-								<p class="text_confirm_finish">you want to leave the game?</p>
-								<!--<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>-->
-							</div>
-							<div class="finish-btns">
-								<button id="finishGame3" class="close-button">yes</button>
-								<button id="no_btn" class="close-button">no</button>
-							</div>
-							<!--<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>-->
-							</div>
-						</div>
+				</div>
+			</div>
+			<div id="confirm_finishgame_modal" class="modal" style="display: none;">
+				<div class="board modal_content_confirm_finish modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button id="close_confirm_finish"
+						class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+					<div class="modal__title_pause modal__title">Menu</div>
+					<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
+					<div id="modal__body_confirm_finish" class="modal__body">
+						<p class="text_confirm_finish">you want to leave the game?</p>
+						<!--<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>-->
 					</div>
-					<!--<div style="display: flex;" class="canvasWrapper__footer">
+					<div class="finish-btns">
+						<button id="finishGame3" class="close-button">yes</button>
+						<button id="no_btn" class="close-button">no</button>
+					</div>
+					<!--<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>-->
+				</div>
+			</div>
+		</div>
+		<!--<div style="display: flex;" class="canvasWrapper__footer">
 						<button id="controls-show">
 							Control keys info
 							<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -285,164 +315,152 @@
 		
 						</button>
 					</div>-->
-				</div>
-				<div class="buttons">
-					<button style="display: none;" id="left-btn">LEFT</button>
-					<button style="display: none;" id="right-btn">RIGHT</button>
-				</div>
-				<span id="enemyBalance" class="enemyBalance"  style="display:none; font-weight: 400">0</span>
-			</div>
-			<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
-				<div class="board modal_content_confirm_finish modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button id="close_confirm_finish_desktop" class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div class="modal__title-confirm_finish modal__title">finish the game</div>
-					<div id="modal__body_confirm_finish" class="modal__body">
-						<p>Are you sure that you want to complete the game?</p>
-						<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+</div>
+<div class="buttons">
+	<button style="display: none;" id="left-btn">LEFT</button>
+	<button style="display: none;" id="right-btn">RIGHT</button>
+</div>
+<span id="enemyBalance" class="enemyBalance" style="display:none; font-weight: 400">0</span>
+</div>
+<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
+	<div class="board modal_content_confirm_finish modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="close_confirm_finish_desktop"
+			class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="modal__title-confirm_finish modal__title">finish the game</div>
+		<div id="modal__body_confirm_finish" class="modal__body">
+			<p>Are you sure that you want to complete the game?</p>
+			<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+		</div>
+		<button id="finishGame4" class='confirm_finish-game close-button'>confirm</button>
+	</div>
+</div>
+</div>
+<div id="over_modal" class="modal" style="display: none;">
+	<div class="board modal_content_finish modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="modal__title">Game over</div>
+		<div class="modal__over-body">
+			<div id="over-modal-body" class="modal__over-body__inner border-style">
+				<div class="corn corn1"></div>
+				<div class="corn corn2"></div>
+				<div class="corn corn3"></div>
+				<div class="corn corn4"></div>
+				<div class="modal__over-subtitle">Players & stats</div>
+				<div class="finish-stats">
+					<div class="yourStats__header">
+						<p>You</p>
 					</div>
-					<button id="finishGame4"class='confirm_finish-game close-button'>confirm</button>
-					</div>
-				</div>
-			</div>
-			<div id="over_modal" class="modal">
-				<div class="board modal_content_finish modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div class="modal__title">Game over</div>
-					<div class="modal__over-body">
-						<div class="modal__over-subtitle">Players & stats</div>
-					<div class="finish-stats">
-						<div class="yourStats__header"> 
-							<p>You</p>
+					<div class="yourStats">
+						<span id="yourAmountWinLose"></span>
+						<div class="yourKills_stat">
+							<span class="yourKillsTitle">Kills:</span>
+							<span class="yourKills" id="yourKills"></span>
 						</div>
-						<div id="yourStats">
-							<span id="yourAmountWinLose"></span>
-							<div class="yourKills_stat">
-								<span class="yourKillsTitle">Kills:</span>
-								<span class="yourKills"></span>
-							</div>
-							<div class="yourDep_stat">
-								<span class="yourDepTitle">Dep:</span>
-								<span id="yourDep"></span>
-							</div>
-							<div class="yourDeaths_stat">
-								<span class="yourDeathsTitle">Deaths:</span>
-								<span class="yourDeaths"></span>
-							</div>
+						<div class="yourDep_stat">
+							<span class="yourDepTitle">Dep:</span>
+							<span id="yourDep"></span>
 						</div>
-						<div class="yourStats_address">
-							<span class="your_address">Wallet: </span>
-							<a id="finish_modal_your_address"></a>
-						</div>
-					</div>
-					<div class="stats-devider"></div>
-					<div class="finish-stats_enemy finish-stats">
-						<div class="enemyStats__header"> 
-							<p>Enemy</p>
-						</div>
-						<div id="enemyStats">
-							<div class="enemyKills_stat">
-								<span class="enemyKillsTitle">Kills:</span>
-								<span class="enemyKills"></span>
-							</div>
-							<span id="enemyAmountWinLose"></span>
-							<div class="enemyDeaths_stat">
-								<span class="enemyDeathsTitle">Deaths:</span>
-								<span class="enemyDeaths"></span>
-							</div>
-							<div clas="enemyDep_stat">
-								<span class="enemyDepTitle">Dep:</span>
-								<span id="enemyDep"></span>
-							</div>
-						</div>
-						<div class="enemyStats_address">
-							<span class="enemy_address">Wallet: </span>
-							<a id="finish_modal_enemy_address"></span>
+						<div class="yourDeaths_stat">
+							<span class="yourDeathsTitle">Deaths:</span>
+							<span class="yourDeaths" id="yourDeaths"></span>
 						</div>
 					</div>
-					<button id="finishGame"class='close-button_finish-game close-button'>exit</button>
+					<div class="yourStats_address">
+						<span class="your_address">Wallet: </span>
+						<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
 					</div>
 				</div>
 			</div>
-			<div id="about_modal" class="modal wrapper__message-modal-overlay">
-				<div class="board wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button id="about_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<h2 class="about__title">About the game</h2>
-					<div class="about__content">
-						<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
-						<p>1. Users can create a new game or connect to an existing game session.</p>
-						<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!</p>
-						<p>3. Users receive rewards for each round they won.</p>
-						<p>4. Users can end the game any time and take the reward.</p>
-						<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
-					</div>
-				</div>
-			</div>
-			<div id="wainting_modal" class="modal_waiting_enemy modal wrapper__message-modal-overlay">
-				<div style="height: 290px;" class="board modal_content_waiting  wrapper__message-modal modal_content">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button style="display: none;" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<img class="load" src="/media/svg/load.svg" alt="">
-					<div>Waiting for enemy...</div>
-					<div style="color: #C6C6C6; font-size: 16px; font-weight: 400; text-align:center">The game will start when other
-						players join</div>
-					<button id="finishGame2" class='close-button_finish-game close-button'>exit</button>
-				</div>
-			</div>
-			<div id="confirm_modal" class="modal wrapper__message-modal-overlay">
-				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div>Waiting for confirmation</div>
-				</div>
-			</div>
-			<div id="pending_modal" class="modal wrapper__message-modal-overlay">
-				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div>Pending</div>
-				</div>
-			</div>
-			<div id="enemy_finishing_game_modal" class="modal wrapper__message-modal-overlay">
-				<div class="board modal_content_waiting  wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div>Your enemy is finishing the game</div>
-					<a href="/" id="enemy_finishing_game_href"><button id="enemy_finishing_game_button">To the main page</button></a>
-				</div>
-			</div>
-			<div class="board modal modal__wsad" style="display: none" id="instruction_modal">
-				<div class="modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button id="instruction_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div id="info" style="display: inherit;">
-						<!--<img src="/media/svg/arrows.svg" alt="">
+		</div>
+		<button id="finishGame" class='close-button_finish-game close-button'>exit</button>
+	</div>
+</div>
+<div id="about_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="about_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<h2 class="about__title">About the game</h2>
+		<div class="about__content">
+			<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+			<p>1. Users can create a new game or connect to an existing game session.</p>
+			<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in
+				each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!
+			</p>
+			<p>3. Users receive rewards for each round they won.</p>
+			<p>4. Users can end the game any time and take the reward.</p>
+			<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
+		</div>
+	</div>
+</div>
+<div id="wainting_modal" class="modal_waiting_enemy modal wrapper__message-modal-overlay" style="display: none">
+	<div style="height: auto;" class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button style="display: none;"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<img class="load" src="/media/svg/load.svg" alt="">
+		<div>Waiting for enemy...</div>
+		<span class="modal__subtitle">The game will star when other players join</span>
+		<img src="/media/control-keys-info.png">
+		<button class="modal__close"></button>
+	</div>
+</div>
+<div id="confirm_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Waiting for confirmation</div>
+	</div>
+</div>
+<div id="pending_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Pending</div>
+	</div>
+</div>
+<div id="enemy_finishing_game_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Your enemy is finishing the game</div>
+		<a href="/" id="enemy_finishing_game_href"><button id="enemy_finishing_game_button">To the main
+				page</button></a>
+	</div>
+</div>
+<div class="board modal modal__wsad" style="display: none" id="instruction_modal">
+	<div class="modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="instruction_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div id="info" style="display: inherit;">
+			<!--<img src="/media/svg/arrows.svg" alt="">
 						<img src="/media/svg/wasd.svg" alt="">
 
 
@@ -452,23 +470,24 @@
 						Spacebar to shoot<br />
 						Collect tubes to recharge weapon<br />
 						Be careful of lava burns!<br />-->
-						<img src="/media/control-keys-info.png">
-					</div>
-				</div>
-			</div>
-			<div id="rotate_modal" class="modal wrapper__message-modal-overlay_rotate wrapper__message-modal-overlay">
-				<div class="board modal_content_rotate wrapper__message-modal modal_content">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button id="rotate_modal_close" class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-					<div class="rotate__content">
-						<img src="/media/svg/rotate-preview.svg">
-					</div>
-				</div>
-			</div>
-	</body>
+			<img src="/media/control-keys-info.png">
+		</div>
+	</div>
+</div>
+<div id="rotate_modal" class="modal wrapper__message-modal-overlay_rotate wrapper__message-modal-overlay">
+	<div class="board modal_content_rotate wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="rotate_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="rotate__content">
+			<img src="/media/svg/rotate-preview.svg">
+		</div>
+	</div>
+</div>
+</body>
 </div>
 
 
