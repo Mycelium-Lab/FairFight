@@ -65,7 +65,7 @@ export const networks = [
       weaponsAddress: '0xe10cd6c65Af7637ad8329f0Adb161A968101bF86',
       bootsAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
       shopAddress: '0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae',
-      lootboxAddress: '0x1a5a9327786Fd265F3857A2A0C68B6045729829f',
+      lootboxAddress: '0x35Ae3e8aDd7278f0B2Af8AfA00dC15cA0d6A4725',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
