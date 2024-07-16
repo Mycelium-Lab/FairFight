@@ -16,7 +16,7 @@ import { createMixingPicture } from './mixing/mixing.js';
 
 cron.schedule("6 6 6 * * *", async () => {
     try {
-        // await createLeaderboard(31337)
+        await createLeaderboard(42161)
     } catch (error) {
         console.log(error)
     }
