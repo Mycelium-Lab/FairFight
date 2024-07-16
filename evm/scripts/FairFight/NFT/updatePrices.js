@@ -1,23 +1,26 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-    const decimals = 18
-    const token = "0x6b59C68405B0216C2C8ba1EC1f8DCcBd47892c58"
+    const decimals = 6
+    const token = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
-    const shop = Shop.attach('0xBaCb197E601aCdeb56E401Bc27A23F4626315a82')
-    const characters = FFNFT.attach('0x38278c038042c32441475E47750c90c2412c3D79')
-    const armors = FFNFT.attach('0xe7cCffC4F633713C3ee7d8FEe46d1253a1261206')
-    const boots = FFNFT.attach('0x9004eD0d122E3E7499Cd9c9515a17b06716bF8ca')
+    const shop = Shop.attach('0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae')
+    const characters = FFNFT.attach('0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586')
+    const armors = FFNFT.attach('0xe3D9c28e22f997eE3956C2fA839EA79cB214A76A')
+    const boots = FFNFT.attach('0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4')
     const weapons = FFNFT.attach('0x08ee54157DdAF89eEF5fB71a24E7c72C57a6640A')
     let charactersPrices = [
-        Math.round(50 * 10**decimals).toString(),
-        Math.round(20 * 10**decimals).toString(),
-        Math.round(15 * 10**decimals).toString(),
-        Math.round(15 * 10**decimals).toString(),
-        Math.round(5 * 10**decimals).toString(),
         Math.round(10 * 10**decimals).toString(),
-        Math.round(15 * 10**decimals).toString()
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
     ]
     let armorsPrices = [
         Math.round(2.99 * 10**decimals).toString(),
@@ -27,7 +30,32 @@ async function main() {
         Math.round(34.9 * 10**decimals).toString(),
         Math.round(47.9 * 10**decimals).toString(),
         Math.round(77.7 * 10**decimals).toString(),
-        Math.round(99.9 * 10**decimals).toString()
+        Math.round(99.9 * 10**decimals).toString(),
+        Math.round(9 * 10**decimals).toString(),
+        Math.round(9 * 10**decimals).toString(),
+        Math.round(22 * 10**decimals).toString(),
+        Math.round(24 * 10**decimals).toString(),
+        Math.round(4 * 10**decimals).toString(),
+        Math.round(5 * 10**decimals).toString(),
+        Math.round(8 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(45 * 10**decimals).toString(),
+        Math.round(5 * 10**decimals).toString(),
+        Math.round(24 * 10**decimals).toString(),
+        Math.round(45 * 10**decimals).toString(),
+        Math.round(45 * 10**decimals).toString(),
+        Math.round(8 * 10**decimals).toString(),
+        Math.round(3 * 10**decimals).toString(),
+        Math.round(50 * 10**decimals).toString(),
+        Math.round(55 * 10**decimals).toString(),
+        Math.round(3.5 * 10**decimals).toString(),
+        Math.round(70 * 10**decimals).toString(),
+        Math.round(2.5 * 10**decimals).toString(),
+        Math.round(25 * 10**decimals).toString(),
+        Math.round(3.5 * 10**decimals).toString(),
+        Math.round(30 * 10**decimals).toString(),
+        Math.round(65 * 10**decimals).toString(),
+        Math.round(75 * 10**decimals).toString()
     ]
     let bootsPrices = [
         Math.round(4.3 * 10**decimals).toString(),
@@ -37,7 +65,32 @@ async function main() {
         Math.round(51.9 * 10**decimals).toString(),
         Math.round(65.9 * 10**decimals).toString(),
         Math.round(77.7 * 10**decimals).toString(),
-        Math.round(99.9 * 10**decimals).toString()
+        Math.round(99.9 * 10**decimals).toString(),
+        Math.round(4 * 10**decimals).toString(),
+        Math.round(44 * 10**decimals).toString(),
+        Math.round(9 * 10**decimals).toString(),
+        Math.round(70 * 10**decimals).toString(),
+        Math.round(20 * 10**decimals).toString(),
+        Math.round(44 * 10**decimals).toString(),
+        Math.round(19 * 10**decimals).toString(),
+        Math.round(72 * 10**decimals).toString(),
+        Math.round(68 * 10**decimals).toString(),
+        Math.round(70 * 10**decimals).toString(),
+        Math.round(65 * 10**decimals).toString(),
+        Math.round(21 * 10**decimals).toString(),
+        Math.round(18 * 10**decimals).toString(),
+        Math.round(20 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(8 * 10**decimals).toString(),
+        Math.round(10 * 10**decimals).toString(),
+        Math.round(9 * 10**decimals).toString(),
+        Math.round(50 * 10**decimals).toString(),
+        Math.round(48 * 10**decimals).toString(),
+        Math.round(44 * 10**decimals).toString(),
+        Math.round(68 * 10**decimals).toString(),
+        Math.round(21 * 10**decimals).toString(),
+        Math.round(8 * 10**decimals).toString(),
+        Math.round(45 * 10**decimals).toString()
     ]
     let weaponsPrices = [
         Math.round(4.9 * 10**decimals).toString(),

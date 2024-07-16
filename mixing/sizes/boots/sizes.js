@@ -27,7 +27,11 @@ export const bootsTypes = {
     '25': 'high',
     '26': 'high',
     '27': 'high',
-    '28': 'high'
+    '28': 'high',
+    '29': 'high',
+    '30': 'high',
+    '31': 'high',
+    '32': 'high'
 }
 
 export const bootsSizes = {
