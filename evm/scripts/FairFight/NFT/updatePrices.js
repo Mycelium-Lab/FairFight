@@ -1,15 +1,15 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-    const decimals = 6
-    const token = "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    const decimals = 18
+    const token = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"
     const FFNFT = await ethers.getContractFactory("FairFightNFT")
     const Shop = await ethers.getContractFactory("FairFightShop")
-    const shop = Shop.attach('0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae')
-    const characters = FFNFT.attach('0x839B9aBc7d7FBF49C65B84753ff7aF11d22f0586')
-    const armors = FFNFT.attach('0xe3D9c28e22f997eE3956C2fA839EA79cB214A76A')
-    const boots = FFNFT.attach('0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4')
-    const weapons = FFNFT.attach('0x08ee54157DdAF89eEF5fB71a24E7c72C57a6640A')
+    const shop = Shop.attach('0xDf82B488053b2F183D959969141B9896aB8C1efA')
+    const characters = FFNFT.attach('0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4')
+    const armors = FFNFT.attach('0xe10cd6c65Af7637ad8329f0Adb161A968101bF86')
+    const boots = FFNFT.attach('0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae')
+    const weapons = FFNFT.attach('0x03467ad8Efe8BB73c0Dde0c436b7efAfE9FC3E32')
     let charactersPrices = [
         Math.round(10 * 10**decimals).toString(),
         Math.round(10 * 10**decimals).toString(),

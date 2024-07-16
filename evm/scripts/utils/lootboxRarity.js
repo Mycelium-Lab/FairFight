@@ -95,6 +95,38 @@ const regularRarityPrizes = (characters, weapons, boots, armors) => {
         {
             nft: weapons,
             propertyId: 119
+        },
+        {
+            nft: armors,
+            propertyId: 12
+        },
+        {
+            nft: armors,
+            propertyId: 13
+        },
+        {
+            nft: armors,
+            propertyId: 17
+        },
+        {
+            nft: armors,
+            propertyId: 22
+        },
+        {
+            nft: armors,
+            propertyId: 25
+        },
+        {
+            nft: armors,
+            propertyId: 27
+        },
+        {
+            nft: armors,
+            propertyId: 29
+        },
+        {
+            nft: boots,
+            propertyId: 8
         }
     ]
 } 
@@ -291,6 +323,50 @@ const superiorRarityPrizes = (characters, weapons, boots, armors) => {
         {
             nft: weapons,
             propertyId: 128
+        },
+        {
+            nft: armors,
+            propertyId: 8
+        },
+        {
+            nft: armors,
+            propertyId: 9
+        },
+        {
+            nft: armors,
+            propertyId: 14
+        },
+        {
+            nft: armors,
+            propertyId: 15
+        },
+        {
+            nft: armors,
+            propertyId: 21
+        },
+        {
+            nft: boots,
+            propertyId: 10
+        },
+        {
+            nft: boots,
+            propertyId: 22
+        },
+        {
+            nft: boots,
+            propertyId: 23
+        },
+        {
+            nft: boots,
+            propertyId: 24
+        },
+        {
+            nft: boots,
+            propertyId: 25
+        },
+        {
+            nft: boots,
+            propertyId: 31
         }
     ]
 } 
@@ -443,6 +519,58 @@ const rareRarityPrizes = (characters, weapons, boots, armors) => {
         {
             nft: weapons,
             propertyId: 131
+        },
+        {
+            nft: armors,
+            propertyId: 10
+        },
+        {
+            nft: armors,
+            propertyId: 11
+        },
+        {
+            nft: armors,
+            propertyId: 18
+        },
+        {
+            nft: armors,
+            propertyId: 28
+        },
+        {
+            nft: armors,
+            propertyId: 30
+        },
+        {
+            nft: boots,
+            propertyId: 12
+        },
+        {
+            nft: boots,
+            propertyId: 14
+        },
+        {
+            nft: boots,
+            propertyId: 19
+        },
+        {
+            nft: boots,
+            propertyId: 20
+        },
+        {
+            nft: boots,
+            propertyId: 21
+        },
+        {
+            nft: characters,
+            propertyId: 7
+        },
+        {
+            nft: characters,
+            propertyId: 8
+        },
+        {
+            nft: characters,
+            propertyId: 9
         }
     ]
 }
@@ -567,6 +695,42 @@ const legendaryRarityPrizes = (characters, weapons, boots, armors) => {
         {
             nft: weapons,
             propertyId: 129
+        },
+        {
+            nft: armors,
+            propertyId: 26
+        },
+        {
+            nft: armors,
+            propertyId: 31
+        },
+        {
+            nft: armors,
+            propertyId: 32
+        },
+        {
+            nft: boots,
+            propertyId: 11
+        },
+        {
+            nft: boots,
+            propertyId: 15
+        },
+        {
+            nft: boots,
+            propertyId: 16
+        },
+        {
+            nft: boots,
+            propertyId: 17
+        },
+        {
+            nft: boots,
+            propertyId: 18
+        },
+        {
+            nft: boots,
+            propertyId: 29 
         }
     ]
 }
@@ -639,6 +803,50 @@ const epicRarityPrizes = (characters, weapons, boots, armors) => {
         {
             nft: weapons,
             propertyId: 132
+        },
+        {
+            nft: armors,
+            propertyId: 16
+        },
+        {
+            nft: armors,
+            propertyId: 19
+        },
+        {
+            nft: armors,
+            propertyId: 20
+        },
+        {
+            nft: armors,
+            propertyId: 23
+        },
+        {
+            nft: armors,
+            propertyId: 24
+        },
+        {
+            nft: boots,
+            propertyId: 9
+        },
+        {
+            nft: boots,
+            propertyId: 13
+        },
+        {
+            nft: boots,
+            propertyId: 26
+        },
+        {
+            nft: boots,
+            propertyId: 27
+        },
+        {
+            nft: boots,
+            propertyId: 28
+        },
+        {
+            nft: boots,
+            propertyId: 32
         }
     ]
 }
