@@ -331,7 +331,7 @@ summary::-webkit-details-marker {
     border-radius: 0;
     border-width: 4px;
 }
-.wrapper__message-modal-overlay#leaderboard_modal .board input, select {
+.wrapper__message-modal-overlay#leaderboard_modal .board input, #leaderboard_modal select {
     background-color: #fff !important;
     max-height: 20px;
     font-size: 10px;
