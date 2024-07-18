@@ -1420,11 +1420,29 @@
 			</div>
 		</div>
 
-		<div id="approve_modal" class="modal">
-			<div class="board modal_content">
+		<!-- <div id="approve_modal" class="wrapper__message-modal-overlay" style="display: block;">
+			<div class="board wrapper__message-modal wrapper__message-modal_waiting">
 				<span class="close_modal_window"><img src="media/svg/cross.svg" alt=""></span>
-				<div><span id="approved_token">Token</span> approved.</div>
-				<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;"></div>
+				<div></div>
+				<div id="approved_text" style="color: #C6C6C6; font-size: 16px; font-weight: 400;">Now you can create a game.</div>
+			</div>
+		</div> -->
+		<div id="approve_modal" class="wrapper__message-modal-overlay" style="display: flex;">
+			<div class="board wrapper__message-modal wrapper__message-modal_purchase-completed">
+				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+				<button id="approve_modal_close_btn" class="message-modal__btn-close new-success-modal-close-button"></button>
+
+				<div class="message-modal__completed">
+					<img id="approve_token_img" height="100px" width="100px" src="/media/tokens/usdt.png">
+				</div>
+
+				<div class="message-modal__text-wrap">
+					<p class="text-wrap__title"><span id="approved_token">Token</span> approved.</p>
+					<p class="text-wrap__text" id="approved_text">Now you can create a game.</p>
+				</div>
 			</div>
 		</div>
 		<div id="buy_modal" class="modal">
@@ -1436,7 +1454,7 @@
 			</div>
 		</div>
 		<!-- 1 -->
-		<div id="new-approve-modal" class="wrapper__message-modal-overlay">
+		<div id="new-approve-modal" class="wrapper__message-modal-overlay" >
 			<div class="board wrapper__message-modal wrapper__message-modal_waiting">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
