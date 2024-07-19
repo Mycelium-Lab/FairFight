@@ -307,6 +307,7 @@ function handleSocket(socket) {
         const newBalance = BigInt(balance) - BigInt(room.amountToLose)
         await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
         const rounds = await redisClient.get(createRoundsRedisLink())
+        console.log(`NUm of users: ${room.numUsers()}`)
         if (room.numUsers() == 2) {
           if (rounds != 0 || rounds != null) {
             await redisClient.set(room.roomName, parseInt(rounds) - 1)
@@ -433,17 +434,28 @@ function handleSocket(socket) {
         })
         room.finished = true;
       } else {
-        if (room.numUsers() == 1) {
+        if (room.numUsers() == 2 || room.numUsers() == 1) {
           const balance = await redisClient.get(createAmountRedisLink(data.address, room.getChainId(), room.getFightId()))
           const baseAmount = fight.baseAmount.toString()
-          //If no one is left in the game and the one with the most funds clicks, then the result remains.
-          if (balance && (BigInt(balance) > BigInt(baseAmount))) {
+          if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 2) {
             for (let i = 0; i < players.length; i++) {
               await createSignatureOne(players[i])
             }
-          } else { //If no one is left in the game and the one who has the least amount of money or equal score clicks, then the result is a draw
+          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 2) { 
             for (let i = 0; i < players.length; i++) {
               await createSignatureOne(players[i], baseAmount)
+            }
+          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 1) { 
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i])
+            }
+          } else if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 1) { 
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i], baseAmount)
+            }
+          } else {
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i])
             }
           }
           Object.entries(room.sockets).forEach(([key, value]) => {
@@ -457,8 +469,8 @@ function handleSocket(socket) {
               console.log(error)
             }
           })
+          room.finished = true;
         }
-        room.finished = true;
       }
     } catch (error) {
       console.error(error)
@@ -470,7 +482,7 @@ function handleSocket(socket) {
       let balance = givenBalance ? givenBalance : await redisClient.get(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
       balance = balance != undefined ? balance : '0'
       const _signature = await signature(balance, address)
-      await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", 
+      await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
         [
           _signature.address.toLowerCase(),
           _signature.fightid,
@@ -487,7 +499,10 @@ function handleSocket(socket) {
       const deaths = await getDeaths(address)
       const rounds = await redisClient.get(createRoundsRedisLink())
 
-      await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
+      await pgClient.query(
+        `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) 
+        SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`
+        , 
         [
           _signature.fightid, 
           _signature.address.toLowerCase(), 
@@ -554,7 +569,9 @@ function handleSocket(socket) {
       const killsWinner = await getKills(data.winnerAddress)
       const deathsWinner = await getDeaths(data.winnerAddress)
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
+        await pgClient.query(
+          `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) 
+          SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
         [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
       } catch (error) {
         console.log(error)
