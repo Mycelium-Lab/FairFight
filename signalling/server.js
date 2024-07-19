@@ -434,17 +434,28 @@ function handleSocket(socket) {
         })
         room.finished = true;
       } else {
-        if (room.numUsers() == 1) {
+        if (room.numUsers() == 2 || room.numUsers() == 1) {
           const balance = await redisClient.get(createAmountRedisLink(data.address, room.getChainId(), room.getFightId()))
           const baseAmount = fight.baseAmount.toString()
-          //If no one is left in the game and the one with the most funds clicks, then the result remains.
-          if (balance && (BigInt(balance) > BigInt(baseAmount))) {
+          if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 2) {
             for (let i = 0; i < players.length; i++) {
               await createSignatureOne(players[i])
             }
-          } else { //If no one is left in the game and the one who has the least amount of money or equal score clicks, then the result is a draw
+          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 2) { 
             for (let i = 0; i < players.length; i++) {
               await createSignatureOne(players[i], baseAmount)
+            }
+          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 1) { 
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i])
+            }
+          } else if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 1) { 
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i], baseAmount)
+            }
+          } else {
+            for (let i = 0; i < players.length; i++) {
+              await createSignatureOne(players[i])
             }
           }
           Object.entries(room.sockets).forEach(([key, value]) => {
@@ -458,8 +469,8 @@ function handleSocket(socket) {
               console.log(error)
             }
           })
+          room.finished = true;
         }
-        room.finished = true;
       }
     } catch (error) {
       console.error(error)
