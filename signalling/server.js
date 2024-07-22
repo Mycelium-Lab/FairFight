@@ -384,78 +384,42 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
-      const fight = await blockchain().contract.fights(room.getFightId())
-      const players = await blockchain().contract.getFightPlayers(room.getFightId())
-      if (room.playersBaseAmount == 2) {
-        const senderAddress = data.address
-        const secondAddress = data.address.toLowerCase() == players[0].toLowerCase() ? players[1] : players[0]
-        const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
-        const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
-        let balanceSender;
-        let balanceSecond;
-        if (existsSender != null && existsSecond != null) {
-          balanceSender = existsSender
-          balanceSecond = existsSecond
-        } else {
-          balanceSender = fight.baseAmount.toString()
-          balanceSecond = fight.baseAmount.toString()
-        }
-        if (room.numUsers() == 1) {
-          if (BigInt(balanceSender) > BigInt(fight.baseAmount.toString())) {
-            //СОЗДАЕМ с тем что есть
-            await createSignatureOne(senderAddress, balanceSender)
-            await createSignatureOne(secondAddress, balanceSecond)
+      if (data.fromButton) {
+        const fight = await blockchain().contract.fights(room.getFightId())
+        const players = await blockchain().contract.getFightPlayers(room.getFightId())
+        if (room.playersBaseAmount == 2) {
+          const senderAddress = data.address
+          const secondAddress = data.address.toLowerCase() == players[0].toLowerCase() ? players[1] : players[0]
+          const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
+          const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
+          let balanceSender;
+          let balanceSecond;
+          if (existsSender != null && existsSecond != null) {
+            balanceSender = existsSender
+            balanceSecond = existsSecond
           } else {
-            //создаем равное
-            await createSignatureOne(senderAddress, fight.baseAmount.toString())
-            await createSignatureOne(secondAddress, fight.baseAmount.toString())
+            balanceSender = fight.baseAmount.toString()
+            balanceSecond = fight.baseAmount.toString()
           }
-        } else {
-          if (BigInt(balanceSender) < BigInt(fight.baseAmount.toString())) {
-            //СОЗДАЕМ с тем что есть
-            await createSignatureOne(senderAddress, balanceSender)
-            await createSignatureOne(secondAddress, balanceSecond)
-          } else {
-            //создаем равное
-            await createSignatureOne(senderAddress, fight.baseAmount.toString())
-            await createSignatureOne(secondAddress, fight.baseAmount.toString())
-          }
-        }
-        Object.entries(room.sockets).forEach(([key, value]) => {
-          try {
-            if (value != null) {
-              socket.to(value.id).emit("finishing", {
-                fromButton: data.fromButton
-              })
-            }
-          } catch (error) {
-            console.log(error)
-          }
-        })
-        room.finished = true;
-      } else {
-        if (room.numUsers() == 2 || room.numUsers() == 1) {
-          const balance = await redisClient.get(createAmountRedisLink(data.address, room.getChainId(), room.getFightId()))
-          const baseAmount = fight.baseAmount.toString()
-          if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 2) {
-            for (let i = 0; i < players.length; i++) {
-              await createSignatureOne(players[i])
-            }
-          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 2) { 
-            for (let i = 0; i < players.length; i++) {
-              await createSignatureOne(players[i], baseAmount)
-            }
-          } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 1) { 
-            for (let i = 0; i < players.length; i++) {
-              await createSignatureOne(players[i])
-            }
-          } else if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 1) { 
-            for (let i = 0; i < players.length; i++) {
-              await createSignatureOne(players[i], baseAmount)
+          if (room.numUsers() == 1) {
+            if (BigInt(balanceSender) > BigInt(fight.baseAmount.toString())) {
+              //СОЗДАЕМ с тем что есть
+              await createSignatureOne(senderAddress, balanceSender)
+              await createSignatureOne(secondAddress, balanceSecond)
+            } else {
+              //создаем равное
+              await createSignatureOne(senderAddress, fight.baseAmount.toString())
+              await createSignatureOne(secondAddress, fight.baseAmount.toString())
             }
           } else {
-            for (let i = 0; i < players.length; i++) {
-              await createSignatureOne(players[i])
+            if (BigInt(balanceSender) < BigInt(fight.baseAmount.toString())) {
+              //СОЗДАЕМ с тем что есть
+              await createSignatureOne(senderAddress, balanceSender)
+              await createSignatureOne(secondAddress, balanceSecond)
+            } else {
+              //создаем равное
+              await createSignatureOne(senderAddress, fight.baseAmount.toString())
+              await createSignatureOne(secondAddress, fight.baseAmount.toString())
             }
           }
           Object.entries(room.sockets).forEach(([key, value]) => {
@@ -470,6 +434,44 @@ function handleSocket(socket) {
             }
           })
           room.finished = true;
+        } else {
+          if (room.numUsers() == 2 || room.numUsers() == 1) {
+            const balance = await redisClient.get(createAmountRedisLink(data.address, room.getChainId(), room.getFightId()))
+            const baseAmount = fight.baseAmount.toString()
+            if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 2) {
+              for (let i = 0; i < players.length; i++) {
+                await createSignatureOne(players[i])
+              }
+            } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 2) { 
+              for (let i = 0; i < players.length; i++) {
+                await createSignatureOne(players[i], baseAmount)
+              }
+            } else if ((balance && (BigInt(balance) > BigInt(baseAmount))) && room.numUsers() == 1) { 
+              for (let i = 0; i < players.length; i++) {
+                await createSignatureOne(players[i])
+              }
+            } else if ((balance && (BigInt(balance) < BigInt(baseAmount))) && room.numUsers() == 1) { 
+              for (let i = 0; i < players.length; i++) {
+                await createSignatureOne(players[i], baseAmount)
+              }
+            } else {
+              for (let i = 0; i < players.length; i++) {
+                await createSignatureOne(players[i])
+              }
+            }
+            Object.entries(room.sockets).forEach(([key, value]) => {
+              try {
+                if (value != null) {
+                  socket.to(value.id).emit("finishing", {
+                    fromButton: data.fromButton
+                  })
+                }
+              } catch (error) {
+                console.log(error)
+              }
+            })
+            room.finished = true;
+          }
         }
       }
     } catch (error) {
