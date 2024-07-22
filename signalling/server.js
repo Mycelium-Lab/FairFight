@@ -242,17 +242,20 @@ function handleSocket(socket) {
         try {
           let usersStats = []
           for (let i = 0; i < room.users.length; i++) {
-            const balance = await redisClient.get(createAmountRedisLink(room.users[i].walletAddress, room.getChainId(), room.getFightId()))
-            const kills = await getKills(room.users[i].walletAddress)
-            const deaths = await getDeaths(room.users[i].walletAddress)
-            usersStats.push({
-              address: room.users[i].walletAddress,
-              balance,
-              kills,
-              deaths
-            })
+            try {
+              const balance = await redisClient.get(createAmountRedisLink(room.users[i].walletAddress, room.getChainId(), room.getFightId()))
+              const kills = await getKills(room.users[i].walletAddress)
+              const deaths = await getDeaths(room.users[i].walletAddress)
+              usersStats.push({
+                address: room.users[i].walletAddress,
+                balance,
+                kills,
+                deaths
+              })
+            } catch (error) {
+              console.log(error)
+            }
           }
-          const remainingRounds = await redisClient.get(room.roomName)
           if (usersStats.some(user => Object.values(user).includes(null))) {
             setTimeout(async () => {
               try {
@@ -272,6 +275,7 @@ function handleSocket(socket) {
                     }
                   )
                 }
+                const remainingRounds = await redisClient.get(room.roomName)
                 socket.emit("update_balance", {
                   usersStats: usersStatsDB,
                   remainingRounds: remainingRounds == null ? 0 : remainingRounds,
@@ -283,15 +287,28 @@ function handleSocket(socket) {
               }
             }, 1000)
           } else {
-            socket.emit("update_balance", {
-              usersStats,
-              remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-              amountToLose: room.amountToLose,
-              rounds: room.getRounds()
-            })
+            setTimeout(async () => {
+              const remainingRounds = await redisClient.get(room.roomName)
+              Object.entries(room.sockets).forEach(([key, value]) => {
+                if (value != null) { 
+                  socket.to(value.id).emit("update_balance", {
+                    usersStats,
+                    remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+                    amountToLose: room.amountToLose,
+                    rounds: room.getRounds()
+                  })
+                }
+              })
+              room.broadcastFrom(user, "update_balance", {
+                usersStats,
+                remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+                amountToLose: room.amountToLose,
+                rounds: room.getRounds()
+              })
+            }, 1000)
           }
         } catch (error) {
-          
+          console.log(error)
         }
       }, 100)
     } catch (error) {
