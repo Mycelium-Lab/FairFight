@@ -276,10 +276,20 @@ function handleSocket(socket) {
                   )
                 }
                 const remainingRounds = await redisClient.get(room.roomName)
-                socket.emit("update_balance", {
-                  usersStats: usersStatsDB,
+                Object.entries(room.sockets).forEach(([key, value]) => {
+                  if (value != null) { 
+                    socket.to(value.id).emit("update_balance", {
+                      usersStats,
+                      remainingRounds: remainingRounds == null ? 0 : remainingRounds,
+                      amountToLose: room.amountToLose,
+                      rounds: room.getRounds()
+                    })
+                  }
+                })
+                room.broadcastFrom(user, "update_balance", {
+                  usersStats,
                   remainingRounds: remainingRounds == null ? 0 : remainingRounds,
-                  amountToLose: room.amountToLose, 
+                  amountToLose: room.amountToLose,
                   rounds: room.getRounds()
                 })
               } catch (error) {
@@ -324,7 +334,6 @@ function handleSocket(socket) {
         const newBalance = BigInt(balance) - BigInt(room.amountToLose)
         await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
         const rounds = await redisClient.get(createRoundsRedisLink())
-        console.log(`NUm of users: ${room.numUsers()}`)
         if (room.numUsers() == 2) {
           if (rounds != 0 || rounds != null) {
             await redisClient.set(room.roomName, parseInt(rounds) - 1)
@@ -336,10 +345,8 @@ function handleSocket(socket) {
         const balanceWinner = await redisClient.get(createAmountRedisLink(data.killerAddress, room.getChainId(), room.getFightId()))
         const newBalanceWinner = BigInt(balanceWinner) + BigInt(room.amountToLose)
         await redisClient.set(createAmountRedisLink(data.killerAddress, room.getChainId(), room.getFightId()), newBalanceWinner.toString())
-        if (room.finished == false) {
-          await addKills(data.killerAddress)
-          await addDeaths(data.walletAddress)
-        }
+        await addKills(data.killerAddress)
+        await addDeaths(data.walletAddress)
         const killsAddress1 = await getKills(data.walletAddress)
         const deathsAddress1 = await getDeaths(data.walletAddress)
         const killsAddress2 = await getKills(data.killerAddress)
@@ -348,7 +355,6 @@ function handleSocket(socket) {
         //create signature and add data to database
         // || (parseInt(rounds) - 1) == 0
         if (newBalance == 0 && room.numUsers() > 2) {
-          console.log('here')
           await createSignatureOne(data.walletAddress)
           // room.broadcastFrom(user, MessageType.USER_LOSE_ALL, data.walletAddress);
           Object.entries(room.sockets).forEach(([key, value]) => {
@@ -712,7 +718,7 @@ function handleSocket(socket) {
         console.log(user)
         log('User %s joined room %s. Users in room: %d',
           user.getId(), room.getName(), room.numUsers());
-        log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);
+        log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);    
       } else {
         room.sendTo(user, MessageType.NOT_USER_ROOM);
         throw Error('User not in this fight or fight finished')
