@@ -29,7 +29,9 @@ CREATE TABLE leaderboard(
     amountWon FLOAT NOT NULL,
     period INT NOT NULL,
     chainid INT NOT NULL,
-    contract TEXT NOT NULL
+    contract TEXT NOT NULL,
+    kills INT NOT NULL,
+    deaths INT NOT NULL
 );
 
 CREATE TABLE utils(
@@ -416,6 +418,31 @@ INSERT INTO armor_bonuses(id, health) VALUES(4, 4);
 INSERT INTO armor_bonuses(id, health) VALUES(5, 5);
 INSERT INTO armor_bonuses(id, health) VALUES(6, 7);
 INSERT INTO armor_bonuses(id, health) VALUES(7, 9);
+INSERT INTO armor_bonuses(id, health) VALUES(8, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(9, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(10, 4);
+INSERT INTO armor_bonuses(id, health) VALUES(11, 4);
+INSERT INTO armor_bonuses(id, health) VALUES(12, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(13, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(14, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(15, 3);
+INSERT INTO armor_bonuses(id, health) VALUES(16, 7);
+INSERT INTO armor_bonuses(id, health) VALUES(17, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(18, 4);
+INSERT INTO armor_bonuses(id, health) VALUES(19, 6);
+INSERT INTO armor_bonuses(id, health) VALUES(20, 6);
+INSERT INTO armor_bonuses(id, health) VALUES(21, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(22, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(23, 7);
+INSERT INTO armor_bonuses(id, health) VALUES(24, 7);
+INSERT INTO armor_bonuses(id, health) VALUES(25, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(26, 8);
+INSERT INTO armor_bonuses(id, health) VALUES(27, 1);
+INSERT INTO armor_bonuses(id, health) VALUES(28, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(29, 2);
+INSERT INTO armor_bonuses(id, health) VALUES(30, 5);
+INSERT INTO armor_bonuses(id, health) VALUES(31, 8);
+INSERT INTO armor_bonuses(id, health) VALUES(32, 9);
 
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(0, 180, 25);
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(1, 360, 50);
@@ -425,6 +452,31 @@ INSERT INTO boots_bonuses(id, speed, jump) VALUES(4, 500, 180);
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(5, 750, 80);
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(6, 1000, 130);
 INSERT INTO boots_bonuses(id, speed, jump) VALUES(7, 777, 222);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(8, 180, 30);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(9, 520, 180);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(10, 150, 100);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(11, 800, 220);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(12, 290, 110);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(13, 450, 170);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(14, 290, 90);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(15, 810, 210);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(16, 810, 200);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(17, 800, 200);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(18, 790, 180);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(19, 280, 110);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(20, 280, 110);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(21, 300, 100);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(22, 120, 85);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(23, 130, 80);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(24, 150, 70);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(25, 190, 90);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(26, 600, 120);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(27, 600, 250);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(28, 500, 170);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(29, 790, 200);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(30, 300, 90);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(31, 100, 70);
+INSERT INTO boots_bonuses(id, speed, jump) VALUES(32, 550, 140);
 
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(0, 1, 0);
 INSERT INTO weapon_bonuses(id, bullets, damage) VALUES(1, 1, 0);

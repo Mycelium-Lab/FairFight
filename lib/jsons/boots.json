@@ -1,6 +1,6 @@
 [
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/0.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/0.png",
         "name": "Street Sneakers",
         "attributes": [
             {	
@@ -24,7 +24,7 @@
         "description": "Comfortable enough and durable sneakers for every day. Breathable layer provides comfortable heat transfer, and the outsole pleasantly cushions the stride. The most popular option among the most affordable."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/1.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/1.png",
         "name": "Fire Basketball Sneakers",
         "attributes": [
             {	
@@ -48,7 +48,7 @@
         "description": "Comfort combined with an affordable price make these sneakers a great choice among young people. Red fiery color will emphasize the bright image of its owner and attract the attention of the opposite sex . Red color means that somewhere there is a fire."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/2.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/2.png",
         "name": "Breakdancer sneakers",
         "attributes": [
             {	
@@ -72,7 +72,7 @@
         "description": "A secure fit and exceptional comfort, allow you to perform a variety of elements of breakdancing with incredible ease. Not a breakdancer? Not a problem! You'll appreciate the running, lacing and quality of this product."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/3.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/3.png",
         "name": "Old forester's boots",
         "attributes": [
             {	
@@ -96,7 +96,7 @@
         "description": "All-terrain sole, protection from dust and moisture - what every forester needs. Over time, they've gained elasticity and scuffs, but that hasn't given up on their skin, and on the contrary, they've given them their exotic retro charm. The forester approves."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/4.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/4.png",
         "name": "Cowboy Boots of Despair",
         "attributes": [
             {	
@@ -120,7 +120,7 @@
         "description": "Unusual vintage shoes from the Wild West. They not only speed horses with spurs, but also give the wearer a brutal look . Try them on once in your life and you might fall in love with them forever."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/5.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/5.png",
         "name": "Roller Turbo",
         "attributes": [
             {	
@@ -144,7 +144,7 @@
         "description": "Acquire acceleration in daily affairs, stand out from the crowd of mediocrity using rollers for everyday purposes. Unusual image element will direct the eyes of others to you while you roll on your important or not so important business. Boom! Just a fairy tale!"
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/6.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/6.png",
         "name": "Flush Nitro Sneakers",
         "attributes": [
             {	
@@ -168,7 +168,7 @@
         "description": "As light as a feather, as fast as an airplane, as gaudy as Flash himself! A real find for refined gourmets who want to endow themselves with super strength."
     },
     {
-        "image": "https://ipfs.io/ipfs/QmcdiQ5YUzaMEr1NcQYt4HV5P9bt1WSQK55ryrXi6mJR4s/7.png",
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/7.png",
         "name": "God's Sneakers",
         "attributes": [
             {	
@@ -191,4 +191,581 @@
         "price": "99.9",
         "description": "Few people know that along with the admonitions - people received mythical sneakers created by God himself to walk on the planet. The sneakers have pegasus wings built into them to allow for extra speed, and yes, you are now the fastest."
     }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/8.png",
+        "name": "Rhythm Kicks",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Basic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "180"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "30"
+            }
+        ],
+        "price": "4",
+        "description": "Born from the whirlwind of dance battles, these sneakers embody the spirit of street dancers and the comfort of everyday footwear. Designed for those who live to the rhythm of the city, they offer freedom of movement and confidence with every step, turning the streets into your personal dance floor."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/9.png",
+        "name": "Shadow Striders",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "520"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "180"
+            }
+        ],
+        "price": "44",
+        "description": "Forged in the depths of a digital realm, Shadow Striders blend the rugged durability of combat boots with the sleek aesthetics of futuristic design. Perfect for navigating both virtual landscapes and real-world adventures, they offer unmatched resilience and style with every stride."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/10.png",
+        "name": "Pixel Prowlers",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "150"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "100"
+            }
+        ],"price": "9",
+        "description": "Crafted for the modern adventurer, Pixel Prowlers merge the essence of retro gaming with contemporary streetwear. These sneakers offer the perfect blend of nostalgia and innovation, ensuring both comfort and style as you navigate the levels of your urban jungle."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/11.png",
+        "name": "Crimson Chasers",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "800"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "220"
+            }
+        ],"price": "70",
+        "description": "Infused with the bold spirit of night-time escapades, Crimson Chasers combine striking design with unmatched comfort. Perfect for those who thrive in the after-hours, these shoes ensure you stand out and stay agile, no matter where the night takes you."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/12.png",
+        "name": "Wave Walkers",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "290"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "110"
+            }
+        ],"price": "20",
+        "description": "Inspired by the carefree spirit of beach days, Wave Walkers combine the breezy comfort of classic flip-flops with a modern, stylish twist. Their cushioned sole and durable straps provide all-day support, making every step feel like a stroll along the shore."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/13.png",
+        "name": "Holiday Steps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "450"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "170"
+            }
+        ],"price": "44",
+        "description": "These boots were created by artisans from the kingdom of Festiva for festivals and celebrations. They were intended for dancers and performers to give them ease and grace in their movements."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/14.png",
+        "name": "Sand Tramps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "290"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "90"
+            }
+        ],"price": "19",
+        "description": "Sand-colored boots with moving images of dunes. Created by the nomads of Sarnak to protect them from sandstorms."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/15.png",
+        "name": "Crystal Boots",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "810"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "210"
+            }
+        ],"price": "72",
+        "description": "Transparent boots with flecks of sparkling crystals. Created by mages of Crystallia to enhance magical abilities."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/16.png",
+        "name": "Misty Steps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "810"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "200"
+            }
+        ],"price": "68",
+        "description": "Blue boots shrouded in a permanent fog. Used by scouts of the Misty Mountains for stealthy movement."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/17.png",
+        "name": "Fire Tracks",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "800"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "200"
+            }
+        ],"price": "70",
+        "description": "Red boots with tongues of flame shooting out of the soles. Invented by the blacksmiths of Ognemerga for protection from fire and flame control."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/18.png",
+        "name": "Misty Steps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "790"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "180"
+            }
+        ],"price": "65",
+        "description": "Gray boots shrouded in a permanent fog. Used by the scouts of the Misty Mountains for stealthy movement."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/19.png",
+        "name": "Whispering Footsteps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "280"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "110"
+            }
+        ],"price": "21",
+        "description": "Shoes with thin strings that emit melodies with each step. Used by minstrels and bards to create music from ambient sounds."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/20.png",
+        "name": "Grimsword Boots",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "280"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "110"
+            }
+        ],"price": "18",
+        "description": "Boots with metal inserts that resemble blades. Worn by the Knights of Grimsward to intimidate opponents and protect them from enemies."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/21.png",
+        "name": "Star Trails",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "300"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "100"
+            }
+        ],"price": "20",
+        "description": "Dark blue boots with images of constellations glowing in the dark. Worn by Astronark astronomers to study stars."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/22.png",
+        "name": "Marine Depths",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "120"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "85"
+            }
+        ],"price": "10",
+        "description": "Blue boots with images of sea creatures and seaweed. Used by the water mages Neptuanu for underwater travel."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/23.png",
+        "name": "Thundersteps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "130"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "80"
+            }
+        ],"price": "8",
+        "description": "Dark boots with images of lightning and thunder. Invented by the dwarves of Electric City to control thunderstorms."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/24.png",
+        "name": "Forest Guardians",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "150"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "70"
+            }
+        ],"price": "10",
+        "description": "Green boots with moss and leaves growing on the surface. Worn by the Forest Guardians to merge with nature and protect the forests."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/25.png",
+        "name": "Moon Shadows",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "190"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "90"
+            }
+        ],"price": "9",
+        "description": "Black boots with silver patterns and a moonstone on the sole. Used by the night guards of Moonfall for stealthy movement and protection."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/26.png",
+        "name": "Moon Steps",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "600"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "120"
+            }
+        ],"price": "50",
+        "description": "Boots with soft, glowing soles. Created for traveling on the lunar surface in the ancient kingdom of Lunaria."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/27.png",
+        "name": "Solar Wanderers",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "600"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "250"
+            }
+        ],"price": "48",
+        "description": "These boots were created by ancient craftsmen from the Kingdom of Sun Sands. They were meant for travelers to protect them from the scorching sun and grant them the power and energy of the sun's rays."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/28.png",
+        "name": "Purple Shadows",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "500"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "170"
+            }
+        ],"price": "44",
+        "description": "These boots were created by mages from the kingdom of Nocturne for night guards and scouts. They allow their wearer to blend in with the shadows and move silently. Legend has it that the wearer of these boots can see in the dark."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/29.png",
+        "name": "Rainbow Trails",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Legendary"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "790"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "200"
+            }
+        ],"price": "68",
+        "description": "Multicolored boots with shimmering rainbow patterns. Created by the master glassblowers of the Rainbow Tree to explore the spectrum of light."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/30.png",
+        "name": "Star Trails",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Rare"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "300"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "90"
+            }
+        ],"price": "21",
+        "description": "Dark blue boots with images of constellations glowing in the dark. Worn by Astronark astronomers to study star charts."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/31.png",
+        "name": "Sow Tracks",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Special"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "100"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "70"
+            }
+        ],"price": "8",
+        "description": "Worn by the northern warriors of Ledostan to move on snow and ice."
+    }
+    ,{
+        "image": "https://ipfs.io/ipfs/QmYETEskNuobEd93natnAASmppDkTTzxK6EvpTvcpkNgHC/32.png",
+        "name": "Temporal Traces",
+        "attributes": [
+            {	
+                "trait_type": "Type",
+                "value": "Boots"
+            },
+            {
+                "trait_type": "Class",
+                "value": "Epic"
+            },
+            {
+                "trait_type": "Speed Bonus",
+                "value": "550"
+            },
+            {
+                "trait_type": "Jump Bonus",
+                "value": "140"
+            }
+        ],"price": "45",
+        "description": "Shoes with dials and gears moving on the surface. Invented by Chrononauts to control the passage of time and open time portals."
+    }    
 ]

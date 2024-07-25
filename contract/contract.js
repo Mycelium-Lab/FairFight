@@ -1,6 +1,7 @@
 import dotenv from "dotenv"
 export { nftAbi, shopAbi} from "./shop.js"
 export { lootboxAbi } from './lootbox.js'
+export { erc20Abi } from './erc20.js'
 dotenv.config()
 
 export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
@@ -37,21 +38,21 @@ export const networks = [
   //     lootboxAddress: '0xfa550EF42fb65aEDF52183129Ca9054D3552A77d',
   //     privateKey: process.env.PRIVATE_KEY_EMERALD
   // },
-  // {
-  //     name: "tBNB",
-  //     chainid: 97,
-  //     rpc: 'https://bsc-testnet.publicnode.com',
-  //     currency: 'tBNB',
-  //     explorer: 'https://testnet.bscscan.com/',
-  //     contractAddress: '0x58e29cF81dBBE7bB358CA16ACdd9d1d7EAE92BD2',
-  //     charactersAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
-  //     armorsAddress: '0xe10cd6c65Af7637ad8329f0Adb161A968101bF86',
-  //     weaponsAddress: '0x03467ad8Efe8BB73c0Dde0c436b7efAfE9FC3E32',
-  //     bootsAddress: '0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae',
-  //     shopAddress: '0xDf82B488053b2F183D959969141B9896aB8C1efA',
-  //     lootboxAddress: '0xD705227BBd4f5D40b5E542E5d415813825ED72cf',
-  //     privateKey: process.env.PRIVATE_KEY_EMERALD
-  // },
+  {
+      name: "tBNB",
+      chainid: 97,
+      rpc: 'https://bsc-testnet.publicnode.com',
+      currency: 'tBNB',
+      explorer: 'https://testnet.bscscan.com/',
+      contractAddress: '0x58e29cF81dBBE7bB358CA16ACdd9d1d7EAE92BD2',
+      charactersAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
+      armorsAddress: '0xe10cd6c65Af7637ad8329f0Adb161A968101bF86',
+      weaponsAddress: '0x03467ad8Efe8BB73c0Dde0c436b7efAfE9FC3E32',
+      bootsAddress: '0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae',
+      shopAddress: '0xDf82B488053b2F183D959969141B9896aB8C1efA',
+      lootboxAddress: '0x4e74D920cA1a403d7b2B4e403890BC7E5Db59a89',
+      privateKey: process.env.PRIVATE_KEY_EMERALD
+  },
   {
       name: "Arbitrum",
       chainid: 42161,
@@ -64,7 +65,7 @@ export const networks = [
       weaponsAddress: '0xe10cd6c65Af7637ad8329f0Adb161A968101bF86',
       bootsAddress: '0x5Af0d7aDc8a73334dC82f51C97be2582b845bdC4',
       shopAddress: '0x2B9e270d12bA5cE62ECe2c458db7b7B2939D19ae',
-      lootboxAddress: '0xaB585238D26a7D13a69B26f7Caa8d0047158da99',
+      lootboxAddress: '0x35Ae3e8aDd7278f0B2Af8AfA00dC15cA0d6A4725',
       privateKey: process.env.PRIVATE_KEY_EMERALD
   },
   {
