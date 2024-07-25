@@ -12,17 +12,17 @@ import gamePropertiesRouter from './server/gameproperties/controller.js'
 import airdropRouter from './server/airdrop/controller.js'
 import lootboxRouter from './server/lootbox/controller.js'
 import { createLeaderboard } from './server/leaderboard/service.js';
-import { createMixingPicture } from './mixing/mixing.js';
+// import { createMixingPicture } from './mixing/mixing.js';
 
-cron.schedule("6 6 6 * * *", async () => {
-    try {
-        await createLeaderboard(42161)
-    } catch (error) {
-        console.log(error)
-    }
-}, {
-    timezone: 'Europe/Moscow'
-})
+// cron.schedule("6 6 6 * * *", async () => {
+//     try {
+//         await createLeaderboard(42161)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }, {
+//     timezone: 'Europe/Moscow'
+// })
 
 const server = express()
 
