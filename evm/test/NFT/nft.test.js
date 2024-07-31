@@ -9,16 +9,20 @@ describe("FairFightNFT", function (){
     const baseURI = 'https://ipfs.io/ipfs/QmbZvNDcrz4ev1q39eatpwxnpGgfLadDZoKJi6FaVnHEvd/'
     const newBaseURI = 'https://ipfs.io/ipfs/QmSYxh2K2fEpWUpeqs3K8hsE9JMWjViFhJdVHMHoo7aCy1/'
     const maxSupply = 4
-    const newMaxSupply = 5
+    const newMaxSupply = maxSupply + 1
     let owner, user
     let nft
+    let multicall
     
     beforeEach(async function () {
         [owner, user] = await ethers.getSigners()
         const NFT = await ethers.getContractFactory("FairFightNFT")
         nft = await NFT.deploy(name, symbol, baseURI, maxSupply)
+        const Multicall = await ethers.getContractFactory("MulticallNFT")
+        multicall = await Multicall.deploy()
         await nft.deployed()
         await nft.setAllowedMint(owner.address, true)
+        await multicall.deployed()
     })
 
     describe("Initial", async () => {
@@ -73,6 +77,32 @@ describe("FairFightNFT", function (){
                     ).to.be.revertedWith("FairFightNFT: MaxSupply exceeded")
                 }
             }
+        })
+
+        it('Should callPropertyTokensLength positive', async () => {
+            let ids = []
+            for (let i = 0; i < maxSupply; i++) {
+                let tx = await nft.mint(owner.address, i)
+                tx = await tx.wait()
+                ids.push(i)
+            }
+            ids.push(maxSupply + 1)
+            ids.push(maxSupply + 2)
+            ids.push(maxSupply + 3)
+            ids.push(maxSupply + 4)
+            ids.push(maxSupply + 5)
+            ids.push(maxSupply + 6)
+            const tokenIds = await multicall.callPropertyTokensLength(nft.address, owner.address, ids)
+            let checker = false
+            for (let i = 0; i < tokenIds.length; i++) {
+                if (tokenIds[i] > 0) {
+                    checker = true
+                } else {
+                    checker = false
+                }
+                if (i == tokenIds.length - 1 ) checker = true
+            }
+            assert(checker, "NFT exist to this user")
         })
     })
 
