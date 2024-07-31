@@ -87,6 +87,11 @@ describe("FairFightNFT", function (){
                 ids.push(i)
             }
             ids.push(maxSupply + 1)
+            ids.push(maxSupply + 2)
+            ids.push(maxSupply + 3)
+            ids.push(maxSupply + 4)
+            ids.push(maxSupply + 5)
+            ids.push(maxSupply + 6)
             const tokenIds = await multicall.callPropertyTokensLength(nft.address, owner.address, ids)
             let checker = false
             for (let i = 0; i < tokenIds.length; i++) {

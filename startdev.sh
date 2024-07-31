@@ -11,7 +11,7 @@ gnome-terminal -- bash -c "cd $evm_directory && npx hardhat node" &
 sleep 5
 
 # Открываем новое окно терминала, переходим в папку "evm" и запускаем несколько команд
-gnome-terminal -- bash -c "cd $evm_directory && npx hardhat run scripts/FairFight/deployWithTestToken.js --network testnet; npx hardhat run scripts/FairFight/mintTestToken.js --network testnet; npx hardhat run scripts/FairFight/NFT/deployTest.js --network testnet; npx hardhat run scripts/Lootbox/deployTest.js --network testnet" &
+gnome-terminal -- bash -c "cd $evm_directory && npx hardhat run scripts/FairFight/deployWithTestToken.js --network testnet; npx hardhat run scripts/FairFight/mintTestToken.js --network testnet; npx hardhat run scripts/FairFight/NFT/deployTest.js --network testnet; npx hardhat run scripts/Lootbox/deployTest.js --network testnet; npx hardhat run scripts/FairFight/NFT/deployMulticallNFT.js --network testnet" &
 
 # Открываем новое окно терминала и переходим в папку "evm", запуская команду npm run dev:se
 gnome-terminal -- bash -c "cd $main_directory && npm run dev:se" &
