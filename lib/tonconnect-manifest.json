@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:5000/tonconnect-manifest.json",
+  "url": "https://raw.githubusercontent.com/Mycelium-Lab/FairFight/add_ton/lib/tonconnect-manifest.json",
   "name": "FairFight",
   "iconUrl": "https://ton-connect.github.io/demo-dapp/apple-touch-icon.png"
 }
