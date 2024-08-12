@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@oasisprotocol/sapphire-paratime": "1.1.1",
+    "@ton/ton": "^14.0.0",
     "@tonconnect/sdk": "^3.0.5",
     "@tonconnect/ui": "^2.0.8",
     "@walletconnect/ethereum-provider": "2.10.1",
