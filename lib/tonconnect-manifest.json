@@ -1,0 +1,5 @@
+{
+  "url": "http://localhost:5000/tonconnect-manifest.json",
+  "name": "FairFight",
+  "iconUrl": "https://ton-connect.github.io/demo-dapp/apple-touch-icon.png"
+}
