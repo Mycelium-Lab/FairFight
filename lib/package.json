@@ -18,6 +18,7 @@
     "@tonconnect/ui": "^2.0.8",
     "@walletconnect/ethereum-provider": "2.10.1",
     "@walletconnect/modal": "^2.6.2",
+    "buffer": "^6.0.3",
     "ethcall": "^6.0.0"
   },
   "devDependencies": {
