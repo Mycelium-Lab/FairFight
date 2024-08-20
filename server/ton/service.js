@@ -62,7 +62,7 @@ function dictionaryToObject(dictionary) {
     return result;
 }
 
-(async () => {
+export async function getFights() {
     try {
         let { stack } = await client.runMethod(contractAddress, 'currentFights');
         let cellOpt = stack.readCellOpt();
@@ -75,12 +75,12 @@ function dictionaryToObject(dictionary) {
                 },
             }, cellOpt);
 
-            const dictObj = dictionaryToObject(dict)
-            console.log(dictObj)
+            const dictArr = dictionaryToObject(dict)
+            return dictArr
         } else {
-            console.error("No cell returned from stack.");
+            return []
         }
     } catch (e) {
         console.error(e);
     }
-})();
+}
