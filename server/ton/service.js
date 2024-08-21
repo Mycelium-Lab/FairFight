@@ -8,7 +8,7 @@ const client = new TonClient({
     endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC',
 });
 
-const contractAddress = Address.parse('EQA2Amn-QDbPaxqY4DIerGDiGdTLwOmWTXMqLgaajAHvet9v');
+const contractAddress = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ');
 
 // Generate new key
 let mnemonics = process.env.MNEMONIC_TON.split(' ',',') || await mnemonicNew();
@@ -21,19 +21,23 @@ let workchain = 0;
 function loadFight(slice) {
     try {
         let sc = slice.loadRef().beginParse()
+        let _id = sc.loadIntBig(257);
         let _owner = sc.loadAddress();
         let _createTime = sc.loadIntBig(257);
-        let _finishTime = sc.loadIntBig(257);
-        let _baseAmount = sc.loadCoins();
+        let sc_0 = sc.loadRef().beginParse();
+        let _finishTime = sc_0.loadIntBig(257);
+        let _baseAmount = sc_0.loadCoins();
+        console.log(_id, _owner, _createTime, _finishTime, _baseAmount)
 
-        let sc_1 = sc.loadRef().beginParse();
-        let _amountPerRound = sc_1.loadCoins();
-        let _rounds = sc_1.loadIntBig(257);
-        let _maxPlayersAmount = sc_1.loadIntBig(257);
+        // let sc_1 = sc.loadRef().beginParse();
+        let _amountPerRound = sc_0.loadCoins();
+        let _rounds = sc_0.loadIntBig(257);
+        let _maxPlayersAmount = sc_0.loadIntBig(257);
 
-        let _players = Dictionary.load(Dictionary.Keys.BigInt(257), Dictionary.Values.Address(), sc_1);
+        let _players = Dictionary.load(Dictionary.Keys.BigInt(257), Dictionary.Values.Address(), sc_0);
 
         return {
+            id: _id,
             owner: _owner,
             createTime: _createTime,
             finishTime: _finishTime,

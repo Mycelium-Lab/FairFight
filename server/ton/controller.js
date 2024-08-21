@@ -6,6 +6,7 @@ const tonRouter = Router()
 tonRouter.get('/ton/fights', async (req, res) => {
     let fights = await getFights()
     fights = fights.map(v => {
+        v.id = v.id.toString()
         v.owner = v.owner.toString()
         v.createTime = v.createTime.toString()
         v.finishTime = v.finishTime.toString()
