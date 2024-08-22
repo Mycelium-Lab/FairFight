@@ -20,6 +20,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import { contractAbi, contractAddress, networks } from "../contract/contract.js"
+import { getFights } from '../server/ton/service.js';
 
 const redisClient = redis.createClient({
   socket: {
@@ -663,25 +664,45 @@ function handleSocket(socket) {
           socket.to(value.id).emit("end_waiting_another_user")
         })
       }
-
-      const fight = await blockchain().contract.fights(room.getFightId())
-      const players = await blockchain().contract.getFightPlayers(room.getFightId())
-      room.amountToLose = fight.amountPerRound.toString()
-      room.baseAmount = fight.baseAmount.toString()
-      room.rounds = fight.rounds.toString()
-      room.playersBaseAmount = parseInt(fight.playersAmount)
+      let amountPerRound, baseAmount, rounds, playersBaseAmount, finishTime, players
+      if (room.getChainId() != 0) {
+        const fight = await blockchain().contract.fights(room.getFightId())
+        players = await blockchain().contract.getFightPlayers(room.getFightId())
+        amountPerRound = fight.amountPerRound.toString()
+        baseAmount = fight.baseAmount.toString()
+        rounds = fight.rounds.toString()
+        playersBaseAmount = parseInt(fight.playersAmount)
+        finishTime = parseInt(fight.finishTime)
+      } else {
+        const fight = await blockchainTon(room.getFightId())
+        if (!fight) {
+          room.sendTo(user, MessageType.NOT_USER_ROOM);
+          throw Error('User not in this fight or fight finished or not exist')
+        }
+        players = fight.players
+        amountPerRound = fight.amountPerRound.toString()
+        baseAmount = fight.baseAmount.toString()
+        rounds = fight.rounds.toString()
+        playersBaseAmount = parseInt(fight.maxPlayersAmount)
+        finishTime = parseInt(fight.finishTime)
+      }
+      room.amountToLose = amountPerRound
+      room.baseAmount = baseAmount
+      room.rounds = rounds
+      room.playersBaseAmount = playersBaseAmount
       const res = await pgClient.query(
         'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
         [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
       )
-      if (players.includes(joinData.walletAddress) && fight.finishTime == 0 && res.rows.length === 0) {
+      players = players.map(v => v.toString())
+      if (players.includes(joinData.walletAddress) && finishTime == 0 && res.rows.length === 0) {
         const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         const roundsExists = await redisClient.get(createRoundsRedisLink())
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
           await redisClient.set(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()), room.baseAmount)
         }
         if (roundsExists == null || isNaN(parseFloat(roundsExists))) {
-          await redisClient.set(createRoundsRedisLink(), fight.rounds.toString())
+          await redisClient.set(createRoundsRedisLink(), rounds.toString())
         }
         const existKills = await redisClient.get(createKillsRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         if (existKills == null || isNaN(parseFloat(existKills)) || existKills == 'NaN') {
@@ -708,7 +729,7 @@ function handleSocket(socket) {
           userId: user.getId(),
           roomName: room.getName(),
           users: room.getUsers(),
-          playersBaseAmount: parseInt(fight.playersAmount)
+          playersBaseAmount
         });
         // Notify others of a new user joined
         room.broadcastFrom(user, MessageType.USER_JOIN, {
@@ -903,6 +924,12 @@ function handleSocket(socket) {
     const signer = new ethers.Wallet(network.privateKey, provider)
     const _contract = new ethers.Contract(network.contractAddress, contractAbi, signer)
     return {contract: _contract, signer};
+  }
+
+  async function blockchainTon(id) {
+    const fights = await getFights()
+    const fight = fights.find(v => v.id.toString() === id.toString())
+    return fight
   }
 
 }

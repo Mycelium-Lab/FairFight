@@ -74,6 +74,14 @@ server.get('/ton', (req, res) => {
     res.sendFile(__dirname+'/public/index_ton.html')
 })
 
+server.get('/ton_game', (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    res.sendFile(__dirname+'/public/game_ton.html')
+})
+
 server.get('/game', (req, res) => {
     maintenance
     ?

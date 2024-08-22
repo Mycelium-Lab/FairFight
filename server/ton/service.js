@@ -24,12 +24,10 @@ function loadFight(slice) {
         let _id = sc.loadIntBig(257);
         let _owner = sc.loadAddress();
         let _createTime = sc.loadIntBig(257);
+
         let sc_0 = sc.loadRef().beginParse();
         let _finishTime = sc_0.loadIntBig(257);
         let _baseAmount = sc_0.loadCoins();
-        console.log(_id, _owner, _createTime, _finishTime, _baseAmount)
-
-        // let sc_1 = sc.loadRef().beginParse();
         let _amountPerRound = sc_0.loadCoins();
         let _rounds = sc_0.loadIntBig(257);
         let _maxPlayersAmount = sc_0.loadIntBig(257);
