@@ -21,6 +21,10 @@ dotenv.config()
 
 import { contractAbi, contractAddress, networks } from "../contract/contract.js"
 import { getFights } from '../server/ton/service.js';
+import { Address, beginCell, Builder } from 'ton-core';
+import { mnemonicToWalletKey, sign } from 'ton-crypto';
+
+let key
 
 const redisClient = redis.createClient({
   socket: {
@@ -331,6 +335,7 @@ function handleSocket(socket) {
     try {
       if (data.killerAddress) {
         console.log(`${data.walletAddress} dead (network: ${room.getChainId()}, fight: ${room.getFightId()}, killer: ${data.killerAddress})`)
+        console.log(data.walletAddress, await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId())))
         const balance = await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()))
         const newBalance = BigInt(balance) - BigInt(room.amountToLose)
         await redisClient.set(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId()), newBalance.toString())
@@ -409,8 +414,14 @@ function handleSocket(socket) {
   async function onFinishing(data) {
     try {
       if (data.fromButton) {
-        const fight = await blockchain().contract.fights(room.getFightId())
-        const players = await blockchain().contract.getFightPlayers(room.getFightId())
+        let fight, players
+        if (room.getChainId() != 0) {
+          fight = await blockchain().contract.fights(room.getFightId())
+          players = await blockchain().contract.getFightPlayers(room.getFightId())
+        } else {
+          fight = await blockchainTon(room.getFightId())
+          players = fight.players
+        }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
           const secondAddress = data.address.toLowerCase() == players[0].toLowerCase() ? players[1] : players[0]
@@ -507,7 +518,7 @@ function handleSocket(socket) {
     try {
       let balance = givenBalance ? givenBalance : await redisClient.get(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
       balance = balance != undefined ? balance : '0'
-      const _signature = await signature(balance, address)
+      const _signature = room.getChainId() != 0 ? await signature(balance, address) : await signatureTon(balance, address)
       await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
         [
           _signature.address.toLowerCase(),
@@ -543,6 +554,7 @@ function handleSocket(socket) {
       )
       await removeKills(address)
       await removeDeaths(address)
+      await deleteTonWallet(address)
       await redisClient.del(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
     } catch (error) {
       console.log(error)
@@ -557,10 +569,18 @@ function handleSocket(socket) {
         data.loserAmount = room.baseAmount
         data.winnerAmount = room.baseAmount
       }
-      const signatures = [
-        await signature(data.loserAmount, data.loserAddress, data.token),
-        await signature(data.winnerAmount, data.winnerAddress, data.token)
-      ]
+      let signatures
+      if (room.getChainId() != 0) {
+        signatures = [
+          await signature(data.loserAmount, data.loserAddress, data.token),
+          await signature(data.winnerAmount, data.winnerAddress, data.token)
+        ]
+      } else {
+        signatures = [
+          await signatureTon(data.loserAmount, data.loserAddress),
+          await signatureTon(data.winnerAmount, data.winnerAddress)
+        ]
+      }
       for (let i = 0; i < signatures.length; i++) {
         try {
           await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
@@ -598,7 +618,7 @@ function handleSocket(socket) {
         await pgClient.query(
           `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) 
           SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
-        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), blockchain().contract.address, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
+        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -616,7 +636,7 @@ function handleSocket(socket) {
       }
       try {
         await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
-        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), blockchain().contract.address, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token])
+        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -639,6 +659,8 @@ function handleSocket(socket) {
       await redisClient.del(createRoundsRedisLink())
       await redisClient.del(createAmountRedisLink(data.loserAddress, room.getChainId(), room.getFightId()))
       await redisClient.del(createAmountRedisLink(data.winnerAddress, room.getChainId(), room.getFightId()))
+      await deleteTonWallet(data.loserAddress)
+      await deleteTonWallet(data.winnerAddress)
     } catch (error) {
       console.error(error)
     }
@@ -696,6 +718,9 @@ function handleSocket(socket) {
       )
       players = players.map(v => v.toString())
       if (players.includes(joinData.walletAddress) && finishTime == 0 && res.rows.length === 0) {
+        if (room.getChainId() == 0) {
+          await setTonWallet(joinData.walletAddress)
+        }
         const exists = await redisClient.get(createAmountRedisLink(joinData.walletAddress, room.getChainId(), room.getFightId()))
         const roundsExists = await redisClient.get(createRoundsRedisLink())
         if (exists == null || isNaN(parseFloat(exists)) || exists == 'NaN') {
@@ -894,6 +919,34 @@ function handleSocket(socket) {
     }
   }
 
+  function createTonWalletRedisLink(address) {
+    return `tonwallet_${address.toLowerCase()}`
+  }
+
+  async function setTonWallet(address) {
+    try {
+      await redisClient.set(createTonWalletRedisLink(address), address)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function getTonWallet(address) {
+    try {
+      return await redisClient.get(createTonWalletRedisLink(address))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async function deleteTonWallet(address) {
+    try {
+      await redisClient.del(createTonWalletRedisLink(address))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async function signature(amount, address, token) {
     amount = amount < 0 ? 0 : amount
     if (token == undefined) {
@@ -915,6 +968,39 @@ function handleSocket(socket) {
       address, 
       r, s, v,
       token
+    }
+  }
+
+  async function signatureTon(amount, address) {
+    try {
+      const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
+      address = await getTonWallet(address)
+      amount = amount < 0 ? 0 : amount
+      const signPlayer = sign(
+        beginCell()
+          .storeUint(3077991154, 32)
+          .storeInt(BigInt(room.getFightId()), 257)
+          .storeAddress(Address.parse(address))
+          .storeAddress(Address.parse(contractAddress))
+          .storeCoins(amount)
+          .endCell()
+          .hash(),
+        key.secretKey
+      )
+      const signString = signPlayer.toString('base64')
+      return {
+        contract: contractAddress, 
+        amount, 
+        chainid: room.getChainId(), 
+        fightid: room.getFightId(), 
+        address, 
+        r: 'к', 
+        s: signString, 
+        v: 0,
+        token: ''
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -943,6 +1029,9 @@ redisClient
   .then(() => {
     io.on('connection', handleSocket);
     log('Running room server on port %d', PORT);
+  })
+  .then(async () => {
+    key = await mnemonicToWalletKey(process.env.MNEMONIC_TON.split(" "));
   })
   .catch(err => console.error(err))
 

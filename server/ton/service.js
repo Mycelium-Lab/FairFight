@@ -86,3 +86,16 @@ export async function getFights() {
         console.error(e);
     }
 }
+
+// (async () => {
+//     try {
+//         let builder = new TupleBuilder();
+//         builder.writeNumber(BigInt(2));
+//         builder.writeAddress(Address.parse("EQArx7VGkRVmKKHA1mQUpbRa1ob9xm_iZsljFMkipj61GotQ"));
+//         let { stack } = await client.runMethod(contractAddress, 'currentFightPlayerClaimed', builder.build());
+//         console.log(stack)
+        
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })()
