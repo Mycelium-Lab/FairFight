@@ -101,3 +101,34 @@ export async function getStatistics(gameID, address, chainid) {
         }
     }
 }
+
+export async function getStatisticsByAddress(address, chainid) {
+    try {
+        const res = await pgClient.query(
+            `SELECT * 
+             FROM statistics 
+             WHERE gameid IN (
+                 SELECT gameid 
+                 FROM statistics 
+                 WHERE player = $1 AND chainid = $2
+             ) 
+             AND chainid = $2`,
+            [address.toLowerCase(), chainid]
+        );              
+        if (res.rows.length === 0) {
+            return {
+                code: 200,
+                statistics: []
+            }
+        }
+        return {
+            code: 200,
+            statistics: res.rows
+        }
+    } catch (error) {
+        console.error(error)
+        return {
+            code: 500
+        }
+    }
+}
