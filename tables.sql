@@ -630,3 +630,9 @@ CREATE TABLE lootbox_signatures (
 INSERT INTO lootbox_conditions (description) VALUES('5 games played');
 INSERT INTO lootbox_conditions (description) VALUES('Won 5 games in a row');
 INSERT INTO lootbox_conditions (description) VALUES('100 kills');
+
+ALTER TABLE statistics
+ADD COLUMN finishTime BIGINT,
+ADD COLUMN rounds INT,
+ADD COLUMN amountPerRound TEXT,
+ADD COLUMN baseAmount TEXT;

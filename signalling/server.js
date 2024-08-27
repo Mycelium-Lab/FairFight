@@ -97,6 +97,9 @@ function Room(name) {
   this.sockets = {};
   this.finished = false;
   this.playersBaseAmount = 2
+  this.finishTime = 0
+  this.amountPerRound = 0
+  this.baseAmount = 0
 }
 Room.prototype = {
   getName: function () {
@@ -537,8 +540,8 @@ function handleSocket(socket) {
       const rounds = await redisClient.get(createRoundsRedisLink())
 
       await pgClient.query(
-        `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) 
-        SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`
+        `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
+        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`
         , 
         [
           _signature.fightid, 
@@ -549,7 +552,11 @@ function handleSocket(socket) {
           kills, 
           deaths, 
           rounds, 
-          _signature.token
+          _signature.token,
+          Date.now(),
+          room.rounds,
+          room.amountToLose,
+          room.baseAmount
         ]
       )
       await removeKills(address)
@@ -616,9 +623,15 @@ function handleSocket(socket) {
       const deathsWinner = await getDeaths(data.winnerAddress)
       try {
         await pgClient.query(
-          `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) 
-          SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
-        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.loserAmount, killsLoser, deathsLoser, rounds, signatures[0].token])
+          `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
+          SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
+        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.loserAmount, killsLoser, deathsLoser, rounds, 
+          signatures[0].token,
+          Date.now(),
+          room.rounds,
+          room.amountToLose,
+          room.baseAmount
+        ])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -635,8 +648,13 @@ function handleSocket(socket) {
         console.log('-------------------')
       }
       try {
-        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9)", 
-        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token])
+        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13)", 
+        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token,
+          Date.now(),
+          room.rounds,
+          room.amountToLose,
+          room.baseAmount
+        ])
       } catch (error) {
         console.log(error)
         console.log('-------------------')
@@ -712,6 +730,7 @@ function handleSocket(socket) {
       room.baseAmount = baseAmount
       room.rounds = rounds
       room.playersBaseAmount = playersBaseAmount
+      room.finishTime = 0
       const res = await pgClient.query(
         'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
         [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
