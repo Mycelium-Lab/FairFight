@@ -3,12 +3,16 @@ import { mnemonicNew, mnemonicToPrivateKey } from "ton-crypto";
 import dotenv from 'dotenv'
 dotenv.config()
 
+const isTest = false
 // Create Client
-const client = new TonClient({
+const client = isTest ? new TonClient({
     endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC',
+}) : new TonClient({
+    endpoint: 'https://toncenter.com/api/v2/jsonRPC',
 });
 
-const contractAddress = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ');
+const contractAddressTest = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ');
+const contractAddress = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ')
 
 // Generate new key
 let mnemonics = process.env.MNEMONIC_TON.split(' ',',') || await mnemonicNew();
@@ -66,7 +70,7 @@ function dictionaryToObject(dictionary) {
 
 export async function getFights() {
     try {
-        let { stack } = await client.runMethod(contractAddress, 'currentFights');
+        let { stack } = await client.runMethod(isTest ? contractAddressTest : contractAddress, 'currentFights');
         let cellOpt = stack.readCellOpt();
 
         if (cellOpt) {
