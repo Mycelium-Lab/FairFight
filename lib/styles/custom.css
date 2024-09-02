@@ -200,7 +200,9 @@ a {
 }
 
 #btn_modal_window,
-#btn_modal_window_mobile {
+#btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
     /*background: none;*/
     border-radius: 8px;
     color: #fff;
@@ -442,7 +444,9 @@ a {
 }
 
 #btn_modal_window,
-#btn_modal_window_mobile {
+#btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
     position: relative;
     z-index: 100;
 }

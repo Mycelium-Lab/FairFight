@@ -636,3 +636,39 @@ ADD COLUMN finishTime BIGINT,
 ADD COLUMN rounds INT,
 ADD COLUMN amountPerRound TEXT,
 ADD COLUMN baseAmount TEXT;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE game_f2p (
+    gameid          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    owner           TEXT NOT NULL,
+    map             INT NOT NULL,
+    rounds          INT NOT NULL,
+    baseAmount      TEXT NOT NULL,
+    amountPerRound  TEXT NOT NULL,
+    players         INT NOT NULL,
+    createTime      BIGINT NOT NULL,
+    finishTime      BIGINT
+);
+
+CREATE TABLE players_f2p (
+    gameid          UUID REFERENCES game_f2p(gameid),
+    player          TEXT NOT NULL
+);
+
+CREATE TABLE statistics_f2p (
+    gameid  UUID PRIMARY KEY,
+    player  TEXT NOT NULL,
+    amount  TEXT NOT NULL,
+    kills   INT NOT NULL,
+    deaths  INT NOT NULL,
+    remainingRounds INT NOT NULL
+);
+
+CREATE TABLE board_f2p (
+    player      TEXT NOT NULL,
+    games       INT NOT NULL,
+    wins        INT NOT NULL,
+    amountWon   FLOAT NOT NULL,
+    tokens      BIGINT
+);

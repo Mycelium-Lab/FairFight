@@ -13,6 +13,7 @@ import airdropRouter from './server/airdrop/controller.js'
 import lootboxRouter from './server/lootbox/controller.js'
 import { createLeaderboard } from './server/leaderboard/service.js';
 import tonRouter from './server/ton/controller.js';
+import f2pRouter from './server/f2p/controller.js';
 // import { createMixingPicture } from './mixing/mixing.js';
 
 // cron.schedule("6 6 6 * * *", async () => {
@@ -57,6 +58,7 @@ server.use(gamePropertiesRouter)
 server.use(airdropRouter)
 server.use(lootboxRouter)
 server.use(tonRouter)
+server.use(f2pRouter)
 
 server.get('/', (req, res) => {
     maintenance

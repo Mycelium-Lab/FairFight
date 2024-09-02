@@ -839,8 +839,11 @@
 							<img srcset="media/mobile/game.png 345w, media/game.png 761w" sizes="(max-width: 1024px) 345px,
 				761px" src="elva-fairy-800w.jpg" alt="" class="wrapper__monetki_mobile wrapper__monetki">
 							<button id="btn_modal_window_mobile" class="newgame__btn_mobile newgame__btn"></button>
+							<button id="btn_modal_window_mobile_f2p" class="newgame__btn_mobile newgame__btn" style="display: none;"></button>
 							<div class="board inner-block">
-								<div class="inner-block__head">
+								<span id="f2p-text">pay to play</span>
+								<input id="f2p_checker" type="checkbox"/>
+								<div id="games_checker" class="inner-block__head">
 									<button class="active" id="opengames-btn">Open Games</button>
 									<button class="" id="pastgames-btn">Past games</button>
 								</div>
@@ -867,6 +870,38 @@
 										<div class="games__empty" id="pastgames_empty" style="display: none;">
 											<span id="pastgames_empty-title"></span>
 											<span id="pastgames_empty-desc">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								
+								<!-- f2p -->
+								<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
+									<button class="active" id="opengames-f2p-btn">Open Games</button>
+									<button class="" id="pastgames-f2p-btn">Past games</button>
+								</div>
+
+								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p" class="tabs__content active" style="display: none;">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="opengames-list-f2p">
+										<div class="games__empty" id="opengames_empty">
+											<span id="opengames_empty-title-f2p"></span>
+											<span id="opengames_empty-desc-f2p">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								<div id="pastgames-f2p" class="tabs__content" style="display: none;">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="pastgames-list-f2p">
+										<div class="games__empty" id="pastgames_empty" style="display: none;">
+											<span id="pastgames_empty-title-f2p"></span>
+											<span id="pastgames_empty-desc-f2p">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>

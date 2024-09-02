@@ -140,7 +140,9 @@
         padding-top: 30px;
     }
     #btn_modal_window,
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         width: 175.16px;
         background-size: 100%;
         padding: 0px 6px;
@@ -756,7 +758,9 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
         background-position: center 26px;
     }
 
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         width: 165.16px;
     }
     .wrapper__nft-shop-modal .filters__item label p {
@@ -788,7 +792,9 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
     .wrapper_banners {
         width: 150px;
     }
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         width: 145.16px;
     }
     .newgame__btn::after {
@@ -818,7 +824,9 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
     .wrapper__monetki {
         margin-left: 30px;
     }
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         margin-left: 115px;
     }
     .startContainer {
@@ -925,7 +933,9 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
         height: 16px;
     }
     #btn_modal_window,
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         background-image: url("../../media/buttons/newgame-mobile.svg");
         min-width: 0px;
         height: 95px;
@@ -1012,7 +1022,9 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
     .wrapper__monetki_mobile {
         grid-area: 1/1/2/1;
     }
-    #btn_modal_window_mobile {
+    #btn_modal_window_mobile, 
+#btn_modal_window_mobile_f2p
+ {
         transform: initial !important;
         grid-area: 2/1/3/1;
     }
