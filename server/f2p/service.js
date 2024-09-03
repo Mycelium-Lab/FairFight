@@ -121,7 +121,29 @@ export async function withdrawFight(fightId) {
 
 export async function getFightsWithNullFinish() {
     try {
-        const res = await pgClient.query("SELECT * FROM game_f2p WHERE finishTime IS NULL")
+        const res = await pgClient.query(
+            `
+            SELECT 
+                g.gameid, 
+                g.owner, 
+                g.map, 
+                g.rounds, 
+                g.baseAmount, 
+                g.amountPerRound, 
+                g.players, 
+                g.createTime, 
+                g.finishTime, 
+                array_agg(p.player) AS players_list
+            FROM 
+                game_f2p g
+            LEFT JOIN 
+                players_f2p p ON g.gameid = p.gameid
+            WHERE 
+                g.finishTime IS NULL
+            GROUP BY 
+                g.gameid;
+            `
+        )
         return {
             code: 200,
             msg: 'Success',
