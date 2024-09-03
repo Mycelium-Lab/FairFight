@@ -657,7 +657,7 @@ CREATE TABLE players_f2p (
 );
 
 CREATE TABLE statistics_f2p (
-    gameid  UUID PRIMARY KEY,
+    gameid  UUID,
     player  TEXT NOT NULL,
     amount  TEXT NOT NULL,
     kills   INT NOT NULL,

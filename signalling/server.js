@@ -418,12 +418,39 @@ function handleSocket(socket) {
     try {
       if (data.fromButton) {
         let fight, players
-        if (room.getChainId() != 0) {
+        if ((room.getChainId() != 0) && (room.chainid != 999999)) {
           fight = await blockchain().contract.fights(room.getFightId())
           players = await blockchain().contract.getFightPlayers(room.getFightId())
-        } else {
+        } else if (room.getChainId() == 0){
           fight = await blockchainTon(room.getFightId())
           players = fight.players
+        } else {
+          let fights = await pgClient.query(
+            `
+              SELECT 
+                  g.gameid, 
+                  g.owner, 
+                  g.map, 
+                  g.rounds, 
+                  g.baseAmount, 
+                  g.amountPerRound, 
+                  g.players, 
+                  g.createTime, 
+                  g.finishTime, 
+                  array_agg(p.player) AS players_list
+              FROM 
+                  game_f2p g
+              LEFT JOIN 
+                  players_f2p p ON g.gameid = p.gameid
+              WHERE 
+                  g.finishTime IS NULL AND g.gameid = $1
+              GROUP BY 
+                  g.gameid;
+              `
+            , [room.getFightId()])
+          fight = fights.rows[0]
+          fight.baseAmount = fight.baseamount
+          players = fight.rows[0].players_list
         }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
@@ -521,44 +548,63 @@ function handleSocket(socket) {
     try {
       let balance = givenBalance ? givenBalance : await redisClient.get(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
       balance = balance != undefined ? balance : '0'
-      const _signature = room.getChainId() != 0 ? await signature(balance, address) : await signatureTon(balance, address)
-      await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
-        [
-          _signature.address.toLowerCase(),
-          _signature.fightid,
-          _signature.amount,
-          _signature.chainid,
-          _signature.contract,
-          _signature.v,
-          _signature.r,
-          _signature.s,
-          _signature.token
-        ]
-      )
-      const kills = await getKills(address)
-      const deaths = await getDeaths(address)
-      const rounds = await redisClient.get(createRoundsRedisLink())
-
-      await pgClient.query(
-        `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
-        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`
-        , 
-        [
-          _signature.fightid, 
-          _signature.address.toLowerCase(), 
-          _signature.chainid, 
-          _signature.contract, 
-          balance, 
-          kills, 
-          deaths, 
-          rounds, 
-          _signature.token,
-          Date.now(),
-          room.rounds,
-          room.amountToLose,
-          room.baseAmount
-        ]
-      )
+      if (room.getChainId() != 999999) {
+        const _signature = room.getChainId() != 0 ? await signature(balance, address) : await signatureTon(balance, address)
+        await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
+          [
+            _signature.address.toLowerCase(),
+            _signature.fightid,
+            _signature.amount,
+            _signature.chainid,
+            _signature.contract,
+            _signature.v,
+            _signature.r,
+            _signature.s,
+            _signature.token
+          ]
+        )
+        const kills = await getKills(address)
+        const deaths = await getDeaths(address)
+        const rounds = await redisClient.get(createRoundsRedisLink())
+  
+        await pgClient.query(
+          `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
+          SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`
+          , 
+          [
+            _signature.fightid, 
+            _signature.address.toLowerCase(), 
+            _signature.chainid, 
+            _signature.contract, 
+            balance, 
+            kills, 
+            deaths, 
+            rounds, 
+            _signature.token,
+            Date.now(),
+            room.rounds,
+            room.amountToLose,
+            room.baseAmount
+          ]
+        )
+      } else {
+        const kills = await getKills(address)
+        const deaths = await getDeaths(address)
+        const rounds = await redisClient.get(createRoundsRedisLink())
+        await pgClient.query(
+          `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
+          SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`
+          , 
+          [
+            room.getFightId(), 
+            address.toLowerCase(), 
+            balance, 
+            kills, 
+            deaths, 
+            rounds
+          ]
+        )
+      }
       await removeKills(address)
       await removeDeaths(address)
       await deleteTonWallet(address)
@@ -576,99 +622,133 @@ function handleSocket(socket) {
         data.loserAmount = room.baseAmount
         data.winnerAmount = room.baseAmount
       }
-      let signatures
-      if (room.getChainId() != 0) {
-        signatures = [
-          await signature(data.loserAmount, data.loserAddress, data.token),
-          await signature(data.winnerAmount, data.winnerAddress, data.token)
-        ]
-      } else {
-        signatures = [
-          await signatureTon(data.loserAmount, data.loserAddress),
-          await signatureTon(data.winnerAmount, data.winnerAddress)
-        ]
-      }
-      for (let i = 0; i < signatures.length; i++) {
+      if (room.getChainId() != 999999) {
+
+        let signatures
+        if (room.getChainId() != 0) {
+          signatures = [
+            await signature(data.loserAmount, data.loserAddress, data.token),
+            await signature(data.winnerAmount, data.winnerAddress, data.token)
+          ]
+        } else {
+          signatures = [
+            await signatureTon(data.loserAmount, data.loserAddress),
+            await signatureTon(data.winnerAmount, data.winnerAddress)
+          ]
+        }
+        for (let i = 0; i < signatures.length; i++) {
+          try {
+            await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
+              signatures[i].address.toLowerCase(),
+              signatures[i].fightid,
+              signatures[i].amount,
+              signatures[i].chainid,
+              signatures[i].contract,
+              signatures[i].v,
+              signatures[i].r,
+              signatures[i].s,
+              signatures[i].token
+            ])
+          } catch (error) {
+            console.log(error)
+            console.log('-------------------'),
+              console.log(
+                'Error with data signatures:\n',
+                `Address: ${signatures[i].address}\n`,
+                `GameID: ${signatures[i].fightid}\n`,
+                `Amount: ${signatures[i].amount}\n`,
+                `ChainID: ${signatures[i].chainid}`,
+                `v: ${signatures[i].v}\n`,
+                `r: ${signatures[i].r}\n`,
+                `s: ${signatures[i].s}`
+              )
+            console.log('-------------------')
+          }
+        }
+        const killsLoser = await getKills(data.loserAddress)
+        const deathsLoser = await getDeaths(data.loserAddress)
+        const killsWinner = await getKills(data.winnerAddress)
+        const deathsWinner = await getDeaths(data.winnerAddress)
         try {
-          await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)", [
-            signatures[i].address.toLowerCase(),
-            signatures[i].fightid,
-            signatures[i].amount,
-            signatures[i].chainid,
-            signatures[i].contract,
-            signatures[i].v,
-            signatures[i].r,
-            signatures[i].s,
-            signatures[i].token
+          await pgClient.query(
+            `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
+            SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
+          [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.loserAmount, killsLoser, deathsLoser, rounds, 
+            signatures[0].token,
+            Date.now(),
+            room.rounds,
+            room.amountToLose,
+            room.baseAmount
           ])
         } catch (error) {
           console.log(error)
-          console.log('-------------------'),
-            console.log(
-              'Error with data signatures:\n',
-              `Address: ${signatures[i].address}\n`,
-              `GameID: ${signatures[i].fightid}\n`,
-              `Amount: ${signatures[i].amount}\n`,
-              `ChainID: ${signatures[i].chainid}`,
-              `v: ${signatures[i].v}\n`,
-              `r: ${signatures[i].r}\n`,
-              `s: ${signatures[i].s}`
-            )
+          console.log('-------------------')
+          console.log(
+            'Error with data statistics:\n',
+            `GameID: ${room.getFightId()}`,
+            `ChainID: ${room.getChainId()}`,
+            `Address: ${data.loserAddress}`,
+            `Amount: ${data.loserAmount}`,
+            `Kills: ${killsLoser}`,
+            `Deaths: ${deathsLoser}`,
+            `Rounds: ${rounds}`,
+          )
           console.log('-------------------')
         }
-      }
-      const killsLoser = await getKills(data.loserAddress)
-      const deathsLoser = await getDeaths(data.loserAddress)
-      const killsWinner = await getKills(data.winnerAddress)
-      const deathsWinner = await getDeaths(data.winnerAddress)
-      try {
+        try {
+          await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13)", 
+          [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token,
+            Date.now(),
+            room.rounds,
+            room.amountToLose,
+            room.baseAmount
+          ])
+        } catch (error) {
+          console.log(error)
+          console.log('-------------------')
+          console.log(
+            'Error with data statistics:\n',
+            `GameID: ${room.getFightId()}`,
+            `ChainID: ${room.getChainId()}`,
+            `Address: ${data.winnerAddress}`,
+            `Amount: ${data.winnerAmount}`,
+            `Kills: ${killsWinner}`,
+            `Deaths: ${deathsWinner}`,
+            `Rounds: ${rounds}`,
+          )
+          console.log('-------------------')
+        }
+      } else {
+        const killsLoser = await getKills(data.loserAddress)
+        const deathsLoser = await getDeaths(data.loserAddress)
+        const killsWinner = await getKills(data.winnerAddress)
+        const deathsWinner = await getDeaths(data.winnerAddress)
         await pgClient.query(
-          `INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) 
-          SELECT $1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13 WHERE NOT EXISTS(SELECT * FROM statistics WHERE player=$2 AND gameid=$1 AND chainid=$3 AND contract=$4)`, 
-        [room.getFightId(), data.loserAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.loserAmount, killsLoser, deathsLoser, rounds, 
-          signatures[0].token,
-          Date.now(),
-          room.rounds,
-          room.amountToLose,
-          room.baseAmount
-        ])
-      } catch (error) {
-        console.log(error)
-        console.log('-------------------')
-        console.log(
-          'Error with data statistics:\n',
-          `GameID: ${room.getFightId()}`,
-          `ChainID: ${room.getChainId()}`,
-          `Address: ${data.loserAddress}`,
-          `Amount: ${data.loserAmount}`,
-          `Kills: ${killsLoser}`,
-          `Deaths: ${deathsLoser}`,
-          `Rounds: ${rounds}`,
+          `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
+          SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`
+          , 
+          [
+            room.getFightId(), 
+            data.loserAddress.toLowerCase(), 
+            data.loserAmount, 
+            killsLoser, 
+            deathsLoser, 
+            rounds
+          ]
         )
-        console.log('-------------------')
-      }
-      try {
-        await pgClient.query("INSERT INTO statistics (gameid, player, chainid, contract, amount, kills, deaths, remainingRounds, token, finishtime, rounds, amountperround, baseamount) VALUES($1,$2,$3,$4,$5,$6,$7,$8, $9, $10, $11, $12, $13)", 
-        [room.getFightId(), data.winnerAddress.toLowerCase(), room.getChainId(), signatures[0].contract, data.winnerAmount, killsWinner, deathsWinner, rounds, signatures[0].token,
-          Date.now(),
-          room.rounds,
-          room.amountToLose,
-          room.baseAmount
-        ])
-      } catch (error) {
-        console.log(error)
-        console.log('-------------------')
-        console.log(
-          'Error with data statistics:\n',
-          `GameID: ${room.getFightId()}`,
-          `ChainID: ${room.getChainId()}`,
-          `Address: ${data.winnerAddress}`,
-          `Amount: ${data.winnerAmount}`,
-          `Kills: ${killsWinner}`,
-          `Deaths: ${deathsWinner}`,
-          `Rounds: ${rounds}`,
+        await pgClient.query(
+          `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
+          SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`
+          , 
+          [
+            room.getFightId(), 
+            data.winnerAddress.toLowerCase(), 
+            data.winnerAmount, 
+            killsWinner, 
+            deathsWinner, 
+            rounds
+          ]
         )
-        console.log('-------------------')
       }
       await removeKills(data.loserAddress)
       await removeKills(data.winnerAddress)
@@ -705,7 +785,7 @@ function handleSocket(socket) {
         })
       }
       let amountPerRound, baseAmount, rounds, playersBaseAmount, finishTime, players
-      if (room.getChainId() != 0) {
+      if ((room.getChainId() != 0) && (room.chainid != 999999)) {
         const fight = await blockchain().contract.fights(room.getFightId())
         players = await blockchain().contract.getFightPlayers(room.getFightId())
         amountPerRound = fight.amountPerRound.toString()
@@ -713,7 +793,7 @@ function handleSocket(socket) {
         rounds = fight.rounds.toString()
         playersBaseAmount = parseInt(fight.playersAmount)
         finishTime = parseInt(fight.finishTime)
-      } else {
+      } else  if (room.getChainId() == 0) {
         const fight = await blockchainTon(room.getFightId())
         if (!fight) {
           room.sendTo(user, MessageType.NOT_USER_ROOM);
@@ -725,16 +805,61 @@ function handleSocket(socket) {
         rounds = fight.rounds.toString()
         playersBaseAmount = parseInt(fight.maxPlayersAmount)
         finishTime = parseInt(fight.finishTime)
+      } else {
+        const fight = await pgClient.query(
+          `
+            SELECT 
+                g.gameid, 
+                g.owner, 
+                g.map, 
+                g.rounds, 
+                g.baseAmount, 
+                g.amountPerRound, 
+                g.players, 
+                g.createTime, 
+                g.finishTime, 
+                array_agg(p.player) AS players_list
+            FROM 
+                game_f2p g
+            LEFT JOIN 
+                players_f2p p ON g.gameid = p.gameid
+            WHERE 
+                g.finishTime IS NULL AND g.gameid = $1
+            GROUP BY 
+                g.gameid;
+            `
+          , [room.getFightId()])
+        if (fight.rows.length == 0) {
+          room.sendTo(user, MessageType.NOT_USER_ROOM);
+          throw Error('User not in this fight or fight finished or not exist')
+        }
+        players = fight.rows[0].players_list
+        amountPerRound = fight.rows[0].amountperround
+        baseAmount = fight.rows[0].baseamount
+        rounds = fight.rows[0].rounds
+        playersBaseAmount = parseInt(fight.rows[0].players)
+        finishTime = 0
+        console.log(fight.rows[0])
       }
       room.amountToLose = amountPerRound
       room.baseAmount = baseAmount
       room.rounds = rounds
       room.playersBaseAmount = playersBaseAmount
       room.finishTime = 0
-      const res = await pgClient.query(
-        'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
-        [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
-      )
+      console.log(joinData)
+      let res = {rows: []}
+      if (room.getChainId() != 999999) {
+        res = await pgClient.query(
+          'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
+          [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
+        )
+      } else {
+        const resStatsF2P = await pgClient.query(
+          'SELECT * FROM statistics_f2p WHERE player=$1 AND gameid=$2',
+          [joinData.walletAddress.toLowerCase(), room.getFightId()]
+        )
+        if (resStatsF2P.rows.length) throw Error('Fight ended')
+      }
       players = players.map(v => v.toString())
       if (players.includes(joinData.walletAddress) && finishTime == 0 && res.rows.length === 0) {
         if (room.getChainId() == 0) {
