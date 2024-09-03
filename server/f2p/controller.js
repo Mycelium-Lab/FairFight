@@ -1,7 +1,17 @@
 import { Router } from "express";
-import { createFight, joinFight, withdrawFight } from "./service.js";
+import { createFight, getFightsWithNullFinish, joinFight, withdrawFight } from "./service.js";
 
 const f2pRouter = Router()
+
+f2pRouter.get('/f2p', async (req, res) => {
+    try {
+        const response = await getFightsWithNullFinish()
+        res.status(response.code).json({fights: response.fights})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({fights: []})
+    }
+})
 
 f2pRouter.post('/f2p/create', async (req, res) => {
     try {

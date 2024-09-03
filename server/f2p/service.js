@@ -1,30 +1,45 @@
-import pgClient from "../db/db.js"
+import db from "../db/db.js"
+
+const pgClient = db()
+await pgClient.connect()
 
 //create game
 export async function createFight(fight) {
     try {
-        const query = `
-            WITH inserted_game AS (
-                INSERT INTO game_f2p (owner, map, rounds, baseAmount, amountPerRound, players, createTime)
-                VALUES ($1, $2, $3, $4, $5, $6, $7)
-                RETURNING gameid
-            )
-            INSERT INTO players_f2p (gameid, player)
-            SELECT gameid, $1
-            FROM inserted_game;
-        `;
-        await pgClient.query(query, [
-            fight.owner,
-            fight.map,
-            fight.rounds,
-            fight.baseAmount,
-            fight.amountPerRound,
-            fight.players,
-            Date.now()
-        ]);
-        return {
-            code: 200,
-            msg: 'Success'
+        const res = await pgClient.query(
+            `SELECT *
+            FROM game_f2p
+            WHERE owner = $1 AND finishTime IS NULL;
+            `, [fight.owner])
+        if (res.rows.length) {
+            return {
+                code: 400,
+                msg: 'Already has fight'
+            }
+        } else {
+            const query = `
+                WITH inserted_game AS (
+                    INSERT INTO game_f2p (owner, map, rounds, baseAmount, amountPerRound, players, createTime)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    RETURNING gameid
+                )
+                INSERT INTO players_f2p (gameid, player)
+                SELECT gameid, $1
+                FROM inserted_game;
+            `;
+            await pgClient.query(query, [
+                fight.owner,
+                fight.map,
+                fight.rounds,
+                BigInt(fight.baseAmount),
+                BigInt(fight.amountPerRound),
+                fight.players,
+                Date.now()
+            ]);
+            return {
+                code: 200,
+                msg: 'Success'
+            }
         }
     } catch (error) {
         console.log(error)
@@ -100,6 +115,24 @@ export async function withdrawFight(fightId) {
         return {
             code: 500,
             msg: 'Internal error'
+        }
+    }
+}
+
+export async function getFightsWithNullFinish() {
+    try {
+        const res = await pgClient.query("SELECT * FROM game_f2p WHERE finishTime IS NULL")
+        return {
+            code: 200,
+            msg: 'Success',
+            fights: res.rows
+        }
+    } catch (error) {
+        console.log(error)
+        return {
+            code: 500,
+            msg: 'Internal error',
+            fights: []
         }
     }
 }
