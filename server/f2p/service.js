@@ -158,3 +158,59 @@ export async function getFightsWithNullFinish() {
         }
     }
 }
+
+export async function getPastFights(player) {
+    try {
+        console.log(player)
+        const res = await pgClient.query(
+            `
+            SELECT 
+                g.gameid, 
+                g.owner, 
+                g.map, 
+                g.rounds, 
+                g.baseAmount, 
+                g.amountPerRound, 
+                g.players, 
+                g.createTime, 
+                g.finishTime, 
+                json_agg(
+                    json_build_object(
+                        'player', s.player, 
+                        'amount', s.amount, 
+                        'kills', s.kills, 
+                        'deaths', s.deaths, 
+                        'remainingrounds', s.remainingrounds
+                    )
+                ) AS statistics
+            FROM 
+                game_f2p g
+            JOIN 
+                statistics_f2p s ON g.gameid = s.gameid
+            WHERE 
+                g.finishTime IS NOT NULL
+                AND EXISTS (
+                    SELECT 1
+                    FROM statistics_f2p s2
+                    WHERE s2.gameid = g.gameid 
+                    AND s2.player = $1
+                )
+            GROUP BY 
+                g.gameid;
+            `,
+            [player]
+        )
+        return {
+            code: 200,
+            msg: 'Past fights',
+            fights: res.rows
+        }
+    } catch (error) {
+        console.log(error)
+        return {
+            code: 500,
+            msg: 'Internal error',
+            fights: []
+        }
+    }
+}

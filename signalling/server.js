@@ -719,6 +719,7 @@ function handleSocket(socket) {
           console.log('-------------------')
         }
       } else {
+        console.log('here')
         const killsLoser = await getKills(data.loserAddress)
         const deathsLoser = await getDeaths(data.loserAddress)
         const killsWinner = await getKills(data.winnerAddress)

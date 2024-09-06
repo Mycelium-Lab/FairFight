@@ -1,11 +1,21 @@
 import { Router } from "express";
-import { createFight, getFightsWithNullFinish, joinFight, withdrawFight } from "./service.js";
+import { createFight, getFightsWithNullFinish, joinFight, withdrawFight, getPastFights } from "./service.js";
 
 const f2pRouter = Router()
 
 f2pRouter.get('/f2p', async (req, res) => {
     try {
         const response = await getFightsWithNullFinish()
+        res.status(response.code).json({fights: response.fights})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({fights: []})
+    }
+})
+
+f2pRouter.get('/f2p/pastfights', async (req, res) => {
+    try {
+        const response = await getPastFights(req.query.player)
         res.status(response.code).json({fights: response.fights})
     } catch (error) {
         console.log(error)
