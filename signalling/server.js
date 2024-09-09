@@ -750,6 +750,7 @@ function handleSocket(socket) {
             rounds
           ]
         )
+        await pgClient.query("UPDATE game_f2p SET finishtime = $1 WHERE gameid = $2", [Date.now(), room.getFightId()])
       }
       await removeKills(data.loserAddress)
       await removeKills(data.winnerAddress)
