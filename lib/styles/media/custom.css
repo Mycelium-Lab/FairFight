@@ -1062,23 +1062,23 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
 
     .board-edge:nth-child(1) {
         position: absolute;
-        left: -7px;
-        top: -8px;
+        left: -4px;
+        top: -5px;
     }
     .board-edge:nth-child(2) {
         position: absolute;
-        right: -7px;
-        top: -8px;
+        right: -4px;
+        top: -5px;
     }
     .board-edge:nth-child(3) {
         position: absolute;
-        right: -7px;
-        bottom: -8px;
+        right: -4px;
+        bottom: -5px;
     }
     .board-edge:nth-child(4) {
         position: absolute;
-        left: -7px;
-        bottom: -8px;
+        left: -4px;
+        bottom: -5px;
     }
     .wrapper_banners {
         gap: 30px;

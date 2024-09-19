@@ -1,0 +1,21 @@
+@media (max-width: 500px) {
+    #open_game {
+        position: relative;
+        z-index: 1;
+        max-width: calc(100% - 40px);
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    #back_button {
+        display: none;
+    }
+
+    /* #f2p_checker {
+        display: none;
+    }
+
+    #f2p-text {
+        display: none;
+    } */
+}

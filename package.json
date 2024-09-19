@@ -9,7 +9,7 @@
     "signalling": "node signalling/server.js",
     "http": " http-server -c-1 . -p 8080",
     "dev:si": "nodemon signalling/server.js",
-    "dev:se": "nodemon server.js"
+    "dev:se": "node server.js"
   },
   "keywords": [
     "webrtc",
