@@ -274,7 +274,16 @@
         padding: 0 4px !important;
         width: 61px;
     }
-    .game-menu, .modal_waiting_enemy, #canvas{
-        display: none !important;
+    #canvas-parent {
+        margin: 0;
     }
+    #control_keys_mobile_modal {
+        /* display: none !important; */
+    }
+    .you-character, .you-deps, .enemy-character, .enemy-deps {
+        display: none;
+    }
+    /* .game-menu, .modal_waiting_enemy, #canvas{
+        display: none !important;
+    } */
 }
