@@ -234,7 +234,7 @@
     display: flex !important;
 }
  .game-menu,  #canvas{
-        display: flex !important;
+        /* display: flex !important; */
     }
     #you-stats-skin, #enemy-stats-skin {
         width: 952px;
@@ -275,6 +275,6 @@
         width: 61px;
     }
     .game-menu, .modal_waiting_enemy, #canvas{
-        display: none !important;
+        /* display: none !important; */
     }
 }
