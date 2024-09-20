@@ -234,7 +234,7 @@
     display: flex !important;
 }
  .game-menu,  #canvas{
-        display: flex !important;
+        /* display: flex !important; */
     }
     #you-stats-skin, #enemy-stats-skin {
         width: 952px;
@@ -273,9 +273,6 @@
     .stats-item__enemy-usdt {
         padding: 0 4px !important;
         width: 61px;
-    }
-    #canvas-parent {
-        margin: 0;
     }
     #control_keys_mobile_modal {
         /* display: none !important; */
