@@ -1,3 +1,8 @@
+
+#control_keys_mobile_modal{
+    display: none !important;
+}
+
 @media(max-width: 1024px) {
     .buttons {
      order: 2;
@@ -52,188 +57,188 @@
         margin: 0px;
     }
     .stats-item img{
-    width: 10px !important;
-    height: 10px !important;
-}
-#over_modal .orange::before {
-    width: 16px;
-    height: 16px;
-    background-size: 16px 16px;
+        width: 10px !important;
+        height: 10px !important;
+    }
+    #over_modal .orange::before {
+        width: 16px;
+        height: 16px;
+        background-size: 16px 16px;
+        }
+
+    #control_keys_mobile_modal{
+        align-items: center;
+        overflow: hidden;
+    }
+    .stats-item-usdt{
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 2px !important;
+        gap: 3px !important;
+        background-image: url('../../media/svg/game-stats-usdt-frame.svg') !important;
+        width: 65px;
+    }
+    .stats-item__enemy-usdt{
+        display: flex !important;
+        padding: 0 2px !important;
+        align-items: center !important;
+        background-image: url('../../media/svg/game-stats-usdt-enemy-frame.svg') !important;
+        width: 65px;
+        gap: 3px !important;
+    }
+    .stats-item__enemy{
+        background-image: url('../../media/svg/game-stats-frame-enemy.svg') !important;
     }
 
-#control_keys_mobile_modal{
-    align-items: center;
-    overflow: hidden;
-}
-.stats-item-usdt{
-     display: flex !important;
-    align-items: center !important;
-    padding: 0 2px !important;
-    gap: 3px !important;
-    background-image: url('../../media/svg/game-stats-usdt-frame.svg') !important;
-    width: 65px;
-}
-.stats-item__enemy-usdt{
-    display: flex !important;
-    padding: 0 2px !important;
-    align-items: center !important;
-    background-image: url('../../media/svg/game-stats-usdt-enemy-frame.svg') !important;
-    width: 65px;
-    gap: 3px !important;
-}
-.stats-item__enemy{
-    background-image: url('../../media/svg/game-stats-frame-enemy.svg') !important;
-}
-
-.stats-item__title{
-    height: 45px !important;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 60px;
-    /*padding: 5.48px 0px !important;*/
-    gap: 5.53px;
+    .stats-item__title{
+        height: 45px !important;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 60px;
+        /*padding: 5.48px 0px !important;*/
+        gap: 5.53px;
+        }
+    #game-header{
+        display: none !important;
     }
-#game-header{
-    display: none !important;
-}
-.stats-item span{
-    padding-top: 2px;
-}
-.ronds-head__title{
-    padding-top: 0px !important;
-}
-#yourStats, #enemyStats {
-    /*gap: 0px 20px !important;*/
-    /*margin: 0px !important;
-    margin-top: 5px !important;*/
-    gap: 0px !important;
-}
-.finish-stats_enemy{
-    margin-top: 0px !important;
-}
-.game-menu{
-    top: 93px;
-}
-.game-menu__button img{
-    width: 39px;
-  }
-#pause_modal{
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-.game-menu__button{
-    opacity: 0.5;
-}
-.modal__pause-body{
-    background-image: url('../../media/control-keys-mobile.svg');
-    height: 183px;
-    width: 302px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-.close_pause_modal{
-    top: 10px !important;
-}
+    .stats-item span{
+        padding-top: 2px;
+    }
+    .ronds-head__title{
+        padding-top: 0px !important;
+    }
+    #yourStats, #enemyStats {
+        /*gap: 0px 20px !important;*/
+        /*margin: 0px !important;
+        margin-top: 5px !important;*/
+        gap: 0px !important;
+    }
+    .finish-stats_enemy{
+        margin-top: 0px !important;
+    }
+    .game-menu{
+        top: 93px;
+    }
+    .game-menu__button img{
+        width: 39px;
+    }
+    #pause_modal{
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+    .game-menu__button{
+        opacity: 0.5;
+    }
+    .modal__pause-body{
+        background-image: url('../../media/control-keys-mobile.svg');
+        height: 183px;
+        width: 302px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .close_pause_modal{
+        top: 10px !important;
+    }
 
 
-.text_confirm_finish{
-    width: 207px;
-    font-size: 14px !important;
-}
-.modal_content_control_keys_mobile {
-    height: 288px !important;
-    width: 364px !important;
-}
-#confirm_finish, #open_control_keys, #back_menu{
-    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
-    width: 188px;
-    padding: 0 9.7395px;
-    font-size: 12.09px;
-    padding-bottom: 0px;
-    height: 36px;
-    margin: 0 auto;
-    margin-top: 8px;
-}
-#open_control_keys{
-    margin-top: 16px;
-    margin-bottom: 15px;
-}
-#close_pause_modal{
-    width: 16px;
-    height: 16px;
-    top: 13px;
-}
-#confirm_finishgame_modal{
-    align-items: center;
-    overflow: hidden;
-}
-#confirm_finish:hover, #open_control_keys:hover, #back_menu:hover{
-    padding-top: 8px;
-    background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
-}
-.confirm_finish-game{
-    width: 106.3px !important;
-    font-size: 11.83px !important;
-    padding: 0px  9.7395px !important;
-    padding-bottom: 20px !important;
-    margin: 0 auto !important;
-    height: 38px !important;
-}
-.confirm_finish-game:hover{
-    padding-top: 5px !important;
-}
-#modal__body_confirm_finish p {
-    text-align: center;
-    color: #393939;
-    font-size: 12px;
-    padding-bottom: 20.1px;
-    margin: 0px;
-}
-.you-character, .enemy-character{
-    display: flex;
-    background-image: url('../../media/stats-frame.svg');
-    background-repeat: no-repeat;
-    width: 88px;
-    height: 50px;
-    gap: 0px;
-}
-.enemy-character{
-    background-image: url('../../media/stats-frame-enemy.svg');
-}
-.you-stats-skin img, .enemy-stats-skin img{ 
-    width: 45.83px;
-}
-.you-stats-healf img, .enemy-stats-healf img{
-    width: 9px;
-}
-.you-stats-shoot img, .enemy-stats-shoot img{
-    width: 6px;
-}
-.you-stats-kills img, .enemy-stats-kills img{
-    width: 9px;
-}
-.you-stats-deaths img, .enemy-stats-deaths img{
-    width: 9px;
-}
-.you-deps img, .enemy-deps img{
-    width: 16px;
-}
-.you-stats-value span, .enemy-stats-value span{
-    height: 11px;
-    gap: 2px;
-}
-.stats-item__title{
-    background-image: url('../../media/round-frame.svg');
-    width: 90px;
-    background-repeat: no-repeat;
-}
-.modal_waitin_enemy{
-    display: flex !important;
-}
- .game-menu,  #canvas{
+    .text_confirm_finish{
+        width: 207px;
+        font-size: 14px !important;
+    }
+    .modal_content_control_keys_mobile {
+        height: 288px !important;
+        width: 364px !important;
+    }
+    #confirm_finish, #open_control_keys, #back_menu{
+        background-image: url('../../media/mobile/finish-the-game-frame-btn.svg');
+        width: 188px;
+        padding: 0 9.7395px;
+        font-size: 12.09px;
+        padding-bottom: 0px;
+        height: 36px;
+        margin: 0 auto;
+        margin-top: 8px;
+    }
+    #open_control_keys{
+        margin-top: 16px;
+        margin-bottom: 15px;
+    }
+    #close_pause_modal{
+        width: 16px;
+        height: 16px;
+        top: 13px;
+    }
+    #confirm_finishgame_modal{
+        align-items: center;
+        overflow: hidden;
+    }
+    #confirm_finish:hover, #open_control_keys:hover, #back_menu:hover{
+        padding-top: 8px;
+        background-image: url('../../media/mobile/finish-the-game-frame-btn.svg') !important;
+    }
+    .confirm_finish-game{
+        width: 106.3px !important;
+        font-size: 11.83px !important;
+        padding: 0px  9.7395px !important;
+        padding-bottom: 20px !important;
+        margin: 0 auto !important;
+        height: 38px !important;
+    }
+    .confirm_finish-game:hover{
+        padding-top: 5px !important;
+    }
+    #modal__body_confirm_finish p {
+        text-align: center;
+        color: #393939;
+        font-size: 12px;
+        padding-bottom: 20.1px;
+        margin: 0px;
+    }
+    .you-character, .enemy-character{
+        display: flex;
+        background-image: url('../../media/stats-frame.svg');
+        background-repeat: no-repeat;
+        width: 88px;
+        height: 50px;
+        gap: 0px;
+    }
+    .enemy-character{
+        background-image: url('../../media/stats-frame-enemy.svg');
+    }
+    .you-stats-skin img, .enemy-stats-skin img{ 
+        width: 45.83px;
+    }
+    .you-stats-healf img, .enemy-stats-healf img{
+        width: 9px;
+    }
+    .you-stats-shoot img, .enemy-stats-shoot img{
+        width: 6px;
+    }
+    .you-stats-kills img, .enemy-stats-kills img{
+        width: 9px;
+    }
+    .you-stats-deaths img, .enemy-stats-deaths img{
+        width: 9px;
+    }
+    .you-deps img, .enemy-deps img{
+        width: 16px;
+    }
+    .you-stats-value span, .enemy-stats-value span{
+        height: 11px;
+        gap: 2px;
+    }
+    .stats-item__title{
+        background-image: url('../../media/round-frame.svg');
+        width: 90px;
+        background-repeat: no-repeat;
+    }
+    .modal_waitin_enemy{
+        display: flex !important;
+    }
+    .game-menu,  #canvas{
         /* display: flex !important; */
     }
     #you-stats-skin, #enemy-stats-skin {
@@ -259,6 +264,10 @@
     }
 }
 
+.right_btn_panel, .left_btn_panel {
+    display: none;
+}
+
 @media(max-width: 500px) {
     #top_stats {
         font-size: 6.7px !important;
@@ -275,7 +284,7 @@
         width: 61px;
     }
     #control_keys_mobile_modal {
-        /* display: none !important; */
+        display: none !important;
     }
     .you-character, .you-deps, .enemy-character, .enemy-deps {
         display: none;
@@ -283,4 +292,193 @@
     /* .game-menu, .modal_waiting_enemy, #canvas{
         display: none !important;
     } */
+
+    .stats-item__title {
+        background-image: url('../../media/round-btn-bg.svg');
+        background-size: 100% 100%;
+    }
+    #top_stats .ronds-head__title, #top_stats #rounds_amount {
+        color: #fff !important;
+    }
+    .game-menu {
+        display: none !important;
+    }
+
+    .right_btn_panel, .left_btn_panel {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 5px;
+    }
+    .right_btn_panel {
+        right: 20px;
+    }
+    .left_btn_panel {
+        left: 20px;
+    }
+    .tongame__ui_btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #joystick-base {
+        border: none !important;
+        background: url(../../media/ton-joystick.svg) !important;
+        background-size: 100% 100% !important;
+
+    }
+    #joystick-control {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    
+    .canvas-block {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+
+    
+#pause_modal .board {
+    max-width: calc(100vw - 20px);
+    padding: 25px !important;
+    border: 2px solid #393939;
+    border-radius: 0;
+}
+#pause_modal .board .board-edge:nth-child(1) {
+    top: -8px;
+    left: -8px;
+}
+#pause_modal .board .board-edge:nth-child(2) {
+    top: -8px;
+    right: -8px;
+}
+#pause_modal .board .board-edge:nth-child(3) {
+    bottom: -8px;
+    right: -8px;
+}
+#pause_modal .board .board-edge:nth-child(4) {
+    bottom: -8px;
+    left: -8px;
+}
+.pause__title {
+    font-size: 22px;
+    font-weight: 900;
+    font-family: "Teletactile";
+    text-align: center;
+    line-height: 22.2px;
+    color: rgba(255, 124, 6, 1);
+    margin-bottom: 16px;
+}
+.pause__content {
+    text-align: center;
+}
+.pause__content p:nth-child(1) {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.09px;
+    margin-bottom: 16px;
+}
+.pause__content p:nth-child(2) {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 13.58px;
+    margin-bottom: 27px;
+}
+.pause__btn {
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.pause__btn span {
+    position: absolute;
+    top: 12px; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Teletactile";
+    color: #fff;
+}
+
+/* ///////////////////////////////////////////// */
+/* STATS MODAL */
+
+.stats_modal {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 100;
+    top: 160px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.stats__me,
+.stats__enemy {
+    display: flex;
+    flex-direction: column;
+}
+.stats__enemy {
+    align-items: flex-end;
+}
+.stats__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Teletactile;
+    font-size: 19.67px;
+    font-weight: 400;
+    line-height: 19.12px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+.stats__header-val {
+}
+.stats__header-prev {
+}
+.stats__header-next {
+}
+.stats__table {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.stats__enemy .stats__table-record {
+    background-image: url(../../media/stats-enemy-record-bg.svg);
+    flex-direction: row-reverse;
+}
+.stats__table-record {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-image: url(../../media/stats-record-bg.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 4px 8px;
+}
+.stats__table-record:nth-child(1) {
+    background-size: 100% 100%;
+}
+.stats__table-record span {
+    font-family: Teletactile;
+    font-size: 13.12px;
+    font-weight: 400;
+    line-height: 12.75px;
+    text-align: left;
+}
+.stats__table-record .record__pic {
+    height: 16px;
+    width: 16px;
+    background-size: 100% 100%;
+    border: none;
 }
