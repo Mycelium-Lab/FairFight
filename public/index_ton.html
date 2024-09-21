@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -27,6 +28,8 @@
 		<link rel="stylesheet" href="/styles/custom.css">
 		<link rel="stylesheet" href="/styles/media/custom.css">
 		<link rel="stylesheet" href="/media/fonts/stylesheet.css">
+		<link rel="stylesheet" href="styles/ton_menu/menu.css">
+		<link rel="stylesheet" href="styles/ton_menu/game_menu.css">
 		<link rel="icon" type="image/png" href="/media/favicon.png">
 	
 		<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
@@ -49,6 +52,8 @@
 		</script>
 		<script src="/bundle.js"></script>
 		<!-- <script type="text/javascript" src="dist/index.js"></script> -->
+		<script type="module" src="/dist/ton_modal.js"></script>
+		<script src="/dist/ton_playbtn.js" defer></script>
 		<script type="module" src="/dist/289.js"></script>
 		<script type="module" src="/dist/328.js"></script>
 		<script type="module" src="/dist/343.js"></script>
@@ -66,10 +71,245 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ72JV" height="0" width="0"
 			style="display:none;visibility:hidden"></iframe></noscript>
 
+	<div id="about_modal" class="modal wrapper__message-modal-overlay">
+		<div class="board wrapper__message-modal modal_content_about modal_content">
+			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
+			<button class="message-modal__btn-close close_modal_window"></button>
+			<img class="about-header" src="media/svg/about-header.svg">
+			<svg class="about-ton-header" width="43" height="21" viewBox="0 0 43 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M0.11 16V0.439999H11.22V4.89H5.67V7.11H10.11V11.56H5.67V16H0.11ZM21.2103 8.22V6H18.9903V8.22H21.2103ZM13.4303 16V8.22H14.5403V3.78H15.6503V0.439999H24.5403V3.78H25.6503V8.22H26.7603V16H21.2103V12.67H18.9903V16H13.4303ZM36.7572 11.56V4.89H34.5372V11.56H36.7572ZM34.5372 20.44V19.33H33.4272V16H31.1972V14.89H30.0872V13.78H28.9772V2.67H30.0872V1.56H31.1972V0.439999H40.0872V1.56H41.1972V2.67H42.3072V13.78H41.1972V14.89H37.8672V16H42.3072V20.44H34.5372Z" fill="#FF7C06"/>
+			</svg>
+				
+			<div class="about__content about__content_first" style="display: none">
+				<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+				<p>1.Create a new game or connect to existing games. </p>
+				<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and <b>Fair</b> Protocol smart contract makes sure everything is fair!</p>
+				<p>3. User  receive rewards for each round they won.</p>
+				<p>4. User can end the game any time and take the reward.</p>
+				<p>5. Collect tubes to recharge weapon <br>Be careful of lava burns!</p>
+			</div>
+
+			<div class="about__content about__content_next" style="display: none">
+				<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+				<p>1. Play for free with friends and farm <b>Fair</b> tokens. </p>
+				<p>2. User gets 5 <b>Fair</b> tokens for participating in the game and 10 tokens for winning the game</p>
+				<p>3. <b>Fair</b> token has only one utility function - exchangeability for NFT.</p>
+				<p>4. 150 Fair tokens can be exchanged for green NFT.</p>
+				<p>5. Collect tubes to recharge weapon <br>Be careful of lava burns!</p>
+			</div>
+
+			<div class="about__content_control_keys" style="display: none">
+				<div class="controls_block">
+					<h2 class="controls_block__title">
+						CONTROL KEYS INFO
+					</h2>
+					<div class="controls_block__list">
+						<div class="controls_line">
+							<div class="controls_block__list-card">
+								<img src="media/tutor-move.png" />
+								<span>
+									Stick to move and jump 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-shoot.png" />
+								<span>
+									Button to shot 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-map.png" />
+								<span>
+									Button to map 
+								</span>
+							</div>
+						</div>
+						<div class="controls_line controls_line--center">
+							<div class="controls_block__list-card">
+								<img src="media/tutor-stats.png" />
+								<span>
+									Button to statistic 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-pause.png" />
+								<span>
+									Pause 
+								</span>
+							</div>
+						</div>
+					</div>
+					
+					<h2 class="controls_block__title controls_block__title--mtop">
+						ITEMS ON THE MAP
+					</h2>
+					<div class="controls_block__list controls_block__list--perks">
+						<div class="controls_line">
+							<div class="controls_block__list-card">
+								<img src="media/tutor-stun.png" />
+								<span>
+									Stun 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-grenade.png" />
+								<span>
+									Grenade
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-stealth.png" />
+								<span>
+									Stealth
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-tp.png" />
+								<span>
+									Teleport
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-hole.png" />
+								<span>
+									Mole hole 
+								</span>
+							</div>
+							<div class="controls_block__list-card controls_block__list-card--wide">
+								<img src="media/tutor-explosive.png" />
+								<span>
+									Explosive bullets 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/tutor-poison.png" />
+								<span>
+									Posion bullets 
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button class="about__btn about__btn_next">
+				<svg class="about__btn-frame" width="176" height="48" viewBox="0 0 176 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="2.13635" y="8.53234" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="173.864" y="41.5995" width="2.13331" height="4.26662" transform="rotate(-180 173.864 41.5995)" fill="black"/>
+					<rect x="4.26782" y="37.3328" width="4.26662" height="2.13331" transform="rotate(90 4.26782 37.3328)" fill="black"/>
+					<rect x="10.6676" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 10.6676 35.1999)" fill="#FFBD82"/>
+					<rect x="165.332" y="37.3328" width="2.13332" height="154.665" transform="rotate(90 165.332 37.3328)" fill="#FFBD82"/>
+					<rect x="171.727" y="10.6676" width="4.26662" height="2.13331" transform="rotate(-90 171.727 10.6676)" fill="black"/>
+					<rect x="2.13635" y="6.3996" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="171.727" y="43.7324" width="2.13331" height="2.13331" transform="rotate(-180 171.727 43.7324)" fill="black"/>
+					<rect x="6.39453" y="41.5995" width="2.13331" height="2.13331" transform="rotate(90 6.39453 41.5995)" fill="black"/>
+					<rect x="4.26782" y="4.26805" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="8.53101" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 8.53101 43.7324)" fill="black"/>
+					<rect x="169.605" y="6.3996" width="2.13331" height="2.13331" transform="rotate(-90 169.605 6.3996)" fill="black"/>
+					<rect x="6.39453" y="2.13274" width="4.26662" height="2.13331" fill="black"/>
+					<rect x="169.605" y="45.8651" width="4.26662" height="2.13331" transform="rotate(-180 169.605 45.8651)" fill="black"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M4.26614 37.3331H2.13635L2.13635 30.9332L4.26967 30.9332L4.26967 35.2012H4.27294L4.27294 33.0659L6.40625 33.0659V35.2012H8.53277V37.334L10.6694 37.334V39.4667L165.334 39.4667V45.8666L10.6688 45.8666V43.7339H6.40273V41.6012H4.26614L4.26614 37.3331ZM169.607 41.6012V43.7339H165.341V37.334H167.474V35.2012H169.605V33.0679L171.732 33.0679V30.9332L173.865 30.9332V37.3331H171.739V41.6012H169.607Z" fill="#EE7000"/>
+					<rect x="10.6676" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 10.6676 43.7324)" fill="black"/>
+					<rect x="165.332" y="4.26805" width="2.13331" height="4.26662" transform="rotate(-90 165.332 4.26805)" fill="black"/>
+					<rect x="10.6676" y="2.86102e-06" width="154.665" height="2.13331" fill="black"/>
+					<rect x="10.6676" y="45.8651" width="154.665" height="2.13331" fill="black"/>
+					<rect y="10.6676" width="2.13331" height="26.6664" fill="black"/>
+					<rect x="176" y="37.3328" width="2.13331" height="26.6664" transform="rotate(-180 176 37.3328)" fill="black"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M165.345 4.26597L10.6798 4.26595V2.13265L165.345 2.13267V4.26597ZM8.54974 6.4007V4.26787L167.481 4.26788V6.40071H169.613V8.53346H171.749V10.6668H173.876V28.7999L2.14441 28.7999V10.6667L169.445 10.6668L4.28433 10.6667L4.28433 8.53344H6.41457V6.4007H8.54974ZM4.28259 30.9342L4.28259 30.9347V33.0675H6.41264L6.41264 35.199L169.611 35.199V33.0675H171.748V30.9347V30.9342V28.8014L4.28259 28.8014V30.9342ZM10.678 37.3343V35.201L165.343 35.201V37.3343L10.678 37.3343Z" fill="#FF9332"/>
+					<rect x="165.332" y="2.13274" width="2.13332" height="154.665" transform="rotate(90 165.332 2.13274)" fill="#FFBD82"/>
+					<rect x="6.39453" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 6.39453 6.3996)" fill="#FFBD82"/>
+					<rect x="4.26782" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 4.26782 10.6676)" fill="#FFBD82"/>
+					<rect x="8.53101" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 8.53101 4.26805)" fill="#FFBD82"/>
+					<rect x="10.6676" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 10.6676 4.26805)" fill="#FFBD82"/>
+					<rect x="169.605" y="4.26805" width="2.13331" height="4.26662" transform="rotate(90 169.605 4.26805)" fill="#FFBD82"/>
+					<rect x="171.727" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 171.727 6.3996)" fill="#FFBD82"/>
+					<rect x="173.864" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 173.864 10.6676)" fill="#FFBD82"/>
+					<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 39.4678 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 144.002 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 34.1294 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 138.668 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 29.871 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 134.395 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 26.6689 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 131.203 45.8651)" fill="#FFDDBE"/>
+					<rect x="4.26782" y="28.8004" width="4.26662" height="2.13331" transform="rotate(90 4.26782 28.8004)" fill="#FFBD82"/>
+					<rect x="8.53101" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 8.53101 35.1999)" fill="#FFBD82"/>
+					<rect x="6.39453" y="33.0672" width="2.13331" height="2.13331" transform="rotate(90 6.39453 33.0672)" fill="#FFBD82"/>
+					<rect x="169.605" y="37.3328" width="4.26662" height="2.13331" transform="rotate(-180 169.605 37.3328)" fill="#FFBD82"/>
+					<rect x="171.727" y="35.1999" width="2.13331" height="2.13331" transform="rotate(-180 171.727 35.1999)" fill="#FFBD82"/>
+					<rect x="173.864" y="30.9332" width="2.13331" height="4.26662" transform="rotate(-180 173.864 30.9332)" fill="#FFBD82"/>
+				</svg>
+				<span>
+					NEXT
+				</span>
+			</button>
+
+			<button class="about__btn about__btn_control_keys" style="display: none">
+				<svg class="about__btn-frame" width="176" height="48" viewBox="0 0 176 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="2.13635" y="8.53234" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="173.864" y="41.5995" width="2.13331" height="4.26662" transform="rotate(-180 173.864 41.5995)" fill="black"/>
+					<rect x="4.26782" y="37.3328" width="4.26662" height="2.13331" transform="rotate(90 4.26782 37.3328)" fill="black"/>
+					<rect x="10.6676" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 10.6676 35.1999)" fill="#FFBD82"/>
+					<rect x="165.332" y="37.3328" width="2.13332" height="154.665" transform="rotate(90 165.332 37.3328)" fill="#FFBD82"/>
+					<rect x="171.727" y="10.6676" width="4.26662" height="2.13331" transform="rotate(-90 171.727 10.6676)" fill="black"/>
+					<rect x="2.13635" y="6.3996" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="171.727" y="43.7324" width="2.13331" height="2.13331" transform="rotate(-180 171.727 43.7324)" fill="black"/>
+					<rect x="6.39453" y="41.5995" width="2.13331" height="2.13331" transform="rotate(90 6.39453 41.5995)" fill="black"/>
+					<rect x="4.26782" y="4.26805" width="2.13331" height="2.13331" fill="black"/>
+					<rect x="8.53101" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 8.53101 43.7324)" fill="black"/>
+					<rect x="169.605" y="6.3996" width="2.13331" height="2.13331" transform="rotate(-90 169.605 6.3996)" fill="black"/>
+					<rect x="6.39453" y="2.13274" width="4.26662" height="2.13331" fill="black"/>
+					<rect x="169.605" y="45.8651" width="4.26662" height="2.13331" transform="rotate(-180 169.605 45.8651)" fill="black"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M4.26614 37.3331H2.13635L2.13635 30.9332L4.26967 30.9332L4.26967 35.2012H4.27294L4.27294 33.0659L6.40625 33.0659V35.2012H8.53277V37.334L10.6694 37.334V39.4667L165.334 39.4667V45.8666L10.6688 45.8666V43.7339H6.40273V41.6012H4.26614L4.26614 37.3331ZM169.607 41.6012V43.7339H165.341V37.334H167.474V35.2012H169.605V33.0679L171.732 33.0679V30.9332L173.865 30.9332V37.3331H171.739V41.6012H169.607Z" fill="#EE7000"/>
+					<rect x="10.6676" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 10.6676 43.7324)" fill="black"/>
+					<rect x="165.332" y="4.26805" width="2.13331" height="4.26662" transform="rotate(-90 165.332 4.26805)" fill="black"/>
+					<rect x="10.6676" y="2.86102e-06" width="154.665" height="2.13331" fill="black"/>
+					<rect x="10.6676" y="45.8651" width="154.665" height="2.13331" fill="black"/>
+					<rect y="10.6676" width="2.13331" height="26.6664" fill="black"/>
+					<rect x="176" y="37.3328" width="2.13331" height="26.6664" transform="rotate(-180 176 37.3328)" fill="black"/>
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M165.345 4.26597L10.6798 4.26595V2.13265L165.345 2.13267V4.26597ZM8.54974 6.4007V4.26787L167.481 4.26788V6.40071H169.613V8.53346H171.749V10.6668H173.876V28.7999L2.14441 28.7999V10.6667L169.445 10.6668L4.28433 10.6667L4.28433 8.53344H6.41457V6.4007H8.54974ZM4.28259 30.9342L4.28259 30.9347V33.0675H6.41264L6.41264 35.199L169.611 35.199V33.0675H171.748V30.9347V30.9342V28.8014L4.28259 28.8014V30.9342ZM10.678 37.3343V35.201L165.343 35.201V37.3343L10.678 37.3343Z" fill="#FF9332"/>
+					<rect x="165.332" y="2.13274" width="2.13332" height="154.665" transform="rotate(90 165.332 2.13274)" fill="#FFBD82"/>
+					<rect x="6.39453" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 6.39453 6.3996)" fill="#FFBD82"/>
+					<rect x="4.26782" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 4.26782 10.6676)" fill="#FFBD82"/>
+					<rect x="8.53101" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 8.53101 4.26805)" fill="#FFBD82"/>
+					<rect x="10.6676" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 10.6676 4.26805)" fill="#FFBD82"/>
+					<rect x="169.605" y="4.26805" width="2.13331" height="4.26662" transform="rotate(90 169.605 4.26805)" fill="#FFBD82"/>
+					<rect x="171.727" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 171.727 6.3996)" fill="#FFBD82"/>
+					<rect x="173.864" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 173.864 10.6676)" fill="#FFBD82"/>
+					<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 39.4678 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 144.002 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 34.1294 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 138.668 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 29.871 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 134.395 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 26.6689 45.8651)" fill="#FFDDBE"/>
+					<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 131.203 45.8651)" fill="#FFDDBE"/>
+					<rect x="4.26782" y="28.8004" width="4.26662" height="2.13331" transform="rotate(90 4.26782 28.8004)" fill="#FFBD82"/>
+					<rect x="8.53101" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 8.53101 35.1999)" fill="#FFBD82"/>
+					<rect x="6.39453" y="33.0672" width="2.13331" height="2.13331" transform="rotate(90 6.39453 33.0672)" fill="#FFBD82"/>
+					<rect x="169.605" y="37.3328" width="4.26662" height="2.13331" transform="rotate(-180 169.605 37.3328)" fill="#FFBD82"/>
+					<rect x="171.727" y="35.1999" width="2.13331" height="2.13331" transform="rotate(-180 171.727 35.1999)" fill="#FFBD82"/>
+					<rect x="173.864" y="30.9332" width="2.13331" height="4.26662" transform="rotate(-180 173.864 30.9332)" fill="#FFBD82"/>
+				</svg>
+				<span>
+					CONTROL KEYS
+				</span>
+			</button>
+		</div>
+	</div>
+
 	<div id="start" style="position: relative;">
 
 		<header id="header">
-			<div style="display: flex;">
+			
+			<a id="back_button">
+				<img src="media/ton-menu-back-btn.svg" />
+			</a>
+
+			<div style="display: flex;" >
 				<a href="https://www.fairprotocol.solutions/" target="_blank" rel="noreferrer" class="logo">
 					<img src="media/svg/logofair.svg" alt="">
 				</a>
@@ -670,19 +910,216 @@
 						</a>
 					</ul>
 				</div>
-				<button class="connect-button close-button" id="connect">
-					connect wallet
+				<button class="connect-button close-button" id="connect" onclick="document.querySelector('#connect button').click()">
+					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="1.21118" y="0.842651" width="8.47938" height="1.21134" fill="#393939"/>
+						<rect x="6.05664" y="2.05402" width="8.47938" height="1.21134" transform="rotate(90 6.05664 2.05402)" fill="#393939"/>
+						<rect y="2.05402" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 10.9021 2.05402)" fill="#393939"/>
+						<rect x="1.21118" y="3.26535" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 9.69092 3.26535)" fill="#393939"/>
+						<rect x="1.21118" y="4.47672" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 9.69092 4.47672)" fill="#393939"/>
+						<rect x="2.42261" y="5.68799" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 8.47925 5.68799)" fill="#393939"/>
+						<rect x="2.42261" y="6.89935" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 8.47925 6.89935)" fill="#393939"/>
+						<rect x="3.63403" y="8.11069" width="1.21134" height="1.21134" fill="#393939"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 7.26807 8.11069)" fill="#393939"/>
+						<rect x="1.21118" y="3.05176e-05" width="8.47938" height="1.21134" fill="white"/>
+						<rect x="6.05664" y="1.21136" width="8.47938" height="1.21134" transform="rotate(90 6.05664 1.21136)" fill="white"/>
+						<rect y="1.21136" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 10.9021 1.21136)" fill="white"/>
+						<rect x="1.21118" y="2.42267" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 9.69092 2.42267)" fill="white"/>
+						<rect x="1.21118" y="3.634" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 9.69092 3.634)" fill="white"/>
+						<rect x="2.42261" y="4.84531" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 8.47925 4.84531)" fill="white"/>
+						<rect x="2.42261" y="6.05664" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 8.47925 6.05664)" fill="white"/>
+						<rect x="3.63403" y="7.26801" width="1.21134" height="1.21134" fill="white"/>
+						<rect width="1.21134" height="1.21134" transform="matrix(-1 0 0 1 7.26807 7.26801)" fill="white"/>
+					</svg>
+						
+					<span class="connect_wallet__text">connect wallet</span>
 				</button>
 			</div>
 			<div class="contact_link_about contact_link" id="about_link">
 				<img class="help__img" src="media/svg/help.svg" alt="">
-				<a class="link__name">About the game</a>
+				<a class="link__name" id="ton_faq_open">
+					<span>About the game</span>
+					<!-- FAQ Icon -->
+					<svg id="faq_icon" width="35" height="17" viewBox="0 0 35 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="path-1-outside-1_527_25510" maskUnits="userSpaceOnUse" x="-2" y="-2" width="39" height="21" fill="black">
+						<rect fill="white" x="-2" y="-2" width="39" height="21"/>
+						<path d="M0.888 13V0.551999H9.776V4.112H5.336V5.888H8.888V9.448H5.336V13H0.888ZM17.7683 6.776V5H15.9923V6.776H17.7683ZM11.5443 13V6.776H12.4323V3.224H13.3203V0.551999H20.4323V3.224H21.3203V6.776H22.2083V13H17.7683V10.336H15.9923V13H11.5443ZM30.2058 9.448V4.112H28.4298V9.448H30.2058ZM28.4298 16.552V15.664H27.5418V13H25.7578V12.112H24.8698V11.224H23.9818V2.336H24.8698V1.448H25.7578V0.551999H32.8698V1.448H33.7578V2.336H34.6458V11.224H33.7578V12.112H31.0938V13H34.6458V16.552H28.4298Z"/>
+						</mask>
+						<path d="M0.888 13V0.551999H9.776V4.112H5.336V5.888H8.888V9.448H5.336V13H0.888ZM17.7683 6.776V5H15.9923V6.776H17.7683ZM11.5443 13V6.776H12.4323V3.224H13.3203V0.551999H20.4323V3.224H21.3203V6.776H22.2083V13H17.7683V10.336H15.9923V13H11.5443ZM30.2058 9.448V4.112H28.4298V9.448H30.2058ZM28.4298 16.552V15.664H27.5418V13H25.7578V12.112H24.8698V11.224H23.9818V2.336H24.8698V1.448H25.7578V0.551999H32.8698V1.448H33.7578V2.336H34.6458V11.224H33.7578V12.112H31.0938V13H34.6458V16.552H28.4298Z" fill="#FF8426"/>
+						<path d="M0.888 13H-1.112V15H0.888V13ZM0.888 0.551999V-1.448H-1.112V0.551999H0.888ZM9.776 0.551999H11.776V-1.448H9.776V0.551999ZM9.776 4.112V6.112H11.776V4.112H9.776ZM5.336 4.112V2.112H3.336V4.112H5.336ZM5.336 5.888H3.336V7.888H5.336V5.888ZM8.888 5.888H10.888V3.888H8.888V5.888ZM8.888 9.448V11.448H10.888V9.448H8.888ZM5.336 9.448V7.448H3.336V9.448H5.336ZM5.336 13V15H7.336V13H5.336ZM2.888 13V0.551999H-1.112V13H2.888ZM0.888 2.552H9.776V-1.448H0.888V2.552ZM7.776 0.551999V4.112H11.776V0.551999H7.776ZM9.776 2.112H5.336V6.112H9.776V2.112ZM3.336 4.112V5.888H7.336V4.112H3.336ZM5.336 7.888H8.888V3.888H5.336V7.888ZM6.888 5.888V9.448H10.888V5.888H6.888ZM8.888 7.448H5.336V11.448H8.888V7.448ZM3.336 9.448V13H7.336V9.448H3.336ZM5.336 11H0.888V15H5.336V11ZM17.7682 6.776V8.776H19.7682V6.776H17.7682ZM17.7682 5H19.7682V3H17.7682V5ZM15.9923 5V3H13.9923V5H15.9923ZM15.9923 6.776H13.9923V8.776H15.9923V6.776ZM11.5443 13H9.54425V15H11.5443V13ZM11.5443 6.776V4.776H9.54425V6.776H11.5443ZM12.4323 6.776V8.776H14.4323V6.776H12.4323ZM12.4323 3.224V1.224H10.4323V3.224H12.4323ZM13.3202 3.224V5.224H15.3202V3.224H13.3202ZM13.3202 0.551999V-1.448H11.3202V0.551999H13.3202ZM20.4323 0.551999H22.4323V-1.448H20.4323V0.551999ZM20.4323 3.224H18.4323V5.224H20.4323V3.224ZM21.3203 3.224H23.3203V1.224H21.3203V3.224ZM21.3203 6.776H19.3203V8.776H21.3203V6.776ZM22.2083 6.776H24.2083V4.776H22.2083V6.776ZM22.2083 13V15H24.2083V13H22.2083ZM17.7682 13H15.7683V15H17.7682V13ZM17.7682 10.336H19.7682V8.336H17.7682V10.336ZM15.9923 10.336V8.336H13.9923V10.336H15.9923ZM15.9923 13V15H17.9923V13H15.9923ZM19.7682 6.776V5H15.7683V6.776H19.7682ZM17.7682 3H15.9923V7H17.7682V3ZM13.9923 5V6.776H17.9923V5H13.9923ZM15.9923 8.776H17.7682V4.776H15.9923V8.776ZM13.5443 13V6.776H9.54425V13H13.5443ZM11.5443 8.776H12.4323V4.776H11.5443V8.776ZM14.4323 6.776V3.224H10.4323V6.776H14.4323ZM12.4323 5.224H13.3202V1.224H12.4323V5.224ZM15.3202 3.224V0.551999H11.3202V3.224H15.3202ZM13.3202 2.552H20.4323V-1.448H13.3202V2.552ZM18.4323 0.551999V3.224H22.4323V0.551999H18.4323ZM20.4323 5.224H21.3203V1.224H20.4323V5.224ZM19.3203 3.224V6.776H23.3203V3.224H19.3203ZM21.3203 8.776H22.2083V4.776H21.3203V8.776ZM20.2083 6.776V13H24.2083V6.776H20.2083ZM22.2083 11H17.7682V15H22.2083V11ZM19.7682 13V10.336H15.7683V13H19.7682ZM17.7682 8.336H15.9923V12.336H17.7682V8.336ZM13.9923 10.336V13H17.9923V10.336H13.9923ZM15.9923 11H11.5443V15H15.9923V11ZM30.2057 9.448V11.448H32.2057V9.448H30.2057ZM30.2057 4.112H32.2057V2.112H30.2057V4.112ZM28.4298 4.112V2.112H26.4298V4.112H28.4298ZM28.4298 9.448H26.4298V11.448H28.4298V9.448ZM28.4298 16.552H26.4298V18.552H28.4298V16.552ZM28.4298 15.664H30.4298V13.664H28.4298V15.664ZM27.5417 15.664H25.5417V17.664H27.5417V15.664ZM27.5417 13H29.5417V11H27.5417V13ZM25.7577 13H23.7577V15H25.7577V13ZM25.7577 12.112H27.7577V10.112H25.7577V12.112ZM24.8698 12.112H22.8698V14.112H24.8698V12.112ZM24.8698 11.224H26.8698V9.224H24.8698V11.224ZM23.9818 11.224H21.9818V13.224H23.9818V11.224ZM23.9818 2.336V0.335999H21.9818V2.336H23.9818ZM24.8698 2.336V4.336H26.8698V2.336H24.8698ZM24.8698 1.448V-0.552001H22.8698V1.448H24.8698ZM25.7577 1.448V3.448H27.7577V1.448H25.7577ZM25.7577 0.551999V-1.448H23.7577V0.551999H25.7577ZM32.8698 0.551999H34.8698V-1.448H32.8698V0.551999ZM32.8698 1.448H30.8698V3.448H32.8698V1.448ZM33.7578 1.448H35.7578V-0.552001H33.7578V1.448ZM33.7578 2.336H31.7578V4.336H33.7578V2.336ZM34.6458 2.336H36.6458V0.335999H34.6458V2.336ZM34.6458 11.224V13.224H36.6458V11.224H34.6458ZM33.7578 11.224V9.224H31.7578V11.224H33.7578ZM33.7578 12.112V14.112H35.7578V12.112H33.7578ZM31.0938 12.112V10.112H29.0938V12.112H31.0938ZM31.0938 13H29.0938V15H31.0938V13ZM34.6458 13H36.6458V11H34.6458V13ZM34.6458 16.552V18.552H36.6458V16.552H34.6458ZM32.2057 9.448V4.112H28.2057V9.448H32.2057ZM30.2057 2.112H28.4298V6.112H30.2057V2.112ZM26.4298 4.112V9.448H30.4298V4.112H26.4298ZM28.4298 11.448H30.2057V7.448H28.4298V11.448ZM30.4298 16.552V15.664H26.4298V16.552H30.4298ZM28.4298 13.664H27.5417V17.664H28.4298V13.664ZM29.5417 15.664V13H25.5417V15.664H29.5417ZM27.5417 11H25.7577V15H27.5417V11ZM27.7577 13V12.112H23.7577V13H27.7577ZM25.7577 10.112H24.8698V14.112H25.7577V10.112ZM26.8698 12.112V11.224H22.8698V12.112H26.8698ZM24.8698 9.224H23.9818V13.224H24.8698V9.224ZM25.9818 11.224V2.336H21.9818V11.224H25.9818ZM23.9818 4.336H24.8698V0.335999H23.9818V4.336ZM26.8698 2.336V1.448H22.8698V2.336H26.8698ZM24.8698 3.448H25.7577V-0.552001H24.8698V3.448ZM27.7577 1.448V0.551999H23.7577V1.448H27.7577ZM25.7577 2.552H32.8698V-1.448H25.7577V2.552ZM30.8698 0.551999V1.448H34.8698V0.551999H30.8698ZM32.8698 3.448H33.7578V-0.552001H32.8698V3.448ZM31.7578 1.448V2.336H35.7578V1.448H31.7578ZM33.7578 4.336H34.6458V0.335999H33.7578V4.336ZM32.6458 2.336V11.224H36.6458V2.336H32.6458ZM34.6458 9.224H33.7578V13.224H34.6458V9.224ZM31.7578 11.224V12.112H35.7578V11.224H31.7578ZM33.7578 10.112H31.0938V14.112H33.7578V10.112ZM29.0938 12.112V13H33.0938V12.112H29.0938ZM31.0938 15H34.6458V11H31.0938V15ZM32.6458 13V16.552H36.6458V13H32.6458ZM34.6458 14.552H28.4298V18.552H34.6458V14.552Z" fill="#700F51" mask="url(#path-1-outside-1_527_25510)"/>
+					</svg>
+				</a>
 			</div>
 
 		</header>
 
 		<div id="wrapper">
 			<div class="blur"></div>
+
+			<div class="wrapper__ton_container">
+				<div class="ton__blur">
+
+				</div>
+				<div class="ton__menu">
+
+					<img src="/media/game-ton-chars.png" class="ton__menu-pic" />
+
+					<svg class="ton__menu-bgfx" width="409" height="590" viewBox="0 0 409 590" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="202.999" y="573" width="17" height="17" transform="rotate(-180 202.999 573)" fill="white" fill-opacity="0.7"/>
+						<rect x="202.999" y="590" width="17" height="17" transform="rotate(-180 202.999 590)" fill="white" fill-opacity="0.55"/>
+						<rect x="220" y="573" width="17" height="17" transform="rotate(-180 220 573)" fill="white" fill-opacity="0.55"/>
+						<rect x="186" y="573" width="17" height="17" transform="rotate(-180 186 573)" fill="white" fill-opacity="0.55"/>
+						<rect x="202.999" y="556" width="17" height="17" transform="rotate(-180 202.999 556)" fill="white" fill-opacity="0.55"/>
+						<rect x="21.0002" y="351" width="17" height="17" fill="white" fill-opacity="0.7"/>
+						<rect x="21.0002" y="334" width="17" height="17" fill="white" fill-opacity="0.55"/>
+						<rect x="4" y="351" width="17" height="17" fill="white" fill-opacity="0.55"/>
+						<rect x="37.9998" y="351" width="17" height="17" fill="white" fill-opacity="0.55"/>
+						<rect x="21.0002" y="368" width="17" height="17" fill="white" fill-opacity="0.55"/>
+						<rect x="215.999" y="535" width="8.00005" height="8.00005" transform="rotate(-180 215.999 535)" fill="white" fill-opacity="0.7"/>
+						<rect x="215.999" y="543" width="8.00005" height="8.00005" transform="rotate(-180 215.999 543)" fill="white" fill-opacity="0.55"/>
+						<rect x="224" y="535" width="8.00005" height="8.00005" transform="rotate(-180 224 535)" fill="white" fill-opacity="0.55"/>
+						<rect x="208" y="535" width="8.00005" height="8.00005" transform="rotate(-180 208 535)" fill="white" fill-opacity="0.55"/>
+						<rect x="215.999" y="527" width="8.00005" height="8.00005" transform="rotate(-180 215.999 527)" fill="white" fill-opacity="0.55"/>
+						<rect x="8.00024" y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.7"/>
+						<rect x="8.00024" y="381" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
+						<rect y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
+						<rect x="16" y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
+						<rect x="8.00024" y="397" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
+						<rect x="48.6667" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.5"/>
+						<rect x="48.6667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="41" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="56.3333" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="48.6667" y="15.3333" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="367" y="472" width="21" height="21" fill="white" fill-opacity="0.5"/>
+						<rect x="367" y="451" width="21" height="21" fill="white" fill-opacity="0.3"/>
+						<rect x="346" y="472" width="21" height="21" fill="white" fill-opacity="0.3"/>
+						<rect x="388" y="472" width="21" height="21" fill="white" fill-opacity="0.3"/>
+						<rect x="367" y="493" width="21" height="21" fill="white" fill-opacity="0.3"/>
+						<rect x="351.667" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.5"/>
+						<rect x="351.667" y="433" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="344" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="359.333" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+						<rect x="351.667" y="448.333" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
+					</svg>
+
+					<div class="ton__content-inner"> 
+
+						<div class="ton__menu-content">
+							
+							<div class="ton__menu-btn" id="p2p_opener">
+								<img src="media/p2p-btn-frame.svg" />
+								<span>P2PLAY</span>
+							</div>
+							<div class="ton__menu-btn" id="f2p_opener">
+								<img src="media/f2p-btn-frame.svg" />
+								<span>F2PLAY</span>
+							</div>
+							<div class="ton__menu-btn">
+								<img src="media/nft-btn-frame.svg" />
+								<span>NFT SHOP</span>
+							</div>
+							<div class="ton__menu-btn">
+								<img src="media/tour-btn-frame.svg" />
+								<span>TOURNAMENTS</span>
+							</div>
+
+						</div>
+
+						<div class="board inner-block" id="open_game" style="display: none">
+							<span id="f2p-text">pay to play</span>
+							<input id="f2p_checker" type="checkbox"/>
+							<div id="games_checker" class="inner-block__head">
+								<button class="active" id="opengames-btn">Open Games</button>
+								<button class="" id="pastgames-btn">Past games</button>
+							</div>
+
+							<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
+							<div id="opengames" class="tabs__content active">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<ul id="opengames-list">
+									<div class="games__empty" id="opengames_empty">
+										<span id="opengames_empty-title"></span>
+										<span id="opengames_empty-desc">Connect your wallet to start playing.</span>
+									</div>
+								</ul>
+							</div>
+							<div id="pastgames" class="tabs__content">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<ul id="pastgames-list">
+									<div class="games__empty" id="pastgames_empty" style="display: none;">
+										<span id="pastgames_empty-title"></span>
+										<span id="pastgames_empty-desc" style="display: none;">Connect your wallet to start playing.</span>
+									</div>
+								</ul>
+							</div>
+							
+							<!-- f2p -->
+							<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
+								<button class="active" id="opengames-f2p-btn">Open Games</button>
+								<button class="" id="pastgames-f2p-btn">Past games</button>
+							</div>
+
+							<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
+							<div id="opengames-f2p" class="tabs__content active">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<ul id="opengames-list-f2p">
+									<div class="games__empty" id="opengames_empty-f2p">
+										<span id="opengames_empty-title-f2p"></span>
+										<span id="opengames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+									</div>
+								</ul>
+							</div>
+							<div id="pastgames-f2p" class="tabs__content">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<img class="board-edge" src="media/svg/board-edge.svg">
+								<ul id="pastgames-list-f2p">
+									<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
+										<span id="pastgames_empty-title-f2p"></span>
+										<span id="pastgames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+									</div>
+								</ul>
+							</div>
+						</div>
+
+						<div class="ton__menu-smm">
+							<a href="#" class="ton__smm-link">
+								<img src="media/tg-smm.svg" />
+							</a>
+							<a href="#" class="ton__smm-link">
+								<img src="media/discord-smm.svg" />
+							</a>
+							<a href="#" class="ton__smm-link">
+								<img src="media/x-smm.svg" />
+							</a>
+							<a href="#" class="ton__smm-link">
+								<img src="media/lin-smm.svg" />
+							</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
 
 			<div class="wrapper__container">
 				<img srcset="media/mobile/game.png 345w, media/game.png 761w" sizes="(max-width: 1024px) 345px,
@@ -1151,10 +1588,6 @@
 		</div>
 		<div id="leaderboard_modal" class="modal wrapper__message-modal-overlay">
 			<div class="board modal_content wrapper__message-modal">
-				<img src="/media/svg/leaderboard/board_edge.svg" class="board__edge">
-				<img src="/media/svg/leaderboard/board_edge.svg" class="board__edge">
-				<img src="/media/svg/leaderboard/board_edge.svg" class="board__edge">
-				<img src="/media/svg/leaderboard/board_edge.svg" class="board__edge">
 				<span class="close_modal_window">
 					<img src="media/svg/leaderboard/lb_arrow_close.svg" alt="">
 				</span>
