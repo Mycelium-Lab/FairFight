@@ -1,23 +1,44 @@
 
 @media (max-width: 500px) {
+
+    .opengame_content {
+        max-width: calc(100vw - 40px);
+        width: 100%;
+    }
+
     #open_game {
         position: relative;
         z-index: 1;
-        max-width: calc(100% - 40px);
         width: 100%;
-        margin-top: 50px;
+        height: inherit;
     }
 
     #back_button {
         display: none;
     }
 
-    /* #f2p_checker {
-        display: none;
+    #f2p_checker, #f2p-text {
+        position: absolute;
+        visibility: hidden;
     }
 
-    #f2p-text {
-        display: none;
-    } */
+    .tabs__content {
+        width: 100% !important;
+        max-width: 100% !important;
+        background-size: 100%;
+    }
+
+    .newgame_ton_btn.next_step {
+        position: absolute;
+        top: 0;
+        transform: translateY(-100%);
+    }
+    .ton__content-inner.next_step {
+        transform: translateY(100px);
+    }
+    .ton__menu-pic.next_step {
+        transform: translateY(50px) scale(1.15) !important;
+        z-index: 0;
+    }
 
 }

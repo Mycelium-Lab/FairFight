@@ -19,23 +19,23 @@
     .wrapper__ton_container {
         display: flex;
         flex-direction: column;
-        min-height: 100dvh;
+        justify-content: flex-end;
+
         width: 100%;
+        min-height: 100dvh;
         overflow: auto;
         position: relative;
+
+        padding-top: 80px;
 
         background-image: url(../../media/ton-app-bg.jpg) !important;
         background-size: 100% !important;
         background-position: 0 -5%;
+        background-repeat: no-repeat;
     }
 
     .ton__menu {
         width: 100%;
-        height: 450px;
-        max-height: 50dvh;
-        position: absolute;
-        bottom: 0;
-        left: 0;
     }
 
     .ton__menu-smm {
@@ -57,32 +57,23 @@
     }
 
     .ton__blur {
-        z-index: 0;
         position: absolute;
+        bottom: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        height: 70%;
+        
+        height: 100%;
         width: 100%;
-
-        transform: translateY(20%);
         
         background: linear-gradient(180deg, rgba(41, 27, 62, 0) 0.8%, #291B3E 16.99%) !important;
-        /* background-size: 100% 50% !important; */
+        background-size: 100% 100% !important;
         background-repeat: no-repeat !important;
         background-position: bottom !important;
     }
 
-    .ton__menu-pic {
-        display: block;
+    .ton__menu-pic { 
         width: 100%;
-        max-width: 400px;
-        top: 0;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        transform: translateY(-90%);
-        position: relative;
+        
         z-index: 1;
     }
 
@@ -96,29 +87,43 @@
 
     .contact_link_about {
         max-width: 80px;
-        position: fixed;
-        top: 15px !important;
-        left: 17px;
-    }
-
-    .ton__content-inner {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        position: static !important;
     }
 
     .ton__menu-content {
-        z-index: 2;
-        padding: 50px 12px;
+        z-index: 3;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 20px;
         padding-bottom: 10px;
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
         width: 100%;
+    }
+
+    .ton__content-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        background: #291b3e;
+    }
+    .ton__content-inner::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 0;
+
+        background: linear-gradient(180deg, rgba(41, 27, 62, 0) 0.8%, #291B3E 16.99%) !important;
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        background-position: center -20% !important;
     }
 
     .ton__menu-btn {
@@ -165,6 +170,8 @@
         background-image: url(../../media/ton-app-bg.jpg) !important;
         background-size: 100% !important;
         background-position: 0 -5%;
+
+        position: static;
     }
 
     .blur {
@@ -223,6 +230,23 @@
 
     #header {
         padding: 0px 20px;
+        position: fixed !important;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* HEADER CLEANING */
+    #header #old_logo {
+        display: none !important;
+    }
+    .header-right {
+        margin-bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     /* MODAL */
@@ -350,6 +374,53 @@
     .controls_block__list-card--wide {
         max-width: 70px !important;
     }
+
+    .opengame_content {
+        display: flex;
+        flex-direction: column;
+    }
+    .opengame_content .board {
+        min-height: 250px;
+        margin-bottom: 15px;
+    }
+    .newgame_ton_btn {
+        width: 175.16px;
+        background-size: 100%;
+        padding: 0px 6px;
+        height: 100px;
+        z-index: 3;
+        position: relative;
+        background: none;
+        border: none;
+        outline: none;
+        background-repeat: no-repeat;
+        background-image: url(../../media/buttons/newgame-sm.svg);
+        background-position: center;
+    }
+    .newgame_ton_btn::after {
+        content: '';
+        position: absolute;
+        top: 25px; left: 0;right: 0;bottom: 0;
+        background-size: calc(100% - 4px);
+        background-position: center;
+        background-image: url(../../media/buttons/border-game-sm.svg);
+        background-repeat: no-repeat;
+        z-index: 4;
+    }
+
+    #back_button {
+        align-self: flex-start;
+    }
+
+    .blur {
+        display: none;
+    }
+
+    .help__img {
+        width: 20px;
+        transform: translateY(-2px);
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -372,6 +443,38 @@
 }
 
 @media (max-width: 450px) {
+    .ton__menu-btn:nth-child(1) span, .ton__menu-btn:nth-child(2) span {
+        padding-top: 12px;
+        font-size: 16px;
+    }
+    .ton__menu-btn:nth-child(3) span, .ton__menu-btn:nth-child(4) span {
+        padding-top: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ton__menu-btn span {
+        font-size: 18px;
+        padding-top: 3vw;
+    }
+    .ton__menu-btn:nth-child(1) span {
+        padding-top: 12px;
+        font-size: 16px;
+    }
+    .ton__menu-btn:nth-child(2) span {
+        padding-top: 12px;
+        font-size: 16px;
+    }
+    .ton__menu-btn:nth-child(3) span {
+        padding-top: 5vw;
+    }
+    .ton__menu-btn:nth-child(4) span {
+        padding-top: 5vw;
+    }
+}
+
+@media (max-width: 360px) {
     .ton__menu-btn span {
         font-size: 18px;
         padding-top: 3vw;

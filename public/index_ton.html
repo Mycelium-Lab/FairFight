@@ -304,12 +304,8 @@
 	<div id="start" style="position: relative;">
 
 		<header id="header">
-			
-			<a id="back_button">
-				<img src="media/ton-menu-back-btn.svg" />
-			</a>
 
-			<div style="display: flex;" >
+			<div style="display: flex;" id="old_logo" >
 				<a href="https://www.fairprotocol.solutions/" target="_blank" rel="noreferrer" class="logo">
 					<img src="media/svg/logofair.svg" alt="">
 				</a>
@@ -910,6 +906,29 @@
 						</a>
 					</ul>
 				</div>
+
+				<a id="back_button">
+					<img src="media/ton-menu-back-btn.svg" />
+				</a>
+
+				<div class="contact_link_about contact_link" id="about_link">
+					<img class="help__img" src="media/svg/help.svg" alt="">
+					<a class="link__name" id="ton_faq_open">
+						<span>About the game</span>
+						<!-- FAQ Icon -->
+
+						<svg id="faq_icon" width="39" height="22" viewBox="0 0 39 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<mask id="path-1-outside-1_31_24" maskUnits="userSpaceOnUse" x="0" y="1" width="39" height="21" fill="black">
+							<rect fill="white" y="1" width="39" height="21"/>
+							<path d="M2.888 16V3.552H11.776V7.112H7.336V8.888H10.888V12.448H7.336V16H2.888ZM19.7683 9.776V8H17.9923V9.776H19.7683ZM13.5443 16V9.776H14.4323V6.224H15.3203V3.552H22.4323V6.224H23.3203V9.776H24.2083V16H19.7683V13.336H17.9923V16H13.5443ZM32.2058 12.448V7.112H30.4298V12.448H32.2058ZM30.4298 19.552V18.664H29.5418V16H27.7578V15.112H26.8698V14.224H25.9818V5.336H26.8698V4.448H27.7578V3.552H34.8698V4.448H35.7578V5.336H36.6458V14.224H35.7578V15.112H33.0938V16H36.6458V19.552H30.4298Z"/>
+							</mask>
+							<path d="M2.888 16V3.552H11.776V7.112H7.336V8.888H10.888V12.448H7.336V16H2.888ZM19.7683 9.776V8H17.9923V9.776H19.7683ZM13.5443 16V9.776H14.4323V6.224H15.3203V3.552H22.4323V6.224H23.3203V9.776H24.2083V16H19.7683V13.336H17.9923V16H13.5443ZM32.2058 12.448V7.112H30.4298V12.448H32.2058ZM30.4298 19.552V18.664H29.5418V16H27.7578V15.112H26.8698V14.224H25.9818V5.336H26.8698V4.448H27.7578V3.552H34.8698V4.448H35.7578V5.336H36.6458V14.224H35.7578V15.112H33.0938V16H36.6458V19.552H30.4298Z" fill="#FF8426"/>
+							<path d="M2.888 16H0.888V18H2.888V16ZM2.888 3.552V1.552H0.888V3.552H2.888ZM11.776 3.552H13.776V1.552H11.776V3.552ZM11.776 7.112V9.112H13.776V7.112H11.776ZM7.336 7.112V5.112H5.336V7.112H7.336ZM7.336 8.888H5.336V10.888H7.336V8.888ZM10.888 8.888H12.888V6.888H10.888V8.888ZM10.888 12.448V14.448H12.888V12.448H10.888ZM7.336 12.448V10.448H5.336V12.448H7.336ZM7.336 16V18H9.336V16H7.336ZM4.888 16V3.552H0.888V16H4.888ZM2.888 5.552H11.776V1.552H2.888V5.552ZM9.776 3.552V7.112H13.776V3.552H9.776ZM11.776 5.112H7.336V9.112H11.776V5.112ZM5.336 7.112V8.888H9.336V7.112H5.336ZM7.336 10.888H10.888V6.888H7.336V10.888ZM8.888 8.888V12.448H12.888V8.888H8.888ZM10.888 10.448H7.336V14.448H10.888V10.448ZM5.336 12.448V16H9.336V12.448H5.336ZM7.336 14H2.888V18H7.336V14ZM19.7683 9.776V11.776H21.7683V9.776H19.7683ZM19.7683 8H21.7683V6H19.7683V8ZM17.9923 8V6H15.9923V8H17.9923ZM17.9923 9.776H15.9923V11.776H17.9923V9.776ZM13.5443 16H11.5443V18H13.5443V16ZM13.5443 9.776V7.776H11.5443V9.776H13.5443ZM14.4323 9.776V11.776H16.4323V9.776H14.4323ZM14.4323 6.224V4.224H12.4323V6.224H14.4323ZM15.3203 6.224V8.224H17.3203V6.224H15.3203ZM15.3203 3.552V1.552H13.3203V3.552H15.3203ZM22.4323 3.552H24.4323V1.552H22.4323V3.552ZM22.4323 6.224H20.4323V8.224H22.4323V6.224ZM23.3203 6.224H25.3203V4.224H23.3203V6.224ZM23.3203 9.776H21.3203V11.776H23.3203V9.776ZM24.2083 9.776H26.2083V7.776H24.2083V9.776ZM24.2083 16V18H26.2083V16H24.2083ZM19.7683 16H17.7683V18H19.7683V16ZM19.7683 13.336H21.7683V11.336H19.7683V13.336ZM17.9923 13.336V11.336H15.9923V13.336H17.9923ZM17.9923 16V18H19.9923V16H17.9923ZM21.7683 9.776V8H17.7683V9.776H21.7683ZM19.7683 6H17.9923V10H19.7683V6ZM15.9923 8V9.776H19.9923V8H15.9923ZM17.9923 11.776H19.7683V7.776H17.9923V11.776ZM15.5443 16V9.776H11.5443V16H15.5443ZM13.5443 11.776H14.4323V7.776H13.5443V11.776ZM16.4323 9.776V6.224H12.4323V9.776H16.4323ZM14.4323 8.224H15.3203V4.224H14.4323V8.224ZM17.3203 6.224V3.552H13.3203V6.224H17.3203ZM15.3203 5.552H22.4323V1.552H15.3203V5.552ZM20.4323 3.552V6.224H24.4323V3.552H20.4323ZM22.4323 8.224H23.3203V4.224H22.4323V8.224ZM21.3203 6.224V9.776H25.3203V6.224H21.3203ZM23.3203 11.776H24.2083V7.776H23.3203V11.776ZM22.2083 9.776V16H26.2083V9.776H22.2083ZM24.2083 14H19.7683V18H24.2083V14ZM21.7683 16V13.336H17.7683V16H21.7683ZM19.7683 11.336H17.9923V15.336H19.7683V11.336ZM15.9923 13.336V16H19.9923V13.336H15.9923ZM17.9923 14H13.5443V18H17.9923V14ZM32.2058 12.448V14.448H34.2058V12.448H32.2058ZM32.2058 7.112H34.2058V5.112H32.2058V7.112ZM30.4298 7.112V5.112H28.4298V7.112H30.4298ZM30.4298 12.448H28.4298V14.448H30.4298V12.448ZM30.4298 19.552H28.4298V21.552H30.4298V19.552ZM30.4298 18.664H32.4298V16.664H30.4298V18.664ZM29.5418 18.664H27.5418V20.664H29.5418V18.664ZM29.5418 16H31.5418V14H29.5418V16ZM27.7578 16H25.7578V18H27.7578V16ZM27.7578 15.112H29.7578V13.112H27.7578V15.112ZM26.8698 15.112H24.8698V17.112H26.8698V15.112ZM26.8698 14.224H28.8698V12.224H26.8698V14.224ZM25.9818 14.224H23.9818V16.224H25.9818V14.224ZM25.9818 5.336V3.336H23.9818V5.336H25.9818ZM26.8698 5.336V7.336H28.8698V5.336H26.8698ZM26.8698 4.448V2.448H24.8698V4.448H26.8698ZM27.7578 4.448V6.448H29.7578V4.448H27.7578ZM27.7578 3.552V1.552H25.7578V3.552H27.7578ZM34.8698 3.552H36.8698V1.552H34.8698V3.552ZM34.8698 4.448H32.8698V6.448H34.8698V4.448ZM35.7578 4.448H37.7578V2.448H35.7578V4.448ZM35.7578 5.336H33.7578V7.336H35.7578V5.336ZM36.6458 5.336H38.6458V3.336H36.6458V5.336ZM36.6458 14.224V16.224H38.6458V14.224H36.6458ZM35.7578 14.224V12.224H33.7578V14.224H35.7578ZM35.7578 15.112V17.112H37.7578V15.112H35.7578ZM33.0938 15.112V13.112H31.0938V15.112H33.0938ZM33.0938 16H31.0938V18H33.0938V16ZM36.6458 16H38.6458V14H36.6458V16ZM36.6458 19.552V21.552H38.6458V19.552H36.6458ZM34.2058 12.448V7.112H30.2058V12.448H34.2058ZM32.2058 5.112H30.4298V9.112H32.2058V5.112ZM28.4298 7.112V12.448H32.4298V7.112H28.4298ZM30.4298 14.448H32.2058V10.448H30.4298V14.448ZM32.4298 19.552V18.664H28.4298V19.552H32.4298ZM30.4298 16.664H29.5418V20.664H30.4298V16.664ZM31.5418 18.664V16H27.5418V18.664H31.5418ZM29.5418 14H27.7578V18H29.5418V14ZM29.7578 16V15.112H25.7578V16H29.7578ZM27.7578 13.112H26.8698V17.112H27.7578V13.112ZM28.8698 15.112V14.224H24.8698V15.112H28.8698ZM26.8698 12.224H25.9818V16.224H26.8698V12.224ZM27.9818 14.224V5.336H23.9818V14.224H27.9818ZM25.9818 7.336H26.8698V3.336H25.9818V7.336ZM28.8698 5.336V4.448H24.8698V5.336H28.8698ZM26.8698 6.448H27.7578V2.448H26.8698V6.448ZM29.7578 4.448V3.552H25.7578V4.448H29.7578ZM27.7578 5.552H34.8698V1.552H27.7578V5.552ZM32.8698 3.552V4.448H36.8698V3.552H32.8698ZM34.8698 6.448H35.7578V2.448H34.8698V6.448ZM33.7578 4.448V5.336H37.7578V4.448H33.7578ZM35.7578 7.336H36.6458V3.336H35.7578V7.336ZM34.6458 5.336V14.224H38.6458V5.336H34.6458ZM36.6458 12.224H35.7578V16.224H36.6458V12.224ZM33.7578 14.224V15.112H37.7578V14.224H33.7578ZM35.7578 13.112H33.0938V17.112H35.7578V13.112ZM31.0938 15.112V16H35.0938V15.112H31.0938ZM33.0938 18H36.6458V14H33.0938V18ZM34.6458 16V19.552H38.6458V16H34.6458ZM36.6458 17.552H30.4298V21.552H36.6458V17.552Z" fill="#700F51" mask="url(#path-1-outside-1_31_24)"/>
+						</svg>
+							
+					</a>
+				</div>
+				
 				<button class="connect-button close-button" id="connect" onclick="document.querySelector('#connect button').click()">
 					<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect x="1.21118" y="0.842651" width="8.47938" height="1.21134" fill="#393939"/>
@@ -944,21 +963,7 @@
 						
 					<span class="connect_wallet__text">connect wallet</span>
 				</button>
-			</div>
-			<div class="contact_link_about contact_link" id="about_link">
-				<img class="help__img" src="media/svg/help.svg" alt="">
-				<a class="link__name" id="ton_faq_open">
-					<span>About the game</span>
-					<!-- FAQ Icon -->
-					<svg id="faq_icon" width="35" height="17" viewBox="0 0 35 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<mask id="path-1-outside-1_527_25510" maskUnits="userSpaceOnUse" x="-2" y="-2" width="39" height="21" fill="black">
-						<rect fill="white" x="-2" y="-2" width="39" height="21"/>
-						<path d="M0.888 13V0.551999H9.776V4.112H5.336V5.888H8.888V9.448H5.336V13H0.888ZM17.7683 6.776V5H15.9923V6.776H17.7683ZM11.5443 13V6.776H12.4323V3.224H13.3203V0.551999H20.4323V3.224H21.3203V6.776H22.2083V13H17.7683V10.336H15.9923V13H11.5443ZM30.2058 9.448V4.112H28.4298V9.448H30.2058ZM28.4298 16.552V15.664H27.5418V13H25.7578V12.112H24.8698V11.224H23.9818V2.336H24.8698V1.448H25.7578V0.551999H32.8698V1.448H33.7578V2.336H34.6458V11.224H33.7578V12.112H31.0938V13H34.6458V16.552H28.4298Z"/>
-						</mask>
-						<path d="M0.888 13V0.551999H9.776V4.112H5.336V5.888H8.888V9.448H5.336V13H0.888ZM17.7683 6.776V5H15.9923V6.776H17.7683ZM11.5443 13V6.776H12.4323V3.224H13.3203V0.551999H20.4323V3.224H21.3203V6.776H22.2083V13H17.7683V10.336H15.9923V13H11.5443ZM30.2058 9.448V4.112H28.4298V9.448H30.2058ZM28.4298 16.552V15.664H27.5418V13H25.7578V12.112H24.8698V11.224H23.9818V2.336H24.8698V1.448H25.7578V0.551999H32.8698V1.448H33.7578V2.336H34.6458V11.224H33.7578V12.112H31.0938V13H34.6458V16.552H28.4298Z" fill="#FF8426"/>
-						<path d="M0.888 13H-1.112V15H0.888V13ZM0.888 0.551999V-1.448H-1.112V0.551999H0.888ZM9.776 0.551999H11.776V-1.448H9.776V0.551999ZM9.776 4.112V6.112H11.776V4.112H9.776ZM5.336 4.112V2.112H3.336V4.112H5.336ZM5.336 5.888H3.336V7.888H5.336V5.888ZM8.888 5.888H10.888V3.888H8.888V5.888ZM8.888 9.448V11.448H10.888V9.448H8.888ZM5.336 9.448V7.448H3.336V9.448H5.336ZM5.336 13V15H7.336V13H5.336ZM2.888 13V0.551999H-1.112V13H2.888ZM0.888 2.552H9.776V-1.448H0.888V2.552ZM7.776 0.551999V4.112H11.776V0.551999H7.776ZM9.776 2.112H5.336V6.112H9.776V2.112ZM3.336 4.112V5.888H7.336V4.112H3.336ZM5.336 7.888H8.888V3.888H5.336V7.888ZM6.888 5.888V9.448H10.888V5.888H6.888ZM8.888 7.448H5.336V11.448H8.888V7.448ZM3.336 9.448V13H7.336V9.448H3.336ZM5.336 11H0.888V15H5.336V11ZM17.7682 6.776V8.776H19.7682V6.776H17.7682ZM17.7682 5H19.7682V3H17.7682V5ZM15.9923 5V3H13.9923V5H15.9923ZM15.9923 6.776H13.9923V8.776H15.9923V6.776ZM11.5443 13H9.54425V15H11.5443V13ZM11.5443 6.776V4.776H9.54425V6.776H11.5443ZM12.4323 6.776V8.776H14.4323V6.776H12.4323ZM12.4323 3.224V1.224H10.4323V3.224H12.4323ZM13.3202 3.224V5.224H15.3202V3.224H13.3202ZM13.3202 0.551999V-1.448H11.3202V0.551999H13.3202ZM20.4323 0.551999H22.4323V-1.448H20.4323V0.551999ZM20.4323 3.224H18.4323V5.224H20.4323V3.224ZM21.3203 3.224H23.3203V1.224H21.3203V3.224ZM21.3203 6.776H19.3203V8.776H21.3203V6.776ZM22.2083 6.776H24.2083V4.776H22.2083V6.776ZM22.2083 13V15H24.2083V13H22.2083ZM17.7682 13H15.7683V15H17.7682V13ZM17.7682 10.336H19.7682V8.336H17.7682V10.336ZM15.9923 10.336V8.336H13.9923V10.336H15.9923ZM15.9923 13V15H17.9923V13H15.9923ZM19.7682 6.776V5H15.7683V6.776H19.7682ZM17.7682 3H15.9923V7H17.7682V3ZM13.9923 5V6.776H17.9923V5H13.9923ZM15.9923 8.776H17.7682V4.776H15.9923V8.776ZM13.5443 13V6.776H9.54425V13H13.5443ZM11.5443 8.776H12.4323V4.776H11.5443V8.776ZM14.4323 6.776V3.224H10.4323V6.776H14.4323ZM12.4323 5.224H13.3202V1.224H12.4323V5.224ZM15.3202 3.224V0.551999H11.3202V3.224H15.3202ZM13.3202 2.552H20.4323V-1.448H13.3202V2.552ZM18.4323 0.551999V3.224H22.4323V0.551999H18.4323ZM20.4323 5.224H21.3203V1.224H20.4323V5.224ZM19.3203 3.224V6.776H23.3203V3.224H19.3203ZM21.3203 8.776H22.2083V4.776H21.3203V8.776ZM20.2083 6.776V13H24.2083V6.776H20.2083ZM22.2083 11H17.7682V15H22.2083V11ZM19.7682 13V10.336H15.7683V13H19.7682ZM17.7682 8.336H15.9923V12.336H17.7682V8.336ZM13.9923 10.336V13H17.9923V10.336H13.9923ZM15.9923 11H11.5443V15H15.9923V11ZM30.2057 9.448V11.448H32.2057V9.448H30.2057ZM30.2057 4.112H32.2057V2.112H30.2057V4.112ZM28.4298 4.112V2.112H26.4298V4.112H28.4298ZM28.4298 9.448H26.4298V11.448H28.4298V9.448ZM28.4298 16.552H26.4298V18.552H28.4298V16.552ZM28.4298 15.664H30.4298V13.664H28.4298V15.664ZM27.5417 15.664H25.5417V17.664H27.5417V15.664ZM27.5417 13H29.5417V11H27.5417V13ZM25.7577 13H23.7577V15H25.7577V13ZM25.7577 12.112H27.7577V10.112H25.7577V12.112ZM24.8698 12.112H22.8698V14.112H24.8698V12.112ZM24.8698 11.224H26.8698V9.224H24.8698V11.224ZM23.9818 11.224H21.9818V13.224H23.9818V11.224ZM23.9818 2.336V0.335999H21.9818V2.336H23.9818ZM24.8698 2.336V4.336H26.8698V2.336H24.8698ZM24.8698 1.448V-0.552001H22.8698V1.448H24.8698ZM25.7577 1.448V3.448H27.7577V1.448H25.7577ZM25.7577 0.551999V-1.448H23.7577V0.551999H25.7577ZM32.8698 0.551999H34.8698V-1.448H32.8698V0.551999ZM32.8698 1.448H30.8698V3.448H32.8698V1.448ZM33.7578 1.448H35.7578V-0.552001H33.7578V1.448ZM33.7578 2.336H31.7578V4.336H33.7578V2.336ZM34.6458 2.336H36.6458V0.335999H34.6458V2.336ZM34.6458 11.224V13.224H36.6458V11.224H34.6458ZM33.7578 11.224V9.224H31.7578V11.224H33.7578ZM33.7578 12.112V14.112H35.7578V12.112H33.7578ZM31.0938 12.112V10.112H29.0938V12.112H31.0938ZM31.0938 13H29.0938V15H31.0938V13ZM34.6458 13H36.6458V11H34.6458V13ZM34.6458 16.552V18.552H36.6458V16.552H34.6458ZM32.2057 9.448V4.112H28.2057V9.448H32.2057ZM30.2057 2.112H28.4298V6.112H30.2057V2.112ZM26.4298 4.112V9.448H30.4298V4.112H26.4298ZM28.4298 11.448H30.2057V7.448H28.4298V11.448ZM30.4298 16.552V15.664H26.4298V16.552H30.4298ZM28.4298 13.664H27.5417V17.664H28.4298V13.664ZM29.5417 15.664V13H25.5417V15.664H29.5417ZM27.5417 11H25.7577V15H27.5417V11ZM27.7577 13V12.112H23.7577V13H27.7577ZM25.7577 10.112H24.8698V14.112H25.7577V10.112ZM26.8698 12.112V11.224H22.8698V12.112H26.8698ZM24.8698 9.224H23.9818V13.224H24.8698V9.224ZM25.9818 11.224V2.336H21.9818V11.224H25.9818ZM23.9818 4.336H24.8698V0.335999H23.9818V4.336ZM26.8698 2.336V1.448H22.8698V2.336H26.8698ZM24.8698 3.448H25.7577V-0.552001H24.8698V3.448ZM27.7577 1.448V0.551999H23.7577V1.448H27.7577ZM25.7577 2.552H32.8698V-1.448H25.7577V2.552ZM30.8698 0.551999V1.448H34.8698V0.551999H30.8698ZM32.8698 3.448H33.7578V-0.552001H32.8698V3.448ZM31.7578 1.448V2.336H35.7578V1.448H31.7578ZM33.7578 4.336H34.6458V0.335999H33.7578V4.336ZM32.6458 2.336V11.224H36.6458V2.336H32.6458ZM34.6458 9.224H33.7578V13.224H34.6458V9.224ZM31.7578 11.224V12.112H35.7578V11.224H31.7578ZM33.7578 10.112H31.0938V14.112H33.7578V10.112ZM29.0938 12.112V13H33.0938V12.112H29.0938ZM31.0938 15H34.6458V11H31.0938V15ZM32.6458 13V16.552H36.6458V13H32.6458ZM34.6458 14.552H28.4298V18.552H34.6458V14.552Z" fill="#700F51" mask="url(#path-1-outside-1_527_25510)"/>
-					</svg>
-				</a>
+
 			</div>
 
 		</header>
@@ -967,50 +972,10 @@
 			<div class="blur"></div>
 
 			<div class="wrapper__ton_container">
-				<div class="ton__blur">
 
-				</div>
+				<img src="/media/game-ton-chars.png" class="ton__menu-pic" />
+
 				<div class="ton__menu">
-
-					<img src="/media/game-ton-chars.png" class="ton__menu-pic" />
-
-					<svg class="ton__menu-bgfx" width="409" height="590" viewBox="0 0 409 590" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<rect x="202.999" y="573" width="17" height="17" transform="rotate(-180 202.999 573)" fill="white" fill-opacity="0.7"/>
-						<rect x="202.999" y="590" width="17" height="17" transform="rotate(-180 202.999 590)" fill="white" fill-opacity="0.55"/>
-						<rect x="220" y="573" width="17" height="17" transform="rotate(-180 220 573)" fill="white" fill-opacity="0.55"/>
-						<rect x="186" y="573" width="17" height="17" transform="rotate(-180 186 573)" fill="white" fill-opacity="0.55"/>
-						<rect x="202.999" y="556" width="17" height="17" transform="rotate(-180 202.999 556)" fill="white" fill-opacity="0.55"/>
-						<rect x="21.0002" y="351" width="17" height="17" fill="white" fill-opacity="0.7"/>
-						<rect x="21.0002" y="334" width="17" height="17" fill="white" fill-opacity="0.55"/>
-						<rect x="4" y="351" width="17" height="17" fill="white" fill-opacity="0.55"/>
-						<rect x="37.9998" y="351" width="17" height="17" fill="white" fill-opacity="0.55"/>
-						<rect x="21.0002" y="368" width="17" height="17" fill="white" fill-opacity="0.55"/>
-						<rect x="215.999" y="535" width="8.00005" height="8.00005" transform="rotate(-180 215.999 535)" fill="white" fill-opacity="0.7"/>
-						<rect x="215.999" y="543" width="8.00005" height="8.00005" transform="rotate(-180 215.999 543)" fill="white" fill-opacity="0.55"/>
-						<rect x="224" y="535" width="8.00005" height="8.00005" transform="rotate(-180 224 535)" fill="white" fill-opacity="0.55"/>
-						<rect x="208" y="535" width="8.00005" height="8.00005" transform="rotate(-180 208 535)" fill="white" fill-opacity="0.55"/>
-						<rect x="215.999" y="527" width="8.00005" height="8.00005" transform="rotate(-180 215.999 527)" fill="white" fill-opacity="0.55"/>
-						<rect x="8.00024" y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.7"/>
-						<rect x="8.00024" y="381" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
-						<rect y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
-						<rect x="16" y="389" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
-						<rect x="8.00024" y="397" width="8.00005" height="8.00005" fill="white" fill-opacity="0.55"/>
-						<rect x="48.6667" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.5"/>
-						<rect x="48.6667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="41" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="56.3333" y="7.66675" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="48.6667" y="15.3333" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="367" y="472" width="21" height="21" fill="white" fill-opacity="0.5"/>
-						<rect x="367" y="451" width="21" height="21" fill="white" fill-opacity="0.3"/>
-						<rect x="346" y="472" width="21" height="21" fill="white" fill-opacity="0.3"/>
-						<rect x="388" y="472" width="21" height="21" fill="white" fill-opacity="0.3"/>
-						<rect x="367" y="493" width="21" height="21" fill="white" fill-opacity="0.3"/>
-						<rect x="351.667" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.5"/>
-						<rect x="351.667" y="433" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="344" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="359.333" y="440.667" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-						<rect x="351.667" y="448.333" width="7.66667" height="7.66667" fill="white" fill-opacity="0.3"/>
-					</svg>
 
 					<div class="ton__content-inner"> 
 
@@ -1035,71 +1000,78 @@
 
 						</div>
 
-						<div class="board inner-block" id="open_game" style="display: none">
-							<span id="f2p-text">pay to play</span>
-							<input id="f2p_checker" type="checkbox"/>
-							<div id="games_checker" class="inner-block__head">
-								<button class="active" id="opengames-btn">Open Games</button>
-								<button class="" id="pastgames-btn">Past games</button>
+						<button class="newgame_ton_btn" style="display: none"></button>
+
+						<div class="opengame_content" style="display: none">
+
+							<div class="board inner-block" id="open_game">
+
+								<span id="f2p-text">pay to play</span>
+								<input id="f2p_checker" type="checkbox"/>
+								<div id="games_checker" class="inner-block__head">
+									<button class="active" id="opengames-btn">Open Games</button>
+									<button class="" id="pastgames-btn">Past games</button>
+								</div>
+	
+								<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
+								<div id="opengames" class="tabs__content active">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="opengames-list">
+										<div class="games__empty" id="opengames_empty">
+											<span id="opengames_empty-title"></span>
+											<span id="opengames_empty-desc">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								<div id="pastgames" class="tabs__content">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="pastgames-list">
+										<div class="games__empty" id="pastgames_empty" style="display: none;">
+											<span id="pastgames_empty-title"></span>
+											<span id="pastgames_empty-desc" style="display: none;">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								
+								<!-- f2p -->
+								<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
+									<button class="active" id="opengames-f2p-btn">Open Games</button>
+									<button class="" id="pastgames-f2p-btn">Past games</button>
+								</div>
+	
+								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p" class="tabs__content active">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="opengames-list-f2p">
+										<div class="games__empty" id="opengames_empty-f2p">
+											<span id="opengames_empty-title-f2p"></span>
+											<span id="opengames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								<div id="pastgames-f2p" class="tabs__content">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="pastgames-list-f2p">
+										<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
+											<span id="pastgames_empty-title-f2p"></span>
+											<span id="pastgames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
 							</div>
 
-							<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
-							<div id="opengames" class="tabs__content active">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<ul id="opengames-list">
-									<div class="games__empty" id="opengames_empty">
-										<span id="opengames_empty-title"></span>
-										<span id="opengames_empty-desc">Connect your wallet to start playing.</span>
-									</div>
-								</ul>
-							</div>
-							<div id="pastgames" class="tabs__content">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<ul id="pastgames-list">
-									<div class="games__empty" id="pastgames_empty" style="display: none;">
-										<span id="pastgames_empty-title"></span>
-										<span id="pastgames_empty-desc" style="display: none;">Connect your wallet to start playing.</span>
-									</div>
-								</ul>
-							</div>
-							
-							<!-- f2p -->
-							<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
-								<button class="active" id="opengames-f2p-btn">Open Games</button>
-								<button class="" id="pastgames-f2p-btn">Past games</button>
-							</div>
-
-							<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
-							<div id="opengames-f2p" class="tabs__content active">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<ul id="opengames-list-f2p">
-									<div class="games__empty" id="opengames_empty-f2p">
-										<span id="opengames_empty-title-f2p"></span>
-										<span id="opengames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
-									</div>
-								</ul>
-							</div>
-							<div id="pastgames-f2p" class="tabs__content">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<img class="board-edge" src="media/svg/board-edge.svg">
-								<ul id="pastgames-list-f2p">
-									<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
-										<span id="pastgames_empty-title-f2p"></span>
-										<span id="pastgames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
-									</div>
-								</ul>
-							</div>
 						</div>
 
 						<div class="ton__menu-smm">
