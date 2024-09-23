@@ -200,8 +200,7 @@ a {
 }
 
 #btn_modal_window,
-#btn_modal_window_mobile, 
-#btn_modal_window_mobile_f2p
+#btn_modal_window_mobile
  {
     /*background: none;*/
     border-radius: 8px;
@@ -444,8 +443,7 @@ a {
 }
 
 #btn_modal_window,
-#btn_modal_window_mobile, 
-#btn_modal_window_mobile_f2p
+#btn_modal_window_mobile
  {
     position: relative;
     z-index: 100;
