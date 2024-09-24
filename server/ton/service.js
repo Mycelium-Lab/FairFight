@@ -3,7 +3,7 @@ import { mnemonicNew, mnemonicToPrivateKey } from "ton-crypto";
 import dotenv from 'dotenv'
 dotenv.config()
 
-const isTest = false
+const isTest = true
 // Create Client
 const client = isTest ? new TonClient({
     endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC',
