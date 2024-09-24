@@ -666,9 +666,11 @@ CREATE TABLE statistics_f2p (
 );
 
 CREATE TABLE board_f2p (
-    player      TEXT NOT NULL,
+    player      VARCHAR(256) NOT NULL UNIQUE,
     games       INT NOT NULL,
     wins        INT NOT NULL,
     amountWon   FLOAT NOT NULL,
-    tokens      BIGINT
+    tokens      BIGINT,
+    kills       INT,
+    deaths      INT
 );

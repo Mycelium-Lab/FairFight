@@ -548,6 +548,8 @@ function handleSocket(socket) {
     try {
       let balance = givenBalance ? givenBalance : await redisClient.get(createAmountRedisLink(address, room.getChainId(), room.getFightId()))
       balance = balance != undefined ? balance : '0'
+      let kills = await getKills(address)
+      let deaths = await getDeaths(address)
       if (room.getChainId() != 999999) {
         const _signature = room.getChainId() != 0 ? await signature(balance, address) : await signatureTon(balance, address)
         await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
@@ -563,8 +565,6 @@ function handleSocket(socket) {
             _signature.token
           ]
         )
-        const kills = await getKills(address)
-        const deaths = await getDeaths(address)
         const rounds = await redisClient.get(createRoundsRedisLink())
   
         await pgClient.query(
@@ -588,8 +588,6 @@ function handleSocket(socket) {
           ]
         )
       } else {
-        const kills = await getKills(address)
-        const deaths = await getDeaths(address)
         const rounds = await redisClient.get(createRoundsRedisLink())
         await pgClient.query(
           `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
@@ -603,6 +601,24 @@ function handleSocket(socket) {
             deaths, 
             rounds
           ]
+        )
+        const wins = BigInt(room.baseAmount) < BigInt(balance) ? 1 : 0
+        const amountWon = wins == 1 ? (parseInt(balance) / 10**9) : 0
+        const tokens = wins == 1 ? 10 : 5
+        await pgClient.query(
+          `
+          INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
+          VALUES ($1, 1, $2, $3, $4, $5, $6)
+          ON CONFLICT (player) 
+          DO UPDATE SET
+              games = board_f2p.games + 1,
+              wins = board_f2p.wins + $2,
+              amountWon = board_f2p.amountWon + $3,
+              tokens = board_f2p.tokens + $4,
+              kills = board_f2p.kills + $5,
+              deaths = board_f2p.deaths + $6;
+          `,
+          [ address.toLowerCase(), wins, amountWon, tokens, kills, deaths ]
         )
       }
       await removeKills(address)
@@ -719,38 +735,82 @@ function handleSocket(socket) {
           console.log('-------------------')
         }
       } else {
-        console.log('here')
-        const killsLoser = await getKills(data.loserAddress)
-        const deathsLoser = await getDeaths(data.loserAddress)
-        const killsWinner = await getKills(data.winnerAddress)
-        const deathsWinner = await getDeaths(data.winnerAddress)
-        await pgClient.query(
-          `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
-          SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`
-          , 
-          [
-            room.getFightId(), 
-            data.loserAddress.toLowerCase(), 
-            data.loserAmount, 
-            killsLoser, 
-            deathsLoser, 
-            rounds
-          ]
-        )
-        await pgClient.query(
-          `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
-          SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`
-          , 
-          [
-            room.getFightId(), 
-            data.winnerAddress.toLowerCase(), 
-            data.winnerAmount, 
-            killsWinner, 
-            deathsWinner, 
-            rounds
-          ]
-        )
-        await pgClient.query("UPDATE game_f2p SET finishtime = $1 WHERE gameid = $2", [Date.now(), room.getFightId()])
+        try {
+          // Начало транзакции
+          await pgClient.query('BEGIN');
+        
+          const killsLoser = await getKills(data.loserAddress);
+          const deathsLoser = await getDeaths(data.loserAddress);
+          const killsWinner = await getKills(data.winnerAddress);
+          const deathsWinner = await getDeaths(data.winnerAddress);
+        
+          // Вставка данных для проигравшего
+          await pgClient.query(
+            `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
+            SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`,
+            [room.getFightId(), data.loserAddress.toLowerCase(), data.loserAmount, killsLoser, deathsLoser, rounds]
+          );
+        
+          // Вставка данных для победителя
+          await pgClient.query(
+            `INSERT INTO statistics_f2p (gameid, player, amount, kills, deaths, remainingRounds) 
+            SELECT $1,$2,$3,$4,$5,$6 WHERE NOT EXISTS(SELECT * FROM statistics_f2p WHERE player=$2 AND gameid=$1)`,
+            [room.getFightId(), data.winnerAddress.toLowerCase(), data.winnerAmount, killsWinner, deathsWinner, rounds]
+          );
+        
+          // Обновление времени завершения игры
+          await pgClient.query("UPDATE game_f2p SET finishtime = $1 WHERE gameid = $2", [Date.now(), room.getFightId()]);
+        
+          const winsLoser = 0;
+          const amountWonLoser = 0;
+          const tokensLoser = 5;
+        
+          // Вставка/обновление данных для проигравшего
+          await pgClient.query(
+            `
+            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
+            VALUES ($1, 1, $2, $3, $4, $5, $6)
+            ON CONFLICT (player) 
+            DO UPDATE SET
+                games = board_f2p.games + 1,
+                wins = board_f2p.wins + $2,
+                amountWon = board_f2p.amountWon + $3,
+                tokens = board_f2p.tokens + $4,
+                kills = board_f2p.kills + $5,
+                deaths = board_f2p.deaths + $6;
+            `,
+            [data.loserAddress.toLowerCase(), winsLoser, amountWonLoser, tokensLoser, killsLoser, deathsLoser]
+          );
+        
+          const winsWinner = 1;
+          const amountWonWinner = parseInt(data.winnerAmount) / 10**9;
+          const tokensWinner = 10;
+        
+          // Вставка/обновление данных для победителя
+          await pgClient.query(
+            `
+            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
+            VALUES ($1, 1, $2, $3, $4, $5, $6)
+            ON CONFLICT (player) 
+            DO UPDATE SET
+                games = board_f2p.games + 1,
+                wins = board_f2p.wins + $2,
+                amountWon = board_f2p.amountWon + $3,
+                tokens = board_f2p.tokens + $4,
+                kills = board_f2p.kills + $5,
+                deaths = board_f2p.deaths + $6;
+            `,
+            [data.winnerAddress.toLowerCase(), winsWinner, amountWonWinner, tokensWinner, killsWinner, deathsWinner]
+          );
+        
+          // Завершение транзакции
+          await pgClient.query('COMMIT');
+        } catch (error) {
+          // Откат транзакции в случае ошибки
+          await pgClient.query('ROLLBACK');
+          console.error('Transaction failed:', error);
+          throw error;
+        }        
       }
       await removeKills(data.loserAddress)
       await removeKills(data.winnerAddress)
