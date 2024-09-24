@@ -323,15 +323,15 @@
         margin: 0;
     }
 
-    #joystick-base {
+    /* #joystick-base {
         border: none !important;
         background: url(../../media/ton-joystick.svg) !important;
         background-size: 100% 100% !important;
 
-    }
-    #joystick-control {
+    } */
+    /* #joystick-control {
         display: none;
-    }
+    } */
 
 }
 
