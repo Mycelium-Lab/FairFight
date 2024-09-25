@@ -450,7 +450,7 @@ function handleSocket(socket) {
             , [room.getFightId()])
           fight = fights.rows[0]
           fight.baseAmount = fight.baseamount
-          players = fight.rows[0].players_list
+          players = fight.players_list
         }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
@@ -620,6 +620,8 @@ function handleSocket(socket) {
           `,
           [ address.toLowerCase(), wins, amountWon, tokens, kills, deaths ]
         )
+        // Обновление времени завершения игры
+        await pgClient.query("UPDATE game_f2p SET finishtime = $1 WHERE gameid = $2", [Date.now(), room.getFightId()]);
       }
       await removeKills(address)
       await removeDeaths(address)
