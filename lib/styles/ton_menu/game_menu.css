@@ -34,10 +34,10 @@
         transform: translateY(-100%);
     }
     .ton__content-inner.next_step {
-        transform: translateY(100px);
+        /* transform: translateY(100px); */
     }
     .ton__menu-pic.next_step {
-        transform: translateY(50px) scale(1.15) !important;
+        transform: translateY(-50px) scale(1.15) !important;
         z-index: 0;
     }
 

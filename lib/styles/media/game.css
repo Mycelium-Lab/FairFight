@@ -441,6 +441,7 @@
     line-height: 19.12px;
     text-align: left;
     margin-bottom: 8px;
+    height: 35px;
 }
 .stats__header-val {
 }
@@ -453,21 +454,41 @@
     flex-direction: column;
     gap: 5px;
 }
-.stats__enemy .stats__table-record {
+.stats__enemy .stats__table-record::before {
+    background-image: url(../../media/stats-enemy-record-bg-sm.svg);
+    background-position: top right;
+}
+.stats__enemy .stats__table-record:nth-child(1):before {
     background-image: url(../../media/stats-enemy-record-bg.svg);
+}
+.stats__enemy .stats__table-record {
     flex-direction: row-reverse;
 }
 .stats__table-record {
     display: flex;
     align-items: center;
     gap: 5px;
-    background-image: url(../../media/stats-record-bg.svg);
+    padding: 4px 8px;
+    position: relative;
+    z-index: 2;
+}
+.stats__table-record::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-image: url(../../media/stats-record-bg-sm.svg);
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 4px 8px;
 }
-.stats__table-record:nth-child(1) {
-    background-size: 100% 100%;
+.stats__table-record:nth-child(1)::before {
+    background-image: url(../../media/stats-record-bg.svg);
 }
 .stats__table-record span {
     font-family: Teletactile;
@@ -475,10 +496,16 @@
     font-weight: 400;
     line-height: 12.75px;
     text-align: left;
+
+    position: relative;
+    z-index: 2;
 }
 .stats__table-record .record__pic {
     height: 16px;
     width: 16px;
     background-size: 100% 100%;
     border: none;
+
+    position: relative;
+    z-index: 2;
 }

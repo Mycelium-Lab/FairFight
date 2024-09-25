@@ -952,12 +952,12 @@ a {
 }
 
 .border-style {
-    border: 4px solid #ff7c06;
+    border: 2px solid #ff7c06;
 }
 .border-style .corn {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 5px;
+    height: 5px;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 100;
@@ -991,7 +991,7 @@ a {
     bottom: 0;
     width: 100%;
     height: 100%;
-    border: 4px solid #ffc897;
+    border: 2px solid #ffc897;
 }
 
 #pastgames-list .games__row .games__item {

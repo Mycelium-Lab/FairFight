@@ -530,7 +530,7 @@ th.sorting::after {
         transform: translateX(-25px);
     }
     .wrapper__message-modal-overlay#leaderboard_modal .board input, select {
-        padding: 10px !important;
+        padding: 0 10px !important;
     }.wrapper__message-modal-overlay#leaderboard_modal .board {
         max-width: calc(100% - 10px);
     }

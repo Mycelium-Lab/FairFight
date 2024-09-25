@@ -305,9 +305,29 @@
         left: 10px;
     }
     .games__item {
+        display: flex;
         justify-content: space-between;
-        flex-wrap: wrap;
+        align-items: flex-start;
+        flex-wrap: nowrap;
         gap: 0 30px;
+    }
+    .games__item p {
+        display: flex;
+        align-items: center;
+
+        font-size: 10px !important;
+        font-weight: 500 !important;
+        line-height: 12.21px;
+
+        color: #333333;
+
+    }
+    .games__item p span {
+        max-width: 60px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-weight: 300 !important;
     }
 
     .tabs__content {
@@ -747,7 +767,8 @@ background-image: url('../../media/buttons/frame-btn-mobile.svg');
         background-image: url("../../media/mobile/pastgames-table-horizontal-340.svg") !important;
     }
     .games__row {
-        background-image: url("../../media/mobile/game-rows-mobile-horizontal-340.svg");
+        /* background-image: url("../../media/mobile/game-rows-mobile-horizontal-340.svg"); */
+        width: 100% !important;
     }
     .wrapper__monetki {
         width: 320px;
