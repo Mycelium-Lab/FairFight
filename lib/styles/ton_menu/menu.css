@@ -203,6 +203,10 @@
         padding-top: 14px !important;
     }
 
+    #pastgames-f2p {
+        /* display: none !important; */
+    }
+
     #connect .connect_wallet__text {
         position: relative;
         top: -2px;
@@ -217,7 +221,7 @@
     /* Hide desktop version elements */
 
     #connect button {
-        display: none;
+        /* display: none; */
         transform: translateY(-2px);
     }
 
