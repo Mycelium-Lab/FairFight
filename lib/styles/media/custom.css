@@ -1294,11 +1294,11 @@ background-position: center 11px;
         padding: 8px 20px;
     }
     .games__row {
-        padding: 8px 20px;
+        padding: 6px 16px;
         width: 320px;
         background-size: 100% auto;
         /* height: 97px; */
-        height: 105px;
+        /* height: 105px; */
         gap: 5px;
         background-image: url("../../media/svg/game-rows-mobile-320.svg");
     }
