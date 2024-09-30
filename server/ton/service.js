@@ -139,19 +139,19 @@ export async function getInventory(req, response) {
                 LEFT JOIN boots_bonuses ON inventory.boots=boots_bonuses.id 
                 WHERE player=$1 AND chainid=0
             `,
-            [address.toLowerCase()]
+            [address]
         )
         if (res.rows.length === 0) {
-            await createMixingPicture(address.toLowerCase(), 0, 0, undefined, undefined, undefined)
+            await createMixingPicture(address, 0, 0, undefined, undefined, undefined)
             await pgClient.query(
                 "INSERT INTO inventory (player, chainid, characterid) VALUES($1, $2, $3)",
-                [address.toLowerCase(), 0, 0]
+                [address, 0, 0]
             )
             response.status(200).json({
                 address, chainid: 0, characterid:0, nfts
             })
         } else {
-            await createMixingPicture(address.toLowerCase(), 0, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
+            await createMixingPicture(address, 0, res.rows[0].characterid, res.rows[0].armor, res.rows[0].boots, res.rows[0].weapon)
             let data = res.rows[0]
             data.nfts = nfts
             response.status(200).json(data)
@@ -181,7 +181,6 @@ export async function getUserNfts(owner) {
         let items = resultJson.nft_items
         items = items.map(v => {
             if (v.content.uri.includes(nftIpfsHashes.characters)) {
-                v.type = 'characters'
                 const url = v.content.uri
                 const searchString = `${nftIpfsHashes.characters}/`;
                 const jsonExtension = '.json';
@@ -192,6 +191,7 @@ export async function getUserNfts(owner) {
                 const characterData = charactersJsons[id]
                 const character = {
                     id,
+                    type: 'characters',
                     image: `/media/characters/${id}.png`,
                     name: characterData.name,
                     attributes: characterData.attributes,
@@ -200,7 +200,6 @@ export async function getUserNfts(owner) {
                 }
                 return character
             } else if (v.content.uri.includes(nftIpfsHashes.armors)) {
-                v.type = 'armors'
                 const url = v.content.uri
                 const searchString = `${nftIpfsHashes.armors}/`;
                 const jsonExtension = '.json';
@@ -211,6 +210,7 @@ export async function getUserNfts(owner) {
                 const armorsData = armorsJsons[id]
                 const armors = {
                     id,
+                    type: 'armors',
                     image: `/media/armors/${id}.png`,
                     name: armorsData.name,
                     attributes: armorsData.attributes,
@@ -220,7 +220,6 @@ export async function getUserNfts(owner) {
                 }
                 return armors
             } else if (v.content.uri.includes(nftIpfsHashes.boots)) {
-                v.type = 'boots'
                 const url = v.content.uri
                 const searchString = `${nftIpfsHashes.boots}/`;
                 const jsonExtension = '.json';
@@ -231,6 +230,7 @@ export async function getUserNfts(owner) {
                 const bootsData = bootsJsons[id]
                 const boots = {
                     id,
+                    type: 'boots',
                     image: `/media/boots/${id}.png`,
                     name: bootsData.name,
                     attributes: bootsData.attributes,
@@ -240,7 +240,6 @@ export async function getUserNfts(owner) {
                 }
                 return boots
             } else if (v.content.uri.includes(nftIpfsHashes.weapons)) {
-                v.type = 'weapons'
                 const url = v.content.uri
                 const searchString = `${nftIpfsHashes.weapons}/`;
                 const jsonExtension = '.json';
@@ -251,6 +250,7 @@ export async function getUserNfts(owner) {
                 const weaponsData = weaponsJsons[id]
                 const weapons = {
                     id,
+                    type: 'weapons',
                     image: `/media/weapons/${id}.png`,
                     name: weaponsData.name,
                     attributes: weaponsData.attributes,
@@ -298,7 +298,7 @@ export async function setCharacter(req, response) {
             //create mixing picture
             await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
             setTimeout(() => {
-                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                const imagePath = path.join(__dirname, `../../media/characters/players_preview`, `${address}_${0}.png`)
                 response.status(200).sendFile(imagePath)
             }, 2500)
         } else {
@@ -338,7 +338,7 @@ export async function setArmor(req, response) {
             const inventory = res.rows[0]
             await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
             setTimeout(() => {
-                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                const imagePath = path.join(__dirname, `../../media/characters/players_preview`, `${address}_${0}.png`)
                 response.status(200).sendFile(imagePath)
             }, 2500)
         } else {
@@ -354,6 +354,7 @@ export async function setWeapon(req, response) {
         const address = req.body.address
         const nftItemAddress = req.body.nftAddress
         const weapon = req.body.weapon
+        console.log(address, nftItemAddress, weapon)
         const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
             "headers": {
               "accept": "application/json",
@@ -377,7 +378,7 @@ export async function setWeapon(req, response) {
             const inventory = res.rows[0]
             await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
             setTimeout(() => {
-                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                const imagePath = path.join(__dirname, `../../media/characters/players_preview`, `${address}_${0}.png`)
                 response.status(200).sendFile(imagePath)
             }, 2500)
         } else {
@@ -416,7 +417,7 @@ export async function setBoots(req, response) {
             const inventory = res.rows[0]
             await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
             setTimeout(() => {
-                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                const imagePath = path.join(__dirname, `../../media/characters/players_preview`, `${address}_${0}.png`)
                 response.status(200).sendFile(imagePath)
             }, 2500)
         } else {
