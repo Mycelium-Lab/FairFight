@@ -6,6 +6,37 @@ await pgClient.connect()
 //create game
 export async function createFight(fight) {
     try {
+        //TODO: fight owner signature check
+        if (fight.baseAmount <= 0) {
+            return {
+                code: 400,
+                msg: 'Wrong fight amount'
+            }
+        }
+        if (fight.players <= 1) {
+            return {
+                code: 400,
+                msg: 'Not enough players'
+            }
+        }
+        if (fight.amountPerRound <= 0) {
+            return {
+                code: 400,
+                msg: 'Not enough amount per round'
+            }
+        }
+        if (fight.rounds <= 0) {
+            return {
+                code: 400,
+                msg: 'Not enough rounds'
+            }
+        }
+        if (fight.map < 0) {
+            return {
+                code: 400,
+                msg: 'Wrong map'
+            }
+        }
         const res = await pgClient.query(
             `SELECT *
             FROM game_f2p
