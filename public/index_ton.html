@@ -48,8 +48,6 @@
 		<script src="https://telegram.org/js/telegram-web-app.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-		<script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js" type="text/javascript">
-		</script>
 		<script src="/bundle.js"></script>
 		<!-- <script type="text/javascript" src="dist/index.js"></script> -->
 		<script type="module" src="/dist/ton_modal.js"></script>
@@ -1417,8 +1415,8 @@
 						</select>
 					</div>
 				</div>
-				<img class='new-game-devider' src="media/svg/devider.svg">
-				<div class="modal__row__tokens">
+				<img id="tokens-f2p-divider" class='new-game-devider' src="media/svg/devider.svg">
+				<div id="tokens-f2p" class="modal__row__tokens">
 					<div class="select-token-container">Select a token:
 						<div id="select-token-list" class="container-token">
 
@@ -1451,8 +1449,8 @@
 				</div>
 				<img class='new-game-devider' src="media/svg/devider.svg">
 				<div class="modal__row_value modal__row">
-					<div>Total prize pool: <span id="totalPrizePool">-</span><span id="totalPrizePoolToken">ETH</span></div>
-					<div class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">ETH</span></div>
+					<div id="total-prize-pool">Total prize pool: <span id="totalPrizePool">-</span><span id="totalPrizePoolToken">TON</span></div>
+					<div id="your-deposit-element" class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">TON</span></div>
 					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 					<img class="player-visible" src="media/svg/player-visible.svg">
 					<img style="display: none;" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
