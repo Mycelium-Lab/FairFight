@@ -181,7 +181,6 @@ export async function getUserNfts(owner) {
         let items = resultJson.nft_items
         items = items.map(v => {
             if (v.content.uri.includes(nftIpfsHashes.characters)) {
-                console.log('here')
                 v.type = 'characters'
                 const url = v.content.uri
                 const searchString = `${nftIpfsHashes.characters}/`;
@@ -269,15 +268,162 @@ export async function getUserNfts(owner) {
     }
 }
 
-// (async () => {
-//     try {
-//         let builder = new TupleBuilder();
-//         builder.writeNumber(BigInt(2));
-//         builder.writeAddress(Address.parse("EQArx7VGkRVmKKHA1mQUpbRa1ob9xm_iZsljFMkipj61GotQ"));
-//         let { stack } = await client.runMethod(contractAddress, 'currentFightPlayerClaimed', builder.build());
-//         console.log(stack)
-        
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })()
+//TODO заменить setTimeOut на приличное что-то
+export async function setCharacter(req, response) {
+    try {
+        const address = req.body.address
+        const nftItemAddress = req.body.nftAddress
+        const characterid = req.body.characterid
+        const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
+            "headers": {
+              "accept": "application/json",
+              "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
+              "priority": "u=1, i",
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "x-api-key": process.env.TONCENTER_KEY,
+            },
+            "body": null,
+            "method": "GET"
+        });
+        const resultJson = await result.json()
+        let items = resultJson.nft_items
+        if (items.length > 0) {
+            const res = await pgClient.query(
+                "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                [address, 0, characterid]
+            )
+            const inventory = res.rows[0]
+            //create mixing picture
+            await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+            setTimeout(() => {
+                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                response.status(200).sendFile(imagePath)
+            }, 2500)
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+
+export async function setArmor(req, response) {
+    try {
+        const address = req.body.address
+        const nftItemAddress = req.body.nftAddress
+        const armor = req.body.armor
+        const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
+            "headers": {
+              "accept": "application/json",
+              "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
+              "priority": "u=1, i",
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "x-api-key": process.env.TONCENTER_KEY,
+            },
+            "body": null,
+            "method": "GET"
+        });
+        const resultJson = await result.json()
+        let items = resultJson.nft_items
+        if (items.length > 0) {
+            const res = await pgClient.query(
+                "UPDATE inventory SET armor=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                [address, 0, armor]
+            )
+            const inventory = res.rows[0]
+            await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+            setTimeout(() => {
+                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                response.status(200).sendFile(imagePath)
+            }, 2500)
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+export async function setWeapon(req, response) {
+    try {
+        const address = req.body.address
+        const nftItemAddress = req.body.nftAddress
+        const weapon = req.body.weapon
+        const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
+            "headers": {
+              "accept": "application/json",
+              "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
+              "priority": "u=1, i",
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "x-api-key": process.env.TONCENTER_KEY,
+            },
+            "body": null,
+            "method": "GET"
+        });
+        const resultJson = await result.json()
+        let items = resultJson.nft_items
+        if (items.length > 0) {
+            const res = await pgClient.query(
+                "UPDATE inventory SET weapon=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                [address, 0, weapon]
+            )
+            const inventory = res.rows[0]
+            await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+            setTimeout(() => {
+                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                response.status(200).sendFile(imagePath)
+            }, 2500)
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
+export async function setBoots(req, response) {
+    try {
+        const address = req.body.address
+        const nftItemAddress = req.body.nftAddress
+        const boot = req.body.boots
+        const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
+            "headers": {
+              "accept": "application/json",
+              "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
+              "priority": "u=1, i",
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "x-api-key": process.env.TONCENTER_KEY,
+            },
+            "body": null,
+            "method": "GET"
+        });
+        const resultJson = await result.json()
+        let items = resultJson.nft_items
+        if (items.length > 0) {
+            const res = await pgClient.query(
+                "UPDATE inventory SET boots=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
+                [address, 0, boot]
+            )
+            const inventory = res.rows[0]
+            await createMixingPicture(address, 0, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
+            setTimeout(() => {
+                const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${0}.png`)
+                response.status(200).sendFile(imagePath)
+            }, 2500)
+        } else {
+            response.status(401).send('Not exist')
+        }
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}
