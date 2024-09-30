@@ -1,6 +1,28 @@
 
 @media (max-width: 500px) {
 
+
+    #opengames-list-f2p, #pastgames-list-f2p {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #opengames-f2p, #pastgames-f2p {
+        background-image: none !important;
+    }
+
+    .games__row {
+        background-image: none !important;
+        background-color: #FFFDF4;
+
+        padding: 6px 16px;
+    }
+
+    .games__row .close-button {
+        font-size: 8px;
+    }
+
     .opengame_content {
         max-width: calc(100vw - 40px);
         width: 100%;
