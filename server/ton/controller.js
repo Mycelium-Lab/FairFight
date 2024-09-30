@@ -25,9 +25,9 @@ tonRouter.get('/ton/fights', async (req, res) => {
 })
 
 tonRouter.post('/ton/inventory', async (req, res) => await getInventory(req, res))
-inventoryRouter.post('/ton/setcharacter', async (req, res) => await setCharacter(req, res))
-inventoryRouter.post('/ton/setarmor', async (req, res) =>await setArmor(req, res))
-inventoryRouter.post('/ton/setweapon', async (req, res) =>await setWeapon(req, res))
-inventoryRouter.post('/ton/setboots', async (req, res) =>await setBoots(req, res))
+tonRouter.post('/ton/setcharacter', async (req, res) => await setCharacter(req, res))
+tonRouter.post('/ton/setarmor', async (req, res) =>await setArmor(req, res))
+tonRouter.post('/ton/setweapon', async (req, res) =>await setWeapon(req, res))
+tonRouter.post('/ton/setboots', async (req, res) =>await setBoots(req, res))
 
 export default tonRouter
