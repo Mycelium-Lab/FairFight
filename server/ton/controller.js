@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getFights } from "./service.js";
+import { getFights, getInventory } from "./service.js";
 
 const tonRouter = Router()
 
@@ -23,5 +23,7 @@ tonRouter.get('/ton/fights', async (req, res) => {
         res.status(500).json({fights: []})
     }
 })
+
+tonRouter.post('/ton/inventory', async (req, res) => await getInventory(req, res))
 
 export default tonRouter
