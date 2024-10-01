@@ -903,14 +903,12 @@ function handleSocket(socket) {
         rounds = fight.rows[0].rounds
         playersBaseAmount = parseInt(fight.rows[0].players)
         finishTime = 0
-        console.log(fight.rows[0])
       }
       room.amountToLose = amountPerRound
       room.baseAmount = baseAmount
       room.rounds = rounds
       room.playersBaseAmount = playersBaseAmount
       room.finishTime = 0
-      console.log(joinData)
       let res = {rows: []}
       if (room.getChainId() != 999999) {
         res = await pgClient.query(
@@ -969,7 +967,6 @@ function handleSocket(socket) {
           userId: user.getId(),
           user: user
         });
-        console.log(user)
         log('User %s joined room %s. Users in room: %d',
           user.getId(), room.getName(), room.numUsers());
         log(`User ${user.getId()} wallet address: ${user.getWalletAddress()}`);    

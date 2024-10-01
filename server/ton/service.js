@@ -351,7 +351,6 @@ export async function setWeapon(req, response) {
         const address = req.body.address
         const nftItemAddress = req.body.nftAddress
         const weapon = req.body.weapon
-        console.log(address, nftItemAddress, weapon)
         const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
             "headers": {
               "accept": "application/json",
