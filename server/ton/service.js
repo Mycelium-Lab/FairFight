@@ -1,5 +1,4 @@
-import { Address, Dictionary, TonClient, TupleBuilder, WalletContractV4, beginCell, internal, toNano } from "ton";
-import { mnemonicNew, mnemonicToPrivateKey } from "ton-crypto";
+import { Address, Cell, Dictionary } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
 import dotenv from 'dotenv'
@@ -19,27 +18,11 @@ await pgClient.connect()
 
 dotenv.config()
 
-const isTest = true
-// Create Client
-const client = isTest ? new TonClient({
-    endpoint: 'https://testnet.toncenter.com/api/v3/jsonRPC',
-    apiKey: process.env.TONCENTER_TEST_KEY
-}) : new TonClient({
-    endpoint: 'https://toncenter.com/api/v3/jsonRPC',
-    apiKey: process.env.TONCENTER_KEY
-});
+const isTest = false
 
 const contractAddressTest = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ');
 const contractAddress = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ')
 const nftAddress = Address.parse('EQC2QSCpztK-_WJoaeYUMsDzs6F-1dGvtOphtKS3_y7gcfn4')
-
-// Generate new key
-let mnemonics = process.env.MNEMONIC_TON.split(' ',',') || await mnemonicNew();
-let keyPair = await mnemonicToPrivateKey(mnemonics);
-
-let workchain = 0;
-// let wallet = WalletContractV4.create({ workchain, publicKey: keyPair.publicKey });
-// let walletContract = client.open(wallet);
 
 const nftIpfsHashes = {
     characters: "QmVVzQ5kUJ8cArTTgj5gCZ1kp42Fo4FWUfXLM386vDBT6T",
@@ -96,8 +79,19 @@ function dictionaryToObject(dictionary) {
 
 export async function getFights() {
     try {
-        let { stack } = await client.runMethod(isTest ? contractAddressTest : contractAddress, 'currentFights');
-        let cellOpt = stack.readCellOpt();
+        const result = await fetch(`${isTest ? 'https://testnet.toncenter.com/api/v3/runGetMethod' : 'https://toncenter.com/api/v3/runGetMethod'}`, {
+            "headers": {
+              "accept": "application/json",
+              "content-type": "application/json",
+            },
+            "body": `{\n  \"address\": \"${isTest ? contractAddressTest : contractAddress}\",\n  \"method\": \"currentFights\"\n}`,
+            "method": "POST"
+        });
+
+        const stack = await result.json()
+
+        // Превращаем stack value в Cell
+        let cellOpt = Cell.fromBoc(Buffer.from(stack.stack[0].value, 'base64'))[0];
 
         if (cellOpt) {
             let dict = Dictionary.loadDirect(Dictionary.Keys.BigInt(257), {
@@ -113,7 +107,7 @@ export async function getFights() {
             return []
         }
     } catch (e) {
-        console.error(e);
+        console.log(e)
     }
 }
 
