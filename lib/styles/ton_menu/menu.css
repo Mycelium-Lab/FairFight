@@ -18,6 +18,32 @@
     display: none;
 }
 
+[data-tc-connect-button="true"] > *	{
+    /* font-family: "Teletactile" !important;
+    color: #00000000; */
+    opacity: 0;
+}
+[data-tc-connect-button="true"] {
+    position: relative;
+    background: none !important;
+}
+[data-tc-connect-button="true"]::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: url(../../media/connect-wallet-btn.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    overflow: visible;
+    border-radius: 0;
+}
+
 @media (max-width: 500px) {
 
     #back_button {
@@ -48,7 +74,8 @@
     }
 
     .ton__menu-smm {
-        display: flex;
+        /* display: flex; */
+        display: none !important;
         justify-content: center;
         width: 100%;
         gap: 10px;
@@ -459,6 +486,9 @@
     .ton__menu-btn:nth-child(4) span {
         padding-top: 28px;
     }
+    .ton__menu-btn:nth-child(5) span {
+        padding-top: 28px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -466,7 +496,7 @@
         padding-top: 12px;
         font-size: 16px;
     }
-    .ton__menu-btn:nth-child(3) span, .ton__menu-btn:nth-child(4) span {
+    .ton__menu-btn:nth-child(3) span, .ton__menu-btn:nth-child(4) span, .ton__menu-btn:nth-child(5) span {
         padding-top: 20px;
         font-size: 16px;
     }
@@ -491,6 +521,9 @@
     .ton__menu-btn:nth-child(4) span {
         padding-top: 5vw;
     }
+    .ton__menu-btn:nth-child(5) span {
+        padding-top: 5vw;
+    }
 }
 
 @media (max-width: 360px) {
@@ -510,6 +543,9 @@
         padding-top: 4vw;
     }
     .ton__menu-btn:nth-child(4) span {
+        padding-top: 4vw;
+    }
+    .ton__menu-btn:nth-child(5) span {
         padding-top: 4vw;
     }
 }
