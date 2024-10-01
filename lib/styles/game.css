@@ -4,10 +4,20 @@ html,body {
     background-color: #333;
     color: #fff;
     font-family: helvetica, arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
     font-size: 12pt;
 }
+
+body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+@viewport {
+    user-zoom: fixed;
+}
+
 
 #canvas {
     width: 1020px;
@@ -102,7 +112,7 @@ input[type=number] {
     background-color: rgb(204, 184, 54);
 }
 .canvasWrapper {
-    margin: 50px;
+    /* margin: 50px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
