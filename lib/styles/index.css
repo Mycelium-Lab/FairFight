@@ -578,7 +578,7 @@ th.sorting::after {
 *, *:before, *:after {
     -webkit-border-sizing: border-box;
     -moz-border-sizing: border-box;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
   }
 .dropdown {
     position: relative;
