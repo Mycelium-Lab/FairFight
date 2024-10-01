@@ -27,6 +27,12 @@
         max-width: calc(100vw - 40px);
         width: 100%;
     }
+    
+    /* Same styles as f2p */
+    .pastgame_content {
+        max-width: calc(100vw - 40px);
+        width: 100%;
+    }
 
     #open_game {
         position: relative;
