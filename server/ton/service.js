@@ -107,7 +107,10 @@ export async function getFights() {
             return []
         }
     } catch (e) {
-        console.log(e)
+        if (!e.toString().includes('Error: Index 0 > 0 is out of bounds')) {
+            console.log(e)
+        }
+        return []
     }
 }
 
