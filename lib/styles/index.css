@@ -103,13 +103,13 @@ input[type=number] {
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
 }
-/* .canvasWrapper {
+.canvasWrapper {
     margin: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+}
 #room {
     display: flex;
     flex-direction: column;
@@ -185,13 +185,13 @@ input[type=number] {
 .startBtn:hover {
     background-color: rgb(204, 184, 54);
 }
-/* .canvasWrapper {
+.canvasWrapper {
     margin: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+}
 #room {
     display: flex;
     flex-direction: column;
