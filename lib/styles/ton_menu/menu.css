@@ -191,39 +191,39 @@
         background-position: bottom !important;
     }
 
-    #connect {
+    /* #connect {
         margin-right: 0;
         background-image: url(../../media/svg/frame-ton.svg);
         margin-top: 0;
-    }
+    } */
 
-    #connect:hover {
+    /* #connect:hover {
         margin-right: 0;
         background-image: url(../../media/svg/ton-press-btn.svg) !important;
         padding-top: 14px !important;
-    }
+    } */
 
-    #pastgames-f2p {
+    /* #pastgames-f2p { */
         /* display: none !important; */
-    }
+    /* } */
 
-    #connect .connect_wallet__text {
+    /* #connect .connect_wallet__text {
         position: relative;
         top: -2px;
-    }
+    } */
 
-    #connect > svg {
+    /* #connect > svg {
         position: relative;
         top: -2px;
         right: -2px;
-    }
+    } */
     
     /* Hide desktop version elements */
 
-    #connect button {
+    /* #connect button { */
         /* display: none; */
-        transform: translateY(-2px);
-    }
+        /* transform: translateY(-2px);
+    } */
 
     .wrapper__monetki {
         display: none !important;   
