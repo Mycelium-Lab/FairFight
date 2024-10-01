@@ -425,3 +425,13 @@ export async function setBoots(req, response) {
         response.status(500).send()
     }
 }
+
+export async function setChatId(req, res) {
+    try {
+        console.log(req.body)
+        response.status(200).send('got')
+    } catch (error) {
+        console.log(error)
+        response.status(500).send()
+    }
+}

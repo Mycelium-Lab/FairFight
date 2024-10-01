@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getFights, getInventory, setArmor, setBoots, setCharacter, setWeapon } from "./service.js";
+import { getFights, getInventory, setArmor, setBoots, setCharacter, setWeapon, setChatId } from "./service.js";
 
 const tonRouter = Router()
 
@@ -29,5 +29,6 @@ tonRouter.post('/ton/setcharacter', async (req, res) => await setCharacter(req, 
 tonRouter.post('/ton/setarmor', async (req, res) =>await setArmor(req, res))
 tonRouter.post('/ton/setweapon', async (req, res) =>await setWeapon(req, res))
 tonRouter.post('/ton/setboots', async (req, res) =>await setBoots(req, res))
+tonRouter.post('/ton/chatid', async (req, res) => await setChatId(req, res))
 
 export default tonRouter
