@@ -428,7 +428,7 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        console.log(req.body)
+        console.log(req.body.chatid)
         response.status(200).send('got')
     } catch (error) {
         console.log(error)
