@@ -9,6 +9,16 @@ html,body {
     font-size: 12pt;
 }
 
+body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+@viewport {
+    user-zoom: fixed;
+}
+
+
 #canvas {
     width: 1020px;
     height: 100vh;
