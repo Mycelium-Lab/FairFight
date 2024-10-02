@@ -125,7 +125,7 @@ export async function getFights() {
             return []
         }
     } catch (e) {
-        if (!e.toString().includes('Error: Index 0 > 0 is out of bounds')) {
+        if (!e.toString().includes('Error: Index 0 > 0 is out of bounds') || !e.toString().includes('TypeError: Cannot read properties of undefined')) {
             console.log(e)
         }
         return []
