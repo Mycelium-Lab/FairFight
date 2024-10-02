@@ -207,7 +207,7 @@ export async function getUserNfts(owner) {
                 const character = {
                     id,
                     type: 'characters',
-                    image: `/media/characters/${id}.png`,
+                    image: `/media/characters/${id+1}.png`,
                     name: characterData.name,
                     attributes: characterData.attributes,
                     description: characterData.description,
