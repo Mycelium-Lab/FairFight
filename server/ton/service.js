@@ -445,8 +445,16 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        console.log(req.body.chatid)
-        res.status(200).send('got')
+        await pgClient.query(
+            `
+            INSERT INTO tg_chats (chat_id, username)
+            VALUES ($1, $2)
+            ON CONFLICT (chat_id) 
+            DO NOTHING;
+            `,
+            [ req.body.chatid, req.body.username ]
+        )
+        res.status(200).send('setted')
     } catch (error) {
         console.log(error)
         res.status(500).send()
