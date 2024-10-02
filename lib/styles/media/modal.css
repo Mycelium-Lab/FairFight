@@ -417,7 +417,7 @@
         background-position: 45vw 60vh;
     }
     .new-game-header {
-        margin-bottom: 5px;
+        margin-bottom: 15px;
     }
     .modal__close-icon {
         width: 16px;
@@ -439,14 +439,29 @@
     .new-game-header {
         width: 130px;
     }
+    .new_game_modal .close_modal_window {
+        right: 10px;
+    }
     .modal__row div,
     .modal__row__tokens div {
         font-size: 10.88px;
         line-height: 12.98px;
         margin-right: 0px;
     }
-    .modal .modal_content select {
+    .modal .modal_content select, 
+    .modal .modal_content input {
         width: 106px;
+        height: 20px;
+        background: #FFFFFF;
+
+        font-size: 10px;
+        font-weight: 300;
+
+        padding: 3px 7px !important;
+
+        border: Mixed solid;
+
+        border: 1px solid #FF7C06;
     }
     .token-active,
     .token-deactive {
