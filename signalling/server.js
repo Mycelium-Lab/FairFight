@@ -454,7 +454,8 @@ function handleSocket(socket) {
         }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
-          const secondAddress = data.address.toLowerCase() == players[0].toLowerCase() ? players[1] : players[0]
+          console.log(players[0], players[1])
+          const secondAddress = data.address.toLowerCase() == `${players[0]}`.toLowerCase() ? `${players[1]}` : `${players[0]}`
           const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
           const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
           let balanceSender;
@@ -1185,7 +1186,7 @@ function handleSocket(socket) {
         beginCell()
           .storeUint(3077991154, 32)
           .storeInt(BigInt(room.getFightId()), 257)
-          .storeAddress(Address.parse(address))
+          .storeAddress(Address.parse(`${address}`))
           .storeAddress(Address.parse(contractAddress))
           .storeCoins(amount)
           .endCell()

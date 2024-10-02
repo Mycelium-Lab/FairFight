@@ -25,6 +25,9 @@ export async function getGamesProperties(req, response) {
         let res
         if (chainid == 999999) {
             res = await pgClient.query('SELECT map FROM game_f2p WHERE gameid=$1', [gameid])
+        } else if (chainid == 0) {
+            const player = req.query.player
+            res = await pgClient.query('SELECT map FROM last_map_ton WHERE player=$1', [player])
         } else {
             res = await pgClient.query('SELECT map FROM gamesproperties WHERE gameid=$1 AND chainid=$2', [gameid, chainid])
         }
