@@ -674,3 +674,8 @@ CREATE TABLE board_f2p (
     kills       INT,
     deaths      INT
 );
+
+CREATE TABLE last_map_ton (
+    player      VARCHAR(256) NOT NULL UNIQUE,
+    map         INT NOT NULL
+);

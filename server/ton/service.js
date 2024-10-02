@@ -47,6 +47,10 @@ function loadFight(slice) {
 
         let _players = Dictionary.load(Dictionary.Keys.BigInt(257), Dictionary.Values.Address(), sc_0);
 
+        let sc_1 = sc_0.loadRef().beginParse()
+        let _playersCurrentLength = sc_1.loadIntBig(257);
+        let _playersClaimed = Dictionary.load(Dictionary.Keys.Address(), Dictionary.Values.Bool(), sc_1);
+
         return {
             id: _id,
             owner: _owner,
@@ -56,7 +60,9 @@ function loadFight(slice) {
             amountPerRound: _amountPerRound,
             rounds: _rounds,
             maxPlayersAmount: _maxPlayersAmount,
-            players: _players
+            players: _players,
+            playersCurrentLength: _playersCurrentLength,
+            playersClaimed: _playersClaimed
         };
     } catch (error) {
         console.error('Error parsing Fight:', error);
@@ -71,10 +77,22 @@ function dictionaryToObject(dictionary) {
         if (parsedValue.players) {
             parsedValue.players = dictionaryToObject(parsedValue.players)
         }
+        if (parsedValue.playersClaimed) {
+            parsedValue.playersClaimed = dictionaryToObject(parsedValue.playersClaimed)
+        }
         result.push(parsedValue)
     });
 
     return result;
+}
+
+function fightPlayersToPlayersClaimed(fight) {
+    let playersClaimed = {}
+    fight.players.forEach((player, index) => {
+        playersClaimed[`${player}`] = fight.playersClaimed[index]
+    })
+    fight.playersClaimed = playersClaimed
+    return fight
 }
 
 export async function getFights() {
@@ -92,7 +110,6 @@ export async function getFights() {
 
         // Превращаем stack value в Cell
         let cellOpt = Cell.fromBoc(Buffer.from(stack.stack[0].value, 'base64'))[0];
-
         if (cellOpt) {
             let dict = Dictionary.loadDirect(Dictionary.Keys.BigInt(257), {
                 serialize: function () {},
@@ -101,7 +118,8 @@ export async function getFights() {
                 },
             }, cellOpt);
 
-            const dictArr = dictionaryToObject(dict)
+            let dictArr = dictionaryToObject(dict)
+            dictArr = dictArr.map(fight => fightPlayersToPlayersClaimed(fight))
             return dictArr
         } else {
             return []
@@ -428,9 +446,33 @@ export async function setBoots(req, response) {
 export async function setChatId(req, res) {
     try {
         console.log(req.body.chatid)
-        response.status(200).send('got')
+        res.status(200).send('got')
     } catch (error) {
         console.log(error)
-        response.status(500).send()
+        res.status(500).send()
+    }
+}
+
+export async function setMap(req, res) {
+    try {
+        const map = req.body.map
+        const player = req.body.address
+        if (!(map >= 0 && map <= 4)) {
+            res.status(400).send('wrong map')
+        } else {
+            await pgClient.query(
+                `
+                INSERT INTO last_map_ton (player, map)
+                VALUES ($1, $2)
+                ON CONFLICT (player) 
+                DO UPDATE SET map = $2;
+                `,
+                [ player, map ]
+              )
+              res.status(200).send('setted')
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send()
     }
 }
