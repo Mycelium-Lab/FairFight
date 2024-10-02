@@ -679,3 +679,8 @@ CREATE TABLE last_map_ton (
     player      VARCHAR(256) NOT NULL UNIQUE,
     map         INT NOT NULL
 );
+
+CREATE TABLE tg_chats (
+    chat_id     BIGINT NOT NULL UNIQUE,
+    username    VARCHAR(256) NOT NULL UNIQUE
+);
