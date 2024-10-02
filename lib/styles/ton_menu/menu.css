@@ -196,6 +196,10 @@
         display: flex;
         justify-content: center;
         padding-top: 3vw;
+
+        
+    text-shadow: 1px 3px 0 #39393979, 2px 2px 2px #39393957;
+
     }
 
     .startContainer {
@@ -471,66 +475,65 @@
 
 @media (max-width: 500px) {
     .ton__menu-btn span {
-        font-size: 18px;
+        font-size: 24px;
         padding-top: 3vw;
     }
     .ton__menu-btn:nth-child(1) span {
-        padding-top: 18px;
+        padding-top: 12px;
     }
     .ton__menu-btn:nth-child(2) span {
-        padding-top: 18px;
+        padding-top: 12px;
     }
     .ton__menu-btn:nth-child(3) span {
-        padding-top: 28px;
+        font-size: 34px;
+        padding-top: 14px;
     }
     .ton__menu-btn:nth-child(4) span {
-        padding-top: 28px;
+        font-size: 34px;
+        padding-top: 14px;
     }
     .ton__menu-btn:nth-child(5) span {
-        padding-top: 28px;
+        font-size: 34px;
+        padding-top: 14px;
     }
 }
 
 @media (max-width: 450px) {
     .ton__menu-btn:nth-child(1) span, .ton__menu-btn:nth-child(2) span {
-        padding-top: 12px;
-        font-size: 16px;
+        padding-top: 9px;
+        font-size: 24px;
     }
     .ton__menu-btn:nth-child(3) span, .ton__menu-btn:nth-child(4) span, .ton__menu-btn:nth-child(5) span {
-        padding-top: 20px;
-        font-size: 16px;
+        padding-top: 10px;
+        font-size: 34px;
     }
 }
 
 @media (max-width: 400px) {
     .ton__menu-btn span {
-        font-size: 18px;
+        font-size: 24px;
         padding-top: 3vw;
     }
     .ton__menu-btn:nth-child(1) span {
-        padding-top: 12px;
-        font-size: 16px;
+        padding-top: 6px;
+        font-size: 24px;
     }
     .ton__menu-btn:nth-child(2) span {
-        padding-top: 12px;
-        font-size: 16px;
+        padding-top: 6px;
+        font-size: 24px;
     }
     .ton__menu-btn:nth-child(3) span {
-        padding-top: 5vw;
+        font-size: 26px;
     }
     .ton__menu-btn:nth-child(4) span {
-        padding-top: 5vw;
+        font-size: 26px;
     }
     .ton__menu-btn:nth-child(5) span {
-        padding-top: 5vw;
+        font-size: 26px;
     }
 }
 
 @media (max-width: 360px) {
-    .ton__menu-btn span {
-        font-size: 18px;
-        padding-top: 3vw;
-    }
     .ton__menu-btn:nth-child(1) span {
         padding-top: 8px;
         font-size: 16px;
@@ -540,12 +543,12 @@
         font-size: 16px;
     }
     .ton__menu-btn:nth-child(3) span {
-        padding-top: 4vw;
+        padding-top: 10px;
     }
     .ton__menu-btn:nth-child(4) span {
-        padding-top: 4vw;
+        padding-top: 10px;
     }
     .ton__menu-btn:nth-child(5) span {
-        padding-top: 4vw;
+        padding-top: 10px;
     }
 }
