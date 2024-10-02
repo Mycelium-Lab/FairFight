@@ -1,7 +1,14 @@
+// process.env.NTBA_FIX_319 = 1
+
 import db from "../db/db.js"
+import TelegramBot from "node-telegram-bot-api";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const pgClient = db()
 await pgClient.connect()
+
+const bot = new TelegramBot(process.env.TG_BOT_KEY, {polling: false})
 
 //create game
 export async function createFight(fight) {
@@ -67,6 +74,10 @@ export async function createFight(fight) {
                 fight.players,
                 Date.now()
             ]);
+            const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
+            if (chat.rows.length) {
+                bot.sendMessage(chat.rows[0].chat_id, 'You have created new fight.')
+            }
             return {
                 code: 200,
                 msg: 'Success'
@@ -89,6 +100,14 @@ export async function joinFight(fightId, player) {
             const resPlayers = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
             if (resPlayers.rows.length < res.rows[0].players) {
                 await pgClient.query("INSERT INTO players_f2p (gameid, player) VALUES ($1, $2)", [fightId, player])
+                const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
+                const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
+                if (chat.rows.length) {
+                    bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
+                }
+                if (chatJoiner.rows.length) {
+                    bot.sendMessage(chatJoiner.rows[0].chat_id, `You joined fight (id: ${fightId})`)
+                }
                 return {
                     code: 200,
                     msg: 'Success'
