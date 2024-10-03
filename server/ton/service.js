@@ -205,7 +205,7 @@ export async function getUserNfts(owner) {
 
                 const characterData = charactersJsons[id]
                 const character = {
-                    id,
+                    id: id + 1,
                     type: 'characters',
                     image: `/media/characters/${id+1}.png`,
                     name: characterData.name,
@@ -289,22 +289,25 @@ export async function setCharacter(req, response) {
         const address = req.body.address
         const nftItemAddress = req.body.nftAddress
         const characterid = req.body.characterid
-        const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
-            "headers": {
-              "accept": "application/json",
-              "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
-              "priority": "u=1, i",
-              "sec-fetch-dest": "empty",
-              "sec-fetch-mode": "cors",
-              "sec-fetch-site": "same-origin",
-              "x-api-key": process.env.TONCENTER_KEY,
-            },
-            "body": null,
-            "method": "GET"
-        });
-        const resultJson = await result.json()
-        let items = resultJson.nft_items
-        if (items.length > 0) {
+        let items = []
+        if (characterid != 0) {
+            const result = await fetch(`https://toncenter.com/api/v3/nft/items?address=${nftItemAddress}&owner_address=${address}&collection_address=${nftAddress}&limit=1&offset=0`, {
+                "headers": {
+                  "accept": "application/json",
+                  "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
+                  "priority": "u=1, i",
+                  "sec-fetch-dest": "empty",
+                  "sec-fetch-mode": "cors",
+                  "sec-fetch-site": "same-origin",
+                  "x-api-key": process.env.TONCENTER_KEY,
+                },
+                "body": null,
+                "method": "GET"
+            });
+            const resultJson = await result.json()
+            items = resultJson.nft_items
+        }
+        if (items.length > 0 || characterid == 0) {
             const res = await pgClient.query(
                 "UPDATE inventory SET characterid=$3 WHERE player=$1 AND chainid=$2 RETURNING *",
                 [address, 0, characterid]
