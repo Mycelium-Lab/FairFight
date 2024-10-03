@@ -451,13 +451,12 @@ export async function setBoots(req, response) {
 export async function setChatId(req, res) {
     try {
         const initDataURI = decodeURIComponent(req.body.initData)
-        const hash = initDataURI.split('hash=')[1]
-        const initDataArr = initDataURI.split('&')
-        let initData = `${initDataArr[2]}\n${initDataArr[0]}\n${initDataArr[1]}`
-        console.log(initData)
-        console.log('hash',hash)
-        console.log('token', process.env.TG_BOT_KEY)
-        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, hash, initData))
+        const initData = new URLSearchParams( initDataURI );
+        initData.sort();
+        const hash = initData.get( "hash" );
+        initData.delete( "hash" );
+        const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, hash, dataToCheck))
         await pgClient.query(
             `
             INSERT INTO tg_chats (chat_id, username)
