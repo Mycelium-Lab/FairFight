@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 
 import db from "../db/db.js"
 import { appState, appStateTypes } from "../utils/appState.js";
+import { checkSignatureTG } from "../utils/utils.js";
 const pgClient = db()
 await pgClient.connect()
 
