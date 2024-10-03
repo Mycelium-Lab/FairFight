@@ -450,7 +450,7 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        const initData = decodeURIComponent(req.body.initData)
+        const initData = decodeURIComponent(req.body.initData).replaceAll('&', '\n')
         console.log(initData)
         const hash = initData.split('hash=')[1]
         console.log('hash',hash)
