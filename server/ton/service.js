@@ -1,4 +1,4 @@
-import { Address, Cell, Dictionary } from "ton";
+import { Address, beginCell, Cell, Dictionary, toNano, TonClient, WalletContractV4 } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
 import dotenv from 'dotenv'
@@ -15,6 +15,7 @@ const __dirname = path.dirname(__filename);
 import db from "../db/db.js"
 import { appState, appStateTypes } from "../utils/appState.js";
 import { checkSignatureTG } from "../utils/utils.js";
+import { mnemonicToWalletKey } from "ton-crypto";
 const pgClient = db()
 await pgClient.connect()
 
@@ -25,6 +26,13 @@ const isTest = false
 const contractAddressTest = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ');
 const contractAddress = Address.parse('EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ')
 const nftAddress = Address.parse('EQC2QSCpztK-_WJoaeYUMsDzs6F-1dGvtOphtKS3_y7gcfn4')
+const shopAddress = Address.parse('EQCaRsuhnrB6QIsDVD2pbXC9aPbsCQth_ZcQwv0GdJn7bC8t')
+
+const mnemonic = process.env.MNEMONIC_TON || "nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice"
+const key = await mnemonicToWalletKey(mnemonic.split(" "));
+const wallet = WalletContractV4.create({ publicKey: key.publicKey, workchain: 0 });
+const tonClient = new TonClient({ endpoint: "https://toncenter.com/api/v3/jsonRPC", apiKey: process.env.TONCENTER_KEY });
+const walletContract = tonClient.open(wallet)
 
 const nftIpfsHashes = {
     characters: "QmVVzQ5kUJ8cArTTgj5gCZ1kp42Fo4FWUfXLM386vDBT6T",
@@ -504,4 +512,71 @@ export async function setMap(req, res) {
         console.log(error)
         res.status(500).send()
     }
+}
+
+export async function mintNFT(req, res) {
+    try {
+        if (appState == appStateTypes.prod) {
+            // const initDataURI = decodeURIComponent(req.body.initData)
+            // const initData = new URLSearchParams( initDataURI );
+            // initData.sort();
+            // const hash = initData.get( "hash" );
+            // initData.delete( "hash" );
+            // const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            // const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            // if (!checkerTG) {
+            //     res.status(401).send('wrong tg init data')
+            // } else {
+                //TAKE ADDRESS FROM POSTGRES
+                const username = req.body.username
+                const address = req.body.address
+                const responsePg = await pgClient.query(`SELECT * FROM board_f2p WHERE player = $1`, [username])
+                if (responsePg.rows.length === 0) {
+                    res.status(401).send('no such player')
+                } else {
+                    if (responsePg.rows[0].tokens = 150) {
+                        const src = getRandomNftToMint()
+                        const mintCell = beginCell()
+                            .storeUint(0x5B907D9, 32)
+                            .storeAddress(Address.parse(address))
+                            .storeInt(src.nftType, 257)
+                            .storeInt(src.nftId, 257)
+                            .endCell()
+                            
+                        const internalMessage = beginCell()
+                            .storeUint(0x18, 6) // bounce
+                            .storeAddress(shopAddress)
+                            .storeCoins(toNano("0.1"))
+                            .storeUint(1, 1 + 4 + 4 + 64 + 32 + 1 + 1) // We store 1 that means we have body as a reference
+                            .storeRef(mintCell)
+                            .endCell();
+                        console.log(walletContract.address.toString())
+                        await walletContract.send(internalMessage)
+                        await pgClient.query(`UPDATE board_f2p SET tokens = tokens - 150 WHERE player = $1`, [username])
+                        res.status(200).send('Success')
+                    } else {
+                        res.status(401).send('not enough tokens')
+                    }
+                }
+            // }
+        } else {
+            res.status(401).send('(test nft)')   
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send()
+    }
+}
+
+function getRandomNftToMint() {
+    const nftTypeToArrayOfNftIds = {
+        '1': [0, 12, 13, 17, 22, 25, 27, 29],
+        '2': [0, 8],
+        '3': [0, 1, 23, 33, 41, 65, 71, 72, 85, 86, 88, 89, 90, 91, 93, 94, 97, 113, 116, 117, 119]
+    }
+    const nftType = Math.floor(Math.random() * 3) + 1
+    const arrayFromType = nftTypeToArrayOfNftIds[`${nftType}`]
+    const randomNft = Math.floor(Math.random() * arrayFromType.length)
+    const nftId = arrayFromType[randomNft]
+    return {nftType, nftId}
 }
