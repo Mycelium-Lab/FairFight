@@ -451,7 +451,10 @@ export async function setChatId(req, res) {
     try {
         const initData = req.body.initData
         console.log(initData)
-        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, JSON.parse(initData)))
+        const hash = initData.split('hash=')[1]
+        console.log('hash',hash)
+        console.log('token', process.env.TG_BOT_KEY)
+        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, hash, initData))
         await pgClient.query(
             `
             INSERT INTO tg_chats (chat_id, username)
@@ -492,14 +495,10 @@ export async function setMap(req, res) {
     }
 }
 
-function checkSignature (token, { hash, ...data }) {
+function checkSignature (token, hash, checkString) {
   const secret = createHash('sha256')
     .update(token)
     .digest()
-  const checkString = Object.keys(data)
-    .sort()
-    .map(k => `${k}=${data[k]}`)
-    .join('\n')
   const hmac = createHmac('sha256', secret)
     .update(checkString)
     .digest('hex')
