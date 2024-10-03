@@ -450,9 +450,10 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        let initData = decodeURIComponent(req.body.initData).replaceAll('&', '\n')
-        const hash = initData.split('hash=')[1]
-        initData = initData.split('\nhash=')[0]
+        const initDataURI = decodeURIComponent(req.body.initData)
+        const hash = initDataURI.split('hash=')[1]
+        const initDataArr = initDataURI.split('&')
+        let initData = `${initDataArr[2]}\n${initDataArr[0]}\n${initDataArr[1]}`
         console.log(initData)
         console.log('hash',hash)
         console.log('token', process.env.TG_BOT_KEY)
