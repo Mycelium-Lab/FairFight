@@ -3,6 +3,8 @@
 import db from "../db/db.js"
 import TelegramBot from "node-telegram-bot-api";
 import dotenv from 'dotenv'
+import { checkSignatureTG } from "../utils/utils.js";
+import { appState, appStateTypes } from "../utils/appState.js";
 dotenv.config()
 
 const pgClient = db()
@@ -11,8 +13,23 @@ await pgClient.connect()
 const bot = new TelegramBot(process.env.TG_BOT_KEY, {polling: false})
 
 //create game
-export async function createFight(fight) {
+export async function createFight(fight, bodyInitData) {
     try {
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(bodyInitData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                return {
+                    code: 401,
+                    msg: 'wrong tg init data'
+                }
+            }
+        }
         //TODO: fight owner signature check
         if (fight.baseAmount <= 0) {
             return {
@@ -74,9 +91,11 @@ export async function createFight(fight) {
                 fight.players,
                 Date.now()
             ]);
-            const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
-            if (chat.rows.length) {
-                bot.sendMessage(chat.rows[0].chat_id, 'You have created new fight.')
+            if (appState == appStateTypes.prod) {
+                const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
+                if (chat.rows.length ) {
+                    bot.sendMessage(chat.rows[0].chat_id, 'You have created new fight.')
+                }
             }
             return {
                 code: 200,
@@ -93,20 +112,37 @@ export async function createFight(fight) {
 }
 
 //join game
-export async function joinFight(fightId, player) {
+export async function joinFight(fightId, player, bodyInitData) {
     try {
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(bodyInitData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                return {
+                    code: 401,
+                    msg: 'wrong tg init data'
+                }
+            }
+        }
         const res = await pgClient.query("SELECT * FROM game_f2p WHERE gameid=$1", [fightId])
         if (res.rows.length !== 0) {
             const resPlayers = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
             if (resPlayers.rows.length < res.rows[0].players) {
                 await pgClient.query("INSERT INTO players_f2p (gameid, player) VALUES ($1, $2)", [fightId, player])
-                const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
-                const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
-                if (chat.rows.length) {
-                    bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
-                }
-                if (chatJoiner.rows.length) {
-                    bot.sendMessage(chatJoiner.rows[0].chat_id, `You joined fight (id: ${fightId})`)
+                if (appState == appStateTypes.prod) {
+                    const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
+                    const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
+                    if (chat.rows.length) {
+                        bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
+                    }
+                    if (chatJoiner.rows.length) {
+                        bot.sendMessage(chatJoiner.rows[0].chat_id, `You joined fight (id: ${fightId})`)
+                    }
                 }
                 return {
                     code: 200,
@@ -134,9 +170,24 @@ export async function joinFight(fightId, player) {
 }
 
 //withdraw
-export async function withdrawFight(fightId) {
+export async function withdrawFight(fightId, bodyInitData) {
     //require owner
     try {
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(bodyInitData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                return {
+                    code: 401,
+                    msg: 'wrong tg init data'
+                }
+            }
+        }
         const res = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
         if (res.rows.length !== 0) {
             if (res.rows.length == 1) {

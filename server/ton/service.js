@@ -13,6 +13,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import db from "../db/db.js"
+import { appState, appStateTypes } from "../utils/appState.js";
+import { checkSignatureTG } from "../utils/utils.js";
 const pgClient = db()
 await pgClient.connect()
 
@@ -446,18 +448,34 @@ export async function setBoots(req, response) {
     }
 }
 
+
 export async function setChatId(req, res) {
     try {
-        await pgClient.query(
-            `
-            INSERT INTO tg_chats (chat_id, username)
-            VALUES ($1, $2)
-            ON CONFLICT (chat_id) 
-            DO NOTHING;
-            `,
-            [ req.body.chatid, req.body.username ]
-        )
-        res.status(200).send('setted')
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(req.body.initData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
+                await pgClient.query(
+                    `
+                    INSERT INTO tg_chats (chat_id, username)
+                    VALUES ($1, $2)
+                    ON CONFLICT (chat_id) 
+                    DO NOTHING;
+                    `,
+                    [ req.body.chatid, req.body.username ]
+                )
+                res.status(200).send('setted')
+            }
+        } else {
+            res.status(200).send('setted (test)')
+        }
     } catch (error) {
         console.log(error)
         res.status(500).send()
