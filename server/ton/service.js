@@ -2,7 +2,6 @@ import { Address, Cell, Dictionary } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
 import dotenv from 'dotenv'
-import { createHash, createHmac} from 'crypto'
 import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
 import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
@@ -14,6 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import db from "../db/db.js"
+import { appState, appStateTypes } from "../utils/appState.js";
 const pgClient = db()
 await pgClient.connect()
 
@@ -450,23 +450,31 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        const initDataURI = decodeURIComponent(req.body.initData)
-        const initData = new URLSearchParams( initDataURI );
-        initData.sort();
-        const hash = initData.get( "hash" );
-        initData.delete( "hash" );
-        const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
-        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, hash, dataToCheck))
-        await pgClient.query(
-            `
-            INSERT INTO tg_chats (chat_id, username)
-            VALUES ($1, $2)
-            ON CONFLICT (chat_id) 
-            DO NOTHING;
-            `,
-            [ req.body.chatid, req.body.username ]
-        )
-        res.status(200).send('setted')
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(req.body.initData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
+                await pgClient.query(
+                    `
+                    INSERT INTO tg_chats (chat_id, username)
+                    VALUES ($1, $2)
+                    ON CONFLICT (chat_id) 
+                    DO NOTHING;
+                    `,
+                    [ req.body.chatid, req.body.username ]
+                )
+                res.status(200).send('setted')
+            }
+        } else {
+            res.status(200).send('setted (test)')
+        }
     } catch (error) {
         console.log(error)
         res.status(500).send()
@@ -495,10 +503,4 @@ export async function setMap(req, res) {
         console.log(error)
         res.status(500).send()
     }
-}
-
-function checkSignature (token, hash, checkString) {
-    const secretKey = createHmac( "sha256", "WebAppData" ).update( token ).digest();
-    const hmac = createHmac( "sha256", secretKey ).update( checkString ).digest( "hex" );
-    return hmac === hash
 }

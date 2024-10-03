@@ -33,7 +33,7 @@ f2pRouter.post('/f2p/create', async (req, res) => {
             amountPerRound: req.body.amountPerRound,
             players: req.body.players
         }
-        const response = await createFight(fight)
+        const response = await createFight(fight, req.body.initData)
         res.status(response.code).send(response.msg)
     } catch (error) {
         console.log(error)
