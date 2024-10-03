@@ -450,9 +450,10 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
-        const initData = decodeURIComponent(req.body.initData).replaceAll('&', '\n')
-        console.log(initData)
+        let initData = decodeURIComponent(req.body.initData).replaceAll('&', '\n')
         const hash = initData.split('hash=')[1]
+        initData = initData.split('\nhash=')[0]
+        console.log(initData)
         console.log('hash',hash)
         console.log('token', process.env.TG_BOT_KEY)
         console.log('signature check',checkSignature(process.env.TG_BOT_KEY, hash, initData))
