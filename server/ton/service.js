@@ -499,7 +499,7 @@ export async function setMap(req, res) {
 }
 
 function checkSignature (token, hash, checkString) {
-    const secretKey = crypto.createHmac( "sha256", "WebAppData" ).update( token ).digest();
-    const hmac = crypto.createHmac( "sha256", secretKey ).update( checkString ).digest( "hex" );
+    const secretKey = createHmac( "sha256", "WebAppData" ).update( token ).digest();
+    const hmac = createHmac( "sha256", secretKey ).update( checkString ).digest( "hex" );
     return hmac === hash
 }
