@@ -2,6 +2,7 @@ import { Address, Cell, Dictionary } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
 import dotenv from 'dotenv'
+import { createHash, createHmac} from 'crypto'
 import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
 import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
@@ -448,6 +449,9 @@ export async function setBoots(req, response) {
 
 export async function setChatId(req, res) {
     try {
+        const initData = req.body.initData
+        console.log(initData)
+        console.log('signature check',checkSignature(process.env.TG_BOT_KEY, JSON.parse(initData)))
         await pgClient.query(
             `
             INSERT INTO tg_chats (chat_id, username)
@@ -486,4 +490,18 @@ export async function setMap(req, res) {
         console.log(error)
         res.status(500).send()
     }
+}
+
+function checkSignature (token, { hash, ...data }) {
+  const secret = createHash('sha256')
+    .update(token)
+    .digest()
+  const checkString = Object.keys(data)
+    .sort()
+    .map(k => `${k}=${data[k]}`)
+    .join('\n')
+  const hmac = createHmac('sha256', secret)
+    .update(checkString)
+    .digest('hex')
+  return hmac === hash
 }
