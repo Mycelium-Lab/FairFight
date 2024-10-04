@@ -295,7 +295,7 @@
         max-height: 90vh;
     }
 
-    .about__content p:nth-child(1) {
+    .about__content p#nothing_new {
         text-align: center;
         font-weight: 900;
         font-size: 14px !important;
@@ -349,6 +349,8 @@
         font-size: 16px;
         font-family: "Teletactile";
         position: absolute;
+
+        text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
     }
     .about__btn_control_keys span {
         font-size: 14px !important;
