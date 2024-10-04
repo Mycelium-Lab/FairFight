@@ -82,7 +82,7 @@
 			</svg>
 				
 			<div class="about__content about__content_first" style="display: none">
-				<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+				<p id="nothing_new">Nothing new, arcade shooter rules, but with an ability to earn!</p>
 				<p>1.Create a new game or connect to existing games. </p>
 				<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in each round. Both users make the deposit, and <b>Fair</b> Protocol smart contract makes sure everything is fair!</p>
 				<p>3. User  receive rewards for each round they won.</p>
@@ -91,7 +91,6 @@
 			</div>
 
 			<div class="about__content about__content_next" style="display: none">
-				<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
 				<p>1. Play for free with friends and farm <b>Fair</b> tokens. </p>
 				<p>2. User gets 5 <b>Fair</b> tokens for participating in the game and 10 tokens for winning the game</p>
 				<p>3. <b>Fair</b> token has only one utility function - exchangeability for NFT.</p>
@@ -161,7 +160,7 @@
 					<div class="controls_block__list controls_block__list--perks">
 						<div class="controls_line">
 							<div class="controls_block__list-card">
-								<img src="media/tutor-stun.png" />
+								<img id="tutor-stun-icon" src="media/tutor-stun.png" />
 								<span>
 									Stun 
 								</span>
@@ -1029,7 +1028,12 @@
 									<button class="" id="pastgames-btn">Past games</button>
 								</div>
 	
-								<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
+								<h4 id="opengames-empty" style="display: none;">
+									<span>Empty :(</span>
+									<p>
+										At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.
+									</p>
+								</h4>
 								<div id="opengames" class="tabs__content active">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
