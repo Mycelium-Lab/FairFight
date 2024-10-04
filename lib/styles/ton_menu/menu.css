@@ -477,6 +477,13 @@
         transform: translateY(-2px);
     }
 
+    /* NFT SHOP */
+
+    .nft-shop-modal__params-wrap {
+        gap: 0 !important;
+        justify-content: space-between;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -536,6 +543,38 @@
     }
     .ton__menu-btn:nth-child(5) span {
         font-size: 26px;
+    }
+
+    /* NFT SHOP */
+    .nft-shop-modal__list-items-wrap {
+        width: 100% !important;
+    }
+
+    .nft-shop-modal__params-wrap {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        gap: 10px 5px !important;
+
+        flex-wrap: wrap;
+    }
+
+    .nft-shop-modal__nav-wrap .nav-wrap__nav {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+    .sort-wrapper {
+        margin: 0;
+    }
+
+    .simplebar-content:before, .simplebar-content:after {
+        display: none;
+    }
+
+    .simplebar-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
     }
 }
 
