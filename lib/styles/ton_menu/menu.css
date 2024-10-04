@@ -484,6 +484,21 @@
         justify-content: space-between;
     }
 
+    /* F2P Games List */
+    #opengames_empty-f2p,
+    #pastgames_empty-f2p {
+        display: flex;
+        flex-direction: column;
+    }
+    #opengames_empty-desc-f2p, 
+    #pastgames_empty-desc-f2p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.09px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
 }
 
 @media (max-width: 500px) {
