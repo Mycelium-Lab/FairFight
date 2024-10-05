@@ -1998,6 +1998,7 @@ a {
     background-color: transparent;
     display: block;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .nft-shop-modal__nav-wrap .nav-wrap__nav label:hover {
