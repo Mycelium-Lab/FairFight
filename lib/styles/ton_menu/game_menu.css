@@ -2,13 +2,13 @@
 @media (max-width: 500px) {
 
 
-    #opengames-list-f2p, #pastgames-list-f2p {
+    #opengames-list-f2p, #pastgames-list-f2p, #opengames-list, #pastgames-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    #opengames-f2p, #pastgames-f2p {
+    #opengames-f2p, #pastgames-f2p, #opengames, #pastgames {
         background-image: none !important;
     }
 
@@ -60,6 +60,13 @@
         height: inherit;
     }
 
+    .creator-link {
+        max-width: 70px !important;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
     #back_button {
         display: none;
     }
@@ -86,6 +93,32 @@
     .ton__menu-pic.next_step {
         transform: translateY(-50px) scale(1.15) !important;
         z-index: 0;
+    }
+
+    #f2p_balance {
+        background-image: url(../../media/f2p-balance-bg.svg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 110px;
+        height: 40px;
+        padding: 5px;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .f2p_balance__value {
+        font-family: "Teletactile";
+        font-size: 20px;
+        line-height: 20px;
+        color: #FF8426;
+        text-shadow: 0px 2px 0 #17171779, 2px 2px 2px #39393957;
+        margin-top: 4px;
+    }
+    .f2p_balance__icon {
+        width: 24px;
+        height: 24px;
     }
 
 }

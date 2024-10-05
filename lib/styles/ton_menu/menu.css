@@ -43,6 +43,90 @@
     overflow: visible;
     border-radius: 0;
 }
+[data-tc-dropdown-button="true"] {
+    justify-content: space-between !important;
+
+    background: none !important;
+    background-image: url(../../media/ton-wallet-btn-bg.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+
+    box-shadow: none !important;
+
+    width: 147px;
+    height: 32px;
+
+    font-family: "Teletactile" !important;
+    text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
+    
+    border-radius: 0 !important;
+}
+[data-tc-dropdown-button="true"] svg {
+    margin-top: -2px;
+    background-image: url(../../media/ton-wallet-btn-chevron.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(0);
+}
+[data-tc-dropdown-button="true"] svg path {
+    fill: #ffffff00 !important;
+}
+[data-tc-text="true"] {
+    font-family: "Teletactile";
+    font-size: 10px !important;
+
+}
+[data-tc-dropdown="true"] {
+    box-shadow: none !important;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0 !important;
+}
+[data-tc-dropdown-container="true"] {
+    background-color: #ffffff00 !important;
+}
+[data-tc-dropdown-container="true"] ul	{
+    background-image: url(../../media/ton-wallet-dropdown-bg.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100% !important;
+    background-color: #ffffff00 !important;
+
+    margin-top: 0;
+    padding: 10px 5px !important;
+    box-sizing: border-box !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 180px !important;
+    height: 52px !important;
+}
+[data-tc-dropdown-container="true"] ul button {
+    background: none !important;
+    max-height: 18px;
+    font-family: Teletactile;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13.61px;
+    text-align: left;
+    text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;    
+}
+
+[data-tc-dropdown-container="true"] ul button svg {
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    width: 15px
+}
+[data-tc-dropdown-container="true"] ul li:nth-child(1) button svg {
+    background-image: url(../../media/ton-wallet-copy.svg) !important;
+}
+[data-tc-dropdown-container="true"] ul li:nth-child(2) button svg {
+    background-image: url(../../media/ton-wallet-disconnect.svg) !important;
+}
+[data-tc-dropdown-container="true"] ul button svg path {
+    fill: #ffffff00 !important;
+}
 
 @media (max-width: 500px) {
 
@@ -273,10 +357,10 @@
     }
 
     #header {
-        padding: 0px 20px;
+        padding: 0px 10px;
         position: fixed !important;
         left: 0;
-        width: 100%;
+        width: 100vw !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -328,7 +412,7 @@
     .about__btn {
         display: block;
         position: relative;
-        width: 176px;
+        /* width: 176px; */
         height: 48px;
         background: none;
         border: none;
@@ -485,11 +569,15 @@
     }
 
     /* F2P Games List */
+    #opengames_empty,
+    #pastgames_empty,
     #opengames_empty-f2p,
     #pastgames_empty-f2p {
         display: flex;
         flex-direction: column;
     }
+    #opengames_empty-desc, 
+    #pastgames_empty-desc,
     #opengames_empty-desc-f2p, 
     #pastgames_empty-desc-f2p {
         font-size: 16px;
@@ -498,7 +586,12 @@
         text-align: center;
         margin-top: 20px;
     }
-    
+    #pastgames .games__empty {
+        margin: 10px auto !important;
+    }
+    #pastgames.empty {
+        background: none !important;
+    }
 }
 
 @media (max-width: 500px) {
