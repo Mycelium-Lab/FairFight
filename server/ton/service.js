@@ -1,4 +1,4 @@
-import { Address, beginCell, Cell, Dictionary, toNano, TonClient, WalletContractV4 } from "ton";
+import { Address, beginCell, Cell, Dictionary, internal, toNano, TonClient, WalletContractV4 } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
 import dotenv from 'dotenv'
@@ -31,7 +31,7 @@ const shopAddress = Address.parse('EQCaRsuhnrB6QIsDVD2pbXC9aPbsCQth_ZcQwv0GdJn7b
 const mnemonic = process.env.MNEMONIC_TON || "nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice"
 const key = await mnemonicToWalletKey(mnemonic.split(" "));
 const wallet = WalletContractV4.create({ publicKey: key.publicKey, workchain: 0 });
-const tonClient = new TonClient({ endpoint: "https://toncenter.com/api/v3/jsonRPC", apiKey: process.env.TONCENTER_KEY });
+const tonClient = new TonClient({ endpoint: "https://toncenter.com/api/v2/jsonRPC", apiKey: process.env.TONCENTER_KEY });
 const walletContract = tonClient.open(wallet)
 
 const nftIpfsHashes = {
@@ -513,7 +513,6 @@ export async function setMap(req, res) {
         res.status(500).send()
     }
 }
-
 export async function mintNFT(req, res) {
     try {
         if (appState == appStateTypes.prod) {
@@ -534,8 +533,9 @@ export async function mintNFT(req, res) {
                 if (responsePg.rows.length === 0) {
                     res.status(401).send('no such player')
                 } else {
-                    if (responsePg.rows[0].tokens = 150) {
+                    if (responsePg.rows[0].tokens >= 150) {
                         const src = getRandomNftToMint()
+                        console.log(address, src.nftType, src.nftId)
                         const mintCell = beginCell()
                             .storeUint(0x5B907D9, 32)
                             .storeAddress(Address.parse(address))
@@ -551,7 +551,19 @@ export async function mintNFT(req, res) {
                             .storeRef(mintCell)
                             .endCell();
                         console.log(walletContract.address.toString())
-                        await walletContract.send(internalMessage)
+                        console.log(await tonClient.getContractState(walletContract.address));
+                        await walletContract.sendTransfer({
+                            seqno: await walletContract.getSeqno(), // Получение seqno кошелька
+                            secretKey: key.secretKey,
+                            messages: [
+                                internal({
+                                    to: shopAddress,  // Адрес смарт-контракта
+                                    value: toNano("0.1"),  // Сумма отправляемая на контракт (обязательно >= минимального значения)
+                                    body: mintCell,  // Сообщение с данными
+                                    bounce: true,  // Возвращать средства, если ошибка
+                                })
+                            ]
+                        });
                         await pgClient.query(`UPDATE board_f2p SET tokens = tokens - 150 WHERE player = $1`, [username])
                         res.status(200).send('Success')
                     } else {
