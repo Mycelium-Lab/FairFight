@@ -10,7 +10,7 @@ dotenv.config()
 const pgClient = db()
 await pgClient.connect()
 
-const bot = new TelegramBot(process.env.TG_BOT_KEY, {polling: false})
+export const bot = new TelegramBot(process.env.TG_BOT_KEY, {polling: false})
 
 //create game
 export async function createFight(fight, bodyInitData) {

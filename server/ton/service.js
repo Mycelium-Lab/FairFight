@@ -15,7 +15,11 @@ const __dirname = path.dirname(__filename);
 import db from "../db/db.js"
 import { appState, appStateTypes } from "../utils/appState.js";
 import { checkSignatureTG } from "../utils/utils.js";
+<<<<<<< HEAD
 import { mnemonicToWalletKey } from "ton-crypto";
+=======
+import { bot } from "../f2p/service.js";
+>>>>>>> tg_notify_ton
 const pgClient = db()
 await pgClient.connect()
 
@@ -460,6 +464,7 @@ export async function setBoots(req, response) {
 export async function setChatId(req, res) {
     try {
         if (appState == appStateTypes.prod) {
+            //chat id from initdata
             const initDataURI = decodeURIComponent(req.body.initData)
             const initData = new URLSearchParams( initDataURI );
             initData.sort();
@@ -513,19 +518,20 @@ export async function setMap(req, res) {
         res.status(500).send()
     }
 }
+
 export async function mintNFT(req, res) {
     try {
         if (appState == appStateTypes.prod) {
-            // const initDataURI = decodeURIComponent(req.body.initData)
-            // const initData = new URLSearchParams( initDataURI );
-            // initData.sort();
-            // const hash = initData.get( "hash" );
-            // initData.delete( "hash" );
-            // const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
-            // const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
-            // if (!checkerTG) {
-            //     res.status(401).send('wrong tg init data')
-            // } else {
+            const initDataURI = decodeURIComponent(req.body.initData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
                 //TAKE ADDRESS FROM POSTGRES
                 const username = req.body.username
                 const address = req.body.address
@@ -543,15 +549,6 @@ export async function mintNFT(req, res) {
                             .storeInt(src.nftId, 257)
                             .endCell()
                             
-                        const internalMessage = beginCell()
-                            .storeUint(0x18, 6) // bounce
-                            .storeAddress(shopAddress)
-                            .storeCoins(toNano("0.1"))
-                            .storeUint(1, 1 + 4 + 4 + 64 + 32 + 1 + 1) // We store 1 that means we have body as a reference
-                            .storeRef(mintCell)
-                            .endCell();
-                        console.log(walletContract.address.toString())
-                        console.log(await tonClient.getContractState(walletContract.address));
                         await walletContract.sendTransfer({
                             seqno: await walletContract.getSeqno(), // Получение seqno кошелька
                             secretKey: key.secretKey,
@@ -570,9 +567,43 @@ export async function mintNFT(req, res) {
                         res.status(401).send('not enough tokens')
                     }
                 }
-            // }
+            }
         } else {
-            res.status(401).send('(test nft)')   
+            res.status(401).send('(test nft)')
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send()
+    }
+}
+
+export async function setAddress(req, res) {
+    try {
+        if (appState == appStateTypes.prod) {
+            const chat_id = req.body.chatid
+            const username = req.body.username
+            const address = req.body.address
+            const initDataURI = decodeURIComponent(req.body.initData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
+                await pgClient.query(
+                    `
+                    UPDATE tg_chats SET player = $1
+                    WHERE chat_id = $2 AND username = $3
+                    `,
+                    [ address, chat_id, username ]
+                )
+                res.status(200).send('setted')
+            }
+        } else {
+            res.status(200).send('setted (test)')
         }
     } catch (error) {
         console.log(error)
@@ -591,4 +622,79 @@ function getRandomNftToMint() {
     const randomNft = Math.floor(Math.random() * arrayFromType.length)
     const nftId = arrayFromType[randomNft]
     return {nftType, nftId}
+}
+
+async function checkNewFights() {
+    try {
+        const fights = await getFights();
+        const fightIds = fights.map(v => parseInt(v.id, 10)); // Преобразование id в целые числа
+
+        const checkQuery = `
+            SELECT games.gameid, n.notified
+            FROM UNNEST($1::int[]) AS games(gameid)
+            LEFT JOIN new_games_notifications AS n
+            ON games.gameid = n.gameid;
+        `;
+
+        const checkResult = await pgClient.query(checkQuery, [fightIds]); // Передаем массив fightIds
+        let notNotifiedFights = checkResult.rows.filter(v => !v.notified);
+        let notifiedFights = checkResult.rows.filter(v => v.notified);
+
+        for (let i = 0; i < notNotifiedFights.length; i++) {
+            const fight = fights.find(v => v.id.toString() === notNotifiedFights[i].gameid.toString())
+            const fightOwner = fight.owner.toString() 
+            const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+            if (fightOwnerChat.rows.length > 0) {
+                const chat = fightOwnerChat.rows[0]
+                bot.sendMessage(chat.chat_id, `You have created fight (id: ${fight.id.toString()})`)
+                await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightOwner])
+            }
+        }
+
+        for (let i = 0; i < notifiedFights.length; i++) {
+            const fight = fights.find(v => v.id.toString() === notifiedFights[i].gameid.toString())
+            const fightOwner = fight.owner.toString() 
+            const fightPlayers = fight.players.map(v => v.toString())
+            for (let j = 0; j < fightPlayers.length; j++) {
+                if (fightPlayers[j] == fightOwner) {
+                    continue
+                } else {
+                    const notified = await pgClient.query(`SELECT * FROM notified_players WHERE player = $1 AND gameid = $2`, [fightPlayers[j], parseInt(fight.id)])
+                    if (notified.rows.length === 0) {
+                        const chat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightPlayers[j] ])
+                        const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+                        bot.sendMessage(fightOwnerChat.rows[0].chat_id, `Player (address: ${createShortAddress(fightPlayers[j])}) joined your fight (id: ${fight.id.toString()})`)
+                        if (chat.rows.length > 0) {
+                            const chatId = chat.rows[0].chat_id
+                            bot.sendMessage(chatId, `You have joined fight (id: ${fight.id.toString()}, owner: ${createShortAddress(fightOwner)})`)
+                        }
+                        await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightPlayers[j]])
+                    }
+                }
+            } 
+        }
+
+        const insertQuery = `
+            INSERT INTO new_games_notifications (gameid, notified)
+            SELECT games.gameid, TRUE
+            FROM UNNEST($1::int[]) AS games(gameid)
+            LEFT JOIN new_games_notifications AS n
+            ON games.gameid = n.gameid
+            WHERE n.gameid IS NULL;
+        `;
+
+        await pgClient.query(insertQuery, [fightIds]); // Передаем массив fightIds
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function createShortAddress(address) {
+    return address.slice(0, 6) + '...' + address.slice(address.length - 4, address.length);
+}
+
+if (appState === appStateTypes.prod) {
+    setInterval(async () => {
+        await checkNewFights()
+    }, 1000 * 60) 
 }
