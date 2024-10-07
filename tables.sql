@@ -687,3 +687,14 @@ CREATE TABLE tg_chats (
 
 ALTER TABLE tg_chats
 ADD COLUMN player VARCHAR(256);
+
+CREATE TABLE new_games_notifications (
+    gameid        INT NOT NULL UNIQUE,
+    notified      BOOLEAN
+);
+
+CREATE TABLE notified_players (
+    player        VARCHAR(256) NOT NULL,
+    gameid        INT
+);
+

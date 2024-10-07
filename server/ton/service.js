@@ -545,57 +545,74 @@ export async function setAddress(req, res) {
 async function checkNewFights() {
     try {
         const fights = await getFights();
-        for (let i = 0; i < fights.length; i++) {
-            const fight = fights[i]
-            let chats = fight.players.map(async (player) => {
-                const userTgChat = await pgClient.query(
-                    "SELECT * FROM tg_chats WHERE player = $1",
-                    [player.toString()]
-                )
-                return userTgChat.rows[0] || null
-            })
-            chats = await Promise.all(chats)
-            chats = chats.filter((chat) => chat !== null)
-            chats.forEach((chat) => {
-                bot.sendMessage(chat.chat_id, `
-                    You got fight (id: ${fight.id}) with owner ${fight.owner == chat.player ? 'You' : fight.owner};\nPlayers: ${fight.players.join(', ')};\nYou claimed - ${fight.playersClaimed[chat.player]}.
-                    `)
-            })
+        const fightIds = fights.map(v => parseInt(v.id, 10)); // Преобразование id в целые числа
+
+        const checkQuery = `
+            SELECT games.gameid, n.notified
+            FROM UNNEST($1::int[]) AS games(gameid)
+            LEFT JOIN new_games_notifications AS n
+            ON games.gameid = n.gameid;
+        `;
+
+        const checkResult = await pgClient.query(checkQuery, [fightIds]); // Передаем массив fightIds
+        let notNotifiedFights = checkResult.rows.filter(v => !v.notified);
+        let notifiedFights = checkResult.rows.filter(v => v.notified);
+
+        for (let i = 0; i < notNotifiedFights.length; i++) {
+            const fight = fights.find(v => v.id.toString() === notNotifiedFights[i].gameid.toString())
+            const fightOwner = fight.owner.toString() 
+            const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+            if (fightOwnerChat.rows.length > 0) {
+                const chat = fightOwnerChat.rows[0]
+                bot.sendMessage(chat.chat_id, `You have created fight (id: ${fight.id.toString()})`)
+                await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightOwner])
+            }
         }
-        // const fightIds = fights.map(v => parseInt(v.id, 10)); // Преобразование id в целые числа
-        // console.log(fightIds);
 
-        // const checkQuery = `
-        //     SELECT games.gameid, 
-        //         COALESCE(n.notified, FALSE) AS notified
-        //     FROM UNNEST($1::int[]) AS games(gameid)
-        //     LEFT JOIN new_games_notifications AS n
-        //     ON games.gameid = n.gameid;
-        // `;
+        for (let i = 0; i < notifiedFights.length; i++) {
+            const fight = fights.find(v => v.id.toString() === notifiedFights[i].gameid.toString())
+            const fightOwner = fight.owner.toString() 
+            const fightPlayers = fight.players.map(v => v.toString())
+            for (let j = 0; j < fightPlayers.length; j++) {
+                if (fightPlayers[j] == fightOwner) {
+                    continue
+                } else {
+                    const notified = await pgClient.query(`SELECT * FROM notified_players WHERE player = $1 AND gameid = $2`, [fightPlayers[j], parseInt(fight.id)])
+                    if (notified.rows.length === 0) {
+                        const chat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightPlayers[j] ])
+                        const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+                        bot.sendMessage(fightOwnerChat.rows[0].chat_id, `Player (address: ${createShortAddress(fightPlayers[j])}) joined your fight (id: ${fight.id.toString()})`)
+                        if (chat.rows.length > 0) {
+                            const chatId = chat.rows[0].chat_id
+                            bot.sendMessage(chatId, `You have joined fight (id: ${fight.id.toString()}, owner: ${createShortAddress(fightOwner)})`)
+                        }
+                        await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightPlayers[j]])
+                    }
+                }
+            } 
+        }
 
+        const insertQuery = `
+            INSERT INTO new_games_notifications (gameid, notified)
+            SELECT games.gameid, TRUE
+            FROM UNNEST($1::int[]) AS games(gameid)
+            LEFT JOIN new_games_notifications AS n
+            ON games.gameid = n.gameid
+            WHERE n.gameid IS NULL;
+        `;
 
-        // const checkResult = await pgClient.query(checkQuery, [fightIds]); // Передаем массив fightIds
-        // let notNotifiedFights = checkResult.rows.filter(v => !v.notified);
-
-        // const insertQuery = `
-        //     INSERT INTO new_games_notifications (gameid, notified)
-        //     SELECT games.gameid, TRUE
-        //     FROM UNNEST($1::int[]) AS games(gameid)
-        //     LEFT JOIN new_games_notifications AS n
-        //     ON games.gameid = n.gameid
-        //     WHERE n.gameid IS NULL;
-        // `;
-
-        // await pgClient.query(insertQuery, [fightIds]); // Передаем массив fightIds
-        // console.log('Missing games have been inserted.');
+        await pgClient.query(insertQuery, [fightIds]); // Передаем массив fightIds
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
+function createShortAddress(address) {
+    return address.slice(0, 6) + '...' + address.slice(address.length - 4, address.length);
+}
 
-
-setInterval(async () => {
-    console.log('check')
-    await checkNewFights()
-}, 1000 * 60) 
+if (appState === appStateTypes.prod) {
+    setInterval(async () => {
+        await checkNewFights()
+    }, 1000 * 60) 
+}
