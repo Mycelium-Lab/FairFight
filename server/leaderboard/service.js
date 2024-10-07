@@ -155,6 +155,61 @@ export async function createLeaderboard(chainid) {
         console.log(`LeaderBoard updated`)
 }
 
+export async function createLeaderboardTON(req, res) {
+    try {
+        const priceRequest = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT`).then(res => res.json()).catch(err => {price: "5"})
+        const priceMainCurrency = priceRequest.price ? parseFloat(priceRequest.price) : 5
+        const timeMonthBefore = Date.now() - 1000 * 60 * 60 * 24 * 30
+        const timeWeekBefore = Date.now() - 1000 * 60 * 60 * 24 * 7
+        const battleAllStatsMonth = await pgClient.query(
+            `
+            SELECT
+                player,
+                SUM(kills) AS total_kills,
+                SUM(deaths) AS total_deaths,
+                COUNT(*) FILTER (WHERE baseAmount < amount) AS wins,
+                COUNT(*) AS total_games,
+                SUM(CASE WHEN baseAmount < amount THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
+            FROM
+                statistics
+            WHERE
+                chainid = 0
+                AND finishTime >= $1
+            GROUP BY
+                player
+            `, [timeMonthBefore, priceMainCurrency]
+        );        
+        const battleAllStatsWeek = await pgClient.query(
+            `
+            SELECT
+                player,
+                SUM(kills) AS total_kills,
+                SUM(deaths) AS total_deaths,
+                COUNT(*) FILTER (WHERE baseAmount < amount) AS wins,
+                COUNT(*) AS total_games,
+                SUM(CASE WHEN baseAmount < amount THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
+            FROM
+                statistics
+            WHERE
+                chainid = 0
+                AND finishTime >= $1
+            GROUP BY
+                player
+            `, [timeWeekBefore, priceMainCurrency])
+        res.status(200).json({
+            battleAllStatsMonth: battleAllStatsMonth.rows, 
+            battleAllStatsWeek: battleAllStatsWeek.rows
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            battleAllStatsMonth: [],
+            battleAllStatsWeek: [],
+            msg: 'Something went wrong'
+        })
+    }
+}
+
 export async function getLeaderboard(req, res) {
     try {
         const query = req.query
