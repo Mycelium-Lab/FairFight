@@ -61,7 +61,7 @@
 		<script type="module" src="/dist/main_ton.js"></script>
 		<script type="module" src="/modules/airdrop.js"></script>
 		<script type="module" src="/modules/networks.js"></script>
-		<script type="module" src="/modules/leaderboard.js"></script>
+		<script type="module" src="/src/ton/leaderboard.js"></script>
 		<script src="custom.js"></script>
 	</head>
 
@@ -260,7 +260,7 @@
 						<button class="btns-wrap__btn" id="menu-inventory-btn" style="display: block;"></button>
 						<!-- <button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-lottery-btn" style="display: block;"></button> -->
-						<button class="btns-wrap__btn" id="menu-tournaments-btn" style="display: none;"></button>
+						<!-- <button class="btns-wrap__btn" id="menu-tournaments-btn" style="display: none;"></button> -->
 						<!-- <button class="btns-wrap__btn" id="menu-balance-btn" style="display: block;"></button> -->
 					</div>
 				</div>
@@ -925,7 +925,7 @@
 								<img src="media/inv-btn-frame.svg" />
 								<span>INVENTORY</span>
 							</div>
-							<div class="ton__menu-btn">
+							<div id="menu-tournaments-btn-ton" class="ton__menu-btn">
 								<img src="media/tour-btn-frame.svg" />
 								<span>TOURNAMENTS</span>
 							</div>
@@ -1515,14 +1515,6 @@
 							<img src="/media/svg/leaderboard/lb_30.svg" alt="">
 							In the last 30 days
 						</button>
-						<button id="sevenleader-multi-btn">
-							<img src="/media/svg/leaderboard/lb_7m.svg" alt="">
-							In the last 7 days Multi
-						</button>
-						<button id="thirtyleader-multi-btn">
-							<img src="/media/svg/leaderboard/lb_30m.svg" alt="">
-							In the last 30 days Multi
-						</button>
 					</div>
 				</div>
 				<div id="sevenleader">
@@ -1597,79 +1589,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="sevenleader-multi">
-					<table id="sevenleader-multi-table" class="compact ">
-						<thead>
-							<tr>
-								<th></th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_wallet.svg" alt="">
-									Wallet
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_games.svg" alt="">
-									Games
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_wins.svg" alt="">
-									Wins
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_won.svg" alt="">
-									$ won
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_kills.svg" alt="">
-									Kills
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_deaths.svg" alt="">
-									Deaths
-								</th>
-							</tr>
-						</thead>
-						<tbody id="sevenleader-multi-tablebody">
-
-						</tbody>
-					</table>
-				</div>
-				<div id="thirtyleader-multi">
-					<table id="thirtyleader-multi-table" class="compact ">
-						<thead>
-							<tr>
-								<th></th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_wallet.svg" alt="">
-									Wallet
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_games.svg" alt="">
-									Games
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_wins.svg" alt="">
-									Wins
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_won.svg" alt="">
-									$ won
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_kills.svg" alt="">
-									Kills
-								</th>
-								<th>
-									<img src="/media/svg/leaderboard/lb_deaths.svg" alt="">
-									Deaths
-								</th>
-							</tr>
-						</thead>
-						<tbody id="thirtyleader-multi-tablebody">
-
-						</tbody>
-					</table>
-				</div>
-				<div class="dataTable_update_info" style="color: rgba(57, 57, 57, 0.5); font-size: 8;">The leaderboard is updated once a day.</div>
+				<!-- <div class="dataTable_update_info" style="color: rgba(57, 57, 57, 0.5); font-size: 8;">The leaderboard is updated once a day.</div> -->
 			</div>
 		</div>
 		<img class="modal__map" id="modal__map" src="" alt="Map Image">
