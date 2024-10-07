@@ -684,3 +684,6 @@ CREATE TABLE tg_chats (
     chat_id     BIGINT NOT NULL UNIQUE,
     username    VARCHAR(256) NOT NULL UNIQUE
 );
+
+ALTER TABLE tg_chats
+ADD COLUMN player VARCHAR(256);

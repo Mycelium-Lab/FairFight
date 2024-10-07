@@ -15,6 +15,7 @@ const __dirname = path.dirname(__filename);
 import db from "../db/db.js"
 import { appState, appStateTypes } from "../utils/appState.js";
 import { checkSignatureTG } from "../utils/utils.js";
+import { bot } from "../f2p/service.js";
 const pgClient = db()
 await pgClient.connect()
 
@@ -452,6 +453,7 @@ export async function setBoots(req, response) {
 export async function setChatId(req, res) {
     try {
         if (appState == appStateTypes.prod) {
+            //chat id from initdata
             const initDataURI = decodeURIComponent(req.body.initData)
             const initData = new URLSearchParams( initDataURI );
             initData.sort();
@@ -505,3 +507,95 @@ export async function setMap(req, res) {
         res.status(500).send()
     }
 }
+
+export async function setAddress(req, res) {
+    try {
+        if (appState == appStateTypes.prod) {
+            const chat_id = req.body.chatid
+            const username = username
+            const address = address
+            const initDataURI = decodeURIComponent(req.body.initData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
+                await pgClient.query(
+                    `
+                    UPDATE tg_chats SET player = $1
+                    WHERE chat_id = $2 AND username = $3
+                    `,
+                    [ address, chat_id, username ]
+                )
+                res.status(200).send('setted')
+            }
+        } else {
+            res.status(200).send('setted (test)')
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send()
+    }
+}
+
+async function checkNewFights() {
+    try {
+        const fights = await getFights();
+        for (let i = 0; i < fights.length; i++) {
+            const fight = fights[i]
+            let chats = fight.players.map(async (player) => {
+                const userTgChat = await pgClient.query(
+                    "SELECT * FROM tg_chats WHERE player = $1",
+                    [player.toString()]
+                )
+                return userTgChat.rows[0] || null
+            })
+            chats = await Promise.all(chats)
+            chats = chats.filter((chat) => chat !== null)
+            chats.forEach((chat) => {
+                bot.sendMessage(chat.chat_id, `
+                    You got fight (id: ${fight.id}) with owner ${fight.owner == chat.player ? 'You' : fight.owner};\nPlayers: ${fight.players.join(', ')};\nYou claimed - ${fight.playersClaimed[chat.player]}.
+                    `)
+            })
+        }
+        // const fightIds = fights.map(v => parseInt(v.id, 10)); // Преобразование id в целые числа
+        // console.log(fightIds);
+
+        // const checkQuery = `
+        //     SELECT games.gameid, 
+        //         COALESCE(n.notified, FALSE) AS notified
+        //     FROM UNNEST($1::int[]) AS games(gameid)
+        //     LEFT JOIN new_games_notifications AS n
+        //     ON games.gameid = n.gameid;
+        // `;
+
+
+        // const checkResult = await pgClient.query(checkQuery, [fightIds]); // Передаем массив fightIds
+        // let notNotifiedFights = checkResult.rows.filter(v => !v.notified);
+
+        // const insertQuery = `
+        //     INSERT INTO new_games_notifications (gameid, notified)
+        //     SELECT games.gameid, TRUE
+        //     FROM UNNEST($1::int[]) AS games(gameid)
+        //     LEFT JOIN new_games_notifications AS n
+        //     ON games.gameid = n.gameid
+        //     WHERE n.gameid IS NULL;
+        // `;
+
+        // await pgClient.query(insertQuery, [fightIds]); // Передаем массив fightIds
+        // console.log('Missing games have been inserted.');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+
+setInterval(async () => {
+    console.log('check')
+    await checkNewFights()
+}, 1000 * 60) 
