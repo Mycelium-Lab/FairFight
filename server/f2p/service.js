@@ -315,3 +315,46 @@ export async function getPastFights(player) {
         }
     }
 }
+
+export async function getBoard(req, res) {
+    try {
+        const bodyInitData = req.query.initData
+        const username = req.query.username
+        if (appState == appStateTypes.prod) {
+            const initDataURI = decodeURIComponent(bodyInitData)
+            const initData = new URLSearchParams( initDataURI );
+            initData.sort();
+            const hash = initData.get( "hash" );
+            initData.delete( "hash" );
+            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+            if (!checkerTG) {
+                res.status(401).send('wrong tg init data')
+            } else {
+                if (!username) {
+                    res.status(401).send('no username')
+                }
+                const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1", [username])
+                res.status(200).json({
+                    board: resDB.rows[0]
+                })
+            }
+        } else {
+            console.log('here')
+            res.status(200).json({
+                board: {
+                    player: username,
+                    games: 0,
+                    wins: 0,
+                    amountwon: 0,
+                    tokens: 0,
+                    kills: 0,
+                    deaths: 0
+                }
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Internal server error')
+    }
+}

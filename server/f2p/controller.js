@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createFight, getFightsWithNullFinish, joinFight, withdrawFight, getPastFights } from "./service.js";
+import { createFight, getFightsWithNullFinish, joinFight, withdrawFight, getPastFights, getBoard } from "./service.js";
 
 const f2pRouter = Router()
 
@@ -63,5 +63,7 @@ f2pRouter.post('/f2p/withdraw', async (req, res) => {
         res.status(500).send('Internal server error')
     }
 })
+
+f2pRouter.get('/f2p/board', async (req, res) => await getBoard(req, res))
 
 export default f2pRouter
