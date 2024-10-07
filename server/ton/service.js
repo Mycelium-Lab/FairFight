@@ -512,8 +512,8 @@ export async function setAddress(req, res) {
     try {
         if (appState == appStateTypes.prod) {
             const chat_id = req.body.chatid
-            const username = username
-            const address = address
+            const username = req.body.username
+            const address = req.body.address
             const initDataURI = decodeURIComponent(req.body.initData)
             const initData = new URLSearchParams( initDataURI );
             initData.sort();
