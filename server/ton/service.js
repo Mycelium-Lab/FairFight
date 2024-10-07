@@ -15,11 +15,8 @@ const __dirname = path.dirname(__filename);
 import db from "../db/db.js"
 import { appState, appStateTypes } from "../utils/appState.js";
 import { checkSignatureTG } from "../utils/utils.js";
-<<<<<<< HEAD
 import { mnemonicToWalletKey } from "ton-crypto";
-=======
 import { bot } from "../f2p/service.js";
->>>>>>> tg_notify_ton
 const pgClient = db()
 await pgClient.connect()
 
