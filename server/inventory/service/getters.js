@@ -62,7 +62,7 @@ export async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         let address = req.query.address
         const typeofimage = req.query.typeofimage
-        address = chainid == 0 ? address : address.toLowerCase()
+        address = address.toLowerCase()
         const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address}_${chainid}.png`)
         try {
             await fs.access(imagePath)
