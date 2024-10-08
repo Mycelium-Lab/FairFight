@@ -88,9 +88,6 @@ function dictionaryToObject(dictionary) {
         if (parsedValue.players) {
             parsedValue.players = dictionaryToObject(parsedValue.players)
         }
-        if (parsedValue.playersClaimed) {
-            parsedValue.playersClaimed = dictionaryToObject(parsedValue.playersClaimed)
-        }
         result.push(parsedValue)
     });
 
@@ -130,7 +127,18 @@ export async function getFights() {
             }, cellOpt);
 
             let dictArr = dictionaryToObject(dict)
-            dictArr = dictArr.map(fight => fightPlayersToPlayersClaimed(fight))
+            dictArr = dictArr.map(fight => {
+                let playersClaimed = {}
+                if (fight.playersClaimed._map) {
+                    fight.playersClaimed._map.forEach(
+                        (value, key) => {
+                            playersClaimed[`${key.split(':')[1].toString()}`] = value
+                        }
+                    )
+                    fight.playersClaimed = playersClaimed
+                }
+                return fight
+            })
             return dictArr
         } else {
             return []
