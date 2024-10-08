@@ -12,7 +12,7 @@
         background-image: none !important;
     }
     #pastgames-f2p, #pastgames {
-        min-height: 100px;
+        /* min-height: 100px; */
         background-image: none !important;
         background-color: #fffdf4;
         border: 1px solid var(--color-orange);
