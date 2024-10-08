@@ -151,4 +151,18 @@
         height: 24px;
     }
 
+    /* TOURNAMENTS */
+
+    #leaderboard_modal .board {
+        padding-bottom: 25px !important;
+    }
+
+    .sorting_1 {
+        /* max-width: 30px !important; */
+    }
+
+    .sorting.sorting_asc {
+        max-width: 30px !important;
+    }
+
 }
