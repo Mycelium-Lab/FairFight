@@ -374,28 +374,41 @@ function handleSocket(socket) {
           const userToRemoveFromRoom = room.getUserByWalletAddress(data.walletAddress)
           room.removeUser(userToRemoveFromRoom.getId())
         } else if ((newBalance == 0 || (parseInt(rounds) - 1) == 0) && room.numUsers() == 2) {
-          await createSignature({
-            loserAddress: data.walletAddress,
-            winnerAddress: data.killerAddress,
-            loserAmount: newBalance.toString(),
-            winnerAmount: newBalanceWinner.toString()
-          })
-            .then(() => {
-              Object.entries(room.sockets).forEach(([key, value]) => {
-                if (value != null) {
-                  socket.to(value.id).emit("finishing")
-                  socket.to(value.id).emit("update_balance", {
-                    address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
-                    amountToLose: room.amountToLose,
-                    address2: data.killerAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
-                  })
-                }
+          setTimeout(async () => {
+            await createSignature({
+              loserAddress: data.walletAddress,
+              winnerAddress: data.killerAddress,
+              loserAmount: newBalance.toString(),
+              winnerAmount: newBalanceWinner.toString()
+            })
+              .then(() => {
+                Object.entries(room.sockets).forEach(([key, value]) => {
+                  if (value != null) {
+                    socket.to(value.id).emit("finishing")
+                    socket.to(value.id).emit("update_balance", {
+                      address1: data.walletAddress, amount1: newBalance.toString(), remainingRounds: parseInt(rounds) - 1,
+                      amountToLose: room.amountToLose,
+                      address2: data.killerAddress, amount2: newBalanceWinner.toString(), rounds: room.getRounds()
+                    })
+                  }
+                })
               })
-            })
-            .then(() => {
-              room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
-              room.finished = true;
-            })
+              .then(() => {
+                room.broadcastFrom(user, MessageType.USER_LOSE_ALL, `${data.walletAddress} dead`);
+                room.finished = true;
+              })
+          }, 1000)
+          //update balance
+          //we send it each user in room
+          //but its not works so on frontend we send it again from another user
+          Object.entries(room.sockets).forEach(([key, value]) => {
+            if (value != null) {
+              socket.to(value.id).emit("update_balance", {
+                address1: data.walletAddress, amount1: newBalance.toString(), killsAddress1, deathsAddress1, remainingRounds: parseInt(rounds) ,
+                amountToLose: room.amountToLose, address2: data.killerAddress, amount2: newBalanceWinner.toString(), killsAddress2, deathsAddress2, rounds: room.getRounds()
+              })
+            }
+          })
         }
         //update balance
         //we send it each user in room
