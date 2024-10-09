@@ -1195,7 +1195,6 @@ function handleSocket(socket) {
       if (!address) {
         address = await getTonWallet(address)
       }
-      console.log(address)
       amount = amount < 0 ? 0 : amount
       const signPlayer = sign(
         beginCell()
