@@ -471,6 +471,8 @@ function handleSocket(socket) {
           const senderAddress = data.address
           console.log(players[0], players[1])
           const secondAddress = data.address.toLowerCase() == `${players[0]}`.toLowerCase() ? `${players[1]}` : `${players[0]}`
+          console.log('second address', secondAddress)
+          console.log(`${players[1]}`,`${players[0]}`)
           const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
           const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
           let balanceSender;
