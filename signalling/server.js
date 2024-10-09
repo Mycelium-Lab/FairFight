@@ -430,7 +430,6 @@ function handleSocket(socket) {
   async function onFinishing(data) {
     try {
       if (data.fromButton) {
-        console.log('chainid', room.getChainId())
         let fight, players
         if ((room.getChainId() != 0) && (room.chainid != 999999)) {
           fight = await blockchain().contract.fights(room.getFightId())
@@ -438,7 +437,6 @@ function handleSocket(socket) {
         } else if (room.getChainId() == 0){
           fight = await blockchainTon(room.getFightId())
           players = fight.players
-          console.log(players)
         } else {
           let fights = await pgClient.query(
             `
@@ -469,10 +467,7 @@ function handleSocket(socket) {
         }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
-          console.log(players[0], players[1])
           const secondAddress = data.address.toLowerCase() == `${players[0]}`.toLowerCase() ? `${players[1]}` : `${players[0]}`
-          console.log('second address', secondAddress)
-          console.log(`${players[1]}`,`${players[0]}`)
           const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
           const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
           let balanceSender;
@@ -1223,7 +1218,35 @@ function handleSocket(socket) {
         token: ''
       }
     } catch (error) {
-      console.log(error)
+      try {
+        const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
+        amount = amount < 0 ? 0 : amount
+        const signPlayer = sign(
+          beginCell()
+            .storeUint(3077991154, 32)
+            .storeInt(BigInt(room.getFightId()), 257)
+            .storeAddress(Address.parse(`${address}`))
+            .storeAddress(Address.parse(contractAddress))
+            .storeCoins(amount)
+            .endCell()
+            .hash(),
+          key.secretKey
+        )
+        const signString = signPlayer.toString('base64')
+        return {
+          contract: contractAddress, 
+          amount, 
+          chainid: room.getChainId(), 
+          fightid: room.getFightId(), 
+          address, 
+          r: 'к', 
+          s: signString, 
+          v: 0,
+          token: ''
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
