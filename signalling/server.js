@@ -1192,8 +1192,9 @@ function handleSocket(socket) {
   async function signatureTon(amount, address) {
     try {
       const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
-      if (!address) {
-        address = await getTonWallet(address)
+      let addressFromRedis = await getTonWallet(address)
+      if (addressFromRedis) {
+        address = addressFromRedis
       }
       amount = amount < 0 ? 0 : amount
       const signPlayer = sign(
