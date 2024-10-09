@@ -467,7 +467,6 @@ function handleSocket(socket) {
         }
         if (room.playersBaseAmount == 2) {
           const senderAddress = data.address
-          console.log(players[0], players[1])
           const secondAddress = data.address.toLowerCase() == `${players[0]}`.toLowerCase() ? `${players[1]}` : `${players[0]}`
           const existsSender = await redisClient.get(createAmountRedisLink(senderAddress, room.getChainId(), room.getFightId()))
           const existsSecond = await redisClient.get(createAmountRedisLink(secondAddress, room.getChainId(), room.getFightId()))
@@ -1193,7 +1192,10 @@ function handleSocket(socket) {
   async function signatureTon(amount, address) {
     try {
       const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
-      address = await getTonWallet(address)
+      let addressFromRedis = await getTonWallet(address)
+      if (addressFromRedis) {
+        address = addressFromRedis
+      }
       amount = amount < 0 ? 0 : amount
       const signPlayer = sign(
         beginCell()
