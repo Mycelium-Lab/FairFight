@@ -1192,7 +1192,8 @@ function handleSocket(socket) {
   async function signatureTon(amount, address) {
     try {
       const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
-      address = await getTonWallet(address)
+      address = (await getTonWallet(address)) || address
+      console.log(address)
       amount = amount < 0 ? 0 : amount
       const signPlayer = sign(
         beginCell()
@@ -1218,35 +1219,7 @@ function handleSocket(socket) {
         token: ''
       }
     } catch (error) {
-      try {
-        const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
-        amount = amount < 0 ? 0 : amount
-        const signPlayer = sign(
-          beginCell()
-            .storeUint(3077991154, 32)
-            .storeInt(BigInt(room.getFightId()), 257)
-            .storeAddress(Address.parse(`${address}`))
-            .storeAddress(Address.parse(contractAddress))
-            .storeCoins(amount)
-            .endCell()
-            .hash(),
-          key.secretKey
-        )
-        const signString = signPlayer.toString('base64')
-        return {
-          contract: contractAddress, 
-          amount, 
-          chainid: room.getChainId(), 
-          fightid: room.getFightId(), 
-          address, 
-          r: 'к', 
-          s: signString, 
-          v: 0,
-          token: ''
-        }
-      } catch (error) {
-        console.log(error)
-      }
+      console.log(error)
     }
   }
 
