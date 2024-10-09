@@ -320,7 +320,6 @@ export async function getBoard(req, res) {
     try {
         const bodyInitData = req.query.initData
         const username = req.query.username
-        console.log('board', bodyInitData, username)
         if (appState == appStateTypes.prod) {
             const initDataURI = decodeURIComponent(bodyInitData)
             const initData = new URLSearchParams( initDataURI );
@@ -341,7 +340,6 @@ export async function getBoard(req, res) {
                 })
             }
         } else {
-            console.log('here')
             res.status(200).json({
                 board: {
                     player: username,
