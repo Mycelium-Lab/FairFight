@@ -430,6 +430,7 @@ function handleSocket(socket) {
   async function onFinishing(data) {
     try {
       if (data.fromButton) {
+        console.log('chainid', room.getChainId())
         let fight, players
         if ((room.getChainId() != 0) && (room.chainid != 999999)) {
           fight = await blockchain().contract.fights(room.getFightId())
@@ -437,6 +438,7 @@ function handleSocket(socket) {
         } else if (room.getChainId() == 0){
           fight = await blockchainTon(room.getFightId())
           players = fight.players
+          console.log(players)
         } else {
           let fights = await pgClient.query(
             `
