@@ -340,7 +340,6 @@ export async function getBoard(req, res) {
                 })
             }
         } else {
-            console.log('here')
             res.status(200).json({
                 board: {
                     player: username,
