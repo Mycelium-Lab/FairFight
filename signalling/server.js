@@ -1192,7 +1192,9 @@ function handleSocket(socket) {
   async function signatureTon(amount, address) {
     try {
       const contractAddress = "EQDeOj6G99zk7tZIxrnetZkzaAlON2YZj0aymn1SdTayohvZ"
-      address = (await getTonWallet(address)) || address
+      if (!address) {
+        address = await getTonWallet(address)
+      }
       console.log(address)
       amount = amount < 0 ? 0 : amount
       const signPlayer = sign(
