@@ -154,7 +154,10 @@ export async function getFights() {
 export async function getInventory(req, response) {
     try {
         const address = req.body.address
-        const nfts = await getUserNfts(address)
+        let nfts = []
+        if (!req.body.notnft) {
+            nfts = await getUserNfts(address)
+        }
         const res = await pgClient.query(
             `
             SELECT 
