@@ -311,10 +311,10 @@
         top: 5px;
     }
     .right_btn_panel {
-        right: 20px;
+        right: 14px;
     }
     .left_btn_panel {
-        left: 20px;
+        left: 14px;
     }
     .tongame__ui_btn {
         background: none;
@@ -449,17 +449,21 @@
 }
 .stats__header-next {
 }
+.stats__enemy .stats__table {
+    align-items: flex-end;
+}
 .stats__table {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     gap: 5px;
 }
 .stats__enemy .stats__table-record::before {
-    background-image: url(../../media/stats-enemy-record-bg-sm.svg);
+    background-image: url(../../media/stats-enemy-record-bg.png);
     background-position: top right;
 }
 .stats__enemy .stats__table-record:nth-child(1):before {
-    background-image: url(../../media/stats-enemy-record-bg.svg);
+    background-image: url(../../media/stats-enemy-record-bg.png);
 }
 .stats__enemy .stats__table-record {
     flex-direction: row-reverse;
@@ -470,6 +474,7 @@
     gap: 5px;
     padding: 4px 8px;
     position: relative;
+    min-width: 60px;
     z-index: 2;
 }
 .stats__table-record::before {
@@ -483,12 +488,16 @@
     width: 100%;
     height: 100%;
     
-    background-image: url(../../media/stats-record-bg-sm.svg);
-    background-size: contain;
+    background-image: url(../../media/stats-record-bg.png);
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+.stats__table-record:nth-child(1) {
+    min-width: 100px;
+}
 .stats__table-record:nth-child(1)::before {
-    background-image: url(../../media/stats-record-bg.svg);
+    background-image: url(../../media/stats-record-bg.png);
+    background-size: 100% 100%;
 }
 .stats__table-record span {
     font-family: Teletactile;
