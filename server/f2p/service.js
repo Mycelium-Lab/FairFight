@@ -297,7 +297,9 @@ export async function getPastFights(player) {
                     AND s2.player = $1
                 )
             GROUP BY 
-                g.gameid;
+                g.gameid
+            ORDER BY 
+                g.createTime;
             `,
             [player]
         )
