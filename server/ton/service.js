@@ -17,6 +17,7 @@ import { appState, appStateTypes } from "../utils/appState.js";
 import { checkSignatureTG } from "../utils/utils.js";
 import { mnemonicToWalletKey } from "ton-crypto";
 import { bot } from "../f2p/service.js";
+import { playersToNotify } from "../constants/constants.js";
 const pgClient = db()
 await pgClient.connect()
 
@@ -651,12 +652,16 @@ async function checkNewFights() {
         for (let i = 0; i < notNotifiedFights.length; i++) {
             const fight = fights.find(v => v.id.toString() === notNotifiedFights[i].gameid.toString())
             const fightOwner = fight.owner.toString() 
-            const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
-            if (fightOwnerChat.rows.length > 0) {
-                const chat = fightOwnerChat.rows[0]
-                bot.sendMessage(chat.chat_id, `You have created fight (id: ${fight.id.toString()})`)
-                await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightOwner])
+            for (let j = 0; j < playersToNotify.length; j++) {
+                bot.sendMessage(playersToNotify[j], `${fightOwner} have created fight (id: ${fight.id.toString()})`)
+                // await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), playersToNotify[j]])
             }
+            // const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+            // if (fightOwnerChat.rows.length > 0) {
+            //     const chat = fightOwnerChat.rows[0]
+            //     bot.sendMessage(chat.chat_id, `You have created fight (id: ${fight.id.toString()})`)
+            //     await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightOwner])
+            // }
         }
 
         for (let i = 0; i < notifiedFights.length; i++) {
@@ -669,13 +674,15 @@ async function checkNewFights() {
                 } else {
                     const notified = await pgClient.query(`SELECT * FROM notified_players WHERE player = $1 AND gameid = $2`, [fightPlayers[j], parseInt(fight.id)])
                     if (notified.rows.length === 0) {
-                        const chat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightPlayers[j] ])
-                        const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
-                        bot.sendMessage(fightOwnerChat.rows[0].chat_id, `Player (address: ${createShortAddress(fightPlayers[j])}) joined your fight (id: ${fight.id.toString()})`)
-                        if (chat.rows.length > 0) {
-                            const chatId = chat.rows[0].chat_id
-                            bot.sendMessage(chatId, `You have joined fight (id: ${fight.id.toString()}, owner: ${createShortAddress(fightOwner)})`)
+                        // const chat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightPlayers[j] ])
+                        // const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
+                        for (let k = 0; k < playersToNotify.length; k++) {
+                            bot.sendMessage(playersToNotify[k], `Player (address: ${createShortAddress(fightPlayers[j])}) joined your fight (id: ${fight.id.toString()})`)
                         }
+                        // if (chat.rows.length > 0) {
+                        //     const chatId = chat.rows[0].chat_id
+                        //     bot.sendMessage(chatId, `You have joined fight (id: ${fight.id.toString()}, owner: ${createShortAddress(fightOwner)})`)
+                        // }
                         await pgClient.query(`INSERT INTO notified_players (gameid, player) VALUES ($1, $2)`, [parseInt(fight.id), fightPlayers[j]])
                     }
                 }
