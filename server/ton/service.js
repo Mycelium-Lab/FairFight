@@ -677,7 +677,7 @@ async function checkNewFights() {
                         // const chat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightPlayers[j] ])
                         // const fightOwnerChat = await pgClient.query(`SELECT * FROM tg_chats WHERE player = $1`, [ fightOwner ])  
                         for (let k = 0; k < playersToNotify.length; k++) {
-                            bot.sendMessage(playersToNotify[k], `Player (address: ${createShortAddress(fightPlayers[j])}) joined your fight (id: ${fight.id.toString()})`)
+                            bot.sendMessage(playersToNotify[k], `Player (address: ${createShortAddress(fightPlayers[j])}) joined fight (id: ${fight.id.toString()})`)
                         }
                         // if (chat.rows.length > 0) {
                         //     const chatId = chat.rows[0].chat_id
