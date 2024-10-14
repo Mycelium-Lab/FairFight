@@ -5,6 +5,7 @@ import TelegramBot from "node-telegram-bot-api";
 import dotenv from 'dotenv'
 import { checkSignatureTG } from "../utils/utils.js";
 import { appState, appStateTypes } from "../utils/appState.js";
+import { playersToNotify } from "../constants/constants.js";
 dotenv.config()
 
 const pgClient = db()
@@ -92,10 +93,13 @@ export async function createFight(fight, bodyInitData) {
                 Date.now()
             ]);
             if (appState == appStateTypes.prod) {
-                const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
-                if (chat.rows.length ) {
-                    bot.sendMessage(chat.rows[0].chat_id, 'You have created new fight.')
+                for (let i = 0; i < playersToNotify.length; i++) {
+                    bot.sendMessage(playersToNotify[i], `${fight.owner} have created new fight.`)
                 }
+                // const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
+                // if (chat.rows.length ) {
+                //     bot.sendMessage(chat.rows[0].chat_id, 'You have created new fight.')
+                // }
             }
             return {
                 code: 200,
@@ -135,14 +139,17 @@ export async function joinFight(fightId, player, bodyInitData) {
             if (resPlayers.rows.length < res.rows[0].players) {
                 await pgClient.query("INSERT INTO players_f2p (gameid, player) VALUES ($1, $2)", [fightId, player])
                 if (appState == appStateTypes.prod) {
-                    const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
-                    const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
-                    if (chat.rows.length) {
-                        bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
+                    // const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
+                    // const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
+                    // if (chat.rows.length) {
+                    for (let i = 0; i < playersToNotify.length; i++) {
+                        bot.sendMessage(playersToNotify[i], `${player} joined your fight (id: ${fightId})`)
                     }
-                    if (chatJoiner.rows.length) {
-                        bot.sendMessage(chatJoiner.rows[0].chat_id, `You joined fight (id: ${fightId})`)
-                    }
+                        // bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
+                    // }
+                    // if (chatJoiner.rows.length) {
+                    //     bot.sendMessage(chatJoiner.rows[0].chat_id, `You joined fight (id: ${fightId})`)
+                    // }
                 }
                 return {
                     code: 200,
