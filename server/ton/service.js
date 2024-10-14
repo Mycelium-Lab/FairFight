@@ -145,9 +145,9 @@ export async function getFights() {
             return []
         }
     } catch (e) {
-        if (!e.toString().includes('Error: Index 0 > 0 is out of bounds') || !e.toString().includes('TypeError: Cannot read properties of undefined')) {
-            console.log(e)
-        }
+        // if (!e.toString().includes('Error: Index 0 > 0 is out of bounds') || !e.toString().includes('TypeError: Cannot read properties of undefined')) {
+        //     console.log(e)
+        // }
         return []
     }
 }
@@ -202,7 +202,7 @@ export async function getInventory(req, response) {
 
 export async function getUserNfts(owner) {
     try {
-        const result = await fetch(`https://toncenter.com/api/v3/nft/items?owner_address=${owner}&collection_address=${nftAddress}&limit=25&offset=0`, {
+        const result = await fetch(`https://toncenter.com/api/v3/nft/items?owner_address=${owner}&collection_address=${nftAddress}&limit=50&offset=0`, {
             "headers": {
               "accept": "application/json",
               "accept-language": "en-US,en;q=0.9,ru-RU;q=0.8,ru;q=0.7",
