@@ -12,6 +12,8 @@ import gamePropertiesRouter from './server/gameproperties/controller.js'
 import airdropRouter from './server/airdrop/controller.js'
 import lootboxRouter from './server/lootbox/controller.js'
 import { createLeaderboard } from './server/leaderboard/service.js';
+import tonRouter from './server/ton/controller.js';
+import f2pRouter from './server/f2p/controller.js';
 // import { createMixingPicture } from './mixing/mixing.js';
 
 // cron.schedule("6 6 6 * * *", async () => {
@@ -55,6 +57,8 @@ server.use(leaderboardRouter)
 server.use(gamePropertiesRouter)
 server.use(airdropRouter)
 server.use(lootboxRouter)
+server.use(tonRouter)
+server.use(f2pRouter)
 
 server.get('/', (req, res) => {
     maintenance
@@ -62,6 +66,22 @@ server.get('/', (req, res) => {
     res.redirect('/maintenance')
     :
     res.sendFile(__dirname+'/public/index.html')
+})
+
+server.get('/ton', (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    res.sendFile(__dirname+'/public/index_ton.html')
+})
+
+server.get('/ton_game', (req, res) => {
+    maintenance
+    ?
+    res.redirect('/maintenance')
+    :
+    res.sendFile(__dirname+'/public/game_ton.html')
 })
 
 server.get('/game', (req, res) => {

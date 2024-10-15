@@ -11,9 +11,7 @@ signatureRouter.get('/sign', async (req, res) => {
 
 //GETTER/SETTER
 signatureRouter.get('/playersign', async (req, res) => {
-    console.log(req.query)
     const data = await getPlayerSignature(req.query.gameID, req.query.address, req.query.chainid)
-    console.log(data.signature)
     res.status(data.code).json(data.signature)
 })
 

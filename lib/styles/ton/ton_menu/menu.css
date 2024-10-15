@@ -1,0 +1,707 @@
+.contact_link_about svg#faq_icon {
+    display: none;
+}
+
+.wrapper__ton_container {
+    display: none;
+}
+
+.about__btn {
+    display: none;
+}
+
+.about-ton-header {
+    display: none;
+}
+
+#back_button {
+    display: none;
+}
+
+[data-tc-connect-button="true"] > *	{
+    /* font-family: "Teletactile" !important;
+    color: #00000000; */
+    opacity: 0;
+}
+[data-tc-connect-button="true"] {
+    position: relative;
+    background: none !important;
+}
+[data-tc-connect-button="true"]::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: url(../../../media/connect-wallet-btn.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    overflow: visible;
+    border-radius: 0;
+}
+[data-tc-dropdown-button="true"] {
+    justify-content: space-between !important;
+
+    background: none !important;
+    background-image: url(../../../media/ton-wallet-btn-bg.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+
+    box-shadow: none !important;
+
+    width: 147px;
+    height: 32px;
+
+    font-family: "Teletactile" !important;
+    text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
+    
+    border-radius: 0 !important;
+}
+[data-tc-dropdown-button="true"] svg {
+    margin-top: -2px;
+    background-image: url(../../../media/ton-wallet-btn-chevron.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(0);
+}
+[data-tc-dropdown-button="true"] svg path {
+    fill: #ffffff00 !important;
+}
+[data-tc-text="true"] {
+    font-family: "Teletactile";
+    font-size: 10px !important;
+
+}
+[data-tc-dropdown="true"] {
+    box-shadow: none !important;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0 !important;
+}
+[data-tc-dropdown-container="true"] {
+    background-color: #ffffff00 !important;
+}
+[data-tc-dropdown-container="true"] ul	{
+    background-image: url(../../../media/ton-wallet-dropdown-bg.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100% !important;
+    background-color: #ffffff00 !important;
+
+    margin-top: 0;
+    padding: 10px 5px !important;
+    box-sizing: border-box !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 180px !important;
+    height: 52px !important;
+}
+[data-tc-dropdown-container="true"] ul button {
+    background: none !important;
+    max-height: 18px;
+    font-family: Teletactile;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13.61px;
+    text-align: left;
+    text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;    
+}
+
+[data-tc-dropdown-container="true"] ul button svg {
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat;
+    width: 15px
+}
+[data-tc-dropdown-container="true"] ul li:nth-child(1) button svg {
+    background-image: url(../../../media/ton-wallet-copy.svg) !important;
+}
+[data-tc-dropdown-container="true"] ul li:nth-child(2) button svg {
+    background-image: url(../../../media/ton-wallet-disconnect.svg) !important;
+}
+[data-tc-dropdown-container="true"] ul button svg path {
+    fill: #ffffff00 !important;
+}
+
+@media (max-width: 500px) {
+
+    #back_button {
+        display: block;
+    }
+
+    .wrapper__ton_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        width: 100%;
+        min-height: 100dvh;
+        overflow: auto;
+        overflow-x: hidden;
+        position: relative;
+
+        padding-top: 80px;
+
+        background-image: url(../../../media/ton-app-bg.jpg) !important;
+        background-size: 100% !important;
+        background-position: 0 -5%;
+        background-repeat: no-repeat;
+    }
+
+    .ton__menu {
+        width: 100%;
+    }
+
+    .ton__menu-smm {
+        /* display: flex; */
+        display: none !important;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
+        padding-bottom: 10px;
+    }
+
+    .ton__menu-bgfx {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .ton__blur {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        
+        height: 100%;
+        width: 100%;
+        
+        background: linear-gradient(180deg, rgba(41, 27, 62, 0) 0.8%, #291B3E 16.99%) !important;
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        background-position: bottom !important;
+    }
+
+    .ton__menu-pic { 
+        width: 100%;
+        
+        z-index: 1;
+    }
+
+    .contact_link_about svg#faq_icon {
+        display: block;
+    }
+
+    .contact_link_about span {
+        display: none;
+    }
+
+    .contact_link_about {
+        max-width: 80px;
+        position: static !important;
+    }
+
+    .ton__menu-content {
+        z-index: 3;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .ton__content-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        background: #291b3e;
+    }
+    .ton__content-inner::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 0;
+
+        background: linear-gradient(180deg, rgba(41, 27, 62, 0) 0.8%, #291B3E 16.99%) !important;
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        background-position: center -20% !important;
+    }
+
+    .ton__menu-btn {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        align-self: flex-end;
+    }
+
+    .ton__menu-btn img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: relative;
+    }
+
+    .ton__menu-btn:nth-child(1) {
+        flex-basis: calc(50% - 6px);
+    }
+    .ton__menu-btn:nth-child(2) {
+        flex-basis: calc(50% - 6px);
+    }
+
+    .ton__menu-btn span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-family: "Teletactile";
+        font-size: 23px;
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 3vw;
+
+        
+    text-shadow: 1px 3px 0 #39393979, 2px 2px 2px #39393957;
+
+    }
+
+    .startContainer {
+        height: 100dvh !important;
+    }
+
+    #wrapper {
+        background-image: url(../../../media/ton-app-bg.jpg) !important;
+        background-size: 100% !important;
+        background-position: 0 -5%;
+
+        position: static;
+    }
+
+    .blur {
+        background: none;
+        background: linear-gradient(180deg, rgba(41, 27, 62, 0) 0.8%, #291B3E 16.99%) !important;
+        background-size: 100% 50% !important;
+        background-repeat: no-repeat !important;
+        background-position: bottom !important;
+    }
+
+    /* #connect {
+        margin-right: 0;
+        background-image: url(../../../media/svg/frame-ton.svg);
+        margin-top: 0;
+    } */
+
+    /* #connect:hover {
+        margin-right: 0;
+        background-image: url(../../../media/svg/ton-press-btn.svg) !important;
+        padding-top: 14px !important;
+    } */
+
+    /* #pastgames-f2p { */
+        /* display: none !important; */
+    /* } */
+
+    /* #connect .connect_wallet__text {
+        position: relative;
+        top: -2px;
+    } */
+
+    /* #connect > svg {
+        position: relative;
+        top: -2px;
+        right: -2px;
+    } */
+    
+    /* Hide desktop version elements */
+
+    /* #connect button { */
+        /* display: none; */
+        /* transform: translateY(-2px);
+    } */
+
+    .wrapper__monetki {
+        display: none !important;   
+    }
+
+    .wrapper__container {
+        display: none !important;
+    }
+    
+    .newgame__btn_mobile {
+        display: none !important;
+    }
+
+    .wrapper_banners {
+        display: none !important;
+    }
+
+    #header {
+        padding: 0px 10px;
+        position: fixed !important;
+        left: 0;
+        width: 100vw !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header-right {
+        margin-bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* MODAL */
+    .wrapper__message-modal {
+        max-width: calc(100vw - 40px) !important;
+        max-height: 90vh;
+    }
+
+    .about__content p#nothing_new {
+        text-align: center;
+        font-weight: 900;
+        font-size: 14px !important;
+        color: #FF8426;
+    }
+
+    .controls_outer_title {
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 13.51px;
+        text-align: center;
+        color: #FF8426;
+        margin-bottom: 12px;
+    }
+
+    #tutor-stun-icon {
+        transform: translateY(-2px) scale(1.1);
+    }
+
+    .about__content p {
+        color: #000;
+        font-weight: 900;
+        font-size: 14px;
+    }
+
+    .about__content p b {
+        color: #FF8426;
+    }
+
+    .about__btn {
+        display: block;
+        position: relative;
+        /* width: 176px; */
+        height: 48px;
+        background: none;
+        border: none;
+        margin: 5px auto 15px auto;
+    }
+
+    .about__btn-frame {
+        width: 100%;
+        height: 100%;
+    }
+
+    .about__btn span {
+        top: 0; left: 0; right: 0; bottom: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        color: #fff;
+        font-size: 16px;
+        font-family: "Teletactile";
+        position: absolute;
+
+        text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
+    }
+    .about__btn_control_keys span {
+        font-size: 14px !important;
+        margin-top: 12px;
+    }
+
+    .about-header {
+        display: none;
+    }
+
+    .about-ton-header {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 5px;
+        height: 45px;
+    }
+
+    .about__content_control_keys {
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 2px solid #FF8426;
+        border-radius: 4px;
+        background: #FFFDF4;
+
+        overflow-y: auto;
+    }
+
+    .controls_block__title {
+        font-family: "Teletactile", sans-serif;
+        font-size: 14px;
+        font-weight: 900;
+        color: #FF8426;
+        text-align: center;
+    }
+
+    .controls_block__list {
+        display: flex;
+        flex-direction: column;
+    }
+    .controls_line {
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+    }
+    .controls_line--center {
+        justify-content: center;
+    }
+    .controls_block__list-card {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        max-width: 75px;
+        width: 100%;
+    }
+    .controls_block__list-card img {
+        height: 55px;
+        object-fit: contain;
+    }
+    .controls_block__list-card span {
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 13.9px;
+        text-align: center;
+    }
+    .controls_block__title--mtop {
+        margin-top: 10px;
+    }
+
+    .controls_block__list--perks .controls_line {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .controls_block__list--perks .controls_block__list-card {
+        max-width: 50px;
+    }
+    .controls_block__list-card--wide {
+        max-width: 70px !important;
+    }
+
+    .opengame_content {
+        display: flex;
+        flex-direction: column;
+    }
+    .opengame_content .board {
+        min-height: 250px;
+        margin-bottom: 15px;
+    }
+    .newgame_ton_btn {
+        width: 175.16px;
+        background-size: 100%;
+        padding: 0px 6px;
+        height: 100px;
+        z-index: 3;
+        position: relative;
+        background: none;
+        border: none;
+        outline: none;
+        background-repeat: no-repeat;
+        background-image: url(../../../media/buttons/newgame-sm.svg);
+        background-position: center;
+    }
+    .newgame_ton_btn::after {
+        content: '';
+        position: absolute;
+        top: 25px; left: 0;right: 0;bottom: 0;
+        background-size: calc(100% - 4px);
+        background-position: center;
+        background-image: url(../../../media/buttons/border-game-sm.svg);
+        background-repeat: no-repeat;
+        z-index: 4;
+    }
+
+    #back_button {
+        align-self: flex-start;
+    }
+
+    .blur {
+        display: none;
+    }
+
+    .help__img {
+        width: 20px;
+        transform: translateY(-2px);
+    }
+
+    /* NFT SHOP */
+
+    .nft-shop-modal__params-wrap {
+        gap: 0 !important;
+        justify-content: space-between;
+    }
+
+    /* F2P Games List */
+    #opengames_empty,
+    #pastgames_empty,
+    #opengames_empty-f2p,
+    #pastgames_empty-f2p {
+        display: flex;
+        flex-direction: column;
+    }
+    #opengames_empty-desc, 
+    #pastgames_empty-desc,
+    #opengames_empty-desc-f2p, 
+    #pastgames_empty-desc-f2p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.09px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    #pastgames .games__empty {
+        margin: 10px auto !important;
+    }
+    #pastgames.empty {
+        background: none !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .ton__menu-btn span {
+        font-size: 24px;
+        padding-top: 3vw;
+    }
+    .ton__menu-btn:nth-child(1) span {
+        padding-top: 12px;
+    }
+    .ton__menu-btn:nth-child(2) span {
+        padding-top: 12px;
+    }
+    .ton__menu-btn:nth-child(3) span {
+        font-size: 34px;
+        padding-top: 14px;
+    }
+    .ton__menu-btn:nth-child(4) span {
+        font-size: 34px;
+        padding-top: 14px;
+    }
+    .ton__menu-btn:nth-child(5) span {
+        font-size: 34px;
+        padding-top: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .ton__menu-btn:nth-child(1) span, .ton__menu-btn:nth-child(2) span {
+        padding-top: 9px;
+        font-size: 24px;
+    }
+    .ton__menu-btn:nth-child(3) span, .ton__menu-btn:nth-child(4) span, .ton__menu-btn:nth-child(5) span {
+        padding-top: 10px;
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ton__menu-btn span {
+        font-size: 24px;
+        padding-top: 3vw;
+    }
+    .ton__menu-btn:nth-child(1) span {
+        padding-top: 6px;
+        font-size: 24px;
+    }
+    .ton__menu-btn:nth-child(2) span {
+        padding-top: 6px;
+        font-size: 24px;
+    }
+    .ton__menu-btn:nth-child(3) span {
+        font-size: 26px;
+    }
+    .ton__menu-btn:nth-child(4) span {
+        font-size: 26px;
+    }
+    .ton__menu-btn:nth-child(5) span {
+        font-size: 26px;
+    }
+
+    /* NFT SHOP */
+    .nft-shop-modal__list-items-wrap {
+        width: 100% !important;
+    }
+
+    .nft-shop-modal__params-wrap {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        gap: 10px 5px !important;
+
+        flex-wrap: wrap;
+    }
+
+    .nft-shop-modal__nav-wrap .nav-wrap__nav {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+    .sort-wrapper {
+        margin: 0;
+    }
+
+    .simplebar-content:before, .simplebar-content:after {
+        display: none;
+    }
+
+    .simplebar-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 360px) {
+    .ton__menu-btn:nth-child(1) span {
+        padding-top: 8px;
+        font-size: 16px;
+    }
+    .ton__menu-btn:nth-child(2) span {
+        padding-top: 8px;
+        font-size: 16px;
+    }
+    .ton__menu-btn:nth-child(3) span {
+        padding-top: 10px;
+    }
+    .ton__menu-btn:nth-child(4) span {
+        padding-top: 10px;
+    }
+    .ton__menu-btn:nth-child(5) span {
+        padding-top: 10px;
+    }
+}

@@ -1,0 +1,245 @@
+.modal_content_finish {
+    height: 560px;
+}
+.yourStats__header,
+.enemyStats__header {
+    border-bottom: 1px solid #ffc897;
+    height: 26px;
+}
+
+.yourStats__header p::before,
+.enemyStats__header p::before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/user.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.yourStats__header p,
+.enemyStats__header p {
+    color: rgba(255, 124, 6, 1);
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.09px;
+    margin-bottom: 0px !important;
+}
+
+.enemyStats__header p {
+    text-align: end;
+}
+
+.finish-stats {
+    width: 246px;
+    border-bottom: 1px solid #ffc897;
+}
+
+.yourStats {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px 10px;
+    margin: 5px 0px;
+    grid-template-areas:
+        "yourWinLose yourKills"
+        "yourDep yourDeaths";
+}
+
+#yourAmountWinLose {
+    grid-area: yourWinLose;
+}
+.finish_modal_your_address,
+.finish_modal_enemy_address {
+    color: rgba(255, 124, 6, 1);
+    text-decoration: underline;
+}
+.yourKills_stat {
+    grid-area: yourKills;
+}
+.yourDep_stat {
+    grid-area: yourDep;
+}
+.yourDeaths_stat {
+    grid-area: yourDeaths;
+}
+
+.enemyStats {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px 10px;
+    margin: 5px 0px 3px;
+    grid-template-areas:
+        "enemyKills enemyWinLose"
+        "enemyDeaths enemyDep";
+}
+
+#enemyAmountWinLose {
+    grid-area: enemyWinLose;
+}
+.enemyKills_stat {
+    grid-area: enemyKills;
+}
+.enemyDep_stat {
+    grid-area: enemyDep;
+}
+.enemyDeaths_stat {
+    grid-area: enemyDeaths;
+}
+
+#over_modal .green::before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/win.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .red::before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/lose.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+.yourDepTitle,
+.yourKillsTitle,
+.yourDeathsTitle,
+.your_address,
+.enemyDepTitle,
+.enemyKillsTitle,
+.enemyDeathsTitle,
+.enemy_address {
+    font-weight: 500;
+}
+
+#over_modal .yourKillsTitle::before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/kills.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .yourDeathsTitle:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/deaths.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .yourDepTitle:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/dep.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+#over_modal .enemyDepTitle:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/dep.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+.your_address:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/wallet.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .enemyKillsTitle:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/kills.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .enemyDeathsTitle:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/deaths.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .enemyDepTitile:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/dep.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+.enemyStats_address:before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/wallet.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+}
+
+.yourStats_address {
+    margin-bottom: 5px;
+}
+.enemyStats_address {
+    text-align: end;
+    margin-bottom: 5px;
+}
+
+.stats-devider {
+    background-image: url(../../../media/svg/vs.svg);
+    width: 51px;
+    height: 39px;
+    z-index: 10000;
+    position: absolute;
+    /* top: 195px; */
+    top: 216px;
+}
+
+.finish-stats_enemy {
+    margin-top: 20px;
+}

@@ -1,0 +1,123 @@
+@media(max-width: 1024px) {
+    .wrapper__item-modal-overlay .body__item-detail{
+        width: 351px !important;
+        border-radius: 0px !important;
+        padding: 0px 20px !important;
+        padding-bottom: 30px !important;
+        height: 343px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__btn-close{
+        width: 16px !important;
+        height: 16px !important;
+        top: 14px !important;
+        right: 17px !important;
+    }
+    .inventory-item-body_bronze,
+    .inventory-item-body_silver,
+    .inventory-item-body_gold,
+    .inventory-item-body_platinum,
+    .inventory-item-body_legendary
+    {
+        width: 308px;
+    }
+    .wrapper__item-modal-overlay .header__img-item{
+        width: 100px !important;
+        height: 100px !important;
+    }
+    .text-item-nft__name{
+        text-transform: uppercase;
+        color: #FF7C06 !important;
+    }
+    #inventory-item-modal-image {
+        width: 90px !important;
+    }
+    .text-item__bronze,
+    .text-item__silver,
+    .text-item__gold,
+    .text-item__platinum,
+    .text-item__legendary {
+        font-size: 14px !important;
+        margin-bottom: 0px !important;
+    }
+    .text-item__type{
+        font-size: 10px !important;
+        padding-bottom: 6px !important;
+    }
+    .body__item-detail .board-edge_sm:nth-child(1) {
+        width: 24.64px !important;
+        left: -6px;
+        top: -6px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(2) {
+        width: 24.64px !important;
+        right: -6px;
+        top: -6px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(3) {
+        width: 24.64px !important;
+        right: -6px;
+        bottom: -6px;
+    }
+    .body__item-detail .board-edge_sm:nth-child(4) {
+        width: 24.64px !important;
+        left: -6px;
+        bottom: -6px;
+    }
+    .header__text-item{
+        transform: translateY(-8px);
+    }
+    .wrapper__item-modal-overlay .text-item__type{
+        border-width: 1px !important;
+    }
+    .prop__title, .prop__value{
+        font-size: 10px !important;
+    }
+    .prop__img-wrap{
+        width: 15.64px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__header{
+        border-width: 1px !important;
+    }
+    .wrapper__item-modal-overlay .prop__value{
+        vertical-align: inherit !important;
+    }
+    .wrapper__item-modal-overlay .prop__title {
+        margin-right: 38px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__header_active{
+        padding-bottom: 19px !important;
+        margin: 18px 18px 0px !important;
+    }
+    .wrapper__item-modal-overlay .item-detail__description{
+        font-size: 10px !important;
+        padding: 10px 18px 0px 18px !important;
+        line-height: 13px !important;
+        height: 60px !important;
+        margin-bottom: 16px !important;
+    }
+    #nventory-nftbox-body .item-detail__description{
+        margin-bottom: 0px !important;
+        height: auto !important;
+    }
+    #inventory-nftbox-modal-name{
+        color: #967444;
+    }
+    #nventory-nftbox-body .item-detail__header_active {
+        padding-bottom: 13px !important;
+    }
+    .text-nftboxe__type{
+        color: #393939;
+    }
+    .props-item__prop-title{
+        font-family: 'Teletactile';
+        font-size: 10px;
+        color: #FF7C06;
+    }
+    .props-item__prop-title-nft {
+        font-size: 15px;
+    }
+    #nventory-nftbox-body .props-item__prop img {
+        width: 18px;
+        height: 15px;
+    }
+}

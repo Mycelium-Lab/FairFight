@@ -1,0 +1,1 @@
+export const playersToNotify = [490107650, 107480769];
