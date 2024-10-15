@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-TJQ72JV');</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-B0VNYJWLM8"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-B0VNYJWLM8');
+	</script>
+	<title>Fair Fight</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="/styles/ton/game.css">
+	<link rel="stylesheet" href="/styles/ton/custom.css">
+	<link rel="stylesheet" href="/media/fonts/stylesheet.css">
+	<link rel="icon" type="image/png" href="/media/favicon.png">
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+		integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+	<!-- <script type="text/javascript" src="dist/index.js"></script> -->
+	<script type="module" src="/dist/main_game_ton.js"></script>
+	<script type="text/javascript" src="/net/socket.io.js"></script>
+	<script type="text/javascript" src="/net/adapter.js"></script>
+	<script type="text/javascript" src="/messages.js"></script>
+	<script type="text/javascript" src="/game.min.js"></script>
+	<script type="text/javascript" src="/game/plugins/minimap.js"></script>
+	<script type="text/javascript" src="/game/levels/main.js"></script>
+	<script type="text/javascript" src="/game/levels/moon.js"></script>
+	<script type="text/javascript" src="/game/levels/dungeon.js"></script>
+	<script type="text/javascript" src="/game/levels/farm.js"></script>
+	<script type="text/javascript" src="/game/levels/city.js"></script>
+	<script type="text/javascript" src="/game/events.js"></script>
+	<script type="text/javascript" src="/net/contract.js"></script>
+	<script type="text/javascript" src="/net/peer-connection.js"></script>
+	<script type="text/javascript" src="/net/room-connection.js"></script>
+	<script type="text/javascript" src="/game/entities/teleport.js"></script>
+	<script type="text/javascript" src="/game/entities/mole.js"></script>
+	<script type="text/javascript" src="/game/entities/dynamite.js"></script>
+	<script type="text/javascript" src="/game/entities/bursting.js"></script>
+	<script type="text/javascript" src="/game/entities/igniting.js"></script>
+	<script type="text/javascript" src="/game/entities/stun.js"></script>
+	<script type="text/javascript" src="/game/entities/invisible.js"></script>
+	<script type="text/javascript" src="/game/entities/shield.js"></script>
+	<script type="text/javascript" src="/game/entities/remote-player.js"></script>
+	<script type="text/javascript" src="/game/entities/player.js"></script>
+	<script type="text/javascript" src="/game/entities/pointer.js"></script>
+	<script type="text/javascript" src="/game/entities/weapon.js"></script>
+	<script type="text/javascript" src="/game/entities/trampoline.js"></script>
+	<script type="text/javascript" src="/game/entities/moving-platform.js"></script>
+	<script type="text/javascript" src="/game/main.js"></script>
+	<script src="/custom.js"></script>
+	<!-- <script src="/modules/statsVisible.js"></script> -->
+</head>
+<div id="wrapper">
+	<!-- <img src="/media/monetki.png" alt="" class="wrapper__monetki"> -->
+	<div id="wrapper__gradient_game" class="wrapper__gradient" style="background: #020202;"></div>
+	<!-- <a href="" class="wrapper__link link-second">Inventory
+		<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path fill-rule="evenodd" clip-rule="evenodd"
+				d="M2.0126 0.129021C1.75665 0.334098 1.78395 0.686656 2.07824 0.977906L2.31476 1.21193L2.07824 1.4533C1.78478 1.75294 1.758 2.1006 2.0126 2.30464C2.2576 2.50088 2.48235 2.47402 2.72945 2.21884C2.84805 2.09637 2.97648 1.99617 3.01488 1.99617C3.05329 1.99617 3.2001 2.09637 3.34105 2.21884C3.63871 2.47743 3.90517 2.50289 4.11723 2.29306C4.33823 2.0744 4.30852 1.76615 4.04222 1.51372C3.91844 1.39637 3.81717 1.26277 3.81717 1.21683C3.81717 1.17089 3.91844 1.03728 4.04222 0.919939C4.30852 0.667507 4.33823 0.35926 4.11723 0.140599C3.90517 -0.0692287 3.63871 -0.0437702 3.34105 0.214822C3.2001 0.33729 3.05329 0.43749 3.01488 0.43749C2.97648 0.43749 2.84805 0.33729 2.72945 0.214822C2.48235 -0.040356 2.2576 -0.0672245 2.0126 0.129021ZM6.53836 1.37671C6.08624 1.5351 5.52212 2.06527 5.30893 2.53213L5.12994 2.92395V12.1276V21.3312L5.3117 21.6966C5.54358 22.1627 5.98662 22.6011 6.43154 22.8046L6.78028 22.9641H16.1197H25.4591L25.8034 22.8065C26.2636 22.596 26.6736 22.1765 26.9129 21.6716L27.1095 21.257V12.0905V2.92395L26.899 2.49985C26.7815 2.26322 26.5392 1.9457 26.3509 1.78174C25.7036 1.21787 26.3988 1.25327 16.0876 1.2598C8.09328 1.26485 6.81276 1.28059 6.53836 1.37671ZM25.4286 2.3891C25.6641 2.51038 25.808 2.65423 25.9289 2.889L26.0985 3.21869L26.0789 12.2139L26.0592 21.209L25.9023 21.4186C25.816 21.5338 25.6338 21.7032 25.4974 21.7951L25.2494 21.9621H16.1197H6.99003L6.73692 21.7933C6.59769 21.7005 6.40663 21.5113 6.31234 21.3728L6.14093 21.1212L6.1605 12.0597L6.18016 2.99818L6.36027 2.74827C6.45937 2.61088 6.67879 2.43624 6.84787 2.36023C7.14216 2.22804 7.53989 2.22203 16.1267 2.22047L25.0979 2.21884L25.4286 2.3891ZM21.9334 4.22025C20.9844 4.41479 20.1574 4.59797 20.0955 4.62729C20.0336 4.65661 18.312 6.54588 16.2697 8.82571C14.2274 11.1055 12.522 12.9732 12.4798 12.976C12.4376 12.9788 12.1177 12.6972 11.7688 12.3502C11.0151 11.6005 10.8772 11.5648 10.4677 12.0132C10.1309 12.3821 9.9331 13.0091 9.99379 13.5158C10.0455 13.9479 10.3394 14.509 10.6902 14.8454L10.9452 15.09L9.5263 16.5035C8.08863 17.9357 7.94385 18.1329 7.94385 18.6592C7.94385 19.4355 8.69498 20.1775 9.48084 20.1775C10.0516 20.1775 10.3843 19.945 11.7821 18.5698L13.1081 17.2651L13.5041 17.6078C13.9497 17.9935 14.4056 18.1767 14.9195 18.1767C15.6782 18.1767 16.4948 17.6904 16.4948 17.2386C16.4948 17.0667 16.3653 16.8956 15.8571 16.3954C15.5065 16.0502 15.2195 15.7461 15.2195 15.7196C15.2195 15.6932 17.1278 13.9909 19.4601 11.9368C21.7924 9.88271 23.7171 8.13343 23.7372 8.04948C23.9107 7.32403 24.4464 4.51588 24.4464 4.33181C24.4464 4.03054 24.2432 3.84966 23.9154 3.85916C23.7743 3.86324 22.8823 4.02572 21.9334 4.22025ZM7.52706 4.10818C7.21117 4.42073 7.31679 4.87431 7.7428 5.03455C8.31862 5.25114 8.75679 4.45829 8.27046 4.07983C8.00828 3.87571 7.75203 3.88551 7.52706 4.10818ZM1.30416 4.77886C1.2629 4.79251 1.13545 4.82413 1.02097 4.84915C0.906424 4.87416 0.680553 5.01281 0.51897 5.15724C-0.283395 5.87453 -0.133289 7.11643 0.816556 7.61862C1.26545 7.85599 1.94321 7.83119 2.33892 7.56295C3.16836 7.00057 3.28006 5.91417 2.57964 5.22115C2.2297 4.8749 1.63647 4.66923 1.30416 4.77886ZM23.3212 4.98965C23.3212 5.00316 23.2025 5.59597 23.0574 6.3071C22.8012 7.56325 22.7857 7.60771 22.5136 7.8712C22.3595 8.02039 20.4827 9.68298 18.3429 11.5659C15.2166 14.3167 14.4319 14.9725 14.3483 14.904C14.2911 14.857 14.2443 14.7807 14.2443 14.7346C14.2443 14.6884 16.1347 12.7804 18.4452 10.4947C22.2443 6.73619 22.646 6.31601 22.646 6.10143C22.646 5.83052 22.4262 5.63309 22.1245 5.63309C21.9761 5.63309 21.0433 6.51634 17.6924 9.82994C13.6728 13.8048 13.4418 14.0197 13.3255 13.8925C13.2095 13.7656 13.4073 13.5307 16.9067 9.64112L20.6106 5.52413L21.9097 5.25485C23.4576 4.93391 23.3212 4.95951 23.3212 4.98965ZM1.86677 5.92998C2.24913 6.30829 1.79003 6.98112 1.31751 6.73507C1.09599 6.61966 1.04408 6.52807 1.04273 6.24966C1.0407 5.83015 1.56161 5.62804 1.86677 5.92998ZM7.62518 6.56399C7.24388 6.77189 7.25693 7.32826 7.64776 7.52822C8.05412 7.73612 8.46813 7.4914 8.46813 7.04332C8.46813 6.59412 8.02839 6.34407 7.62518 6.56399ZM14.9495 17.1249C14.8405 17.1383 14.6636 17.1275 14.5564 17.1008C14.351 17.0498 11.6153 14.4274 11.2344 13.9164C11.0796 13.7085 11.0187 13.5412 11.0187 13.3231V13.0193L13.0832 15.0599C14.9475 16.9027 15.1284 17.1029 14.9495 17.1249ZM11.0392 17.8224C9.91885 18.9323 9.67258 19.1416 9.48751 19.1416C9.19615 19.1416 8.99324 18.9484 8.99324 18.6709C8.99324 18.4786 9.18633 18.2538 10.3221 17.1237L11.651 15.8015L12.011 16.1523L12.371 16.5032L11.0392 17.8224ZM20.101 17.6301C19.9078 17.8732 19.9046 18.0361 20.0889 18.2613C20.2323 18.4364 20.2328 18.4365 21.9991 18.4365C23.9185 18.4365 23.932 18.4337 24.0361 18.0134C24.0747 17.8576 24.0433 17.7711 23.8944 17.6238L23.7031 17.4345H21.9798H20.2564L20.101 17.6301ZM29.07 18.7759C28.7404 19.0324 28.81 19.537 29.1971 19.698C29.8031 19.9501 30.277 19.2629 29.8134 18.8043C29.5884 18.5816 29.3322 18.5718 29.07 18.7759ZM18.8203 18.9716C18.4189 19.1176 18.3004 19.6381 18.6211 19.8461C18.7721 19.9439 19.1514 19.9573 21.2949 19.9406L23.7927 19.921L23.9368 19.73C24.0404 19.5925 24.0662 19.481 24.0284 19.3323C23.9312 18.949 23.7187 18.9184 21.2044 18.9248C19.955 18.928 18.8821 18.9491 18.8203 18.9716ZM5.80508 24.1445C5.52302 24.2676 5.35536 24.4521 5.20781 24.8014C5.11682 25.017 5.09243 25.3939 5.09243 26.587C5.09243 28.0225 5.10121 28.1157 5.2652 28.4225C5.3844 28.6455 5.54133 28.7998 5.77155 28.9203C6.09719 29.0908 6.1449 29.0944 7.76898 29.0726C9.61774 29.0479 9.64962 29.0397 10.0247 28.4944C10.1873 28.258 10.1935 28.1887 10.1935 26.5816C10.1935 25.0207 10.1834 24.8962 10.0346 24.6344C9.94721 24.4806 9.74857 24.284 9.59306 24.1975C9.32856 24.0504 9.20485 24.0406 7.67026 24.0432C6.47797 24.0454 5.96869 24.073 5.80508 24.1445ZM11.4314 24.1572C10.7698 24.4986 10.7014 24.7451 10.7318 26.6819C10.7547 28.1479 10.7656 28.2491 10.9277 28.507C11.0301 28.6698 11.2323 28.8437 11.4287 28.9379C11.7391 29.0865 11.8533 29.0943 13.4085 29.073C15.2422 29.0479 15.2762 29.0391 15.6509 28.4944C15.8136 28.2578 15.8196 28.1891 15.8196 26.5704C15.8196 24.6627 15.7831 24.5114 15.2492 24.2085C14.9712 24.0509 14.8765 24.0427 13.3066 24.042C11.9549 24.0414 11.6156 24.0622 11.4314 24.1572ZM17.0443 24.16C16.4411 24.4542 16.3521 24.7573 16.3484 26.5268C16.3468 27.3024 16.3788 28.0554 16.4195 28.2001C16.5033 28.4985 16.8795 28.8915 17.1935 29.0087C17.3173 29.0549 18.04 29.0875 18.9401 29.0875C20.6368 29.0875 20.8244 29.0505 21.166 28.6489C21.4869 28.2716 21.5364 27.9381 21.5087 26.3407C21.4837 24.9057 21.4802 24.878 21.2837 24.5845C20.9431 24.0756 20.7887 24.0401 18.9215 24.042C17.5878 24.0434 17.238 24.0654 17.0443 24.16ZM22.6572 24.1642C22.519 24.2327 22.3164 24.4224 22.2071 24.5858C22.0125 24.8767 22.0079 24.9117 21.9822 26.2986C21.9512 27.9655 22.0151 28.3636 22.3674 28.6998C22.5 28.8264 22.7036 28.9654 22.8197 29.0087C23.1447 29.1299 26.0416 29.1123 26.3442 28.9872C26.7092 28.8363 27.0535 28.4065 27.1104 28.0306C27.1372 27.8541 27.1479 27.0761 27.1343 26.3018C27.1068 24.7403 27.064 24.5747 26.6042 24.2503C26.367 24.0829 26.3051 24.0769 24.634 24.0585C23.1432 24.0422 22.8744 24.0566 22.6572 24.1642ZM9.13577 25.1077C9.19525 25.1785 9.21536 25.6404 9.20125 26.6107L9.18078 28.0113H7.68047H6.18016L6.15975 26.5693C6.14408 25.4653 6.1617 25.1133 6.23477 25.0674C6.28728 25.0345 6.94209 25.007 7.69007 25.0063C8.75559 25.0055 9.06848 25.0274 9.13577 25.1077ZM14.7619 25.1077C14.8214 25.1785 14.8415 25.6404 14.8274 26.6107L14.8069 28.0113H13.3066H11.8063L11.7859 26.5693C11.7702 25.4653 11.7879 25.1133 11.8609 25.0674C11.9134 25.0345 12.5682 25.007 13.3162 25.0063C14.3817 25.0055 14.6946 25.0274 14.7619 25.1077ZM20.3881 25.1077C20.4476 25.1785 20.4677 25.6404 20.4536 26.6107L20.4331 28.0113H18.9328H17.4325L17.412 26.6107C17.3979 25.6404 17.418 25.1785 17.4775 25.1077C17.5448 25.0274 17.8601 25.0052 18.9328 25.0052C20.0054 25.0052 20.3208 25.0274 20.3881 25.1077ZM24.2344 25.177C24.1149 25.3029 24.0713 25.4417 24.0713 25.6965V26.0444H23.7198C23.4622 26.0444 23.322 26.0875 23.1947 26.2057L23.0211 26.3671V25.7752C23.0211 25.4138 23.0562 25.1487 23.1111 25.0943C23.1661 25.0399 23.4341 25.0052 23.7993 25.0052H24.3976L24.2344 25.177ZM26.0067 25.0943C26.0617 25.1487 26.0968 25.4138 26.0968 25.7752V26.3671L25.9232 26.2057C25.7959 26.0875 25.6557 26.0444 25.3981 26.0444H25.0465V25.6965C25.0465 25.4417 25.003 25.3029 24.8835 25.177L24.7203 25.0052H25.3185C25.6838 25.0052 25.9517 25.0399 26.0067 25.0943ZM23.6823 27.0654L24.0713 27.1023V27.4396C24.0713 27.6525 24.1182 27.8282 24.1984 27.9159C24.3218 28.0507 24.307 28.0542 23.6921 28.0331L23.0586 28.0113L23.0368 27.3498C23.0152 26.6954 23.0164 26.6902 23.154 26.8584C23.2564 26.9833 23.3963 27.0382 23.6823 27.0654ZM26.0649 27.9491C26.0371 28.0208 25.856 28.0484 25.4123 28.0484C24.8222 28.0484 24.803 28.0431 24.9224 27.9126C25.0006 27.8271 25.0465 27.6487 25.0465 27.4302V27.0835H25.3868C25.6404 27.0835 25.7693 27.0409 25.8932 26.9165L26.0592 26.7495L26.0814 27.2996C26.0935 27.6021 26.0862 27.8944 26.0649 27.9491Z"
+				fill="white" />
+		</svg>
+
+	</a> -->
+
+	<body oncontextmenu="return false;">
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJQ72JV" height="0" width="0"
+				style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<div>
+			<!-- <span id="internalWallet" class="canvasHeader" style="display: inherit;">Your wallet: </span> -->
+
+
+			<div id="md-page">
+				<span id="internalBalance" class="internalBalance" style="display: none;font-weight: 400">0</span>
+				<!-- <div id="middle_your_stats">
+				<div style="text-align: center;">
+					<div class="rounds-head__subtitle">You</div>
+				</div>
+				<div class="stats-box">
+				<div class="stats-internal-box">
+					<div>
+						<img src="/media/health.png" width="12" height="12"/>
+						Health: <span class="yourHealth" style="font-weight: 400">0</span>
+					</div>
+					<div>
+						<svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M11.8658 0.134157C11.777 0.0474975 11.6575 -0.000692366 11.5334 7.51826e-06L7.8122 0.0116727C7.74323 0.011762 7.67512 0.0269505 7.61264 0.0561716C7.55017 0.0853926 7.49486 0.127937 7.45058 0.180817L3.34444 5.15018L2.86034 4.66607C2.68465 4.49296 2.4479 4.39592 2.20126 4.39592C1.95461 4.39592 1.71786 4.49296 1.54218 4.66607L0.801437 5.40681C0.714322 5.49304 0.645166 5.59569 0.597969 5.70882C0.550773 5.82195 0.526472 5.94331 0.526472 6.06589C0.526472 6.18847 0.550773 6.30983 0.597969 6.42296C0.645166 6.53609 0.714322 6.63874 0.801437 6.72497L2.02045 7.94398L0.270672 9.68792C0.0971944 9.8646 0 10.1023 0 10.3499C0 10.5975 0.0971944 10.8352 0.270672 11.0119L0.98808 11.7293C1.16547 11.9014 1.40292 11.9977 1.65008 11.9977C1.89724 11.9977 2.13468 11.9014 2.31208 11.7293L4.05602 9.97955L5.27503 11.1986C5.45072 11.3717 5.68746 11.4687 5.93411 11.4687C6.18076 11.4687 6.4175 11.3717 6.59319 11.1986L7.33393 10.4578C7.42104 10.3716 7.4902 10.2689 7.5374 10.1558C7.58459 10.0427 7.60889 9.92132 7.60889 9.79874C7.60889 9.67616 7.58459 9.5548 7.5374 9.44167C7.4902 9.32855 7.42104 9.2259 7.33393 9.13966L6.84982 8.65556L11.8192 4.54942C11.8721 4.50514 11.9146 4.44983 11.9438 4.38735C11.973 4.32488 11.9882 4.25677 11.9883 4.1878L12 0.466614C12.0007 0.342474 11.9525 0.223047 11.8658 0.134157ZM11.0551 3.96616L6.18491 7.99064L5.42667 7.23241L8.5996 4.06532C8.674 3.97466 8.71203 3.85956 8.70628 3.74242C8.70052 3.62528 8.6514 3.51446 8.56847 3.43153C8.48554 3.3486 8.37472 3.29948 8.25758 3.29372C8.14044 3.28797 8.02534 3.326 7.93468 3.4004L4.76759 6.57333L4.00936 5.81509L8.03384 0.944886L11.0668 0.933221L11.0551 3.96616Z"
+								fill="#393939" />
+						</svg>
+						Kills: <span id="yourKills" class="yourKills" style="font-weight: 400">0</span>
+					</div>
+				</div>
+				<div>
+					<div>
+						<img src="/media/bullet.png" width="12" height="12"/>
+						Bullets: <span id="ammunition" class="ammunition" style="font-weight: 400">0</span>
+					</div>
+					<div>
+						<svg width="12" height="13" viewBox="0 0 12 13" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M5.76552 0.00466458C2.67054 0.118627 0.145366 2.61981 0.00741095 5.72079C-0.0438723 6.74844 0.171676 7.77188 0.63309 8.69155C1.0945 9.61123 1.78608 10.3958 2.64055 10.9691V11.9947C2.64055 12.2492 2.74166 12.4933 2.92163 12.6733C3.10161 12.8533 3.34571 12.9544 3.60023 12.9544H4.08007C4.1437 12.9544 4.20473 12.9291 4.24972 12.8841C4.29472 12.8391 4.31999 12.7781 4.31999 12.7145V11.293C4.31802 11.1684 4.36336 11.0478 4.44685 10.9554C4.53034 10.863 4.64577 10.8057 4.76985 10.7951C4.83534 10.791 4.90097 10.8004 4.9627 10.8227C5.02442 10.8449 5.08092 10.8796 5.1287 10.9246C5.17649 10.9696 5.21454 11.0239 5.24051 11.0841C5.26648 11.1444 5.27981 11.2093 5.27968 11.275V12.7145C5.27968 12.7781 5.30496 12.8391 5.34995 12.8841C5.39494 12.9291 5.45597 12.9544 5.5196 12.9544H6.47929C6.54292 12.9544 6.60394 12.9291 6.64894 12.8841C6.69393 12.8391 6.71921 12.7781 6.71921 12.7145V11.293C6.71723 11.1684 6.76257 11.0478 6.84606 10.9554C6.92955 10.863 7.04498 10.8057 7.16906 10.7951C7.23455 10.791 7.30018 10.8004 7.36191 10.8227C7.42363 10.8449 7.48013 10.8796 7.52792 10.9246C7.5757 10.9696 7.61375 11.0239 7.63972 11.0841C7.66569 11.1444 7.67902 11.2093 7.67889 11.275V12.7145C7.67889 12.7781 7.70417 12.8391 7.74916 12.8841C7.79416 12.9291 7.85518 12.9544 7.91881 12.9544H8.39865C8.65318 12.9544 8.89728 12.8533 9.07725 12.6733C9.25723 12.4933 9.35834 12.2492 9.35834 11.9947V10.9691C10.4395 10.2391 11.2532 9.17649 11.6761 7.9424C12.099 6.70831 12.108 5.36999 11.7018 4.13031C11.2956 2.89063 10.4963 1.81718 9.42503 1.07269C8.3538 0.328191 7.06904 -0.0467622 5.76552 0.00466458ZM3.84015 8.15599C3.60289 8.15599 3.37096 8.08563 3.17369 7.95382C2.97641 7.822 2.82266 7.63465 2.73186 7.41545C2.64107 7.19625 2.61731 6.95505 2.6636 6.72235C2.70988 6.48965 2.82413 6.2759 2.9919 6.10813C3.15967 5.94036 3.37342 5.82611 3.60612 5.77982C3.83882 5.73354 4.08002 5.75729 4.29922 5.84809C4.51842 5.93888 4.70577 6.09264 4.83759 6.28992C4.9694 6.48719 5.03976 6.71912 5.03976 6.95638C5.03818 7.27405 4.91129 7.57826 4.68666 7.80289C4.46203 8.02752 4.15782 8.15441 3.84015 8.15599ZM8.15873 8.15599C7.92147 8.15599 7.68954 8.08563 7.49227 7.95382C7.29499 7.822 7.14124 7.63465 7.05044 7.41545C6.95965 7.19625 6.93589 6.95505 6.98218 6.72235C7.02846 6.48965 7.14272 6.2759 7.31048 6.10813C7.47825 5.94036 7.692 5.82611 7.9247 5.77982C8.1574 5.73354 8.3986 5.75729 8.6178 5.84809C8.837 5.93888 9.02435 6.09264 9.15617 6.28992C9.28798 6.48719 9.35834 6.71912 9.35834 6.95638C9.35676 7.27405 9.22987 7.57826 9.00524 7.80289C8.78061 8.02752 8.4764 8.15441 8.15873 8.15599Z"
+								fill="#393939" />
+						</svg>
+						Death: <span id="yourDeaths" class="yourDeaths" style="font-weight: 400">0</span>
+					</div>
+				</div> -->
+				<!-- </div>
+			<div>
+				<img class="balance_coin" src="/media/coin.png" width="12" height="12"/>
+				Balance: <span id="internalBalance" class="internalBalance" style="font-weight: 400">0</span>
+			</div>
+		</div> -->
+				<div id="canvas-parent" class="canvas-block">
+					<!-- <div>Click on screen to change size</div> -->
+					<div><canvas id="canvas" style="display: inherit;"></canvas></div>
+					<div id="top_stats" class="rounds-head">
+
+						<div class="you-stats">
+							<div class="you-character">
+								<div id="you-stats-skin">
+									<!--<img src="/media/stats-character.svg">-->
+								</div>
+								<div class="you-stats-value">
+									<span class="you-stats-healf">
+										<img src="/media/red-healths.svg">
+										<span class="you-stats-value-item yourHealth">0</span>
+									</span>
+									<span class="you-stats-shoot">
+										<img src="/media/bullet.svg">
+										<span class="you-stats-value-item ammunition">0</span>
+									</span>
+									<span class="you-stats-kills">
+										<img src="/media/kills.svg">
+										<span class="you-stats-value-item yourKills" id="yourKillsTopBar">0</span>
+									</span>
+									<span class="you-stats-deaths">
+										<img class="you-stats-deaths_image" src="/media/deaths.svg">
+										<span class="you-stats-value-item yourDeaths" id="yourDeathsTopBar">0</span>
+									</span>
+								</div>
+							</div>
+							<div class="you-deps">
+								<img src="/media/svg/past-game/dep.svg">
+								<span id="yourDepTopBar" class="yourDep" style="font-weight: 400">0</span>
+								<!--<span>USDT</span>-->
+							</div>
+						</div>
+
+
+						<div class="left_btn_panel">
+							<button class="tongame__ui_btn" id="map_ton_btn">
+								<svg width="66" height="69" viewBox="0 0 66 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g opacity="0.5" filter="url(#filter0_dddd_510_60725)">
+									<rect x="20.4976" y="12.9994" width="24.9996" height="39.9993" fill="white"/>
+									<rect x="10.5002" y="15.5017" width="44.9993" height="34.9994" fill="white"/>
+									<rect x="12.9941" y="47.9983" width="2.49996" height="4.99992" transform="rotate(-180 12.9941 47.9983)" fill="#B5B5B5"/>
+									<rect x="15.502" y="53.0007" width="2.49996" height="4.99992" transform="rotate(-180 15.502 53.0007)" fill="#B5B5B5"/>
+									<rect x="17.9958" y="55.4993" width="2.49996" height="4.99992" transform="rotate(-180 17.9958 55.4993)" fill="#B5B5B5"/>
+									<rect x="47.9998" y="55.4993" width="2.49996" height="4.99992" transform="rotate(-180 47.9998 55.4993)" fill="#B5B5B5"/>
+									<rect x="50.5015" y="55.4993" width="2.49996" height="4.99992" transform="rotate(-180 50.5015 55.4993)" fill="#B5B5B5"/>
+									<rect x="52.9954" y="53.0007" width="2.49996" height="4.99992" transform="rotate(-180 52.9954 53.0007)" fill="#B5B5B5"/>
+									<rect x="55.4971" y="47.9983" width="2.49996" height="4.99992" transform="rotate(-180 55.4971 47.9983)" fill="#B5B5B5"/>
+									<rect x="20.4958" y="55.4993" width="2.49996" height="4.99992" transform="rotate(-180 20.4958 55.4993)" fill="#B5B5B5"/>
+									<rect x="45.4983" y="57.9986" width="24.9996" height="4.99991" transform="rotate(-180 45.4983 57.9986)" fill="#B5B5B5"/>
+									<rect x="20.4958" y="8" width="24.9996" height="2.49996" fill="#393939"/>
+									<rect x="15.502" y="10.4993" width="4.99992" height="2.49996" fill="#393939"/>
+									<rect width="4.99992" height="2.49996" transform="matrix(-1 0 0 1 50.5027 10.4993)" fill="#393939"/>
+									<rect x="10.5002" y="53.0007" width="4.99992" height="2.49996" transform="rotate(-90 10.5002 53.0007)" fill="#393939"/>
+									<rect width="4.99992" height="2.49996" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 55.4971 53.0007)" fill="#393939"/>
+									<rect x="12.9941" y="12.9994" width="2.49996" height="2.49996" fill="#393939"/>
+									<rect width="2.49996" height="2.49996" transform="matrix(-1 0 0 1 52.9954 12.9994)" fill="#393939"/>
+									<rect x="12.9941" y="55.4993" width="2.49996" height="2.49996" transform="rotate(-90 12.9941 55.4993)" fill="#393939"/>
+									<rect width="2.49996" height="2.49996" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 52.9939 55.4993)" fill="#393939"/>
+									<rect x="10.5002" y="15.5017" width="2.49996" height="4.99992" fill="#393939"/>
+									<rect width="2.49996" height="4.99992" transform="matrix(-1 0 0 1 55.4971 15.5017)" fill="#393939"/>
+									<rect x="15.502" y="57.9986" width="2.49996" height="4.99992" transform="rotate(-90 15.502 57.9986)" fill="#393939"/>
+									<rect width="2.49996" height="4.99992" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 50.5027 57.9986)" fill="#393939"/>
+									<rect x="20.4976" y="57.9986" width="24.9996" height="2.49996" fill="#393939"/>
+									<rect x="58.0002" y="20.4997" width="27.4995" height="2.49996" transform="rotate(90 58.0002 20.4997)" fill="#393939"/>
+									<rect x="10.5002" y="20.4997" width="27.4995" height="2.49996" transform="rotate(90 10.5002 20.4997)" fill="#393939"/>
+									<rect x="45.4983" y="10.4993" width="2.49996" height="24.9996" transform="rotate(90 45.4983 10.4993)" fill="#E8E8E8"/>
+									<rect x="20.4976" y="53.0007" width="2.49996" height="24.9996" transform="rotate(-90 20.4976 53.0007)" fill="#E8E8E8"/>
+									<rect x="20.4976" y="12.9994" width="2.49996" height="4.99992" transform="rotate(90 20.4976 12.9994)" fill="#E8E8E8"/>
+									<rect x="45.4983" y="50.4984" width="2.49996" height="4.99992" transform="rotate(-90 45.4983 50.4984)" fill="#E8E8E8"/>
+									<rect x="15.502" y="15.5017" width="2.49996" height="2.49996" transform="rotate(90 15.502 15.5017)" fill="#E8E8E8"/>
+									<rect x="50.5027" y="47.9983" width="2.49996" height="2.49996" transform="rotate(-90 50.5027 47.9983)" fill="#E8E8E8"/>
+									<rect x="12.9941" y="20.4997" width="2.49996" height="2.49996" transform="rotate(90 12.9941 20.4997)" fill="#E8E8E8"/>
+									<rect x="52.9954" y="42.9981" width="2.49996" height="2.49996" transform="rotate(-90 52.9954 42.9981)" fill="#E8E8E8"/>
+									<rect x="52.9954" y="15.5017" width="2.49996" height="2.49996" transform="rotate(90 52.9954 15.5017)" fill="#E8E8E8"/>
+									<rect x="12.9941" y="47.9983" width="2.49996" height="2.49996" transform="rotate(-90 12.9941 47.9983)" fill="#E8E8E8"/>
+									<rect x="55.4971" y="20.4997" width="2.49996" height="2.49996" transform="rotate(90 55.4971 20.4997)" fill="#E8E8E8"/>
+									<rect x="10.5002" y="42.9981" width="2.49996" height="2.49996" transform="rotate(-90 10.5002 42.9981)" fill="#E8E8E8"/>
+									<rect x="50.5027" y="12.9994" width="2.49996" height="4.99992" transform="rotate(90 50.5027 12.9994)" fill="#E8E8E8"/>
+									<rect x="15.502" y="50.4984" width="2.49996" height="4.99992" transform="rotate(-90 15.502 50.4984)" fill="#E8E8E8"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M22.8792 17.2645H17.2644V46.7423H22.8792V17.2645ZM25.6875 20.0725H22.88V27.091H25.6863V29.8979H28.4937V22.8794H25.6875V20.0725ZM31.3013 25.6871H28.4939V32.7056H31.3013V25.6871ZM31.3016 28.494H34.109V28.4943H34.1098V35.5129H31.3024V35.5126H31.3016V28.494ZM42.532 17.2651H48.1468V46.7429H42.532V17.2651ZM42.5314 20.0727H39.724V22.8797H36.9176V29.8982H39.7251V27.0913H42.5314V20.0727ZM36.9176 25.6874H34.1101V32.7059H36.9176V25.6874Z" fill="#FF7C06"/>
+									<rect x="21.4763" y="17.2647" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="24.2839" y="20.0724" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="27.0901" y="22.8794" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="29.8977" y="25.6871" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="35.5132" y="29.8979" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="38.3208" y="27.0909" width="1.40371" height="2.80742" fill="#FFBD82"/>
+									<rect x="46.7424" y="17.2647" width="1.40371" height="29.4779" fill="#FFBD82"/>
+									<rect x="21.4763" y="27.0909" width="1.40371" height="19.6519" fill="#FFBD82"/>
+									</g>
+									<defs>
+									<filter id="filter0_dddd_510_60725" x="0.000244141" y="0" width="66" height="68.4985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_510_60725"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="-4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect1_dropShadow_510_60725" result="effect2_dropShadow_510_60725"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect2_dropShadow_510_60725" result="effect3_dropShadow_510_60725"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="-4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect3_dropShadow_510_60725" result="effect4_dropShadow_510_60725"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_510_60725" result="shape"/>
+									</filter>
+									</defs>
+								</svg>
+							</button>
+							<button class="tongame__ui_btn" id="stats_ton_btn" onclick="openStats()">
+								<svg width="66" height="69" viewBox="0 0 66 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g opacity="0.5">
+									<g filter="url(#filter0_dddd_529_44880)">
+									<rect x="20.4976" y="13.498" width="24.9996" height="39.9993" fill="white"/>
+									<rect x="10.5002" y="16.0004" width="44.9993" height="34.9994" fill="white"/>
+									<rect x="12.9941" y="48.4969" width="2.49996" height="4.99992" transform="rotate(-180 12.9941 48.4969)" fill="#B5B5B5"/>
+									<rect x="15.502" y="53.4993" width="2.49996" height="4.99992" transform="rotate(-180 15.502 53.4993)" fill="#B5B5B5"/>
+									<rect x="17.9958" y="55.9979" width="2.49996" height="4.99992" transform="rotate(-180 17.9958 55.9979)" fill="#B5B5B5"/>
+									<rect x="47.9998" y="55.9979" width="2.49996" height="4.99992" transform="rotate(-180 47.9998 55.9979)" fill="#B5B5B5"/>
+									<rect x="50.5015" y="55.9979" width="2.49996" height="4.99992" transform="rotate(-180 50.5015 55.9979)" fill="#B5B5B5"/>
+									<rect x="52.9954" y="53.4993" width="2.49996" height="4.99992" transform="rotate(-180 52.9954 53.4993)" fill="#B5B5B5"/>
+									<rect x="55.4971" y="48.4969" width="2.49996" height="4.99992" transform="rotate(-180 55.4971 48.4969)" fill="#B5B5B5"/>
+									<rect x="20.4958" y="55.9979" width="2.49996" height="4.99992" transform="rotate(-180 20.4958 55.9979)" fill="#B5B5B5"/>
+									<rect x="45.4983" y="58.4972" width="24.9996" height="4.99991" transform="rotate(-180 45.4983 58.4972)" fill="#B5B5B5"/>
+									<rect x="20.4958" y="8.4986" width="24.9996" height="2.49996" fill="#393939"/>
+									<rect x="15.502" y="10.9979" width="4.99992" height="2.49996" fill="#393939"/>
+									<rect width="4.99992" height="2.49996" transform="matrix(-1 0 0 1 50.5027 10.9979)" fill="#393939"/>
+									<rect x="10.5002" y="53.4993" width="4.99992" height="2.49996" transform="rotate(-90 10.5002 53.4993)" fill="#393939"/>
+									<rect width="4.99992" height="2.49996" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 55.4971 53.4993)" fill="#393939"/>
+									<rect x="12.9941" y="13.498" width="2.49996" height="2.49996" fill="#393939"/>
+									<rect width="2.49996" height="2.49996" transform="matrix(-1 0 0 1 52.9954 13.498)" fill="#393939"/>
+									<rect x="12.9941" y="55.9979" width="2.49996" height="2.49996" transform="rotate(-90 12.9941 55.9979)" fill="#393939"/>
+									<rect width="2.49996" height="2.49996" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 52.9939 55.9979)" fill="#393939"/>
+									<rect x="10.5002" y="16.0004" width="2.49996" height="4.99992" fill="#393939"/>
+									<rect width="2.49996" height="4.99992" transform="matrix(-1 0 0 1 55.4971 16.0004)" fill="#393939"/>
+									<rect x="15.502" y="58.4972" width="2.49996" height="4.99992" transform="rotate(-90 15.502 58.4972)" fill="#393939"/>
+									<rect width="2.49996" height="4.99992" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 50.5027 58.4972)" fill="#393939"/>
+									<rect x="20.4976" y="58.4972" width="24.9996" height="2.49996" fill="#393939"/>
+									<rect x="58.0002" y="20.9982" width="27.4995" height="2.49996" transform="rotate(90 58.0002 20.9982)" fill="#393939"/>
+									<rect x="10.5002" y="20.9982" width="27.4995" height="2.49996" transform="rotate(90 10.5002 20.9982)" fill="#393939"/>
+									<rect x="45.4983" y="10.9979" width="2.49996" height="24.9996" transform="rotate(90 45.4983 10.9979)" fill="#E8E8E8"/>
+									<rect x="20.4976" y="53.4993" width="2.49996" height="24.9996" transform="rotate(-90 20.4976 53.4993)" fill="#E8E8E8"/>
+									<rect x="20.4976" y="13.498" width="2.49996" height="4.99992" transform="rotate(90 20.4976 13.498)" fill="#E8E8E8"/>
+									<rect x="45.4983" y="50.9969" width="2.49996" height="4.99992" transform="rotate(-90 45.4983 50.9969)" fill="#E8E8E8"/>
+									<rect x="15.502" y="16.0004" width="2.49996" height="2.49996" transform="rotate(90 15.502 16.0004)" fill="#E8E8E8"/>
+									<rect x="50.5027" y="48.4969" width="2.49996" height="2.49996" transform="rotate(-90 50.5027 48.4969)" fill="#E8E8E8"/>
+									<rect x="12.9941" y="20.9982" width="2.49996" height="2.49996" transform="rotate(90 12.9941 20.9982)" fill="#E8E8E8"/>
+									<rect x="52.9954" y="43.4967" width="2.49996" height="2.49996" transform="rotate(-90 52.9954 43.4967)" fill="#E8E8E8"/>
+									<rect x="52.9954" y="16.0004" width="2.49996" height="2.49996" transform="rotate(90 52.9954 16.0004)" fill="#E8E8E8"/>
+									<rect x="12.9941" y="48.4969" width="2.49996" height="2.49996" transform="rotate(-90 12.9941 48.4969)" fill="#E8E8E8"/>
+									<rect x="55.4971" y="20.9982" width="2.49996" height="2.49996" transform="rotate(90 55.4971 20.9982)" fill="#E8E8E8"/>
+									<rect x="10.5002" y="43.4967" width="2.49996" height="2.49996" transform="rotate(-90 10.5002 43.4967)" fill="#E8E8E8"/>
+									<rect x="50.5027" y="13.498" width="2.49996" height="4.99992" transform="rotate(90 50.5027 13.498)" fill="#E8E8E8"/>
+									<rect x="15.502" y="50.9969" width="2.49996" height="4.99992" transform="rotate(-90 15.502 50.9969)" fill="#E8E8E8"/>
+									</g>
+									<path d="M25.2416 36.7546L25.2416 39.1906L27.6776 39.1906L27.6776 41.6266L30.1136 41.6266L32.5496 41.6266H34.9856L37.4216 41.6266L39.8576 41.6266L39.8576 39.1906L42.2936 39.1906L42.2936 36.7546L39.8576 36.7546V34.3186L37.4216 34.3186L34.9856 34.3186H32.5496L25.2416 34.3186L25.2416 31.8826L22.8056 31.8826L22.8056 29.4466L20.3696 29.4466L20.3696 27.0106L20.3696 24.5746L20.3696 22.1386L22.8056 22.1386L22.8056 19.7026L25.2416 19.7026L25.2416 17.2666L30.1136 17.2666L32.5496 17.2666L34.9856 17.2666L42.2936 17.2666L42.2936 19.7026L44.7296 19.7026L44.7296 22.1386L47.1656 22.1386L47.1656 27.0106L42.2936 27.0106L42.2936 24.5746L39.8576 24.5746V22.1386L37.4216 22.1386L34.9856 22.1386L32.5496 22.1386L30.1136 22.1386L27.6776 22.1386L27.6776 24.5746L25.2416 24.5746L25.2416 27.0106L27.6776 27.0106L27.6776 29.4466L30.1136 29.4466L32.5496 29.4466L34.9856 29.4466L42.2936 29.4466L42.2936 31.8826L44.7296 31.8826L44.7296 34.3186H47.1656V36.7546L47.1656 39.1906L47.1656 41.6266H44.7296L44.7296 44.0626L42.2936 44.0626L42.2936 46.4986L34.9856 46.4986H32.5496L25.2416 46.4986L25.2416 44.0626L22.8056 44.0626L22.8056 41.6266L20.3696 41.6266L20.3696 36.7546L25.2416 36.7546Z" fill="#FFBD82"/>
+									<path d="M23.5003 37.4982L23.5003 39.9983L26.0004 39.9983L26.0004 42.4984L28.5005 42.4984L31.0006 42.4984L33.5007 42.4984L36.0008 42.4984L38.5009 42.4984L38.5009 39.9983H41.0011L41.0011 37.4982H38.5009L38.5009 34.9981L36.0008 34.9981L33.5007 34.9981L31.0006 34.9981L23.5003 34.9981L23.5003 32.498L21.0002 32.498L21.0002 29.9979L18.5001 29.9979L18.5001 27.4978L18.5001 24.9976L18.5001 22.4975L21.0002 22.4975L21.0002 19.9974L23.5003 19.9974L23.5003 17.4973L28.5005 17.4973L31.0006 17.4973L33.5007 17.4973L41.0011 17.4973L41.0011 19.9974L43.5012 19.9974L43.5012 22.4975L46.0013 22.4975L46.0013 27.4978L41.0011 27.4978L41.0011 24.9976L38.5009 24.9976V22.4975L36.0008 22.4975L33.5007 22.4975L31.0006 22.4975L28.5005 22.4975L26.0004 22.4975L26.0004 24.9976L23.5003 24.9976L23.5003 27.4978L26.0004 27.4978L26.0004 29.9979L28.5005 29.9979L31.0006 29.9979L33.5007 29.9979L41.0011 29.9979L41.0011 32.498L43.5012 32.498L43.5012 34.9981L46.0013 34.9981L46.0013 37.4982L46.0013 39.9983L46.0013 42.4984L43.5012 42.4984V44.9985L41.0011 44.9985L41.0011 47.4986L33.5007 47.4986L31.0006 47.4986L23.5003 47.4986L23.5003 44.9985L21.0002 44.9985L21.0002 42.4984H18.5001L18.5001 37.4982L23.5003 37.4982Z" fill="#FF8426"/>
+									</g>
+									<defs>
+									<filter id="filter0_dddd_529_44880" x="0.000244141" y="0.498596" width="66" height="68.4985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_529_44880"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="-4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect1_dropShadow_529_44880" result="effect2_dropShadow_529_44880"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect2_dropShadow_529_44880" result="effect3_dropShadow_529_44880"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="-4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect3_dropShadow_529_44880" result="effect4_dropShadow_529_44880"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_529_44880" result="shape"/>
+									</filter>
+									</defs>
+								</svg>	
+							</button>
+						</div>
+
+						<div class="right_btn_panel">
+							<button class="tongame__ui_btn" id="pause_ton_btn" onclick="pauseBtn()">
+								<svg width="66" height="69" viewBox="0 0 66 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g opacity="0.5" filter="url(#filter0_dddd_510_60621)">
+									<rect x="20.4973" y="12.9993" width="24.9995" height="39.9992" fill="white"/>
+									<rect x="10.5" y="15.5018" width="44.9991" height="34.9993" fill="white"/>
+									<rect x="12.9929" y="47.998" width="2.49995" height="4.9999" transform="rotate(-180 12.9929 47.998)" fill="#B5B5B5"/>
+									<rect x="15.5012" y="53.0006" width="2.49995" height="4.9999" transform="rotate(-180 15.5012 53.0006)" fill="#B5B5B5"/>
+									<rect x="17.9951" y="55.4991" width="2.49995" height="4.9999" transform="rotate(-180 17.9951 55.4991)" fill="#B5B5B5"/>
+									<rect x="47.9988" y="55.4992" width="2.49995" height="4.9999" transform="rotate(-180 47.9988 55.4992)" fill="#B5B5B5"/>
+									<rect x="50.5005" y="55.4991" width="2.49995" height="4.9999" transform="rotate(-180 50.5005 55.4991)" fill="#B5B5B5"/>
+									<rect x="52.9946" y="53.0006" width="2.49995" height="4.9999" transform="rotate(-180 52.9946 53.0006)" fill="#B5B5B5"/>
+									<rect x="55.4966" y="47.998" width="2.49995" height="4.9999" transform="rotate(-180 55.4966 47.998)" fill="#B5B5B5"/>
+									<rect x="20.4946" y="55.4992" width="2.49995" height="4.9999" transform="rotate(-180 20.4946 55.4992)" fill="#B5B5B5"/>
+									<rect x="45.498" y="57.9985" width="24.9995" height="4.9999" transform="rotate(-180 45.498 57.9985)" fill="#B5B5B5"/>
+									<rect x="20.4946" y="8" width="24.9995" height="2.49995" fill="#393939"/>
+									<rect x="15.5012" y="10.4993" width="4.9999" height="2.49995" fill="#393939"/>
+									<rect width="4.9999" height="2.49995" transform="matrix(-1 0 0 1 50.5022 10.4993)" fill="#393939"/>
+									<rect x="10.5" y="53.0005" width="4.9999" height="2.49995" transform="rotate(-90 10.5 53.0005)" fill="#393939"/>
+									<rect width="4.9999" height="2.49995" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 55.4966 53.0005)" fill="#393939"/>
+									<rect x="12.9929" y="12.9993" width="2.49995" height="2.49995" fill="#393939"/>
+									<rect width="2.49995" height="2.49995" transform="matrix(-1 0 0 1 52.9946 12.9994)" fill="#393939"/>
+									<rect x="12.9929" y="55.4992" width="2.49995" height="2.49995" transform="rotate(-90 12.9929 55.4992)" fill="#393939"/>
+									<rect width="2.49995" height="2.49995" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 52.9932 55.4991)" fill="#393939"/>
+									<rect x="10.5" y="15.5018" width="2.49995" height="4.9999" fill="#393939"/>
+									<rect width="2.49995" height="4.9999" transform="matrix(-1 0 0 1 55.4966 15.5018)" fill="#393939"/>
+									<rect x="15.5012" y="57.9985" width="2.49995" height="4.9999" transform="rotate(-90 15.5012 57.9985)" fill="#393939"/>
+									<rect width="2.49995" height="4.9999" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 50.5022 57.9985)" fill="#393939"/>
+									<rect x="20.4973" y="57.9985" width="24.9995" height="2.49995" fill="#393939"/>
+									<rect x="57.9998" y="20.4998" width="27.4995" height="2.49995" transform="rotate(90 57.9998 20.4998)" fill="#393939"/>
+									<rect x="10.5" y="20.4998" width="27.4995" height="2.49995" transform="rotate(90 10.5 20.4998)" fill="#393939"/>
+									<rect x="45.498" y="10.4993" width="2.49995" height="24.9995" transform="rotate(90 45.498 10.4993)" fill="#E8E8E8"/>
+									<rect x="20.4973" y="53.0005" width="2.49995" height="24.9995" transform="rotate(-90 20.4973 53.0005)" fill="#E8E8E8"/>
+									<rect x="20.4973" y="12.9993" width="2.49995" height="4.9999" transform="rotate(90 20.4973 12.9993)" fill="#E8E8E8"/>
+									<rect x="45.498" y="50.498" width="2.49995" height="4.9999" transform="rotate(-90 45.498 50.498)" fill="#E8E8E8"/>
+									<rect x="15.5012" y="15.5017" width="2.49995" height="2.49995" transform="rotate(90 15.5012 15.5017)" fill="#E8E8E8"/>
+									<rect x="50.5022" y="47.9982" width="2.49995" height="2.49995" transform="rotate(-90 50.5022 47.9982)" fill="#E8E8E8"/>
+									<rect x="12.9929" y="20.4998" width="2.49995" height="2.49995" transform="rotate(90 12.9929 20.4998)" fill="#E8E8E8"/>
+									<rect x="52.9946" y="42.998" width="2.49995" height="2.49995" transform="rotate(-90 52.9946 42.998)" fill="#E8E8E8"/>
+									<rect x="52.9946" y="15.5017" width="2.49995" height="2.49995" transform="rotate(90 52.9946 15.5017)" fill="#E8E8E8"/>
+									<rect x="12.9929" y="47.998" width="2.49995" height="2.49995" transform="rotate(-90 12.9929 47.998)" fill="#E8E8E8"/>
+									<rect x="55.4966" y="20.4998" width="2.49995" height="2.49995" transform="rotate(90 55.4966 20.4998)" fill="#E8E8E8"/>
+									<rect x="10.5" y="42.9981" width="2.49995" height="2.49995" transform="rotate(-90 10.5 42.9981)" fill="#E8E8E8"/>
+									<rect x="50.5022" y="12.9994" width="2.49995" height="4.9999" transform="rotate(90 50.5022 12.9994)" fill="#E8E8E8"/>
+									<rect x="15.5012" y="50.4982" width="2.49995" height="4.9999" transform="rotate(-90 15.5012 50.4982)" fill="#E8E8E8"/>
+									<rect x="20.3523" y="15.7204" width="7.72038" height="32.4256" fill="#FF7C06"/>
+									<rect x="18.8079" y="17.2645" width="10.8085" height="29.3374" fill="#FF7C06"/>
+									<rect x="28.0723" y="17.2645" width="1.54408" height="29.3374" fill="#FFBD82"/>
+									<rect x="26.5276" y="15.7204" width="1.54408" height="1.54408" fill="#FFBD82"/>
+									<rect x="26.5276" y="46.6017" width="1.54408" height="1.54408" fill="#FFBD82"/>
+									<rect x="37.3364" y="15.7205" width="7.72038" height="32.4256" fill="#FF7C06"/>
+									<rect x="35.792" y="17.2646" width="10.8085" height="29.3374" fill="#FF7C06"/>
+									<rect x="45.0574" y="17.2643" width="1.54408" height="29.3374" fill="#FFBD82"/>
+									<rect x="43.5127" y="15.7205" width="1.54408" height="1.54408" fill="#FFBD82"/>
+									<rect x="43.5127" y="46.602" width="1.54408" height="1.54408" fill="#FFBD82"/>
+									</g>
+									<defs>
+									<filter id="filter0_dddd_510_60621" x="0" y="0" width="65.9998" height="68.4985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_510_60621"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="-4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect1_dropShadow_510_60621" result="effect2_dropShadow_510_60621"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect2_dropShadow_510_60621" result="effect3_dropShadow_510_60621"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="-4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect3_dropShadow_510_60621" result="effect4_dropShadow_510_60621"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_510_60621" result="shape"/>
+									</filter>
+									</defs>
+								</svg>
+							</button>
+							<button class="tongame__ui_btn" id="sound_ton_btn" style="display: none;">
+								<svg width="66" height="69" viewBox="0 0 66 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<g opacity="0.5">
+									<g filter="url(#filter0_dddd_875_1215)">
+									<rect x="20.4973" y="12.9993" width="24.9995" height="39.9992" fill="white"/>
+									<rect x="10.5" y="15.5018" width="44.9991" height="34.9993" fill="white"/>
+									<rect x="12.9929" y="47.998" width="2.49995" height="4.9999" transform="rotate(-180 12.9929 47.998)" fill="#B5B5B5"/>
+									<rect x="15.5012" y="53.0006" width="2.49995" height="4.9999" transform="rotate(-180 15.5012 53.0006)" fill="#B5B5B5"/>
+									<rect x="17.9951" y="55.4991" width="2.49995" height="4.9999" transform="rotate(-180 17.9951 55.4991)" fill="#B5B5B5"/>
+									<rect x="47.9988" y="55.4992" width="2.49995" height="4.9999" transform="rotate(-180 47.9988 55.4992)" fill="#B5B5B5"/>
+									<rect x="50.5005" y="55.4991" width="2.49995" height="4.9999" transform="rotate(-180 50.5005 55.4991)" fill="#B5B5B5"/>
+									<rect x="52.9946" y="53.0006" width="2.49995" height="4.9999" transform="rotate(-180 52.9946 53.0006)" fill="#B5B5B5"/>
+									<rect x="55.4966" y="47.998" width="2.49995" height="4.9999" transform="rotate(-180 55.4966 47.998)" fill="#B5B5B5"/>
+									<rect x="20.4946" y="55.4992" width="2.49995" height="4.9999" transform="rotate(-180 20.4946 55.4992)" fill="#B5B5B5"/>
+									<rect x="45.498" y="57.9985" width="24.9995" height="4.9999" transform="rotate(-180 45.498 57.9985)" fill="#B5B5B5"/>
+									<rect x="20.4946" y="8" width="24.9995" height="2.49995" fill="#393939"/>
+									<rect x="15.5012" y="10.4993" width="4.9999" height="2.49995" fill="#393939"/>
+									<rect width="4.9999" height="2.49995" transform="matrix(-1 0 0 1 50.5022 10.4993)" fill="#393939"/>
+									<rect x="10.5" y="53.0005" width="4.9999" height="2.49995" transform="rotate(-90 10.5 53.0005)" fill="#393939"/>
+									<rect width="4.9999" height="2.49995" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 55.4966 53.0005)" fill="#393939"/>
+									<rect x="12.9929" y="12.9993" width="2.49995" height="2.49995" fill="#393939"/>
+									<rect width="2.49995" height="2.49995" transform="matrix(-1 0 0 1 52.9946 12.9994)" fill="#393939"/>
+									<rect x="12.9929" y="55.4992" width="2.49995" height="2.49995" transform="rotate(-90 12.9929 55.4992)" fill="#393939"/>
+									<rect width="2.49995" height="2.49995" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 52.9932 55.4991)" fill="#393939"/>
+									<rect x="10.5" y="15.5018" width="2.49995" height="4.9999" fill="#393939"/>
+									<rect width="2.49995" height="4.9999" transform="matrix(-1 0 0 1 55.4966 15.5018)" fill="#393939"/>
+									<rect x="15.5012" y="57.9985" width="2.49995" height="4.9999" transform="rotate(-90 15.5012 57.9985)" fill="#393939"/>
+									<rect width="2.49995" height="4.9999" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 50.5022 57.9985)" fill="#393939"/>
+									<rect x="20.4973" y="57.9985" width="24.9995" height="2.49995" fill="#393939"/>
+									<rect x="57.9998" y="20.4998" width="27.4995" height="2.49995" transform="rotate(90 57.9998 20.4998)" fill="#393939"/>
+									<rect x="10.5" y="20.4998" width="27.4995" height="2.49995" transform="rotate(90 10.5 20.4998)" fill="#393939"/>
+									<rect x="45.498" y="10.4993" width="2.49995" height="24.9995" transform="rotate(90 45.498 10.4993)" fill="#E8E8E8"/>
+									<rect x="20.4973" y="53.0005" width="2.49995" height="24.9995" transform="rotate(-90 20.4973 53.0005)" fill="#E8E8E8"/>
+									<rect x="20.4973" y="12.9993" width="2.49995" height="4.9999" transform="rotate(90 20.4973 12.9993)" fill="#E8E8E8"/>
+									<rect x="45.498" y="50.498" width="2.49995" height="4.9999" transform="rotate(-90 45.498 50.498)" fill="#E8E8E8"/>
+									<rect x="15.5012" y="15.5017" width="2.49995" height="2.49995" transform="rotate(90 15.5012 15.5017)" fill="#E8E8E8"/>
+									<rect x="50.5022" y="47.9982" width="2.49995" height="2.49995" transform="rotate(-90 50.5022 47.9982)" fill="#E8E8E8"/>
+									<rect x="12.9929" y="20.4998" width="2.49995" height="2.49995" transform="rotate(90 12.9929 20.4998)" fill="#E8E8E8"/>
+									<rect x="52.9946" y="42.998" width="2.49995" height="2.49995" transform="rotate(-90 52.9946 42.998)" fill="#E8E8E8"/>
+									<rect x="52.9946" y="15.5017" width="2.49995" height="2.49995" transform="rotate(90 52.9946 15.5017)" fill="#E8E8E8"/>
+									<rect x="12.9929" y="47.998" width="2.49995" height="2.49995" transform="rotate(-90 12.9929 47.998)" fill="#E8E8E8"/>
+									<rect x="55.4966" y="20.4998" width="2.49995" height="2.49995" transform="rotate(90 55.4966 20.4998)" fill="#E8E8E8"/>
+									<rect x="10.5" y="42.9982" width="2.49995" height="2.49995" transform="rotate(-90 10.5 42.9982)" fill="#E8E8E8"/>
+									<rect x="50.5022" y="12.9994" width="2.49995" height="4.9999" transform="rotate(90 50.5022 12.9994)" fill="#E8E8E8"/>
+									<rect x="15.5012" y="50.4982" width="2.49995" height="4.9999" transform="rotate(-90 15.5012 50.4982)" fill="#E8E8E8"/>
+									</g>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M33 17H27V47H33V17ZM23 20H27V44H23V41H18V23H23V20Z" fill="#FF7D08"/>
+									<rect x="31" y="17" width="2" height="30" fill="#FFBD82"/>
+									<rect x="42" y="28.875" width="3" height="5.25" fill="#FF7D08"/>
+									<rect x="36" y="21" width="3" height="5.25" fill="#FF7D08"/>
+									<rect x="36" y="36.75" width="3" height="5.25" fill="#FF7D08"/>
+									<rect x="48" y="21" width="3" height="5.25" fill="#FF7D08"/>
+									<rect x="48" y="36.75" width="3" height="5.25" fill="#FF7D08"/>
+									<rect x="39" y="26.25" width="3" height="2.625" fill="#FF7D08"/>
+									<rect x="39" y="34.125" width="3" height="2.625" fill="#FF7D08"/>
+									<rect x="45" y="26.25" width="3" height="2.625" fill="#FF7D08"/>
+									<rect x="45" y="34.125" width="3" height="2.625" fill="#FF7D08"/>
+									<rect x="38" y="21" width="1" height="5.25" fill="#FFBD82"/>
+									<rect x="50" y="21" width="1" height="5.25" fill="#FFBD82"/>
+									<rect x="41" y="26.25" width="1" height="2.625" fill="#FFBD82"/>
+									<rect x="48" y="26.25" width="1" height="2.625" fill="#FFBD82"/>
+									<rect x="44" y="28.875" width="1" height="5.25" fill="#FFBD82"/>
+									<rect x="41" y="34.125" width="1" height="2.625" fill="#FFBD82"/>
+									<rect x="47" y="34.125" width="1" height="2.625" fill="#FFBD82"/>
+									<rect x="38" y="36.75" width="1" height="5.25" fill="#FFBD82"/>
+									<rect x="50" y="36.75" width="1" height="5.25" fill="#FFBD82"/>
+									</g>
+									<defs>
+									<filter id="filter0_dddd_875_1215" x="0" y="0" width="65.9998" height="68.4985" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_875_1215"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="-4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect1_dropShadow_875_1215" result="effect2_dropShadow_875_1215"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect2_dropShadow_875_1215" result="effect3_dropShadow_875_1215"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dx="-4" dy="4"/>
+									<feGaussianBlur stdDeviation="2"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.517647 0 0 0 0 0.14902 0 0 0 1 0"/>
+									<feBlend mode="normal" in2="effect3_dropShadow_875_1215" result="effect4_dropShadow_875_1215"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_875_1215" result="shape"/>
+									</filter>
+									</defs>
+								</svg>	
+							</button>
+								
+							</button>
+						</div>
+
+						<div class="stats-item__title stats-item">
+							<span class="ronds-head__title">Round</span>
+							<span id="rounds_amount">Loading</span>
+						</div>
+
+
+						<div class="enemy-stats">
+							<div class="enemy-character">
+								<button id="enemy-character__btn-prev"
+									class="enemy-character__btn enemy-character__btn-prev">
+									<img src="/media/svg/btn-prev.svg" alt="">
+								</button>
+								<div class="enemy-stats-value">
+									<span class="enemy-stats-kills">
+										<span class="enemyKills" id="enemyKillsLive">0</span>
+										<img src="/media/kills-2.svg">
+									</span>
+									<span class="enemy-stats-deaths">
+										<span class="enemyDeaths" id="enemyDeathsLive">0</span>
+										<img src="/media/deaths.svg">
+									</span>
+								</div>
+								<div id="enemy-stats-skin">
+									<!--<img src="/media/stats-character.svg">-->
+								</div>
+								<button id="enemy-character__btn-next"
+									class="enemy-character__btn enemy-character__btn-next">
+									<img src="/media/svg/btn-next.svg" alt="">
+								</button>
+							</div>
+							<div id="chosen_enemy_id" style="display: none;"></div>
+							<div class="enemy-deps">
+								<img src="/media/svg/past-game/dep.svg">
+								<span id="enemyDepTopBar" class="enemyDep" style="font-weight: 400">0</span>
+								<!--<span>USDT</span>-->
+							</div>
+						</div>
+
+
+					</div>
+					<a id="about-show" class="wrapper__link_game  wrapper__link link-first">
+						<img class="help__img" src="/media/svg/help.svg" alt="">
+						About the game
+					</a>
+					<div id="noCanvas" style="display: none;"></div>
+					<h3 id="loadingStage" style="display: none;">Waiting another user(if you are waiting for a long
+						time, try to
+						reload the page)</h3>
+					<div id="game-action">
+						<div class="buttons">
+							<img src="/media/jumpBtn.png" style="display: none;" id="jump-btn" />
+							<img src="/media/attackBtn2.png" style="display: none; width: 100px; height: 100px;"
+								id="attack-btn" />
+						</div>
+						<!-- <div class="joystick">
+							<img src="/media/ton-joystick.svg" style="left: 0px;" id="joystick-base"></img>
+						</div> -->
+					</div>
+					<div class="game-menu">
+						<button id="pause-btn" class="game-menu__button">
+							<img src="/media/svg/game-menu.svg" />
+						</button>
+						<button id="openMap-btn" class="game-menu__button">
+							<img src="/media/svg/open-map.svg" />
+						</button>
+						<button class="game-menu__button" id="open-fullscreen-btn">
+							<img src="/media/svg/open-fullscreen.svg" />
+						</button>
+						<button class="game-menu__button" id="close-fullscreen-btn" style="display:none">
+							<img src="/media/svg/close-fullscreen.svg" />
+						</button>
+					</div>
+
+					<div id="pause_modal" class="modal" style="display: none;">
+						<div class="board modal_content_pause modal_content">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+							<button id="close_pause_modal"
+								class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+							<div class="modal__title_pause modal__title">Menu</div>
+							<!--<div class="modal__pause-body">
+							</div>-->
+							<button id="open_control_keys" class="close-button">control keys info</button>
+							<button id="confirm_finish" class="close-button">finish the game</button>
+						</div>
+					</div>
+				</div>
+				<div id="control_keys_mobile_modal" class="modal" style="display: flex;">
+					<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+						<button id="close_control_keys_mobile_modal"
+							class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+						<div class="modal__title_pause modal__title">Menu</div>
+						<div class="modal__pause-body">
+						</div>
+						<!--<button id="confirm_finish" class="close-button">finish the game</button>-->
+						<button id="back_menu" class="close-button">back to menu</button>
+					</div>
+				</div>
+			</div>
+			<div id="confirm_finishgame_modal" class="modal" style="display: none;">
+				<div class="board modal_content_confirm_finish modal_content">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+					<button id="close_confirm_finish"
+						class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+					<div class="modal__title_pause modal__title">Menu</div>
+					<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
+					<div id="modal__body_confirm_finish" class="modal__body">
+						<p class="text_confirm_finish">you want to leave the game?</p>
+						<!--<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>-->
+					</div>
+					<div class="finish-btns">
+						<button id="finishGame3" class="close-button">yes</button>
+						<button id="no_btn" class="close-button">no</button>
+					</div>
+					<!--<button id="finishGame3"class='confirm_finish-game close-button'>confirm</button>-->
+				</div>
+			</div>
+		</div>
+		<!--<div style="display: flex;" class="canvasWrapper__footer">
+						<button id="controls-show">
+							Control keys info
+							<svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M29.9328 16.75H29.9203L27.8828 6.1875C27.8828 6.175 27.8828 6.175 27.8703 6.1625C27.5571 4.43434 26.6473 2.8709 25.2996 1.74474C23.9518 0.618578 22.2516 0.00111849 20.4953 0L9.49528 0.0374999C7.73075 0.0347841 6.02196 0.655333 4.67036 1.78967C3.31875 2.92401 2.41119 4.49925 2.10778 6.2375V6.2625L0.0702768 16.7375C-0.0339675 17.3196 -0.0221377 17.9165 0.105086 18.494C0.23231 19.0715 0.472419 19.6182 0.811611 20.1026C1.1508 20.587 1.58239 20.9995 2.08156 21.3166C2.58073 21.6336 3.13764 21.8489 3.72028 21.95C3.97553 22.0003 4.23511 22.0254 4.49528 22.025C5.6888 22.0225 6.83354 21.5511 7.68278 20.7125L7.73278 20.65L12.8203 15.025L17.1828 15L22.2578 20.6625L22.3203 20.725C23.1634 21.5652 24.305 22.0371 25.4953 22.0375C25.7596 22.0373 26.0232 22.0122 26.2828 21.9625C27.4564 21.7521 28.4991 21.0858 29.183 20.1091C29.8669 19.1325 30.1364 17.9248 29.9328 16.75ZM11.9953 8.5375H10.9953V9.5375C10.9953 9.80272 10.8899 10.0571 10.7024 10.2446C10.5148 10.4321 10.2605 10.5375 9.99528 10.5375C9.73006 10.5375 9.47571 10.4321 9.28817 10.2446C9.10063 10.0571 8.99528 9.80272 8.99528 9.5375V8.5375H7.99528C7.73006 8.5375 7.47571 8.43214 7.28817 8.24461C7.10063 8.05707 6.99528 7.80272 6.99528 7.5375C6.99528 7.27228 7.10063 7.01793 7.28817 6.83039C7.47571 6.64286 7.73006 6.5375 7.99528 6.5375H8.99528V5.5375C8.99528 5.27228 9.10063 5.01793 9.28817 4.83039C9.47571 4.64286 9.73006 4.5375 9.99528 4.5375C10.2605 4.5375 10.5148 4.64286 10.7024 4.83039C10.8899 5.01793 10.9953 5.27228 10.9953 5.5375V6.5375H11.9953C12.2605 6.5375 12.5148 6.64286 12.7024 6.83039C12.8899 7.01793 12.9953 7.27228 12.9953 7.5375C12.9953 7.80272 12.8899 8.05707 12.7024 8.24461C12.5148 8.43214 12.2605 8.5375 11.9953 8.5375ZM16.9953 7.5375C16.9953 7.27228 17.1006 7.01793 17.2882 6.83039C17.4757 6.64286 17.7301 6.5375 17.9953 6.5375H21.9953C22.2605 6.5375 22.5148 6.64286 22.7024 6.83039C22.8899 7.01793 22.9953 7.27228 22.9953 7.5375C22.9953 7.80272 22.8899 8.05707 22.7024 8.24461C22.5148 8.43214 22.2605 8.5375 21.9953 8.5375H17.9953C17.7301 8.5375 17.4757 8.43214 17.2882 8.24461C17.1006 8.05707 16.9953 7.80272 16.9953 7.5375ZM25.9328 20C25.5408 20.0688 25.138 20.0435 24.7577 19.9261C24.3774 19.8088 24.0304 19.6027 23.7453 19.325L19.8578 15.0125H20.4953C21.771 15.0137 23.026 14.6895 24.1415 14.0705C25.2571 13.4515 26.1963 12.5582 26.8703 11.475L27.9578 17.125C28.0668 17.7743 27.9153 18.4404 27.5362 18.9787C27.1571 19.517 26.5809 19.884 25.9328 20Z"
+									fill="white" />
+							</svg>
+						</button>
+						<button id="confirm_finish_desktop" class="close-button">finish</button>
+						<button id="full-screen">
+							Enter full screen
+							<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M22 1V6C22.0006 6.19743 21.9428 6.39062 21.8338 6.55523C21.7248 6.71984 21.5695 6.8485 21.3875 6.925C21.2642 6.97399 21.1327 6.99943 21 7C20.7345 6.99888 20.4795 6.89599 20.2875 6.7125L18.5 4.91251L14.7125 8.7125C14.5214 8.89732 14.2659 9.00064 14 9.00064C13.7341 9.00064 13.4786 8.89732 13.2875 8.7125C13.0997 8.52291 12.9944 8.26685 12.9944 8C12.9944 7.73316 13.0997 7.4771 13.2875 7.28751L17.0875 3.50001L15.2875 1.7125C15.1518 1.56792 15.0599 1.38788 15.0223 1.19321C14.9847 0.99855 15.003 0.797216 15.075 0.612505C15.1515 0.430504 15.2802 0.275219 15.4448 0.16622C15.6094 0.0572219 15.8026 -0.000612701 16 4.89514e-06H21C21.2652 4.89514e-06 21.5196 0.105362 21.7071 0.292898C21.8946 0.480435 22 0.734788 22 1ZM7.28751 13.2875L3.50001 17.0875L1.7125 15.2875C1.56792 15.1518 1.38788 15.0599 1.19321 15.0223C0.99855 14.9847 0.797216 15.003 0.612505 15.075C0.430504 15.1515 0.275219 15.2802 0.16622 15.4448C0.0572219 15.6094 -0.000612701 15.8026 4.89514e-06 16V21C4.89514e-06 21.2652 0.105362 21.5196 0.292898 21.7071C0.480435 21.8946 0.734788 22 1 22H6C6.19743 22.0006 6.39062 21.9428 6.55523 21.8338C6.71984 21.7248 6.8485 21.5695 6.925 21.3875C6.99705 21.2028 7.01533 21.0015 6.97772 20.8068C6.94012 20.6121 6.84816 20.4321 6.7125 20.2875L4.91251 18.5L8.7125 14.7125C8.87197 14.5182 8.95346 14.2715 8.94113 14.0205C8.9288 13.7694 8.82353 13.5319 8.64579 13.3542C8.46806 13.1765 8.23057 13.0712 7.97952 13.0589C7.72846 13.0465 7.4818 13.128 7.28751 13.2875ZM21.3875 15.075C21.2028 15.003 21.0015 14.9847 20.8068 15.0223C20.6121 15.0599 20.4321 15.1518 20.2875 15.2875L18.5 17.0875L14.7125 13.2875C14.5182 13.128 14.2715 13.0465 14.0205 13.0589C13.7694 13.0712 13.5319 13.1765 13.3542 13.3542C13.1765 13.5319 13.0712 13.7694 13.0589 14.0205C13.0465 14.2715 13.128 14.5182 13.2875 14.7125L17.0875 18.5L15.2875 20.2875C15.1518 20.4321 15.0599 20.6121 15.0223 20.8068C14.9847 21.0015 15.003 21.2028 15.075 21.3875C15.1515 21.5695 15.2802 21.7248 15.4448 21.8338C15.6094 21.9428 15.8026 22.0006 16 22H21C21.2652 22 21.5196 21.8946 21.7071 21.7071C21.8946 21.5196 22 21.2652 22 21V16C22.0006 15.8026 21.9428 15.6094 21.8338 15.4448C21.7248 15.2802 21.5695 15.1515 21.3875 15.075ZM4.91251 3.50001L6.7125 1.7125C6.84816 1.56792 6.94012 1.38788 6.97772 1.19321C7.01533 0.99855 6.99705 0.797216 6.925 0.612505C6.8485 0.430504 6.71984 0.275219 6.55523 0.16622C6.39062 0.0572219 6.19743 -0.000612701 6 4.89514e-06H1C0.734788 4.89514e-06 0.480435 0.105362 0.292898 0.292898C0.105362 0.480435 4.89514e-06 0.734788 4.89514e-06 1V6C-0.000612701 6.19743 0.0572219 6.39062 0.16622 6.55523C0.275219 6.71984 0.430504 6.8485 0.612505 6.925C0.735854 6.97399 0.867288 6.99943 1 7C1.26555 6.99888 1.52055 6.89599 1.7125 6.7125L3.50001 4.91251L7.28751 8.7125C7.47865 8.89732 7.73412 9.00064 8 9.00064C8.26589 9.00064 8.52136 8.89732 8.7125 8.7125C8.90029 8.52291 9.00563 8.26685 9.00563 8C9.00563 7.73316 8.90029 7.4771 8.7125 7.28751L4.91251 3.50001Z"
+									fill="white" />
+							</svg>
+		
+						</button>
+					</div>-->
+</div>
+<div class="buttons">
+	<button style="display: none;" id="left-btn">LEFT</button>
+	<button style="display: none;" id="right-btn">RIGHT</button>
+</div>
+<span id="enemyBalance" class="enemyBalance" style="display:none; font-weight: 400">0</span>
+</div>
+<div id="confirm_finishgame_modal_desktop" class="modal" style="display: none;">
+	<div class="board modal_content_confirm_finish modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="close_confirm_finish_desktop"
+			class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="modal__title-confirm_finish modal__title">finish the game</div>
+		<div id="modal__body_confirm_finish" class="modal__body">
+			<p>Are you sure that you want to complete the game?</p>
+			<p id="balance-value">10 ROSE (your in-game balance) will return to your wallet</p>
+		</div>
+		<button id="finishGame4" class='confirm_finish-game close-button'>confirm</button>
+	</div>
+</div>
+</div>
+<div id="over_modal" class="modal" style="display: none;">
+	<div class="board modal_content_finish modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="modal__title">Game over</div>
+		<div class="modal__over-body">
+			<div id="over-modal-body" class="modal__over-body__inner border-style">
+				<div class="corn corn1"></div>
+				<div class="corn corn2"></div>
+				<div class="corn corn3"></div>
+				<div class="corn corn4"></div>
+				<div class="modal__over-subtitle">Players & stats</div>
+				<div class="finish-stats">
+					<div class="yourStats__header">
+						<p>You</p>
+					</div>
+					<div class="yourStats">
+						<span id="yourAmountWinLose"></span>
+						<div class="yourKills_stat">
+							<span class="yourKillsTitle">Kills:</span>
+							<span class="yourKills" id="yourKills"></span>
+						</div>
+						<div class="yourDep_stat">
+							<span class="yourDepTitle">Dep:</span>
+							<span id="yourDep"></span>
+						</div>
+						<div class="yourDeaths_stat">
+							<span class="yourDeathsTitle">Deaths:</span>
+							<span class="yourDeaths" id="yourDeaths"></span>
+						</div>
+					</div>
+					<div class="yourStats_address">
+						<span class="your_address">Wallet: </span>
+						<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button id="finishGame" class='close-button_finish-game close-button'>exit</button>
+	</div>
+</div>
+<div id="about_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="about_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<h2 class="about__title">About the game</h2>
+		<div class="about__content">
+			<p>Nothing new, arcade shooter rules, but with an ability to earn!</p>
+			<p>1. Users can create a new game or connect to an existing game session.</p>
+			<p>2. The game host chooses the number of rounds and the amount that he is ready to bet on his victory in
+				each round. Both users make the deposit, and Fair Protocol smart contract makes sure everything is fair!
+			</p>
+			<p>3. Users receive rewards for each round they won.</p>
+			<p>4. Users can end the game any time and take the reward.</p>
+			<p>5. Fair Protocol charges 3% for each in-game transaction.</p>
+		</div>
+	</div>
+</div>
+
+<!-- Stats modal -->
+<div class="stats_modal" style="display: none">
+	<div class="stats__me">
+		<div class="stats__header">
+			<div class="stats__header-val">YOU</div>
+		</div>
+		<div class="stats__table">
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-money-icon.svg)"></div>
+				<span id="yourStats-ton-balance">0 TON</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-pistol-icon.svg)"></div>
+				<span id="yourStats-ton-kills">0</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-death-icon.svg)"></div>
+				<span id="yourStats-ton-death">0</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-heart-icon.svg)"></div>
+				<span id="yourStats-ton-health">0</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-bullets-icon.svg)"></div>
+				<span id="yourStats-ton-weapons">0</span>
+			</div>
+		</div>
+	</div>
+	<div class="stats__enemy">
+		<div class="stats__header">
+			<div id="enemyStats-ton-previous" class="stats__header-prev">
+				<svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect x="5.71338" y="2.28552" width="11.4286" height="18.2858" fill="white"/>
+					<rect x="1.14307" y="3.42944" width="20.5716" height="16.0001" fill="white"/>
+					<rect x="2.2832" y="18.2853" width="1.14286" height="2.28573" transform="rotate(-180 2.2832 18.2853)" fill="#B5B5B5"/>
+					<rect x="3.42969" y="20.5723" width="1.14286" height="2.28573" transform="rotate(-180 3.42969 20.5723)" fill="#B5B5B5"/>
+					<rect x="4.56958" y="21.7145" width="1.14286" height="2.28573" transform="rotate(-180 4.56958 21.7145)" fill="#B5B5B5"/>
+					<rect x="18.2861" y="21.7145" width="1.14286" height="2.28573" transform="rotate(-180 18.2861 21.7145)" fill="#B5B5B5"/>
+					<rect x="19.4297" y="21.7145" width="1.14286" height="2.28573" transform="rotate(-180 19.4297 21.7145)" fill="#B5B5B5"/>
+					<rect x="20.5701" y="20.5723" width="1.14286" height="2.28573" transform="rotate(-180 20.5701 20.5723)" fill="#B5B5B5"/>
+					<rect x="21.7136" y="18.2853" width="1.14286" height="2.28573" transform="rotate(-180 21.7136 18.2853)" fill="#B5B5B5"/>
+					<rect x="5.71265" y="21.7145" width="1.14286" height="2.28573" transform="rotate(-180 5.71265 21.7145)" fill="#B5B5B5"/>
+					<rect x="17.1426" y="22.8571" width="11.4286" height="2.28573" transform="rotate(-180 17.1426 22.8571)" fill="#B5B5B5"/>
+					<rect x="5.71265" width="11.4286" height="1.14286" fill="#393939"/>
+					<rect x="3.42969" y="1.14258" width="2.28573" height="1.14286" fill="#393939"/>
+					<rect width="2.28573" height="1.14286" transform="matrix(-1 0 0 1 19.4304 1.14258)" fill="#393939"/>
+					<rect x="1.14307" y="20.5723" width="2.28573" height="1.14286" transform="rotate(-90 1.14307 20.5723)" fill="#393939"/>
+					<rect width="2.28573" height="1.14286" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 21.7136 20.5723)" fill="#393939"/>
+					<rect x="2.2832" y="2.28552" width="1.14286" height="1.14286" fill="#393939"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1 0 0 1 20.5701 2.28552)" fill="#393939"/>
+					<rect x="2.2832" y="21.7145" width="1.14286" height="1.14286" transform="rotate(-90 2.2832 21.7145)" fill="#393939"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 20.5693 21.7145)" fill="#393939"/>
+					<rect x="1.14307" y="3.42944" width="1.14286" height="2.28573" fill="#393939"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(-1 0 0 1 21.7136 3.42944)" fill="#393939"/>
+					<rect x="3.42969" y="22.8571" width="1.14286" height="2.28573" transform="rotate(-90 3.42969 22.8571)" fill="#393939"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 19.4304 22.8571)" fill="#393939"/>
+					<rect x="5.71338" y="22.8571" width="11.4286" height="1.14286" fill="#393939"/>
+					<rect x="22.8579" y="5.71423" width="12.5715" height="1.14286" transform="rotate(90 22.8579 5.71423)" fill="#393939"/>
+					<rect x="1.14307" y="5.71423" width="12.5715" height="1.14286" transform="rotate(90 1.14307 5.71423)" fill="#393939"/>
+					<rect x="17.1426" y="1.14258" width="1.14287" height="11.4286" transform="rotate(90 17.1426 1.14258)" fill="#E8E8E8"/>
+					<rect x="5.71338" y="20.5723" width="1.14287" height="11.4286" transform="rotate(-90 5.71338 20.5723)" fill="#E8E8E8"/>
+					<rect x="5.71338" y="2.28552" width="1.14286" height="2.28573" transform="rotate(90 5.71338 2.28552)" fill="#E8E8E8"/>
+					<rect x="17.1426" y="19.4282" width="1.14286" height="2.28573" transform="rotate(-90 17.1426 19.4282)" fill="#E8E8E8"/>
+					<rect x="3.42969" y="3.42944" width="1.14286" height="1.14286" transform="rotate(90 3.42969 3.42944)" fill="#E8E8E8"/>
+					<rect x="19.4304" y="18.2853" width="1.14286" height="1.14286" transform="rotate(-90 19.4304 18.2853)" fill="#E8E8E8"/>
+					<rect x="2.2832" y="5.71423" width="1.14286" height="1.14286" transform="rotate(90 2.2832 5.71423)" fill="#E8E8E8"/>
+					<rect x="20.5701" y="15.9995" width="1.14286" height="1.14286" transform="rotate(-90 20.5701 15.9995)" fill="#E8E8E8"/>
+					<rect x="20.5701" y="3.42944" width="1.14286" height="1.14286" transform="rotate(90 20.5701 3.42944)" fill="#E8E8E8"/>
+					<rect x="2.2832" y="18.2853" width="1.14286" height="1.14286" transform="rotate(-90 2.2832 18.2853)" fill="#E8E8E8"/>
+					<rect x="21.7136" y="5.71423" width="1.14286" height="1.14286" transform="rotate(90 21.7136 5.71423)" fill="#E8E8E8"/>
+					<rect x="1.14307" y="15.9995" width="1.14286" height="1.14286" transform="rotate(-90 1.14307 15.9995)" fill="#E8E8E8"/>
+					<rect x="19.4304" y="2.28552" width="1.14286" height="2.28573" transform="rotate(90 19.4304 2.28552)" fill="#E8E8E8"/>
+					<rect x="3.42969" y="19.4282" width="1.14286" height="2.28573" transform="rotate(-90 3.42969 19.4282)" fill="#E8E8E8"/>
+					<rect x="3" y="9.59998" width="17.4" height="2.4" fill="#FF8426"/>
+					<rect x="5.40015" y="7.19995" width="2.4" height="2.4" fill="#FF8426"/>
+					<rect x="7.80005" y="12" width="2.4" height="2.4" transform="rotate(90 7.80005 12)" fill="#FF8426"/>
+					<rect x="7.80005" y="4.80005" width="2.4" height="2.4" fill="#FF8426"/>
+					<rect x="10.2002" y="14.4" width="2.4" height="2.4" transform="rotate(90 10.2002 14.4)" fill="#FF8426"/>
+					<rect x="3" y="12" width="2.4" height="1.2" fill="#FFBD82"/>
+					<rect x="5.40015" y="14.4" width="2.4" height="1.2" fill="#FFBD82"/>
+					<rect x="7.80005" y="16.7999" width="2.4" height="1.2" fill="#FFBD82"/>
+					<rect x="7.80005" y="7.19995" width="2.4" height="1.2" fill="#FFBD82"/>
+					<rect x="7.80005" y="12" width="12.6" height="1.2" fill="#FFBD82"/>
+				</svg>					
+			</div>
+			<div class="stats__header-val">ENEMY</div>
+			<div id="enemyStats-ton-next" class="stats__header-next">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="11.4286" height="18.2858" transform="matrix(-1 0 0 1 18.0054 2.28552)" fill="white"/>
+					<rect width="20.5716" height="16.0001" transform="matrix(-1 0 0 1 22.5757 3.42944)" fill="white"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 21.4355 18.2853)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 20.2891 20.5723)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 19.1492 21.7145)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 5.43262 21.7145)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 4.28906 21.7145)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 3.14868 20.5723)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 2.00513 18.2853)" fill="#B5B5B5"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 18.0061 21.7145)" fill="#B5B5B5"/>
+					<rect width="11.4286" height="2.28573" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 6.57617 22.8571)" fill="#B5B5B5"/>
+					<rect width="11.4286" height="1.14286" transform="matrix(-1 0 0 1 18.0061 0)" fill="#393939"/>
+					<rect width="2.28573" height="1.14286" transform="matrix(-1 0 0 1 20.2891 1.14258)" fill="#393939"/>
+					<rect x="4.28833" y="1.14258" width="2.28573" height="1.14286" fill="#393939"/>
+					<rect width="2.28573" height="1.14286" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 22.5757 20.5723)" fill="#393939"/>
+					<rect x="2.00513" y="20.5723" width="2.28573" height="1.14286" transform="rotate(-90 2.00513 20.5723)" fill="#393939"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1 0 0 1 21.4355 2.28552)" fill="#393939"/>
+					<rect x="3.14868" y="2.28552" width="1.14286" height="1.14286" fill="#393939"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 21.4355 21.7145)" fill="#393939"/>
+					<rect x="3.14941" y="21.7145" width="1.14286" height="1.14286" transform="rotate(-90 3.14941 21.7145)" fill="#393939"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(-1 0 0 1 22.5757 3.42944)" fill="#393939"/>
+					<rect x="2.00513" y="3.42944" width="1.14286" height="2.28573" fill="#393939"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 20.2891 22.8571)" fill="#393939"/>
+					<rect x="4.28833" y="22.8571" width="1.14286" height="2.28573" transform="rotate(-90 4.28833 22.8571)" fill="#393939"/>
+					<rect width="11.4286" height="1.14286" transform="matrix(-1 0 0 1 18.0054 22.8571)" fill="#393939"/>
+					<rect width="12.5715" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.86084 5.71423)" fill="#393939"/>
+					<rect width="12.5715" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 22.5757 5.71423)" fill="#393939"/>
+					<rect width="1.14287" height="11.4286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 6.57617 1.14258)" fill="#E8E8E8"/>
+					<rect width="1.14287" height="11.4286" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 18.0054 20.5723)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(4.37114e-08 1 1 -4.37114e-08 18.0054 2.28552)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 6.57617 19.4282)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 20.2891 3.42944)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 4.28833 18.2853)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 21.4355 5.71423)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 3.14868 15.9995)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 3.14868 3.42944)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 21.4355 18.2853)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(4.37114e-08 1 1 -4.37114e-08 2.00513 5.71423)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="1.14286" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 22.5757 15.9995)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(4.37114e-08 1 1 -4.37114e-08 4.28833 2.28552)" fill="#E8E8E8"/>
+					<rect width="1.14286" height="2.28573" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 20.2891 19.4282)" fill="#E8E8E8"/>
+					<rect width="17.4" height="2.4" transform="matrix(-1 0 0 1 20.7188 9.59998)" fill="#FF8426"/>
+					<rect width="2.4" height="2.4" transform="matrix(-1 0 0 1 18.3186 7.19995)" fill="#FF8426"/>
+					<rect width="2.4" height="2.4" transform="matrix(4.37114e-08 1 1 -4.37114e-08 15.9187 12)" fill="#FF8426"/>
+					<rect width="2.4" height="2.4" transform="matrix(-1 0 0 1 15.9187 4.80005)" fill="#FF8426"/>
+					<rect width="2.4" height="2.4" transform="matrix(4.37114e-08 1 1 -4.37114e-08 13.5186 14.4)" fill="#FF8426"/>
+					<rect width="2.4" height="1.2" transform="matrix(-1 0 0 1 20.7188 12)" fill="#FFBD82"/>
+					<rect width="2.4" height="1.2" transform="matrix(-1 0 0 1 18.3186 14.4)" fill="#FFBD82"/>
+					<rect width="2.4" height="1.2" transform="matrix(-1 0 0 1 15.9187 16.7999)" fill="#FFBD82"/>
+					<rect width="2.4" height="1.2" transform="matrix(-1 0 0 1 15.9187 7.19995)" fill="#FFBD82"/>
+					<rect width="12.6" height="1.2" transform="matrix(-1 0 0 1 15.9187 12)" fill="#FFBD82"/>
+				</svg>					
+			</div>
+		</div>
+		<div class="stats__table">
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-money-icon.svg)"></div>
+				<span id="enemyStats-ton-balance">0 TON</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-pistol-icon.svg)"></div>
+				<span id="enemyStats-ton-kills">0</span>
+			</div>
+			<div class="stats__table-record">
+				<div class="record__pic" style="background-image: url(../../media/stats-death-icon.svg)"></div>
+				<span id="enemyStats-ton-death">0</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Pause modal -->
+<div id="pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay" style="display: none">
+	<div class="board wrapper__message-modal modal_content">
+		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="about_modal_close" onclick="unpauseBtn()"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<h2 class="pause__title">Finish the game</h2>
+		<div class="pause__content">
+			<p>Are you sure that you want to complete the game?</p>
+			<p><span id="yourFinishBalance-ton">Loading...</span> (your in-game balance) will return to your wallet</p>
+		</div>
+		<button id="finishBtn-ton" class="pause__btn">
+			<svg class="pause__btn-frame" width="176" height="48" viewBox="0 0 176 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect x="2.13635" y="8.53234" width="2.13331" height="2.13331" fill="black"/>
+				<rect x="173.864" y="41.5995" width="2.13331" height="4.26662" transform="rotate(-180 173.864 41.5995)" fill="black"/>
+				<rect x="4.26782" y="37.3328" width="4.26662" height="2.13331" transform="rotate(90 4.26782 37.3328)" fill="black"/>
+				<rect x="10.6676" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 10.6676 35.1999)" fill="#FFBD82"/>
+				<rect x="165.332" y="37.3328" width="2.13332" height="154.665" transform="rotate(90 165.332 37.3328)" fill="#FFBD82"/>
+				<rect x="171.727" y="10.6676" width="4.26662" height="2.13331" transform="rotate(-90 171.727 10.6676)" fill="black"/>
+				<rect x="2.13635" y="6.3996" width="2.13331" height="2.13331" fill="black"/>
+				<rect x="171.727" y="43.7324" width="2.13331" height="2.13331" transform="rotate(-180 171.727 43.7324)" fill="black"/>
+				<rect x="6.39453" y="41.5995" width="2.13331" height="2.13331" transform="rotate(90 6.39453 41.5995)" fill="black"/>
+				<rect x="4.26782" y="4.26805" width="2.13331" height="2.13331" fill="black"/>
+				<rect x="8.53101" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 8.53101 43.7324)" fill="black"/>
+				<rect x="169.605" y="6.3996" width="2.13331" height="2.13331" transform="rotate(-90 169.605 6.3996)" fill="black"/>
+				<rect x="6.39453" y="2.13274" width="4.26662" height="2.13331" fill="black"/>
+				<rect x="169.605" y="45.8651" width="4.26662" height="2.13331" transform="rotate(-180 169.605 45.8651)" fill="black"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M4.26614 37.3331H2.13635L2.13635 30.9332L4.26967 30.9332L4.26967 35.2012H4.27294L4.27294 33.0659L6.40625 33.0659V35.2012H8.53277V37.334L10.6694 37.334V39.4667L165.334 39.4667V45.8666L10.6688 45.8666V43.7339H6.40273V41.6012H4.26614L4.26614 37.3331ZM169.607 41.6012V43.7339H165.341V37.334H167.474V35.2012H169.605V33.0679L171.732 33.0679V30.9332L173.865 30.9332V37.3331H171.739V41.6012H169.607Z" fill="#EE7000"/>
+				<rect x="10.6676" y="43.7324" width="2.13331" height="2.13331" transform="rotate(90 10.6676 43.7324)" fill="black"/>
+				<rect x="165.332" y="4.26805" width="2.13331" height="4.26662" transform="rotate(-90 165.332 4.26805)" fill="black"/>
+				<rect x="10.6676" y="2.86102e-06" width="154.665" height="2.13331" fill="black"/>
+				<rect x="10.6676" y="45.8651" width="154.665" height="2.13331" fill="black"/>
+				<rect y="10.6676" width="2.13331" height="26.6664" fill="black"/>
+				<rect x="176" y="37.3328" width="2.13331" height="26.6664" transform="rotate(-180 176 37.3328)" fill="black"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M165.345 4.26597L10.6798 4.26595V2.13265L165.345 2.13267V4.26597ZM8.54974 6.4007V4.26787L167.481 4.26788V6.40071H169.613V8.53346H171.749V10.6668H173.876V28.7999L2.14441 28.7999V10.6667L169.445 10.6668L4.28433 10.6667L4.28433 8.53344H6.41457V6.4007H8.54974ZM4.28259 30.9342L4.28259 30.9347V33.0675H6.41264L6.41264 35.199L169.611 35.199V33.0675H171.748V30.9347V30.9342V28.8014L4.28259 28.8014V30.9342ZM10.678 37.3343V35.201L165.343 35.201V37.3343L10.678 37.3343Z" fill="#FF9332"/>
+				<rect x="165.332" y="2.13274" width="2.13332" height="154.665" transform="rotate(90 165.332 2.13274)" fill="#FFBD82"/>
+				<rect x="6.39453" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 6.39453 6.3996)" fill="#FFBD82"/>
+				<rect x="4.26782" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 4.26782 10.6676)" fill="#FFBD82"/>
+				<rect x="8.53101" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 8.53101 4.26805)" fill="#FFBD82"/>
+				<rect x="10.6676" y="4.26805" width="2.13331" height="2.13331" transform="rotate(90 10.6676 4.26805)" fill="#FFBD82"/>
+				<rect x="169.605" y="4.26805" width="2.13331" height="4.26662" transform="rotate(90 169.605 4.26805)" fill="#FFBD82"/>
+				<rect x="171.727" y="6.3996" width="2.13331" height="2.13331" transform="rotate(90 171.727 6.3996)" fill="#FFBD82"/>
+				<rect x="173.864" y="10.6676" width="4.26662" height="2.13331" transform="rotate(90 173.864 10.6676)" fill="#FFBD82"/>
+				<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 39.4678 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="4.26662" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 144.002 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 34.1294 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="3.19997" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 138.668 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 29.871 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="2.13331" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 134.395 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 26.6689 45.8651)" fill="#FFDDBE"/>
+				<rect width="6.39994" height="1.06666" transform="matrix(-1.31134e-07 -1 -1 1.31134e-07 131.203 45.8651)" fill="#FFDDBE"/>
+				<rect x="4.26782" y="28.8004" width="4.26662" height="2.13331" transform="rotate(90 4.26782 28.8004)" fill="#FFBD82"/>
+				<rect x="8.53101" y="35.1999" width="2.13331" height="2.13331" transform="rotate(90 8.53101 35.1999)" fill="#FFBD82"/>
+				<rect x="6.39453" y="33.0672" width="2.13331" height="2.13331" transform="rotate(90 6.39453 33.0672)" fill="#FFBD82"/>
+				<rect x="169.605" y="37.3328" width="4.26662" height="2.13331" transform="rotate(-180 169.605 37.3328)" fill="#FFBD82"/>
+				<rect x="171.727" y="35.1999" width="2.13331" height="2.13331" transform="rotate(-180 171.727 35.1999)" fill="#FFBD82"/>
+				<rect x="173.864" y="30.9332" width="2.13331" height="4.26662" transform="rotate(-180 173.864 30.9332)" fill="#FFBD82"/>
+			</svg>
+			<span>
+				CONFIRM
+			</span>
+		</button>
+	</div>
+</div>
+<div id="wainting_modal" class="modal_waiting_enemy modal wrapper__message-modal-overlay" style="display: none">
+	<div style="height: auto;" class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="wainting_modal_close_btn" style="display: none;"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<img class="load" src="/media/svg/load.svg" alt="">
+		<div>Waiting for enemy...</div>
+		<span class="modal__subtitle">The game will star when other players join</span>
+		<img src="/media/control-keys-info.png">
+		<button class="modal__close"></button>
+	</div>
+</div>
+<div id="confirm_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Waiting for confirmation</div>
+	</div>
+</div>
+<div id="pending_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Pending</div>
+	</div>
+</div>
+<div id="enemy_finishing_game_modal" class="modal wrapper__message-modal-overlay">
+	<div class="board modal_content_waiting  wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div>Your enemy is finishing the game</div>
+		<a href="/" id="enemy_finishing_game_href"><button id="enemy_finishing_game_button">To the main
+				page</button></a>
+	</div>
+</div>
+<div class="board modal modal__wsad" style="display: none" id="instruction_modal">
+	<div class="modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class=" board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="instruction_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div id="info" style="display: inherit;">
+			<!--<img src="/media/svg/arrows.svg" alt="">
+						<img src="/media/svg/wasd.svg" alt="">
+
+
+						WSAD to move & jump<br />
+						<img src="/media/svg/spacebar.svg" alt="" style="margin-top: 5px;">
+
+						Spacebar to shoot<br />
+						Collect tubes to recharge weapon<br />
+						Be careful of lava burns!<br />-->
+			<img src="/media/control-keys-info.png">
+		</div>
+	</div>
+</div>
+<div id="rotate_modal" class="modal wrapper__message-modal-overlay_rotate wrapper__message-modal-overlay">
+	<div class="board modal_content_rotate wrapper__message-modal modal_content">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<button id="rotate_modal_close"
+			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
+		<div class="rotate__content">
+			<img src="/media/svg/rotate-preview.svg">
+		</div>
+	</div>
+</div>
+</body>
+</div>
+
+
+</html>

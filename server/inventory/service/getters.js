@@ -60,9 +60,10 @@ export async function getInventory(req, response) {
 export async function getCharacterImage(req, response) {
     try {
         const chainid = req.query.chainid
-        const address = req.query.address
+        let address = req.query.address
         const typeofimage = req.query.typeofimage
-        const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address.toLowerCase()}_${chainid}.png`)
+        address = chainid == 0 ? address : address.toLowerCase()
+        const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address}_${chainid}.png`)
         try {
             await fs.access(imagePath)
             response.sendFile(imagePath)
