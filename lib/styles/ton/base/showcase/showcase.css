@@ -1,0 +1,28 @@
+@import url('../slots/slots.css');
+@import url('../characters/characters.css');
+
+.head__showcase-title{
+    border-bottom: 5px solid #FF7C06;
+    padding-bottom: 15.57px;
+    font-family: 'Teletactile';
+    font-size: 21.67px;
+    line-height: 32px;
+    color: #FF7C06;
+    text-align: center;
+}
+
+.body__showcase{
+    margin-top: 20.43px;
+    display: flex;
+}
+
+.body__showcase_inventory{
+    margin-top: 30px;
+}
+
+
+@media (max-height: 900px) {
+    .showcase{
+        height: 40%;
+    }
+}

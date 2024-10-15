@@ -1,0 +1,642 @@
+@media (max-width: 1024px) {
+    .modal-content_primary {
+        border: 2px solid rgba(57, 57, 57, 1) !important;
+    }
+
+    .modal_content_info.pb70 {
+        padding-bottom: 70px !important;
+    }
+    #info-content-top {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 9px 0px;
+    }
+    #info-content-top p {
+        margin-bottom: 10px;
+        font-size: 8px;
+        font-weight: 700;
+        width: 100%;
+        white-space: nowrap;
+    }
+    #info-content-top p:last-child {
+        margin-bottom: 0px;
+    }
+    #info-content-top p span {
+        font-weight: 400;
+        white-space: nowrap;
+    }
+    #info-content-top .col_left p:first-child:before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/id.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:first-child:before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/game.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_left p:nth-child(2):before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/dep.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:nth-child(2):before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/round.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_left p:nth-child(3):before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/calendar.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    #info-content-top .col_right p:nth-child(3):before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/map.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .info__title {
+        font-family: "Teletactile";
+        font-size: 24px;
+        font-size: 13px;
+        color: #ff7c06;
+        text-align: center;
+        margin-top: 33px;
+    }
+    .info__content {
+        /* background-image: url(../../../media/svg/past-game/info__frame.svg); */
+        background-repeat: no-repeat;
+        height: 356px;
+        background-size: contain;
+        margin-top: 10px;
+        width: 300px;
+        margin: 10px auto;
+        overflow-y: auto;
+    }
+    #info-content .close-button {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #info-content-top.info-content-top--mode {
+        flex-direction: row;
+        flex-wrap: nowrap !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        width: 100%;
+        /* height: 56px; */
+        background-color: #ffeed1;
+        border-bottom: 2px solid var(--color-orange);
+    }
+    .info-content-top--mode .col_left,
+    .info-content-top--mode .col_right {
+        display: flex;
+        width: 100%;
+    }
+    .info-content-top--mode .col_left p,
+    .info-content-top--mode .col_right p {
+        display: flex;
+        flex-direction: column;
+        padding: 8px 3px;
+        margin: 0 !important;
+        border-right: 2px solid var(--color-orange);
+    }
+    .info-content-top--mode .col_left p::before {
+        display: none !important;
+    }
+    .info-content-top--mode .col_right p::before {
+        display: none !important;
+    }
+    .infoContent-bottom__title {
+        font-family: "Teletactile";
+        font-size: 14px;
+        color: #393939;
+        text-align: center;
+        border-bottom: 1px solid #181425;
+        width: 175px;
+        margin: 27px auto 0px;
+        display: none;
+    }
+    .infoContent-bottom__content-you,
+    .infoContent-bottom__content-enemy {
+        display: flex;
+        padding: 5px 9px 5px;
+        font-size: 14px;
+        justify-content: space-between;
+    }
+    .infoContent-bottom__content-you div:first-child p:last-child a,
+    .infoContent-bottom__content-enemy div:last-child p:last-child a {
+        text-decoration: underline;
+        color: #ff7c06;
+    }
+    .infoContent-bottom__content-you p,
+    .infoContent-bottom__content-enemy p {
+        margin-bottom: 0px;
+    }
+    .infoContent-bottom__you,
+    .infoContent-bottom__enemy {
+        margin: 15px 9px 0px;
+        border-bottom: 1px solid #ffc897;
+        text-transform: uppercase;
+        color: #ff7c06;
+        font-weight: 700;
+    }
+    .infoContent-bottom__enemy {
+        margin: 0px 9px 0px;
+        text-align: end;
+    }
+    .infoContent-bottom__you::before,
+    .infoContent-bottom__enemy::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/user.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+
+    .infoContent-bottom__content-enemy {
+        /* justify-content: end; */
+        justify-content: space-between;
+    }
+    .infoContent-bottom__content-enemy div:last-child p {
+        text-align: end;
+    }
+    .infoContent-bottom__content-you div p span,
+    .infoContent-bottom__content-enemy div p span {
+        font-weight: 500;
+    }
+    .infoContent-bottom__content-you .green,
+    .infoContent-bottom__content-enemy .green,
+    .infoContent-bottom__content-you .pg-active,
+    .infoContent-bottom__content-enemy .pg-active {
+        color: #24b500;
+    }
+    .infoContent-bottom__content-you .green::before,
+    .infoContent-bottom__content-enemy .green::before,
+    .infoContent-bottom__content-you .pg-active::before,
+    .infoContent-bottom__content-enemy .pg-active::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/win.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you .red,
+    .infoContent-bottom__content-enemy .red {
+        color: #ee0000;
+    }
+    .infoContent-bottom__content-you .red::before,
+    .infoContent-bottom__content-enemy .red::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/lose.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:first-child p:nth-child(2)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/dep.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:first-child p:nth-child(3)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/wallet.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:last-child p:nth-child(1)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/kills.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-you div:last-child p:nth-child(2)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/deaths.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(1)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/kills.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(2)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/deaths.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+
+    .infoContent-bottom__content-you .red::before,
+    .infoContent-bottom__content-enemy .red::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/lose.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(1)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/kills.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(2)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/deaths.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:last-child p:nth-child(2)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/dep.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:last-child p:nth-child(3)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/wallet.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .modal .modal_content_info {
+        max-width: 420px;
+        height: auto;
+        border: 2px solid var(--color-orange);
+        background-color: #fffdf4;
+    }
+    .modal__close-icon {
+        width: 22px;
+        height: 22px;
+        top: 10px;
+        background-image: url("../../../media/svg/close-pixel.svg");
+        right: 5px;
+    }
+    .modal__over-body {
+        padding-top: 19px;
+        /* background-image: url("../../../media/svg/game-over-frame-mobile.svg"); */
+    }
+    .modal__title {
+        margin-bottom: 5px;
+    }
+    .wrapper__message-modal_confirm {
+        width: auto !important;
+    }
+    .modal_content_pause {
+        width: 310px !important;
+        height: 183px !important;
+        padding: 10px 20px !important;
+    }
+    .modal__title_pause {
+        font-size: 20px;
+    }
+    .modal_content_confirm_finish {
+        width: 335px !important;
+        height: 193.27px !important;
+        padding: 10px 5px !important;
+    }
+    .modal__title-confirm_finish {
+        font-size: 18px !important;
+        margin-bottom: 20px !important;
+    }
+    .modal_content_rotate {
+        border-radius: 0px !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center;
+        width: 248.67px !important;
+        height: 207.64px !important;
+        padding: 23px 25px !important;
+        border-width: 2px !important;
+    }
+    .rotate__content img {
+        transform: translateX(5px);
+    }
+
+    .new-approve-modal-close-button,
+    .new-error-modal-close-button,
+    #purchace-close {
+        padding: 0 21px 21px !important;
+        height: 30px;
+    }
+}
+@media (max-width: 600px) {
+    .modal .modal_content_new-game {
+        max-width: 480px;
+        background-size: 230px 190px;
+        background-position: 45vw 60vh;
+    }
+    .new-game-header {
+        margin-bottom: 5px;
+    }
+    .modal__close-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal .modal_content {
+        padding: 20px 25.16px;
+        max-width: 380px;
+    }
+    .modal .modal_content_info {
+        padding: 20px 20px;
+    }
+    .modal .modal_content_new-game {
+        padding-bottom: 40px;
+    }
+    .new-game-header {
+        width: 130px;
+    }
+    .modal__row div,
+    .modal__row__tokens div {
+        font-size: 10.88px;
+        line-height: 12.98px;
+        margin-right: 0px;
+    }
+    .modal .modal_content select {
+        width: 106px;
+    }
+    .token-active,
+    .token-deactive {
+        width: 80px;
+        padding-left: 0px;
+        justify-content: end;
+        gap: 5px;
+        padding-right: 10px;
+    }
+    .figure img {
+        width: 18px;
+        height: 18px;
+        margin-right: 0px;
+    }
+    .modal .modal_content input {
+        width: 106px;
+    }
+    .modal__row,
+    .modal__row__tokens {
+        padding: 8.32px 0px;
+    }
+    .modal__row {
+        gap: 13.6px;
+    }
+    #createGame {
+        height: 34px;
+        padding: 0 19.7395px;
+        padding-bottom: 10px;
+        width: 116.8px !important;
+    }
+    #createGame:hover {
+        padding-bottom: 0px;
+        padding-top: 5px;
+    }
+    .message-modal__error img {
+        width: 40px;
+    }
+    .wrapper__message-modal .text-wrap__title {
+        font-size: 16px;
+    }
+    .wrapper__message-modal .message-modal__text-wrap_error .text-wrap__text {
+        font-size: 12px;
+    }
+    .message-modal__btn-close {
+        width: 16px !important;
+        height: 16px !important;
+        background-size: 16px !important;
+    }
+    #pending_modal .modal_content,
+    #confirmation_modal .modal_content,
+    #wainting_modal .modal_content,
+    #approve_modal .modal_content,
+    #enemy_finishing_game_modal .modal_content {
+        font-size: 14px;
+    }
+    .modal .modal_content_waiting .subtitle,
+    .modal .modal_content_panding .subtitle {
+        font-size: 12px;
+        text-align: center;
+    }
+    .modal .modal_content_waiting {
+        height: auto;
+    }
+    #confirmation_modal .load,
+    #wainting_modal .load,
+    #pending_modal .load {
+        width: 40px;
+    }
+    .about-header {
+        width: 160px !important;
+        margin-bottom: 20px !important;
+    }
+    .about__content p {
+        font-size: 12px !important;
+        margin-bottom: 10px !important;
+        line-height: 13.7px !important;
+    }
+    .wrapper__message-modal_change-network {
+        padding-top: 10px;
+        padding-bottom: 0px;
+        width: 72vw;
+    }
+
+    .menu__box {
+        width: 50vw;
+        height: 490px;
+    }
+    .modal .modal_content_info {
+        max-width: 360px;
+    }
+    .message-modal__loader img {
+        width: 40px;
+        height: 40px;
+    }
+    .message-modal__loader {
+        margin-top: 20px !important;
+    }
+    .text-wrap__text {
+        margin-bottom: 0px !important;
+    }
+    .message-modal__btns-wrap {
+        margin-top: 20px !important;
+    }
+    .modal .modal_content_info,
+    .modal .modal_content_waiting,
+    .wrapper__message-modal_waiting {
+        max-width: 351px;
+    }
+    .wrapper__message-modal,
+    .wrapper__message-modal_waiting,
+    .wrapper__message-modal_rejected,
+    .wrapper__message-modal_error-eth {
+        height: auto !important;
+    }
+    /* .wrapper__message-modal .text-wrap__title{
+        font-size: 14px !important;
+    }*/
+    .wrapper__message-modal .text-wrap__text {
+        font-size: 12px !important;
+    }
+    .buy-now-btn,
+    .tryon,
+    .close-button,
+    .back-nft-shop,
+    .go-inventory,
+    .wrapper__item-modal-overlay .item-detail__btns-wrap button,
+    .bought-btn {
+        font-size: 16px;
+        padding-top: 0px;
+    }
+    #new-approve-modal-close:hover,
+    .new-error-modal-close-button:hover {
+        padding-top: 4px !important;
+    }
+    .new-error-modal-close-button {
+        padding-bottom: 20px !important;
+    }
+    .wrapper__message-modal {
+        padding: 25px 23px 0px 23px !important;
+    }
+    .wrapper__message-modal_rejected {
+        padding-bottom: 0px !important;
+        padding-top: 10px !important;
+    }
+    .wrapper__message-modal_waiting {
+        padding-bottom: 0px !important;
+    }
+    .back-nft-shop,
+    .go-inventory {
+        font-size: 14px !important;
+    }
+    .wrapper__message-modal-overlay_rotate {
+        background-color: #333;
+    }
+    #rotate_modal .board-edge_sm:nth-child(1) {
+        left: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(2) {
+        right: -6px;
+        top: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(3) {
+        right: -6px;
+        bottom: -6px;
+    }
+    #rotate_modal .board-edge_sm:nth-child(4) {
+        left: -6px;
+        bottom: -6px;
+    }
+}
+
+/*@media(max-width: 420px) {
+    .modal .modal_content_new-game{
+
+    }
+}*/
+
+@media (max-width: 380px) {
+    .modal .modal_content_info,
+    .modal .modal_content_waiting,
+    .wrapper__message-modal_waiting,
+    .modal .modal_content {
+        max-width: 340px;
+    }
+    .wrapper__message-modal_purchase-completed {
+        width: 340px !important;
+    }
+}
+
+.close-model--mode {
+    display: none;
+}

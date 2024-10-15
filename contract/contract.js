@@ -249,6 +249,12 @@ export const networks = [
       lootboxAddress: '0xDf82B488053b2F183D959969141B9896aB8C1efA',
       privateKey: process.env.PRIVATE_KEY
   }, 
+  {
+      name: "TON",
+      currency: "TON",
+      chainid: 0,
+      explorer: "https://tonscan.org",
+  }
 ]
 
 export const contractAbi = [
