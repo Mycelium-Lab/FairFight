@@ -1,0 +1,168 @@
+
+@media (max-width: 500px) {
+
+
+    #opengames-list-f2p, #pastgames-list-f2p, #opengames-list, #pastgames-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #pastgames-list-f2p {
+        margin-bottom: 0 !important;
+    }
+
+    #opengames-f2p, #opengames {
+        background-image: none !important;
+    }
+    #pastgames-f2p, #pastgames {
+        /* min-height: 100px; */
+        background-image: none !important;
+        background-color: #fffdf4;
+        border: 1px solid var(--color-orange);
+        border-radius: 3px;
+
+        -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
+        -moz-box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
+        box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
+    }
+    #pastgames-f2p.empty, #pastgames.empty {
+        background: none !important;
+        border: none;
+        box-shadow: none;
+    }
+
+    #pastgames-list, #pastgames-list-f2p {
+        max-height: 203px;
+        overflow-y: auto;
+    }
+    #opengames-list, #opengames-list-f2p {
+        max-height: 343px;
+        min-height: 140px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .games__row {
+        background-image: none !important;
+        background-color: #FFFDF4;
+
+        padding: 6px 16px;
+    }
+
+    .games__row .close-button {
+        font-size: 8px;
+
+        position: absolute;
+        padding: 0;
+    }
+    .games__row .close-button span {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 125%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .games__row .withdraw-button span {
+        font-size: 7px;
+    }
+
+    .opengame_content {
+        max-width: calc(100vw - 40px);
+        width: 100%;
+    }
+    
+    /* Same styles as f2p */
+    .pastgame_content {
+        max-width: calc(100vw - 40px);
+        width: 100%;
+    }
+
+    #open_game {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: inherit;
+    }
+
+    .creator-link {
+        max-width: 70px !important;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    #back_button {
+        display: none;
+    }
+
+    #f2p_checker, #f2p-text {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .tabs__content {
+        width: 100% !important;
+        max-width: 100% !important;
+        background-size: 100%;
+    }
+
+    .newgame_ton_btn.next_step {
+        position: absolute;
+        top: 0;
+        transform: translateY(-100%);
+    }
+    .ton__content-inner.next_step {
+        /* transform: translateY(100px); */
+    }
+    .ton__menu-pic.next_step {
+        transform: translateY(-50px) scale(1.15) !important;
+        z-index: 0;
+    }
+
+    #f2p_balance {
+        background-image: url(../../../media/f2p-balance-bg.svg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 110px;
+        height: 40px;
+        padding: 5px;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .f2p_balance__value {
+        font-family: "Teletactile";
+        font-size: 20px;
+        line-height: 20px;
+        color: #FF8426;
+        text-shadow: 0px 2px 0 #17171779, 2px 2px 2px #39393957;
+        margin-top: 4px;
+    }
+    .f2p_balance__icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* TOURNAMENTS */
+
+    #leaderboard_modal .board {
+        padding-bottom: 25px !important;
+    }
+
+    .sorting_1 {
+        /* max-width: 30px !important; */
+    }
+
+    .sorting.sorting_asc {
+        max-width: 30px !important;
+    }
+
+}
