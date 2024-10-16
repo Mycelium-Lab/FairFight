@@ -431,7 +431,7 @@ function handleSocket(socket) {
     try {
       if (data.fromButton) {
         let fight, players
-        if ((room.getChainId() != 0) && (room.chainid != 999999)) {
+        if ((room.getChainId() != 0) && (room.chainid != 999999) && (room.chainid != 999998)) {
           fight = await blockchain().contract.fights(room.getFightId())
           players = await blockchain().contract.getFightPlayers(room.getFightId())
         } else if (room.getChainId() == 0){
@@ -456,11 +456,11 @@ function handleSocket(socket) {
               LEFT JOIN 
                   players_f2p p ON g.gameid = p.gameid
               WHERE 
-                  g.finishTime IS NULL AND g.gameid = $1
+                  g.finishTime IS NULL AND g.gameid = $1 AND g.chainid = $2 
               GROUP BY 
                   g.gameid;
               `
-            , [room.getFightId()])
+            , [room.getFightId(), parseInt(room.chainid)])
           fight = fights.rows[0]
           fight.baseAmount = fight.baseamount
           players = fight.players_list
@@ -563,7 +563,7 @@ function handleSocket(socket) {
       balance = balance != undefined ? balance : '0'
       let kills = await getKills(address)
       let deaths = await getDeaths(address)
-      if (room.getChainId() != 999999) {
+      if ((room.getChainId() != 999999) && (room.getChainId() != 999998)) {
         const _signature = room.getChainId() != 0 ? await signature(balance, address) : await signatureTon(balance, address)
         await pgClient.query("INSERT INTO signatures (player, gameid, amount, chainid, contract, v, r, s, token) SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9 WHERE NOT EXISTS(SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$4 AND contract=$5)",
           [
@@ -620,8 +620,8 @@ function handleSocket(socket) {
         const tokens = wins == 1 ? 10 : 5
         await pgClient.query(
           `
-          INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
-          VALUES ($1, 1, $2, $3, $4, $5, $6)
+          INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths, chainid)
+          VALUES ($1, 1, $2, $3, $4, $5, $6, $7)
           ON CONFLICT (player) 
           DO UPDATE SET
               games = board_f2p.games + 1,
@@ -631,7 +631,7 @@ function handleSocket(socket) {
               kills = board_f2p.kills + $5,
               deaths = board_f2p.deaths + $6;
           `,
-          [ address.toLowerCase(), wins, amountWon, tokens, kills, deaths ]
+          [ address.toLowerCase(), wins, amountWon, tokens, kills, deaths, room.getChainId()]
         )
         // Обновление времени завершения игры
         await pgClient.query("UPDATE game_f2p SET finishtime = $1 WHERE gameid = $2", [Date.now(), room.getFightId()]);
@@ -653,7 +653,7 @@ function handleSocket(socket) {
         data.loserAmount = room.baseAmount
         data.winnerAmount = room.baseAmount
       }
-      if (room.getChainId() != 999999) {
+      if (room.getChainId() != 999999 && room.getChainId() != 999998) {
 
         let signatures
         if (room.getChainId() != 0) {
@@ -783,8 +783,8 @@ function handleSocket(socket) {
           // Вставка/обновление данных для проигравшего
           await pgClient.query(
             `
-            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
-            VALUES ($1, 1, $2, $3, $4, $5, $6)
+            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths, chainid)
+            VALUES ($1, 1, $2, $3, $4, $5, $6, $7)
             ON CONFLICT (player) 
             DO UPDATE SET
                 games = board_f2p.games + 1,
@@ -794,7 +794,7 @@ function handleSocket(socket) {
                 kills = board_f2p.kills + $5,
                 deaths = board_f2p.deaths + $6;
             `,
-            [data.loserAddress.toLowerCase(), winsLoser, amountWonLoser, tokensLoser, killsLoser, deathsLoser]
+            [data.loserAddress.toLowerCase(), winsLoser, amountWonLoser, tokensLoser, killsLoser, deathsLoser, room.getChainId()]
           );
         
           const winsWinner = 1;
@@ -804,8 +804,8 @@ function handleSocket(socket) {
           // Вставка/обновление данных для победителя
           await pgClient.query(
             `
-            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths)
-            VALUES ($1, 1, $2, $3, $4, $5, $6)
+            INSERT INTO board_f2p (player, games, wins, amountWon, tokens, kills, deaths, chainid)
+            VALUES ($1, 1, $2, $3, $4, $5, $6, $7)
             ON CONFLICT (player) 
             DO UPDATE SET
                 games = board_f2p.games + 1,
@@ -815,7 +815,7 @@ function handleSocket(socket) {
                 kills = board_f2p.kills + $5,
                 deaths = board_f2p.deaths + $6;
             `,
-            [data.winnerAddress.toLowerCase(), winsWinner, amountWonWinner, tokensWinner, killsWinner, deathsWinner]
+            [data.winnerAddress.toLowerCase(), winsWinner, amountWonWinner, tokensWinner, killsWinner, deathsWinner, room.getChainId()]
           );
         
           // Завершение транзакции
@@ -862,7 +862,7 @@ function handleSocket(socket) {
         })
       }
       let amountPerRound, baseAmount, rounds, playersBaseAmount, finishTime, players
-      if ((room.getChainId() != 0) && (room.chainid != 999999)) {
+      if ((room.getChainId() != 0) && (room.chainid != 999999) && (room.chainid != 999998)) {
         const fight = await blockchain().contract.fights(room.getFightId())
         players = await blockchain().contract.getFightPlayers(room.getFightId())
         amountPerRound = fight.amountPerRound.toString()
@@ -901,11 +901,11 @@ function handleSocket(socket) {
             LEFT JOIN 
                 players_f2p p ON g.gameid = p.gameid
             WHERE 
-                g.finishTime IS NULL AND g.gameid = $1
+                g.finishTime IS NULL AND g.gameid = $1 AND g.chainid = $2
             GROUP BY 
                 g.gameid;
             `
-          , [room.getFightId()])
+          , [room.getFightId(), room.getChainId()])
         if (fight.rows.length == 0) {
           room.sendTo(user, MessageType.NOT_USER_ROOM);
           throw Error('User not in this fight or fight finished or not exist')
@@ -923,7 +923,7 @@ function handleSocket(socket) {
       room.playersBaseAmount = playersBaseAmount
       room.finishTime = 0
       let res = {rows: []}
-      if (room.getChainId() != 999999) {
+      if (room.getChainId() != 999999 && room.getChainId() != 999998) {
         res = await pgClient.query(
           'SELECT * FROM signatures WHERE player=$1 AND gameid=$2 AND chainid=$3',
           [joinData.walletAddress.toLowerCase(), room.getFightId(), room.getChainId()]
