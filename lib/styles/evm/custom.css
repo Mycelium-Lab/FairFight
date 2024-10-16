@@ -1842,6 +1842,42 @@ a {
     background-position: center 14px;
 }
 
+#p2p-btn-evm
+/* ,
+#menu-inventory-btn  */
+{
+    background-image: url("../../media/p2p-btn-frame.svg");
+}
+
+#f2p-btn-evm {
+    background-image: url("../../media/f2p-btn-frame.svg");
+}
+
+#p2p-btn-evm::after, #f2p-btn-evm::after {
+    background-image: url("../../media/buttons/border.svg");
+    background-position: center 14px;
+    content: "";
+    display: block;
+}
+
+#p2p-btn-evm span, #f2p-btn-evm span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: "Teletactile";
+    font-size: 23px;
+    height: 50px;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-shadow: 1px 3px 0 #39393979, 2px 2px 2px #39393957;
+    padding-top: 0.5vw; /* Основной padding */
+}
+
+
 .new-game-devider {
     width: 100%;
 }
