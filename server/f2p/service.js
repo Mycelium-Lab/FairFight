@@ -11,12 +11,12 @@ dotenv.config()
 const pgClient = db()
 await pgClient.connect()
 
-export const bot = new TelegramBot(process.env.TG_BOT_KEY, {polling: false})
-
+export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: false}) : null
+const evmF2PChainid = 999998
 //create game
 export async function createFight(fight, bodyInitData) {
     try {
-        if (appState == appStateTypes.prod) {
+        if (appState == appStateTypes.prod && fight.chainid != evmF2PChainid) {
             const initDataURI = decodeURIComponent(bodyInitData)
             const initData = new URLSearchParams( initDataURI );
             initData.sort();
@@ -75,8 +75,8 @@ export async function createFight(fight, bodyInitData) {
         } else {
             const query = `
                 WITH inserted_game AS (
-                    INSERT INTO game_f2p (owner, map, rounds, baseAmount, amountPerRound, players, createTime)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    INSERT INTO game_f2p (owner, map, rounds, baseAmount, amountPerRound, players, createTime, chainid)
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                     RETURNING gameid
                 )
                 INSERT INTO players_f2p (gameid, player)
@@ -90,9 +90,10 @@ export async function createFight(fight, bodyInitData) {
                 BigInt(fight.baseAmount),
                 BigInt(fight.amountPerRound),
                 fight.players,
-                Date.now()
+                Date.now(),
+                fight.chainid
             ]);
-            if (appState == appStateTypes.prod) {
+            if (bot) {
                 for (let i = 0; i < playersToNotify.length; i++) {
                     bot.sendMessage(playersToNotify[i], `${fight.owner} have created new fight.`)
                 }
@@ -118,27 +119,27 @@ export async function createFight(fight, bodyInitData) {
 //join game
 export async function joinFight(fightId, player, bodyInitData) {
     try {
-        if (appState == appStateTypes.prod) {
-            const initDataURI = decodeURIComponent(bodyInitData)
-            const initData = new URLSearchParams( initDataURI );
-            initData.sort();
-            const hash = initData.get( "hash" );
-            initData.delete( "hash" );
-            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
-            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
-            if (!checkerTG) {
-                return {
-                    code: 401,
-                    msg: 'wrong tg init data'
-                }
-            }
-        }
         const res = await pgClient.query("SELECT * FROM game_f2p WHERE gameid=$1", [fightId])
         if (res.rows.length !== 0) {
+            if (appState == appStateTypes.prod && res.rows[0].chainid != evmF2PChainid) {
+                const initDataURI = decodeURIComponent(bodyInitData)
+                const initData = new URLSearchParams( initDataURI );
+                initData.sort();
+                const hash = initData.get( "hash" );
+                initData.delete( "hash" );
+                const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+                const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+                if (!checkerTG) {
+                    return {
+                        code: 401,
+                        msg: 'wrong tg init data'
+                    }
+                }
+            }
             const resPlayers = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
             if (resPlayers.rows.length < res.rows[0].players) {
                 await pgClient.query("INSERT INTO players_f2p (gameid, player) VALUES ($1, $2)", [fightId, player])
-                if (appState == appStateTypes.prod) {
+                if (bot) {
                     // const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [res.rows[0].owner])
                     // const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
                     // if (chat.rows.length) {
@@ -180,23 +181,23 @@ export async function joinFight(fightId, player, bodyInitData) {
 export async function withdrawFight(fightId, bodyInitData) {
     //require owner
     try {
-        if (appState == appStateTypes.prod) {
-            const initDataURI = decodeURIComponent(bodyInitData)
-            const initData = new URLSearchParams( initDataURI );
-            initData.sort();
-            const hash = initData.get( "hash" );
-            initData.delete( "hash" );
-            const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
-            const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
-            if (!checkerTG) {
-                return {
-                    code: 401,
-                    msg: 'wrong tg init data'
-                }
-            }
-        }
         const res = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
         if (res.rows.length !== 0) {
+            if (appState == appStateTypes.prod && res.rows[0].chainid != evmF2PChainid) {
+                const initDataURI = decodeURIComponent(bodyInitData)
+                const initData = new URLSearchParams( initDataURI );
+                initData.sort();
+                const hash = initData.get( "hash" );
+                initData.delete( "hash" );
+                const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
+                const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
+                if (!checkerTG) {
+                    return {
+                        code: 401,
+                        msg: 'wrong tg init data'
+                    }
+                }
+            }
             if (res.rows.length == 1) {
                 await pgClient.query(
                     `UPDATE game_f2p SET finishTime = $1 WHERE gameid = $2`,
@@ -227,10 +228,9 @@ export async function withdrawFight(fightId, bodyInitData) {
     }
 }
 
-export async function getFightsWithNullFinish() {
+export async function getFightsWithNullFinish(chainid) {
     try {
-        const res = await pgClient.query(
-            `
+        let query = `
             SELECT 
                 g.gameid, 
                 g.owner, 
@@ -247,11 +247,34 @@ export async function getFightsWithNullFinish() {
             LEFT JOIN 
                 players_f2p p ON g.gameid = p.gameid
             WHERE 
-                g.finishTime IS NULL
+                g.finishTime IS NULL AND (g.chainid = NULL OR g.chainid = 999999)
             GROUP BY 
                 g.gameid;
             `
-        )
+        if (chainid == evmF2PChainid) {
+            query = `
+            SELECT 
+                g.gameid, 
+                g.owner, 
+                g.map, 
+                g.rounds, 
+                g.baseAmount, 
+                g.amountPerRound, 
+                g.players, 
+                g.createTime, 
+                g.finishTime, 
+                array_agg(p.player) AS players_list
+            FROM 
+                game_f2p g
+            LEFT JOIN 
+                players_f2p p ON g.gameid = p.gameid
+            WHERE 
+                g.finishTime IS NULL AND g.chainid = 999998
+            GROUP BY 
+                g.gameid;
+            `
+        }
+        const res = await pgClient.query(query)
         return {
             code: 200,
             msg: 'Success',
@@ -267,11 +290,9 @@ export async function getFightsWithNullFinish() {
     }
 }
 
-export async function getPastFights(player) {
+export async function getPastFights(player, chainid) {
     try {
-        console.log(player)
-        const res = await pgClient.query(
-            `
+        let query = `
             SELECT 
                 g.gameid, 
                 g.owner, 
@@ -297,6 +318,7 @@ export async function getPastFights(player) {
                 statistics_f2p s ON g.gameid = s.gameid
             WHERE 
                 g.finishTime IS NOT NULL
+                AND (g.chainid = NULL OR g.chainid = 999999)
                 AND EXISTS (
                     SELECT 1
                     FROM statistics_f2p s2
@@ -307,7 +329,49 @@ export async function getPastFights(player) {
                 g.gameid
             ORDER BY 
                 g.createTime;
-            `,
+            `
+        if (chainid == evmF2PChainid) {
+            query = `
+            SELECT 
+                g.gameid, 
+                g.owner, 
+                g.map, 
+                g.rounds, 
+                g.baseAmount, 
+                g.amountPerRound, 
+                g.players, 
+                g.createTime, 
+                g.finishTime, 
+                json_agg(
+                    json_build_object(
+                        'player', s.player, 
+                        'amount', s.amount, 
+                        'kills', s.kills, 
+                        'deaths', s.deaths, 
+                        'remainingrounds', s.remainingrounds
+                    )
+                ) AS statistics
+            FROM 
+                game_f2p g
+            JOIN 
+                statistics_f2p s ON g.gameid = s.gameid
+            WHERE 
+                g.finishTime IS NOT NULL
+                AND g.chainid = 999998
+                AND EXISTS (
+                    SELECT 1
+                    FROM statistics_f2p s2
+                    WHERE s2.gameid = g.gameid 
+                    AND s2.player = $1
+                )
+            GROUP BY 
+                g.gameid
+            ORDER BY 
+                g.createTime;
+            `
+        }
+        const res = await pgClient.query(
+            query,
             [player]
         )
         return {
@@ -329,7 +393,8 @@ export async function getBoard(req, res) {
     try {
         const bodyInitData = req.query.initData
         const username = req.query.username
-        if (appState == appStateTypes.prod) {
+        const chainid = req.query.chainid
+        if (appState == appStateTypes.prod && chainid != evmF2PChainid) {
             const initDataURI = decodeURIComponent(bodyInitData)
             const initData = new URLSearchParams( initDataURI );
             initData.sort();
@@ -342,8 +407,18 @@ export async function getBoard(req, res) {
             } else {
                 if (!username) {
                     res.status(401).send('no username')
+                } else {
+                    const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND (chainid = NULL || chainid=999999)", [username])
+                    res.status(200).json({
+                        board: resDB.rows[0]
+                    })
                 }
-                const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1", [username])
+            }
+        } else if (chainid == evmF2PChainid) {
+            if (!username) {
+                res.status(401).send('no username')
+            } else {
+                const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND chainid=999998", [username])
                 res.status(200).json({
                     board: resDB.rows[0]
                 })
