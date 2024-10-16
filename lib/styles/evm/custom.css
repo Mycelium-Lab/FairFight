@@ -184,7 +184,7 @@ a {
     margin-right: 20px;
 }
 
-#createGame {
+#createGame, #createGame-f2p-evm {
     width: 178.8px;
 }
 
@@ -1915,6 +1915,7 @@ background: transparent url("../../media/buttons/newgame-green.svg") no-repeat c
     transition: all 0.1s ease;
     width: 350px;
     height: 122px;
+    z-index: 12;
 }
     
 .newgame__btn__green::after {
