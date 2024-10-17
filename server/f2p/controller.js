@@ -35,7 +35,7 @@ f2pRouter.post('/f2p/create', async (req, res) => {
             players: req.body.players,
             chainid: req.body.chainid
         }
-        const response = await createFight(fight, req.body.initData)
+        const response = await createFight(fight, req.body.initData, req.body.sign_evm)
         res.status(response.code).send(response.msg)
     } catch (error) {
         console.log(error)
@@ -47,7 +47,7 @@ f2pRouter.post('/f2p/join', async (req, res) => {
     try {
         const gameid = req.body.gameid
         const player = req.body.player
-        const response = await joinFight(gameid, player, req.body.initData)
+        const response = await joinFight(gameid, player, req.body.initData, req.body.sign_evm)
         res.status(response.code).send(response.msg)
     } catch (error) {
         console.log(error)
@@ -58,7 +58,7 @@ f2pRouter.post('/f2p/join', async (req, res) => {
 f2pRouter.post('/f2p/withdraw', async (req, res) => {
     try {
         const gameid = req.body.gameid
-        const response = await withdrawFight(gameid, req.body.initData)
+        const response = await withdrawFight(gameid, req.body.initData, req.body.sign_evm)
         res.status(response.code).send(response.msg)
     } catch (error) {
         console.log(error)

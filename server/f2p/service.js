@@ -5,7 +5,8 @@ import TelegramBot from "node-telegram-bot-api";
 import dotenv from 'dotenv'
 import { checkSignatureTG } from "../utils/utils.js";
 import { appState, appStateTypes } from "../utils/appState.js";
-import { playersToNotify } from "../constants/constants.js";
+import { msgSignIn, playersToNotify } from "../constants/constants.js";
+import { ethers } from "ethers";
 dotenv.config()
 
 const pgClient = db()
@@ -14,7 +15,7 @@ await pgClient.connect()
 export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: false}) : null
 const evmF2PChainid = 999998
 //create game
-export async function createFight(fight, bodyInitData) {
+export async function createFight(fight, bodyInitData, sign_evm) {
     try {
         if (appState == appStateTypes.prod && fight.chainid != evmF2PChainid) {
             const initDataURI = decodeURIComponent(bodyInitData)
@@ -28,6 +29,23 @@ export async function createFight(fight, bodyInitData) {
                 return {
                     code: 401,
                     msg: 'wrong tg init data'
+                }
+            }
+        }
+        if (fight.chainid == evmF2PChainid) {
+            if (!sign_evm) {
+                return {
+                    code: 401,
+                    msg: 'wrong sign'
+                }
+            } else {
+                const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
+                console.log(recoveredAddress, fight.owner)
+                if (recoveredAddress != fight.owner) {
+                    return {
+                        code: 401,
+                        msg: 'wrong sign'
+                    }
                 }
             }
         }
@@ -117,7 +135,7 @@ export async function createFight(fight, bodyInitData) {
 }
 
 //join game
-export async function joinFight(fightId, player, bodyInitData) {
+export async function joinFight(fightId, player, bodyInitData, sign_evm) {
     try {
         const res = await pgClient.query("SELECT * FROM game_f2p WHERE gameid=$1", [fightId])
         if (res.rows.length !== 0) {
@@ -133,6 +151,23 @@ export async function joinFight(fightId, player, bodyInitData) {
                     return {
                         code: 401,
                         msg: 'wrong tg init data'
+                    }
+                }
+            }
+            if (res.rows[0].chainid == evmF2PChainid) {
+                if (!sign_evm) {
+                    return {
+                        code: 401,
+                        msg: 'wrong sign'
+                    }
+                } else {
+                    const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
+                    console.log(recoveredAddress, player)
+                    if (recoveredAddress != player) {
+                        return {
+                            code: 401,
+                            msg: 'wrong sign'
+                        }
                     }
                 }
             }
@@ -178,7 +213,7 @@ export async function joinFight(fightId, player, bodyInitData) {
 }
 
 //withdraw
-export async function withdrawFight(fightId, bodyInitData) {
+export async function withdrawFight(fightId, bodyInitData, sign_evm) {
     //require owner
     try {
         const res = await pgClient.query("SELECT * FROM players_f2p WHERE gameid=$1", [fightId])
@@ -195,6 +230,23 @@ export async function withdrawFight(fightId, bodyInitData) {
                     return {
                         code: 401,
                         msg: 'wrong tg init data'
+                    }
+                }
+            }
+            if (res.rows[0].chainid == evmF2PChainid) {
+                if (!sign_evm) {
+                    return {
+                        code: 401,
+                        msg: 'wrong sign'
+                    }
+                } else {
+                    const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
+                    console.log(recoveredAddress, res.rows[0].owner)
+                    if (recoveredAddress != res.rows[0].owner) {
+                        return {
+                            code: 401,
+                            msg: 'wrong sign'
+                        }
                     }
                 }
             }
