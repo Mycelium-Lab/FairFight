@@ -255,6 +255,12 @@
 					<p class="menu__title">Menu</p>
 					<div id="menu-btns" class="wrapper__btns-wrap">
 						<!-- <button class="btns-wrap__btn" id="menu-home-btn" style="display: block;"></button> -->
+						<button class="btns-wrap__btn" id="p2p-btn-evm">
+							<span>P2PLAY</span>
+						</button>
+						<button class="btns-wrap__btn" id="f2p-btn-evm">
+							<span>F2PLAY</span>
+						</button>
 						<button class="btns-wrap__btn" id="menu-nft-shop-btn" style="display: block;"></button>
 						<button class="btns-wrap__btn" id="menu-inventory-btn" style="display: block;"></button>
 						<!-- <button class="btns-wrap__btn" id="menu-mystery-btn" style="display: block;"></button>
@@ -1139,7 +1145,7 @@
 
 
 						<button id="btn_modal_window" class="newgame__btn"></button>
-
+						<button id="btn_modal_window-f2p-evm" class="newgame__btn__green" style="display: none;"></button>
 
 
 						<main class="main-container">
@@ -1148,6 +1154,12 @@
 									style="display: none;">
 								<div id="shop-inventory-btns" class="wrapper__btns-wrap" style="display: none;">
 									<!--<button class="btns-wrap__btn" id="home-btn"></button>-->
+									<button class="btns-wrap__btn" id="menu-p2p-btn-evm">
+										<span>P2PLAY</span>
+									</button>
+									<button class="btns-wrap__btn" id="menu-f2p-btn-evm">
+										<span>F2PLAY</span>
+									</button>
 									<button class="btns-wrap__btn" id="nft-shop-btn"></button>
 									<button class="btns-wrap__btn" id="inventory-btn"></button>
 									<!--<button class="btns-wrap__btn" id="mystery-btn"></button>
@@ -1251,6 +1263,32 @@
 										</div>
 									</ul>
 								</div>
+
+								<h4 id="opengames-empty-f2p-evm" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p-evm" style="display: none" class="tabs__content active">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="opengames-list-f2p-evm">
+										<div class="games__empty" id="opengames_empty-f2p-evm">
+											<span id="opengames_empty-title-f2p-evm"></span>
+											<span id="opengames_empty-desc-f2p-evm">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
+								<div id="pastgames-f2p-evm" style="display: none" class="tabs__content">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg">
+									<ul id="pastgames-list-f2p-evm">
+										<div class="games__empty" id="pastgames_empty-f2p-evm" style="display: none;">
+											<span id="pastgames_empty-title-f2p-evm"></span>
+											<span id="pastgames_empty-desc-f2p-evm">Connect your wallet to start playing.</span>
+										</div>
+									</ul>
+								</div>
 							</div>
 							<div class="wrapper_banners">
 								<div class="board wrapper__banner">
@@ -1349,8 +1387,13 @@
 						</select>
 					</div>
 				</div>
+<!-- <<<<<<< HEAD
 				<img id="tokens-f2p-divider" class='new-game-devider' src="media/svg/devider.svg">
 				<div id="tokens-f2p" class="modal__row__tokens">
+======= -->
+				<img id="tokens-divider-newgame-modal" class='new-game-devider' src="media/svg/devider.svg">
+				<div id="tokens-newgame-modal" class="modal__row__tokens">
+<!-- >>>>>>> f2p_evm -->
 					<div class="select-token-container">Select a token:
 						<div id="select-token-list" class="container-token">
 
@@ -1381,13 +1424,22 @@
 						</select>
 					</div>
 				</div>
-				<img class='new-game-devider' src="media/svg/devider.svg">
+				<img id="tokens-divider" class='new-game-devider' src="media/svg/devider.svg">
 				<div class="modal__row_value modal__row">
+<!-- <<<<<<< HEAD
 					<div id="total-prize-pool">Total prize pool: <span id="totalPrizePool">-</span><span id="totalPrizePoolToken">TON</span></div>
 					<div id="your-deposit-element" class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">TON</span></div>
 					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 					<img class="player-visible" src="media/svg/player-visible.svg">
 					<img style="display: none;" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
+======= -->
+					<div id="total-prize-pool-element" >Total prize pool: <span id="totalPrizePool">-</span><span id="totalPrizePoolToken">ETH</span></div>
+					<div id="your-deposit-element"  class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">ETH</span></div>
+					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
+					<button class="close-button btn-big" disabled="disabled" id="createGame-f2p-evm">create</button>
+					<img id="player-visible-element" class="player-visible" src="media/svg/player-visible.svg">
+					<img id="player-visible-mobile-element" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
+<!-- >>>>>>> f2p_evm -->
 				</div>
 				<!--</div>-->
 			</div>
