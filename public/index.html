@@ -62,6 +62,7 @@
 		<script type="module" src="/modules/networks.js"></script>
 		<script type="module" src="/modules/leaderboard.js"></script>
 		<script src="custom.js"></script>
+		<script type="module" src="/src/f2p-evm/custom.js"></script>
 	</head>
 
 <body>
@@ -74,7 +75,7 @@
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
-			<button class="message-modal__btn-close close_modal_window"></button>
+			<button id="close-modal-window-about" class="message-modal__btn-close close_modal_window"></button>
 			<img class="about-header" src="media/svg/about-header.svg">
 			<svg class="about-ton-header" width="43" height="21" viewBox="0 0 43 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M0.11 16V0.439999H11.22V4.89H5.67V7.11H10.11V11.56H5.67V16H0.11ZM21.2103 8.22V6H18.9903V8.22H21.2103ZM13.4303 16V8.22H14.5403V3.78H15.6503V0.439999H24.5403V3.78H25.6503V8.22H26.7603V16H21.2103V12.67H18.9903V16H13.4303ZM36.7572 11.56V4.89H34.5372V11.56H36.7572ZM34.5372 20.44V19.33H33.4272V16H31.1972V14.89H30.0872V13.78H28.9772V2.67H30.0872V1.56H31.1972V0.439999H40.0872V1.56H41.1972V2.67H42.3072V13.78H41.1972V14.89H37.8672V16H42.3072V20.44H34.5372Z" fill="#FF7C06"/>
@@ -988,28 +989,28 @@
 									<button class="" id="pastgames-f2p-btn">Past games</button>
 								</div>
 	
-								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
-								<div id="opengames-f2p" class="tabs__content active">
+								<h4 id="opengames-empty-f2p-evm" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p-evm" class="tabs__content active">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="opengames-list-f2p">
-										<div class="games__empty" id="opengames_empty-f2p">
-											<span id="opengames_empty-title-f2p">Empty :(</span>
-											<span id="opengames_empty-desc-f2p">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
+									<ul id="opengames-list-f2p-evm">
+										<div class="games__empty" id="opengames_empty-f2p-evm">
+											<span id="opengames_empty-title-f2p-evm">Empty :(</span>
+											<span id="opengames_empty-desc-f2p-evm">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames-f2p" class="tabs__content">
+								<div id="pastgames-f2p-evm" class="tabs__content">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="pastgames-list-f2p">
-										<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
-											<span id="pastgames_empty-title-f2p">Empty :(</span>
-											<span id="pastgames_empty-desc-f2p">That's where your game history will be listed</span>
+									<ul id="pastgames-list-f2p-evm">
+										<div class="games__empty" id="pastgames_empty-f2p-evm" style="display: none;">
+											<span id="pastgames_empty-title-f2p-evm">Empty :(</span>
+											<span id="pastgames_empty-desc-f2p-evm">That's where your game history will be listed</span>
 										</div>
 									</ul>
 								</div>
@@ -1233,7 +1234,7 @@
 								</div>
 								
 								<!-- f2p -->
-								<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
+								<!-- <div id="games_checker-f2p" class="inner-block__head" style="display: none;">
 									<button class="active" id="opengames-f2p-btn">Open Games</button>
 									<button class="" id="pastgames-f2p-btn">Past games</button>
 								</div>
@@ -1288,7 +1289,7 @@
 											<span id="pastgames_empty-desc-f2p-evm">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							<div class="wrapper_banners">
 								<div class="board wrapper__banner">
@@ -1437,8 +1438,8 @@
 					<div id="your-deposit-element"  class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">ETH</span></div>
 					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 					<button class="close-button btn-big" disabled="disabled" id="createGame-f2p-evm">create</button>
-					<img id="player-visible-element" class="player-visible" src="media/svg/player-visible.svg">
-					<img id="player-visible-mobile-element" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
+					<img id="player-visible-element" style="z-index: -10;" class="player-visible" src="media/svg/player-visible.svg">
+					<img id="player-visible-mobile-element" style="z-index: -10;" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
 <!-- >>>>>>> f2p_evm -->
 				</div>
 				<!--</div>-->
@@ -1567,6 +1568,14 @@
 							<img src="/media/svg/leaderboard/lb_30.svg" alt="">
 							In the last 30 days
 						</button>
+						<button id="sevenleader-multi-btn">
+							<img src="/media/svg/leaderboard/lb_7m.svg" alt="">
+							In the last 7 days Multi
+						</button>
+						<button id="thirtyleader-multi-btn">
+							<img src="/media/svg/leaderboard/lb_30m.svg" alt="">
+							In the last 30 days Multi
+						</button>
 					</div>
 				</div>
 				<div id="sevenleader">
@@ -1637,6 +1646,78 @@
 							</tr>
 						</thead>
 						<tbody id="thirtyleader-tablebody">
+
+						</tbody>
+					</table>
+				</div>
+				<div id="sevenleader-multi">
+					<table id="sevenleader-multi-table" class="compact ">
+						<thead>
+							<tr>
+								<th></th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_wallet.svg" alt="">
+									Wallet
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_games.svg" alt="">
+									Games
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_wins.svg" alt="">
+									Wins
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_won.svg" alt="">
+									$ won
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_kills.svg" alt="">
+									Kills
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_deaths.svg" alt="">
+									Deaths
+								</th>
+							</tr>
+						</thead>
+						<tbody id="sevenleader-multi-tablebody">
+
+						</tbody>
+					</table>
+				</div>
+				<div id="thirtyleader-multi">
+					<table id="thirtyleader-multi-table" class="compact ">
+						<thead>
+							<tr>
+								<th></th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_wallet.svg" alt="">
+									Wallet
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_games.svg" alt="">
+									Games
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_wins.svg" alt="">
+									Wins
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_won.svg" alt="">
+									$ won
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_kills.svg" alt="">
+									Kills
+								</th>
+								<th>
+									<img src="/media/svg/leaderboard/lb_deaths.svg" alt="">
+									Deaths
+								</th>
+							</tr>
+						</thead>
+						<tbody id="thirtyleader-multi-tablebody">
 
 						</tbody>
 					</table>
@@ -2844,7 +2925,7 @@
 									style="position: absolute; bottom: -6px; right: 20px; width: 14px;">
 								<p class="nft-shop-boxes-price"
 									style="position: absolute; bottom: -10px; font-size: 12px; right: 40px; font-family: Teletactile;">
-									2.00</p>
+									10.00</p>
 								<img class="nft-shop-boxes-corne_topleft"
 									src="media/svg/shop/bronze-box-collection/corner.svg" alt=""
 									style="position: absolute; width: 17.18px; height: 17.18px; top: -8px; left: -8px;">
