@@ -1,0 +1,1 @@
+export * from '../build/NFTShop/tact_NftShop';
