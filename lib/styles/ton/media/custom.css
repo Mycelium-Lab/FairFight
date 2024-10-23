@@ -261,7 +261,10 @@
     }
     .wrapper_banners {
         margin-bottom: 0px;
-        z-index: initial;
+        z-index: 1;
+    }
+    .wrapper_banners p {
+        font-family: 'Quadriana';
     }
     .games__row {
         background-size: 100%;
@@ -990,6 +993,8 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     .games__empty #opengames_empty-title,
     .games__empty #pastgames_empty-title {
         margin-bottom: 15px;
+        font-family: 'Quadriana';
+        color: var(--color-text-gray);
     }
     .startBtn#disconnect {
         background: url("../../../media/svg/connect-btn-mobile.svg") no-repeat
@@ -1047,10 +1052,8 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         grid-area: 4/1/5/1;
     }
     .inner-block__head button {
-        font-size: 13.41px;
-        text-transform: uppercase;
-        padding: 0px;
-        font-family: "Teletactile";
+        font-family: 'Quadriana';
+        font-size: 24px;
     }
     .games__empty {
         font-size: 36px;
@@ -1059,9 +1062,11 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .games__empty #opengames_empty-desc,
     .games__empty #pastgames_empty-desc {
-        font-size: 12px;
-        line-height: 14.32px;
+        font-size: 16px;
+        line-height: 19.55px;
         width: 280px;
+        font-family: 'Quadriana';
+        color: var(--color-text-gray);
     }
     .inner-block {
         padding: 10px 15px;
@@ -1106,7 +1111,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         padding-bottom: 28px;
     }
     .wrapper__banner p {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .startBtn span {

@@ -141,8 +141,7 @@
 
         width: 100%;
         min-height: 100dvh;
-        overflow: auto;
-        overflow-x: hidden;
+        overflow: hidden;
         position: relative;
 
         padding-top: 80px;
@@ -352,7 +351,7 @@
         display: none !important;
     }
 
-    .wrapper_banners {
+    .main-container .wrapper_banners {
         display: none !important;
     }
 
@@ -518,9 +517,11 @@
     .opengame_content {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px;
     }
     .opengame_content .board {
-        min-height: 250px;
+        min-height: 100%;
         margin-bottom: 15px;
     }
     .newgame_ton_btn {

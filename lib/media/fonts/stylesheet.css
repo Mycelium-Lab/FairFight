@@ -319,3 +319,10 @@
     font-weight: 100;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Quadriana';
+    font-style: normal;
+    font-weight: normal;
+    src: local('quadriana'), url('quadriana.ttf') format('truetype');
+    }
