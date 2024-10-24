@@ -541,13 +541,13 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         width: 21px;
         height: 20px;
     }
-    .buyblock-image {
+    /* .buyblock-image {
         background-image: url("../../../media/mobile/buyblock.png");
         width: 116.63px;
         height: 54.79px;
         background-size: 100%;
         margin: 0 auto;
-    }
+    } */
     .wrapper__banner {
         padding-bottom: 0px;
         border-radius: 0px;
@@ -1059,14 +1059,22 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         font-size: 36px;
         gap: 5px;
         margin: 21px auto;
+        font-family: 'Quadriana';
     }
+    .games__empty #opengames_empty-title-f2p,
+    .games__empty #opengames_empty-desc-f2p,
+    .games__empty #pastgames_empty-title-f2p,
+    .games__empty #pastgames_empty-desc-f2p,
     .games__empty #opengames_empty-desc,
     .games__empty #pastgames_empty-desc {
-        font-size: 16px;
         line-height: 19.55px;
         width: 280px;
         font-family: 'Quadriana';
         color: var(--color-text-gray);
+    }
+    .games__empty #opengames_empty-desc,
+    .games__empty #pastgames_empty-desc {
+        font-size: 16px;
     }
     .inner-block {
         padding: 10px 15px;
@@ -1129,7 +1137,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         padding-top: 10px;
     }
     .wrapper_banners .wrapper__banner:first-child p {
-        margin-bottom: 8px;
+        margin-bottom: 3px;
     }
     .buyblock-image__boxes {
         transform: translateY(-38px);

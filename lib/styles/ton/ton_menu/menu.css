@@ -14,6 +14,11 @@
     display: none;
 }
 
+.about-ton-header.quadriana-label {
+    background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+    -webkit-background-clip: text;
+}
+
 #back_button {
     display: none;
 }
@@ -380,9 +385,10 @@
 
     .about__content p#nothing_new {
         text-align: center;
-        font-weight: 900;
-        font-size: 14px !important;
+        /* font-weight: 900; */
+        font-size: 16px !important;
         color: #FF8426;
+        line-height: 19.55px !important;
     }
 
     .controls_outer_title {
@@ -454,18 +460,85 @@
     .about__content_control_keys {
         padding: 15px;
         margin-bottom: 15px;
-        border: 2px solid #FF8426;
         border-radius: 4px;
         background: #FFFDF4;
-
         overflow-y: auto;
+        clip-path: polygon(0px calc(100% - 4px),
+        2px calc(100% - 4px),
+        2px calc(100% - 2px),
+        4px calc(100% - 2px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 2px) 4px,
+        calc(100% - 2px) 2px,
+        calc(100% - 4px) 2px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 2px,
+        2px 2px,
+        2px 4px,
+        0px 4px);
+      position: relative;
+    }
+    .about__content_control_keys::after {
+      content: "";
+      position: absolute;
+      clip-path: polygon(0px calc(100% - 4px),
+        2px calc(100% - 4px),
+        2px calc(100% - 2px),
+        4px calc(100% - 2px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 2px) 4px,
+        calc(100% - 2px) 2px,
+        calc(100% - 4px) 2px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 2px,
+        2px 2px,
+        2px 4px,
+        0px 4px,
+        0px 50%,
+        2px 50%,
+        2px 4px,
+        4px 4px,
+        4px 2px,
+        calc(100% - 4px) 2px,
+        calc(100% - 4px) 4px,
+        calc(100% - 2px) 4px,
+        calc(100% - 2px) calc(100% - 4px),
+        calc(100% - 4px) calc(100% - 4px),
+        calc(100% - 4px) calc(100% - 2px),
+        4px calc(100% - 2px),
+        4px calc(100% - 4px),
+        2px calc(100% - 4px),
+        2px 50%,
+        0px 50%);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #700f51;
+      display: block;
+      pointer-events: none;
     }
 
     .controls_block__title {
-        font-family: "Teletactile", sans-serif;
-        font-size: 14px;
-        font-weight: 900;
-        color: #FF8426;
+        font-family: 'Quadriana';
+        font-size: 20px;
+        background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+        -webkit-background-clip: text;
+        color: transparent;
         text-align: center;
     }
 
@@ -493,10 +566,12 @@
         object-fit: contain;
     }
     .controls_block__list-card span {
-        font-size: 11px;
-        font-weight: 700;
-        line-height: 13.9px;
+        font-family: "Quadriana";
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12.22px;
         text-align: center;
+
     }
     .controls_block__title--mtop {
         margin-top: 10px;

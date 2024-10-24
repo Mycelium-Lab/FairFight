@@ -535,9 +535,10 @@
         margin-bottom: 20px !important;
     }
     .about__content p {
-        font-size: 12px !important;
+        font-size: 14px !important;
         margin-bottom: 10px !important;
-        line-height: 13.7px !important;
+        line-height: 15.4px !important;
+        text-align: justify;
     }
     .wrapper__message-modal_change-network {
         padding-top: 10px;

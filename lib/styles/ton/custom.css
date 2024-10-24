@@ -230,11 +230,13 @@ a {
 }
 
 .about__content p {
+    font-family: 'Quadriana';
     margin-bottom: 16px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: rgba(0, 0, 0, 1);
     line-height: 16.7px;
+    font-synthesis: none;
 }
 
 #header {
@@ -4455,11 +4457,17 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 
 .buyblock-image {
-    background-image: url("../../media/buyblock.svg");
+    /* background-image: url("../../media/buyblock.svg");
     width: 155px;
     height: 73px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
+
+.buyblock-image > img {max-width: 100%;}
 
 .buyblock-image__boxes {
     transform: translateY(-40px);
@@ -4824,6 +4832,8 @@ wrapper__nft-shop-modal .info__pricing button {
     letter-spacing: -2px;
 }
 /* REDIRECT TO DESKTOP POPUP */
+
+.faq {position: relative;}
 
 @media (max-width: 1024px) {
   .enemy-character__btn {
