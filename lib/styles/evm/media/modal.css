@@ -471,13 +471,15 @@
     .modal__row {
         gap: 13.6px;
     }
-    #createGame {
+    #createGame,
+    #createGame-f2p-evm {
         height: 34px;
         padding: 0 19.7395px;
         padding-bottom: 10px;
         width: 116.8px !important;
     }
-    #createGame:hover {
+    #createGame:hover,
+    #createGame-f2p-evm:hover {
         padding-bottom: 0px;
         padding-top: 5px;
     }

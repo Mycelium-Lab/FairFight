@@ -184,7 +184,7 @@ a {
     margin-right: 20px;
 }
 
-#createGame {
+#createGame, #createGame-f2p-evm {
     width: 178.8px;
 }
 
@@ -1842,6 +1842,41 @@ a {
     background-position: center 14px;
 }
 
+#p2p-btn-evm,
+#menu-p2p-btn-evm{
+    background-image: url("../../media/p2p-btn-frame.svg");
+}
+
+#f2p-btn-evm,
+#menu-f2p-btn-evm {
+    background-image: url("../../media/f2p-btn-frame.svg");
+}
+
+#p2p-btn-evm::after, #f2p-btn-evm::after {
+    background-image: url("../../media/buttons/border.svg");
+    background-position: center 14px;
+    content: "";
+    display: block;
+}
+
+#p2p-btn-evm span, #f2p-btn-evm span, #menu-p2p-btn-evm span, #menu-f2p-btn-evm span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: "Teletactile";
+    font-size: 23px;
+    height: 50px;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-shadow: 1px 3px 0 #39393979, 2px 2px 2px #39393957;
+    padding-top: 0.5vw; /* Основной padding */
+}
+
+
 .new-game-devider {
     width: 100%;
 }
@@ -1869,6 +1904,34 @@ a {
 }
 
 .newgame__btn:hover {
+    background-position: center 10px;
+    transition: all 0.1s ease;
+}
+
+.newgame__btn__green {
+background: transparent url("../../media/buttons/newgame-green.svg") no-repeat center
+    0;
+    background-size: 328px;
+    transition: all 0.1s ease;
+    width: 350px;
+    height: 122px;
+    z-index: 12;
+}
+    
+.newgame__btn__green::after {
+    content: "";
+    background-image: url("../../media/buttons/border-game.svg");
+    background-position: center 27px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.newgame__btn__green:hover {
     background-position: center 10px;
     transition: all 0.1s ease;
 }

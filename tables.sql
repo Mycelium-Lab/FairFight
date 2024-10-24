@@ -698,3 +698,10 @@ CREATE TABLE notified_players (
     gameid        INT
 );
 
+ALTER TABLE game_f2p
+ADD COLUMN chainid INT;
+
+ALTER TABLE board_f2p
+ADD COLUMN chainid INT;
+
+

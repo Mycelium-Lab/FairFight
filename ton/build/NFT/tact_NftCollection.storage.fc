@@ -1,0 +1,365 @@
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+tuple $StateInit$_to_tuple(((cell, cell)) v) inline {
+    var (v'code, v'data) = v;
+    return __tact_tuple_create_2(v'code, v'data);
+}
+
+tuple $StateInit$_to_external(((cell, cell)) v) inline {
+    var (v'code, v'data) = v; 
+    return $StateInit$_to_tuple(v'code, v'data);
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_bounce_mode_body_code_data(slice $to, int $value, int $bounce, int $mode, cell $body, cell $code, cell $data) inline {
+    return ($bounce, $to, $value, $mode, $body, $code, $data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_bounce_mode_body(slice $to, int $value, int $bounce, int $mode, cell $body) inline {
+    return ($bounce, $to, $value, $mode, $body, null(), null());
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int $bounce, slice $to, int $value, int $mode, cell $body, cell $code, cell $data) inline {
+    return ($bounce, $to, $value, $mode, $body, $code, $data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_bounce_body(slice $to, int $value, int $mode, int $bounce, cell $body) inline {
+    return ($bounce, $to, $value, $mode, $body, null(), null());
+}
+
+;;
+;; Type: LogEventMintRecord
+;; Header: 0xa3877d65
+;; TLB: log_event_mint_record#a3877d65 minter:address item_id:int257 generate_number:int257 = LogEventMintRecord
+;;
+
+builder $LogEventMintRecord$_store(builder build_0, (slice, int, int) v) inline {
+    var (v'minter, v'item_id, v'generate_number) = v;
+    build_0 = store_uint(build_0, 2743565669, 32);
+    build_0 = __tact_store_address(build_0, v'minter);
+    build_0 = build_0.store_int(v'item_id, 257);
+    build_0 = build_0.store_int(v'generate_number, 257);
+    return build_0;
+}
+
+cell $LogEventMintRecord$_store_cell((slice, int, int) v) inline {
+    return $LogEventMintRecord$_store(begin_cell(), v).end_cell();
+}
+
+((slice, int, int)) $LogEventMintRecord$_constructor_minter_item_id_generate_number(slice $minter, int $item_id, int $generate_number) inline {
+    return ($minter, $item_id, $generate_number);
+}
+
+;;
+;; Type: GetRoyaltyParams
+;; Header: 0x693d3950
+;; TLB: get_royalty_params#693d3950 query_id:uint64 = GetRoyaltyParams
+;;
+
+(slice, ((int))) $GetRoyaltyParams$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1765620048);
+    var v'query_id = sc_0~load_uint(64);
+    return (sc_0, (v'query_id));
+}
+
+;;
+;; Type: ReportRoyaltyParams
+;; Header: 0xa8cb00ad
+;; TLB: report_royalty_params#a8cb00ad query_id:uint64 numerator:uint16 denominator:uint16 destination:address = ReportRoyaltyParams
+;;
+
+builder $ReportRoyaltyParams$_store(builder build_0, (int, int, int, slice) v) inline {
+    var (v'query_id, v'numerator, v'denominator, v'destination) = v;
+    build_0 = store_uint(build_0, 2831876269, 32);
+    build_0 = build_0.store_uint(v'query_id, 64);
+    build_0 = build_0.store_uint(v'numerator, 16);
+    build_0 = build_0.store_uint(v'denominator, 16);
+    build_0 = __tact_store_address(build_0, v'destination);
+    return build_0;
+}
+
+cell $ReportRoyaltyParams$_store_cell((int, int, int, slice) v) inline {
+    return $ReportRoyaltyParams$_store(begin_cell(), v).end_cell();
+}
+
+((int, int, int, slice)) $ReportRoyaltyParams$_constructor_query_id_numerator_denominator_destination(int $query_id, int $numerator, int $denominator, slice $destination) inline {
+    return ($query_id, $numerator, $denominator, $destination);
+}
+
+;;
+;; Type: CollectionData
+;; TLB: _ next_item_index:int257 collection_content:^cell owner_address:address = CollectionData
+;;
+
+tuple $CollectionData$_to_tuple(((int, cell, slice)) v) inline {
+    var (v'next_item_index, v'collection_content, v'owner_address) = v;
+    return __tact_tuple_create_3(v'next_item_index, v'collection_content, v'owner_address);
+}
+
+tuple $CollectionData$_to_external(((int, cell, slice)) v) inline {
+    var (v'next_item_index, v'collection_content, v'owner_address) = v; 
+    return $CollectionData$_to_tuple(v'next_item_index, v'collection_content, v'owner_address);
+}
+
+((int, cell, slice)) $CollectionData$_constructor_next_item_index_collection_content_owner_address(int $next_item_index, cell $collection_content, slice $owner_address) inline {
+    return ($next_item_index, $collection_content, $owner_address);
+}
+
+;;
+;; Type: RoyaltyParams
+;; TLB: _ numerator:int257 denominator:int257 destination:address = RoyaltyParams
+;;
+
+builder $RoyaltyParams$_store(builder build_0, (int, int, slice) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v;
+    build_0 = build_0.store_int(v'numerator, 257);
+    build_0 = build_0.store_int(v'denominator, 257);
+    build_0 = __tact_store_address(build_0, v'destination);
+    return build_0;
+}
+
+(slice, ((int, int, slice))) $RoyaltyParams$_load(slice sc_0) inline {
+    var v'numerator = sc_0~load_int(257);
+    var v'denominator = sc_0~load_int(257);
+    var v'destination = sc_0~__tact_load_address();
+    return (sc_0, (v'numerator, v'denominator, v'destination));
+}
+
+((int, int, slice)) $RoyaltyParams$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (int vvv'numerator, int vvv'denominator, slice vvv'destination) = __tact_tuple_destroy_3(v);
+    return (vvv'numerator, vvv'denominator, vvv'destination);
+}
+
+tuple $RoyaltyParams$_as_optional((int, int, slice) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v;
+    return __tact_tuple_create_3(v'numerator, v'denominator, v'destination);
+}
+
+_ $RoyaltyParams$_get_numerator((int, int, slice) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v;
+    return v'numerator;
+}
+
+_ $RoyaltyParams$_get_denominator((int, int, slice) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v;
+    return v'denominator;
+}
+
+tuple $RoyaltyParams$_to_tuple(((int, int, slice)) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v;
+    return __tact_tuple_create_3(v'numerator, v'denominator, v'destination);
+}
+
+tuple $RoyaltyParams$_to_external(((int, int, slice)) v) inline {
+    var (v'numerator, v'denominator, v'destination) = v; 
+    return $RoyaltyParams$_to_tuple(v'numerator, v'denominator, v'destination);
+}
+
+;;
+;; Type: Transfer
+;; Header: 0x5fcc3d14
+;; TLB: transfer#5fcc3d14 query_id:uint64 new_owner:address response_destination:Maybe address custom_payload:Maybe ^cell forward_amount:coins forward_payload:remainder<slice> = Transfer
+;;
+
+builder $Transfer$_store(builder build_0, (int, slice, slice, cell, int, slice) v) inline_ref {
+    var (v'query_id, v'new_owner, v'response_destination, v'custom_payload, v'forward_amount, v'forward_payload) = v;
+    build_0 = store_uint(build_0, 1607220500, 32);
+    build_0 = build_0.store_uint(v'query_id, 64);
+    build_0 = __tact_store_address(build_0, v'new_owner);
+    build_0 = __tact_store_address_opt(build_0, v'response_destination);
+    build_0 = ~ null?(v'custom_payload) ? build_0.store_int(true, 1).store_ref(v'custom_payload) : build_0.store_int(false, 1);
+    build_0 = build_0.store_coins(v'forward_amount);
+    build_0 = build_0.store_slice(v'forward_payload);
+    return build_0;
+}
+
+cell $Transfer$_store_cell((int, slice, slice, cell, int, slice) v) inline {
+    return $Transfer$_store(begin_cell(), v).end_cell();
+}
+
+((int, slice, slice, cell, int, slice)) $Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload(int $query_id, slice $new_owner, slice $response_destination, cell $custom_payload, int $forward_amount, slice $forward_payload) inline {
+    return ($query_id, $new_owner, $response_destination, $custom_payload, $forward_amount, $forward_payload);
+}
+
+;;
+;; Type: SetAllowedMint
+;; Header: 0xd0a2daa4
+;; TLB: set_allowed_mint#d0a2daa4 minter:address allowed:bool = SetAllowedMint
+;;
+
+(slice, ((slice, int))) $SetAllowedMint$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3500333732);
+    var v'minter = sc_0~__tact_load_address();
+    var v'allowed = sc_0~load_int(1);
+    return (sc_0, (v'minter, v'allowed));
+}
+
+;;
+;; Type: Mint
+;; Header: 0x98222a43
+;; TLB: mint#98222a43 recipient:address type:int257 type_index:int257 data:^string = Mint
+;;
+
+(slice, ((slice, int, int, slice))) $Mint$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2552375875);
+    var v'recipient = sc_0~__tact_load_address();
+    var v'type = sc_0~load_int(257);
+    var v'type_index = sc_0~load_int(257);
+    var v'data = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'recipient, v'type, v'type_index, v'data));
+}
+
+;;
+;; Type: SetItemType
+;; Header: 0xf58582d4
+;; TLB: set_item_type#f58582d4 type:int257 type_index:int257 data:^string = SetItemType
+;;
+
+builder $SetItemType$_store(builder build_0, (int, int, slice) v) inline {
+    var (v'type, v'type_index, v'data) = v;
+    build_0 = store_uint(build_0, 4119167700, 32);
+    build_0 = build_0.store_int(v'type, 257);
+    build_0 = build_0.store_int(v'type_index, 257);
+    build_0 = build_0.store_ref(begin_cell().store_slice(v'data).end_cell());
+    return build_0;
+}
+
+cell $SetItemType$_store_cell((int, int, slice) v) inline {
+    return $SetItemType$_store(begin_cell(), v).end_cell();
+}
+
+((int, int, slice)) $SetItemType$_constructor_type_type_index_data(int $type, int $type_index, slice $data) inline {
+    return ($type, $type_index, $data);
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2490013878);
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int $queryId) inline {
+    return ($queryId);
+}
+
+;;
+;; Type: NftCollection
+;;
+
+builder $NftCollection$_store(builder build_0, (int, slice, tuple, cell, cell) v) inline {
+    var (v'next_item_index, v'owner_address, v'royalty_params, v'collection_content, v'allowedMint) = v;
+    build_0 = build_0.store_uint(v'next_item_index, 32);
+    build_0 = __tact_store_address(build_0, v'owner_address);
+    var build_1 = begin_cell();
+    build_1 = ~ null?(v'royalty_params) ? build_1.store_int(true, 1).$RoyaltyParams$_store($RoyaltyParams$_not_null(v'royalty_params)) : build_1.store_int(false, 1);
+    build_1 = build_1.store_ref(v'collection_content);
+    build_1 = build_1.store_dict(v'allowedMint);
+    build_0 = store_ref(build_0, build_1.end_cell());
+    return build_0;
+}
+
+(slice, ((int, slice, tuple, cell, cell))) $NftCollection$_load(slice sc_0) inline {
+    var v'next_item_index = sc_0~load_uint(32);
+    var v'owner_address = sc_0~__tact_load_address();
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'royalty_params = sc_1~load_int(1) ? $RoyaltyParams$_as_optional(sc_1~$RoyaltyParams$_load()) : null();
+    var v'collection_content = sc_1~load_ref();
+    var v'allowedMint = sc_1~load_dict();
+    return (sc_0, (v'next_item_index, v'owner_address, v'royalty_params, v'collection_content, v'allowedMint));
+}
+
+(slice, ((slice, cell, (int, int, slice)))) $NftCollection$init$_load(slice sc_0) inline {
+    var v'owner_address = sc_0~__tact_load_address();
+    var v'collection_content = sc_0~load_ref();
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'royalty_params = sc_1~$RoyaltyParams$_load();
+    return (sc_0, (v'owner_address, v'collection_content, v'royalty_params));
+}
+
+(int, slice, tuple, cell, cell) $NftCollection$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$NftCollection$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        (slice $owner_address, cell $collection_content, (int, int, slice) $royalty_params) = $sc~$NftCollection$init$_load();
+        $sc.end_parse();
+        return $NftCollection$_contract_init($owner_address, $collection_content, $royalty_params);
+    }
+}
+
+() $NftCollection$_contract_store((int, slice, tuple, cell, cell) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $NftCollection$_store(b, v);
+    set_data(b.end_cell());
+}
+
+;;
+;; Type: NftItem
+;;
+
+builder $NftItem$init$_store(builder build_0, (slice, int) v) inline {
+    var (v'collection_address, v'item_index) = v;
+    build_0 = __tact_store_address(build_0, v'collection_address);
+    build_0 = build_0.store_int(v'item_index, 257);
+    return build_0;
+}
+
+(cell, cell) $NftItem$_init_child(cell sys', slice $collection_address, int $item_index) inline_ref {
+    slice sc' = sys'.begin_parse();
+    cell source = sc'~load_dict();
+    cell contracts = new_dict();
+    
+    ;; Contract Code: NftItem
+    cell mine = __tact_dict_get_code(source, 31210);
+    contracts = __tact_dict_set_code(contracts, 31210, mine);
+    
+    ;; Build cell
+    builder b = begin_cell();
+    b = b.store_ref(begin_cell().store_dict(contracts).end_cell());
+    b = b.store_int(false, 1);
+    b = $NftItem$init$_store(b, ($collection_address, $item_index));
+    return (mine, b.end_cell());
+}
