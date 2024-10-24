@@ -570,6 +570,9 @@ export async function mintNFT(req, res) {
                                 })
                             ]
                         });
+                        if (responsePg.rows[0].gift_amount == 1) {
+                            
+                        }
                         await pgClient.query(`UPDATE board_f2p SET tokens = tokens - 150 WHERE player = $1`, [username])
                         res.status(200).send('Success')
                     } else {

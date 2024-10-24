@@ -698,3 +698,5 @@ CREATE TABLE notified_players (
     gameid        INT
 );
 
+ALTER TABLE board_f2p
+ADD COLUMN gift_amount INT;
