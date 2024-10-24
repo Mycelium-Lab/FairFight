@@ -1,0 +1,220 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_NftCollection.headers.fc";
+#include "tact_NftCollection.stdlib.fc";
+#include "tact_NftCollection.constants.fc";
+#include "tact_NftCollection.storage.fc";
+
+;;
+;; Contract NftCollection functions
+;;
+
+(int, slice, tuple, cell, cell) $NftCollection$_contract_init(slice $owner_address, cell $collection_content, (int, int, slice) $royalty_params) impure inline_ref {
+    var (($royalty_params'numerator, $royalty_params'denominator, $royalty_params'destination)) = $royalty_params;
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = (0, null(), null(), null(), null());
+    $self'owner_address = $owner_address;
+    $self'collection_content = $collection_content;
+    $self'royalty_params = $RoyaltyParams$_as_optional(($royalty_params'numerator, $royalty_params'denominator, $royalty_params'destination));
+    $self'allowedMint~__tact_dict_set_slice_int(267, $owner_address, true, 1);
+    return ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint);
+}
+
+((int, slice, tuple, cell, cell), (cell, cell)) $NftCollection$_fun_getNftItemInit((int, slice, tuple, cell, cell) $self, int $item_index) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), $NftItem$_init_child(__tact_context_sys, my_address(), $item_index));
+}
+
+((int, slice, tuple, cell, cell), ()) $NftCollection$_fun_mint((int, slice, tuple, cell, cell) $self, slice $sender, int $msgValue, int $type, int $type_index, slice $data) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    throw_unless(62742, ($self'next_item_index >= 0));
+    var ($nft_init'code, $nft_init'data) = ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)~$NftCollection$_fun_getNftItemInit($self'next_item_index);
+    $global_send($SendParameters$_constructor_to_value_bounce_mode_body_code_data($global_contractAddress(($nft_init'code, $nft_init'data)), $msgValue, false, 2, $Transfer$_store_cell($Transfer$_constructor_query_id_new_owner_response_destination_custom_payload_forward_amount_forward_payload(0, $sender, $self'owner_address, $self'collection_content, 0, $global_emptySlice())), $nft_init'code, $nft_init'data));
+    $global_send($SendParameters$_constructor_to_value_bounce_mode_body($global_contractAddress(($nft_init'code, $nft_init'data)), $msgValue, false, 2, $SetItemType$_store_cell($SetItemType$_constructor_type_type_index_data($type, $type_index, $data))));
+    $self'next_item_index = ($self'next_item_index + 1);
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), ());
+}
+
+((int, slice, tuple, cell, cell), (int, cell, slice)) $NftCollection$_fun_get_collection_data((int, slice, tuple, cell, cell) $self) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    tuple $b = __tact_string_builder_start_string();
+    slice $collectionDataString = __tact_slice_to_str($Cell$_fun_asSlice($self'collection_content));
+    $b~__tact_string_builder_append($collectionDataString);
+    $b~__tact_string_builder_append(__gen_slice_string_7ca4179185a84c879806ec30a1f5fa692451a7fb8dfcf32a967a2cb475822481());
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), $CollectionData$_constructor_next_item_index_collection_content_owner_address($self'next_item_index, __tact_string_builder_end($b), $self'owner_address));
+}
+
+((int, slice, tuple, cell, cell), slice) $NftCollection$_fun_get_nft_address_by_index((int, slice, tuple, cell, cell) $self, int $item_index) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    var ($initCode'code, $initCode'data) = ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)~$NftCollection$_fun_getNftItemInit($item_index);
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), $global_contractAddress(($initCode'code, $initCode'data)));
+}
+
+((int, slice, tuple, cell, cell), cell) $NftCollection$_fun_get_nft_content((int, slice, tuple, cell, cell) $self, int $index, cell $individual_content) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    tuple $b = __tact_string_builder_start_string();
+    slice $ic = __tact_slice_to_str($Cell$_fun_asSlice($individual_content));
+    $b~__tact_string_builder_append($ic);
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), __tact_string_builder_end($b));
+}
+
+((int, slice, tuple, cell, cell), (int, int, slice)) $NftCollection$_fun_royalty_params((int, slice, tuple, cell, cell) $self) impure inline_ref {
+    var (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)) = $self;
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), $RoyaltyParams$_not_null($self'royalty_params));
+}
+
+;;
+;; Receivers of a Contract NftCollection
+;;
+
+(((int, slice, tuple, cell, cell)), ()) $NftCollection$_internal_binary_Mint((int, slice, tuple, cell, cell) $self, (slice, int, int, slice) $msg) impure inline {
+    var ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint) = $self;
+    var ($msg'recipient, $msg'type, $msg'type_index, $msg'data) = $msg;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(22049, __tact_int_eq_nullable_one(__tact_dict_get_slice_int($self'allowedMint, 267, $ctx'sender, 1), true));
+    int $msgValue = $ctx'value;
+    int $tonBalanceBeforeMsg = (__tact_my_balance() - $msgValue);
+    int $storageFee = (20000000 - min($tonBalanceBeforeMsg, 20000000));
+    $msgValue = ($msgValue - ($storageFee + 20000000));
+    ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)~$NftCollection$_fun_mint($msg'recipient, $msgValue, $msg'type, $msg'type_index, $msg'data);
+    $global_emit($LogEventMintRecord$_store_cell($LogEventMintRecord$_constructor_minter_item_id_generate_number(__tact_context_get_sender(), $self'next_item_index, random())));
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), ());
+}
+
+(((int, slice, tuple, cell, cell)), ()) $NftCollection$_internal_binary_GetRoyaltyParams((int, slice, tuple, cell, cell) $self, (int) $msg) impure inline {
+    var ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint) = $self;
+    var ($msg'query_id) = $msg;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    $global_send($SendParameters$_constructor_to_value_mode_bounce_body($ctx'sender, 0, 64, false, $ReportRoyaltyParams$_store_cell($ReportRoyaltyParams$_constructor_query_id_numerator_denominator_destination($msg'query_id, $RoyaltyParams$_get_numerator($RoyaltyParams$_not_null($self'royalty_params)), $RoyaltyParams$_get_denominator($RoyaltyParams$_not_null($self'royalty_params)), $self'owner_address))));
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), ());
+}
+
+(((int, slice, tuple, cell, cell)), ()) $NftCollection$_internal_binary_SetAllowedMint((int, slice, tuple, cell, cell) $self, (slice, int) $msg) impure inline {
+    var ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint) = $self;
+    var ($msg'minter, $msg'allowed) = $msg;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(14534, ( __tact_slice_eq_bits($self'owner_address, $ctx'sender) ));
+    $self'allowedMint~__tact_dict_set_slice_int(267, $msg'minter, $msg'allowed, 1);
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), ());
+}
+
+(((int, slice, tuple, cell, cell)), ()) $NftCollection$_internal_binary_Deploy((int, slice, tuple, cell, cell) $self, (int) $deploy) impure inline {
+    var ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint)~$NftCollection$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'next_item_index, $self'owner_address, $self'royalty_params, $self'collection_content, $self'allowedMint), ());
+}
+
+;;
+;; Get methods of a Contract NftCollection
+;;
+
+_ %get_collection_data() method_id(102491) {
+    var self = $NftCollection$_contract_load();
+    var res = self~$NftCollection$_fun_get_collection_data();
+    return $CollectionData$_to_external(res);
+}
+
+_ %get_nft_address_by_index(int $item_index) method_id(92067) {
+    int $item_index = $item_index;
+    var self = $NftCollection$_contract_load();
+    var res = self~$NftCollection$_fun_get_nft_address_by_index($item_index);
+    return res;
+}
+
+_ %getNftItemInit(int $item_index) method_id(81078) {
+    int $item_index = $item_index;
+    var self = $NftCollection$_contract_load();
+    var res = self~$NftCollection$_fun_getNftItemInit($item_index);
+    return $StateInit$_to_external(res);
+}
+
+_ %get_nft_content(int $index, cell $individual_content) method_id(68445) {
+    int $index = $index;
+    cell $individual_content = $individual_content;
+    var self = $NftCollection$_contract_load();
+    var res = self~$NftCollection$_fun_get_nft_content($index, $individual_content);
+    return res;
+}
+
+_ %royalty_params() method_id(85719) {
+    var self = $NftCollection$_contract_load();
+    var res = self~$NftCollection$_fun_royalty_params();
+    return $RoyaltyParams$_to_external(res);
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract NftCollection
+;;
+
+((int, slice, tuple, cell, cell), int) $NftCollection$_contract_router_internal((int, slice, tuple, cell, cell) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive Mint message
+    if (op == 2552375875) {
+        var msg = in_msg~$Mint$_load();
+        self~$NftCollection$_internal_binary_Mint(msg);
+        return (self, true);
+    }
+    
+    ;; Receive GetRoyaltyParams message
+    if (op == 1765620048) {
+        var msg = in_msg~$GetRoyaltyParams$_load();
+        self~$NftCollection$_internal_binary_GetRoyaltyParams(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetAllowedMint message
+    if (op == 3500333732) {
+        var msg = in_msg~$SetAllowedMint$_load();
+        self~$NftCollection$_internal_binary_SetAllowedMint(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$NftCollection$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $NftCollection$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$NftCollection$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $NftCollection$_contract_store(self);
+}

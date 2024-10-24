@@ -1,0 +1,1211 @@
+PROGRAM{
+  DECLPROC __tact_verify_address
+  DECLPROC __tact_load_address
+  DECLPROC __tact_store_address
+  DECLPROC __tact_my_balance
+  DECLPROC __tact_not_null
+  DECLPROC __tact_context_get
+  DECLPROC __tact_context_get_sender
+  DECLPROC __tact_store_bool
+  DECLPROC __tact_dict_get_int_int
+  DECLPROC __tact_dict_get_int_cell
+  DECLPROC __tact_dict_set_slice_int
+  DECLPROC __tact_dict_get_slice_int
+  DECLPROC __tact_slice_eq_bits
+  DECLPROC __tact_string_builder_start
+  DECLPROC __tact_string_builder_start_string
+  DECLPROC __tact_string_builder_end
+  DECLPROC __tact_string_builder_append
+  DECLPROC __tact_int_to_string
+  DECLPROC $Deploy$_load
+  DECLPROC $DeployOk$_store
+  DECLPROC $DeployOk$_store_cell
+  DECLPROC $ChangeOwner$_load
+  DECLPROC $ChangeOwnerOk$_store
+  DECLPROC $ChangeOwnerOk$_store_cell
+  DECLPROC $MintFromAllowedToMint$_load
+  DECLPROC $NftType$_load
+  DECLPROC $NftType$_as_optional
+  DECLPROC $NftType$_load_opt
+  DECLPROC $SetNftAddress$_load
+  DECLPROC $SetPrices$_load
+  DECLPROC $SetWorkStatus$_load
+  DECLPROC $SetFeeCollector$_load
+  DECLPROC $Buy$_load
+  DECLPROC $ChangeNftCollectionOwner$_load
+  DECLPROC $SetAllowedMint$_load
+  DECLPROC $NftShop$_store
+  DECLPROC $NftShop$_load
+  DECLPROC $StateInit$_not_null
+  DECLPROC $Context$_get_sender
+  DECLPROC $NftType$_not_null
+  DECLPROC $NftShop$init$_load
+  DECLPROC $NftShop$_contract_init
+  DECLPROC $NftShop$_contract_load
+  DECLPROC $NftShop$_contract_store
+  DECLPROC $global_send
+  DECLPROC $NftShop$_fun_prices
+  DECLPROC $SendParameters$_constructor_bounce_to_value_mode_body_code_data
+  DECLPROC $NftShop$_fun_forward
+  DECLPROC $NftShop$_fun_reply
+  DECLPROC $NftShop$_fun_notify
+  DECLPROC $NftShop$_fun_requireOwner
+  DECLPROC $NftShop$_fun_owner
+  DECLPROC $SendParameters$_constructor_to_value_bounce_mode_body
+  DECLPROC $SendParameters$_constructor_to_bounce_value_mode
+  DECLPROC $SendParameters$_constructor_to_bounce_value_body
+  DECLPROC $DeployOk$_constructor_queryId
+  DECLPROC $ChangeOwnerOk$_constructor_queryId_newOwner
+  DECLPROC $NftShop$_internal_binary_SetAllowedMint
+  DECLPROC $NftShop$_internal_binary_SetNftAddress
+  DECLPROC $NftShop$_internal_binary_SetPrices
+  DECLPROC $NftShop$_internal_binary_SetWorkStatus
+  DECLPROC $NftShop$_internal_binary_SetFeeCollector
+  DECLPROC $NftShop$_internal_binary_Buy
+  DECLPROC $NftShop$_internal_binary_MintFromAllowedToMint
+  DECLPROC $NftShop$_internal_binary_ChangeNftCollectionOwner
+  DECLPROC $NftShop$_internal_binary_Deploy
+  DECLPROC $NftShop$_internal_binary_ChangeOwner
+  118316 DECLMETHOD %prices
+  83229 DECLMETHOD %owner
+  115390 DECLMETHOD lazy_deployment_completed
+  DECLPROC $NftShop$_contract_router_internal
+  DECLPROC recv_internal
+  DECLGLOBVAR __tact_context
+  DECLGLOBVAR __tact_context_sender
+  DECLGLOBVAR __tact_context_sys
+  DECLGLOBVAR __tact_randomized
+  __tact_verify_address PROCINLINE:<{
+    DUP
+    SBITS
+    267 PUSHINT
+    EQUAL
+    136 THROWIFNOT
+    DUP
+    11 PLDU
+    DUP
+    1279 PUSHINT
+    EQUAL
+    137 THROWIF
+    10 PUSHPOW2
+    EQUAL
+    136 THROWIFNOT
+  }>
+  __tact_load_address PROCINLINE:<{
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+  }>
+  __tact_store_address PROCINLINE:<{
+    __tact_verify_address INLINECALLDICT
+    STSLICER
+  }>
+  __tact_my_balance PROCINLINE:<{
+    BALANCE
+    FIRST
+  }>
+  __tact_not_null PROCINLINE:<{
+    DUP
+    ISNULL
+    128 THROWIF
+  }>
+  __tact_context_get PROCINLINE:<{
+    __tact_context GETGLOB
+    4 UNTUPLE
+  }>
+  __tact_context_get_sender PROCINLINE:<{
+    __tact_context_sender GETGLOB
+  }>
+  __tact_store_bool PROCINLINE:<{
+    SWAP
+    1 STI
+  }>
+  __tact_dict_get_int_int PROCINLINE:<{
+    s1 s3 s3 XCHG3
+    DICTIGET
+    NULLSWAPIFNOT
+    IF:<{
+      SWAP
+      LDIX
+      DROP
+    }>ELSE<{
+      2DROP
+      PUSHNULL
+    }>
+  }>
+  __tact_dict_get_int_cell PROCINLINE:<{
+    -ROT
+    DICTIGETREF
+    NULLSWAPIFNOT
+    IF:<{
+    }>ELSE<{
+      DROP
+      PUSHNULL
+    }>
+  }>
+  __tact_dict_set_slice_int PROCINLINE:<{
+    OVER
+    ISNULL
+    IF:<{
+      2DROP
+      -ROT
+      DICTDEL
+      DROP
+    }>ELSE<{
+      NEWC
+      SWAP
+      STIX
+      s1 s3 s3 XCHG3
+      DICTSETB
+    }>
+  }>
+  __tact_dict_get_slice_int PROCINLINE:<{
+    s1 s3 s3 XCHG3
+    DICTGET
+    NULLSWAPIFNOT
+    IF:<{
+      SWAP
+      LDIX
+      DROP
+    }>ELSE<{
+      2DROP
+      PUSHNULL
+    }>
+  }>
+  __tact_slice_eq_bits PROCINLINE:<{
+    SDEQ
+  }>
+  __tact_string_builder_start PROCINLINE:<{
+    NIL
+    SWAP
+    TPUSH
+    PUSHNULL
+    TPUSH
+  }>
+  __tact_string_builder_start_string PROCINLINE:<{
+    NEWC
+    __tact_string_builder_start INLINECALLDICT
+  }>
+  __tact_string_builder_end PROCINLINE:<{
+    UNCONS
+    SWAP
+    ENDC
+    WHILE:<{
+      OVER
+      ISNULL
+      NOT
+    }>DO<{
+      SWAP
+      UNCONS
+      -ROT
+      STREF
+      ENDC
+    }>
+    NIP
+  }>
+  __tact_string_builder_append PROCREF:<{
+    DUP
+    SREFS
+    OVER
+    SBITS
+    WHILE:<{
+      DUP
+      0 GTINT
+      s2 PUSH
+      0 GTINT
+      OR
+    }>DO<{
+      s0 s3 XCHG
+      UNCONS
+      127 PUSHINT
+      s2 PUSH
+      BBITS
+      3 RSHIFT#
+      SUB
+      s0 s5 XCHG
+      3 RSHIFT#
+      s5 s5 XCPU
+      MIN
+      DUP
+      0 GTINT
+      IF:<{
+        DUP
+        3 LSHIFT#
+        s1 s5 XCHG
+        LDSLICEX
+        s3 s3 XCHG2
+        STSLICER
+        s0 s1 s4 XCHG3
+      }>
+      -ROT
+      CONS
+      s4 s1 PUSH2
+      SUB
+      0 GTINT
+      IF:<{
+        NEWC
+        SWAP
+        CONS
+        s4 s4 XCHG2
+        SUB
+        3 LSHIFT#
+      }>ELSE<{
+        NIP
+        s3 POP
+        0 GTINT
+        IF:<{
+          LDREF
+          DROP
+          CTOS
+          DUP
+          SREFS
+          OVER
+          SBITS
+        }>ELSE<{
+          0 PUSHINT
+          DUP
+        }>
+      }>
+    }>
+    3 BLKDROP
+  }>
+  __tact_int_to_string PROCREF:<{
+    NEWC
+    OVER
+    0 LESSINT
+    IF:<{
+      45 PUSHINT
+      SWAP
+      8 STU
+      SWAP
+      NEGATE
+      SWAP
+    }>
+    OVER
+    1000000000000000000000000000000 PUSHINTX
+    LESS
+    IF:<{
+      0 PUSHINT
+      DUP
+      1 PUSHINT
+      UNTIL:<{
+        s0 s4 XCHG
+        10 PUSHINT
+        DIVMOD
+        48 ADDCONST
+        s5 PUSH
+        MUL
+        s1 s2 XCHG
+        ADD
+        s0 s4 XCHG
+        8 LSHIFT#
+        s0 s2 XCHG
+        INC
+        OVER
+        0 EQINT
+        s5 s3 s0 XCHG3
+      }>
+      DROP
+      s3 POP
+      3 LSHIFT#
+      STUX
+    }>ELSE<{
+      NIL
+      0 PUSHINT
+      UNTIL:<{
+        s3 PUSH
+        10 PUSHINT
+        MOD
+        s1 s2 XCHG
+        TPUSH
+        SWAP
+        INC
+        s0 s3 XCHG
+        10 PUSHINT
+        DIV
+        DUP
+        0 EQINT
+        s1 s4 XCHG
+      }>
+      s3 POP
+      s2 PUSH
+      DEC
+      s0 s3 XCHG
+      REPEAT:<{
+        s0 s2 PUSH2
+        INDEXVAR
+        48 ADDCONST
+        ROT
+        8 STU
+        s0 s2 XCHG
+        DEC
+        -ROT
+      }>
+      DROP
+      NIP
+    }>
+    ENDC
+    CTOS
+  }>
+  $Deploy$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    2490013878 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    64 LDU
+    SWAP
+  }>
+  $DeployOk$_store PROCINLINE:<{
+    2952335191 PUSHINT
+    ROT
+    32 STU
+    64 STU
+  }>
+  $DeployOk$_store_cell PROCINLINE:<{
+    NEWC
+    SWAP
+    $DeployOk$_store INLINECALLDICT
+    ENDC
+  }>
+  $ChangeOwner$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    2174598809 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    64 LDU
+    __tact_load_address INLINECALLDICT
+    s1 s2 XCHG
+  }>
+  $ChangeOwnerOk$_store PROCINLINE:<{
+    846932810 PUSHINT
+    s0 s3 XCHG2
+    32 STU
+    64 STU
+    SWAP
+    __tact_store_address INLINECALLDICT
+  }>
+  $ChangeOwnerOk$_store_cell PROCINLINE:<{
+    NEWC
+    -ROT
+    $ChangeOwnerOk$_store INLINECALLDICT
+    ENDC
+  }>
+  $MintFromAllowedToMint$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    96012249 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+    SWAP
+    257 PUSHINT
+    LDIX
+    257 PUSHINT
+    LDIX
+    3 -ROLL
+  }>
+  $NftType$_load PROCINLINE:<{
+    LDREF
+    SWAP
+    CTOS
+    SWAP
+    LDDICT
+    -ROT
+  }>
+  $NftType$_as_optional PROCINLINE:<{
+    2 TUPLE
+  }>
+  $NftType$_load_opt PROCINLINE:<{
+    DUP
+    ISNULL
+    IF:<{
+      DROP
+      PUSHNULL
+    }>ELSE<{
+      CTOS
+      $NftType$_load INLINECALLDICT
+      1 2 BLKDROP2
+      $NftType$_as_optional INLINECALLDICT
+    }>
+  }>
+  $SetNftAddress$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    4235524936 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+  }>
+  $SetPrices$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    2097036430 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    LDDICT
+    SWAP
+  }>
+  $SetWorkStatus$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    2759222066 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    1 LDI
+    SWAP
+  }>
+  $SetFeeCollector$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    2539461976 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+  }>
+  $Buy$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    3491171472 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    257 PUSHINT
+    LDIX
+    257 PUSHINT
+    LDIX
+    -ROT
+  }>
+  $ChangeNftCollectionOwner$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    485130862 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+  }>
+  $SetAllowedMint$_load PROCINLINE:<{
+    32 LDU
+    SWAP
+    3500333732 PUSHINT
+    EQUAL
+    129 THROWIFNOT
+    __tact_load_address INLINECALLDICT
+    SWAP
+    1 LDI
+    -ROT
+  }>
+  $NftShop$_store PROCINLINE:<{
+    s7 s6 XCHG2
+    __tact_store_address INLINECALLDICT
+    s0 s4 XCHG2
+    __tact_store_address INLINECALLDICT
+    s1 s2 XCHG
+    STDICT
+    SWAP
+    __tact_store_address INLINECALLDICT
+    1 STI
+    s0 s2 XCHG
+    NEWC
+    257 PUSHINT
+    STIX
+    STDICT
+    ENDC
+    SWAP
+    STREF
+  }>
+  $NftShop$_load PROCINLINE:<{
+    __tact_load_address INLINECALLDICT
+    SWAP
+    __tact_load_address INLINECALLDICT
+    SWAP
+    LDDICT
+    __tact_load_address INLINECALLDICT
+    SWAP
+    1 LDI
+    LDREF
+    SWAP
+    CTOS
+    257 PUSHINT
+    LDIX
+    LDDICT
+    DROP
+    s2 s7 XCHG
+    s2 s6 XCHG
+    s2 s5 XCHG
+    s2 s4 XCHG
+    s2 s3 XCHG
+  }>
+  $StateInit$_not_null PROCINLINE:<{
+    DUP
+    ISNULL
+    128 THROWIF
+    2 UNTUPLE
+  }>
+  $Context$_get_sender PROCINLINE:<{
+    s2 s3 XCHG
+    3 BLKDROP
+  }>
+  $NftType$_not_null PROCINLINE:<{
+    DUP
+    ISNULL
+    128 THROWIF
+    2 UNTUPLE
+  }>
+  $NftShop$init$_load PROCREF:<{
+    __tact_load_address INLINECALLDICT
+    SWAP
+    __tact_load_address INLINECALLDICT
+    SWAP
+    __tact_load_address INLINECALLDICT
+    SWAP
+    LDDICT
+    LDREF
+    SWAP
+    CTOS
+    257 PUSHINT
+    LDIX
+    LDDICT
+    DROP
+    s2 s6 XCHG
+    s2 s5 XCHG
+    s2 s4 XCHG
+    s2 s3 XCHG
+  }>
+  $NftShop$_contract_init PROCREF:<{
+    s2 s3 XCHG
+    TRUE
+    -ROT
+  }>
+  $NftShop$_contract_load PROCREF:<{
+    c4 PUSH
+    CTOS
+    LDREF
+    SWAP
+    __tact_context_sys SETGLOB
+    1 LDI
+    SWAP
+    IFJMP:<{
+      $NftShop$_load INLINECALLDICT
+      1 7 BLKDROP2
+    }>
+    MYADDR
+    11 PLDU
+    10 PUSHPOW2
+    EQUAL
+    137 THROWIFNOT
+    $NftShop$init$_load INLINECALLDICT
+    s0 s6 XCHG
+    ENDS
+    5 ROLL
+    $NftShop$_contract_init INLINECALLDICT
+  }>
+  $NftShop$_contract_store PROCINLINE:<{
+    NEWC
+    __tact_context_sys GETGLOB
+    SWAP
+    STREF
+    TRUE
+    SWAP
+    1 STI
+    7 -ROLL
+    $NftShop$_store INLINECALLDICT
+    ENDC
+    c4 POP
+  }>
+  $global_send PROCREF:<{
+    NEWC
+    1 PUSHINT
+    SWAP
+    2 STI
+    s0 s7 XCHG2
+    __tact_store_bool INLINECALLDICT
+    0 PUSHINT
+    SWAP
+    3 STI
+    s0 s5 XCHG2
+    __tact_store_address INLINECALLDICT
+    s0 s3 XCHG2
+    STGRAMS
+    0 PUSHINT
+    SWAP
+    105 STI
+    s3 PUSH
+    ISNULL
+    NOT
+    IF:<{
+      TRUE
+    }>ELSE<{
+      s4 PUSH
+      ISNULL
+      NOT
+    }>
+    IF:<{
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      NEWC
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      s4 PUSH
+      ISNULL
+      NOT
+      IF:<{
+        TRUE
+        __tact_store_bool INLINECALLDICT
+        s0 s4 XCHG
+        __tact_not_null INLINECALLDICT
+        s0 s4 XCHG2
+        STREF
+      }>ELSE<{
+        s4 POP
+        s0 s3 XCHG
+        FALSE
+        __tact_store_bool INLINECALLDICT
+      }>
+      s4 PUSH
+      ISNULL
+      NOT
+      IF:<{
+        TRUE
+        __tact_store_bool INLINECALLDICT
+        s0 s4 XCHG
+        __tact_not_null INLINECALLDICT
+        s0 s4 XCHG2
+        STREF
+      }>ELSE<{
+        s4 POP
+        s0 s3 XCHG
+        FALSE
+        __tact_store_bool INLINECALLDICT
+      }>
+      FALSE
+      __tact_store_bool INLINECALLDICT
+      s0 s2 XCHG
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      s0 s2 XCHG
+      ENDC
+      ROT
+      STREF
+    }>ELSE<{
+      s3 POP
+      s3 POP
+      SWAP
+      FALSE
+      __tact_store_bool INLINECALLDICT
+    }>
+    OVER
+    ISNULL
+    NOT
+    IF:<{
+      TRUE
+      __tact_store_bool INLINECALLDICT
+      SWAP
+      __tact_not_null INLINECALLDICT
+      SWAP
+      STREF
+    }>ELSE<{
+      NIP
+      FALSE
+      __tact_store_bool INLINECALLDICT
+    }>
+    ENDC
+    SWAP
+    SENDRAWMSG
+  }>
+  $NftShop$_fun_prices PROCREF:<{
+    s4 PUSH
+  }>
+  $SendParameters$_constructor_bounce_to_value_mode_body_code_data PROCINLINE:<{
+  }>
+  $NftShop$_fun_forward PROCREF:<{
+    PUSHNULL
+    PUSHNULL
+    s2 PUSH
+    ISNULL
+    NOT
+    IF:<{
+      2DROP
+      $StateInit$_not_null INLINECALLDICT
+      SWAP
+    }>ELSE<{
+      s2 POP
+    }>
+    s2 s4 XCHG
+    0 PUSHINT
+    s0 s3 XCHG
+    s0 s4 XCHG
+    66 PUSHINT
+    s2 s3 XCHG2
+    $SendParameters$_constructor_bounce_to_value_mode_body_code_data INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  $NftShop$_fun_reply PROCINLINE:<{
+    __tact_context_get_sender INLINECALLDICT
+    SWAP
+    TRUE
+    PUSHNULL
+    $NftShop$_fun_forward INLINECALLDICT
+  }>
+  $NftShop$_fun_notify PROCINLINE:<{
+    __tact_context_get_sender INLINECALLDICT
+    SWAP
+    FALSE
+    PUSHNULL
+    $NftShop$_fun_forward INLINECALLDICT
+  }>
+  $NftShop$_fun_requireOwner PROCREF:<{
+    __tact_context_get_sender INLINECALLDICT
+    s7 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    132 THROWIFNOT
+  }>
+  $NftShop$_fun_owner PROCREF:<{
+    s6 PUSH
+  }>
+  $SendParameters$_constructor_to_value_bounce_mode_body PROCINLINE:<{
+    s2 s4 XCHG
+    s2 s3 XCHG
+    PUSHNULL
+    PUSHNULL
+  }>
+  $SendParameters$_constructor_to_bounce_value_mode PROCINLINE:<{
+    s2 s3 XCHG
+    PUSHNULL
+    PUSHNULL
+    PUSHNULL
+  }>
+  $SendParameters$_constructor_to_bounce_value_body PROCINLINE:<{
+    s2 s3 XCHG
+    0 PUSHINT
+    SWAP
+    PUSHNULL
+    PUSHNULL
+  }>
+  $DeployOk$_constructor_queryId PROCINLINE:<{
+  }>
+  $ChangeOwnerOk$_constructor_queryId_newOwner PROCINLINE:<{
+  }>
+  $NftShop$_internal_binary_SetAllowedMint PROCINLINE:<{
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s10 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+    267 PUSHINT
+    -ROT
+    1 PUSHINT
+    __tact_dict_set_slice_int INLINECALLDICT
+  }>
+  $NftShop$_internal_binary_SetNftAddress PROCINLINE:<{
+    s4 POP
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s8 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+  }>
+  $NftShop$_internal_binary_SetPrices PROCINLINE:<{
+    s5 POP
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s8 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+  }>
+  $NftShop$_internal_binary_SetWorkStatus PROCINLINE:<{
+    s3 POP
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s8 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+  }>
+  $NftShop$_internal_binary_SetFeeCollector PROCINLINE:<{
+    s6 POP
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s8 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+  }>
+  $NftShop$_internal_binary_Buy PROCINLINE:<{
+    4181 PUSHINT
+    s5 PUSH
+    THROWANYIFNOT
+    __tact_context_get INLINECALLDICT
+    DROP
+    s2 POP
+    s8 PUSH
+    257 PUSHINT
+    s5 PUSH
+    __tact_dict_get_int_cell INLINECALLDICT
+    $NftType$_load_opt INLINECALLDICT
+    ISNULL
+    IF:<{
+      32 THROW
+    }>
+    257 PUSHINT
+    s9 s0 s4 PUXC2
+    __tact_dict_get_int_cell INLINECALLDICT
+    $NftType$_load_opt INLINECALLDICT
+    $NftType$_not_null INLINECALLDICT
+    257 PUSHINT
+    s1 s(-1) s(-1) PUXCPU
+    s6 s(-1) PUXC
+    __tact_dict_get_int_int INLINECALLDICT
+    ISNULL
+    IF:<{
+      32 THROW
+    }>
+    257 PUSHINT
+    s4 s0 PUSH2
+    __tact_dict_get_int_int INLINECALLDICT
+    __tact_not_null INLINECALLDICT
+    46093 PUSHINT
+    OVER
+    100000000 PUSHINT
+    ADD
+    s1 s4 XCHG
+    GEQ
+    s1 s3 XCHG
+    THROWANYIFNOT
+    __tact_string_builder_start_string INLINECALLDICT
+    SWAP
+    __tact_string_builder_append INLINECALLDICT
+    s0 s2 XCHG
+    __tact_int_to_string INLINECALLDICT
+    s1 s2 XCHG
+    __tact_string_builder_append INLINECALLDICT
+    B{b5ee9c7241010101000700000a2e6a736f6e9bc05ee0} B>boc <s PUSHSLICE
+    __tact_string_builder_append INLINECALLDICT
+    NEWC
+    s0 s3 XCHG2
+    __tact_store_address INLINECALLDICT
+    s0 s2 XCHG
+    __tact_string_builder_end INLINECALLDICT
+    ROT
+    STREF
+    ENDC
+    NEWC
+    1 PUSHINT
+    SWAP
+    32 STU
+    0 PUSHINT
+    SWAP
+    64 STU
+    s4 s(-1) PUXC
+    64 STU
+    50000000 PUSHINT
+    STGRAMS
+    STREF
+    ENDC
+    50000000 PUSHINT
+    FALSE
+    2 PUSHINT
+    s8 PUSH
+    s0 s4 XCHG
+    $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+    $global_send INLINECALLDICT
+    s0 s2 XCHG
+    INC
+    TRUE
+    s7 s0 s3 PUXC2
+    2 PUSHINT
+    $SendParameters$_constructor_to_bounce_value_mode INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  $NftShop$_internal_binary_MintFromAllowedToMint PROCINLINE:<{
+    4181 PUSHINT
+    s6 PUSH
+    THROWANYIFNOT
+    __tact_context_get INLINECALLDICT
+    s2 s3 XCHG
+    3 BLKDROP
+    s4 PUSH
+    267 PUSHINT
+    s2 PUSH
+    1 PUSHINT
+    __tact_dict_get_slice_int INLINECALLDICT
+    ISNULL
+    IF:<{
+      32 THROW
+    }>
+    267 PUSHINT
+    s5 PUSH
+    s0 s2 XCHG
+    1 PUSHINT
+    __tact_dict_get_slice_int INLINECALLDICT
+    __tact_not_null INLINECALLDICT
+    22049 PUSHINT
+    SWAP
+    THROWANYIFNOT
+    s7 PUSH
+    257 PUSHINT
+    s3 PUSH
+    __tact_dict_get_int_cell INLINECALLDICT
+    $NftType$_load_opt INLINECALLDICT
+    ISNULL
+    IF:<{
+      32 THROW
+    }>
+    257 PUSHINT
+    s8 s0 s2 PUXC2
+    __tact_dict_get_int_cell INLINECALLDICT
+    $NftType$_load_opt INLINECALLDICT
+    $NftType$_not_null INLINECALLDICT
+    257 PUSHINT
+    s3 s0 PUSH2
+    __tact_dict_get_int_int INLINECALLDICT
+    ISNULL
+    IF:<{
+      32 THROW
+    }>
+    __tact_string_builder_start_string INLINECALLDICT
+    SWAP
+    __tact_string_builder_append INLINECALLDICT
+    SWAP
+    __tact_int_to_string INLINECALLDICT
+    __tact_string_builder_append INLINECALLDICT
+    B{b5ee9c7241010101000700000a2e6a736f6e9bc05ee0} B>boc <s PUSHSLICE
+    __tact_string_builder_append INLINECALLDICT
+    NEWC
+    ROT
+    __tact_store_address INLINECALLDICT
+    SWAP
+    __tact_string_builder_end INLINECALLDICT
+    SWAP
+    STREF
+    ENDC
+    NEWC
+    1 PUSHINT
+    SWAP
+    32 STU
+    0 PUSHINT
+    SWAP
+    64 STU
+    s3 s(-1) PUXC
+    64 STU
+    50000000 PUSHINT
+    STGRAMS
+    STREF
+    ENDC
+    50000000 PUSHINT
+    FALSE
+    2 PUSHINT
+    s7 PUSH
+    s0 s4 XCHG
+    $SendParameters$_constructor_to_value_bounce_mode_body INLINECALLDICT
+    $global_send INLINECALLDICT
+    SWAP
+    INC
+    SWAP
+  }>
+  $NftShop$_internal_binary_ChangeNftCollectionOwner PROCINLINE:<{
+    49280 PUSHINT
+    __tact_context_get INLINECALLDICT
+    $Context$_get_sender INLINECALLDICT
+    s9 s(-1) PUXC
+    __tact_slice_eq_bits INLINECALLDICT
+    THROWANYIFNOT
+    NEWC
+    3 PUSHINT
+    SWAP
+    32 STU
+    0 PUSHINT
+    SWAP
+    64 STU
+    SWAP
+    __tact_store_address INLINECALLDICT
+    ENDC
+    FALSE
+    50000000 PUSHINT
+    s6 PUSH
+    s0 s3 XCHG
+    $SendParameters$_constructor_to_bounce_value_body INLINECALLDICT
+    $global_send INLINECALLDICT
+  }>
+  $NftShop$_internal_binary_Deploy PROCINLINE:<{
+    $DeployOk$_constructor_queryId INLINECALLDICT
+    $DeployOk$_store_cell INLINECALLDICT
+    $NftShop$_fun_notify INLINECALLDICT
+  }>
+  $NftShop$_internal_binary_ChangeOwner PROCINLINE:<{
+    s6 s8 XCHG
+    5 4 REVERSE
+    s3 s7 XCHG
+    s8 s7 s8 XCHG3
+    $NftShop$_fun_requireOwner INLINECALLDICT
+    s6 POP
+    s6 s7 XCPU
+    $ChangeOwnerOk$_constructor_queryId_newOwner INLINECALLDICT
+    $ChangeOwnerOk$_store_cell INLINECALLDICT
+    s4 s6 XCHG
+    s3 s5 XCHG
+    s4 s3 s0 XCHG3
+    $NftShop$_fun_reply INLINECALLDICT
+  }>
+  %prices PROC:<{
+    $NftShop$_contract_load INLINECALLDICT
+    $NftShop$_fun_prices INLINECALLDICT
+    7 1 BLKDROP2
+  }>
+  %owner PROC:<{
+    $NftShop$_contract_load INLINECALLDICT
+    $NftShop$_fun_owner INLINECALLDICT
+    7 1 BLKDROP2
+  }>
+  lazy_deployment_completed PROC:<{
+    c4 PUSH
+    CTOS
+    1 LDI
+    SWAP
+  }>
+  $NftShop$_contract_router_internal PROCREF:<{
+    SWAP
+    IFJMP:<{
+      DROP
+      TRUE
+    }>
+    0 PUSHINT
+    OVER
+    SBITS
+    31 GTINT
+    IF:<{
+      DROP
+      DUP
+      32 PLDU
+    }>
+    DUP
+    3500333732 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $SetAllowedMint$_load INLINECALLDICT
+      1 2 BLKDROP2
+      $NftShop$_internal_binary_SetAllowedMint INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    4235524936 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $SetNftAddress$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_SetNftAddress INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    2097036430 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $SetPrices$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_SetPrices INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    2759222066 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $SetWorkStatus$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_SetWorkStatus INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    2539461976 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $SetFeeCollector$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_SetFeeCollector INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    3491171472 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $Buy$_load INLINECALLDICT
+      1 2 BLKDROP2
+      $NftShop$_internal_binary_Buy INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    96012249 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $MintFromAllowedToMint$_load INLINECALLDICT
+      1 3 BLKDROP2
+      $NftShop$_internal_binary_MintFromAllowedToMint INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    485130862 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $ChangeNftCollectionOwner$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_ChangeNftCollectionOwner INLINECALLDICT
+      TRUE
+    }>
+    DUP
+    2490013878 PUSHINT
+    EQUAL
+    IFJMP:<{
+      DROP
+      $Deploy$_load INLINECALLDICT
+      NIP
+      $NftShop$_internal_binary_Deploy INLINECALLDICT
+      TRUE
+    }>
+    2174598809 PUSHINT
+    EQUAL
+    IFJMP:<{
+      $ChangeOwner$_load INLINECALLDICT
+      1 2 BLKDROP2
+      $NftShop$_internal_binary_ChangeOwner INLINECALLDICT
+      TRUE
+    }>
+    DROP
+    FALSE
+  }>
+  recv_internal PROC:<{
+    SWAP
+    CTOS
+    4 LDU
+    SWAP
+    1 PUSHINT
+    AND
+    NEGATE
+    SWAP
+    LDMSGADDR
+    SWAP
+    __tact_verify_address INLINECALLDICT
+    s0 s4 s2 PUXCPU
+    s0 s3 XCHG
+    4 TUPLE
+    __tact_context SETGLOB
+    s0 s2 XCHG
+    __tact_context_sender SETGLOB
+    $NftShop$_contract_load INLINECALLDICT
+    2 7 BLKSWAP
+    $NftShop$_contract_router_internal INLINECALLDICT
+    130 THROWIFNOT
+    $NftShop$_contract_store INLINECALLDICT
+  }>
+}END>c
