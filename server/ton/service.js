@@ -571,17 +571,21 @@ export async function mintNFT(req, res) {
                             ]
                         });
                         if (responsePg.rows[0].gift_amount == 1) {
-                            await walletContract.sendTransfer({
-                                seqno: await walletContract.getSeqno(),
-                                secretKey: key.secretKey,
-                                messages: [
-                                    internal({
-                                        to: address,
-                                        value: toNano("0.1"),
-                                        bounce: false
-                                    })
-                                ]
-                            })
+                            try {
+                                await walletContract.sendTransfer({
+                                    seqno: await walletContract.getSeqno(),
+                                    secretKey: key.secretKey,
+                                    messages: [
+                                        internal({
+                                            to: address,
+                                            value: toNano("0.1"),
+                                            bounce: false
+                                        })
+                                    ]
+                                })
+                            } catch (error) {
+                                console.log(error)
+                            }
                         }
                         await pgClient.query(
                             `
