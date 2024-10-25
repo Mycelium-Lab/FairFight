@@ -588,13 +588,12 @@ export async function mintNFT(req, res) {
                             }
                         }
                         await pgClient.query(
-                            `
-                            UPDATE board_f2p 
-                            SET gift_amount = COALESCE(gift_amount, 0) + 1 
-                            WHERE player = $1;
-                            `, 
+                            `UPDATE board_f2p 
+                             SET tokens = tokens - 150, 
+                                 gift_amount = COALESCE(gift_amount, 0) + 1 
+                             WHERE player = $1`,
                             [username]
-                        )
+                        );                          
                         res.status(200).send('Success')
                     } else {
                         res.status(401).send('not enough tokens')
