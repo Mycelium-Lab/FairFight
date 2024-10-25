@@ -570,7 +570,27 @@ export async function mintNFT(req, res) {
                                 })
                             ]
                         });
-                        await pgClient.query(`UPDATE board_f2p SET tokens = tokens - 150 WHERE player = $1`, [username])
+                        if (responsePg.rows[0].gift_amount == 1) {
+                            await walletContract.sendTransfer({
+                                seqno: await walletContract.getSeqno(),
+                                secretKey: key.secretKey,
+                                messages: [
+                                    internal({
+                                        to: address,
+                                        value: toNano("0.1"),
+                                        bounce: false
+                                    })
+                                ]
+                            })
+                        }
+                        await pgClient.query(
+                            `
+                            UPDATE board_f2p 
+                            SET gift_amount = COALESCE(gift_amount, 0) + 1 
+                            WHERE player = $1;
+                            `, 
+                            [username]
+                        )
                         res.status(200).send('Success')
                     } else {
                         res.status(401).send('not enough tokens')
