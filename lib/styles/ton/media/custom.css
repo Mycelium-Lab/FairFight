@@ -278,7 +278,7 @@
         display: flex;
         justify-content: center;
         display: block;
-        background-image: url("../../../media/mobile/pastgames-table-horizontal.svg");
+        /* background-image: url("../../../media/mobile/pastgames-table-horizontal.svg"); */
         width: 420px;
         background-repeat: no-repeat;
     }
@@ -1077,7 +1077,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         font-size: 16px;
     }
     .inner-block {
-        padding: 10px 15px;
+        padding: 8px;
         height: 214px;
         grid-area: 3/1/4/1;
     }
@@ -1334,6 +1334,7 @@ background-position: center 11px;
     .player-visible-mobile {
         display: block;
         left: 200px;
+        max-width: 99px;
     }
     .item-modal-info {
         font-size: 21.67px !important;

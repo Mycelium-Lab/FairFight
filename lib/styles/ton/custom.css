@@ -624,6 +624,7 @@ a {
     height: 100%;
 }
 
+#pastgames_empty-f2p-evm,
 #opengames-list-f2p-evm .games__empty,
 #opengames .games__empty,
 #pastgames .games__empty {
@@ -633,6 +634,7 @@ a {
 #opengames-list-f2p-evm .games__empty span {
     font-family: 'Quadriana';
 }
+#pastgames_empty-desc-f2p-evm,
 #opengames-list-f2p-evm .games__empty #opengames_empty-desc-f2p-evm {
     font-size: 16px;
     width: 280px;
@@ -4832,6 +4834,226 @@ wrapper__nft-shop-modal .info__pricing button {
     letter-spacing: -2px;
 }
 /* REDIRECT TO DESKTOP POPUP */
+
+/* CUSTOM SELECT */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    width: 144px;
+}
+
+.select-selected {
+    width: 100%;
+    padding: 4px 9px;
+    font-family: 'Quadriana';
+    font-size: 10px;
+    line-height: 12.22px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px);
+    position: relative;
+    color: #A7A7A7;
+}
+
+.select-selected::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px,
+            0px 50%,
+            2px 50%,
+            2px 4px,
+            4px 4px,
+            4px 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px 50%,
+            0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ff7c06;
+    display: block;
+    pointer-events: none;
+}
+
+.arrow {
+    content: url(../../media/custom-select-arrow.svg);
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+    transition: transform 0.3s ease;
+    position: absolute;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg) translateY(calc(-50% + 10px));
+}
+
+.select-items-wrapper  {
+    padding: 1px 4px 3px 8px;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px);
+    color: #A7A7A7;
+    top: calc(100% + 4px);
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.select-items-wrapper::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px,
+            0px 50%,
+            2px 50%,
+            2px 4px,
+            4px 4px,
+            4px 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px 50%,
+            0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-orange);
+    display: block;
+    pointer-events: none;
+}
+
+.select-items {
+    background-color: #fff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    padding-right: 2px;
+    width: 100%;
+}
+
+.select-items::-webkit-scrollbar {
+    width: 2px;
+}
+
+.select-items::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.select-items::-webkit-scrollbar-thumb {
+    background: #ff7a0687;
+}
+
+.select-items span {
+    cursor: pointer;
+    font-family: 'Quadriana';
+    font-size: 10px;
+    color: #A7A7A7;
+    padding: 5px 0;
+    border-bottom: 1px solid #ff7a067e;
+    width: 100%;
+}
+
+.select-hide {
+    display: none !important;
+}
+/* CUSTOM SELECT */
 
 .faq {position: relative;}
 
