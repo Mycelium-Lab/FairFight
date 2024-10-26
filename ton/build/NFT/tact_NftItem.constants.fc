@@ -1,0 +1,11 @@
+;; String "dump(self.is_initialized)"
+slice __gen_slice_string_7521c80dbe8445c63bf306b84ccc3dc59784b7fea85922e6e9edd3ad6eec52db() asm "B{b5ee9c7241010101001b00003264756d702873656c662e69735f696e697469616c697a656429a8f4c5e4} B>boc <s PUSHSLICE";
+
+;; String "dump(self.owner!!)"
+slice __gen_slice_string_be70c4737c072b4ac245c8a9cfba3a5cd169b8dd7a1e8af124420ae9750fc8e2() asm "B{b5ee9c7241010101001400002464756d702873656c662e6f776e6572212129eb8f2e4b} B>boc <s PUSHSLICE";
+
+;; String "dump("here")"
+slice __gen_slice_string_aa77bde3e5f54110a9bbcab10329d35d4f1109edc3ab1e50a18cdb3008966508() asm "B{b5ee9c7241010101000e00001864756d702822686572652229f98b0a62} B>boc <s PUSHSLICE";
+
+;; String "here"
+slice __gen_slice_string_ee136ac6a1965c0238f3b36fad8cbe77f5e73e1cc9a69a5090c41f586808b14c() asm "B{b5ee9c7241010101000600000868657265d706fd54} B>boc <s PUSHSLICE";

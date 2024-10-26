@@ -704,4 +704,5 @@ ADD COLUMN chainid INT;
 ALTER TABLE board_f2p
 ADD COLUMN chainid INT;
 
-
+ALTER TABLE board_f2p
+ADD COLUMN gift_amount INT;

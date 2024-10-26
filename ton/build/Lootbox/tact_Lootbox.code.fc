@@ -1,0 +1,241 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_Lootbox.headers.fc";
+#include "tact_Lootbox.stdlib.fc";
+#include "tact_Lootbox.storage.fc";
+
+;;
+;; Contract Lootbox functions
+;;
+
+(slice, int, int, slice, slice, cell, cell) $Lootbox$_contract_init(slice $owner, int $price, slice $feeCollector, slice $nftShopAddress, cell $itemsByRarity, cell $rarityPercent) impure inline_ref {
+    var (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)) = (null(), null(), null(), null(), null(), null(), null());
+    $self'owner = $owner;
+    $self'itemsByRarity = $itemsByRarity;
+    $self'price = $price;
+    $self'workStatus = true;
+    $self'feeCollector = $feeCollector;
+    $self'nftShopAddress = $nftShopAddress;
+    $self'rarityPercent = $rarityPercent;
+    return ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent);
+}
+
+((slice, int, int, slice, slice, cell, cell), ()) $Lootbox$_fun_requireOwner((slice, int, int, slice, slice, cell, cell) $self) impure inline_ref {
+    var (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)) = $self;
+    throw_unless(132, ( __tact_slice_eq_bits($self'owner, __tact_context_get_sender()) ));
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+((slice, int, int, slice, slice, cell, cell), slice) $Lootbox$_fun_owner((slice, int, int, slice, slice, cell, cell) $self) impure inline_ref {
+    var (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)) = $self;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), $self'owner);
+}
+
+;;
+;; Receivers of a Contract Lootbox
+;;
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_SetWorkStatus((slice, int, int, slice, slice, cell, cell) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'status) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'workStatus = $msg'status;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_SetFeeCollector((slice, int, int, slice, slice, cell, cell) $self, (slice) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'feeCollector) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'feeCollector = $msg'feeCollector;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_SetNftShopAddress((slice, int, int, slice, slice, cell, cell) $self, (slice) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'address) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'nftShopAddress = $msg'address;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_SetRarity((slice, int, int, slice, slice, cell, cell) $self, (cell) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'itemsByRarity) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'itemsByRarity = $msg'itemsByRarity;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_SetPrice((slice, int, int, slice, slice, cell, cell) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'price) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'price = $msg'price;
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+((slice, int, int, slice, slice, cell, cell), ()) $Lootbox$_internal_text_d221ea077e9cd1499be1c50fe42098e6977a9718dedc91816d6ede27aead099b((slice, int, int, slice, slice, cell, cell) $self) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    throw_unless(4181, $self'workStatus);
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(46093, ($ctx'value >= ($self'price + 100000000)));
+    int $randomRarity = $global_random(0, 10001);
+    int $rarityType = 0;
+    if (($randomRarity >= __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 0, 257)))) {
+        $rarityType = 0;
+    }
+    if (( (($randomRarity < __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 1, 257)))) ? (($randomRarity >= __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 2, 257)))) : (false) )) {
+        $rarityType = 1;
+    }
+    if (( (($randomRarity < __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 2, 257)))) ? (($randomRarity >= __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 3, 257)))) : (false) )) {
+        $rarityType = 2;
+    }
+    if (( (($randomRarity < __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 3, 257)))) ? (($randomRarity >= __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 4, 257)))) : (false) )) {
+        $rarityType = 3;
+    }
+    if (($randomRarity < __tact_not_null(__tact_dict_get_int_int($self'rarityPercent, 257, 4, 257)))) {
+        $rarityType = 4;
+    }
+    var ($rarity'amount, $rarity'items) = $RarityType$_not_null($RarityType$_load_opt(__tact_dict_get_int_cell($self'itemsByRarity, 257, $rarityType)));
+    int $randomItemId = $global_random(0, $rarity'amount);
+    var ($nftItem'type, $nftItem'index, $nftItem'data) = $NftItem$_not_null($NftItem$_load_opt(__tact_dict_get_int_cell($rarity'items, 257, $randomItemId)));
+    $global_send($SendParameters$_constructor_to_value_bounce_mode_body($self'nftShopAddress, 50000000, false, 2, $MintFromAllowedToMint$_store_cell($MintFromAllowedToMint$_constructor_to_nftType_nftItem($ctx'sender, $nftItem'type, $nftItem'index))));
+    $global_send($SendParameters$_constructor_to_bounce_value_mode($self'feeCollector, true, $self'price, 2));
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_Deploy((slice, int, int, slice, slice, cell, cell) $self, (int) $deploy) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)~$Lootbox$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+(((slice, int, int, slice, slice, cell, cell)), ()) $Lootbox$_internal_binary_ChangeOwner((slice, int, int, slice, slice, cell, cell) $self, (int, slice) $msg) impure inline {
+    var ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent) = $self;
+    var ($msg'queryId, $msg'newOwner) = $msg;
+    ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)~$Lootbox$_fun_requireOwner();
+    $self'owner = $msg'newOwner;
+    ($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent)~$Lootbox$_fun_reply($ChangeOwnerOk$_store_cell($ChangeOwnerOk$_constructor_queryId_newOwner($msg'queryId, $msg'newOwner)));
+    return (($self'owner, $self'price, $self'workStatus, $self'feeCollector, $self'nftShopAddress, $self'itemsByRarity, $self'rarityPercent), ());
+}
+
+;;
+;; Get methods of a Contract Lootbox
+;;
+
+_ %owner() method_id(83229) {
+    var self = $Lootbox$_contract_load();
+    var res = self~$Lootbox$_fun_owner();
+    return res;
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract Lootbox
+;;
+
+((slice, int, int, slice, slice, cell, cell), int) $Lootbox$_contract_router_internal((slice, int, int, slice, slice, cell, cell) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive SetWorkStatus message
+    if (op == 2759222066) {
+        var msg = in_msg~$SetWorkStatus$_load();
+        self~$Lootbox$_internal_binary_SetWorkStatus(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetFeeCollector message
+    if (op == 2539461976) {
+        var msg = in_msg~$SetFeeCollector$_load();
+        self~$Lootbox$_internal_binary_SetFeeCollector(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetNftShopAddress message
+    if (op == 2554656096) {
+        var msg = in_msg~$SetNftShopAddress$_load();
+        self~$Lootbox$_internal_binary_SetNftShopAddress(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetRarity message
+    if (op == 322173811) {
+        var msg = in_msg~$SetRarity$_load();
+        self~$Lootbox$_internal_binary_SetRarity(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetPrice message
+    if (op == 500092971) {
+        var msg = in_msg~$SetPrice$_load();
+        self~$Lootbox$_internal_binary_SetPrice(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$Lootbox$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    ;; Receive ChangeOwner message
+    if (op == 2174598809) {
+        var msg = in_msg~$ChangeOwner$_load();
+        self~$Lootbox$_internal_binary_ChangeOwner(msg);
+        return (self, true);
+    }
+    
+    ;; Text Receivers
+    if (op == 0) {
+        var text_op = slice_hash(in_msg);
+        
+        ;; Receive "Buy" message
+        if (text_op == 0xd221ea077e9cd1499be1c50fe42098e6977a9718dedc91816d6ede27aead099b) {
+            self~$Lootbox$_internal_text_d221ea077e9cd1499be1c50fe42098e6977a9718dedc91816d6ede27aead099b();
+            return (self, true);
+        }
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $Lootbox$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$Lootbox$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $Lootbox$_contract_store(self);
+}

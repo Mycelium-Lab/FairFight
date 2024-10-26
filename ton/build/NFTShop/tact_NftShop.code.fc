@@ -1,0 +1,296 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_NftShop.headers.fc";
+#include "tact_NftShop.stdlib.fc";
+#include "tact_NftShop.constants.fc";
+#include "tact_NftShop.storage.fc";
+
+;;
+;; Contract NftShop functions
+;;
+
+(slice, slice, cell, slice, int, int, cell) $NftShop$_contract_init(slice $owner, slice $feeCollector, slice $nft_address, cell $prices, int $nextItemIndex, cell $allowedMint) impure inline_ref {
+    var (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)) = (null(), null(), null(), null(), null(), null(), null());
+    $self'owner = $owner;
+    $self'feeCollector = $feeCollector;
+    $self'prices = $prices;
+    $self'workStatus = true;
+    $self'nft_address = $nft_address;
+    $self'nextItemIndex = $nextItemIndex;
+    $self'allowedMint = $allowedMint;
+    return ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint);
+}
+
+((slice, slice, cell, slice, int, int, cell), cell) $NftShop$_fun_prices((slice, slice, cell, slice, int, int, cell) $self) impure inline_ref {
+    var (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)) = $self;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), $self'prices);
+}
+
+((slice, slice, cell, slice, int, int, cell), ()) $NftShop$_fun_requireOwner((slice, slice, cell, slice, int, int, cell) $self) impure inline_ref {
+    var (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)) = $self;
+    throw_unless(132, ( __tact_slice_eq_bits($self'owner, __tact_context_get_sender()) ));
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+((slice, slice, cell, slice, int, int, cell), slice) $NftShop$_fun_owner((slice, slice, cell, slice, int, int, cell) $self) impure inline_ref {
+    var (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)) = $self;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), $self'owner);
+}
+
+;;
+;; Receivers of a Contract NftShop
+;;
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_SetAllowedMint((slice, slice, cell, slice, int, int, cell) $self, (slice, int) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'minter, $msg'allowed) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'allowedMint~__tact_dict_set_slice_int(267, $msg'minter, $msg'allowed, 1);
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_SetNftAddress((slice, slice, cell, slice, int, int, cell) $self, (slice) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'address) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'nft_address = $msg'address;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_SetPrices((slice, slice, cell, slice, int, int, cell) $self, (cell) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'prices) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'prices = $msg'prices;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_SetWorkStatus((slice, slice, cell, slice, int, int, cell) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'status) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'workStatus = $msg'status;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_SetFeeCollector((slice, slice, cell, slice, int, int, cell) $self, (slice) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'feeCollector) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    $self'feeCollector = $msg'feeCollector;
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_Buy((slice, slice, cell, slice, int, int, cell) $self, (int, int) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'nftType, $msg'nftItem) = $msg;
+    throw_unless(4181, $self'workStatus);
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    if (null?($NftType$_load_opt(__tact_dict_get_int_cell($self'prices, 257, $msg'nftType)))) {
+        throw(32);
+    }
+    var ($nftType'data, $nftType'prices) = $NftType$_not_null($NftType$_load_opt(__tact_dict_get_int_cell($self'prices, 257, $msg'nftType)));
+    if (null?(__tact_dict_get_int_int($nftType'prices, 257, $msg'nftItem, 257))) {
+        throw(32);
+    }
+    int $price = __tact_not_null(__tact_dict_get_int_int($nftType'prices, 257, $msg'nftItem, 257));
+    throw_unless(46093, ($ctx'value >= ($price + 100000000)));
+    tuple $nftData = __tact_string_builder_start_string();
+    $nftData~__tact_string_builder_append($nftType'data);
+    $nftData~__tact_string_builder_append(__tact_int_to_string($msg'nftItem));
+    $nftData~__tact_string_builder_append(__gen_slice_string_2f62f0bd20aef2d2b17f109c6aba1bc3dd7a55db89e349f2659bf698f80ce9c6());
+    cell $nftItemMessage = end_cell(store_ref(__tact_store_address(begin_cell(), $ctx'sender), __tact_string_builder_end($nftData)));
+    cell $msgBody = end_cell(store_ref(store_coins(store_uint(store_uint(store_uint(begin_cell(), 1, 32), 0, 64), $self'nextItemIndex, 64), 50000000), $nftItemMessage));
+    $global_send($SendParameters$_constructor_to_value_bounce_mode_body($self'nft_address, 50000000, false, 2, $msgBody));
+    $self'nextItemIndex = ($self'nextItemIndex + 1);
+    $global_send($SendParameters$_constructor_to_bounce_value_mode($self'feeCollector, true, $price, 2));
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_MintFromAllowedToMint((slice, slice, cell, slice, int, int, cell) $self, (slice, int, int) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'to, $msg'nftType, $msg'nftItem) = $msg;
+    throw_unless(4181, $self'workStatus);
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    if (null?(__tact_dict_get_slice_int($self'allowedMint, 267, $ctx'sender, 1))) {
+        throw(32);
+    }
+    int $allowedToMint = __tact_not_null(__tact_dict_get_slice_int($self'allowedMint, 267, $ctx'sender, 1));
+    throw_unless(22049, $allowedToMint);
+    if (null?($NftType$_load_opt(__tact_dict_get_int_cell($self'prices, 257, $msg'nftType)))) {
+        throw(32);
+    }
+    var ($nftType'data, $nftType'prices) = $NftType$_not_null($NftType$_load_opt(__tact_dict_get_int_cell($self'prices, 257, $msg'nftType)));
+    if (null?(__tact_dict_get_int_int($nftType'prices, 257, $msg'nftItem, 257))) {
+        throw(32);
+    }
+    tuple $nftData = __tact_string_builder_start_string();
+    $nftData~__tact_string_builder_append($nftType'data);
+    $nftData~__tact_string_builder_append(__tact_int_to_string($msg'nftItem));
+    $nftData~__tact_string_builder_append(__gen_slice_string_2f62f0bd20aef2d2b17f109c6aba1bc3dd7a55db89e349f2659bf698f80ce9c6());
+    cell $nftItemMessage = end_cell(store_ref(__tact_store_address(begin_cell(), $msg'to), __tact_string_builder_end($nftData)));
+    cell $msgBody = end_cell(store_ref(store_coins(store_uint(store_uint(store_uint(begin_cell(), 1, 32), 0, 64), $self'nextItemIndex, 64), 50000000), $nftItemMessage));
+    $global_send($SendParameters$_constructor_to_value_bounce_mode_body($self'nft_address, 50000000, false, 2, $msgBody));
+    $self'nextItemIndex = ($self'nextItemIndex + 1);
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_ChangeNftCollectionOwner((slice, slice, cell, slice, int, int, cell) $self, (slice) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'new_owner) = $msg;
+    throw_unless(49280, ( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) ));
+    cell $changeOwnerCell = end_cell(__tact_store_address(store_uint(store_uint(begin_cell(), 3, 32), 0, 64), $msg'new_owner));
+    $global_send($SendParameters$_constructor_to_bounce_value_body($self'nft_address, false, 50000000, $changeOwnerCell));
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_Deploy((slice, slice, cell, slice, int, int, cell) $self, (int) $deploy) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)~$NftShop$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+(((slice, slice, cell, slice, int, int, cell)), ()) $NftShop$_internal_binary_ChangeOwner((slice, slice, cell, slice, int, int, cell) $self, (int, slice) $msg) impure inline {
+    var ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint) = $self;
+    var ($msg'queryId, $msg'newOwner) = $msg;
+    ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)~$NftShop$_fun_requireOwner();
+    $self'owner = $msg'newOwner;
+    ($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint)~$NftShop$_fun_reply($ChangeOwnerOk$_store_cell($ChangeOwnerOk$_constructor_queryId_newOwner($msg'queryId, $msg'newOwner)));
+    return (($self'owner, $self'feeCollector, $self'prices, $self'nft_address, $self'workStatus, $self'nextItemIndex, $self'allowedMint), ());
+}
+
+;;
+;; Get methods of a Contract NftShop
+;;
+
+_ %prices() method_id(118316) {
+    var self = $NftShop$_contract_load();
+    var res = self~$NftShop$_fun_prices();
+    return res;
+}
+
+_ %owner() method_id(83229) {
+    var self = $NftShop$_contract_load();
+    var res = self~$NftShop$_fun_owner();
+    return res;
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract NftShop
+;;
+
+((slice, slice, cell, slice, int, int, cell), int) $NftShop$_contract_router_internal((slice, slice, cell, slice, int, int, cell) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive SetAllowedMint message
+    if (op == 3500333732) {
+        var msg = in_msg~$SetAllowedMint$_load();
+        self~$NftShop$_internal_binary_SetAllowedMint(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetNftAddress message
+    if (op == 4235524936) {
+        var msg = in_msg~$SetNftAddress$_load();
+        self~$NftShop$_internal_binary_SetNftAddress(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetPrices message
+    if (op == 2097036430) {
+        var msg = in_msg~$SetPrices$_load();
+        self~$NftShop$_internal_binary_SetPrices(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetWorkStatus message
+    if (op == 2759222066) {
+        var msg = in_msg~$SetWorkStatus$_load();
+        self~$NftShop$_internal_binary_SetWorkStatus(msg);
+        return (self, true);
+    }
+    
+    ;; Receive SetFeeCollector message
+    if (op == 2539461976) {
+        var msg = in_msg~$SetFeeCollector$_load();
+        self~$NftShop$_internal_binary_SetFeeCollector(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Buy message
+    if (op == 3491171472) {
+        var msg = in_msg~$Buy$_load();
+        self~$NftShop$_internal_binary_Buy(msg);
+        return (self, true);
+    }
+    
+    ;; Receive MintFromAllowedToMint message
+    if (op == 96012249) {
+        var msg = in_msg~$MintFromAllowedToMint$_load();
+        self~$NftShop$_internal_binary_MintFromAllowedToMint(msg);
+        return (self, true);
+    }
+    
+    ;; Receive ChangeNftCollectionOwner message
+    if (op == 485130862) {
+        var msg = in_msg~$ChangeNftCollectionOwner$_load();
+        self~$NftShop$_internal_binary_ChangeNftCollectionOwner(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$NftShop$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    ;; Receive ChangeOwner message
+    if (op == 2174598809) {
+        var msg = in_msg~$ChangeOwner$_load();
+        self~$NftShop$_internal_binary_ChangeOwner(msg);
+        return (self, true);
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $NftShop$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$NftShop$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $NftShop$_contract_store(self);
+}

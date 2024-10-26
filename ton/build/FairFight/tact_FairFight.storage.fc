@@ -1,0 +1,474 @@
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+;;
+;; Type: Context
+;; TLB: _ bounced:bool sender:address value:int257 raw:^slice = Context
+;;
+
+_ $Context$_get_sender((int, slice, int, slice) v) inline {
+    var (v'bounced, v'sender, v'value, v'raw) = v;
+    return v'sender;
+}
+
+_ $Context$_get_value((int, slice, int, slice) v) inline {
+    var (v'bounced, v'sender, v'value, v'raw) = v;
+    return v'value;
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_bounce_value_mode(slice $to, int $bounce, int $value, int $mode) inline {
+    return ($bounce, $to, $value, $mode, null(), null(), null());
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int $bounce, slice $to, int $value, int $mode, cell $body, cell $code, cell $data) inline {
+    return ($bounce, $to, $value, $mode, $body, $code, $data);
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2490013878);
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int $queryId) inline {
+    return ($queryId);
+}
+
+;;
+;; Type: ChangeOwner
+;; Header: 0x819dbe99
+;; TLB: change_owner#819dbe99 queryId:uint64 newOwner:address = ChangeOwner
+;;
+
+(slice, ((int, slice))) $ChangeOwner$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2174598809);
+    var v'queryId = sc_0~load_uint(64);
+    var v'newOwner = sc_0~__tact_load_address();
+    return (sc_0, (v'queryId, v'newOwner));
+}
+
+;;
+;; Type: ChangeOwnerOk
+;; Header: 0x327b2b4a
+;; TLB: change_owner_ok#327b2b4a queryId:uint64 newOwner:address = ChangeOwnerOk
+;;
+
+builder $ChangeOwnerOk$_store(builder build_0, (int, slice) v) inline {
+    var (v'queryId, v'newOwner) = v;
+    build_0 = store_uint(build_0, 846932810, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    build_0 = __tact_store_address(build_0, v'newOwner);
+    return build_0;
+}
+
+cell $ChangeOwnerOk$_store_cell((int, slice) v) inline {
+    return $ChangeOwnerOk$_store(begin_cell(), v).end_cell();
+}
+
+((int, slice)) $ChangeOwnerOk$_constructor_queryId_newOwner(int $queryId, slice $newOwner) inline {
+    return ($queryId, $newOwner);
+}
+
+;;
+;; Type: FightMsg
+;; Header: 0x22fc5b29
+;; TLB: fight_msg#22fc5b29 amountPerRound:coins rounds:int257 maxPlayersAmount:int257 = FightMsg
+;;
+
+(slice, ((int, int, int))) $FightMsg$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 586963753);
+    var v'amountPerRound = sc_0~load_coins();
+    var v'rounds = sc_0~load_int(257);
+    var v'maxPlayersAmount = sc_0~load_int(257);
+    return (sc_0, (v'amountPerRound, v'rounds, v'maxPlayersAmount));
+}
+
+((int, int, int)) $FightMsg$_tensor_cast((int, int, int) v) asm "NOP";
+
+;;
+;; Type: Join
+;; Header: 0x45e011dd
+;; TLB: join#45e011dd id:int257 = Join
+;;
+
+(slice, ((int))) $Join$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1172312541);
+    var v'id = sc_0~load_int(257);
+    return (sc_0, (v'id));
+}
+
+;;
+;; Type: Withdraw
+;; Header: 0x1bc3cf3b
+;; TLB: withdraw#1bc3cf3b id:int257 = Withdraw
+;;
+
+builder $Withdraw$_store(builder build_0, (int) v) inline {
+    var (v'id) = v;
+    build_0 = store_uint(build_0, 465817403, 32);
+    build_0 = build_0.store_int(v'id, 257);
+    return build_0;
+}
+
+cell $Withdraw$_store_cell((int) v) inline {
+    return $Withdraw$_store(begin_cell(), v).end_cell();
+}
+
+(slice, ((int))) $Withdraw$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 465817403);
+    var v'id = sc_0~load_int(257);
+    return (sc_0, (v'id));
+}
+
+((int)) $Withdraw$_constructor_id(int $id) inline {
+    return ($id);
+}
+
+;;
+;; Type: FinishData
+;; Header: 0xb7766af2
+;; TLB: finish_data#b7766af2 id:int257 address:address contract:address amount:coins = FinishData
+;;
+
+builder $FinishData$_store(builder build_0, (int, slice, slice, int) v) inline {
+    var (v'id, v'address, v'contract, v'amount) = v;
+    build_0 = store_uint(build_0, 3077991154, 32);
+    build_0 = build_0.store_int(v'id, 257);
+    build_0 = __tact_store_address(build_0, v'address);
+    build_0 = __tact_store_address(build_0, v'contract);
+    build_0 = build_0.store_coins(v'amount);
+    return build_0;
+}
+
+cell $FinishData$_store_cell((int, slice, slice, int) v) inline {
+    return $FinishData$_store(begin_cell(), v).end_cell();
+}
+
+(slice, ((int, slice, slice, int))) $FinishData$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3077991154);
+    var v'id = sc_0~load_int(257);
+    var v'address = sc_0~__tact_load_address();
+    var v'contract = sc_0~__tact_load_address();
+    var v'amount = sc_0~load_coins();
+    return (sc_0, (v'id, v'address, v'contract, v'amount));
+}
+
+;;
+;; Type: Finish
+;; Header: 0x65c269f1
+;; TLB: finish#65c269f1 data:FinishData{id:int257,address:address,contract:address,amount:coins} signature:^slice = Finish
+;;
+
+(slice, (((int, slice, slice, int), slice))) $Finish$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1707239921);
+    var v'data = sc_0~$FinishData$_load();
+    var v'signature = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'data, v'signature));
+}
+
+(((int, slice, slice, int), slice)) $Finish$_tensor_cast(((int, slice, slice, int), slice) v) asm "NOP";
+
+;;
+;; Type: FightJoin
+;; Header: 0x78510d7a
+;; TLB: fight_join#78510d7a id:int257 joiner:address = FightJoin
+;;
+
+builder $FightJoin$_store(builder build_0, (int, slice) v) inline {
+    var (v'id, v'joiner) = v;
+    build_0 = store_uint(build_0, 2018577786, 32);
+    build_0 = build_0.store_int(v'id, 257);
+    build_0 = __tact_store_address(build_0, v'joiner);
+    return build_0;
+}
+
+cell $FightJoin$_store_cell((int, slice) v) inline {
+    return $FightJoin$_store(begin_cell(), v).end_cell();
+}
+
+((int, slice)) $FightJoin$_constructor_id_joiner(int $id, slice $joiner) inline {
+    return ($id, $joiner);
+}
+
+;;
+;; Type: ChangeSignerPublicKey
+;; Header: 0xf3a6749c
+;; TLB: change_signer_public_key#f3a6749c signerPublicKey:int257 = ChangeSignerPublicKey
+;;
+
+(slice, ((int))) $ChangeSignerPublicKey$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 4087772316);
+    var v'signerPublicKey = sc_0~load_int(257);
+    return (sc_0, (v'signerPublicKey));
+}
+
+;;
+;; Type: ChangeFee
+;; Header: 0x0aae7ef0
+;; TLB: change_fee#0aae7ef0 fee:int257 = ChangeFee
+;;
+
+(slice, ((int))) $ChangeFee$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 179207920);
+    var v'fee = sc_0~load_int(257);
+    return (sc_0, (v'fee));
+}
+
+;;
+;; Type: ChangeFeeCollector
+;; Header: 0x2b188a82
+;; TLB: change_fee_collector#2b188a82 feeCollector:address = ChangeFeeCollector
+;;
+
+(slice, ((slice))) $ChangeFeeCollector$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 723028610);
+    var v'feeCollector = sc_0~__tact_load_address();
+    return (sc_0, (v'feeCollector));
+}
+
+;;
+;; Type: ChangeMaxPlayersAmount
+;; Header: 0xd4680bc9
+;; TLB: change_max_players_amount#d4680bc9 maxPlayers:int257 = ChangeMaxPlayersAmount
+;;
+
+(slice, ((int))) $ChangeMaxPlayersAmount$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3563588553);
+    var v'maxPlayers = sc_0~load_int(257);
+    return (sc_0, (v'maxPlayers));
+}
+
+;;
+;; Type: ChangeMaxRoundsAmount
+;; Header: 0x8c30c157
+;; TLB: change_max_rounds_amount#8c30c157 maxRounds:int257 = ChangeMaxRoundsAmount
+;;
+
+(slice, ((int))) $ChangeMaxRoundsAmount$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2352005463);
+    var v'maxRounds = sc_0~load_int(257);
+    return (sc_0, (v'maxRounds));
+}
+
+;;
+;; Type: ChangeMinAmountPerRound
+;; Header: 0xdacecab6
+;; TLB: change_min_amount_per_round#dacecab6 minAmountPerRound:int257 = ChangeMinAmountPerRound
+;;
+
+(slice, ((int))) $ChangeMinAmountPerRound$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3670985398);
+    var v'minAmountPerRound = sc_0~load_int(257);
+    return (sc_0, (v'minAmountPerRound));
+}
+
+;;
+;; Type: Fight
+;; TLB: _ id:int257 owner:address createTime:int257 finishTime:int257 baseAmount:coins amountPerRound:coins rounds:int257 maxPlayersAmount:int257 players:dict<int, address> playersCurrentLength:int257 playersClaimed:dict<address, bool> = Fight
+;;
+
+builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int, cell, int, cell) v) inline_ref {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
+    build_0 = build_0.store_int(v'id, 257);
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = build_0.store_int(v'createTime, 257);
+    var build_1 = begin_cell();
+    build_1 = build_1.store_int(v'finishTime, 257);
+    build_1 = build_1.store_coins(v'baseAmount);
+    build_1 = build_1.store_coins(v'amountPerRound);
+    build_1 = build_1.store_int(v'rounds, 257);
+    build_1 = build_1.store_int(v'maxPlayersAmount, 257);
+    build_1 = build_1.store_dict(v'players);
+    var build_2 = begin_cell();
+    build_2 = build_2.store_int(v'playersCurrentLength, 257);
+    build_2 = build_2.store_dict(v'playersClaimed);
+    build_1 = store_ref(build_1, build_2.end_cell());
+    build_0 = store_ref(build_0, build_1.end_cell());
+    return build_0;
+}
+
+cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline {
+    return $Fight$_store(begin_cell(), v).end_cell();
+}
+
+(slice, ((int, slice, int, int, int, int, int, int, cell, int, cell))) $Fight$_load(slice sc_0) inline_ref {
+    var v'id = sc_0~load_int(257);
+    var v'owner = sc_0~__tact_load_address();
+    var v'createTime = sc_0~load_int(257);
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'finishTime = sc_1~load_int(257);
+    var v'baseAmount = sc_1~load_coins();
+    var v'amountPerRound = sc_1~load_coins();
+    var v'rounds = sc_1~load_int(257);
+    var v'maxPlayersAmount = sc_1~load_int(257);
+    var v'players = sc_1~load_dict();
+    slice sc_2 = sc_1~load_ref().begin_parse();
+    var v'playersCurrentLength = sc_2~load_int(257);
+    var v'playersClaimed = sc_2~load_dict();
+    return (sc_0, (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed));
+}
+
+tuple $Fight$_as_optional((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
+    return __tact_tuple_create_11(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+}
+
+tuple $Fight$_load_opt(cell cl) inline {
+    if (null?(cl)) {
+        return null();
+    }
+    var sc = cl.begin_parse();
+    return $Fight$_as_optional(sc~$Fight$_load());
+}
+
+((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (int vvv'id, slice vvv'owner, int vvv'createTime, int vvv'finishTime, int vvv'baseAmount, int vvv'amountPerRound, int vvv'rounds, int vvv'maxPlayersAmount, cell vvv'players, int vvv'playersCurrentLength, cell vvv'playersClaimed) = __tact_tuple_destroy_11(v);
+    return (vvv'id, vvv'owner, vvv'createTime, vvv'finishTime, vvv'baseAmount, vvv'amountPerRound, vvv'rounds, vvv'maxPlayersAmount, vvv'players, vvv'playersCurrentLength, vvv'playersClaimed);
+}
+
+tuple $Fight$_to_tuple(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
+    return __tact_tuple_create_11(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+}
+
+tuple $Fight$_to_external(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v; 
+    return $Fight$_to_tuple(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+}
+
+((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed(int $id, slice $owner, int $createTime, int $finishTime, int $baseAmount, int $amountPerRound, int $rounds, int $maxPlayersAmount, int $playersCurrentLength, cell $players, cell $playersClaimed) inline {
+    return ($id, $owner, $createTime, $finishTime, $baseAmount, $amountPerRound, $rounds, $maxPlayersAmount, $players, $playersCurrentLength, $playersClaimed);
+}
+
+;;
+;; Type: Fee
+;; TLB: _ amount:coins fee:coins = Fee
+;;
+
+tuple $Fee$_to_tuple(((int, int)) v) inline {
+    var (v'amount, v'fee) = v;
+    return __tact_tuple_create_2(v'amount, v'fee);
+}
+
+tuple $Fee$_to_external(((int, int)) v) inline {
+    var (v'amount, v'fee) = v; 
+    return $Fee$_to_tuple(v'amount, v'fee);
+}
+
+((int, int)) $Fee$_constructor_amount_fee(int $amount, int $fee) inline {
+    return ($amount, $fee);
+}
+
+;;
+;; Type: FairFight
+;;
+
+builder $FairFight$_store(builder build_0, (slice, int, slice, int, int, int, int, cell, int, int, cell) v) inline {
+    var (v'owner, v'signerPublicKey, v'feeCollector, v'fee, v'maxPlayers, v'maxRounds, v'minAmountPerRound, v'currentPlayerFight, v'fullFightsLength, v'currentFightsLength, v'currentFights) = v;
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = build_0.store_int(v'signerPublicKey, 257);
+    build_0 = __tact_store_address(build_0, v'feeCollector);
+    build_0 = build_0.store_coins(v'fee);
+    var build_1 = begin_cell();
+    build_1 = build_1.store_int(v'maxPlayers, 257);
+    build_1 = build_1.store_int(v'maxRounds, 257);
+    build_1 = build_1.store_coins(v'minAmountPerRound);
+    build_1 = build_1.store_dict(v'currentPlayerFight);
+    build_1 = build_1.store_int(v'fullFightsLength, 257);
+    var build_2 = begin_cell();
+    build_2 = build_2.store_int(v'currentFightsLength, 257);
+    build_2 = build_2.store_dict(v'currentFights);
+    build_1 = store_ref(build_1, build_2.end_cell());
+    build_0 = store_ref(build_0, build_1.end_cell());
+    return build_0;
+}
+
+(slice, ((slice, int, slice, int, int, int, int, cell, int, int, cell))) $FairFight$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    var v'signerPublicKey = sc_0~load_int(257);
+    var v'feeCollector = sc_0~__tact_load_address();
+    var v'fee = sc_0~load_coins();
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'maxPlayers = sc_1~load_int(257);
+    var v'maxRounds = sc_1~load_int(257);
+    var v'minAmountPerRound = sc_1~load_coins();
+    var v'currentPlayerFight = sc_1~load_dict();
+    var v'fullFightsLength = sc_1~load_int(257);
+    slice sc_2 = sc_1~load_ref().begin_parse();
+    var v'currentFightsLength = sc_2~load_int(257);
+    var v'currentFights = sc_2~load_dict();
+    return (sc_0, (v'owner, v'signerPublicKey, v'feeCollector, v'fee, v'maxPlayers, v'maxRounds, v'minAmountPerRound, v'currentPlayerFight, v'fullFightsLength, v'currentFightsLength, v'currentFights));
+}
+
+(slice, ((slice, int, slice, int, int, int, int))) $FairFight$init$_load(slice sc_0) inline_ref {
+    var v'owner = sc_0~__tact_load_address();
+    var v'signerPublicKey = sc_0~load_int(257);
+    var v'feeCollector = sc_0~__tact_load_address();
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'fee = sc_1~load_int(257);
+    var v'maxPlayers = sc_1~load_int(257);
+    var v'maxRounds = sc_1~load_int(257);
+    slice sc_2 = sc_1~load_ref().begin_parse();
+    var v'minAmountPerRound = sc_2~load_int(257);
+    return (sc_0, (v'owner, v'signerPublicKey, v'feeCollector, v'fee, v'maxPlayers, v'maxRounds, v'minAmountPerRound));
+}
+
+(slice, int, slice, int, int, int, int, cell, int, int, cell) $FairFight$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$FairFight$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        (slice $owner, int $signerPublicKey, slice $feeCollector, int $fee, int $maxPlayers, int $maxRounds, int $minAmountPerRound) = $sc~$FairFight$init$_load();
+        $sc.end_parse();
+        return $FairFight$_contract_init($owner, $signerPublicKey, $feeCollector, $fee, $maxPlayers, $maxRounds, $minAmountPerRound);
+    }
+}
+
+() $FairFight$_contract_store((slice, int, slice, int, int, int, int, cell, int, int, cell) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $FairFight$_store(b, v);
+    set_data(b.end_cell());
+}
