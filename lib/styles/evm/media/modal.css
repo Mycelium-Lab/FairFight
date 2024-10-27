@@ -90,10 +90,9 @@
     .info__title {
         font-family: "Teletactile";
         font-size: 24px;
-        font-size: 13px;
         color: #ff7c06;
         text-align: center;
-        margin-top: 33px;
+        margin: 33px auto 0 auto;
     }
     .info__content {
         /* background-image: url(../../../media/svg/past-game/info__frame.svg); */
@@ -382,12 +381,12 @@
     }
     .modal_content_confirm_finish {
         width: 335px !important;
-        height: 193.27px !important;
         padding: 10px 5px !important;
     }
     .modal__title-confirm_finish {
         font-size: 18px !important;
-        margin-bottom: 20px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center;
     }
     .modal_content_rotate {
         border-radius: 0px !important;

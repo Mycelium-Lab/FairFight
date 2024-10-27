@@ -36,6 +36,13 @@
         height: 16px !important;
         background-size: 16px 16px !important;
     }
+
+    #over_modal .modal__title {
+        font-size: 32px;
+    }
+    #over_modal .modal__title::before {
+        -webkit-text-stroke: 4px rgba(112, 15, 81, 1);
+    }
     /*.stats-item{
         padding: 0 4px !important; 
             background-image: url('../../../media/round-frame.svg') !important;
@@ -187,10 +194,21 @@
 }
 #modal__body_confirm_finish p {
     text-align: center;
-    color: #393939;
-    font-size: 12px;
-    padding-bottom: 20.1px;
+    color: #7A7A7A;
     margin: 0px;
+    font-family: "Quadriana";
+}
+
+#modal__body_confirm_finish p:first-of-type {
+    font-size: 20px;
+    line-height: 24.44px;
+    padding-bottom: 8px;
+}
+
+#modal__body_confirm_finish p:last-of-type {
+    font-size: 14px;
+    line-height: 17.11px;
+    padding-bottom: 12px;
 }
 .you-character, .enemy-character{
     display: flex;

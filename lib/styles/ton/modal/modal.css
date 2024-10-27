@@ -17,7 +17,7 @@
 
 .modal_content_confirm_finish {
     width: 380px !important;
-    height: 240.27px !important;
+    height: fit-content;
 }
 
 .modal-content {

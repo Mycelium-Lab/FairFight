@@ -22,6 +22,7 @@
     --color-grey: #c6c6c6;
     --color-red: #ee0000;
     --color-sand: rgba(156, 153, 140, 1);
+    --color-brown: #700f51;
 
     --color-text-gray: #B8B8B8;
     --color-text-disabled: #D7D7D7;
@@ -1146,9 +1147,6 @@ a {
     gap: 0;
 }
 
-.border-style {
-    border: 2px solid #ff7c06;
-}
 .border-style .corn {
     position: absolute;
     width: 5px;
@@ -5054,6 +5052,90 @@ wrapper__nft-shop-modal .info__pricing button {
     display: none !important;
 }
 /* CUSTOM SELECT */
+
+/* CUSTOM PIXEL BORDER */
+.border-style,
+.pixel-border {
+    position: relative;
+    clip-path: polygon(0px calc(100% - 4px),
+        2px calc(100% - 4px),
+        2px calc(100% - 2px),
+        4px calc(100% - 2px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 2px) 4px,
+        calc(100% - 2px) 2px,
+        calc(100% - 4px) 2px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 2px,
+        2px 2px,
+        2px 4px,
+        0px 4px);
+}
+
+.border-style::after,
+.pixel-border::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px,
+            0px 50%,
+            2px 50%,
+            2px 4px,
+            4px 4px,
+            4px 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px 50%,
+            0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    pointer-events: none;
+}
+
+.pixel-border.orange::after {
+    background: var(--color-orange);
+}
+
+.border-style::after,
+.pixel-border.brown::after {
+    background: var(--color-brown);
+}
+/* CUSTOM PIXEL BORDER */
 
 .faq {position: relative;}
 

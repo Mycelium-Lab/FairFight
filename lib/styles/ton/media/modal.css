@@ -90,10 +90,9 @@
     .info__title {
         font-family: "Teletactile";
         font-size: 24px;
-        font-size: 13px;
         color: #ff7c06;
         text-align: center;
-        margin-top: 33px;
+        margin: 33px auto 0 auto;
     }
     .info__content {
         /* background-image: url(../../../media/svg/past-game/info__frame.svg); */
@@ -382,7 +381,6 @@
     }
     .modal_content_confirm_finish {
         width: 335px !important;
-        height: 193.27px !important;
         padding: 10px 5px !important;
     }
     .modal__title-confirm_finish {
@@ -446,35 +444,30 @@
     .modal__row__tokens div {
         font-size: 10.88px;
         line-height: 12.98px;
-        margin-right: 0px;
+        margin: 0;
     }
     .modal .modal_content select, 
     .modal .modal_content input {
         width: 106px;
         height: 20px;
         background: #FFFFFF;
-
         font-size: 10px;
         font-weight: 300;
-
         padding: 3px 7px !important;
-
-        border: Mixed solid;
-
-        border: 1px solid #FF7C06;
+        font-family: 'Quadriana';
+        border: none;
     }
+
     .token-active,
     .token-deactive {
-        width: 80px;
-        padding-left: 0px;
-        justify-content: end;
+        width: 60px;
+        justify-content: start;
         gap: 5px;
-        padding-right: 10px;
     }
     .figure img {
-        width: 18px;
-        height: 18px;
-        margin-right: 0px;
+        width: auto;
+        height: 13px;
+        margin: 0px;
     }
     .modal .modal_content input {
         width: 106px;
@@ -486,6 +479,7 @@
     .modal__row {
         gap: 13.6px;
     }
+    #createGame-f2p-evm,
     #createGame {
         height: 34px;
         padding: 0 19.7395px;

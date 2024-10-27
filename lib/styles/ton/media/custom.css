@@ -35,9 +35,6 @@
     .about-header {
         margin-bottom: 20px;
     }
-    .wrapper__message-modal {
-        padding: 25px 27px 5px 27px;
-    }
     /*.wrapper__message-modal_waiting{
       height: 340px;
     }*/
@@ -1404,6 +1401,13 @@ background-position: center 11px;
     .sort-wrapper {
         margin-left: 4px;
     }
+    
+    .simplebar-content {
+        grid-template-columns: 1fr !important;
+        padding: 0 !important;
+        gap: 10px !important;
+    }
+    .simplebar-content-wrapper {padding: 0 !important;}
 }
 
 @media (max-width: 411px) {
