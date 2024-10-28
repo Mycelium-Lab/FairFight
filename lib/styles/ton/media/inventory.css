@@ -76,10 +76,18 @@
         left: -12px;
     }
     .modal__header-title_inventory{
-        background-image: url('../../../media/svg/inventory-modal/inventory-modal-header-mobile.svg');
+        background-image: none;
         margin: 0 auto;
-        width: 185px;
-        background-size: 100%;
+        font-size: 32px;
+        font-family: "Quadriana";
+        text-align: center;
+        height: auto;background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+        line-height: 39.1px;
+        letter-spacing: -1px;
+    }
+    .modal__header-title_inventory::before {
+        z-index: 0 !important;
+        width: 100%;
     }
     .inventory-modal__nav-wrap .nav-wrap__nav{
         justify-content: space-between;
@@ -192,6 +200,10 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    .inventory__modal-content p,
+    .inventory__modal-content label {
+        font-family: "Quadriana" !important;        
+    }
     .inventory__modal-content{
         padding-top: 30px;
     }
@@ -276,7 +288,7 @@
     margin-top: 0px;
 }
 .body__inventory {
-    width: 308px !important;
+    width: 340px !important;
     /*margin-right: 30px;*/
 }
 .list-wrap__item-list {
@@ -285,20 +297,24 @@
     padding-left: 0px;
 }
 .inventory__header-title{
-    padding-bottom: 6.57px;
-    border-width: 1px;
+    padding-bottom: 0;
+    margin-bottom: 8px;
+    border: none;
+    background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+    -webkit-background-clip: text;
+    font-family: "Quadriana";
+    line-height: 29.33px;
 }
 .inventory-modal__nav-wrap .nav-wrap__nav label{
     font-size: 11px !important;
+    border-bottom: 0 !important;
 }
+.inventory-modal__nav-wrap .nav-wrap__nav,
 .inventory-modal__nav-wrap .nav-wrap__nav input:checked + label{
-    border-width: 3px;
-}
-.inventory-modal__nav-wrap .nav-wrap__nav{
-    border-width: 1px;
+    border-bottom: 1px solid #ff7c06 !important;
 }
 .inventory__list-wrap{
-    margin-top: 9px;
+    margin-top: 5px;
 }
 .inventory-wrap-corner_topleft{
     width: 24.64px;
@@ -330,11 +346,46 @@
 .inventory-modal__body .head__showcase-title{
     padding-bottom: 6.570px;
     padding-top: 0px;
+    background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+    -webkit-background-clip: text;
+    font-size: 24px;
+    line-height: 24px;
 }
 #character-background{
     min-height: 320px !important;
     min-width: 320px !important;
     transform: translate(-50%, -23%) !important;
+}
+.inventory__modal-content.modal-content_primary {
+    border: none !important;
+}
+.inventory-modal__body {
+    overflow: hidden;
+    gap: 8px;
+}
+
+.body__showcase_inventory {margin-top: 21.75px;}
+
+.inventory-modal__nav-wrap {margin-top: 0 !important;}
+
+.body__inventory .simple-bar {
+    height: 280px;
+}
+
+.item-list__slot {
+    width: 87px;
+    height: 87px;
+}
+.list-wrap__item-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+#inventory-item-modal .board.body__item-detail {
+    height: fit-content !important;
+}
+
+#inventory-item-modal button {
+    font-size: 16px;
 }
 }
 

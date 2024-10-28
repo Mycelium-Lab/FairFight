@@ -991,7 +991,7 @@ a {
     -webkit-text-stroke: 3px var(--color-text-border-disabled);
 }
 
-.inner-block__head button.active {
+/* .inner-block__head button.active {
     background: linear-gradient(to bottom,
             #FFDC2A 50%,
             #FF7558 80%,
@@ -1003,9 +1003,9 @@ a {
 .inner-block__head button.active::before {
     color: transparent;
     -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
-}
+} */
 
-.inner-block__head .active::after {
+/* .inner-block__head .active::after {
     position: absolute;
     left: 0;
     bottom: -7px;
@@ -1013,7 +1013,7 @@ a {
     width: 100%;
     height: 3px;
     background-color: var(--color-orange);
-}
+} */
 
 .quadriana-label {
     font-family: 'Quadriana';
@@ -2153,11 +2153,12 @@ a {
 }
 
 .nft-shop-modal__header-title {
-    width: 100%;
-    height: 55px;
-    background-image: url("../../media/svg/nft-shop-header.svg");
-    background-position: center center;
-    background-repeat: no-repeat;
+    font-family: "Quadriana";
+    font-size: 32px;
+    line-height: 39.1px;
+    background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .nft-shop-modal__nav-wrap {
@@ -3669,34 +3670,126 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 
 .inventory-item-body_basic,
+.inventory-item-body_character,
+.inventory-item-body_special,
+.inventory-item-body_rare,
+.inventory-item-body_epic,
+.inventory-item-body_legendary {
+    position: relative;
+    clip-path: polygon(0px calc(100% - 4px),
+                2px calc(100% - 4px),
+                2px calc(100% - 2px),
+                4px calc(100% - 2px),
+                4px 100%,
+                calc(100% - 4px) 100%,
+                calc(100% - 4px) calc(100% - 2px),
+                calc(100% - 2px) calc(100% - 2px),
+                calc(100% - 2px) calc(100% - 4px),
+                100% calc(100% - 4px),
+                100% 4px,
+                calc(100% - 2px) 4px,
+                calc(100% - 2px) 2px,
+                calc(100% - 4px) 2px,
+                calc(100% - 4px) 0px,
+                4px 0px,
+                4px 2px,
+                2px 2px,
+                2px 4px,
+                0px 4px);
+}
+            
+.inventory-item-body_basic,
 .inventory-item-body_character {
-    background-image: url("../../media/svg/inventory-modal/frame-bronze.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+   background: #F5F5F5;
 }
 
 .inventory-item-body_special {
-    background-image: url("../../media/svg/inventory-modal/frame-silver.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background: #EDFFEF;
 }
 
 .inventory-item-body_rare {
-    background-image: url("../../media/svg/inventory-modal/frame-gold.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background: #F4FFFE;
 }
 
 .inventory-item-body_epic {
-    background-image: url("../../media/svg/inventory-modal/frame-platinum.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background: #F5EDFF;
 }
 
 .inventory-item-body_legendary {
-    background-image: url("../../media/svg/inventory-modal/frame-legendary.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background: #FFEFDE;
+}
+
+.inventory-item-body_basic::after,
+.inventory-item-body_character::after,
+.inventory-item-body_special::after,
+.inventory-item-body_rare::after,
+.inventory-item-body_epic::after,
+.inventory-item-body_legendary::after {
+    content: "";
+    position: absolute;    
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px,
+            0px 50%,
+            2px 50%,
+            2px 4px,
+            4px 4px,
+            4px 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px 50%,
+            0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    pointer-events: none;
+}
+
+.inventory-item-body_basic::after,
+.inventory-item-body_character::after {
+    background: #8B8B8B;
+}
+
+.inventory-item-body_special::after {
+    background: #24B500;
+}
+
+.inventory-item-body_rare::after {
+    background: #03B8F1;
+}
+
+.inventory-item-body_epic::after {
+    background: #7000F2;
+}
+
+.inventory-item-body_legendary::after {
+    background: #FF7C06;
 }
 
 .wrapper__item-modal-overlay .body__background-icon {

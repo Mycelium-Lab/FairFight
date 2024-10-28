@@ -361,7 +361,7 @@
 	</div>
 </div>
 </div>
-<div id="over_modal" class="modal" style="display: none;">
+<div id="over_modal" class="modal" style="display: block;">
 	<div class="board modal_content_finish modal_content">
 		<div class="four-color-border-block ">
 			<span class="horizontal top-1"></span>
@@ -403,23 +403,53 @@
 						<p>You</p>
 					</div>
 					<div class="yourStats">
-						<span id="yourAmountWinLose"></span>
+						<span class="yourAmountWinLoses_stat">
+							<span class="yourAmountWinLoseTitle">Win:</span>
+							<span class="yourAmountWinLoses" id="yourAmountWinLoses">10 ROSE</span>
+						</span>
 						<div class="yourKills_stat">
 							<span class="yourKillsTitle">Kills:</span>
-							<span class="yourKills" id="yourKills"></span>
+							<span class="yourKills" id="yourKills">10</span>
 						</div>
 						<div class="yourDep_stat">
 							<span class="yourDepTitle">Dep:</span>
-							<span id="yourDep"></span>
+							<span id="yourDep">22 rose</span>
 						</div>
 						<div class="yourDeaths_stat">
 							<span class="yourDeathsTitle">Deaths:</span>
-							<span class="yourDeaths" id="yourDeaths"></span>
+							<span class="yourDeaths" id="yourDeaths">10</span>
 						</div>
 					</div>
 					<div class="yourStats_address">
 						<span class="your_address">Wallet: </span>
-						<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
+						<a class="finish_modal_your_address" id="finish_modal_your_address">0xE8D5...319c4</a>
+					</div>
+				</div>
+				<div class="finish-stats">
+					<div class="yourStats__header">
+						<p>ENEMY</p>
+					</div>
+					<div class="yourStats">
+						<span class="yourAmountWinLoses_stat">
+							<span class="yourAmountWinLoseTitle lose">Lose:</span>
+							<span class="yourAmountWinLoses lose" id="yourAmountWinLoses">6 ROSE</span>
+						</span>
+						<div class="yourKills_stat">
+							<span class="yourKillsTitle">Kills:</span>
+							<span class="yourKills" id="yourKills">6</span>
+						</div>
+						<div class="yourDep_stat">
+							<span class="yourDepTitle">Dep:</span>
+							<span id="yourDep">22 rose</span>
+						</div>
+						<div class="yourDeaths_stat">
+							<span class="yourDeathsTitle">Deaths:</span>
+							<span class="yourDeaths" id="yourDeaths">10</span>
+						</div>
+					</div>
+					<div class="yourStats_address">
+						<span class="your_address">Wallet: </span>
+						<a class="finish_modal_your_address" id="finish_modal_your_address">0x4u5...Gt4k</a>
 					</div>
 				</div>
 			</div>

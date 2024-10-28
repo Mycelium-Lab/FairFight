@@ -535,7 +535,7 @@ th.sorting::after {
         max-width: calc(100% - 10px);
     }
     .inner-block__head_mid_wrap {
-        flex-direction: column;
+        gap: 15px;
     }
 }
 @media (max-width: 800px) {

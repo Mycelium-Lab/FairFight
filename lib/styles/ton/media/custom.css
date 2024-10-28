@@ -891,6 +891,9 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    button {
+        text-shadow: rgba(57, 57, 57, 1) 0px 1px;;
+    }
     .board {
         --border-board: 2px solid rgba(57, 57, 57, 1);
         border-radius: 0px;
@@ -1334,9 +1337,16 @@ background-position: center 11px;
         max-width: 99px;
     }
     .item-modal-info {
-        font-size: 21.67px !important;
-        margin-top: 14px !important;
-        margin-bottom: 5px !important;
+        font-size: 32px !important;
+        margin: 14px auto 5px auto !important;
+        font-family: "Quadriana";
+        color: transparent;
+        background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+        -webkit-background-clip: text;
+    }
+    .item-modal-info::before {
+        z-index: 0;
+        width: 100%;
     }
     .wrapper__item-modal-overlay .body__item-detail {
         padding-bottom: 20px !important;
@@ -1403,11 +1413,27 @@ background-position: center 11px;
     }
     
     .simplebar-content {
-        grid-template-columns: 1fr !important;
         padding: 0 !important;
         gap: 10px !important;
     }
     .simplebar-content-wrapper {padding: 0 !important;}
+
+    #opengames-list-f2p .simplebar-content,
+    #pastgames-list-f2p .simplebar-content,
+    #opengames-list-f2p-evm .simplebar-content,
+    #pastgames-list-f2p-evm .simplebar-content {
+        grid-template-columns: 1fr !important;
+
+    }
+
+    #inventory-item-body {
+        font-family: "Quadriana";
+    }
+
+    #inventory-item-body .p {font-size: 10px;}
+    #inventory-item-body .header__text-item .text-item__character {font-size: 14px;}
+
+    #inventory-item-modal .board.body__item-detail {border: none;}
 }
 
 @media (max-width: 411px) {

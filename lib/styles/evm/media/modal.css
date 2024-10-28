@@ -177,7 +177,6 @@
     }
     .infoContent-bottom__enemy {
         margin: 0px 9px 0px;
-        text-align: end;
     }
     .infoContent-bottom__you::before,
     .infoContent-bottom__enemy::before {
@@ -362,7 +361,6 @@
         right: 5px;
     }
     .modal__over-body {
-        padding-top: 19px;
         /* background-image: url("../../../media/svg/game-over-frame-mobile.svg"); */
     }
     .modal__title {

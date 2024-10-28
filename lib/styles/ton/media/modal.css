@@ -99,10 +99,15 @@
         background-repeat: no-repeat;
         height: 356px;
         background-size: contain;
-        margin-top: 10px;
         width: 300px;
-        margin: 10px auto;
         overflow-y: auto;
+    }
+    #info-content-bottom {
+        font-family: "Quadriana";
+    }
+    #info-content-bottom div,
+    #info-content-bottom p {
+        font-size: 10px;        
     }
     #info-content .close-button {
         position: absolute;
@@ -158,10 +163,10 @@
         font-size: 14px;
         justify-content: space-between;
     }
+    .infoContent-bottom__content-enemy div:first-child p:last-child a,
     .infoContent-bottom__content-you div:first-child p:last-child a,
     .infoContent-bottom__content-enemy div:last-child p:last-child a {
-        text-decoration: underline;
-        color: #ff7c06;
+        color: var(--color-black);
     }
     .infoContent-bottom__content-you p,
     .infoContent-bottom__content-enemy p {
@@ -169,15 +174,12 @@
     }
     .infoContent-bottom__you,
     .infoContent-bottom__enemy {
-        margin: 15px 9px 0px;
+        margin: 16px 0px 0px 9px;
         border-bottom: 1px solid #ffc897;
+        padding-bottom: 5px;
         text-transform: uppercase;
         color: #ff7c06;
         font-weight: 700;
-    }
-    .infoContent-bottom__enemy {
-        margin: 0px 9px 0px;
-        text-align: end;
     }
     .infoContent-bottom__you::before,
     .infoContent-bottom__enemy::before {
@@ -292,6 +294,16 @@
         width: 16px;
         height: 16px;
         background-image: url("../../../media/svg/past-game/deaths.svg");
+        background-size: 16px 16px;
+        margin-bottom: -3px;
+        margin-right: 5px;
+    }
+    .infoContent-bottom__content-enemy div:first-child p:nth-child(3)::before {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url("../../../media/svg/past-game/wallet.svg");
         background-size: 16px 16px;
         margin-bottom: -3px;
         margin-right: 5px;
@@ -626,6 +638,43 @@
     #rotate_modal .board-edge_sm:nth-child(4) {
         left: -6px;
         bottom: -6px;
+    }
+
+    #info_modal .info__title.quadriana-label::before {
+        -webkit-text-stroke:3px var(--color-brown);
+    }
+
+    #info-content .close-button {
+        font-size: 7.83px;
+        line-height: 7.61px;
+        padding: 0 19px;
+        height: 20px;
+    }
+
+    #info-content .close-button:hover {
+        background-position: center 2px !important;
+    }
+
+    
+
+    .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head {border-top: none !important;}
+    .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button img {
+        margin: 0;
+        width: 18px;
+        height: 18px;
+    }
+    .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 10px;
+        line-height: 10px;
+        text-shadow: none;
+        color: var(--color-black);
+    }
+
+    .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button.active {
+        color: var(--color-orange);
     }
 }
 

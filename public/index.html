@@ -1085,7 +1085,7 @@
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg"> -->
-									<ul id="pastgames-list-f2p-evm">
+									<ul id="pastgames-list-f2p-evm" class="simple-bar">
 										<div class="games__empty" id="pastgames_empty-f2p-evm" style="display: none;">
 											<span id="pastgames_empty-title-f2p-evm">Empty :(</span>
 											<span id="pastgames_empty-desc-f2p-evm">That's where your game history will be listed</span>
@@ -1804,6 +1804,12 @@
 		</div>
 		<div id="leaderboard_modal" class="modal wrapper__message-modal-overlay">
 			<div class="board modal_content wrapper__message-modal">
+				<div class="border-contur">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 				<span class="close_modal_window">
 					<img src="media/svg/leaderboard/lb_arrow_close.svg" alt="">
 				</span>
@@ -2673,13 +2679,35 @@
 
 	<div id="shop-block" class="modal-owelay wrapper__nft-shop-modal-overlay">
 		<div class=" wrapper__nft-shop-modal wrapper__message-modal modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+			<!-- <img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-middle-light.svg">
+				src="media/svg/corner-middle-light.svg"> -->
+				<div class="four-color-border-block ">
+					<span class="horizontal top-1"></span>
+					<span class="horizontal top-2"></span>
+					<span class="horizontal top-3"></span>
+					<span class="horizontal top-4"></span>
+					<span class="horizontal bottom-1"></span>
+					<span class="horizontal bottom-2"></span>
+					<span class="horizontal bottom-3"></span>
+					<span class="horizontal bottom-4"></span>
+					<span class="vertical left-1"></span>
+					<span class="vertical left-2"></span>
+					<span class="vertical left-3"></span>
+					<span class="vertical left-4"></span>
+					<span class="vertical right-1"></span>
+					<span class="vertical right-2"></span>
+					<span class="vertical right-3"></span>
+					<span class="vertical right-4"></span>
+					<span class="squrale one"></span>
+					<span class="squrale two"></span>
+					<span class="squrale three"></span>
+					<span class="squrale four"></span>
+				</div>
 			<button class="nft-shop-modal__btn-close modal__close-icon"></button>
 
 			<div class="nft-shop-modal__left-title"></div>
@@ -2691,7 +2719,7 @@
 			<div class="nft-shop-modal__right-title nft-shop-modal__right-title-armor"></div>
 			<div class="nft-shop-modal__right-title nft-shop-modal__right-title-boots"></div>
 
-			<div class="nft-shop-modal__header-title"></div>
+			<h1 class="nft-shop-modal__header-title quadriana-label" data-text="NFT SHOP">NFT SHOP</h1>
 
 			<div class="nft-shop-modal__nav-wrap">
 				<nav class="nav-wrap__nav">
@@ -3238,37 +3266,62 @@
 
 	<div id="inventory-modal" class="modal-overlay">
 		<div class="inventory__modal-content modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
+			<!-- <img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-middle-light.svg">
+				src="media/svg/corner-middle-light.svg"> -->
 			<button id="inventory-close" class="inventory-modal__btn-close modal__close-icon"></button>
 
 			<div class="inventory-modal__left-title"></div>
 			<div class="inventory-modal__right-title"></div>
 
-			<div class="modal__header-title_inventory"></div>
+			<h2 class="modal__header-title_inventory quadriana-label" data-text="Inventory">Inventory</h2>
 
 			<div class="inventory-modal__body">
 				<div class="body__inventory">
-					<p class="inventory__header-title">ITEMS</p>
+					<p class="inventory__header-title">Item</p>
 
 					<div class="inventory-modal__nav-wrap">
 						<nav class="nav-wrap__nav">
 							<input id="inventory__tab-1" type="radio" name="inventory__tab" checked>
-							<label for="inventory__tab-1">CHARACTERS</label>
+							<label for="inventory__tab-1">Characters</label>
 
 							<input id="inventory__tab-2" type="radio" name="inventory__tab">
-							<label for="inventory__tab-2">WEAPONS</label>
+							<label for="inventory__tab-2">Weapons</label>
 
 							<input id="inventory__tab-3" type="radio" name="inventory__tab">
-							<label for="inventory__tab-3">ARMOR</label>
+							<label for="inventory__tab-3">Armor</label>
 
 							<input id="inventory__tab-4" type="radio" name="inventory__tab">
-							<label for="inventory__tab-4">BOOTS</label>
+							<label for="inventory__tab-4">Boots</label>
+
+							<input id="inventory__tab-5" type="radio" name="inventory__tab">
+							<label for="inventory__tab-5">Nft box</label>
 
 
 
@@ -3284,6 +3337,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3489,6 +3543,7 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
+						</div>
 						</div>
 					</div>
 
@@ -3501,6 +3556,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3706,6 +3762,7 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
+						</div>
 						</div>
 					</div>
 
@@ -3718,6 +3775,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3921,6 +3979,7 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
+						</div>
 						</div>
 					</div>
 
@@ -3933,6 +3992,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -4138,6 +4198,7 @@
 								<img class="board-edge_sm modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
+						</div>
 						</div>
 					</div>
 
@@ -4150,6 +4211,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -4356,16 +4418,17 @@
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
+						</div>
 					</div>
 				</div>
 
 				<div class="showcase">
-					<p class="head__showcase-title">CHARACTER</p>
+					<p class="head__showcase-title">Characters</p>
 
 					<div class="body__showcase_inventory  body__showcase inventory-character">
 						<div class="character__slots inventory_slots">
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">WEAPON</p>
+								<p class="slot-wrap__title">Weapon</p>
 								<img class="inventory-slot__modal-corner_topleft_weapon modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright_weapon modal-content__corner_topright modal-content__corner"
@@ -4379,7 +4442,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">ARMOR</p>
+								<p class="slot-wrap__title">Armor</p>
 								<img class="inventory-slot__modal-corner_topleft modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright modal-content__corner_topright modal-content__corner"
@@ -4393,7 +4456,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">BOOTS</p>
+								<p class="slot-wrap__title">Boots</p>
 								<img class="inventory-slot__modal-corner_topleft_boots modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright_boots modal-content__corner_topright modal-content__corner"
@@ -4471,21 +4534,43 @@
 
 	<!-- fitting room modal -->
 
-	<div id="fittingroom-modal" class="modal-overlay">
-		<div class="fitting__modal-content modal-content_secondary modal-content">
-			<img class="fitting-wrap__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
+	<div id="fittingroom-modal" class="modal-overlay" >
+		<div class="fitting__modal-content modal-content">
+			<!-- <img class="fitting-wrap__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-light.svg">
+				src="media/svg/corner-light.svg"> -->
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
 			<button id='fittingroom-close' class="dressing-modal__btn-close modal__close-icon"></button>
 			<!--<div class="inventory-mo/private/var/folders/46/918l5vln43bbf1lkqc504d1m0000gn/T/AppTranslocation/7810194A-5CC6-4004-9211-818EFA42EC70/d/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmldal__right-title inventory-modal__right-title-weapons"></div>
 			<div class="inventory-modal__right-title inventory-modal__right-title-armor"></div>
 			<div class="inventory-modal__right-title inventory-modal__right-title-boots"></div>-->
 
-			<div class="modal__header-title_fitting modal__header-title"></div>
+			<h2 class="modal__header-title_fitting quadriana-label" data-text="Fitting room">Fitting room</h2>
 
 			<div class="modal__body_fitting modal__body">
 				<div class="showcase">
@@ -4494,7 +4579,7 @@
 					<div class="body__showcase fitting-character">
 						<div class="character__slots fitting_slots">
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">WEAPON</p>
+								<p class="slot-wrap__title">Weapon</p>
 								<div id="tryon-weapon-slot"
 									class="slot-wrap__slot slot__body slot__body_weapon slot__body_weapon-background fitting_slot">
 									<img class="fitting-slot__modal-corner_topleft modal-content__corner"
@@ -4510,7 +4595,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">ARMOR</p>
+								<p class="slot-wrap__title">Armor</p>
 								<div id="tryon-armor-slot"
 									class="slot-wrap__slot slot__body slot__body_armor slot__body_armor-background fitting_slot">
 									<img class="fitting-slot__modal-corner_topleft modal-content__corner"
@@ -4526,7 +4611,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">BOOTS</p>
+								<p class="slot-wrap__title">Boots</p>
 								<div id="tryon-boots-slot"
 									class="slot-wrap__slot slot__body slot__body_boots  slot__body_boots-background fitting_slot">
 									<img class="fitting-slot__modal-corner_topleft modal-content__corner"
@@ -4685,15 +4770,65 @@
 
 	<div id="inventory-item-modal" class="wrapper__item-modal-overlay">
 		<div class="board body__item-detail">
+			<!-- <img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg"> -->
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
 			<span id="btn-close-item-detail-modal" class="item-detail__btn-close"></span>
 
-			<h2 class="item-modal-info">Info</h2>
+			<h2 class="item-modal-info quadriana-label" data-text="Info">Info</h2>
 
-			<div id="inventory-item-body">
+			<!-- --TEST-- -->
+			<!-- ТЕСТАОВАЯ ДАТА -->
+			<div id="inventory-item-body" class="inventory-item-body_character">
+				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
+					<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner" src="media/svg/inventory-modal/inventory-item-edge-basic.svg">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner" src="media/svg/inventory-modal/inventory-item-edge-basic.svg">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner" src="media/svg/inventory-modal/inventory-item-edge-basic.svg">
+						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner" src="media/svg/inventory-modal/inventory-item-edge-basic.svg">
+						<img id="inventory-item-modal-image" src="/media/characters/1.png">
+					</div>
+
+					<div class="header__text-item">
+
+						<p class="text-item__character" id="inventory-item-modal-name">Poker-Face</p>
+						<p class="text-item__type"><span id="inventory-item-modal-collection">Character</span> collection</p>
+
+
+						<div id="inventory-item-modal-features" class="header__text-item__props-item"></div>
+					</div>
+				</div>
+
+				<p id="inventory-item-modal-description" class="item-detail__description item-detail__description-weapons item-detail__description_active">This spades mischief-maker is full of surprises. Poker-Face is a confidant of the king of spades, capable of the most daring deeds. Don't pay attention to his smile, it's deceptive.</p>
+
+				<div class="detail-buttons item-detail__btns-wrap"><button id="inventory-item-modal-takeitoff" style="display: none;">Take it off</button><button id="inventory-item-modal-use" style="display: none;">Use</button><button id="go-to-inventory-btn-from-loot" class="go-inventory_from-loot go-inventory" style="display: none;">Go to inventory</button><button class="tryon_collection-character tryon" id="inventory-item-modal-tryon-collection" style="display: block;">Try on</button><button class="buy-now-btn" data-button="action">Buy now</button></div>
+			</div>
+			<!-- --TEST-- -->
+
+			<!-- <div id="inventory-item-body">
 				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
 					<div class="header__img-item item-modal-img-wrap list-items__item_epochal">
 						<img data-edge="inventory-item" class="board-edge_sm modal-content__corner">
@@ -4728,7 +4863,7 @@
 					<button id="go-to-inventory-btn-from-loot" class="go-inventory_from-loot go-inventory">Go to
 						inventory</button>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 	</div>

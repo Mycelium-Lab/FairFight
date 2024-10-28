@@ -11,9 +11,11 @@
         gap: 0px;
     }
     .finish-stats{
-        margin-top: 15px;
         border: none !important;
-        margin-bottom: 0px !important;
+        margin-bottom: 0;
+    }
+    .finish-stats:last-child {
+        margin-bottom: 16px !important;        
     }
     .yourStats_address, .enemyStats_address{
         margin-bottom: 0px !important;
@@ -39,6 +41,7 @@
 
     #over_modal .modal__title {
         font-size: 32px;
+        line-height: 39.1px;
     }
     #over_modal .modal__title::before {
         -webkit-text-stroke: 4px rgba(112, 15, 81, 1);

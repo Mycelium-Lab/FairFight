@@ -4489,8 +4489,8 @@ wrapper__nft-shop-modal .info__pricing button {
     height: 52.53px;
 }
 .close-button_finish-game {
-    margin-top: 15px;
-    padding-bottom: 8px;
+    margin: 19px auto 16px auto;
+    font-size: 14px;
 }
 
 .connect-button {

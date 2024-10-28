@@ -439,7 +439,7 @@
     background-repeat: no-repeat;
     align-items: center;
     /* background-image: url(../../../media/svg/game-over-frame.svg); */
-    gap: 20px;
+    gap: 16px;
     padding-top: 24px;
     position: relative;
     background-color: #FFFDF4;
