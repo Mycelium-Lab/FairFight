@@ -520,7 +520,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         background-image: url("../../../media/svg/default-frame.svg");
         background-size: 100%;
         background-repeat: no-repeat;
-        height: 270px;
+        height: 275px;
     }
 
     .wrapper__item-modal-overlay #nventory-nftbox-body .item-detail__btns-wrap {
@@ -1434,6 +1434,27 @@ background-position: center 11px;
     #inventory-item-body .header__text-item .text-item__character {font-size: 14px;}
 
     #inventory-item-modal .board.body__item-detail {border: none;}
+
+    #inventory-nftbox-modal .board {
+        border: none !important;
+        height: 360px !important;
+    }
+
+    #inventory-nftbox-modal .board div,
+    #inventory-nftbox-modal .board span,
+    #inventory-nftbox-modal .board p {
+        font-family: "Quadriana";
+    }
+
+    #nventory-nftbox-body {
+        background-image: none;
+        height: 290px;
+    }
+    
+    #inventory-close,
+    #inventory-nftbox-modal .item-detail__btn-close {
+        z-index: 10;
+    }
 }
 
 @media (max-width: 411px) {
