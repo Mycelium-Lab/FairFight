@@ -1,6 +1,6 @@
 
 #control_keys_mobile_modal{
-    display: none !important;
+    display: none;
 }
 
 @media(max-width: 1024px) {
