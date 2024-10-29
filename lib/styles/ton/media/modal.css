@@ -676,6 +676,47 @@
     .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button.active {
         color: var(--color-orange);
     }
+
+    .modal__over-body,
+    .modal__over-subtitle {
+        font-family: "Quadriana";
+    }
+
+    .modal__over-subtitle {
+        text-decoration: none;
+        color: var(--color-orange);font-size: 20px;
+    }
+
+    .modal__title-confirm_finish {
+        width: fit-content;
+        margin: 0 auto 13px auto !important;
+        font-size: 32px !important;
+    }
+    .modal__title-confirm_finish::before {
+        -webkit-text-stroke: 3px rgba(112, 15, 81, 1) !important;
+    }
+
+    #modal__body_confirm_finish p {
+        font-family: "Quadriana";
+        color: #7A7A7A !important;
+    }
+
+    #modal__body_confirm_finish p:first-of-type {
+        font-size: 20px;
+        line-height: 24.44px;
+        padding-bottom: 8px;
+    }
+
+    #modal__body_confirm_finish p:last-of-type {
+        font-size: 14px;
+        line-height: 17.11px;
+    }
+
+    #finishGame4 {
+        width: 140px !important;
+        font-size: 15px !important;
+        height: 40px !important;
+    }
 }
 
 /*@media(max-width: 420px) {

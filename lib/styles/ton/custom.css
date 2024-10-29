@@ -991,7 +991,7 @@ a {
     -webkit-text-stroke: 3px var(--color-text-border-disabled);
 }
 
-/* .inner-block__head button.active {
+.inner-block__head button.active {
     background: linear-gradient(to bottom,
             #FFDC2A 50%,
             #FF7558 80%,
@@ -1003,9 +1003,9 @@ a {
 .inner-block__head button.active::before {
     color: transparent;
     -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
-} */
+}
 
-/* .inner-block__head .active::after {
+.inner-block__head .active::after {
     position: absolute;
     left: 0;
     bottom: -7px;
@@ -1013,7 +1013,7 @@ a {
     width: 100%;
     height: 3px;
     background-color: var(--color-orange);
-} */
+}
 
 .quadriana-label {
     font-family: 'Quadriana';
@@ -3669,7 +3669,7 @@ wrapper__nft-shop-modal .info__pricing button {
     border-width: 2px;
 }
 
-.inventory-item-body_basic,
+.over-modal-bordered-wrapper,
 .inventory-item-body_character,
 .inventory-item-body_special,
 .inventory-item-body_rare,
@@ -3696,6 +3696,11 @@ wrapper__nft-shop-modal .info__pricing button {
                 2px 2px,
                 2px 4px,
                 0px 4px);
+}
+
+.over-modal-bordered-wrapper {
+    overflow: hidden;
+    background-color: #FFFDF4;
 }
             
 .inventory-item-body_basic,

@@ -379,6 +379,8 @@
 .list-wrap__item-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 #inventory-item-modal .board.body__item-detail {
     height: fit-content !important;

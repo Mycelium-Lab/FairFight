@@ -52,7 +52,7 @@
         grid-template-rows: 160px 60px 1fr;
     }
 
-    #new-approve-modal .wrapper__message-modal {
+    #new-appr   modal .wrapper__message-modal {
         height: 328px;
     }
     .message-modal__loader {
@@ -477,8 +477,15 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .modal .modal_content_finish {
         padding: 8px 31px !important;
-        height: 375px !important;
+        height: fit-content;
         max-width: 381px !important;
+    }
+    .modal .modal_content_finish .modal__title {
+        background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+        -webkit-background-clip: text;
+    }
+    .modal .modal_content_finish .modal__title::before {
+        -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
     }
     .modal .modal_content_finish .message-modal__btn-close {
         top: 7px !important;
@@ -891,7 +898,10 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
-    button {
+    .newgame_ton_btn,
+    .close-button,
+    .ton__menu-btn span,
+    .item-detail__btns-wrap button {
         text-shadow: rgba(57, 57, 57, 1) 0px 1px;;
     }
     .board {
@@ -1430,6 +1440,29 @@ background-position: center 11px;
         font-family: "Quadriana";
     }
 
+    #inventor-info-price-table {
+        position: absolute;
+        bottom: -10px;
+        width: 63px;
+        height: auto;
+    }
+
+    #inventor-info-price-symbol {
+        position: absolute;
+        bottom: -5px;
+        right: 23px;
+        width: 10px;
+        height: 10px;
+    }
+
+    #inventor-info-price {
+        position: absolute;
+        bottom: -9px;
+        right: 35px;
+        font-size: 10px;
+        font-family: "Teletactile";
+    }
+
     #inventory-item-body .p {font-size: 10px;}
     #inventory-item-body .header__text-item .text-item__character {font-size: 14px;}
 
@@ -1454,6 +1487,63 @@ background-position: center 11px;
     #inventory-close,
     #inventory-nftbox-modal .item-detail__btn-close {
         z-index: 10;
+    }
+    
+    .modal__over-body__inner {
+        gap: 16px;
+        padding: 13px 0 16px 0;
+        margin-right: 0;
+    }
+    .modal__over-body {padding-top: 0 !important;}
+
+    #over-modal-body {
+        max-height: 400px;
+        overflow-y: auto;
+        margin-right: 3px;
+    }
+
+    #over-modal-body::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    #over-modal-body::-webkit-scrollbar-track {
+        background: #FFFDF4; 
+      }
+       
+    #over-modal-body::-webkit-scrollbar-thumb {
+      background: #ff7c06; 
+    }
+
+    #close-button_finish-game  {font-size: 14px;}
+
+    .claim_nft_btn {
+        background-image: url(../../../media/svg/frame-btn.svg);
+        width: 110px;
+        background-position: center 5px;
+        transition: all 0.1s ease;
+        font-family: "Teletactile";
+        border: none;
+        background-color: transparent;
+        padding: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 30px;
+        color: #fff;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 35px;
+        position: absolute;
+        bottom: -32px;
+        right: 0;
+    }
+
+    #f2p_balance {position: relative;}
+
+    .claim_nft_btn:hover {
+        background-position: center 5px !important;
+        transition: all 0.1s ease;
+        padding-top: 5px;
+        background-image: url(../../../media/svg/orange-btn-press.svg)
     }
 }
 
