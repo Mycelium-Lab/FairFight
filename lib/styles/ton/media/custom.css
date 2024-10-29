@@ -1545,6 +1545,100 @@ background-position: center 11px;
         padding-top: 5px;
         background-image: url(../../../media/svg/orange-btn-press.svg)
     }
+
+    #sevenleader-table {
+        max-width: 100%;
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    #sevenleader-table::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    #sevenleader-table::-webkit-scrollbar-track {
+        background: #FFFDF4; 
+      }
+       
+    #sevenleader-table::-webkit-scrollbar-thumb {
+      background: #ff7c06; 
+    }
+
+    #sevenleader-table thead th {font-size: 10px;}
+    #sevenleader-table thead th img {
+        width: 13.7px;
+        height: 13.7px;
+        margin-left: 1px;
+    }
+
+    #sevenleader-tablebody tr td {
+        font-size: 8px;
+    }
+
+    #sevenleader-tablebody tr td:nth-child(2) {
+        width: 80px;
+    }
+
+    .dataTables_paginate.paging_simple_numbers,
+    .dataTables_length label, .dataTables_filter {
+        margin: 0 !important;
+    }
+    .dataTables_length, .dataTables_filter {
+        width: fit-content;        
+    }
+    
+    .dataTables_filter {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .dataTables_paginate.paging_simple_numbers {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .dataTables_wrapper {overflow-x: hidden;}
+
+    #leaderboard_modal .board {
+        background-color: #FFFDF4 !important;
+    }
+
+    .dataTables_info {
+        padding-top: 10px !important;
+    }
+
+    .dataTables_info,
+    #sevenleader-table_previous,
+    #sevenleader-table_next {
+        font-size: 10px;
+    }
+
+    .paginate_button.current {
+        margin: 0 !important;
+        width: 16px !important;
+        height: 16px !important;
+        border-radius: 4px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px !important;
+    }
+
+    .dataTable_update_info {
+        font-size: 10px;
+        color: #B2B2B2;
+        font-weight: 500;
+    }
+
+    #leaderboard_modal .board {
+        padding-bottom: 5px !important;
+    }
 }
 
 @media (max-width: 411px) {
