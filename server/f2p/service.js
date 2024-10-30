@@ -425,9 +425,7 @@ export async function getPastFights(player, chainid) {
         const res = await pgClient.query(
             query,
             [player]
-        )
-        console.log('res.rows-----------------', res.rows);
-        
+        )        
         return {
             code: 200,
             msg: 'Past fights',
