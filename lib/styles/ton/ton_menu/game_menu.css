@@ -1,45 +1,300 @@
-
 @media (max-width: 500px) {
 
 
-    #opengames-list-f2p, #pastgames-list-f2p, #opengames-list, #pastgames-list {
+    #pastgames-list-f2p-evm,
+    #opengames-list-f2p,
+    #pastgames-list-f2p,
+    #opengames-list,
+    #pastgames-list {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
+
     #pastgames-list-f2p {
         margin-bottom: 0 !important;
     }
 
-    #opengames-f2p, #opengames {
+    #opengames-f2p,
+    #opengames {
         background-image: none !important;
     }
-    #pastgames-f2p, #pastgames {
-        /* min-height: 100px; */
-        background-image: none !important;
+
+    #opengames-f2p,
+    #pastgames-f2p-evm,
+    #pastgames-f2p,
+    #pastgames {
         background-color: #fffdf4;
-        border: 1px solid var(--color-orange);
-        border-radius: 3px;
-
-        -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
-        -moz-box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
-        box-shadow: 0px 0px 0px 2px rgba(255, 200, 151, 0.2) inset;
+        position: relative;
+        max-width: calc(100% - 15px) !important;
+        transform: translateX(-5px);
+        overflow: visible;
     }
-    #pastgames-f2p.empty, #pastgames.empty {
+
+    #opengames-f2p {background-color: transparent;}
+
+    #opengames-list-f2p .games__row.border-style,
+    #pastgames-f2p-evm table,
+    #pastgames-f2p table,
+    #pastgames table {
+        width: calc(100% - 25px);
+        margin-left: 5px;
+    }
+    
+    #opengames-list-f2p .games__row.border-style {
+        width: calc(100% - 18px) !important;
+
+    }
+
+    #pastgames-f2p .four-color-border-block,
+    #pastgames-f2p-evm .four-color-border-block {
+        z-index: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal,
+    #pastgames-f2p-evm .four-color-border-block .horizontal {
+        width: 100%;
+        height: 1px !important;
+        left: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical,
+    #pastgames-f2p-evm .four-color-border-block .vertical {
+        height: 100%;
+        width: 1px !important;
+        top: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.top-2,
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-2,
+    #pastgames-f2p .four-color-border-block .vertical.left-2,
+    #pastgames-f2p .four-color-border-block .vertical.right-2,
+    #pastgames-f2p .four-color-border-block .squrale,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.top-2,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-2,
+    #pastgames-f2p-evm .four-color-border-block .vertical.left-2,
+    #pastgames-f2p-evm .four-color-border-block .vertical.right-2,
+    #pastgames-f2p-evm .four-color-border-block .squrale {
+        background-color: var(--color-brown);
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.top-1,
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-1,
+    #pastgames-f2p .four-color-border-block .vertical.left-1,
+    #pastgames-f2p .four-color-border-block .vertical.right-1,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.top-1,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-1,
+    #pastgames-f2p-evm .four-color-border-block .vertical.left-1,
+    #pastgames-f2p-evm .four-color-border-block .vertical.right-1 {
+        background-color: #FFC897;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal,
+    #pastgames-f2p-evm .four-color-border-block .horizontal {
+        width: calc(100% - 2px);
+        left: 1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical,
+    #pastgames-f2p-evm .four-color-border-block .vertical {
+        height: calc(100% - 2px);
+        top: 1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.top-1,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.top-1 {
+        top: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-1,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-1 {
+        bottom: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical.left-1,
+    #pastgames-f2p-evm .four-color-border-block .vertical.left-1 {
+        left: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical.right-1,
+    #pastgames-f2p-evm .four-color-border-block .vertical.right-1 {
+        right: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.top-2,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.top-2 {
+        top: -1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-2,
+    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-2 {
+        bottom: -1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical.left-2,
+    #pastgames-f2p-evm .four-color-border-block .vertical.left-2 {
+        left: -1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .vertical.right-2,
+    #pastgames-f2p-evm .four-color-border-block .vertical.right-2 {
+        right: -1px;
+    }
+
+    #pastgames-f2p-evm .four-color-border-block .squrale,
+    #pastgames-f2p .four-color-border-block .squrale {
+        width: 1px;
+        height: 1px;
+    }
+
+    #pastgames-f2p .four-color-border-block .squrale.one,
+    #pastgames-f2p-evm .four-color-border-block .squrale.one {
+        left: 0;
+        top: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .squrale.two,
+    #pastgames-f2p-evm .four-color-border-block .squrale.two {
+        right: 0;
+        top: 0;
+    }
+
+    #pastgames-f2p .four-color-border-block .squrale.three,
+    #pastgames-f2p-evm .four-color-border-block .squrale.three {
+        right: 0;
+        bottom: 0;
+        left: auto;
+    }
+
+    #pastgames-f2p .four-color-border-block .squrale.four,
+    #pastgames-f2p-evm .four-color-border-block .squrale.four {
+        left: 0;
+        bottom: 0;
+        right: auto;
+    }
+
+    .simplebar-track.simplebar-vertical {
+        width: 7px;
+        background-color: transparent;
+    }
+
+    .simplebar-track.simplebar-vertical::after {
+        content: '';
+        width: 1px;
+        height: 100%;
+        background-color: #393939;
+        position: absolute;
+        right: 50%;
+        top: 0;
+    }
+
+    .simplebar-scrollbar {
+        z-index: 10;
+        clip-path: polygon(0px calc(100% - 2px),
+                1px calc(100% - 2px),
+                1px calc(100% - 1px),
+                2px calc(100% - 1px),
+                2px 100%,
+                calc(100% - 2px) 100%,
+                calc(100% - 2px) calc(100% - 1px),
+                calc(100% - 1px) calc(100% - 1px),
+                calc(100% - 1px) calc(100% - 2px),
+                100% calc(100% - 2px),
+                100% 2px,
+                calc(100% - 1px) 2px,
+                calc(100% - 1px) 1px,
+                calc(100% - 2px) 1px,
+                calc(100% - 2px) 0px,
+                2px 0px,
+                2px 1px,
+                1px 1px,
+                1px 2px,
+                0px 2px);
+        position: relative;
+        background-color: #ff7c06;
+    }
+
+    .simplebar-scrollbar::before {
+        content: "";
+        position: absolute;
+        clip-path: polygon(0px calc(100% - 2px),
+                1px calc(100% - 2px),
+                1px calc(100% - 1px),
+                2px calc(100% - 1px),
+                2px 100%,
+                calc(100% - 2px) 100%,
+                calc(100% - 2px) calc(100% - 1px),
+                calc(100% - 1px) calc(100% - 1px),
+                calc(100% - 1px) calc(100% - 2px),
+                100% calc(100% - 2px),
+                100% 2px,
+                calc(100% - 1px) 2px,
+                calc(100% - 1px) 1px,
+                calc(100% - 2px) 1px,
+                calc(100% - 2px) 0px,
+                2px 0px,
+                2px 1px,
+                1px 1px,
+                1px 2px,
+                0px 2px,
+                0px 50%,
+                2px 50%,
+                2px 3px,
+                3px 3px,
+                3px 2px,
+                calc(100% - 3px) 2px,
+                calc(100% - 3px) 3px,
+                calc(100% - 2px) 3px,
+                calc(100% - 2px) calc(100% - 3px),
+                calc(100% - 3px) calc(100% - 3px),
+                calc(100% - 3px) calc(100% - 2px),
+                3px calc(100% - 2px),
+                3px calc(100% - 3px),
+                2px calc(100% - 3px),
+                2px 50%,
+                0px 50%);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ff7c06;
+        display: block;
+        pointer-events: none;
+    }   
+
+    #pastgames-f2p.empty,
+    #pastgames.empty,
+    #pastgames-f2p.empty::after,
+    #pastgames.empty::after {
+        clip-path: none;
+    }
+
+    #pastgames-f2p.empty::after,
+    #pastgames.empty::after {
         background: none !important;
-        border: none;
-        box-shadow: none;
     }
 
-    #pastgames-list, #pastgames-list-f2p {
+    #pastgames-list-f2p-evm,
+    #pastgames-list-f2p {
+        overflow-x: hidden;
+        margin: 0;
+    }
+
+    #pastgames-list-f2p-evm,
+    #pastgames-list,
+    #pastgames-list-f2p {
         max-height: 203px;
         overflow-y: auto;
+        width: calc(100% + 12px);
     }
-    #opengames-list, #opengames-list-f2p {
-        max-height: 343px;
-        min-height: 140px;
+    
+    #opengames-list,
+    #opengames-list-f2p {
+        height: 212px;
         overflow-y: auto;
         overflow-x: hidden;
+        width: calc(100% + 12px);
+        margin: 0;
     }
 
     .games__row {
@@ -55,6 +310,7 @@
         position: absolute;
         padding: 0;
     }
+
     .games__row .close-button span {
         position: relative;
         top: 0;
@@ -68,6 +324,7 @@
         align-items: center;
         justify-content: center;
     }
+
     .games__row .withdraw-button span {
         font-size: 7px;
     }
@@ -76,7 +333,7 @@
         max-width: calc(100vw - 40px);
         width: 100%;
     }
-    
+
     /* Same styles as f2p */
     .pastgame_content {
         max-width: calc(100vw - 40px);
@@ -101,7 +358,8 @@
         display: none;
     }
 
-    #f2p_checker, #f2p-text {
+    #f2p_checker,
+    #f2p-text {
         position: absolute;
         visibility: hidden;
     }
@@ -117,9 +375,11 @@
         top: 0;
         transform: translateY(-100%);
     }
+
     .ton__content-inner.next_step {
         /* transform: translateY(100px); */
     }
+
     .ton__menu-pic.next_step {
         transform: translateY(-50px) scale(1.15) !important;
         z-index: 0;
@@ -138,6 +398,7 @@
         align-items: flex-start;
         gap: 4px;
     }
+
     .f2p_balance__value {
         font-family: "Teletactile";
         font-size: 20px;
@@ -146,6 +407,7 @@
         text-shadow: 0px 2px 0 #17171779, 2px 2px 2px #39393957;
         margin-top: 4px;
     }
+
     .f2p_balance__icon {
         width: 24px;
         height: 24px;
@@ -154,7 +416,48 @@
     /* TOURNAMENTS */
 
     #leaderboard_modal .board {
-        padding-bottom: 25px !important;
+        padding: 15px 6px !important;
+        border: 1px solid #FFC897;
+        border-width: 1px !important;
+    }
+
+    #leaderboard_modal .board .border-contur {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #leaderboard_modal .board .border-contur span {
+        position: absolute;
+        background-color: var(--color-orange);
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(1),
+    #leaderboard_modal .board .border-contur span:nth-of-type(2) {
+        width: calc(100% + 3px);
+        height: 1px;
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(3),
+    #leaderboard_modal .board .border-contur span:nth-of-type(4) {
+        height: calc(100% + 4px);
+        width: 1px;
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(1) {
+        top: -2px;
+        left: -2px;
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(2) {
+        bottom: -2px;
+        left: -2px;
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(3) {
+        top: -2px;
+        left: -2px;
+    }
+    #leaderboard_modal .board .border-contur span:nth-of-type(4) {
+        top: -2px;
+        right: -2px;
     }
 
     .sorting_1 {
