@@ -18,7 +18,6 @@
     .finish-stats{
         margin-top: 15px;
         border: none !important;
-        margin-bottom: 0px !important;
     }
     .yourStats_address, .enemyStats_address{
         margin-bottom: 0px !important;
@@ -332,6 +331,10 @@
     /* #joystick-control {
         display: none;
     } */
+
+    .finish-stats {
+        margin: 0 0 4px 0;
+    }
 
 }
 

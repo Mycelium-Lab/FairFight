@@ -35,9 +35,6 @@
     .about-header {
         margin-bottom: 20px;
     }
-    .wrapper__message-modal {
-        padding: 25px 27px 5px 27px;
-    }
     /*.wrapper__message-modal_waiting{
       height: 340px;
     }*/
@@ -55,7 +52,7 @@
         grid-template-rows: 160px 60px 1fr;
     }
 
-    #new-approve-modal .wrapper__message-modal {
+    #new-appr   modal .wrapper__message-modal {
         height: 328px;
     }
     .message-modal__loader {
@@ -278,7 +275,7 @@
         display: flex;
         justify-content: center;
         display: block;
-        background-image: url("../../../media/mobile/pastgames-table-horizontal.svg");
+        /* background-image: url("../../../media/mobile/pastgames-table-horizontal.svg"); */
         width: 420px;
         background-repeat: no-repeat;
     }
@@ -480,8 +477,15 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .modal .modal_content_finish {
         padding: 8px 31px !important;
-        height: 375px !important;
+        height: fit-content;
         max-width: 381px !important;
+    }
+    .modal .modal_content_finish .modal__title {
+        background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+        -webkit-background-clip: text;
+    }
+    .modal .modal_content_finish .modal__title::before {
+        -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
     }
     .modal .modal_content_finish .message-modal__btn-close {
         top: 7px !important;
@@ -523,7 +527,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         background-image: url("../../../media/svg/default-frame.svg");
         background-size: 100%;
         background-repeat: no-repeat;
-        height: 270px;
+        height: 275px;
     }
 
     .wrapper__item-modal-overlay #nventory-nftbox-body .item-detail__btns-wrap {
@@ -894,6 +898,12 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    .newgame_ton_btn,
+    .close-button,
+    .ton__menu-btn span,
+    .item-detail__btns-wrap button {
+        text-shadow: rgba(57, 57, 57, 1) 0px 1px;;
+    }
     .board {
         --border-board: 2px solid rgba(57, 57, 57, 1);
         border-radius: 0px;
@@ -1077,7 +1087,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         font-size: 16px;
     }
     .inner-block {
-        padding: 10px 15px;
+        padding: 8px;
         height: 214px;
         grid-area: 3/1/4/1;
     }
@@ -1334,11 +1344,19 @@ background-position: center 11px;
     .player-visible-mobile {
         display: block;
         left: 200px;
+        max-width: 99px;
     }
     .item-modal-info {
-        font-size: 21.67px !important;
-        margin-top: 14px !important;
-        margin-bottom: 5px !important;
+        font-size: 32px !important;
+        margin: 14px auto 5px auto !important;
+        font-family: "Quadriana";
+        color: transparent;
+        background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+        -webkit-background-clip: text;
+    }
+    .item-modal-info::before {
+        z-index: 0;
+        width: 100%;
     }
     .wrapper__item-modal-overlay .body__item-detail {
         padding-bottom: 20px !important;
@@ -1402,6 +1420,224 @@ background-position: center 11px;
     }
     .sort-wrapper {
         margin-left: 4px;
+    }
+    
+    .simplebar-content {
+        padding: 0 !important;
+        gap: 10px !important;
+    }
+    .simplebar-content-wrapper {padding: 0 !important;}
+
+    #opengames-list-f2p .simplebar-content,
+    #pastgames-list-f2p .simplebar-content,
+    #opengames-list-f2p-evm .simplebar-content,
+    #pastgames-list-f2p-evm .simplebar-content {
+        grid-template-columns: 1fr !important;
+
+    }
+
+    #inventory-item-body {
+        font-family: "Quadriana";
+    }
+
+    #inventor-info-price-table {
+        position: absolute;
+        bottom: -10px;
+        width: 63px;
+        height: auto;
+    }
+
+    #inventor-info-price-symbol {
+        position: absolute;
+        bottom: -5px;
+        right: 23px;
+        width: 10px;
+        height: 10px;
+    }
+
+    #inventor-info-price {
+        position: absolute;
+        bottom: -9px;
+        right: 35px;
+        font-size: 10px;
+        font-family: "Teletactile";
+    }
+
+    #inventory-item-body .p {font-size: 10px;}
+    #inventory-item-body .header__text-item .text-item__character {font-size: 14px;}
+
+    #inventory-item-modal .board.body__item-detail {border: none;}
+
+    #inventory-nftbox-modal .board {
+        border: none !important;
+        height: 360px !important;
+    }
+
+    #inventory-nftbox-modal .board div,
+    #inventory-nftbox-modal .board span,
+    #inventory-nftbox-modal .board p {
+        font-family: "Quadriana";
+    }
+
+    #nventory-nftbox-body {
+        background-image: none;
+        height: 290px;
+    }
+    
+    #inventory-close,
+    #inventory-nftbox-modal .item-detail__btn-close {
+        z-index: 10;
+    }
+    
+    .modal__over-body__inner {
+        gap: 16px;
+        padding: 13px 0 16px 0;
+        margin-right: 0;
+    }
+    .modal__over-body {padding-top: 0 !important;}
+
+    #over-modal-body {
+        max-height: 400px;
+        overflow-y: auto;
+        margin-right: 3px;
+    }
+
+    #over-modal-body::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    #over-modal-body::-webkit-scrollbar-track {
+        background: #FFFDF4; 
+      }
+       
+    #over-modal-body::-webkit-scrollbar-thumb {
+      background: #ff7c06; 
+    }
+
+    #close-button_finish-game  {font-size: 14px;}
+
+    .claim_nft_btn {
+        background-image: url(../../../media/svg/frame-btn.svg);
+        width: 110px;
+        background-position: center 5px;
+        transition: all 0.1s ease;
+        font-family: "Teletactile";
+        border: none;
+        background-color: transparent;
+        padding: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 30px;
+        color: #fff;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 35px;
+        position: absolute;
+        bottom: -32px;
+        right: 0;
+    }
+
+    #f2p_balance {position: relative;}
+
+    .claim_nft_btn:hover {
+        background-position: center 5px !important;
+        transition: all 0.1s ease;
+        padding-top: 5px;
+        background-image: url(../../../media/svg/orange-btn-press.svg)
+    }
+
+    #sevenleader-table {
+        max-width: 100%;
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    #sevenleader-table::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    #sevenleader-table::-webkit-scrollbar-track {
+        background: #FFFDF4; 
+      }
+       
+    #sevenleader-table::-webkit-scrollbar-thumb {
+      background: #ff7c06; 
+    }
+
+    #sevenleader-table thead th {font-size: 10px;}
+    #sevenleader-table thead th img {
+        width: 13.7px;
+        height: 13.7px;
+        margin-left: 1px;
+    }
+
+    #sevenleader-tablebody tr td {
+        font-size: 8px;
+    }
+
+    #sevenleader-tablebody tr td:nth-child(2) {
+        width: 80px;
+    }
+
+    .dataTables_paginate.paging_simple_numbers,
+    .dataTables_length label, .dataTables_filter {
+        margin: 0 !important;
+    }
+    .dataTables_length, .dataTables_filter {
+        width: fit-content;        
+    }
+    
+    .dataTables_filter {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .dataTables_paginate.paging_simple_numbers {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .dataTables_wrapper {overflow-x: hidden;}
+
+    #leaderboard_modal .board {
+        background-color: #FFFDF4 !important;
+    }
+
+    .dataTables_info {
+        padding-top: 10px !important;
+    }
+
+    .dataTables_info,
+    #sevenleader-table_previous,
+    #sevenleader-table_next {
+        font-size: 10px;
+    }
+
+    .paginate_button.current {
+        margin: 0 !important;
+        width: 16px !important;
+        height: 16px !important;
+        border-radius: 4px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px !important;
+    }
+
+    .dataTable_update_info {
+        font-size: 10px;
+        color: #B2B2B2;
+        font-weight: 500;
+    }
+
+    #leaderboard_modal .board {
+        padding-bottom: 5px !important;
     }
 }
 

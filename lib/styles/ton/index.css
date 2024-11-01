@@ -535,7 +535,7 @@ th.sorting::after {
         max-width: calc(100% - 10px);
     }
     .inner-block__head_mid_wrap {
-        flex-direction: column;
+        gap: 15px;
     }
 }
 @media (max-width: 800px) {
@@ -966,21 +966,92 @@ textarea {
 .figure {
     display: flex;
     align-items: center;
+    gap: 5px;
     background-color: white;
-    border: 2px solid;
     border-radius: 10px;
     margin-left: 10px;
+    position: relative;
+    border: none;
+    padding: 4px 5px;
+    clip-path: polygon(0px calc(100% - 4px),
+        2px calc(100% - 4px),
+        2px calc(100% - 2px),
+        4px calc(100% - 2px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 2px) 4px,
+        calc(100% - 2px) 2px,
+        calc(100% - 4px) 2px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 2px,
+        2px 2px,
+        2px 4px,
+        0px 4px);
 }
+
+.figure::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0px,
+            4px 0px,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0px 4px,
+            0px 50%,
+            2px 50%,
+            2px 4px,
+            4px 4px,
+            4px 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 4px),
+            calc(100% - 4px) calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px 50%,
+            0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    pointer-events: none;
+}
+
 .figure:nth-child(2n) {
     page-break-after: always;
 }
 
-.token-active {
-    border-color: #ff7c06;
+.token-active::after {    
+    background: var(--color-orange);
 }
 
-.token-deactive {
-    border-color: #c6c6c6;
+.token-deactive::after {
+    background: #A8A8A8;
 }
 
 .figure img {
@@ -990,11 +1061,13 @@ textarea {
 }
 
 .caption {
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 450;
     text-align:justify;
     margin-top: 3.5px;
     margin-right: 10px;
+    font-family: "Quadriana";
+    color: #A7A7A7;
 }
 
 #weapons-img, #armor-img, #boots-img {

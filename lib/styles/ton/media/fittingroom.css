@@ -7,10 +7,7 @@
     }
     
     .modal__header-title_fitting{
-        width: 224.25px;
-        background-size: 100%;
         margin: 0 auto;
-        height: 16.86px;
     }
     .fitting__modal-content{
         padding-top: 30.41px;
@@ -270,15 +267,27 @@
         margin-top: 0px;
     }
     .head__showcase-title{
-        font-size: 16.67px;
-        padding-bottom: 2px;
-        border-width: 1px;
-        padding-top: 10px;
+        font-size: 20px;
+        padding-bottom: 0px;
+        border-bottom: 1px solid #FF7C06;
+        padding-top: 4px;
+        font-family: "Quadriana";
+        background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+        -webkit-background-clip: text;
     }
-    .modal__header-title_fitting{
-        background-image: url('../../../media/svg/shop/fitting-room-title-mobile.svg');
-        margin-top: 30px;
+    .modal__header-title_fitting {
+        background-image: none;
+        margin-top: 12px;
         margin-bottom: 0px;
+        font-size: 32px;
+        font-family: "Quadriana";
+        text-align: center;
+        letter-spacing: -1px;
+        background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+    }
+    .modal__header-title_fitting::before {
+        z-index: 0 !important;
+        width: 100%;
     }
     .slot-wrap__slot{
         width: 52.29px;
