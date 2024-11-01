@@ -389,7 +389,7 @@
         background-position: initial !important;
     }
     .wrapper__nft-shop-modal .list-items__item {
-        margin-right: 20px;
+        margin: 0;
         width: 87.71px !important;
         height: 87.71px !important;
         left: 5px;
@@ -1423,7 +1423,7 @@ background-position: center 11px;
     }
     
     .simplebar-content {
-        padding: 0 !important;
+        padding: 5px 0 !important;
         gap: 10px !important;
     }
     .simplebar-content-wrapper {padding: 0 !important;}
@@ -1577,7 +1577,24 @@ background-position: center 11px;
     }
 
     #sevenleader-tablebody tr td:nth-child(2) {
-        width: 80px;
+        width: 60px;
+    }
+
+    #sevenleader-tablebody tr td:nth-child(2) a {
+        color: #0d6efd;
+    }
+
+    /* .inventory-item-body_basic::after,
+    .inventory-item-body_character::after {
+        background: none;
+    } */
+
+    #nft-shop-armors-list .simplebar-content,
+    #nft-shop-weapons-list .simplebar-content,
+    #nft-shop-boots-list .simplebar-content,
+    #nft-shop-characters-list .simplebar-content {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 25px;
     }
 
     .dataTables_paginate.paging_simple_numbers,
