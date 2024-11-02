@@ -460,7 +460,7 @@ export async function getBoard(req, res) {
                 if (!username) {
                     res.status(401).send('no username')
                 } else {
-                    const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND (chainid IS NULL || chainid=999999)", [username])
+                    const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND (chainid IS NULL OR chainid=999999)", [username])
                     res.status(200).json({
                         board: resDB.rows[0]
                     })
