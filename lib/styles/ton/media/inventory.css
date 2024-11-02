@@ -291,11 +291,7 @@
     width: 340px !important;
     /*margin-right: 30px;*/
 }
-.list-wrap__item-list {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 13px;
-    padding-left: 0px;
-}
+
 .inventory__header-title{
     padding-bottom: 0;
     margin-bottom: 8px;
@@ -379,8 +375,7 @@
 .list-wrap__item-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    margin-top: 5px;
-    margin-left: 5px;
+    row-gap: 50px;
 }
 #inventory-item-modal .board.body__item-detail {
     height: fit-content !important;

@@ -379,7 +379,7 @@
 
     /* MODAL */
     .wrapper__message-modal {
-        max-width: calc(100vw - 40px) !important;
+        max-width: calc(100vw - 10px) !important;
         max-height: 90vh;
     }
 
