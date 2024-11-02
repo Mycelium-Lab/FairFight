@@ -299,7 +299,7 @@ export async function getFightsWithNullFinish(chainid) {
             LEFT JOIN 
                 players_f2p p ON g.gameid = p.gameid
             WHERE 
-                g.finishTime IS NULL AND (g.chainid = NULL OR g.chainid = 999999)
+                g.finishTime IS NULL AND (g.chainid IS NULL OR g.chainid = 999999)
             GROUP BY 
                 g.gameid;
             `
@@ -370,7 +370,7 @@ export async function getPastFights(player, chainid) {
                 statistics_f2p s ON g.gameid = s.gameid
             WHERE 
                 g.finishTime IS NOT NULL
-                AND (g.chainid = NULL OR g.chainid = 999999)
+                AND (g.chainid IS NULL OR g.chainid = 999999)
                 AND EXISTS (
                     SELECT 1
                     FROM statistics_f2p s2
@@ -460,7 +460,7 @@ export async function getBoard(req, res) {
                 if (!username) {
                     res.status(401).send('no username')
                 } else {
-                    const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND (chainid = NULL || chainid=999999)", [username])
+                    const resDB = await pgClient.query("SELECT * FROM board_f2p WHERE player=$1 AND (chainid IS NULL || chainid=999999)", [username])
                     res.status(200).json({
                         board: resDB.rows[0]
                     })
