@@ -703,43 +703,95 @@
 </div>
 <div id="over_modal" class="modal" style="display: none;">
 	<div class="board modal_content_finish modal_content">
+		<div class="four-color-border-block ">
+			<span class="horizontal top-1"></span>
+			<span class="horizontal top-2"></span>
+			<span class="horizontal top-3"></span>
+			<span class="horizontal top-4"></span>
+			<span class="horizontal bottom-1"></span>
+			<span class="horizontal bottom-2"></span>
+			<span class="horizontal bottom-3"></span>
+			<span class="horizontal bottom-4"></span>
+			<span class="vertical left-1"></span>
+			<span class="vertical left-2"></span>
+			<span class="vertical left-3"></span>
+			<span class="vertical left-4"></span>
+			<span class="vertical right-1"></span>
+			<span class="vertical right-2"></span>
+			<span class="vertical right-3"></span>
+			<span class="vertical right-4"></span>
+			<span class="squrale one"></span>
+			<span class="squrale two"></span>
+			<span class="squrale three"></span>
+			<span class="squrale four"></span>
+		</div>
+		<!-- <img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg"> -->
 		<button class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-		<div class="modal__title">Game over</div>
+		<div class="modal__title quadriana-label" data-text="Game over">Game over</div>
 		<div class="modal__over-body">
 			<div id="over-modal-body" class="modal__over-body__inner border-style">
-				<div class="corn corn1"></div>
+				<!-- <div class="corn corn1"></div>
 				<div class="corn corn2"></div>
 				<div class="corn corn3"></div>
-				<div class="corn corn4"></div>
+				<div class="corn corn4"></div> -->
 				<div class="modal__over-subtitle">Players & stats</div>
-				<div class="finish-stats">
-					<div class="yourStats__header">
-						<p>You</p>
-					</div>
-					<div class="yourStats">
-						<span id="yourAmountWinLose"></span>
-						<div class="yourKills_stat">
-							<span class="yourKillsTitle">Kills:</span>
-							<span class="yourKills" id="yourKills"></span>
+					<div class="finish-stats">
+						<div class="yourStats__header">
+							<p>You</p>
 						</div>
-						<div class="yourDep_stat">
-							<span class="yourDepTitle">Dep:</span>
-							<span id="yourDep"></span>
+						<div class="yourStats">
+							<span class="yourAmountWinLoses_stat">
+								<span class="yourAmountWinLoseTitle">Win:</span>
+								<span class="yourAmountWinLoses" id="yourAmountWinLoses">10 ROSE</span>
+							</span>
+							<div class="yourKills_stat">
+								<span class="yourKillsTitle">Kills:</span>
+								<span class="yourKills" id="yourKills">10</span>
+							</div>
+							<div class="yourDep_stat">
+								<span class="yourDepTitle">Dep:</span>
+								<span id="yourDep">22 rose</span>
+							</div>
+							<div class="yourDeaths_stat">
+								<span class="yourDeathsTitle">Deaths:</span>
+								<span class="yourDeaths" id="yourDeaths">10</span>
+							</div>
 						</div>
-						<div class="yourDeaths_stat">
-							<span class="yourDeathsTitle">Deaths:</span>
-							<span class="yourDeaths" id="yourDeaths"></span>
+						<div class="yourStats_address">
+							<span class="your_address">Wallet: </span>
+							<a class="finish_modal_your_address" id="finish_modal_your_address">0xE8D5...319c4</a>
 						</div>
 					</div>
-					<div class="yourStats_address">
-						<span class="your_address">Wallet: </span>
-						<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
+					<div class="finish-stats">
+						<div class="yourStats__header">
+							<p>ENEMY</p>
+						</div>
+						<div class="yourStats">
+							<span class="yourAmountWinLoses_stat">
+								<span class="yourAmountWinLoseTitle lose">Lose:</span>
+								<span class="yourAmountWinLoses lose" id="yourAmountWinLoses">6 ROSE</span>
+							</span>
+							<div class="yourKills_stat">
+								<span class="yourKillsTitle">Kills:</span>
+								<span class="yourKills" id="yourKills">6</span>
+							</div>
+							<div class="yourDep_stat">
+								<span class="yourDepTitle">Dep:</span>
+								<span id="yourDep">22 rose</span>
+							</div>
+							<div class="yourDeaths_stat">
+								<span class="yourDeathsTitle">Deaths:</span>
+								<span class="yourDeaths" id="yourDeaths">10</span>
+							</div>
+						</div>
+						<div class="yourStats_address">
+							<span class="your_address">Wallet: </span>
+							<a class="finish_modal_your_address" id="finish_modal_your_address">0x4u5...Gt4k</a>
+						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<button id="finishGame" class='close-button_finish-game close-button'>exit</button>
@@ -930,13 +982,35 @@
 <!-- Pause modal -->
 <div id="pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay" style="display: none">
 	<div class="board wrapper__message-modal modal_content">
+		<!-- <img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
 		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
 		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
+		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg"> -->
+		<div class="four-color-border-block ">
+			<span class="horizontal top-1"></span>
+			<span class="horizontal top-2"></span>
+			<span class="horizontal top-3"></span>
+			<span class="horizontal top-4"></span>
+			<span class="horizontal bottom-1"></span>
+			<span class="horizontal bottom-2"></span>
+			<span class="horizontal bottom-3"></span>
+			<span class="horizontal bottom-4"></span>
+			<span class="vertical left-1"></span>
+			<span class="vertical left-2"></span>
+			<span class="vertical left-3"></span>
+			<span class="vertical left-4"></span>
+			<span class="vertical right-1"></span>
+			<span class="vertical right-2"></span>
+			<span class="vertical right-3"></span>
+			<span class="vertical right-4"></span>
+			<span class="squrale one"></span>
+			<span class="squrale two"></span>
+			<span class="squrale three"></span>
+			<span class="squrale four"></span>
+		</div>
 		<button id="about_modal_close" onclick="unpauseBtn()"
 			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-		<h2 class="pause__title">Finish the game</h2>
+		<h2 class="pause__title quadriana-label" data-text="Finish the game">Finish the game</h2>
 		<div class="pause__content">
 			<p>Are you sure that you want to complete the game?</p>
 			<p><span id="yourFinishBalance-ton">Loading...</span> (your in-game balance) will return to your wallet</p>
