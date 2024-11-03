@@ -253,6 +253,10 @@
     }
 }
 @media(max-width: 500px) {
+    .fitting_slots .slots__slot-wrap p {
+        font-family: "Quadriana";
+        color: var(--color-black);
+    }
     .fitting__modal-content{
         width: 352px !important;
         height: 405.64px !important;
