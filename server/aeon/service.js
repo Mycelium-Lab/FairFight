@@ -29,7 +29,9 @@ export async function sign(req, res) {
         const initData = new URLSearchParams( initDataURI );
         initData.sort();
         const hash = initData.get( "hash" );
-        const username = initData.get( "username" )
+        const user = initData.get( "user" )
+        const userObject = JSON.parse(user);
+        const username = userObject.username
         initData.delete( "hash" );
         const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
         const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
