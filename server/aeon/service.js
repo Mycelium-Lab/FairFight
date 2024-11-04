@@ -70,11 +70,11 @@ export async function sign(req, res) {
                     );                    
                     const aeon_order_id = aeon_order.rows[0].id        
                     // JSON data
+                        // "customParam": "{\"botName\":\"FairFightBot\",\"orderDetail\":\"${nftItem.name}\"}",
                     const jsonData = `{
                         "appId": "${process.env.AEON_APPID}",
                         "callbackURL": "https://fairfight.fairprotocol.solutions/aeon/callback",
                         "redirectURL": "https://t.me/fairfights_bot?startapp",
-                        "customParam": "{\"botName\":\"FairFightBot\",\"orderDetail\":\"${nftItem.name}\"}",
                         "merchantOrderNo": "${aeon_order_id}",
                         "orderAmount": "${nftItem.price}",
                         "payCurrency": "USD",
@@ -89,6 +89,7 @@ export async function sign(req, res) {
                     // Add sign to Object and verify
                     resultMap.sign = result;
                     if (verifySHA({ ...resultMap }, secret)) {
+                        console.log('resultMap', resultMap)
                         await pgClient.query('UPDATE aeon_orders SET sign=$1 WHERE id=$2', [ result, aeon_order_id ])
                         res.status(200).json(resultMap)
                     } else {
@@ -187,10 +188,13 @@ export async function verifyCallback(req, res) {
 
 // SHA512
 function SHAEncrypt(data, secret) {
-    const dataString = Object.keys(data)
+    let dataString = Object.keys(data)
         .sort()
         .map(key => `${key}=${data[key]}`)
         .join('&');
+    
+    dataString = dataString + `&key=${secret}`
+    console.log(dataString)
     
     return createHmac('sha512', secret)
         .update(dataString)
