@@ -716,8 +716,13 @@ CREATE TABLE aeon_orders (
     order_amount  FLOAT NOT NULL,
     sign          TEXT,
     finished      BOOLEAN NOT NULL,
+    nft_name      TEXT NOT NULL,
     nft_type      INT NOT NULL,
     nft_id        INT NOT NULL, 
     created_at    BIGINT NOT NULL,
-    finished_at   BIGINT
+    finished_at   BIGINT,
+    fail_reason   TEXT,
+    orderNo       TEXT,
+    orderStatus   TEXT,
+    nft_sended    BOOLEAN
 );

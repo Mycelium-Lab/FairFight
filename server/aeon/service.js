@@ -6,11 +6,20 @@ import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
 import weaponsJsons from '../../lib/jsons/weapons.json' assert { type: "json" };
 import { checkSignatureTG } from '../utils/utils';
 import db from "../db/db.js"
+import { Address, beginCell, internal, toNano } from 'ton-core';
+import { TonClient, WalletContractV4 } from 'ton';
 
 const pgClient = db()
 await pgClient.connect()
 
 dotenv.config()
+
+const mnemonic = process.env.MNEMONIC_TON || "nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice"
+const key = await mnemonicToWalletKey(mnemonic.split(" "));
+const wallet = WalletContractV4.create({ publicKey: key.publicKey, workchain: 0 });
+const tonClient = new TonClient({ endpoint: "https://toncenter.com/api/v2/jsonRPC", apiKey: process.env.TONCENTER_KEY });
+const walletContract = tonClient.open(wallet)
+const shopAddress = Address.parse('EQCaRsuhnrB6QIsDVD2pbXC9aPbsCQth_ZcQwv0GdJn7bC8t')
 
 export async function sign(req, res) {
     try {
@@ -51,10 +60,10 @@ export async function sign(req, res) {
                     const aeon_order = await pgClient.query(
                         `
                         INSERT INTO aeon_orders 
-                        ( player_wallet, username, order_amount, finished, nft_type, nft_id, created_at ) 
+                        ( player_wallet, username, order_amount, finished, nft_name, nft_type, nft_id, created_at ) 
                         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *
                         `,
-                        [ wallet,  username, nftItem.price, false, nftType, nftId, Date.now() ]
+                        [ wallet,  username, nftItem.price, false, nftItem.name, nftType, nftId, Date.now() ]
                     )
                     const aeon_order_id = aeon_order.rows[0].id        
                     // JSON data
@@ -88,7 +97,85 @@ export async function sign(req, res) {
             }
         }
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(500).send('something went wrong')
+    }
+}
+
+export async function verifyCallback(req, res) {
+    try {
+        const callbackData = req.body
+        if (callbackData.merchantOrderNo && callbackData.sign && callbackData.merchantOrderNo.trim() && callbackData.sign.trim()) {
+            const aeon_order = await pgClient.query('SELECT * FROM aeon_orders WHERE id=$1', [ callbackData.merchantOrderNo ] )
+            if (aeon_order.rows.length) {
+                const aeon_order_data = aeon_order.rows[0]
+                // const jsonData = `{
+                //     "appId": "${process.env.AEON_APPID}",
+                //     "callbackURL": "https://fairfight.fairprotocol.solutions/aeon/callback",
+                //     "redirectURL": "https://t.me/fairfights_bot?startapp",
+                //     "customParam": "{\"botName\":\"FairFightBot\",\"orderDetail\":\"${aeon_order_data.nft_name}\"}",
+                //     "merchantOrderNo": "${callbackData.merchantOrderNo}",
+                //     "orderAmount": "${aeon_order_data.order_amount}",
+                //     "payCurrency": "USD",
+                //     "userId": "${aeon_order_data.username}"
+                // }`
+                if (aeon_order_data.finished_at) {
+                    res.status(200).send('success')
+                } else {
+                    const secret = process.env.AEON_SECRET
+                    if (verifySignature(callbackData, secret)) {
+                        if (callbackData.orderStatus == 'COMPLETED') {
+                            const mintCell = beginCell()
+                            .storeUint(0x5B907D9, 32)
+                            .storeAddress(Address.parse(aeon_order_data.player_wallet))
+                            .storeInt(aeon_order_data.nft_type, 257)
+                            .storeInt(aeon_order_data.nft_id, 257)
+                            .endCell()
+                        
+                            let nftSended = true
+                            try {
+                                await walletContract.sendTransfer({
+                                    seqno: await walletContract.getSeqno(), // Получение seqno кошелька
+                                    secretKey: key.secretKey,
+                                    messages: [
+                                        internal({
+                                            to: shopAddress,  // Адрес смарт-контракта
+                                            value: toNano("0.1"),  // Сумма отправляемая на контракт (обязательно >= минимального значения)
+                                            body: mintCell,  // Сообщение с данными
+                                            bounce: true,  // Возвращать средства, если ошибка
+                                        })
+                                    ]
+                                })
+                            } catch (error) {
+                                console.error(error)
+                                nftSended = false
+                            }
+                            await pgClient.query(
+                                'UPDATE aeon_orders SET finished_at=$2, orderNo=$3, orderStatus=$4, nft_sended=$5  WHERE id=$1', 
+                                [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, nftSended ]
+                            )
+                            res.status(200).send('success')
+                        } else if (callbackData.orderStatus == 'CLOSE') {
+                            await pgClient.query(
+                                'UPDATE aeon_orders SET finished_at=$2, orderNo=$3, orderStatus=$4, nft_sended=$5, fail_reason=$6  WHERE id=$1', 
+                                [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, false, callbackData.failReason ]
+                            )
+                            res.status(200).send('success')
+                        } else {
+                            res.status(204).send('no content')
+                        }
+                    } else {
+                        res.status(401).send('wrong sign')
+                    }
+                }
+            } else {
+                res.status(404).send('order not found')
+            }
+        } else {
+            res.status(400).send('no merchantOrderNo or sign')
+        }
+    } catch (error) {
+        console.error(error)
         res.status(500).send('something went wrong')
     }
 }
@@ -111,4 +198,26 @@ function verifySHA(data, secret) {
     delete data.sign; 
     const calculatedSign = SHAEncrypt(data, secret);
     return sign === calculatedSign;
+}
+
+// Функция для генерации подписи
+function generateSignature(params, secretKey) {
+    // Удаляем 'sign' и фильтруем параметры с null значениями
+    const filteredParams = Object.keys(params)
+        .filter(key => key !== 'sign' && params[key] !== null)
+        .sort() // Сортируем по алфавиту
+        .map(key => `${key}=${params[key]}`) // Преобразуем в формат key=value
+        .join('&'); // Объединяем с '&'
+
+    // Добавляем секретный ключ
+    const stringToSign = `${filteredParams}&key=${secretKey}`;
+
+    // Генерируем SHA-512 подпись
+    return createHmac('sha512', secretKey).update(stringToSign).digest('hex').toUpperCase();
+}
+
+// Функция для верификации подписи
+function verifySignature(params, secretKey) {
+    const generatedSign = generateSignature(params, secretKey);
+    return generatedSign === params.sign;
 }
