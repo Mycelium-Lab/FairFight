@@ -4,10 +4,11 @@ import charactersJsons from '../../lib/jsons/characters.json' assert { type: "js
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
 import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
 import weaponsJsons from '../../lib/jsons/weapons.json' assert { type: "json" };
-import { checkSignatureTG } from '../utils/utils';
+import { checkSignatureTG } from '../utils/utils.js';
 import db from "../db/db.js"
 import { Address, beginCell, internal, toNano } from 'ton-core';
 import { TonClient, WalletContractV4 } from 'ton';
+import { mnemonicToWalletKey } from 'ton-crypto';
 
 const pgClient = db()
 await pgClient.connect()
@@ -75,7 +76,8 @@ export async function sign(req, res) {
                         "merchantOrderNo": "${aeon_order_id}",
                         "orderAmount": "${nftItem.price}",
                         "payCurrency": "USD",
-                        "userId": "${username}"
+                        "userId": "${username}",
+                        "tgModel": "MINIAPP"
                     }`;
                     // JSON to Object
                     const resultMap = JSON.parse(jsonData);
@@ -106,7 +108,8 @@ export async function verifyCallback(req, res) {
     try {
         const callbackData = req.body
         if (callbackData.merchantOrderNo && callbackData.sign && callbackData.merchantOrderNo.trim() && callbackData.sign.trim()) {
-            const aeon_order = await pgClient.query('SELECT * FROM aeon_orders WHERE id=$1', [ callbackData.merchantOrderNo ] )
+            const merchantOrderNo = parseInt(callbackData.merchantOrderNo, 10)
+            const aeon_order = await pgClient.query('SELECT * FROM aeon_orders WHERE id=$1', [ merchantOrderNo ] )
             if (aeon_order.rows.length) {
                 const aeon_order_data = aeon_order.rows[0]
                 // const jsonData = `{
@@ -151,13 +154,13 @@ export async function verifyCallback(req, res) {
                                 nftSended = false
                             }
                             await pgClient.query(
-                                'UPDATE aeon_orders SET finished_at=$2, orderNo=$3, orderStatus=$4, nft_sended=$5  WHERE id=$1', 
+                                'UPDATE aeon_orders SET finished_at=$2, order_no=$3, order_status=$4, nft_sended=$5  WHERE id=$1', 
                                 [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, nftSended ]
                             )
                             res.status(200).send('success')
                         } else if (callbackData.orderStatus == 'CLOSE') {
                             await pgClient.query(
-                                'UPDATE aeon_orders SET finished_at=$2, orderNo=$3, orderStatus=$4, nft_sended=$5, fail_reason=$6  WHERE id=$1', 
+                                'UPDATE aeon_orders SET finished_at=$2, order_no=$3, order_status=$4, nft_sended=$5, fail_reason=$6  WHERE id=$1', 
                                 [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, false, callbackData.failReason ]
                             )
                             res.status(200).send('success')

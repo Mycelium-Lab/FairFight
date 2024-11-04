@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { sign, verifyCallback } from './service'
+import { sign, verifyCallback } from './service.js'
 
 const aeonRouter = Router()
 

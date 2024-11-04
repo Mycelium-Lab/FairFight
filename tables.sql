@@ -722,7 +722,7 @@ CREATE TABLE aeon_orders (
     created_at    BIGINT NOT NULL,
     finished_at   BIGINT,
     fail_reason   TEXT,
-    orderNo       TEXT,
-    orderStatus   TEXT,
+    order_no       TEXT,
+    order_status   TEXT,
     nft_sended    BOOLEAN
 );
