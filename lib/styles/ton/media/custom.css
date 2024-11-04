@@ -1425,7 +1425,6 @@ background-position: center 11px;
     .simplebar-content {
         padding: 0 0 5px 0 !important;
         gap: 10px !important;
-        margin-top: 5px;
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
@@ -1435,6 +1434,7 @@ background-position: center 11px;
     #opengames-list-f2p-evm .simplebar-content,
     #pastgames-list-f2p-evm .simplebar-content {
         grid-template-columns: 1fr !important;
+        display: grid;
 
     }
 
@@ -1605,6 +1605,7 @@ background-position: center 11px;
     #fittingroom-modal .modal-content_secondary {
         border: none;
     }
+    #fittingroom-modal {z-index: 10001;}
 
     #nft-shop-armors-list .simplebar-content,
     #nft-shop-weapons-list .simplebar-content,
