@@ -645,10 +645,10 @@
     }
 
     #info-content .close-button {
-        font-size: 7.83px;
-        line-height: 7.61px;
-        padding: 0 19px;
-        height: 20px;
+        font-size: 10px;
+        line-height: 10px;
+        padding: 0 30px;
+        height: 30px;
     }
 
     #info-content .close-button:hover {

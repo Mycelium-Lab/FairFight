@@ -346,7 +346,11 @@
     }
 }
 
-
+#confirm_finishgame_modal_desktop .modal_content,
+#pause_modal .modal_content {
+    top: 50%;
+    transform: translateY(-50%);
+}
     
 #pause_modal .board {
     max-width: calc(100vw - 20px);

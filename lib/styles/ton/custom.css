@@ -3821,6 +3821,7 @@ wrapper__nft-shop-modal .info__pricing button {
     background-color: transparent;
     position: absolute;
     cursor: pointer;
+    z-index: 10;
 }
 
 .wrapper__item-modal-overlay .item-detail__header {
@@ -4636,6 +4637,132 @@ wrapper__nft-shop-modal .info__pricing button {
     background-size: 100%;
 }
 
+.buy-now-btn__wrapper-dropdown {
+    position: absolute;
+    right: 10px;
+    bottom: -25px;
+    clip-path: polygon(0px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 2px,
+    4px 2px,
+    4px 4px,
+    2px 4px,
+    2px 8px,
+    0px 8px);
+    background-color: var(--color-orange);
+    display: none !important;
+    flex-direction: column;
+    padding: 7px 9px !important;
+    min-width: 160px;
+    gap: 6px;
+}
+
+.buy-now-btn__wrapper-dropdown:after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 2px,
+    4px 2px,
+    4px 4px,
+    2px 4px,
+    2px 8px,
+    0px 8px,
+    0px 50%,
+    2px 50%,
+    2px 8px,
+    4px 8px,
+    4px 4px,
+    8px 4px,
+    8px 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px 50%,
+    0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-black);
+    display: block;
+    pointer-events: none;
+}
+
+.buy-now-btn__wrapper-dropdown span:first-of-type {margin-bottom: -4px;}
+
+.buy-now-btn__wrapper-dropdown span {
+    font-family: Teletactile;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13.61px;
+    text-shadow: rgba(57, 57, 57, 1) 0px 1px;
+}
+
+.buy-now-btn__wrapper-dropdown .line {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+.buy-now-btn__content {
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
 .buy-now-btn,
 .tryon,
 .close-button,
@@ -5174,6 +5301,7 @@ wrapper__nft-shop-modal .info__pricing button {
     width: 144px;
 }
 
+.pixel-bordered-form,
 .select-selected {
     width: 100%;
     padding: 4px 9px;
@@ -5209,6 +5337,19 @@ wrapper__nft-shop-modal .info__pricing button {
     color: #A7A7A7;
 }
 
+.pixel-bordered-form {
+    max-width: 144px;
+    max-height: 20px;
+}
+
+.pixel-bordered-form input:focus-visible,
+.pixel-bordered-form input {
+    border: none;
+    outline: none;
+    width: 100% !important;
+}
+
+.pixel-bordered-form::after,
 .select-selected::after {
     content: "";
     position: absolute;
