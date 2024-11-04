@@ -63,11 +63,11 @@ export async function sign(req, res) {
                     const aeon_order = await pgClient.query(
                         `
                         INSERT INTO aeon_orders 
-                        ( player_wallet, username, order_amount, finished, nft_name, nft_type, nft_id, created_at ) 
-                        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *
+                        (player_wallet, username, order_amount, finished, nft_name, nft_type, nft_id, created_at, sign, finished_at, fail_reason, order_no, order_status, nft_sended) 
+                        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *
                         `,
-                        [ wallet,  username, nftItem.price, false, nftItem.name, nftType, nftId, Date.now() ]
-                    )
+                        [ wallet, username, nftItem.price, false, nftItem.name, nftType, nftId, Date.now(), null, null, null, null, null, null ]
+                    );                    
                     const aeon_order_id = aeon_order.rows[0].id        
                     // JSON data
                     const jsonData = `{
