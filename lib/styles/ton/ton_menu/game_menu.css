@@ -35,9 +35,7 @@
     #opengames-f2p-evm,
     #opengames-f2p {background-color: transparent;}
 
-    #opengames-list-f2p-evm .games__row.border-style,
     #pastgames-list table,
-    #opengames-list-f2p .games__row.border-style,
     #pastgames-f2p-evm table,
     #pastgames-f2p table,
     #pastgames table {
@@ -45,8 +43,10 @@
         margin-left: 5px;
     }
     
+    #opengames-list .games__row.border-style,
     #opengames-list-f2p-evm .games__row.border-style,
     #opengames-list-f2p .games__row.border-style {
+        margin-left: 5px;
         width: calc(100% - 18px) !important;
 
     }
@@ -317,6 +317,7 @@
     #pastgames-list-f2p {
         max-height: 203px;
         overflow-y: auto;
+        overflow-x: hidden;
         width: calc(100% + 12px);
     }
     
@@ -326,8 +327,12 @@
         height: 206px;
         overflow-y: auto;
         overflow-x: hidden;
-        width: calc(100% + 12px);
         margin: 0;
+    }
+    
+    #opengames-list-f2p-evm,
+    #opengames-list-f2p {
+        width: calc(100% + 12px);
     }
 
     .games__row {

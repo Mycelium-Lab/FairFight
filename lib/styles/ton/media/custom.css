@@ -1428,6 +1428,7 @@ background-position: center 11px;
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
+    #opengames-list .simplebar-content,
     #pastgames-list .simplebar-content,
     #opengames-list-f2p .simplebar-content,
     #pastgames-list-f2p .simplebar-content,
