@@ -110,9 +110,11 @@ export async function sign(req, res) {
 export async function verifyCallback(req, res) {
     try {
         const callbackData = req.body
+        console.log('VERIFY CALLBACK DATA', callbackData)
         if (callbackData.merchantOrderNo && callbackData.sign && callbackData.merchantOrderNo.trim() && callbackData.sign.trim()) {
             const merchantOrderNo = parseInt(callbackData.merchantOrderNo, 10)
             const aeon_order = await pgClient.query('SELECT * FROM aeon_orders WHERE id=$1', [ merchantOrderNo ] )
+            console.log('AEON ORDER', aeon_order.rows)
             if (aeon_order.rows.length) {
                 const aeon_order_data = aeon_order.rows[0]
                 // const jsonData = `{
@@ -126,6 +128,7 @@ export async function verifyCallback(req, res) {
                 //     "userId": "${aeon_order_data.username}"
                 // }`
                 if (aeon_order_data.finished_at) {
+                    console.log('AEON ORDER finished_at', aeon_order_data.finished_at)
                     res.status(200).send('success')
                 } else {
                     const secret = process.env.AEON_SECRET
@@ -156,21 +159,26 @@ export async function verifyCallback(req, res) {
                                 console.error(error)
                                 nftSended = false
                             }
+                            console.log('NFT SENDED', nftSended)
                             await pgClient.query(
                                 'UPDATE aeon_orders SET finished_at=$2, order_no=$3, order_status=$4, nft_sended=$5  WHERE id=$1', 
                                 [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, nftSended ]
                             )
+                            console.log('SUCCESS AEON', callbackData)
                             res.status(200).send('success')
                         } else if (callbackData.orderStatus == 'CLOSE') {
                             await pgClient.query(
                                 'UPDATE aeon_orders SET finished_at=$2, order_no=$3, order_status=$4, nft_sended=$5, fail_reason=$6  WHERE id=$1', 
                                 [ aeon_order_data.id, Date.now(), callbackData.orderNo, callbackData.orderStatus, false, callbackData.failReason ]
                             )
+                            console.log('CLOSE AEON', callbackData)
                             res.status(200).send('success')
                         } else {
+                            console.log('NO CONTENT AEON', callbackData)
                             res.status(204).send('no content')
                         }
                     } else {
+                        console.log('WRONG SIGN AEON', callbackData)
                         res.status(401).send('wrong sign')
                     }
                 }
@@ -208,20 +216,27 @@ function verifySHA(data, secret) {
     return sign === calculatedSign;
 }
 
-// Функция для генерации подписи
 function generateSignature(params, secretKey) {
-    // Удаляем 'sign' и фильтруем параметры с null значениями
-    const filteredParams = Object.keys(params)
-        .filter(key => key !== 'sign' && params[key] !== null)
-        .sort() // Сортируем по алфавиту
-        .map(key => `${key}=${params[key]}`) // Преобразуем в формат key=value
-        .join('&'); // Объединяем с '&'
+    // Список параметров, которые участвуют в подписи согласно документации
+    const requiredParams = [
+        'orderNo', 'orderStatus', 'userId', 'merchantOrderNo',
+        'orderCurrency', 'orderAmount', 'payCryptoRate', 'payFiatRate',
+        'payCryptoCurrency', 'payCryptoVolume', 'payCryptoNetwork',
+        'hxAddress', 'failReason', 'fee'
+    ];
 
-    // Добавляем секретный ключ
+    // Фильтруем параметры: оставляем только нужные, исключаем `null` и `sign`
+    const filteredParams = Object.keys(params)
+        .filter(key => requiredParams.includes(key) && params[key] !== null)
+        .sort() // Сортируем ключи по алфавиту
+        .map(key => `${key}=${params[key]}`) // Преобразуем в формат key=value
+        .join('&'); // Объединяем с `&`
+
+    // Добавляем секретный ключ в конце строки
     const stringToSign = `${filteredParams}&key=${secretKey}`;
 
     // Генерируем SHA-512 подпись
-    return createHmac('sha512', secretKey).update(stringToSign).digest('hex').toUpperCase();
+    return createHash('sha512').update(stringToSign).digest('hex').toUpperCase();
 }
 
 // Функция для верификации подписи
