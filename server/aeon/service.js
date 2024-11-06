@@ -78,9 +78,6 @@ export async function sign(req, res) {
                         "payCurrency": "USD",
                         "userId": "${username}"
                     }`;
-                    // "callbackURL": "https://fairfight.fairprotocol.solutions/aeon/callback",
-                    // "redirectURL": "https://t.me/fairfights_bot?startapp",,
-                    //     "tgModel": "MINIAPP"
                     // JSON to Object
                     const resultMap = JSON.parse(jsonData);
                     // Signing data
@@ -88,8 +85,10 @@ export async function sign(req, res) {
                     const result = SHAEncrypt(resultMap, secret);
                     // Add sign to Object and verify
                     resultMap.sign = result;
-                    console.log(resultMap)
                     if (verifySHA({ ...resultMap }, secret)) {
+                        resultMap.callbackURL = 'https://fairfight.fairprotocol.solutions/aeon/callback'
+                        resultMap.redirectURL = 'https://t.me/fairfights_bot?startapp'
+                        resultMap.tgModel = 'MINIAPP'
                         console.log('resultMap', resultMap)
                         await pgClient.query('UPDATE aeon_orders SET sign=$1 WHERE id=$2', [ result, aeon_order_id ])
                         res.status(200).json(resultMap)
