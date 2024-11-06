@@ -1393,7 +1393,7 @@ background-position: center 11px;
         width: 320px;
     }
     #pastgames {
-        background-image: url("../../../media/mobile/pastgames-table-horizontal-320.svg") !important;
+        background-image: none !important;
     }
     .wrapper__banner {
         width: 165px;
@@ -1423,16 +1423,19 @@ background-position: center 11px;
     }
     
     .simplebar-content {
-        padding: 5px 0 !important;
+        padding: 0 0 5px 0 !important;
         gap: 10px !important;
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
+    #opengames-list .simplebar-content,
+    #pastgames-list .simplebar-content,
     #opengames-list-f2p .simplebar-content,
     #pastgames-list-f2p .simplebar-content,
     #opengames-list-f2p-evm .simplebar-content,
     #pastgames-list-f2p-evm .simplebar-content {
         grid-template-columns: 1fr !important;
+        display: grid;
 
     }
 
@@ -1546,6 +1549,7 @@ background-position: center 11px;
         background-image: url(../../../media/svg/orange-btn-press.svg)
     }
 
+    #thirtyleader-table,
     #sevenleader-table {
         max-width: 100%;
         display: block;
@@ -1553,33 +1557,43 @@ background-position: center 11px;
         overflow-y: auto;
     }
 
+    #thirtyleader-table::-webkit-scrollbar,
     #sevenleader-table::-webkit-scrollbar {
         width: 4px;
       }
 
+    #thirtyleader-table::-webkit-scrollbar-track,
     #sevenleader-table::-webkit-scrollbar-track {
         background: #FFFDF4; 
       }
        
+    #thirtyleader-table::-webkit-scrollbar-thumb,
     #sevenleader-table::-webkit-scrollbar-thumb {
       background: #ff7c06; 
     }
 
-    #sevenleader-table thead th {font-size: 10px;}
+    #thirtyleader-table thead th,
+    #sevenleader-table thead th {
+        font-size: 10px;
+    }
+    #thirtyleader-table thead th img,
     #sevenleader-table thead th img {
         width: 13.7px;
         height: 13.7px;
         margin-left: 1px;
     }
 
+    #thirtyleader-table tr td,
     #sevenleader-tablebody tr td {
         font-size: 8px;
     }
 
+    #thirtyleader-table tr td:nth-child(2),
     #sevenleader-tablebody tr td:nth-child(2) {
         width: 60px;
     }
 
+    #thirtyleader-table tr td:nth-child(2) a,
     #sevenleader-tablebody tr td:nth-child(2) a {
         color: #0d6efd;
     }
@@ -1589,12 +1603,17 @@ background-position: center 11px;
         background: none;
     } */
 
+    #fittingroom-modal .modal-content_secondary {
+        border: none;
+    }
+    #fittingroom-modal {z-index: 10001;}
+
     #nft-shop-armors-list .simplebar-content,
     #nft-shop-weapons-list .simplebar-content,
     #nft-shop-boots-list .simplebar-content,
     #nft-shop-characters-list .simplebar-content {
         grid-template-columns: repeat(3, 1fr);
-        row-gap: 25px;
+        row-gap: 25px !important;
     }
 
     .dataTables_paginate.paging_simple_numbers,
@@ -1661,9 +1680,6 @@ background-position: center 11px;
 @media (max-width: 411px) {
     .games__item .right {
         top: 73px;
-    }
-    .tabs__content {
-        margin-top: 5px;
     }
     .games__item {
         gap: 20px;
