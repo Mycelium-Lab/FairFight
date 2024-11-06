@@ -73,14 +73,14 @@ export async function sign(req, res) {
                         // "customParam": "{\"botName\":\"FairFightBot\",\"orderDetail\":\"${nftItem.name}\"}",
                     const jsonData = `{
                         "appId": "${process.env.AEON_APPID}",
-                        "callbackURL": "https://fairfight.fairprotocol.solutions/aeon/callback",
-                        "redirectURL": "https://t.me/fairfights_bot?startapp",
                         "merchantOrderNo": "${aeon_order_id}",
                         "orderAmount": "${nftItem.price}",
                         "payCurrency": "USD",
-                        "userId": "${username}",
-                        "tgModel": "MINIAPP"
+                        "userId": "${username}"
                     }`;
+                    // "callbackURL": "https://fairfight.fairprotocol.solutions/aeon/callback",
+                    // "redirectURL": "https://t.me/fairfights_bot?startapp",,
+                    //     "tgModel": "MINIAPP"
                     // JSON to Object
                     const resultMap = JSON.parse(jsonData);
                     // Signing data
