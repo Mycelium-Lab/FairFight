@@ -88,6 +88,7 @@ export async function sign(req, res) {
                     const result = SHAEncrypt(resultMap, secret);
                     // Add sign to Object and verify
                     resultMap.sign = result;
+                    console.log(resultMap)
                     if (verifySHA({ ...resultMap }, secret)) {
                         console.log('resultMap', resultMap)
                         await pgClient.query('UPDATE aeon_orders SET sign=$1 WHERE id=$2', [ result, aeon_order_id ])
