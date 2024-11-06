@@ -1,4 +1,4 @@
-import { createHmac } from 'crypto';
+import { createHash, createHmac } from 'crypto';
 import dotenv from 'dotenv'
 import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
@@ -194,9 +194,8 @@ function SHAEncrypt(data, secret) {
         .join('&');
     
     dataString = dataString + `&key=${secret}`
-    console.log(dataString)
     
-    return createHmac('sha512', secret)
+    return createHash('sha512')
         .update(dataString)
         .digest('hex')
         .toUpperCase();
