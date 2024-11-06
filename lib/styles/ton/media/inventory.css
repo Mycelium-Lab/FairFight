@@ -3,7 +3,7 @@
         grid-template-rows: 1fr 1fr;
         grid-template-columns: none;
         overflow-y: auto;
-        height: 92%;
+        height: 96%;
         padding: 0px;
         margin-top: 0px;
     }
@@ -375,7 +375,6 @@
 .list-wrap__item-list {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
-    row-gap: 50px;
 }
 #inventory-item-modal .board.body__item-detail {
     height: fit-content !important;
@@ -384,6 +383,9 @@
 #inventory-item-modal button {
     font-size: 16px;
 }
+
+#inventory-modal .four-color-border-block,
+#inventory-item-modal .four-color-border-block {z-index: 0;}
 }
 
 @media(max-width: 380px) {
