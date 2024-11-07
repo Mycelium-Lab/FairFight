@@ -34,7 +34,7 @@ tonRouter.post('/ton/setweapon', async (req, res) =>await setWeapon(req, res))
 tonRouter.post('/ton/setboots', async (req, res) =>await setBoots(req, res))
 tonRouter.post('/ton/chatid', async (req, res) => await setChatId(req, res))
 tonRouter.post('/ton/map', async (req, res) => await setMap(req, res))
-// tonRouter.post('/ton/mintnft', async (req, res) => await mintNFT(req, res))
+tonRouter.post('/ton/mintnft', async (req, res) => await mintNFT(req, res))
 tonRouter.post('/ton/setaddress', async (req, res) => await setAddress(req, res))
 
 export default tonRouter
