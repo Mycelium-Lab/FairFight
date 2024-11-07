@@ -706,3 +706,23 @@ ADD COLUMN chainid INT;
 
 ALTER TABLE board_f2p
 ADD COLUMN gift_amount INT;
+
+--  nft_type: 0 - character, 1 - weapon, 2 - armors, 3 - boots, 4 - lootbox
+--  nft_id: if lootbox - 0, others by order
+CREATE TABLE aeon_orders (
+    id            SERIAL PRIMARY KEY,
+    player_wallet VARCHAR(256) NOT NULL,
+    username      VARCHAR(256) NOT NULL,
+    order_amount  FLOAT NOT NULL,
+    sign          TEXT,
+    finished      BOOLEAN NOT NULL,
+    nft_name      TEXT NOT NULL,
+    nft_type      INT NOT NULL,
+    nft_id        INT NOT NULL, 
+    created_at    BIGINT NOT NULL,
+    finished_at   BIGINT,
+    fail_reason   TEXT,
+    order_no       TEXT,
+    order_status   TEXT,
+    nft_sended    BOOLEAN
+);

@@ -1277,7 +1277,7 @@ background-position: center 11px;
         padding: 8px 20px;
         width: 331px;
         background-size: 100% auto;
-        height: 97px;
+        min-height: 97px;
         gap: 5px;
         background-image: url("../../../media/svg/game-rows-mobile.svg");
     }
@@ -1295,6 +1295,7 @@ background-position: center 11px;
         right: 18px;
         display: flex;
         align-items: center;
+        justify-content: center;
         bottom: 2px;
     }
 
