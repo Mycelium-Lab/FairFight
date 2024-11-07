@@ -645,10 +645,10 @@
     }
 
     #info-content .close-button {
-        font-size: 7.83px;
-        line-height: 7.61px;
-        padding: 0 19px;
-        height: 20px;
+        font-size: 10px;
+        line-height: 10px;
+        padding: 0 30px;
+        height: 30px;
     }
 
     #info-content .close-button:hover {
@@ -687,26 +687,32 @@
         color: var(--color-orange);font-size: 20px;
     }
 
+    .pause__title.quadriana-label,
     .modal__title-confirm_finish {
         width: fit-content;
         margin: 0 auto 13px auto !important;
         font-size: 32px !important;
+        line-height: 39.1px;
     }
+    .pause__title.quadriana-label::before,
     .modal__title-confirm_finish::before {
         -webkit-text-stroke: 3px rgba(112, 15, 81, 1) !important;
     }
 
+    .pause__content p,
     #modal__body_confirm_finish p {
         font-family: "Quadriana";
         color: #7A7A7A !important;
     }
 
+    .pause__content p:first-of-type,
     #modal__body_confirm_finish p:first-of-type {
         font-size: 20px;
         line-height: 24.44px;
         padding-bottom: 8px;
     }
 
+    .pause__content p:last-of-type,
     #modal__body_confirm_finish p:last-of-type {
         font-size: 14px;
         line-height: 17.11px;

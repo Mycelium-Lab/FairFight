@@ -3669,6 +3669,7 @@ wrapper__nft-shop-modal .info__pricing button {
     border-width: 2px;
 }
 
+.inventory-item-body_basic,
 .over-modal-bordered-wrapper,
 .inventory-item-body_character,
 .inventory-item-body_special,
@@ -3820,6 +3821,7 @@ wrapper__nft-shop-modal .info__pricing button {
     background-color: transparent;
     position: absolute;
     cursor: pointer;
+    z-index: 10;
 }
 
 .wrapper__item-modal-overlay .item-detail__header {
@@ -4635,6 +4637,132 @@ wrapper__nft-shop-modal .info__pricing button {
     background-size: 100%;
 }
 
+.buy-now-btn__wrapper-dropdown {
+    position: absolute;
+    right: 10px;
+    bottom: -25px;
+    clip-path: polygon(0px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 2px,
+    4px 2px,
+    4px 4px,
+    2px 4px,
+    2px 8px,
+    0px 8px);
+    background-color: var(--color-orange);
+    display: none !important;
+    flex-direction: column;
+    padding: 7px 9px !important;
+    min-width: 160px;
+    gap: 6px;
+}
+
+.buy-now-btn__wrapper-dropdown:after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px 100%,
+    calc(100% - 8px) 100%,
+    calc(100% - 8px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 2px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 4px),
+    calc(100% - 2px) calc(100% - 8px),
+    100% calc(100% - 8px),
+    100% 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 0px,
+    8px 0px,
+    8px 2px,
+    4px 2px,
+    4px 4px,
+    2px 4px,
+    2px 8px,
+    0px 8px,
+    0px 50%,
+    2px 50%,
+    2px 8px,
+    4px 8px,
+    4px 4px,
+    8px 4px,
+    8px 2px,
+    calc(100% - 8px) 2px,
+    calc(100% - 8px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 8px,
+    calc(100% - 2px) 8px,
+    calc(100% - 2px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 2px),
+    8px calc(100% - 2px),
+    8px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 8px),
+    2px calc(100% - 8px),
+    2px 50%,
+    0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-black);
+    display: block;
+    pointer-events: none;
+}
+
+.buy-now-btn__wrapper-dropdown span:first-of-type {margin-bottom: -4px;}
+
+.buy-now-btn__wrapper-dropdown span {
+    font-family: Teletactile;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 13.61px;
+    text-shadow: rgba(57, 57, 57, 1) 0px 1px;
+}
+
+.buy-now-btn__wrapper-dropdown .line {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+.buy-now-btn__content {
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
 .buy-now-btn,
 .tryon,
 .close-button,
@@ -4931,6 +5059,241 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 /* REDIRECT TO DESKTOP POPUP */
 
+/* PLAY TO PLAY POPUP */
+.play-to-play-popup {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../media/play-to-play-bg-blue.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    z-index: 1000;
+    overflow: hidden;
+    display: none;
+}
+
+.play-to-play-popup.second-slide {
+    background-image: url(../../media/play-to-play-bg-purple.jpeg);
+}
+
+.play-to-play-popup.third-slide {
+    background-image: url(../../media/play-to-play-bg-orange.jpeg);
+}
+
+.play-to-play-popup__gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: radial-gradient(100% 100% at 50% 0%, rgba(0, 0, 0, 0) 42.28%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.play-to-play-popup__close {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    z-index: 10;
+    background-image: url(../../media/svg/close-white.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+}
+
+.play-to-play-popup__content {
+    padding: 48px 10px 32px 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    height: 100%;
+}
+
+.play-to-play-popup__title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.play-to-play-popup__title h1 {
+    font-size: 46.7px;
+    font-weight: 400;
+    line-height: 50.79px;
+    position: relative;
+}
+
+.play-to-play-popup__title h1::before {
+    -webkit-text-stroke: 3px rgba(29, 15, 112, 1);
+    width: 100%;
+}
+.play-to-play-popup__title h1:first-of-type {
+    background: linear-gradient(180deg, #A0E8FF 18%, #59AFFF 66.5%, #A0E8FF 100%);
+    -webkit-background-clip: text;
+    position: absolute;
+    z-index: 1;
+}
+
+.play-to-play-popup__title h1:last-of-type {
+    background: rgba(0, 56, 255, 1);
+    -webkit-background-clip: text;
+    top: 5px;
+}
+
+.slide-2 .play-to-play-popup__title h1:first-child {
+    background: linear-gradient(180deg, #F3A9FF 33.26%, #E859FF 51.62%, #F3A9FF 83.74%);
+    -webkit-background-clip: text;
+}
+
+.slide-2 .play-to-play-popup__title h1:last-child {
+    background: rgba(250, 0, 255, 1);
+    -webkit-background-clip: text;
+    top: 5px;
+}
+
+.slide-3 .play-to-play-popup__title h1::before {
+    -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
+}
+.slide-3 .play-to-play-popup__title h1:first-child {
+    background: linear-gradient(182.37deg, #FFDC2B 42.81%, #FF7659 63.44%, #FFDC2B 88.41%);
+    -webkit-background-clip: text;
+    z-index: 1;
+    top: 0;
+}
+
+.slide-3 .play-to-play-popup__title h1:last-child {
+    background: rgba(255, 92, 0, 1);
+    -webkit-background-clip: text;
+    top: 5px;
+}
+
+.play-to-play-popup__text {position: relative;}
+.play-to-play-popup__text.one {margin-top: 50px;}
+.play-to-play-popup__text.two {margin-top: 28px;}
+
+.play-to-play-popup__text h2 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 34.22px;
+    position: relative;
+}
+
+.play-to-play-popup__text h2::before {
+    -webkit-text-stroke: 2px rgba(29, 15, 112, 1);
+}
+.play-to-play-popup__text h2:first-child {
+    z-index: 1;
+    background: linear-gradient(180deg, #A0E8FF 18%, #59AFFF 66.5%, #A0E8FF 100%);
+    -webkit-background-clip: text;
+}
+
+.play-to-play-popup__text h2:last-child {
+    background: rgba(0, 56, 255, 1);
+    -webkit-background-clip: text;
+    position: absolute;
+    top: 3px;
+}
+
+.slide-2 .play-to-play-popup__text h2 {font-size: 32px;}
+.slide-2 .play-to-play-popup__text h2::before {
+    -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+}
+
+.slide-2 .play-to-play-popup__text h2:first-child {
+    background: linear-gradient(180deg, #F3A9FF 33.26%, #E859FF 51.62%, #F3A9FF 83.74%);
+    -webkit-background-clip: text;
+}
+
+.slide-2 .play-to-play-popup__text h2:last-child {
+    background: rgba(250, 0, 255, 1);
+    -webkit-background-clip: text;
+}
+
+
+.slide-3 .play-to-play-popup__text h2 {font-size: 32px;}
+.slide-3 .play-to-play-popup__text h2::before {
+    -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+}
+
+.slide-3 .play-to-play-popup__text h2:first-child {
+    background: rgba(255, 220, 43, 1);
+    -webkit-background-clip: text;
+}
+
+.slide-3 .play-to-play-popup__text h2:last-child {
+    background: rgba(255, 92, 0, 1);
+    -webkit-background-clip: text;
+}
+
+.play-to-play-popup__text.two h3 {
+    font-size: 24px;
+    line-height: 29.33px;
+}
+
+.play-to-play-popup__btn {
+    position: absolute;
+    bottom: 30px;
+    max-width: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.play-to-play-popup__btn span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: "Teletactile";
+    font-size: 23px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vw;
+    text-shadow: 1px 3px 0 #39393979, 2px 2px 2px #39393957;
+}
+
+.play-to-play-popup__slide-points {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    left: 50%;
+    transform:  translateX(-50%);
+    bottom: 120px;
+}
+
+.play-to-play-popup__slide-points span {
+    background-image: url(../../media/svg/slider-point-inactive.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+}
+
+.play-to-play-popup__slide-points span.blue {
+    background-image: url(../../media/svg/slider-point-active-blue.svg);
+}
+.play-to-play-popup__slide-points span.purple {
+    background-image: url(../../media/svg/slider-point-active-purple.svg);
+}
+.play-to-play-popup__slide-points span.orange {
+    background-image: url(../../media/svg/slider-point-active-orange.svg);
+}
+
+.play-to-play-popup__content.slide-2,
+.play-to-play-popup__content.slide-3 {display: none;}
+/* PLAY TO PLAY POPUP */
+
 /* CUSTOM SELECT */
 .custom-select {
     position: relative;
@@ -4938,6 +5301,7 @@ wrapper__nft-shop-modal .info__pricing button {
     width: 144px;
 }
 
+.pixel-bordered-form,
 .select-selected {
     width: 100%;
     padding: 4px 9px;
@@ -4973,6 +5337,19 @@ wrapper__nft-shop-modal .info__pricing button {
     color: #A7A7A7;
 }
 
+.pixel-bordered-form {
+    max-width: 144px;
+    max-height: 20px;
+}
+
+.pixel-bordered-form input:focus-visible,
+.pixel-bordered-form input {
+    border: none;
+    outline: none;
+    width: 100% !important;
+}
+
+.pixel-bordered-form::after,
 .select-selected::after {
     content: "";
     position: absolute;
