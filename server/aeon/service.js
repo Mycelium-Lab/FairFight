@@ -50,11 +50,11 @@ export async function sign(req, res) {
                 if (nftType == 0) {
                     nftItem = charactersJsons[nftId]
                 } else if (nftType == 1) {
-                    nftItem = weaponsJsons[nftId]
-                } else if (nftType == 2) {
                     nftItem = armorsJsons[nftId]
-                } else if (nftType == 3) {
+                } else if (nftType == 2) {
                     nftItem = bootsJsons[nftId]
+                } else if (nftType == 3) {
+                    nftItem = weaponsJsons[nftId]
                 } else if (nftType == 4) {
                     nftItem = { price: 10, name: 'Lootbox' } 
                 }
