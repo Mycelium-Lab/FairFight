@@ -4672,7 +4672,6 @@ wrapper__nft-shop-modal .info__pricing button {
     background-color: var(--color-orange);
     display: none !important;
     flex-direction: column;
-    padding: 7px 9px !important;
     min-width: 160px;
     gap: 6px;
 }
@@ -4741,7 +4740,14 @@ wrapper__nft-shop-modal .info__pricing button {
     pointer-events: none;
 }
 
-.buy-now-btn__wrapper-dropdown span:first-of-type {margin-bottom: -4px;}
+.buy-now-btn__wrapper-dropdown span:first-of-type {
+    margin-bottom: -4px;
+    padding: 7px 9px 0 9px;
+}
+
+.buy-now-btn__wrapper-dropdown span:last-of-type {
+    padding: 0px 9px 7px 9px;
+}
 
 .buy-now-btn__wrapper-dropdown span {
     font-family: Teletactile;
