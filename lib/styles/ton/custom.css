@@ -55,6 +55,8 @@ a {
     height: auto;
 }
 
+.bordered-content .four-color-border-block {display: none;}
+
 #wrapper {
     position: relative;
     background-image: url("../../media/bgfair.jpg");
@@ -963,56 +965,24 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    padding-bottom: 7px;
+    gap: 20px;    
     border-bottom: 2px solid var(--color-orange);
 }
 
 .inner-block__head button {
-    font-size: 24px;
-    line-height: 29.33px;
-    padding: 0;
-    border: none;    
-    font-family: 'Quadriana';
-    color: transparent;
-    position: relative;
-    background: linear-gradient(to bottom, var(--color-text-disabled), var(--color-text-disabled));
-    -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: -1px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: -1px;
+    color: var(--color-black);
+    background: transparent;
+    border: none;
+    font-family: Teletactile;
+    text-transform: uppercase;
 }
 
-.inner-block__head button::before {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    -webkit-text-stroke: 3px var(--color-text-border-disabled);
-}
-
-.inner-block__head button.active {
-    background: linear-gradient(to bottom,
-            #FFDC2A 50%,
-            #FF7558 80%,
-            #FFDC2A 60%);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.inner-block__head button.active::before {
-    color: transparent;
-    -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
-}
-
-.inner-block__head .active::after {
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-    content: '';
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-orange);
+.inner-block__head .active {
+    color: var(--color-orange);
+    border-bottom: 3px solid var(--color-orange);
 }
 
 .quadriana-label {
@@ -1874,7 +1844,7 @@ a {
 .wrapper__btns-wrap {
     z-index: 13;
     position: relative;
-    bottom: 500px;
+    /* bottom: 500px; */
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
@@ -1971,11 +1941,36 @@ a {
     background-position: center 14px;
 }
 
+#menu-p2p-btn-evm {
+    background-image: url("../../media/buttons/p2play-btn.svg");
+}
+
+#menu-f2p-btn-evm {
+    background-image: url("../../media/buttons/f2play-btn.svg");
+}
+
+#telegram-btn {
+    background-image: url("../../media/buttons/telegram-btn.svg");
+}
+
+#discord-btn {
+    background-image: url("../../media/buttons/discord-btn.svg");
+}
+
+#twiter-btn {
+    background-image: url("../../media/buttons/twiter-btn.svg");
+}
+
 #home-btn,
 #menu-home-btn {
     background-image: url("../../media/buttons/home.svg");
 }
 
+#menu-p2p-btn-evm::after,
+#menu-f2p-btn-evm::after,
+#twiter-btn::after,
+#discord-btn::after,
+#telegram-btn::after,
 #home-btn::after,
 #menu-home-btn::after {
     background-image: url("../../media/buttons/border.svg");
@@ -4521,6 +4516,8 @@ wrapper__nft-shop-modal .info__pricing button {
     position: absolute;
     bottom: 0;
     left: 45px;
+    height: 100%;
+    justify-content: center;
     /*grid-gap: 31px;*/
 }
 
@@ -5641,4 +5638,31 @@ wrapper__nft-shop-modal .info__pricing button {
     right: 0;
     top: 50%;
     transform: translate(50%, -50%);
+}
+
+
+.invite-friend-btn {
+    background-image: url("../../media/svg/invate-bg-btn.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 26px;
+    position: absolute;
+    right: 92px;
+    bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invite-friend-btn span {
+    font-size: 7px !important;
+    text-shadow: rgba(57, 57, 57, 1) 0px 1px;
+    width: fit-content;
+    height: fit-content;
+    white-space: nowrap;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Teletactile";
 }
