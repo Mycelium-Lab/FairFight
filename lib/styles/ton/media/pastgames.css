@@ -17,7 +17,7 @@
     }
     .table__row {
         display: grid;
-        grid-template-columns: 32% 24.4% 12.8% 12.8% 6%;
+        grid-template-columns: 34% 24.4% 10.8% 10.8% 8%;
         gap: 10px;
         padding: 8px 0px;
         border-bottom: 1px solid #ffc897;
