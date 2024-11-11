@@ -1666,6 +1666,8 @@ background-position: center 11px;
         row-gap: 25px !important;
     }
 
+    .nft-shop-modal__list-items-wrap .simplebar-content {margin-top: 6px;}
+
     .dataTables_paginate.paging_simple_numbers,
     .dataTables_length label, .dataTables_filter {
         margin: 0 !important;
