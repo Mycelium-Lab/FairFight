@@ -8,9 +8,9 @@
         width: auto;
         justify-content: center;
     }
-    .wrapper__btns-wrap {
+    /* .wrapper__btns-wrap {
         bottom: 390px;
-    }
+    } */
     .wrapper_banners .wrapper__banner:first-child {
         padding-bottom: 55px;
         padding-top: 30px;
@@ -367,7 +367,7 @@
         background-image: url("../../../media/mobile/game-rows-mobile-horizontal.svg");
         padding: 6px 10px;
         /* height: 98px; */
-        height: 105px;
+        /* height: 105px; */
     }
     .games__item_last {
         padding-bottom: 4.94px;
@@ -898,6 +898,55 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    .inner-block__head {padding-bottom: 7px;}
+    .inner-block__head button {
+        font-size: 24px;
+        line-height: 29.33px;
+        padding: 0;
+        font-family: 'Quadriana';
+        color: transparent;
+        position: relative;
+        background: linear-gradient(to bottom, var(--color-text-disabled), var(--color-text-disabled));
+        -webkit-background-clip: text;
+        color: transparent;
+        letter-spacing: -1px;
+        text-transform: none;
+    }
+    
+    .inner-block__head button::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        -webkit-text-stroke: 3px var(--color-text-border-disabled);
+    }
+    
+    .inner-block__head button.active {
+        background: linear-gradient(to bottom,
+                #FFDC2A 50%,
+                #FF7558 80%,
+                #FFDC2A 60%);
+        -webkit-background-clip: text;
+        color: transparent;
+        border-bottom: none;
+    }
+    
+    .inner-block__head button.active::before {
+        color: transparent;
+        -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
+    }
+    
+    .inner-block__head .active::after {
+        position: absolute;
+        left: 0;
+        bottom: -7px;
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-orange);
+    }
+
     .newgame_ton_btn,
     .close-button,
     .ton__menu-btn span,
