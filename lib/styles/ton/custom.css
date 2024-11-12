@@ -232,14 +232,90 @@ a {
     margin-bottom: 30px;
 }
 
-.about__content p {
-    font-family: 'Quadriana';
-    margin-bottom: 16px;
+#nothing_new {
     font-size: 16px;
+    text-align: center;
+    color: var(--color-orange);
+    line-height: 19.54px;
+    max-width: 262px;
+    font-weight: 500;
+    margin: 0 auto 20px auto;
+}
+
+.about__content p {
+    font-size: 14px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-    line-height: 16.7px;
+    color: var(--color-black);
+    line-height: 15.4px;
     font-synthesis: none;
+}
+
+.about__content_control_keys {
+    padding: 35px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background: #FFFDF4;
+    overflow-y: auto;
+}
+
+.controls_block__title {
+    font-size: 24px;
+    background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    font-weight: 700;
+}
+
+.about__content p b {color: var(--color-orange);}
+
+.controls_block__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.controls_line {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+.controls_line--center {
+    justify-content: center;
+}
+.controls_block__list-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: fit-content;
+    width: 100%;
+}
+.controls_block__list-card img {
+    height: 55px;
+    object-fit: contain;
+}
+.controls_block__list-card span {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 12.22px;
+    text-align: center;
+    color: var(--color-black);
+
+}
+.controls_block__title--mtop {
+    margin-top: 20px;
+}
+
+.controls_block__list--perks .controls_line {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.controls_block__list--perks .controls_block__list-card {
+    max-width: fit-content;
+}
+.controls_block__list-card--wide {
+    max-width: fit-content !important;
 }
 
 #header {
@@ -430,6 +506,41 @@ a {
     position: absolute;
     right: 55px;
     top: 85px;
+}
+
+.about__btn {
+    display: block;
+    position: relative;
+    /* width: 176px; */
+    height: 48px;
+    background: none;
+    border: none;
+    margin: 5px auto 15px auto;
+}
+
+.about__btn-frame {
+    width: 100%;
+    height: 100%;
+}
+
+
+.about__btn_control_keys span {
+    font-size: 14px !important;
+    margin-top: 12px;
+}
+
+
+.about__btn span {
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Teletactile";
+    position: absolute;
+
+    text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
 }
 
 .contact_link_about .link__name {
@@ -2037,8 +2148,7 @@ a {
 }
 
 .newgame__btn {
-    background: transparent url("../../media/buttons/newgame.svg") no-repeat center
-        0;
+    background: transparent url("../../media/buttons/newgame.svg") no-repeat center 0;
     background-size: 328px;
     transition: all 0.1s ease;
     width: 350px;
@@ -2059,6 +2169,34 @@ a {
 }
 
 .newgame__btn:hover {
+    background-position: center 10px;
+    transition: all 0.1s ease;
+}
+
+.newgame__btn__green {
+    background: transparent url("../../media/buttons/newgame-green.svg") no-repeat center 0;
+    background-size: 328px;
+    transition: all 0.1s ease;
+    width: 350px;
+    height: 122px;
+    z-index: 12;
+    border: none;
+}
+
+.newgame__btn__green::after {
+    content: "";
+    background-image: url("../../media/buttons/border-game.svg");
+    background-position: center 27px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.newgame__btn__green:hover {
     background-position: center 10px;
     transition: all 0.1s ease;
 }
@@ -4554,10 +4692,10 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 
 .buyblock-image {
-    /* background-image: url("../../media/buyblock.svg");
+    background-image: url("../../media/buyblock.png");
     width: 155px;
     height: 73px;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: space-between;

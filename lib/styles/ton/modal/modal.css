@@ -190,10 +190,18 @@
     min-height: 310px;
 }
 .modal .modal_content_about {
-    height: 401px;
-    width: 446px;
-    padding: 46px 21px 46px 31px;
+    height: fit-content;
+    width: fit-content;
+    padding: 46px 21px 26px 31px;
 }
+
+.controls_line {
+    gap: 5px;
+}
+
+.controls-keys-page {max-width: 717px !important;}
+
+.about__content_control_keys {padding: 15px;}
 
 .modal .modal_content_waiting {
     height: 239px;
