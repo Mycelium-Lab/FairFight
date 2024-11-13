@@ -1736,7 +1736,7 @@ background-position: center 11px;
     .controls_block__list .controls_line {
         gap: 14px;
     }
-    .controls_block__list .controls_line span {
+    .controls_block__list--perks .controls_line span {
         white-space: nowrap;
     }
 
