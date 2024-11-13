@@ -38,7 +38,7 @@ bot.onText(/\/start|Social/i, (msg) => {
         };
         bot.sendMessage(chatId, "Welcome to FairFight!", replyKeyboard)
         .then(() => {
-            return bot.sendVideo(chatId, 'https://t.me/ffvideolinks/5', {
+            return bot.sendVideo(chatId, 'https://t.me/ffvideolinks/6', {
                 caption: `Welcome to <b>Fair Fight</b>! When you're ready to begin, simply hit the <b>Start</b> button on the bottom left. Let the adventure begin!`,
                 parse_mode: "HTML",
                 reply_markup: keyboard.reply_markup
