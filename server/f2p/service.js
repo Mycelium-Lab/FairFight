@@ -7,64 +7,13 @@ import { checkSignatureTG } from "../utils/utils.js";
 import { appState, appStateTypes } from "../utils/appState.js";
 import { msgSignIn, playersToNotify } from "../constants/constants.js";
 import { ethers } from "ethers";
-import { text } from "express";
 dotenv.config()
 
 const pgClient = db()
 await pgClient.connect()
 
-export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: true}) : null
+export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: false}) : null
 const evmF2PChainid = 999998
-
-// Добавьте обработчик для команды /start
-bot.onText(/\/start|Social/i, (msg) => {
-    const chatId = msg.chat.id;
-    
-    // Определяем inline-клавиатуру с кнопкой для запуска mini app
-    const keyboard = {
-        reply_markup: {
-          inline_keyboard: [
-            [
-                {
-                    text: "X",
-                    url: "https://x.com/FairProtocol" 
-                },
-                {
-                    text: "Discord",
-                    url: "https://discord.gg/sYzQy6h3" 
-                }
-            ]
-          ]
-        }
-      };
-    const replyKeyboard = {
-        reply_markup: {
-          keyboard: [
-            [
-              { text: "Social" },
-              { text: "FAQ" }
-            ]
-          ],
-          resize_keyboard: true
-        }
-    };
-    bot.sendMessage(chatId, "Social and FAQ", replyKeyboard)
-    .then(() => {
-        return bot.sendVideo(chatId, 'https://videos.pexels.com/video-files/7565438/7565438-hd_1080_1920_25fps.mp4', {
-            caption: `Welcome to <b>Fair Fight</b>! When you're ready to begin, simply hit the <b>Start</b> button on the bottom left. Let the adventure begin!`,
-            parse_mode: "HTML",
-            reply_markup: keyboard.reply_markup
-        });
-    })
-    .catch(console.error);
-});
-
-bot.onText('FAQ', async (msg) => {
-    const chatId = msg.chat.id;
-
-    bot.sendMessage(chatId, 'FAQ');
-})
-
 //create game
 export async function createFight(fight, bodyInitData, sign_evm) {
     try {
