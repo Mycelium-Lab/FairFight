@@ -1726,6 +1726,30 @@ background-position: center 11px;
     #leaderboard_modal .board {
         padding-bottom: 5px !important;
     }
+
+    .controls_line {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .controls_block__list .controls_line {
+        gap: 14px;
+    }
+    .controls_block__list--perks .controls_line span {
+        white-space: nowrap;
+    }
+
+    .controls_block__list--perks .controls_block__list-card--wide img {
+        max-width: 100px;
+    }
+
+    .controls_line.controls_line--center {
+        grid-template-columns: 1.3fr 1fr 1fr;
+    }
+
+    .bordered-content .four-color-border-block {display: block;}
+    .bordered-content .board-edge {display: none;}
 }
 
 @media (max-width: 411px) {

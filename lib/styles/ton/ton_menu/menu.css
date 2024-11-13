@@ -448,12 +448,14 @@
 
     .controls_block__list-card {
         gap: 2px;
-        max-width: 75px;
-        width: 100%;
+        align-items: center;
     }
     .controls_block__list-card img {
-        height: 55px;
+        max-width: 57px;
         object-fit: contain;
+    }
+    .controls_line.controls_line--center > div:first-of-type img {
+        max-width: 105px;
     }
     .controls_block__list-card span {
         font-family: "Quadriana";
@@ -467,8 +469,11 @@
     .controls_block__list--perks .controls_block__list-card {
         max-width: 50px;
     }
+    .controls_block__list--perks .controls_block__list-card:last-child {
+        max-width: 77px;
+    }
     .controls_block__list-card--wide {
-        max-width: 70px !important;
+        max-width: 100px !important;
     }
 
     .opengame_content {
