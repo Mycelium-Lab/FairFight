@@ -19,6 +19,16 @@
     -webkit-background-clip: text;
 }
 
+.about-ton-header-desktop {
+    font-family: 'Teletactile';
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--color-orange);
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
 #back_button {
     display: none;
 }
@@ -414,38 +424,6 @@
         color: #FF8426;
     }
 
-    .about__btn {
-        display: block;
-        position: relative;
-        /* width: 176px; */
-        height: 48px;
-        background: none;
-        border: none;
-        margin: 5px auto 15px auto;
-    }
-
-    .about__btn-frame {
-        width: 100%;
-        height: 100%;
-    }
-
-    .about__btn span {
-        top: 0; left: 0; right: 0; bottom: 0;
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        color: #fff;
-        font-size: 16px;
-        font-family: "Teletactile";
-        position: absolute;
-
-        text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
-    }
-    .about__btn_control_keys span {
-        font-size: 14px !important;
-        margin-top: 12px;
-    }
-
     .about-header {
         display: none;
     }
@@ -457,38 +435,18 @@
         height: 45px;
     }
 
-    .about__content_control_keys {
-        padding: 15px;
-        margin-bottom: 15px;
-        border-radius: 4px;
-        background: #FFFDF4;
-        overflow-y: auto;
-    }
-
     .controls_block__title {
         font-family: 'Quadriana';
         font-size: 20px;
-        background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
-        -webkit-background-clip: text;
-        color: transparent;
         text-align: center;
+        font-weight: 400;
     }
 
-    .controls_block__list {
-        display: flex;
-        flex-direction: column;
-    }
-    .controls_line {
-        display: flex;
-        justify-content: space-between;
-        gap: 5px;
-    }
     .controls_line--center {
         justify-content: center;
     }
+
     .controls_block__list-card {
-        display: flex;
-        flex-direction: column;
         gap: 2px;
         max-width: 75px;
         width: 100%;
@@ -505,15 +463,7 @@
         text-align: center;
 
     }
-    .controls_block__title--mtop {
-        margin-top: 10px;
-    }
 
-    .controls_block__list--perks .controls_line {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
     .controls_block__list--perks .controls_block__list-card {
         max-width: 50px;
     }
