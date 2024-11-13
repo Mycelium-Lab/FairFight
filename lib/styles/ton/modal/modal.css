@@ -201,7 +201,7 @@
 
 .controls-keys-page {max-width: 717px !important;}
 
-.about__content_control_keys {padding: 15px;}
+.about__content_control_keys {padding: 15px !important;}
 
 .modal .modal_content_waiting {
     height: 239px;
