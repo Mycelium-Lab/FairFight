@@ -9,7 +9,8 @@
     "signalling": "node signalling/server.js",
     "http": " http-server -c-1 . -p 8080",
     "dev:si": "nodemon signalling/server.js",
-    "dev:se": "nodemon server.js"
+    "dev:se": "nodemon server.js",
+    "prod:bot": "pm2 start bot.js --exp-backoff-restart-delay=100 --name telegram_bot_ff"
   },
   "keywords": [
     "webrtc",
