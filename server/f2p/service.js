@@ -12,8 +12,41 @@ dotenv.config()
 const pgClient = db()
 await pgClient.connect()
 
-export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: false}) : null
+export const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: true}) : null
 const evmF2PChainid = 999998
+
+// Добавьте обработчик для команды /start
+bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
+    
+    // Определяем inline-клавиатуру с кнопкой для запуска mini app
+    const keyboard = {
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: "X",
+                url: "https://x.com/FairProtocol" 
+              }
+            ],
+            [
+              {
+                text: "Discord",
+                url: "https://discord.gg/sYzQy6h3" 
+              }
+            ]
+          ]
+        }
+      };
+      
+    // Отправка видео с текстом и клавиатурой
+    bot.sendVideo(chatId, 'https://videos.pexels.com/video-files/7565438/7565438-hd_1080_1920_25fps.mp4', {
+    caption: `Welcome to <b>Fair Fight</b>! When you're ready to begin, simply hit the <b>Start</b> button on the bottom left. Let the adventure begin!`,
+    parse_mode: "HTML",
+    reply_markup: keyboard.reply_markup
+    }).catch(console.error);
+});
+
 //create game
 export async function createFight(fight, bodyInitData, sign_evm) {
     try {
