@@ -558,6 +558,9 @@
         padding-bottom: 0px;
         width: 72vw;
     }
+    
+    #nothing_new,
+    .about-ton-header-desktop {display: none;}
 
     .menu__box {
         width: 50vw;
