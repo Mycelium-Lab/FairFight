@@ -539,18 +539,17 @@ export async function mintNFT(req, res) {
             const dataToCheck = [...initData.entries()].map( ( [key, value] ) => key + "=" + value ).join( "\n" );
             const checkerTG = checkSignatureTG(process.env.TG_BOT_KEY, hash, dataToCheck)
             if (!checkerTG) {
-                res.status(401).send('wrong tg init data')
+                res.status(401).send('Wrong tg init data')
             } else {
-                //TAKE ADDRESS FROM POSTGRES
+                //брать username из tg init data
                 const username = req.body.username
                 const address = req.body.address
                 const responsePg = await pgClient.query(`SELECT * FROM board_f2p WHERE player = $1`, [username])
                 if (responsePg.rows.length === 0) {
-                    res.status(401).send('no such player')
+                    res.status(401).send('No such player')
                 } else {
                     if (responsePg.rows[0].tokens >= 150) {
                         const src = getRandomNftToMint()
-                        console.log(address, src.nftType, src.nftId)
                         const mintCell = beginCell()
                             .storeUint(0x5B907D9, 32)
                             .storeAddress(Address.parse(address))
@@ -570,10 +569,35 @@ export async function mintNFT(req, res) {
                                 })
                             ]
                         });
-                        await pgClient.query(`UPDATE board_f2p SET tokens = tokens - 150 WHERE player = $1`, [username])
+                        if (responsePg.rows[0].gift_amount == 1) {
+                            setTimeout(async () => {
+                                try {
+                                    await walletContract.sendTransfer({
+                                        seqno: await walletContract.getSeqno(),
+                                        secretKey: key.secretKey,
+                                        messages: [
+                                            internal({
+                                                to: address,
+                                                value: toNano("0.1"),
+                                                bounce: false
+                                            })
+                                        ]
+                                    })
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }, 12000)
+                        }
+                        await pgClient.query(
+                            `UPDATE board_f2p 
+                             SET tokens = tokens - 150, 
+                                 gift_amount = COALESCE(gift_amount, 0) + 1 
+                             WHERE player = $1`,
+                            [username]
+                        );                          
                         res.status(200).send('Success')
                     } else {
-                        res.status(401).send('not enough tokens')
+                        res.status(401).send('Not enough tokens')
                     }
                 }
             }

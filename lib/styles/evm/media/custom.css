@@ -35,9 +35,6 @@
     .about-header {
         margin-bottom: 20px;
     }
-    .wrapper__message-modal {
-        padding: 25px 27px 5px 27px;
-    }
     /*.wrapper__message-modal_waiting{
       height: 340px;
     }*/
@@ -456,7 +453,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .modal .modal_content_finish {
         padding: 8px 31px !important;
-        height: 375px !important;
+        height: fit-content !important;
         max-width: 381px !important;
     }
     .modal .modal_content_finish .message-modal__btn-close {
@@ -468,9 +465,6 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         width: 16px !important;
         height: 16px !important;
         padding: 0px !important;
-    }
-    .close-button_finish-game {
-        margin-top: 25px !important;
     }
     #finishGame2 {
         margin-top: 0px !important;

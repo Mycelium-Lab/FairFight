@@ -17,7 +17,7 @@
 
 .modal_content_confirm_finish {
     width: 380px !important;
-    height: 240.27px !important;
+    height: fit-content;
 }
 
 .modal-content {
@@ -187,17 +187,68 @@
 .modal .modal_content_new-game {
     display: block;
     position: relative;
+    min-height: 310px;
 }
 .modal .modal_content_about {
-    height: 401px;
-    width: 446px;
-    padding: 46px 21px 46px 31px;
+    height: fit-content;
+    width: fit-content;
+    padding: 46px 21px 26px 31px;
 }
+
+.controls_line {
+    gap: 5px;
+}
+
+.controls-keys-page {max-width: 717px !important;}
+
+.about__content_control_keys {padding: 15px !important;}
 
 .modal .modal_content_waiting {
     height: 239px;
     min-width: 385px;
     padding: 40px 23px;
+}
+
+.modal .modal_content_new-game h1 {
+    font-family: "Quadriana";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.33px;
+    text-align: center;
+}
+
+.modal .modal_content_new-game h1::before {
+    -webkit-text-stroke: 3px #700F51;
+    text-align: center;
+    width: 100%;
+}
+
+.modal .modal_content_new-game div.quadriana-label,
+.modal .modal_content_new-game span.quadriana-label {
+    font-size: 14px;
+    line-height: 17.11px;
+}
+
+.modal .modal_content_new-game div.quadriana-label::before,
+.modal .modal_content_new-game span.quadriana-label::before {
+    -webkit-text-stroke: 2px #700F51;
+}
+
+.modal_content_new-game .new-game-player {
+    position: absolute;
+    bottom: 4px;
+    right: 20px;
+    max-width: 99px;
+    height: auto;
+    opacity: 0.4;
+}
+
+.devider {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-orange);
+    opacity: 0.4;
 }
 
 .modal .modal_content_waiting .subtitle,
@@ -265,7 +316,7 @@
 }
 
 .modal__row_value div {
-    gap: 5px;
+    gap: 22px;
     justify-content: initial;
 }
 .modal__row_value div.active {

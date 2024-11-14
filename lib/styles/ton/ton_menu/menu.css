@@ -14,6 +14,21 @@
     display: none;
 }
 
+.about-ton-header.quadriana-label {
+    background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+    -webkit-background-clip: text;
+}
+
+.about-ton-header-desktop {
+    font-family: 'Teletactile';
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--color-orange);
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
 #back_button {
     display: none;
 }
@@ -141,8 +156,7 @@
 
         width: 100%;
         min-height: 100dvh;
-        overflow: auto;
-        overflow-x: hidden;
+        overflow: hidden;
         position: relative;
 
         padding-top: 80px;
@@ -352,7 +366,7 @@
         display: none !important;
     }
 
-    .wrapper_banners {
+    .main-container .wrapper_banners {
         display: none !important;
     }
 
@@ -375,15 +389,16 @@
 
     /* MODAL */
     .wrapper__message-modal {
-        max-width: calc(100vw - 40px) !important;
+        max-width: calc(100vw - 10px) !important;
         max-height: 90vh;
     }
 
     .about__content p#nothing_new {
         text-align: center;
-        font-weight: 900;
-        font-size: 14px !important;
+        /* font-weight: 900; */
+        font-size: 16px !important;
         color: #FF8426;
+        line-height: 19.55px !important;
     }
 
     .controls_outer_title {
@@ -409,38 +424,6 @@
         color: #FF8426;
     }
 
-    .about__btn {
-        display: block;
-        position: relative;
-        /* width: 176px; */
-        height: 48px;
-        background: none;
-        border: none;
-        margin: 5px auto 15px auto;
-    }
-
-    .about__btn-frame {
-        width: 100%;
-        height: 100%;
-    }
-
-    .about__btn span {
-        top: 0; left: 0; right: 0; bottom: 0;
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        color: #fff;
-        font-size: 16px;
-        font-family: "Teletactile";
-        position: absolute;
-
-        text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
-    }
-    .about__btn_control_keys span {
-        font-size: 14px !important;
-        margin-top: 12px;
-    }
-
     .about-header {
         display: none;
     }
@@ -452,75 +435,55 @@
         height: 45px;
     }
 
-    .about__content_control_keys {
-        padding: 15px;
-        margin-bottom: 15px;
-        border: 2px solid #FF8426;
-        border-radius: 4px;
-        background: #FFFDF4;
-
-        overflow-y: auto;
-    }
-
     .controls_block__title {
-        font-family: "Teletactile", sans-serif;
-        font-size: 14px;
-        font-weight: 900;
-        color: #FF8426;
+        font-family: 'Quadriana';
+        font-size: 20px;
         text-align: center;
+        font-weight: 400;
     }
 
-    .controls_block__list {
-        display: flex;
-        flex-direction: column;
-    }
-    .controls_line {
-        display: flex;
-        justify-content: space-between;
-        gap: 5px;
-    }
     .controls_line--center {
         justify-content: center;
     }
+
     .controls_block__list-card {
-        display: flex;
-        flex-direction: column;
         gap: 2px;
-        max-width: 75px;
-        width: 100%;
+        align-items: center;
     }
     .controls_block__list-card img {
-        height: 55px;
+        max-width: 57px;
         object-fit: contain;
     }
-    .controls_block__list-card span {
-        font-size: 11px;
-        font-weight: 700;
-        line-height: 13.9px;
-        text-align: center;
+    .controls_line.controls_line--center > div:first-of-type img {
+        max-width: 105px;
     }
-    .controls_block__title--mtop {
-        margin-top: 10px;
+    .controls_block__list-card span {
+        font-family: "Quadriana";
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12.22px;
+        text-align: center;
+
     }
 
-    .controls_block__list--perks .controls_line {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
     .controls_block__list--perks .controls_block__list-card {
         max-width: 50px;
     }
+    .controls_block__list--perks .controls_block__list-card:last-child {
+        max-width: 77px;
+    }
     .controls_block__list-card--wide {
-        max-width: 70px !important;
+        max-width: 100px !important;
     }
 
     .opengame_content {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px;
     }
     .opengame_content .board {
-        min-height: 250px;
+        min-height: 100%;
         margin-bottom: 15px;
     }
     .newgame_ton_btn {

@@ -70,16 +70,17 @@
 			style="display:none;visibility:hidden"></iframe></noscript>
 
 	<div id="about_modal" class="modal wrapper__message-modal-overlay">
-		<div class="board wrapper__message-modal modal_content_about modal_content">
+		<div class="board wrapper__message-modal modal_content_about modal_content faq bordered-content">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge" src="media/svg/boarder-edge-sm.svg">
 			<button class="message-modal__btn-close close_modal_window"></button>
 			<img class="about-header" src="media/svg/about-header.svg">
-			<svg class="about-ton-header" width="43" height="21" viewBox="0 0 43 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<h1 class="about-ton-header quadriana-label" data-text="FAQ">FAQ</h1>
+			<!-- <svg class="about-ton-header" width="43" height="21" viewBox="0 0 43 21" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M0.11 16V0.439999H11.22V4.89H5.67V7.11H10.11V11.56H5.67V16H0.11ZM21.2103 8.22V6H18.9903V8.22H21.2103ZM13.4303 16V8.22H14.5403V3.78H15.6503V0.439999H24.5403V3.78H25.6503V8.22H26.7603V16H21.2103V12.67H18.9903V16H13.4303ZM36.7572 11.56V4.89H34.5372V11.56H36.7572ZM34.5372 20.44V19.33H33.4272V16H31.1972V14.89H30.0872V13.78H28.9772V2.67H30.0872V1.56H31.1972V0.439999H40.0872V1.56H41.1972V2.67H42.3072V13.78H41.1972V14.89H37.8672V16H42.3072V20.44H34.5372Z" fill="#FF7C06"/>
-			</svg>
+			</svg> -->
 				
 			<div class="about__content about__content_first" style="display: none">
 				<p id="nothing_new">Nothing new, arcade shooter rules, but with an ability to earn!</p>
@@ -98,11 +99,11 @@
 				<p>5. Collect tubes to recharge weapon <br>Be careful of lava burns!</p>
 			</div>
 
-			<div class="about__content_control_keys" style="display: none">
+			<div class="about__content_control_keys pixel-border brown" style="display: none">
 
 				<div class="controls_block">
 					<h2 class="controls_block__title">
-						CONTROL KEYS INFO
+						Controol keys info
 					</h2>
 					<div class="controls_block__list">
 						<div class="controls_line">
@@ -155,7 +156,7 @@
 					</div>
 					
 					<h2 class="controls_block__title controls_block__title--mtop">
-						ITEMS ON THE MAP
+						Items on the map
 					</h2>
 					<div class="controls_block__list controls_block__list--perks">
 						<div class="controls_line">
@@ -187,6 +188,12 @@
 								<img src="media/tutor-hole.png" />
 								<span>
 									Mole hole 
+								</span>
+							</div>
+							<div class="controls_block__list-card">
+								<img src="media/faq-bullet.png" />
+								<span>
+									Bullet
 								</span>
 							</div>
 							<div class="controls_block__list-card controls_block__list-card--wide">
@@ -221,6 +228,28 @@
 					CONTROL KEYS
 				</span>
 			</button>
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
 		</div>
 	</div>
 
@@ -890,6 +919,7 @@
 				<div id="f2p_balance" style="display: none">
 					<span id="f2p_balance__value" class="f2p_balance__value">0</span>
 					<img src="media/f2p-balance-icon.svg" class="f2p_balance__icon" />
+				    <button id="f2p_ton_claim_nft_btn" class="claim_nft_btn">Claim NFT</button>
 				</div>
 
 			</div>
@@ -941,8 +971,8 @@
 								<span id="f2p-text">pay to play</span>
 								<input id="f2p_checker" type="checkbox"/>
 								<div id="games_checker" class="inner-block__head">
-									<button class="active" id="opengames-btn">Open Games</button>
-									<button class="" id="pastgames-btn">Past games</button>
+									<button class="active" id="opengames-btn" data-text="Open games">Open games</button>
+									<button class="" id="pastgames-btn" data-text="Past games">Past games</button>
 								</div>
 	
 								<h4 id="opengames-empty" style="display: none;">
@@ -952,10 +982,10 @@
 									</p>
 								</h4>
 								<div id="opengames" class="tabs__content active">
+									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg"> -->
 									<ul id="opengames-list">
 										<div class="games__empty" id="opengames_empty">
 											<span id="opengames_empty-title">Empty :(</span>
@@ -964,10 +994,24 @@
 									</ul>
 								</div>
 								<div id="pastgames" class="tabs__content">
+									<div class="four-color-border-block">
+										<span class="horizontal top-1"></span>
+										<span class="horizontal top-2"></span>
+										<span class="horizontal bottom-1"></span>
+										<span class="horizontal bottom-2"></span>
+										<span class="vertical left-1"></span>
+										<span class="vertical left-2"></span>
+										<span class="vertical right-1"></span>
+										<span class="vertical right-2"></span>
+										<span class="squrale one"></span>
+										<span class="squrale two"></span>
+										<span class="squrale three"></span>
+										<span class="squrale four"></span>
+									</div>
+									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg"> -->
 									<ul id="pastgames-list">
 										<div class="games__empty" id="pastgames_empty">
 											<span id="pastgames_empty-title">Empty :(</span>
@@ -978,16 +1022,30 @@
 								
 								<!-- f2p -->
 								<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
-									<button class="active" id="opengames-f2p-btn">Open Games</button>
-									<button class="" id="pastgames-f2p-btn">Past games</button>
+									<button class="active" id="opengames-f2p-btn" data-text="Open games">Open games</button>
+									<button class="" id="pastgames-f2p-btn" data-text="Past games">Past games</button>
 								</div>
 	
 								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
 								<div id="opengames-f2p" class="tabs__content active">
+									<!-- <div class="four-color-border-block">
+										<span class="horizontal top-1"></span>
+										<span class="horizontal top-2"></span>
+										<span class="horizontal bottom-1"></span>
+										<span class="horizontal bottom-2"></span>
+										<span class="vertical left-1"></span>
+										<span class="vertical left-2"></span>
+										<span class="vertical right-1"></span>
+										<span class="vertical right-2"></span>
+										<span class="squrale one"></span>
+										<span class="squrale two"></span>
+										<span class="squrale three"></span>
+										<span class="squrale four"></span>
+									</div> -->
+									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg"> -->
 									<ul id="opengames-list-f2p">
 										<div class="games__empty" id="opengames_empty-f2p">
 											<span id="opengames_empty-title-f2p">Empty :(</span>
@@ -996,10 +1054,24 @@
 									</ul>
 								</div>
 								<div id="pastgames-f2p" class="tabs__content">
+									<div class="four-color-border-block">
+										<span class="horizontal top-1"></span>
+										<span class="horizontal top-2"></span>
+										<span class="horizontal bottom-1"></span>
+										<span class="horizontal bottom-2"></span>
+										<span class="vertical left-1"></span>
+										<span class="vertical left-2"></span>
+										<span class="vertical right-1"></span>
+										<span class="vertical right-2"></span>
+										<span class="squrale one"></span>
+										<span class="squrale two"></span>
+										<span class="squrale three"></span>
+										<span class="squrale four"></span>
+									</div>
+									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
+									<img class="board-edge" src="media/svg/board-edge.svg"> -->
 									<ul id="pastgames-list-f2p">
 										<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
 											<span id="pastgames_empty-title-f2p">Empty :(</span>
@@ -1007,8 +1079,53 @@
 										</div>
 									</ul>
 								</div>
+								<div class="four-color-border-block ">
+									<span class="horizontal top-1"></span>
+									<span class="horizontal top-2"></span>
+									<span class="horizontal top-3"></span>
+									<span class="horizontal top-4"></span>
+									<span class="horizontal bottom-1"></span>
+									<span class="horizontal bottom-2"></span>
+									<span class="horizontal bottom-3"></span>
+									<span class="horizontal bottom-4"></span>
+									<span class="vertical left-1"></span>
+									<span class="vertical left-2"></span>
+									<span class="vertical left-3"></span>
+									<span class="vertical left-4"></span>
+									<span class="vertical right-1"></span>
+									<span class="vertical right-2"></span>
+									<span class="vertical right-3"></span>
+									<span class="vertical right-4"></span>
+									<span class="squrale one"></span>
+									<span class="squrale two"></span>
+									<span class="squrale three"></span>
+									<span class="squrale four"></span>
+								</div>
 							</div>
 
+							<div class="wrapper_banners">
+								<div class="board wrapper__banner">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<p>NEW Characters</p>
+									<div class="buyblock-image">
+										<img src="media/new-charachtar-avatar-1.png" alt="">
+										<img src="media/new-charachtar-avatar-2.png" alt="">
+									</div>
+									<button id="new-characters-btn" class="banner__buy"></button>
+								</div>
+								<div class="board wrapper__banner-boxes wrapper__banner">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+									<p>Try your luck</p>
+									<div class="buyblock-image__boxes"></div>
+									<button id="try-luck-btn" class="banner__buy"></button>
+								</div>
+							</div>
 						</div>
 
 						<div class="ton__menu-smm">
@@ -1222,8 +1339,8 @@
 								
 								<!-- f2p -->
 								<div id="games_checker-f2p" class="inner-block__head" style="display: none;">
-									<button class="active" id="opengames-f2p-btn">Open Games</button>
-									<button class="" id="pastgames-f2p-btn">Past games</button>
+									<button class="active" id="opengames-f2p-btn" data-text="Open games">Open games</button>
+									<button class="" id="pastgames-f2p-btn" data-text="Past games">Past games</button>
 								</div>
 
 								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
@@ -1314,44 +1431,51 @@
 		<!-- Add in class wrapper__message-modal_active for display modal -->
 		<div id="my_modal" class="new_game_modal modal wrapper__message-modal-overlay">
 			<div class="board wrapper__message-modal modal_content_new-game modal_content">
+				<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 				<img class="board-edge" src="media/svg/board-edge.svg">
 				<img class="board-edge" src="media/svg/board-edge.svg">
-				<img class="board-edge" src="media/svg/board-edge.svg">
-				<img class="board-edge" src="media/svg/board-edge.svg">
+				<img class="board-edge" src="media/svg/board-edge.svg"> -->
 				<button class="close_modal_window modal__close-icon"></button>
-				<img class="new-game-header" src="media/svg/new_game_header.svg">
-				<img class='new-game-devider' src="media/svg/devider.svg">
+				<h1 class="quadriana-label" data-text="New Game">New Game</h1>
+				<span class="devider"></span>
 				<!--<div class="modal__row-map">-->
-				<div class="modal__row">
-					<div>
-						Map
-						<div id="map-wrapper" style="position: relative;">
-							<select id="map">
-								<option value="0" selected>Steel plant</option>
-								<option value="1">Moon portals</option>
-								<option value="2">Farm</option>
-								<option value="3">Dungeon</option>
-								<option value="4">Jump City</option>
-							</select>
-							<!-- <svg style="position: absolute; right: 7px" id="select-chevron" width="10" height="8"
-								viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M7.62674 1.23828L4.20204 4.66298L0.777344 1.23828" stroke="#B6BCC4"
-									stroke-width="0.733864" stroke-linecap="round" stroke-linejoin="round" />
-							</svg> -->
+					<div class="modal__row">
+						<div>
+							<span class="quadriana-label" data-text="Map">Map</span>
+							<div class="custom-select" id="map-wrapper">
+								<div id="map-select-selected" class="select-selected" data-value="0">Steel plant</div>
+								<span class="arrow"></span>
+								<div class="select-items-wrapper select-hide">
+								  <div class="select-items">
+									<span data-value="0">Steel plant</span>
+									<span data-value="1">Moon portals</span>
+									<span data-value="2">Farm</span>
+									<span data-value="3">Dungeon</span>
+									<span data-value="4">Jump City</span>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<span class="quadriana-label" data-text="Number of players">Number of players</span>
+							<div class="custom-select" id="number-of-players">
+								<div id="players-select-selected" class="select-selected" data-value="2">2 players</div>
+								<span class="arrow"></span>
+								<div class="select-items-wrapper select-hide">
+								  <div class="select-items">
+									<span data-value="2">2 players</span>
+									<span data-value="3">3 players</span>
+									<span data-value="4">4 players</span>
+									<span data-value="5">5 players</span>
+								  </div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div>Number of players
-						<select id="number-of-players">
-							<option value="2" selected>2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-				</div>
-				<img id="tokens-f2p-divider" class='new-game-devider' src="media/svg/devider.svg">
+				<span class="devider"></span>
 				<div id="tokens-f2p" class="modal__row__tokens">
-					<div class="select-token-container">Select a token:
+					<div class="select-token-container">
+						<span class="quadriana-label" data-text="Select a token:">Select a token:</span>
 						<div id="select-token-list" class="container-token">
 
 						</div>
@@ -1361,35 +1485,71 @@
 						</div>
 					</div>
 				</div>
-				<img class='new-game-devider' src="media/svg/devider.svg">
+				<span class="devider" id="tokens-f2p-divider"></span>
 				<div class="modal__row">
-					<div id="amountPerDeathText" style="display: flex;">Bet per round <input type="number"
-							id="amountPerDeath" name="amountPerDeath" required /></div>
-					<div id="amountToPlayText" style="display: flex;">Number of rounds
+					<div id="amountPerDeathText" style="display: flex;">						
+						<span class="quadriana-label" data-text="Bet per round">Bet per round</span>
+						<div class="pixel-bordered-form">
+							<input type="number" id="amountPerDeath" name="amountPerDeath" required />
+						</div>
+					</div>
+					<div id="amountToPlayText" style="display: flex;">						
+						<span class="quadriana-label" data-text="Number of rounds">Number of rounds</span>
 						<!-- <input type="number" id="amountToPlay" min="1" max="255" required /> -->
-						<select name="" id="amountToPlay">
-							<option value="1">1 ROUND</option>
-							<option value="2">2 ROUNDS</option>
-							<option value="3">3 ROUNDS</option>
-							<option value="4">4 ROUNDS</option>
-							<option value="5">5 ROUNDS</option>
-							<option value="6">6 ROUNDS</option>
-							<option value="7">7 ROUNDS</option>
-							<option value="8">8 ROUNDS</option>
-							<option value="9">9 ROUNDS</option>
-							<option value="10">10 ROUNDS</option>
-						</select>
+						<div class="custom-select" id="amountToPlay">
+							<div id="rounds-select-selected" class="select-selected" data-value="1">1 ROUND</div>
+							<span class="arrow"></span>
+							<div class="select-items-wrapper select-hide">
+							  <div class="select-items">
+								<span data-value="1">1 ROUND</span>
+								<span data-value="2">2 ROUNDS</span>
+								<span data-value="3">3 ROUNDS</span>
+								<span data-value="4">4 ROUNDS</span>
+								<span data-value="5">5 ROUNDS</span>
+								<span data-value="6">6 ROUNDS</span>
+								<span data-value="7">7 ROUNDS</span>
+								<span data-value="8">8 ROUNDS</span>
+								<span data-value="9">9 ROUNDS</span>
+								<span data-value="10">10 ROUNDS</span>
+							  </div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<img class='new-game-devider' src="media/svg/devider.svg">
+				<!-- <span class="devider"></span> -->
 				<div class="modal__row_value modal__row">
-					<div id="total-prize-pool">Total prize pool: <span id="totalPrizePool">-</span><span id="totalPrizePoolToken">TON</span></div>
-					<div id="your-deposit-element" class="active">Your deposit: <span id="yourDeposit">-</span><span id="yourDepositToken">TON</span></div>
+					<div id="total-prize-pool"><span class="quadriana-label" data-text="Total prize pool:">Total prize pool:</span> <span class="quadriana-label" data-text="-" id="totalPrizePool">-</span> <span class="quadriana-label" id="totalPrizePoolToken" data-text="TON">TON</span></div>
+					<div id="your-deposit-element" class="active"><span class="quadriana-label" data-text="Your deposit:">Your deposit:</span> <span class="quadriana-label" data-text="-"  id="yourDeposit">-</span> <span class="quadriana-label" id="yourDepositToken" data-text="TON">TON</span></div>
 					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
 					<img class="player-visible" src="media/svg/player-visible.svg">
 					<img style="display: none;" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
 				</div>
 				<!--</div>-->
+
+				<div class="four-color-border-block ">
+					<span class="horizontal top-1"></span>
+					<span class="horizontal top-2"></span>
+					<span class="horizontal top-3"></span>
+					<span class="horizontal top-4"></span>
+					<span class="horizontal bottom-1"></span>
+					<span class="horizontal bottom-2"></span>
+					<span class="horizontal bottom-3"></span>
+					<span class="horizontal bottom-4"></span>
+					<span class="vertical left-1"></span>
+					<span class="vertical left-2"></span>
+					<span class="vertical left-3"></span>
+					<span class="vertical left-4"></span>
+					<span class="vertical right-1"></span>
+					<span class="vertical right-2"></span>
+					<span class="vertical right-3"></span>
+					<span class="vertical right-4"></span>
+					<span class="squrale one"></span>
+					<span class="squrale two"></span>
+					<span class="squrale three"></span>
+					<span class="squrale four"></span>
+				</div>
+
+				<img class="new-game-player" src="media/svg/player-visible-mobile.svg" alt="">
 			</div>
 		</div>
 		<div id="install_wallet_modal" class="modal wrapper__message-modal-overlay">
@@ -1437,14 +1597,36 @@
 				</div>
 			</div>
 		</div>
-		<div id="info_modal" class="modal wrapper__message-modal-overlay">
+		<div id="info_modal" class="modal wrapper__message-modal-overlay" >
 			<div class="board wrapper__message-modal modal_content_info modal_content pb70">
+				<!-- <img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
-				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
+				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg"> -->
+				<div class="four-color-border-block ">
+					<span class="horizontal top-1"></span>
+					<span class="horizontal top-2"></span>
+					<span class="horizontal top-3"></span>
+					<span class="horizontal top-4"></span>
+					<span class="horizontal bottom-1"></span>
+					<span class="horizontal bottom-2"></span>
+					<span class="horizontal bottom-3"></span>
+					<span class="horizontal bottom-4"></span>
+					<span class="vertical left-1"></span>
+					<span class="vertical left-2"></span>
+					<span class="vertical left-3"></span>
+					<span class="vertical left-4"></span>
+					<span class="vertical right-1"></span>
+					<span class="vertical right-2"></span>
+					<span class="vertical right-3"></span>
+					<span class="vertical right-4"></span>
+					<span class="squrale one"></span>
+					<span class="squrale two"></span>
+					<span class="squrale three"></span>
+					<span class="squrale four"></span>
+				</div>
 				<!-- <button id="info-close" class="message-modal__btn-close close_modal_window close-model--mode"></button> -->
-				<div class="info__title">Players and stats</div>
+				<div class="info__title quadriana-label" data-text="Players and stats">Players and stats</div>
 
 				<div id="info-content" class="info__content">
 					<div id="info-content-top" class="info-content-top--mode">
@@ -1589,7 +1771,7 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- <div class="dataTable_update_info" style="color: rgba(57, 57, 57, 0.5); font-size: 8;">The leaderboard is updated once a day.</div> -->
+				<div class="dataTable_update_info">The leaderboard is updated once a day.</div>
 			</div>
 		</div>
 		<img class="modal__map" id="modal__map" src="" alt="Map Image">
@@ -1829,7 +2011,7 @@
 		</div>
 
 		<!-- 4 -->
-		<div id="new-error-modal" class="wrapper__message-modal-overlay">
+		<div id="new-error-modal" class="wrapper__message-modal-overlay" style="z-index: 10000;">
 			<div class="board wrapper__message-modal wrapper__message-modal_rejected">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 				<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -2286,13 +2468,35 @@
 
 	<div id="shop-block" class="modal-owelay wrapper__nft-shop-modal-overlay">
 		<div class=" wrapper__nft-shop-modal wrapper__message-modal modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+			<!-- <img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-middle-light.svg">
+				src="media/svg/corner-middle-light.svg"> -->
+				<div class="four-color-border-block ">
+					<span class="horizontal top-1"></span>
+					<span class="horizontal top-2"></span>
+					<span class="horizontal top-3"></span>
+					<span class="horizontal top-4"></span>
+					<span class="horizontal bottom-1"></span>
+					<span class="horizontal bottom-2"></span>
+					<span class="horizontal bottom-3"></span>
+					<span class="horizontal bottom-4"></span>
+					<span class="vertical left-1"></span>
+					<span class="vertical left-2"></span>
+					<span class="vertical left-3"></span>
+					<span class="vertical left-4"></span>
+					<span class="vertical right-1"></span>
+					<span class="vertical right-2"></span>
+					<span class="vertical right-3"></span>
+					<span class="vertical right-4"></span>
+					<span class="squrale one"></span>
+					<span class="squrale two"></span>
+					<span class="squrale three"></span>
+					<span class="squrale four"></span>
+				</div>
 			<button class="nft-shop-modal__btn-close modal__close-icon"></button>
 
 			<div class="nft-shop-modal__left-title"></div>
@@ -2305,6 +2509,8 @@
 			<div class="nft-shop-modal__right-title nft-shop-modal__right-title-boots"></div>
 
 			<div class="nft-shop-modal__header-title"></div>
+			
+			<h1 class="nft-shop-modal__header-title quadriana-label" data-text="NFT SHOP">NFT SHOP</h1>
 
 			<div class="nft-shop-modal__nav-wrap">
 				<nav class="nav-wrap__nav">
@@ -2851,13 +3057,35 @@
 
 	<div id="inventory-modal" class="modal-overlay">
 		<div class="inventory__modal-content modal-content_primary modal-content">
-			<img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
+			<!-- <img class="inventory-wrap-corner_topleft modal-content__corner" src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-middle-light.svg">
 			<img class="inventory-wrap-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-middle-light.svg">
+				src="media/svg/corner-middle-light.svg"> -->
 			<button id="inventory-close" class="inventory-modal__btn-close modal__close-icon"></button>
 
 			<div class="inventory-modal__left-title"></div>
@@ -2897,6 +3125,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
+						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3102,6 +3331,7 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
+						</div>
 						</div>
 					</div>
 
@@ -4086,23 +4316,45 @@
 
 	<div id="fittingroom-modal" class="modal-overlay">
 		<div class="fitting__modal-content modal-content_secondary modal-content">
-			<img class="fitting-wrap__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
+			<div class="four-color-border-block">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
+			<!-- <img class="fitting-wrap__modal-corner_topleft modal-content__corner" src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_topright modal-content__corner_topright modal-content__corner"
 				src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_bottomright modal-content__corner_bottomright modal-content__corner"
 				src="media/svg/corner-light.svg">
 			<img class="fitting-wrap__modal-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
-				src="media/svg/corner-light.svg">
+				src="media/svg/corner-light.svg"> -->
 			<button id='fittingroom-close' class="dressing-modal__btn-close modal__close-icon"></button>
 			<!--<div class="inventory-mo/private/var/folders/46/918l5vln43bbf1lkqc504d1m0000gn/T/AppTranslocation/7810194A-5CC6-4004-9211-818EFA42EC70/d/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmldal__right-title inventory-modal__right-title-weapons"></div>
 			<div class="inventory-modal__right-title inventory-modal__right-title-armor"></div>
 			<div class="inventory-modal__right-title inventory-modal__right-title-boots"></div>-->
 
-			<div class="modal__header-title_fitting modal__header-title"></div>
+			<h1 class="item-modal-info quadriana-label" data-text="Fitting room">Fitting room</h1>
 
 			<div class="modal__body_fitting modal__body">
 				<div class="showcase">
-					<p class="head__showcase-title">CHARACTER</p>
+					<p class="head__showcase-title">Characters</p>
 
 					<div class="body__showcase fitting-character">
 						<div class="character__slots fitting_slots">
@@ -4296,15 +4548,37 @@
 
 	<!-- item modal -->
 
-	<div id="inventory-item-modal" class="wrapper__item-modal-overlay">
+	<div id="inventory-item-modal" class="wrapper__item-modal-overlay"	>
 		<div class="board body__item-detail">
+			<!-- <img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg"> -->
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
 			<span id="btn-close-item-detail-modal" class="item-detail__btn-close"></span>
 
-			<h2 class="item-modal-info">Info</h2>
+			<h2 class="item-modal-info quadriana-label" data-text="Info">Info</h2>
 
 			<div id="inventory-item-body">
 				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
@@ -4350,13 +4624,35 @@
 
 	<div id="inventory-nftbox-modal" class="wrapper__item-modal-overlay">
 		<div class="board body__item-detail">
+			<div class="four-color-border-block ">
+				<span class="horizontal top-1"></span>
+				<span class="horizontal top-2"></span>
+				<span class="horizontal top-3"></span>
+				<span class="horizontal top-4"></span>
+				<span class="horizontal bottom-1"></span>
+				<span class="horizontal bottom-2"></span>
+				<span class="horizontal bottom-3"></span>
+				<span class="horizontal bottom-4"></span>
+				<span class="vertical left-1"></span>
+				<span class="vertical left-2"></span>
+				<span class="vertical left-3"></span>
+				<span class="vertical left-4"></span>
+				<span class="vertical right-1"></span>
+				<span class="vertical right-2"></span>
+				<span class="vertical right-3"></span>
+				<span class="vertical right-4"></span>
+				<span class="squrale one"></span>
+				<span class="squrale two"></span>
+				<span class="squrale three"></span>
+				<span class="squrale four"></span>
+			</div>
+			<!-- <img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
 			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
-			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg">
+			<img class="board-edge_sm modal-content__corner" src="media/svg/boarder-edge-sm.svg"> -->
 			<span id="btn-close-nftbox-detail-modal" class="item-detail__btn-close"></span>
 
-			<h2 class="item-modal-info">Buy loot box</h2>
+			<h2 class="item-modal-info quadriana-label" data-text="Buy loot box">Buy loot box</h2>
 
 			<div id="nventory-nftbox-body">
 				<div class="item-detail__header item-detail__header-weapons item-detail__header_active">
@@ -4471,6 +4767,130 @@
 				complete</div>
 		</div>
 	</div>
+
+	<!-- REDIRECT TO DESKTOP POPUP	 -->
+	<div class="redirect-to-phone-popup-tg">
+		<div class="content">
+			<h1>Play on your phone</h1>
+			<div>
+				<img src="media/qr.svg" alt="">
+				<h2>@fairfights_bot</h2>
+			</div>
+		</div>
+		<div class="avatars">
+			<img src="media/ton-menu-chars.png" alt="">
+		</div>
+		<span class="blur-bg"></span>
+	</div>
+	<!-- REDIRECT TO DESKTOP POPUP	 -->
+	
+	<!-- PLAY TO PLAY POPUP	 -->
+	<div class="play-to-play-popup">
+		<span class="play-to-play-popup__close"></span>
+		<div class="play-to-play-popup__content slide-1">
+			<div class="play-to-play-popup__title">
+				<h1 class="quadriana-label" data-text="Free to play">Free to play</h1>
+				<h1 class="quadriana-label" data-text="Free to play">Free to play</h1>
+			</div>
+
+			<div class="play-to-play-popup__text one">
+				<h2 class="quadriana-label" data-text="Fair Protocol awards 5 FAIR tokens for each game and 10 more tokens for each win.
+				150 FAIR tokens can be exchanged for a basic nft.">Fair Protocol awards 5 FAIR tokens for each game and 10 more tokens for each win.
+					150 FAIR tokens can be exchanged for a basic nft.
+				</h2>
+				<h2 class="quadriana-label" data-text="Fair Protocol awards 5 FAIR tokens for each game and 10 more tokens for each win.
+				150 FAIR tokens can be exchanged for a basic nft.">Fair Protocol awards 5 FAIR tokens for each game and 10 more tokens for each win.
+					150 FAIR tokens can be exchanged for a basic nft.
+				</h2>
+			</div>
+
+			<div class="play-to-play-popup__text two">
+				<h2 class="quadriana-label" data-text="*This nft can be used only in the  P2P version. Also new player who claims his 
+				2nd NFT is  given a minimum deposit (0.1 TON).">*This nft can be used only in the  P2P version. Also new player who claims his 
+					2nd NFT is  given a minimum deposit (0.1 TON).
+				</h2>
+				<h2 class="quadriana-label" data-text="*This nft can be used only in the  P2P version. Also new player who claims his 
+				2nd NFT is  given a minimum deposit (0.1 TON).">*This nft can be used only in the  P2P version. Also new player who claims his 
+					2nd NFT is  given a minimum deposit (0.1 TON).
+				</h2>
+			</div>
+
+			<div class="play-to-play-popup__slide-points">
+				<span class="blue"></span>
+				<span></span>
+				<span></span>
+			</div>
+
+			<div class="play-to-play-popup__btn play-to-play-popup__one">
+				<img src="media/svg/blue-btn.svg" alt="">
+				<span>NEXT</span>
+			</div>
+		</div>
+		<div class="play-to-play-popup__content slide-2">
+			<div class="play-to-play-popup__title">
+				<h1 class="quadriana-label" data-text="Free to play">Free to play</h1>
+				<h1 class="quadriana-label" data-text="Free to play">Free to play</h1>
+			</div>
+
+			<div class="play-to-play-popup__text one">
+				<h2 class="quadriana-label" data-text="Bet on your win, your opponents do the same.">Bet on your win, your opponents do the same.
+				</h2>
+				<h2 class="quadriana-label" data-text="Bet on your win, your opponents do the same.">Bet on your win, your opponents do the same.
+				</h2>
+			</div>
+
+			<div class="play-to-play-popup__text two">
+				<h2 class="quadriana-label" data-text="and Fair Protocol will ensure the transparency and fairness 
+				of every game thanks to smart contracts.">and Fair Protocol will ensure the transparency and fairness of every game thanks to smart contracts.
+				</h2>
+				<h2 class="quadriana-label" data-text="and Fair Protocol will ensure the transparency and fairness of 
+				every game thanks to smart contracts.">and Fair Protocol will ensure the transparency and fairness of every game thanks to smart contracts.
+				</h2>
+			</div>
+
+			<div class="play-to-play-popup__slide-points">
+				<span></span>
+				<span class="purple"></span>
+				<span></span>
+			</div>
+
+			<div class="play-to-play-popup__btn play-to-play-popup__btn__two">
+				<img src="media/svg/slider-btn-purple.svg" alt="">
+				<span>NEXT</span>
+			</div>
+		</div>
+		<div class="play-to-play-popup__content slide-3">
+			<div class="play-to-play-popup__title orange">
+				<h1 class="quadriana-label" data-text="Tournament">Tournament</h1>
+				<h1 class="quadriana-label" data-text="Tournament">Tournament</h1>
+			</div>
+
+			<div class="play-to-play-popup__text one">
+				<h2 class="quadriana-label" data-text="The top 100 players in the P2P standings get a chance 
+				to compete in a monthly tournament with a prize pool of 100 TON free of charge.">The top 100 players in the P2P standings get a chance 
+				to compete in a monthly tournament with a prize pool of 100 TON free of charge.
+				</h2>
+				<h2 class="quadriana-label" data-text="The top 100 players in the P2P standings get a chance 
+				to compete in a monthly tournament with a prize pool of 100 TON free of charge.">The top 100 players in the P2P standings get a chance 
+				to compete in a monthly tournament with a prize pool of 100 TON free of charge.
+				</h2>
+			</div>
+
+			<div class="play-to-play-popup__slide-points">
+				<span></span>
+				<span></span>
+				<span class="orange"></span>
+			</div>
+
+			<div class="play-to-play-popup__btn">
+				<img src="media/svg/slider-btn-orange.svg" alt="">
+				<span>NEXT</span>
+			</div>
+		</div>
+		<span class="play-to-play-popup__gradient-bg"></span>
+	</div>
+	<!-- PLAY TO PLAY POPUP	 -->
+
 	</div>
 </body>
 

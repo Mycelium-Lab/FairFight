@@ -90,10 +90,9 @@
     .info__title {
         font-family: "Teletactile";
         font-size: 24px;
-        font-size: 13px;
         color: #ff7c06;
         text-align: center;
-        margin-top: 33px;
+        margin: 33px auto 0 auto;
     }
     .info__content {
         /* background-image: url(../../../media/svg/past-game/info__frame.svg); */
@@ -178,7 +177,6 @@
     }
     .infoContent-bottom__enemy {
         margin: 0px 9px 0px;
-        text-align: end;
     }
     .infoContent-bottom__you::before,
     .infoContent-bottom__enemy::before {
@@ -363,7 +361,6 @@
         right: 5px;
     }
     .modal__over-body {
-        padding-top: 19px;
         /* background-image: url("../../../media/svg/game-over-frame-mobile.svg"); */
     }
     .modal__title {
@@ -382,12 +379,12 @@
     }
     .modal_content_confirm_finish {
         width: 335px !important;
-        height: 193.27px !important;
         padding: 10px 5px !important;
     }
     .modal__title-confirm_finish {
         font-size: 18px !important;
-        margin-bottom: 20px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center;
     }
     .modal_content_rotate {
         border-radius: 0px !important;
@@ -471,13 +468,15 @@
     .modal__row {
         gap: 13.6px;
     }
-    #createGame {
+    #createGame,
+    #createGame-f2p-evm {
         height: 34px;
         padding: 0 19.7395px;
         padding-bottom: 10px;
         width: 116.8px !important;
     }
-    #createGame:hover {
+    #createGame:hover,
+    #createGame-f2p-evm:hover {
         padding-bottom: 0px;
         padding-top: 5px;
     }

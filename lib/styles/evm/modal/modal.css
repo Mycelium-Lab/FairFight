@@ -17,7 +17,7 @@
 
 .modal_content_confirm_finish {
     width: 380px !important;
-    height: 240.27px !important;
+    height: fit-content;
 }
 
 .modal-content {
@@ -439,10 +439,10 @@
     background-repeat: no-repeat;
     align-items: center;
     /* background-image: url(../../../media/svg/game-over-frame.svg); */
-    gap: 20px;
+    gap: 16px;
     padding-top: 24px;
     position: relative;
-    margin-right: 12px;
+    background-color: #FFFDF4;
 }
 .modal__over-body::-webkit-scrollbar {
     width: 4px; /* ширина для вертикального скролла */
@@ -456,9 +456,10 @@
 }
 
 .modal__over-subtitle {
-    color: #393939;
-    text-decoration: underline;
-    font-family: "Teletactile";
+    color: var(--color-orange);
+    font-family: "Quadriana";
+    font-size: 20px;
+    line-height: 24.44px;
 }
 #instruction_modal {
     overflow: hidden;

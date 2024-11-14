@@ -125,6 +125,29 @@
     font-weight: 500;
 }
 
+.yourAmountWinLoseTitle,
+.yourAmountWinLoses {color: var(--color-green);}
+
+.yourAmountWinLoseTitle.lose,
+.yourAmountWinLoses.lose {color: var(--color-red);}
+
+.finish_modal_your_address {color: var(--color-black);}
+
+#over_modal .yourAmountWinLoseTitle::before {
+    content: "";
+    display: inline-block;
+    width: 21px;
+    height: 20px;
+    background-image: url("../../../media/svg/past-game/win.svg");
+    background-size: 21px 20px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+}
+
+#over_modal .yourAmountWinLoseTitle.lose::before {
+    background-image: url("../../../media/svg/past-game/lose.svg");
+}
+
 #over_modal .yourKillsTitle::before {
     content: "";
     display: inline-block;

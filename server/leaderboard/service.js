@@ -210,6 +210,14 @@ export async function createLeaderboardTON(req, res) {
     }
 }
 
+setInterval(async () => {
+    try {
+        await createLeaderboard(42161)
+    } catch (error) {}
+}, 1000 * 60 * 60 * 24)
+
+// createLeaderboard(42161)
+
 export async function getLeaderboard(req, res) {
     try {
         const query = req.query
