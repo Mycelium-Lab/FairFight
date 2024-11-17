@@ -429,7 +429,7 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
-      if (data.fromButton) {
+      // if (data.fromButton) {
         let fight, players
         if ((room.getChainId() != 0) && (room.chainid != 999999) && (room.chainid != 999998)) {
           fight = await blockchain().contract.fights(room.getFightId())
@@ -551,7 +551,7 @@ function handleSocket(socket) {
             room.finished = true;
           }
         }
-      }
+      // }
     } catch (error) {
       console.error(error)
     }
