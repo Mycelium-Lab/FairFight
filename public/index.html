@@ -1319,13 +1319,13 @@
 							<button id="btn_modal_window_mobile" class="newgame__btn_mobile newgame__btn"></button>
 							<!-- <button id="btn_modal_window_mobile_f2p" class="newgame__btn_mobile newgame__btn" style="display: none;"></button> -->
 							<div class="board inner-block">
-								<div id="games_checker" class="inner-block__head">
-									<button class="active" id="opengames-btn">Open Games</button>
-									<button class="" id="pastgames-btn">Past games</button>
+								<div id="games_checker-desktop" class="inner-block__head">
+									<button class="active" id="opengames-btn-desktop">Open Games</button>
+									<button class="" id="pastgames-btn-desktop">Past games</button>
 								</div>
 
-								<h4 id="opengames-empty" style="display: none">Empty or only your game</h4>
-								<div id="opengames" class="tabs__content active bordered-content">
+								<h4 id="opengames-empty-desktop" style="display: none">Empty or only your game</h4>
+								<div id="opengames-desktop" class="tabs__content active bordered-content">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
@@ -1352,83 +1352,57 @@
 										<span class="squrale three"></span>
 										<span class="squrale four"></span>
 									</div>
-									<ul id="opengames-list">
-										<div class="games__empty" id="opengames_empty">
-											<span id="opengames_empty-title"></span>
-											<span id="opengames_empty-desc">Connect your wallet to start playing.</span>
+									<ul id="opengames-list-desktop">
+										<div class="games__empty" id="opengames_empty-desktop">
+											<span id="opengames_empty-title-desktop"></span>
+											<span id="opengames_empty-desc-desktop">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames" class="tabs__content">
+								<div id="pastgames-desktop" class="tabs__content">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="pastgames-list">
-										<div class="games__empty" id="pastgames_empty" style="display: none;">
-											<span id="pastgames_empty-title"></span>
-											<span id="pastgames_empty-desc" style="display: none;">Connect your wallet to start playing.</span>
+									<ul id="pastgames-list-desktop">
+										<div class="games__empty" id="pastgames_empty-desktop" style="display: none;">
+											<span id="pastgames_empty-title-desktop"></span>
+											<span id="pastgames_empty-desc-desktop" style="display: none;">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>
 								
 								<!-- f2p -->
-								<!-- <div id="games_checker-f2p" class="inner-block__head" style="display: none;">
-									<button class="active" id="opengames-f2p-btn">Open Games</button>
-									<button class="" id="pastgames-f2p-btn">Past games</button>
+								<div id="games_checker-f2p-desktop" class="inner-block__head" style="display: none;">
+									<button class="active" id="opengames-f2p-btn-desktop">Open Games</button>
+									<button class="" id="pastgames-f2p-btn-desktop">Past games</button>
 								</div>
 
-								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
-								<div id="opengames-f2p" class="tabs__content active">
+								<h4 id="opengames-empty-f2p-evm-desktop" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p-evm-desktop" style="display: none" class="tabs__content active">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="opengames-list-f2p">
-										<div class="games__empty" id="opengames_empty-f2p">
-											<span id="opengames_empty-title-f2p"></span>
-											<span id="opengames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+									<ul id="opengames-list-f2p-evm-desktop">
+										<div class="games__empty" id="opengames_empty-f2p-evm-desktop">
+											<span id="opengames_empty-title-f2p-evm-desktop"></span>
+											<span id="opengames_empty-desc-f2p-evm-desktop">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames-f2p" class="tabs__content">
+								<div id="pastgames-f2p-evm-desktop" style="display: none" class="tabs__content">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="pastgames-list-f2p">
-										<div class="games__empty" id="pastgames_empty-f2p" style="display: none;">
-											<span id="pastgames_empty-title-f2p"></span>
-											<span id="pastgames_empty-desc-f2p" style="display: none;">Connect your wallet to start playing.</span>
+									<ul id="pastgames-list-f2p-evm-desktop">
+										<div class="games__empty" id="pastgames_empty-f2p-evm-desktop" style="display: none;">
+											<span id="pastgames_empty-title-f2p-evm-desktop"></span>
+											<span id="pastgames_empty-desc-f2p-evm-desktop">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>
-
-								<h4 id="opengames-empty-f2p-evm" style="display: none">Empty or only your game</h4>
-								<div id="opengames-f2p-evm" style="display: none" class="tabs__content active">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="opengames-list-f2p-evm">
-										<div class="games__empty" id="opengames_empty-f2p-evm">
-											<span id="opengames_empty-title-f2p-evm"></span>
-											<span id="opengames_empty-desc-f2p-evm">Connect your wallet to start playing.</span>
-										</div>
-									</ul>
-								</div>
-								<div id="pastgames-f2p-evm" style="display: none" class="tabs__content">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<img class="board-edge" src="media/svg/board-edge.svg">
-									<ul id="pastgames-list-f2p-evm">
-										<div class="games__empty" id="pastgames_empty-f2p-evm" style="display: none;">
-											<span id="pastgames_empty-title-f2p-evm"></span>
-											<span id="pastgames_empty-desc-f2p-evm">Connect your wallet to start playing.</span>
-										</div>
-									</ul>
-								</div> -->
 							</div>
 							<div class="wrapper_banners">
 								<div class="board wrapper__banner">
@@ -5068,6 +5042,7 @@
 		<span class="play-to-play-popup__gradient-bg"></span>
 	</div>
 	<!-- PLAY TO PLAY POPUP	 -->
+	 <input style="display: none;" type="checkbox" id="f2p_checker"/>
 </body>
 
 </div>
