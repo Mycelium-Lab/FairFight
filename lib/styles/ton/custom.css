@@ -763,9 +763,9 @@ a {
 }
 
 .games__empty #opengames_empty-desc,
-#opengames_empty-title,
+#opengames_empty-title, #opengames_empty-desc-desktop, #opengames_empty-desc-f2p-evm-desktop, 
 .games__empty #pastgames_empty-desc,
-#pastgames_empty-title {
+#pastgames_empty-title, #pastgames_empty-desc-desktop, #pastgames_empty-desc-f2p-evm-desktop {
     font-size: 25px;
     font-weight: 400;
     color: var(--color-sand);
@@ -773,8 +773,8 @@ a {
     display: block;
 }
 
-.games__empty #opengames_empty-title,
-.games__empty #pastgames_empty-title {
+.games__empty #opengames_empty-title, #opengames_empty-title-desktop, #opengames_empty-title-f2p-evm-desktop, 
+.games__empty #pastgames_empty-title, #pastgames_empty-title-desktop, #pastgames_empty-title-f2p-evm-desktop {
     font-size: inherit;
     font-weight: inherit;
 }
