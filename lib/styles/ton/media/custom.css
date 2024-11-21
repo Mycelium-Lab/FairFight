@@ -1647,6 +1647,55 @@ background-position: center 11px;
         color: #0d6efd;
     }
 
+    #thirtyleader-multi-table,
+    #sevenleader-multi-table {
+        max-width: 100%;
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    #thirtyleader-multi-table::-webkit-scrollbar,
+    #sevenleader-multi-table::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    #thirtyleader-multi-table::-webkit-scrollbar-track,
+    #sevenleader-multi-table::-webkit-scrollbar-track {
+        background: #FFFDF4; 
+      }
+       
+    #thirtyleader-multi-table::-webkit-scrollbar-thumb,
+    #sevenleader-multi-table::-webkit-scrollbar-thumb {
+      background: #ff7c06; 
+    }
+
+    #thirtyleader-multi-table thead th,
+    #sevenleader-multi-table thead th {
+        font-size: 10px;
+    }
+    #thirtyleader-multi-table thead th img,
+    #sevenleader-multi-table thead th img {
+        width: 13.7px;
+        height: 13.7px;
+        margin-left: 1px;
+    }
+
+    #thirtyleader-multi-table tr td,
+    #sevenleader-multi-tablebody tr td {
+        font-size: 8px;
+    }
+
+    #thirtyleader-multi-table tr td:nth-child(2),
+    #sevenleader-multi-tablebody tr td:nth-child(2) {
+        width: 60px;
+    }
+
+    #thirtyleader-multi-table tr td:nth-child(2) a,
+    #sevenleader-multi-tablebody tr td:nth-child(2) a {
+        color: #0d6efd;
+    }
+
     /* .inventory-item-body_basic::after,
     .inventory-item-body_character::after {
         background: none;

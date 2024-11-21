@@ -763,9 +763,9 @@ a {
 }
 
 .games__empty #opengames_empty-desc,
-#opengames_empty-title,
+#opengames_empty-title, #opengames_empty-desc-desktop, #opengames_empty-desc-f2p-evm-desktop, 
 .games__empty #pastgames_empty-desc,
-#pastgames_empty-title {
+#pastgames_empty-title, #pastgames_empty-desc-desktop, #pastgames_empty-desc-f2p-evm-desktop {
     font-size: 25px;
     font-weight: 400;
     color: var(--color-sand);
@@ -773,8 +773,8 @@ a {
     display: block;
 }
 
-.games__empty #opengames_empty-title,
-.games__empty #pastgames_empty-title {
+.games__empty #opengames_empty-title, #opengames_empty-title-desktop, #opengames_empty-title-f2p-evm-desktop, 
+.games__empty #pastgames_empty-title, #pastgames_empty-title-desktop, #pastgames_empty-title-f2p-evm-desktop {
     font-size: inherit;
     font-weight: inherit;
 }
@@ -1209,7 +1209,9 @@ a {
     background-color: #fffdf4;
 }
 
-#pastgames-list .games__row {
+#pastgames-list .games__row,
+#pastgames-list-desktop .games__row,
+#pastgames-list-f2p-evm-desktop .games__row {
     /* padding: 0; */
     /* background-image: url("../../media/svg/past-games-rows-large.svg"); */
     /* background-repeat: no-repeat; */
@@ -1219,7 +1221,9 @@ a {
     padding: 0;
 }
 
-#pastgames-list .games__item {
+#pastgames-list .games__item,
+#pastgames-list-desktop .games__item,
+#pastgames-list-f2p-evm-desktop .games__item {
     gap: 0;
 }
 
@@ -1263,31 +1267,36 @@ a {
     border: 2px solid #ffc897;
 }
 
-#pastgames-list .games__row .games__item {
+#pastgames-list .games__row .games__item,
+#pastgames-list-desktop .games__row .games__item,
+#pastgames-list-f2p-evm-desktop .games__row .games__item {
     align-items: unset;
 }
-#pastgames-list .games__row .games__item__footer {
+#pastgames-list .games__row .games__item__footer,
+#pastgames-list-desktop .games__row .games__item__footer,
+#pastgames-list-f2p-evm-desktop .games__row .games__item__footer {
     position: relative;
 }
-#pastgames-list .games__row .stats-col-title {
+#pastgames-list .games__row .stats-col-title,
+#pastgames-list-desktop .games__row .stats-col-title,
+#pastgames-list-f2p-evm-desktop .games__row .stats-col-title {
     top: 8px;
 }
 
-#pastgames-list .games__row .you-stats-col-header {
+#pastgames-list .games__row .you-stats-col-header,
+#pastgames-list-desktop .games__row .you-stats-col-header,
+#pastgames-list-f2p-evm-desktop .games__row .you-stats-col-header {
     top: 5px;
 }
-#pastgames-list .games__row .enemy-stats-col-header {
+#pastgames-list .games__row .enemy-stats-col-header,
+#pastgames-list-desktop .games__row .enemy-stats-col-header,
+#pastgames-list-f2p-evm-desktop .games__row .enemy-stats-col-header {
     top: 5px;
 }
 
-#pastgames-list .games__row .games__item:nth-child(3) {
-    /* padding: 20px; */
-}
-#pastgames-list .games__row .games__item:nth-child(4) {
-    /* padding: 20px; */
-}
-
-#pastgames-list .games__row .games__item__footer {
+#pastgames-list .games__row .games__item__footer,
+#pastgames-list-desktop .games__row .games__item__footer,
+#pastgames-list-f2p-evm-desktop .games__row .games__item__footer {
     padding-top: 40px;
 }
 

@@ -1057,7 +1057,7 @@ textarea {
 .figure img {
     width: 23px;
     height: 23px;
-    margin: 5px 10px 5px 10px;
+    margin-left: 10px;
 }
 
 .caption {

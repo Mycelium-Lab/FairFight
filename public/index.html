@@ -1121,8 +1121,8 @@
 									<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<p>NEW Characters</p>
 									<div class="buyblock-image">
-										<img src="media/new-charachtar-avatar-1.png" alt="">
-										<img src="media/new-charachtar-avatar-2.png" alt="">
+										<!-- <img src="media/new-charachtar-avatar-1.png" alt="">
+										<img src="media/new-charachtar-avatar-2.png" alt=""> -->
 									</div>
 									<button id="new-characters-btn" class="banner__buy"></button>
 								</div>
@@ -1367,7 +1367,7 @@
 									<ul id="pastgames-list-desktop">
 										<div class="games__empty" id="pastgames_empty-desktop" style="display: none;">
 											<span id="pastgames_empty-title-desktop"></span>
-											<span id="pastgames_empty-desc-desktop" style="display: none;">Connect your wallet to start playing.</span>
+											<span id="pastgames_empty-desc-desktop">Connect your wallet to start playing.</span>
 										</div>
 									</ul>
 								</div>
@@ -1386,8 +1386,8 @@
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<ul id="opengames-list-f2p-evm-desktop">
 										<div class="games__empty" id="opengames_empty-f2p-evm-desktop">
-											<span id="opengames_empty-title-f2p-evm-desktop"></span>
-											<span id="opengames_empty-desc-f2p-evm-desktop">Connect your wallet to start playing.</span>
+											<span id="opengames_empty-title-f2p-evm-desktop">Empty:(</span>
+											<span id="opengames_empty-desc-f2p-evm-desktop">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
 										</div>
 									</ul>
 								</div>
@@ -1398,8 +1398,8 @@
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<ul id="pastgames-list-f2p-evm-desktop">
 										<div class="games__empty" id="pastgames_empty-f2p-evm-desktop" style="display: none;">
-											<span id="pastgames_empty-title-f2p-evm-desktop"></span>
-											<span id="pastgames_empty-desc-f2p-evm-desktop">Connect your wallet to start playing.</span>
+											<span id="pastgames_empty-title-f2p-evm-desktop">Empty:(</span>
+											<span id="pastgames_empty-desc-f2p-evm-desktop">That's where your game history will be listed.</span>
 										</div>
 									</ul>
 								</div>
@@ -3216,31 +3216,25 @@
 			<div class="inventory-modal__left-title"></div>
 			<div class="inventory-modal__right-title"></div>
 
-			<h2 class="modal__header-title_inventory quadriana-label" data-text="Inventory">Inventory</h2>
+			<div class="modal__header-title_inventory"></div>
 
 			<div class="inventory-modal__body">
 				<div class="body__inventory">
-					<p class="inventory__header-title">Item</p>
+					<p class="inventory__header-title">ITEMS</p>
 
 					<div class="inventory-modal__nav-wrap">
 						<nav class="nav-wrap__nav">
 							<input id="inventory__tab-1" type="radio" name="inventory__tab" checked>
-							<label for="inventory__tab-1">Characters</label>
+							<label for="inventory__tab-1">CHARACTERS</label>
 
 							<input id="inventory__tab-2" type="radio" name="inventory__tab">
-							<label for="inventory__tab-2">Weapons</label>
+							<label for="inventory__tab-2">WEAPONS</label>
 
 							<input id="inventory__tab-3" type="radio" name="inventory__tab">
-							<label for="inventory__tab-3">Armor</label>
+							<label for="inventory__tab-3">ARMOR</label>
 
 							<input id="inventory__tab-4" type="radio" name="inventory__tab">
-							<label for="inventory__tab-4">Boots</label>
-
-							<input id="inventory__tab-5" type="radio" name="inventory__tab">
-							<label for="inventory__tab-5">Nft box</label>
-
-
-
+							<label for="inventory__tab-4">BOOTS</label>
 
 						</nav>
 					</div>
@@ -3253,7 +3247,7 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
-						<div class="simple-bar">
+						<div class="simple-bar" style="height: 100%;">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3472,7 +3466,6 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
-						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3678,7 +3671,6 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
-						</div>
 						</div>
 					</div>
 
@@ -3691,7 +3683,6 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
-						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -3895,7 +3886,6 @@
 								<img class="board-edge_sm  modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
-						</div>
 						</div>
 					</div>
 
@@ -3908,7 +3898,6 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
-						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -4114,7 +4103,6 @@
 								<img class="board-edge_sm modal-content__corner"
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
-						</div>
 						</div>
 					</div>
 
@@ -4127,7 +4115,6 @@
 							src="media/svg/corner-middle-light.svg">
 						<img class="inventory-corner_bottomleft modal-content__corner_bottomleft modal-content__corner"
 							src="media/svg/corner-middle-light.svg">
-						<div class="simple-bar">
 						<div class="list-wrap__item-list">
 							<div class="item-list__slot">
 								<img class="board-edge_sm  modal-content__corner"
@@ -4334,17 +4321,16 @@
 									src="media/svg/inventory/default-edge-slot.svg">
 							</div>
 						</div>
-						</div>
 					</div>
 				</div>
 
 				<div class="showcase">
-					<p class="head__showcase-title">Characters</p>
+					<p class="head__showcase-title">CHARACTER</p>
 
 					<div class="body__showcase_inventory  body__showcase inventory-character">
 						<div class="character__slots inventory_slots">
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">Weapon</p>
+								<p class="slot-wrap__title">WEAPON</p>
 								<img class="inventory-slot__modal-corner_topleft_weapon modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright_weapon modal-content__corner_topright modal-content__corner"
@@ -4358,7 +4344,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">Armor</p>
+								<p class="slot-wrap__title">ARMOR</p>
 								<img class="inventory-slot__modal-corner_topleft modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright modal-content__corner_topright modal-content__corner"
@@ -4372,7 +4358,7 @@
 							</div>
 
 							<div class="slots__slot-wrap">
-								<p class="slot-wrap__title">Boots</p>
+								<p class="slot-wrap__title">BOOTS</p>
 								<img class="inventory-slot__modal-corner_topleft_boots modal-content__corner"
 									src="media/svg/corner-light.svg">
 								<img class="inventory-slot__modal-corner_topright_boots modal-content__corner_topright modal-content__corner"
