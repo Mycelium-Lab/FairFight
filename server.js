@@ -41,16 +41,16 @@ server.use(express.static(path.join(__dirname,'/lib')))
 server.use('/', express.static(path.join(__dirname,'/public')));
 server.use('/maintenance', express.static(path.join(__dirname,'/public')));
 
-server.use(inventoryRouter)
-server.use(signatureRouter)
-server.use(statisticsRouter)
-server.use(leaderboardRouter)
-server.use(gamePropertiesRouter)
-server.use(airdropRouter)
-server.use(lootboxRouter)
-server.use(tonRouter)
-server.use(f2pRouter)
-server.use(aeonRouter)
+server.use('/api', inventoryRouter)
+server.use('/api', signatureRouter)
+server.use('/api', statisticsRouter)
+server.use('/api', leaderboardRouter)
+server.use('/api', gamePropertiesRouter)
+server.use('/api', airdropRouter)
+server.use('/api', lootboxRouter)
+server.use('/api', tonRouter)
+server.use('/api', f2pRouter)
+server.use('/api', aeonRouter)
 
 // server.get('/', (req, res) => {
 //     maintenance
