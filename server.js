@@ -29,6 +29,7 @@ server.use(cors({
         'http://localhost:5000',
         'https://fairfight.fairprotocol.solutions/',
         'http://16.170.248.135/',
+        'http://13.51.64.57/'
     ],
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
     'preflightContinue': false
@@ -51,45 +52,45 @@ server.use(tonRouter)
 server.use(f2pRouter)
 server.use(aeonRouter)
 
-server.get('/', (req, res) => {
-    maintenance
-    ?
-    res.redirect('/maintenance')
-    :
-    res.sendFile(__dirname+'/public/index.html')
-})
+// server.get('/', (req, res) => {
+//     maintenance
+//     ?
+//     res.redirect('/maintenance')
+//     :
+//     res.sendFile(__dirname+'/public/index.html')
+// })
 
-server.get('/ton', (req, res) => {
-    maintenance
-    ?
-    res.redirect('/maintenance')
-    :
-    res.sendFile(__dirname+'/public/index_ton.html')
-})
+// server.get('/ton', (req, res) => {
+//     maintenance
+//     ?
+//     res.redirect('/maintenance')
+//     :
+//     res.sendFile(__dirname+'/public/index_ton.html')
+// })
 
-server.get('/ton_game', (req, res) => {
-    maintenance
-    ?
-    res.redirect('/maintenance')
-    :
-    res.sendFile(__dirname+'/public/game_ton.html')
-})
+// server.get('/ton_game', (req, res) => {
+//     maintenance
+//     ?
+//     res.redirect('/maintenance')
+//     :
+//     res.sendFile(__dirname+'/public/game_ton.html')
+// })
 
-server.get('/game', (req, res) => {
-    maintenance
-    ?
-    res.redirect('/maintenance')
-    :
-    res.sendFile(__dirname+'/public/game.html')
-})
+// server.get('/game', (req, res) => {
+//     maintenance
+//     ?
+//     res.redirect('/maintenance')
+//     :
+//     res.sendFile(__dirname+'/public/game.html')
+// })
 
-server.get('/maintenance', async (req, res) => {
-    !maintenance
-    ?
-    res.redirect('/')
-    :
-    res.sendFile(__dirname+'/public/maintenance.html')
-})
+// server.get('/maintenance', async (req, res) => {
+//     !maintenance
+//     ?
+//     res.redirect('/')
+//     :
+//     res.sendFile(__dirname+'/public/maintenance.html')
+// })
 
 server.listen(5000, async () => {
     console.log(`Server started on port 5000`)
