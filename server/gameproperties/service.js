@@ -43,7 +43,7 @@ export async function getGamesProperties(req, response) {
 
 export async function getGamesPropertiesAll(req, response) {
     try {
-        const gameids = req.query.gameids; 
+        const gameids = req.query.gameids.split(',').map(Number); 
         const chainid = req.query.chainid;
         let res;
 
