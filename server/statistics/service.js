@@ -111,7 +111,7 @@ export async function getStatisticsAll(gameIDs, address, chainid) {
 
         const results = gameIDs.map(gameID => {
             const found = res.rows.find(row => row.gameid === gameID);
-            return found ? found : { gameid: gameID, statistics: {} };
+            return found ? found : { gameid: gameID, statistics: [] };
         });
 
         return {
