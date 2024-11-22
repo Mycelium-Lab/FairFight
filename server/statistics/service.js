@@ -102,6 +102,32 @@ export async function getStatistics(gameID, address, chainid) {
     }
 }
 
+export async function getStatisticsAll(gameIDs, address, chainid) {
+    try {
+        const res = await pgClient.query(
+            "SELECT * FROM statistics WHERE gameid = ANY($1) AND chainid = $2",
+            [gameIDs, chainid]
+        );
+
+        const results = gameIDs.map(gameID => {
+            const found = res.rows.find(row => row.gameid === gameID);
+            return found ? found : { gameid: gameID, statistics: {} };
+        });
+
+        return {
+            code: 200,
+            statistics: results
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            code: 500,
+            statistics: []
+        };
+    }
+}
+
+
 export async function getStatisticsByAddress(address, chainid) {
     try {
         const res = await pgClient.query(

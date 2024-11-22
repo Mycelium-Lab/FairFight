@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getGamesProperties, setGamesProperties } from "./service.js";
+import { getGamesProperties, getGamesPropertiesAll, setGamesProperties } from "./service.js";
 
 const gamePropertiesRouter = Router()
 
@@ -8,5 +8,7 @@ gamePropertiesRouter.get('/getgamesprops', async (req, res) => await getGamesPro
 
 //SETTERS
 gamePropertiesRouter.post('/setgamesprops', async (req, res) => await setGamesProperties(req, res))
+
+gamePropertiesRouter.get('/getgamespropsall', async (req, res) => await getGamesPropertiesAll(req, res))
 
 export default gamePropertiesRouter

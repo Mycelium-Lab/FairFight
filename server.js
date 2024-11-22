@@ -52,46 +52,6 @@ server.use('/api', tonRouter)
 server.use('/api', f2pRouter)
 server.use('/api', aeonRouter)
 
-// server.get('/', (req, res) => {
-//     maintenance
-//     ?
-//     res.redirect('/maintenance')
-//     :
-//     res.sendFile(__dirname+'/public/index.html')
-// })
-
-// server.get('/ton', (req, res) => {
-//     maintenance
-//     ?
-//     res.redirect('/maintenance')
-//     :
-//     res.sendFile(__dirname+'/public/index_ton.html')
-// })
-
-// server.get('/ton_game', (req, res) => {
-//     maintenance
-//     ?
-//     res.redirect('/maintenance')
-//     :
-//     res.sendFile(__dirname+'/public/game_ton.html')
-// })
-
-// server.get('/game', (req, res) => {
-//     maintenance
-//     ?
-//     res.redirect('/maintenance')
-//     :
-//     res.sendFile(__dirname+'/public/game.html')
-// })
-
-// server.get('/maintenance', async (req, res) => {
-//     !maintenance
-//     ?
-//     res.redirect('/')
-//     :
-//     res.sendFile(__dirname+'/public/maintenance.html')
-// })
-
 server.listen(5000, async () => {
     console.log(`Server started on port 5000`)
 })

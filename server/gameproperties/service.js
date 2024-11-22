@@ -40,3 +40,33 @@ export async function getGamesProperties(req, response) {
         response.status(500).json({map: 0})
     }
 }
+
+export async function getGamesPropertiesAll(req, response) {
+    try {
+        const gameids = req.query.gameids; 
+        const chainid = req.query.chainid;
+        let res;
+
+        if (chainid == 999999) {
+            res = await pgClient.query('SELECT gameid, map FROM game_f2p WHERE gameid = ANY($1)', [gameids]);
+        } else if (chainid == 0) {
+            const player = req.query.player;
+            res = await pgClient.query('SELECT gameid, map FROM last_map_ton WHERE player = $1', [player]);
+        } else {
+            res = await pgClient.query(
+                'SELECT gameid, map FROM gamesproperties WHERE gameid = ANY($1) AND chainid = $2',
+                [gameids, chainid]
+            );
+        }
+
+        const results = gameids.map(gameid => {
+            const found = res.rows.find(row => row.gameid === gameid);
+            return found ? found : { gameid, map: 0 };
+        });
+
+        response.status(200).json(results);
+    } catch (error) {
+        console.log(error)
+        response.status(500).json({ results: [], error: "An error occurred while fetching game properties." });
+    }
+}
