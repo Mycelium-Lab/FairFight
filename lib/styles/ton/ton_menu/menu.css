@@ -20,13 +20,16 @@
 }
 
 .about-ton-header-desktop {
-    font-family: 'Teletactile';
-    font-size: 20px;
-    width: 100%;
+    font-size: 48px;
+    line-height: 56px;
     text-align: center;
-    color: var(--color-orange);
-    text-decoration: underline;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
+    background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+    -webkit-background-clip: text;
+}
+
+.about-ton-header-desktop::before {
+    -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
 }
 
 #back_button {
@@ -449,6 +452,7 @@
     .controls_block__list-card {
         gap: 2px;
         align-items: center;
+        max-width: 100%;
     }
     .controls_block__list-card img {
         max-width: 57px;

@@ -55,12 +55,13 @@ a {
     height: auto;
 }
 
-.bordered-content .four-color-border-block {display: none;}
+/* .bordered-content .four-color-border-block {display: none;} */
 
 #wrapper {
     position: relative;
-    background-image: url("../../media/bgfair.jpg");
+    background-image: url("../../media/new-bg-fon.jpg");
     background-size: cover;
+    background-position: center;
     /* padding: 0 65px; */
     flex: 1 0 auto;
     z-index: 10;
@@ -222,6 +223,8 @@ a {
 
 #about_modal .modal_content {
     background-image: none;
+    max-width: 654px;
+    padding: 21px 41px 37px 41px;
 }
 
 .about__title {
@@ -233,20 +236,22 @@ a {
 }
 
 #nothing_new {
-    font-size: 16px;
+    font-family: "Quadriana";
+    font-size: 24px;
     text-align: center;
     color: var(--color-orange);
-    line-height: 19.54px;
-    max-width: 262px;
-    font-weight: 500;
+    line-height: 29.54px;
+    max-width: 459px;
+    font-weight: 400;
     margin: 0 auto 20px auto;
 }
 
 .about__content p {
-    font-size: 14px;
+    font-family: "Quadriana";
+    font-size: 20px;
     font-weight: 400;
     color: var(--color-black);
-    line-height: 15.4px;
+    line-height: 22px;
     font-synthesis: none;
 }
 
@@ -288,6 +293,7 @@ a {
     flex-direction: column;
     gap: 16px;
     width: 100%;
+    max-width: 72px;
 }
 .controls_block__list-card span {
     font-size: 20px;
@@ -510,7 +516,7 @@ a {
     height: 48px;
     background: none;
     border: none;
-    margin: 5px auto 15px auto;
+    margin: 5px auto 0 auto;
 }
 
 .about__btn-frame {
@@ -539,9 +545,13 @@ a {
 }
 
 .contact_link_about .link__name {
-    color: rgba(57, 57, 57, 1);
-    font-size: 14px;
-    text-decoration: underline;
+    font-family: "Quadriana";
+    font-weight: 400;
+    color: white;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 2px #700F51;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 .contact_link_about:hover .link__name {
@@ -1084,6 +1094,55 @@ a {
     border: none;
     font-family: Teletactile;
     text-transform: uppercase;
+}
+
+.desctop-list-cotrols {
+    padding-bottom: 11px;
+}
+
+.desctop-list-cotrols button {
+    font-family: "Quadriana";
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 43.99px;
+    position: relative;
+    background: linear-gradient(to bottom, var(--color-text-disabled), var(--color-text-disabled));
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -1px;
+    text-transform: none;
+    padding: 0;
+}
+
+.desctop-list-cotrols button::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    -webkit-text-stroke: 5px var(--color-text-border-disabled);
+}
+
+.desctop-list-cotrols button.active {
+    background: linear-gradient(to bottom, #FFDC2A 50%, #FF7558 80%, #FFDC2A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
+    border-bottom: none;
+}
+
+.desctop-list-cotrols button.active::before {
+    color: transparent;
+    -webkit-text-stroke: 3px rgba(112, 15, 81, 1);
+}
+
+.desctop-list-cotrols button.active::after {
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    content: '';
+    width: 100%;
+    height: 6px;
+    background-color: var(--color-orange);
 }
 
 .inner-block__head .active {
@@ -4656,10 +4715,10 @@ wrapper__nft-shop-modal .info__pricing button {
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 0;
+    bottom: 160px;
     left: 45px;
     height: 100%;
-    justify-content: center;
+    justify-content: end;
     /*grid-gap: 31px;*/
 }
 

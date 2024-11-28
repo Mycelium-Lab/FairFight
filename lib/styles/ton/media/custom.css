@@ -1797,8 +1797,8 @@ background-position: center 11px;
         grid-template-columns: 1.3fr 1fr 1fr;
     }
 
-    .bordered-content .four-color-border-block {display: block;}
-    .bordered-content .board-edge {display: none;}
+    /* .bordered-content .four-color-border-block {display: block;}
+    .bordered-content .board-edge {display: none;} */
 }
 
 @media (max-width: 411px) {
