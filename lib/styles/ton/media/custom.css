@@ -1387,6 +1387,7 @@ background-position: center 11px;
     .connect-button:hover {
         padding-top: 8px;
     }
+    .contact_link_about-game,
     .player-visible {
         display: none;
     }

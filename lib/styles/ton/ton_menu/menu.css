@@ -32,6 +32,29 @@
     -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
 }
 
+#about-game-modal {
+    display: none;
+}
+
+#about-game-modal .modal_content {
+    max-width: 654px;
+    padding: 21px 41px 37px 41px;
+    margin-top: 183px;
+}
+
+.about-game-title {
+    font-size: 48px;
+    line-height: 58.66px;
+    text-align: center;
+    margin: 0 auto 20px auto;
+    background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+    -webkit-background-clip: text;
+}
+
+.about-game-title::before {
+    -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
+}
+
 #back_button {
     display: none;
 }

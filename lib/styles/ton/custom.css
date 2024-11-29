@@ -129,6 +129,63 @@ a {
     display: block;
 }
 
+#pastgames-desktop,
+#opengames-desktop {
+    overflow: hidden;
+}
+
+#pastgames-list-desktop,
+#opengames-list-desktop {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+#pastgames-list-desktop .simplebar-content,
+#opengames-list-desktop .simplebar-content {
+    grid-template-columns: 1fr !important;
+    display: grid;
+
+}
+
+.simplebar-track.simplebar-vertical {
+    width: 7px;
+    background-color: transparent;
+}
+
+.simplebar-scrollbar {
+    z-index: 10;
+    clip-path: polygon(0px calc(100% - 2px), 1px calc(100% - 2px), 1px calc(100% - 1px), 2px calc(100% - 1px), 2px 100%, calc(100% - 2px) 100%, calc(100% - 2px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 2px), 100% calc(100% - 2px), 100% 2px, calc(100% - 1px) 2px, calc(100% - 1px) 1px, calc(100% - 2px) 1px, calc(100% - 2px) 0px, 2px 0px, 2px 1px, 1px 1px, 1px 2px, 0px 2px);
+    position: relative;
+    background-color: #ff7c06;
+}
+
+.simplebar-track.simplebar-vertical::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: #393939;
+    position: absolute;
+    right: 50%;
+    top: 0;
+}
+
+.simplebar-scrollbar::before {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 2px), 1px calc(100% - 2px), 1px calc(100% - 1px), 2px calc(100% - 1px), 2px 100%, calc(100% - 2px) 100%, calc(100% - 2px) calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) calc(100% - 2px), 100% calc(100% - 2px), 100% 2px, calc(100% - 1px) 2px, calc(100% - 1px) 1px, calc(100% - 2px) 1px, calc(100% - 2px) 0px, 2px 0px, 2px 1px, 1px 1px, 1px 2px, 0px 2px, 0px 50%, 2px 50%, 2px 3px, 3px 3px, 3px 2px, calc(100% - 3px) 2px, calc(100% - 3px) 3px, calc(100% - 2px) 3px, calc(100% - 2px) calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) calc(100% - 2px), 3px calc(100% - 2px), 3px calc(100% - 3px), 2px calc(100% - 3px), 2px 50%, 0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ff7c06;
+    display: block;
+    pointer-events: none;
+}
+
 .link-first {
     right: 0px;
     bottom: 30px;
@@ -505,8 +562,13 @@ a {
 }
 .contact_link_about {
     position: absolute;
-    right: 55px;
-    top: 85px;
+    right: 151px;
+    top: 105px;
+}
+
+.contact_link_about-game {
+    position: absolute;
+    top: 75px;
 }
 
 .about__btn {
@@ -544,16 +606,18 @@ a {
     text-shadow: 1px 1px 0 #39393979, 2px 2px 2px #39393957;
 }
 
+.contact_link_about-game .link__name,
 .contact_link_about .link__name {
     font-family: "Quadriana";
     font-weight: 400;
     color: white;
     -webkit-text-fill-color: #fff;
-    -webkit-text-stroke: 2px #700F51;
+    -webkit-text-stroke: 1px #700F51;
     font-size: 16px;
     text-decoration: none;
 }
 
+.contact_link_about-game .link__name:hover,
 .contact_link_about:hover .link__name {
     color: rgba(57, 57, 57, 1);
 }
@@ -1217,6 +1281,7 @@ a {
     display: flex;
     align-items: center;
     gap: 30px;
+    font-family: "Quadriana";
 }
 
 .games__item .pg-active {
@@ -1262,6 +1327,7 @@ a {
     width: 100%;
     /* background-image: url("../../media/svg/game-rows.svg"); */
     /* background-repeat: no-repeat; */
+    background-color: white;
 }
 
 #opengames-list .games__row {
@@ -2211,18 +2277,23 @@ a {
 }
 
 .newgame__btn {
-    background: transparent url("../../media/buttons/newgame.svg") no-repeat center 0;
-    background-size: 328px;
+    background-image: url(../../media/buttons/newgame.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 271px;
     transition: all 0.1s ease;
-    width: 350px;
-    height: 122px;
+    width: 271px;
+    height: 93px;
+    background-color: transparent;
+    padding: 0;
 }
 
 .newgame__btn::after {
     content: "";
     background-image: url("../../media/buttons/border-game.svg");
-    background-position: center 27px;
-    width: 100%;
+    width: calc(100% + 16px);
+    left: -8px;
+    bottom: -25px;
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2574,6 +2645,10 @@ a {
     color: #fff;
     background: linear-gradient(180deg, #ff7c06 0%, #e45c00 100%);
 }
+
+/* about game modal */
+
+/* about game modal */
 
 /* message modal */
 
@@ -3604,7 +3679,7 @@ wrapper__nft-shop-modal .info__pricing button {
   }*/
 
 .help__img {
-    width: 23px;
+    width: 20px;
 }
 
 .inventory-modal__body .list-wrap__item-list::-webkit-scrollbar {
@@ -4612,7 +4687,7 @@ wrapper__nft-shop-modal .info__pricing button {
 
 .contact_link {
     display: flex;
-    grid-gap: 15px;
+    grid-gap: 10px;
     cursor: pointer;
 
     align-items: center;
@@ -5060,7 +5135,7 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 
 .connect-button {
-    padding: 0 10px;
+    padding: 0 15px;
     padding-bottom: 9px;
     margin-bottom: 10px;
     height: 60px;
