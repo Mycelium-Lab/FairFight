@@ -129,11 +129,13 @@ a {
     display: block;
 }
 
+#opengames-f2p-evm-desktop,
 #pastgames-desktop,
 #opengames-desktop {
     overflow: hidden;
 }
 
+#opengames-list-f2p-evm-desktop,
 #pastgames-list-desktop,
 #opengames-list-desktop {
     display: flex;
@@ -144,6 +146,7 @@ a {
 }
 
 
+#opengames-list-f2p-evm-desktop .simplebar-content,
 #pastgames-list-desktop .simplebar-content,
 #opengames-list-desktop .simplebar-content {
     grid-template-columns: 1fr !important;
@@ -1629,6 +1632,15 @@ a {
     left: 300px;
     height: 13px;
     width: 182px;
+    font-family: "Quadriana";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.55px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--color-orange);
+    text-align: center;
 }
 .stats-col-title-vs {
     position: relative;
@@ -2309,10 +2321,14 @@ a {
 
 .newgame__btn__green {
     background: transparent url("../../media/buttons/newgame-green.svg") no-repeat center 0;
-    background-size: 328px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 271px;
     transition: all 0.1s ease;
-    width: 350px;
-    height: 122px;
+    width: 271px;
+    height: 93px;
+    background-color: transparent;
+    padding: 0;
     z-index: 12;
     border: none;
 }
@@ -5889,6 +5905,129 @@ wrapper__nft-shop-modal .info__pricing button {
     background: var(--color-brown);
 }
 /* CUSTOM PIXEL BORDER */
+
+.border-style.desktop,
+.border-style.desktop::after {
+    clip-path: none;
+}
+
+.border-style.desktop::after {
+    background: none;
+}
+
+.border-style.desktop::before {
+    border: none;
+}
+
+.border-style.desktop .dote,
+.border-style.desktop .c-border {
+    position: absolute;
+}
+
+
+.border-style.desktop .dote {
+    z-index: 2;
+}
+
+.border-style.desktop .dote {
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-orange);
+}
+
+.border-style.desktop .dote.dote1 {
+    left: 4px;
+    top: 4px;
+}
+
+.border-style.desktop .dote.dote2 {
+    right: 4px;
+    top: 4px;
+}
+
+.border-style.desktop .dote.dote3 {
+    left: 4px;
+    bottom: 4px;
+}
+
+.border-style.desktop .dote.dote4 {
+    right: 4px;
+    bottom: 4px;
+}
+
+.border-style.desktop .c-border.border1,
+.border-style.desktop .c-border.border2,
+.border-style.desktop .c-border.border3,
+.border-style.desktop .c-border.border4 {
+    background-color: #FFC897;
+}
+
+.border-style.desktop .c-border.border1,
+.border-style.desktop .c-border.border2 {
+    width: calc(100% - 16px);
+    height: 4px;
+    left: 8px;
+}
+
+.border-style.desktop .c-border.border1 {
+    top: 4px;
+}
+
+.border-style.desktop .c-border.border2 {
+    bottom: 4px;
+}
+
+.border-style.desktop .c-border.border3,
+.border-style.desktop .c-border.border4 {
+    top: 8px;
+    width: 4px;
+    height: calc(100% - 16px);
+}
+
+.border-style.desktop .c-border.border3 {
+    left: 4px;
+}
+
+.border-style.desktop .c-border.border4 {
+    right: 4px;
+}
+
+.border-style.desktop .c-border.border5,
+.border-style.desktop .c-border.border6,
+.border-style.desktop .c-border.border7,
+.border-style.desktop .c-border.border8 {
+    background-color: var(--color-orange);
+}
+
+.border-style.desktop .c-border.border5,
+.border-style.desktop .c-border.border6 {
+    width: calc(100% - 16px);
+    height: 4px;
+    left: 8px;
+}
+
+.border-style.desktop .c-border.border5 {
+    top: 0;
+}
+
+.border-style.desktop .c-border.border6 {
+    bottom: 0;
+}
+
+.border-style.desktop .c-border.border7,
+.border-style.desktop .c-border.border8 {
+    width: 4px;
+    height: calc(100% - 16px);
+    top: 8px;
+}
+
+.border-style.desktop .c-border.border7 {
+    left: 0;
+}
+
+.border-style.desktop .c-border.border8 {
+    right: 0;
+}
 
 .faq {position: relative;}
 

@@ -322,7 +322,7 @@
 
     }
     .games__item p span {
-        max-width: 60px;
+        max-width: 48px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
