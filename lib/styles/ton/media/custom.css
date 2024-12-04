@@ -483,9 +483,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
         -webkit-background-clip: text;
     }
-    .modal .modal_content_finish .modal__title::before {
-        -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
-    }
+    
     .modal .modal_content_finish .message-modal__btn-close {
         top: 7px !important;
     }
@@ -897,6 +895,23 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    .nft-shop-modal__header-title {
+        font-size: 32px;
+        line-height: 39.1px;
+    }
+
+    .nft-shop-modal__header-title.quadriana-label::before {
+        -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+    }
+
+    .list-items-wrap__list-items .simplebar-content {flex-direction: row;}
+    
+
+    .controls_block__list.mobile {
+        display: flex;
+    }
+    .controls_desktop_block__list {display: none;}
+
     .inner-block__head {padding-bottom: 7px;}
     .inner-block__head button {
         font-size: 24px;

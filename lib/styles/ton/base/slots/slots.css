@@ -28,6 +28,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    background-color: white;
 }
 
 .slot-wrap__slot_active{

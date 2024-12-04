@@ -62,12 +62,14 @@ a {
     background-image: url("../../media/new-bg-fon.jpg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     /* padding: 0 65px; */
     flex: 1 0 auto;
     z-index: 10;
     position: absolute;
     top: 0;
     width: 100%;
+    height: 100%;
 }
 
 .board {
@@ -128,6 +130,8 @@ a {
     z-index: -1;
     display: block;
 }
+
+.d-none {display: none;}
 
 #opengames-f2p-evm-desktop,
 #pastgames-desktop,
@@ -284,7 +288,7 @@ a {
 #about_modal .modal_content {
     background-image: none;
     max-width: 654px;
-    padding: 21px 41px 37px 41px;
+    padding: 21px 21px 37px 21px;
 }
 
 .about__title {
@@ -339,10 +343,11 @@ a {
     flex-direction: column;
     gap: 16px;
 }
+.controls_block__list.mobile {display: none;}
 .controls_line {
     display: flex;
     justify-content: space-between;
-    gap: 35px;
+    gap: 42px;
     flex-wrap: wrap;
 }
 .controls_line--center {
@@ -354,14 +359,16 @@ a {
     gap: 16px;
     width: 100%;
     max-width: 72px;
+    align-items: center;
 }
+.controls_block__list-card {width: 100%;}
 .controls_block__list-card span {
+    font-family: 'Quadriana';
     font-size: 20px;
     font-weight: 400;
-    line-height: 12.22px;
+    line-height: 20px;
     text-align: center;
     color: var(--color-black);
-
 }
 .controls_block__title--mtop {
     margin-top: 20px;
@@ -372,9 +379,42 @@ a {
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.controls_block__list--perks .controls_block__list-card {
-    max-width: fit-content;
+
+.controls_desktop_block__list {
+    display: flex;
+    gap: 70px;
+    justify-content: space-between;
+    padding: 0 30px;
 }
+
+.controls_desktop_block__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 19px;
+}
+
+.controls_desktop_block__left .controls_block__list-card {
+    max-width: 300px;
+}
+
+.controls_desktop_block__left > div:first-of-type {
+    max-width: 300px;
+}
+
+.controls_desktop_block__left > div:last-of-type {
+    max-width: 193px;
+}
+
+.controls_desktop_block__right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 51px;
+    row-gap: 20px;    
+}
+/* .controls_block__list--perks .controls_block__list-card {
+    max-width: fit-content;
+} */
 .controls_block__list-card--wide {
     max-width: fit-content !important;
 }
@@ -1208,7 +1248,7 @@ a {
     bottom: -10px;
     content: '';
     width: 100%;
-    height: 6px;
+    height: 4px;
     background-color: var(--color-orange);
 }
 
@@ -1233,6 +1273,7 @@ a {
     -webkit-background-clip: text;
     color: transparent;
     position: relative;
+    text-align: center;
 }
 
 .quadriana-label::before {
@@ -1242,11 +1283,14 @@ a {
     top: 0;
     z-index: -1;
     -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+    width: 100%;
 }
 
 #sevenleader-btn, #thirtyleader-btn, #sevenleader-multi-btn, #thirtyleader-multi-btn {
     border: none !important
 }
+
+#fittingroom-modal .four-color-border-block {z-index: 1;}
 
 .tabs__content {
     width: 100%;
@@ -2437,11 +2481,16 @@ a {
 
 .nft-shop-modal__header-title {
     font-family: "Quadriana";
-    font-size: 32px;
-    line-height: 39.1px;
+    font-size: 64px;
+    line-height: 78px;
     background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
     -webkit-background-clip: text;
     color: transparent;
+    text-align: center;
+}
+
+.nft-shop-modal__header-title.quadriana-label::before {
+    -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
 }
 
 .nft-shop-modal__nav-wrap {
@@ -2469,7 +2518,7 @@ a {
 
 .nft-shop-modal__nav-wrap .nav-wrap__nav label {
     border-bottom: 5px solid transparent;
-    font-family: "Teletactile";
+    font-family: "Quadriana";
     font-size: 18.72px;
     color: #393939;
     background-color: transparent;
@@ -2949,9 +2998,9 @@ a {
     margin: 28.96px;
     display: flex;
     align-items: center;
-    width: 100%;
-    gap: 230px;
+    width: 90%;
     margin-left: 35px;
+    justify-content: space-between;
 }
 #ascending-price-svg,
 #descending-price-svg {
@@ -3166,7 +3215,9 @@ a {
 .list-items-wrap__list-items {
     overflow: auto;
     height: 100%;
+    max-height: 560px;
 }
+.list-items-wrap__list-items .simplebar-content {flex-direction: column;}
 .wrapper__nft-shop-modal .list-items__item_basic,
 .wrapper__nft-shop-modal .list-items__item_character {
     background-image: url("../../media/svg/shop/basic-collection/frame.svg");
@@ -3394,8 +3445,14 @@ a {
     line-height: 20px;
 }
 
+.wrapper__nft-shop-modal {
+    
+    font-family: "Quadriana";
+}
+
 .wrapper__nft-shop-modal .list-items__item .text__title {
     color: #393939;
+    
 }
 
 .wrapper__nft-shop-modal .info__text .text__type {

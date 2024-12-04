@@ -99,6 +99,9 @@
     padding-top: 28px;
     gap: 36px;
     align-items: center;
+    max-width: 340px;
+    font-family: "Quadriana";
+    color: #393939;
 }
 
 #install_wallet_modal button {
@@ -127,23 +130,46 @@
     width: 216px;
 }
 
-#install_wallet_modal p {
+#install_wallet_modal .choose-wallet-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#install_wallet_modal .choose-wallet-title p {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 19.55px;
+   text-align: center;
+}
+
+#install_wallet_modal .choose-wallet-title a,
+#install_wallet_modal .choose-wallet-title p:first-of-type {
+    text-decoration: none;
     font-size: 20px;
-    font-weight: 500;
-    line-height: 19px;
-    color: #000000;
+    font-weight: 400;
+    line-height: 24.44px;
+    color: #393939;
     text-align: center;
 }
 
-#install_wallet_modal p:last-child {
-    font-size: 14px;
+.my_modal-bg-1,
+.my_modal-bg-2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    z-index: -1;
+    display: none;
 }
 
-#install_wallet_modal a {
-    color: #000000;
-    display: block;
-    text-decoration: underline;
-    margin-top: 15px;
+.my_modal-bg-1 {
+    max-width: 214px;
+    height: 175px;
+}
+
+.my_modal-bg-2 {
+    max-width: 250px;
 }
 
 #connect_modal .modal_content {
@@ -188,7 +214,21 @@
     display: block;
     position: relative;
     min-height: 310px;
+    max-width: 586px;
 }
+
+.modal .modal_content_new-game .pixel-bordered-form,
+.modal .modal_content_new-game .select-selected {
+    height: 27px;
+    max-height: 100%;
+    
+}
+.modal .modal_content_new-game .pixel-bordered-form,
+.modal .modal_content_new-game .custom-select {
+    max-width: 245px;
+    width: 100%;
+}
+
 .modal .modal_content_about {
     height: fit-content;
     width: fit-content;
@@ -211,9 +251,9 @@
 
 .modal .modal_content_new-game h1 {
     font-family: "Quadriana";
-    font-size: 24px;
+    font-size: 48px;
     font-weight: 400;
-    line-height: 29.33px;
+    line-height: 58px;
     text-align: center;
 }
 
@@ -225,13 +265,30 @@
 
 .modal .modal_content_new-game div.quadriana-label,
 .modal .modal_content_new-game span.quadriana-label {
-    font-size: 14px;
-    line-height: 17.11px;
+    font-size: 23px;
+    line-height: 29px;
+    white-space: nowrap;
 }
 
 .modal .modal_content_new-game div.quadriana-label::before,
 .modal .modal_content_new-game span.quadriana-label::before {
     -webkit-text-stroke: 2px #700F51;
+}
+
+.pause__content p,
+#modal__body_confirm_finish p {
+    font-family: "Quadriana";
+    color: #7A7A7A !important;
+}
+
+#modal__body_confirm_finish p:first-of-type {
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+.modal .modal_content_finish .modal__title::before {
+    -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
 }
 
 .modal_content_new-game .new-game-player {
@@ -343,11 +400,10 @@
 }
 
 .modal .modal_content input {
-    border-color: var(--color-orange);
-    border-width: 1px;
     border-radius: 8px;
     border-style: solid;
-    background-color: #f2f2f2;
+    background-color: white;
+    border: none;
     height: 30px;
     padding: 0 10px;
     width: 156px;
@@ -477,7 +533,8 @@
 .modal_content_finish {
     align-items: center;
     height: 573px;
-    width: 404px;
+    width: 100%;
+    max-width: 350px !important;
 }
 
 .modal__over-body {
@@ -507,9 +564,10 @@
 }
 
 .modal__over-subtitle {
-    color: #393939;
-    text-decoration: underline;
-    font-family: "Teletactile";
+    color: var(--color-orange);
+    font-family: "Quadriana";
+    font-size: 20px;
+    line-height: 24.44px;
 }
 #instruction_modal {
     overflow: hidden;
