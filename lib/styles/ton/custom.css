@@ -69,7 +69,6 @@ a {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100%;
 }
 
 .board {
@@ -885,15 +884,18 @@ a {
 #pastgames_empty-title, #pastgames_empty-desc-desktop, #pastgames_empty-desc-f2p-evm-desktop {
     font-size: 25px;
     font-weight: 400;
-    color: var(--color-sand);
+    color: var(--color-text-gray);
     line-height: 30px;
     display: block;
+    font-family: "Quadriana";
 }
 
 .games__empty #opengames_empty-title, #opengames_empty-title-desktop, #opengames_empty-title-f2p-evm-desktop, 
 .games__empty #pastgames_empty-title, #pastgames_empty-title-desktop, #pastgames_empty-title-f2p-evm-desktop {
     font-size: inherit;
     font-weight: inherit;
+    font-family: "Quadriana";
+    color: var(--color-text-gray);
 }
 
 .opengames__btn {
@@ -2140,7 +2142,7 @@ a {
 .wrapper__btns-wrap {
     z-index: 13;
     position: relative;
-    /* bottom: 500px; */
+    bottom: 0;
 }
 
 .wrapper__btns-wrap .btns-wrap__btn {
