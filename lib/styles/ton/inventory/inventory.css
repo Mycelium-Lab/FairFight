@@ -1,6 +1,6 @@
 .inventory__modal-content{
-    width: 918px;
-    padding-bottom: 40px;
+    width: fit-content;
+    padding: 10px 26px;
 }
 
 /* .modal__header-title_inventory{
@@ -65,12 +65,12 @@
 }
 
 .inventory-modal__body {
-    margin-top: 32.43px;
+    margin-top: 10px;
     height: 100%;
     display: grid;
     gap: 23.01px;
     grid-template-columns: 339px 1fr;
-    padding: 0px 48.09px 0px 68px;
+    padding: 0 10px;
   }
 
 .inventory__list-wrap {
@@ -341,8 +341,11 @@
     letter-spacing: -1px;
     font-size: 48px;
     line-height: 58.66px;
+    margin-bottom: 0;
   }
 
+  #inventory-modal .four-color-border-block,
   .modal__header-title_inventory::before {
     z-index: 0 !important;
-}
+  }
+  

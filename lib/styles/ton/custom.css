@@ -332,13 +332,15 @@ a {
     -webkit-background-clip: text;
     color: transparent;
     text-align: center;
-    font-weight: 700;
+    font-weight: 400;
+    font-family: "Quadriana";
 }
 
 .about__content p b {color: var(--color-orange);}
 
 .controls_block__list {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 16px;
 }
@@ -346,7 +348,7 @@ a {
 .controls_line {
     display: flex;
     justify-content: space-between;
-    gap: 42px;
+    gap: 34px;
     flex-wrap: wrap;
 }
 .controls_line--center {
@@ -377,6 +379,7 @@ a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    max-width: 560px;
 }
 
 .controls_desktop_block__list {
@@ -2382,8 +2385,9 @@ a {
 .newgame__btn__green::after {
     content: "";
     background-image: url("../../media/buttons/border-game.svg");
-    background-position: center 27px;
-    width: 100%;
+    width: calc(100% + 16px);
+    left: -8px;
+    bottom: -25px;
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2426,8 +2430,8 @@ a {
     border: var(--border-board);
     border-radius: 16px;
     padding: 30px 60px 60px;
-    width: 918px;
-    height: 890px;
+    width: 850px;
+    height: 805px;
     background-color: var(--bg-board);
     position: relative;
 }
@@ -2496,7 +2500,7 @@ a {
 }
 
 .nft-shop-modal__nav-wrap {
-    margin-top: 28.96px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3179,7 +3183,7 @@ a {
 .nft-shop-modal__list-items-wrap {
     margin-top: 10px;
     padding-right: 20px;
-    height: calc(100% - 200px);
+    height: calc(100% - 240px);
 }
 
 .nft-shop-modal__list-items-wrap::-webkit-scrollbar {
@@ -3217,7 +3221,6 @@ a {
 .list-items-wrap__list-items {
     overflow: auto;
     height: 100%;
-    max-height: 560px;
 }
 .list-items-wrap__list-items .simplebar-content {flex-direction: column;}
 .wrapper__nft-shop-modal .list-items__item_basic,
@@ -3447,9 +3450,9 @@ a {
     line-height: 20px;
 }
 
-.wrapper__nft-shop-modal {
-    
+.wrapper__nft-shop-modal {    
     font-family: "Quadriana";
+    padding: 10px 0;
 }
 
 .wrapper__nft-shop-modal .list-items__item .text__title {
@@ -5992,6 +5995,7 @@ wrapper__nft-shop-modal .info__pricing button {
 
 .border-style.desktop::before {
     border: none;
+    z-index: -1;
 }
 
 .border-style.desktop .dote,
@@ -6154,4 +6158,18 @@ wrapper__nft-shop-modal .info__pricing button {
     color: white;
     text-transform: uppercase;
     font-family: "Teletactile";
+}
+
+.wrapper_banners p {
+    font-family: 'Quadriana';
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.modal__row div, .modal__row__tokens div {
+    font-size: 17px;
+}
+
+#leaderboard_modal .board {
+    background-color: #FFFDF4 !important;
 }

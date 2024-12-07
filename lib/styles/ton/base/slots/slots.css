@@ -13,11 +13,12 @@
 }
 
 .slot-wrap__title {
-    font-family: 'Teletactile';
-    font-size: 13.54px;
-    line-height: 20px;
-    color: #393939;
-    margin-bottom: 8px;
+    font-family: 'Quadriana';
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--color-orange);
+    text-transform: none;
+    margin-bottom: 4px;
 }
 
 .slot-wrap__slot {

@@ -259,9 +259,7 @@
         margin-bottom: 0px;
         z-index: 1;
     }
-    .wrapper_banners p {
-        font-family: 'Quadriana';
-    }
+    
     .games__row {
         background-size: 100%;
         gap: 4px;
@@ -1756,10 +1754,6 @@ background-position: center 11px;
     }
     
     .dataTables_wrapper {overflow-x: hidden;}
-
-    #leaderboard_modal .board {
-        background-color: #FFFDF4 !important;
-    }
 
     .dataTables_info {
         padding-top: 10px !important;

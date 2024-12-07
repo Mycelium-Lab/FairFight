@@ -367,10 +367,9 @@ summary::-webkit-details-marker {
     display: flex;
 }
 .wrapper__message-modal-overlay#leaderboard_modal .inner-block__head button {
-    font-size: 12px;
-    font-weight: bold;
-    font-family: "HelveticaNeueCyr";
-    text-transform: capitalize;
+    font-size: 17px;
+    font-family: "Quadriana";
+    text-transform: none;
     padding: 10px 0;
     display: flex;
     align-items: flex-start;
@@ -403,8 +402,8 @@ summary::-webkit-details-marker {
     transform: rotate(90deg);
 }
 table {
-    font-family: "HelveticaNeueCyr";
-    font-weight: bold;
+    font-family: "Quadriana";
+    font-weight: 400
 }
 th.sorting img {
     margin-left: 5px;
@@ -444,6 +443,7 @@ th.sorting {
     gap: 10px;
     border-bottom: 1px solid #000 !important;
     /* transform: translateX(-20px); */
+    font-family: "Quadriana";
 }
 th.sorting::before {
     content: '' !important;
@@ -487,8 +487,16 @@ th.sorting::after {
 .dataTables_paginate {
     display: inline-block;
 }
+.dataTables_info,
 .dataTable_update_info {
-    font-weight: bold;
+    font-family: "Quadriana";
+    font-size: 17px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.dataTable_update_info {
+    color: #B2B2B2;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
     color: #000 !important;

@@ -207,13 +207,13 @@
     border: var(--border-board);
     max-width: 520px;
     width: 100%;
-    padding: 30px 31px;
+    padding: 20px;
 }
 
 .modal .modal_content_new-game {
     display: block;
     position: relative;
-    min-height: 310px;
+    min-height: 523px;
     max-width: 586px;
 }
 
@@ -221,7 +221,7 @@
 .modal .modal_content_new-game .select-selected {
     height: 27px;
     max-height: 100%;
-    
+    min-height: 35px;    
 }
 .modal .modal_content_new-game .pixel-bordered-form,
 .modal .modal_content_new-game .custom-select {
@@ -265,7 +265,7 @@
 
 .modal .modal_content_new-game div.quadriana-label,
 .modal .modal_content_new-game span.quadriana-label {
-    font-size: 23px;
+    font-size: 24px;
     line-height: 29px;
     white-space: nowrap;
 }
@@ -621,4 +621,10 @@
 }
 .modal_content-error {
     width: 410px;
+}
+
+#createGame-f2p-evm {
+    position: absolute;
+    left: 31px;
+    bottom: 30px;
 }
