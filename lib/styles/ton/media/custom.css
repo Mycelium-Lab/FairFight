@@ -129,7 +129,7 @@
     }
     .newgame__btn::after {
         width: 183.5px;
-        transform: translate(-10px, -5px);
+        /* transform: translate(-10px, -5px); */
         background-image: url("../../../media/buttons/border-game-sm.svg");
     }
     .startContainer {
@@ -777,7 +777,8 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .newgame__btn::after {
         width: 173.5px;
-        background-position: center 26px;
+        left: -11px;
+        bottom: -18px;
     }
 
     #btn_modal_window_mobile

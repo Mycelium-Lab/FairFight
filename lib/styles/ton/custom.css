@@ -361,8 +361,10 @@ a {
     width: 100%;
     max-width: 72px;
     align-items: center;
+    justify-content: space-between;
 }
 .controls_block__list-card {width: 100%;}
+
 .controls_block__list-card span {
     font-family: 'Quadriana';
     font-size: 20px;
@@ -370,6 +372,7 @@ a {
     line-height: 20px;
     text-align: center;
     color: var(--color-black);
+    white-space: nowrap;
 }
 .controls_block__title--mtop {
     margin-top: 20px;
@@ -1504,7 +1507,7 @@ a {
     flex-direction: column;
     border-bottom: 4px solid var(--color-orange);
     width: calc(100% / 6);
-    padding: 4px 15px;
+    padding: 8px 15px 4px 15px;
     z-index: 1;
 }
 @media (max-width: 1023px) {
@@ -1571,6 +1574,7 @@ a {
 }
 .games__item__header .p__date p {
     margin-left: 1px;
+    white-space: nowrap;
 }
 .games__item__header .p__round::before {
     content: "";
@@ -1609,6 +1613,7 @@ a {
     color: var(--color-black);
     margin-bottom: 0;
 }
+.games__item p span {color: var(--color-orange);}
 #pastgames.games__item p {
     font-size: 14px;
 }
@@ -4254,7 +4259,7 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 
 #inventory-item-modal-image {
-    width: 135px;
+    width: 85%;
 }
 
 .wrapper__item-modal-overlay .text-item__type {
@@ -6166,7 +6171,8 @@ wrapper__nft-shop-modal .info__pricing button {
     line-height: 27px;
 }
 
-.modal__row div, .modal__row__tokens div {
+.modal__row div, .modal__row__tokens div,
+.select-items span {
     font-size: 17px;
 }
 

@@ -379,7 +379,8 @@
 }
 .list-wrap__item-list {
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    row-gap: 25px;
+    margin-left: 5px;
 }
 #inventory-item-modal .board.body__item-detail {
     height: fit-content !important;
@@ -391,6 +392,10 @@
 
 #inventory-modal .four-color-border-block,
 #inventory-item-modal .four-color-border-block {z-index: 0;}
+
+.inventory-character .slot-wrap__slot {
+    margin-top: 3px;
+  }
 }
 
 @media(max-width: 380px) {

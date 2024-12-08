@@ -37,7 +37,7 @@
 
 .body__inventory {
     position: relative;
-    width: 336px;
+    width: 340px;
     right: 15px
 }
 
@@ -101,7 +101,11 @@
     left: -6px;
 }
 .inventory-character{
-    gap: 21.67px
+  gap: 21.67px
+}
+
+.inventory-character .slot-wrap__slot {
+  margin-top: 7px;
 }
  
 .inventory-wrap-corner_topleft {
@@ -138,10 +142,10 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 67.1px);
-    grid-template-rows: repeat(auto-fill, 90.1px);
+    /* grid-template-rows: repeat(auto-fill, 90.1px); */
     overflow: auto;
     overflow-x: hidden;
-    gap: 10px;
+    gap: 8px;
   }
 
   .item-list__slot {
@@ -349,3 +353,10 @@
     z-index: 0 !important;
   }
   
+  #inventory-item-modal .four-color-border-block {
+    z-index: 0;
+  }
+
+  #inventory-item-modal .body__item-detail {
+    width: 350px;
+  }

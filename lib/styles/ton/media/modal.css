@@ -476,6 +476,7 @@
     .new_game_modal .close_modal_window {
         right: 10px;
     }
+    .select-items span,
     .modal__row div,
     .modal__row__tokens div {
         font-size: 10.88px !important;

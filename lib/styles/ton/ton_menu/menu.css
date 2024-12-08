@@ -39,7 +39,10 @@
 #about-game-modal .modal_content {
     max-width: 654px;
     padding: 21px 41px 37px 41px;
-    margin-top: 183px;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .about-game-title {
