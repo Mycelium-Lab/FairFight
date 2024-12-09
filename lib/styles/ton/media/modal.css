@@ -436,6 +436,29 @@
 }
 
 @media (max-width: 500px) {
+
+    .modal .modal_content_new-game .pixel-bordered-form,
+    .modal .modal_content_new-game .custom-select {
+      max-width: 144px;
+      width: 100%;
+    }
+
+    .modal .modal_content_new-game .pixel-bordered-form,
+    .modal .modal_content_new-game .select-selected {
+        min-height: 27px;
+    }
+
+    .modal .modal_content_new-game h1 {
+        font-size: 24px;
+        line-height: 29.33px;
+    }
+
+    .modal .modal_content_new-game div.quadriana-label,
+    .modal .modal_content_new-game span.quadriana-label {
+        font-size: 14px;
+        line-height: 17.11px;
+    }
+
     .modal .modal_content {
         padding: 20px 25.16px;
         max-width: 380px;
@@ -445,6 +468,7 @@
     }
     .modal .modal_content_new-game {
         padding-bottom: 40px;
+        min-height: 310px;
     }
     .new-game-header {
         width: 130px;
@@ -452,9 +476,10 @@
     .new_game_modal .close_modal_window {
         right: 10px;
     }
+    .select-items span,
     .modal__row div,
     .modal__row__tokens div {
-        font-size: 10.88px;
+        font-size: 10.88px !important;
         line-height: 12.98px;
         margin: 0;
     }
@@ -707,12 +732,6 @@
     .pause__title.quadriana-label::before,
     .modal__title-confirm_finish::before {
         -webkit-text-stroke: 3px rgba(112, 15, 81, 1) !important;
-    }
-
-    .pause__content p,
-    #modal__body_confirm_finish p {
-        font-family: "Quadriana";
-        color: #7A7A7A !important;
     }
 
     .pause__content p:first-of-type,

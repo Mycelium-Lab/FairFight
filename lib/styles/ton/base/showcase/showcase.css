@@ -2,11 +2,9 @@
 @import url('../characters/characters.css');
 
 .head__showcase-title{
-    border-bottom: 5px solid #FF7C06;
-    padding-bottom: 15.57px;
-    font-family: 'Teletactile';
-    font-size: 21.67px;
-    line-height: 32px;
+    font-family: 'Quadriana';
+    font-size: 32px;
+    line-height: 39px;
     color: #FF7C06;
     text-align: center;
 }

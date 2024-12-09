@@ -1,5 +1,5 @@
 .modal_content_finish {
-    height: 560px;
+    height: fit-content;
 }
 .yourStats__header,
 .enemyStats__header {
@@ -28,6 +28,7 @@
     font-weight: 700;
     line-height: 17.09px;
     margin-bottom: 0px !important;
+    font-family: "Quadriana";
 }
 
 .enemyStats__header p {
@@ -123,6 +124,7 @@
 .enemyDeathsTitle,
 .enemy_address {
     font-weight: 500;
+    font-family: "Quadriana";
 }
 
 .yourAmountWinLoseTitle,
