@@ -196,9 +196,6 @@
     .wrapper__nft-shop-modal .list-items__item{
         margin-right: 15px !important;
     }
-    .nft-shop-modal__header-title{
-        transform: translateX(70px);
-    }
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
         gap: 10px !important;
     }

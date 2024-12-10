@@ -585,8 +585,22 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     #home-btn,
     #menu-home-btn {
         background-image: url("../../../media/buttons/home-mobile-horizontal.svg");
+        width: 132.5px !important;
+        height: 55px;
+    }
+    #menu-p2p-btn-evm {
+        background-image: url("../../../media/buttons/newgame-mobile-horizontal.svg");
+        width: 132.5px !important;
+        height: 55px;
+    }
+    #menu-f2p-btn-evm {
+        background-image: url("../../../media/buttons/newgame-green-mobile-horizontal.svg");
         width: 132.5px;
         height: 55px;
+    }
+    #menu-f2p-btn-evm::after,
+    #menu-p2p-btn-evm::after {
+        background-position: center 9px;
     }
     #nft-shop-btn,
     #menu-nft-shop-btn {
