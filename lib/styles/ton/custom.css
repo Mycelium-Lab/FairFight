@@ -4933,9 +4933,9 @@ wrapper__nft-shop-modal .info__pricing button {
     width: 155px;
     height: 73px;
     background-repeat: no-repeat;
+    background-size: 95%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
 }
 

@@ -553,7 +553,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .buyblock-image__boxes {
         background-image: url("../../../media/mobile//loot-box.png");
-        width: 130px;
+        width: 155px;
         height: 90px;
         background-size: 100% 100%;
         margin: 0 auto;
@@ -908,6 +908,10 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    .wrapper_banners .wrapper__banner {
+        padding-top: 6px !important;
+    }
+
     .nft-shop-modal__header-title {
         font-size: 32px;
         line-height: 39.1px;
@@ -1655,7 +1659,10 @@ background-position: center 11px;
         font-size: 10px;
         font-family: "Helvetica Neue";
     }
-    .buyblock-image.ton {background-image: none;}
+    .buyblock-image.ton {
+        background-image: none;
+        margin-top: -4px;
+    }
 
     .tabs__content.empty .four-color-border-block {
         display: none !important;
