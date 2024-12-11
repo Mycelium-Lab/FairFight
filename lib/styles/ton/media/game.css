@@ -352,14 +352,17 @@
 #confirm_finishgame_modal_desktop .modal_content,
 #pause_modal .modal_content {
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
 }
     
 #pause_modal .board {
-    max-width: calc(100vw - 20px);
+    max-width: 400px;
     padding: 25px !important;
     border: 2px solid #393939;
     border-radius: 0;
+    width: calc(100% - 20px);
 }
 #pause_modal .board .board-edge:nth-child(1) {
     top: -8px;
@@ -378,9 +381,9 @@
     left: -8px;
 }
 .pause__title {
-    font-size: 22px;
-    font-weight: 900;
-    font-family: "Teletactile";
+    font-size: 32px;
+    font-weight: 400;
+    font-family: "Quadriana";
     text-align: center;
     line-height: 22.2px;
     color: rgba(255, 124, 6, 1);
@@ -388,6 +391,19 @@
 }
 .pause__content {
     text-align: center;
+}
+
+.pause__content p {
+    font-family: "Quadriana";
+    color: #7A7A7A;
+}
+
+.pause__content p:first-of-type {
+    font-size: 20px;
+}
+
+.pause__content p:last-of-type {
+    font-size: 14px;
 }
 
 .pause__btn {
