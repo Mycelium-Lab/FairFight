@@ -188,6 +188,10 @@
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
         gap: 17px !important;
     }
+    
+    .slot-wrap__title {
+        color: black;
+    }
 }
 @media (max-width: 411px) {
     .wrapper__nft-shop-modal{
