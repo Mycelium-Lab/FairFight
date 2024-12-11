@@ -1653,7 +1653,14 @@ background-position: center 11px;
     #thirtyleader-table thead th,
     #sevenleader-table thead th {
         font-size: 10px;
+        font-family: "Helvetica Neue";
     }
+    .buyblock-image.ton {background-image: none;}
+
+    .tabs__content.empty .four-color-border-block {
+        display: none !important;
+    }
+
     #thirtyleader-table thead th img,
     #sevenleader-table thead th img {
         width: 13.7px;

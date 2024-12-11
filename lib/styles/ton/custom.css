@@ -5436,6 +5436,63 @@ wrapper__nft-shop-modal .info__pricing button {
 }
 /* REDIRECT TO DESKTOP POPUP */
 
+/* PLATFORM NOT SUPORTED POPUP */
+.playform-not-supported-popup-tg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../media/new-bg-fon.jpg);
+    background-color: #291B3E;
+    background-repeat: no-repeat;
+    background-size: 590px auto;
+    background-position: 50% 0px;
+    position: relative;
+    position: fixed;
+    z-index: 1000;
+    overflow: hidden;
+    display: none;
+}
+
+.playform-not-supported-popup-tg .blur-bg {
+    display: block;
+    background: linear-gradient(#291b3e00 3%, #291B3E 20%, #291B3E 77%);
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    bottom: -90px;
+    left: 0;
+}
+
+.playform-not-supported-popup-tg img {
+    position: absolute;
+    top: 160px;
+    max-width: 465px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.playform-not-supported__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.playform-not-supported-popup-tg h1 {
+    font-size: 40px;
+    margin: 0;
+    white-space: nowrap;
+    background: linear-gradient(180deg, #FFDC2B 18%, #FF7659 25%, #FFDC2B 34%, #FF7659 45%, #FFDC2B 71.5%, #FF7659 78.5%, #FFDC2B 90.5%);
+    -webkit-background-clip: text;
+}
+/* PLATFORM NOT SUPORTED POPUP */
+
 /* PLAY TO PLAY POPUP */
 .play-to-play-popup {
     width: 100%;

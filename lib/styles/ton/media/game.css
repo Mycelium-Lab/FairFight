@@ -336,6 +336,9 @@
         margin: 0 0 4px 0;
     }
 
+    #pastgames-f2p,
+    #pastgames-f2p-evm {background-color: transparent !important;}
+
 }
 
 @media (max-width: 768px) {
