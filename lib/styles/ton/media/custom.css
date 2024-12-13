@@ -1581,24 +1581,6 @@ background-position: center 11px;
     }
     .modal__over-body {padding-top: 0 !important;}
 
-    #over-modal-body {
-        max-height: 400px;
-        overflow-y: auto;
-        margin-right: 3px;
-    }
-
-    #over-modal-body::-webkit-scrollbar {
-        width: 4px;
-      }
-
-    #over-modal-body::-webkit-scrollbar-track {
-        background: #FFFDF4; 
-      }
-       
-    #over-modal-body::-webkit-scrollbar-thumb {
-      background: #ff7c06; 
-    }
-
     #close-button_finish-game  {font-size: 14px;}
 
     .claim_nft_btn {

@@ -412,6 +412,12 @@ input[type=number] {
     opacity: 1;
 }
 
+.modal__pause-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 #confirm_finish, #open_control_keys, #back_menu{
     background-image: url('../../../media/mobile/finish-the-game-frame-btn.svg');
     width: 188px;
@@ -420,7 +426,6 @@ input[type=number] {
     padding-bottom: 0px;
     height: 38px;
     margin: 0 auto;
-    margin-top: 8px;
 }
 #back_menu{
     margin-top: 18px;

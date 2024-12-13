@@ -6239,3 +6239,21 @@ wrapper__nft-shop-modal .info__pricing button {
 #leaderboard_modal .board {
     background-color: #FFFDF4 !important;
 }
+
+#over-modal-body {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-right: 3px;
+}
+
+#over-modal-body::-webkit-scrollbar {
+    width: 4px;
+  }
+
+#over-modal-body::-webkit-scrollbar-track {
+    background: #FFFDF4; 
+  }
+   
+#over-modal-body::-webkit-scrollbar-thumb {
+  background: #ff7c06; 
+}
