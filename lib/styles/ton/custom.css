@@ -151,6 +151,7 @@ a {
 
 #opengames-list-f2p-evm-desktop .simplebar-content,
 #pastgames-list-desktop .simplebar-content,
+#pastgames-list-f2p-evm-desktop .simplebar-content,
 #opengames-list-desktop .simplebar-content {
     grid-template-columns: 1fr !important;
     display: grid;
@@ -291,11 +292,12 @@ a {
 }
 
 .about__title {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 48px;
+    line-height: 58.66px;
     text-align: center;
-    text-decoration: underline;
-    margin-bottom: 30px;
+    margin: 0 auto 20px auto;
+    background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
+    -webkit-background-clip: text;
 }
 
 #nothing_new {
@@ -4424,7 +4426,9 @@ wrapper__nft-shop-modal .info__pricing button {
 .wrapper__item-modal-overlay
     .item-detail__btns-wrap
     button[id="inventory-item-modal-takeitoff"] {
-    width: 169px !important;
+    width: 137px !important;
+    font-size: 10px;
+    background-size: 137px 29px;
 }
 
 .wrapper__item-modal-overlay
@@ -4441,9 +4445,8 @@ wrapper__nft-shop-modal .info__pricing button {
 .wrapper__item-modal-overlay
     .item-detail__btns-wrap
     button[id="go-to-inventory-btn-from-loot"] {
-    width: 260px !important;
-    height: 46px !important;
-    padding-top: 6px;
+    width: 180px !important;
+    height: 31px !important;
     background-image: url("../../media/buttons/back-to-inventory-btn-wide-grame.svg");
 }
 
@@ -5444,7 +5447,7 @@ wrapper__nft-shop-modal .info__pricing button {
     background-color: #291B3E;
     background-repeat: no-repeat;
     background-size: 590px auto;
-    background-position: 50% 0px;
+    background-position: 50% -60px;
     position: relative;
     position: fixed;
     z-index: 1000;
@@ -5458,13 +5461,13 @@ wrapper__nft-shop-modal .info__pricing button {
     width: 100%;
     height: 50%;
     position: absolute;
-    bottom: -90px;
+    bottom: -25px;
     left: 0;
 }
 
 .playform-not-supported-popup-tg img {
     position: absolute;
-    top: 160px;
+    top: 100px;
     max-width: 465px;
     left: 50%;
     transform: translateX(-50%);
@@ -5478,7 +5481,7 @@ wrapper__nft-shop-modal .info__pricing button {
     justify-content: center;
     gap: 0;
     position: absolute;
-    bottom: 110px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
