@@ -605,7 +605,7 @@
 						</button>
 					</div>
 
-					<div id="pause_modal" class="modal" style="display: block;">
+					<div id="pause_modal" class="modal">
 						<div class="board modal_content_pause modal_content">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
@@ -762,7 +762,7 @@
 					<div class="corn corn2"></div>
 					<div class="corn corn3"></div>
 					<div class="corn corn4"></div> -->
-					<div class="modal__over-subtitle">Players &amp; stats</div>
+					<div class="modal__over-subtitle">Players & stats</div>
 					<div class="finish-stats">
 						<div class="yourStats__header">
 							<p>You</p>
@@ -770,28 +770,28 @@
 						<div class="yourStats">
 							<span class="yourAmountWinLoses_stat">
 								<!-- <span class="yourAmountWinLoseTitle">Win:</span> -->
-								<span class="red" id="yourAmountWinLose">Lose: -0.0001 ETH</span>
+								<span class="yourAmountWinLoses" id="yourAmountWinLose"></span>
 							</span>
 							<div class="yourKills_stat">
 								<span class="yourKillsTitle">Kills:</span>
-								<span class="yourKills" id="yourKills">0</span>
+								<span class="yourKills" id="yourKills"></span>
 							</div>
 							<div class="yourDep_stat">
 								<span class="yourDepTitle">Dep:</span>
-								<span id="yourDep"> 0.0001 ETH</span>
+								<span id="yourDep"></span>
 							</div>
 							<div class="yourDeaths_stat">
 								<span class="yourDeathsTitle">Deaths:</span>
-								<span class="yourDeaths" id="yourDeaths">1</span>
+								<span class="yourDeaths" id="yourDeaths"></span>
 							</div>
 						</div>
 						<div class="yourStats_address">
 							<span class="your_address">Wallet: </span>
-							<a class="finish_modal_your_address" id="finish_modal_your_address">0xf39F...2266</a>
+							<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
 						</div>
 					</div>
 					
-				<div class="finish-stats_enemy finish-stats"><div class="enemyStats__header"><p>Enemy #1</p></div><div class="enemyStats"><div class="enemyKills_stat"><span class="enemyKillsTitle">Kills:</span><span class="enemyKills" id="0x71be63f3384f5fb98995898a86b02fb2426c5788_kills_31337_1"> 1</span></div><span id="enemyAmountWinLose_0x71be63f3384f5fb98995898a86b02fb2426c5788_balance_31337_1" class="green">Win: 0.0001 ETH</span><div class="enemyDeaths_stat"><span class="enemyDeathsTitle">Deaths:</span><span class="enemyDeaths" id="0x71be63f3384f5fb98995898a86b02fb2426c5788_deaths_31337_1"> 0</span></div><div class="enemyDep_stat"><span class="enemyDepTitle">Dep:</span><span> 0.0001 ETH</span></div></div><div class="enemyStats_address"><span class="enemy_address"> Wallet: </span><a class="finish_modal_enemy_address">0x71bE...5788</a></div></div></div>
+				</div>	
 			</div>
 		</div>
 		<button id="finishGame" class='close-button_finish-game close-button'>exit</button>
