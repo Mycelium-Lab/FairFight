@@ -628,3 +628,11 @@
     left: 31px;
     bottom: 30px;
 }
+
+#over_modal .board {
+    border: none;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -32,11 +32,11 @@
 }
 
 .enemyStats__header p {
-    text-align: end;
+    /* text-align: end; */
 }
 
 .finish-stats {
-    width: 246px;
+    width: 260px;
     border-bottom: 1px solid #ffc897;
 }
 
@@ -251,7 +251,7 @@
     margin-bottom: 5px;
 }
 .enemyStats_address {
-    text-align: end;
+    /* text-align: end; */
     margin-bottom: 5px;
 }
 
