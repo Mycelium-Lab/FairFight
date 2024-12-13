@@ -605,7 +605,7 @@
 						</button>
 					</div>
 
-					<!-- <div id="pause_modal" class="modal" style="display: none;">
+					<div id="pause_modal" class="modal" style="display: none;">
 						<div class="board modal_content_pause modal_content">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
@@ -613,13 +613,13 @@
 							<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 							<button id="close_pause_modal"
 								class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
-							<div class="modal__title_pause modal__title">Menu</div> -->
+							<div class="modal__title_pause modal__title">Menu</div>
 							<!--<div class="modal__pause-body">
 							</div>-->
-							<!-- <button id="open_control_keys" class="close-button">control keys info</button>
+							<button id="open_control_keys" class="close-button">control keys info</button>
 							<button id="confirm_finish" class="close-button">finish the game</button>
 						</div>
-					</div> -->
+					</div>
 				</div>
 				<div id="control_keys_mobile_modal" class="modal">
 					<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
@@ -643,7 +643,7 @@
 					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 					<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
-					<button id="close_confirm_finish"
+					<button id="close_confirm_finish"over-modal-body
 						class="close_pause_modal message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 					<div class="modal__title_pause modal__title">Menu</div>
 					<!--<div class="modal__title-confirm_finish modal__title">finish the game</div>-->
@@ -762,7 +762,7 @@
 					<div class="corn corn2"></div>
 					<div class="corn corn3"></div>
 					<div class="corn corn4"></div> -->
-					<div class="modal__over-subtitle">Players & stats</div>
+					<div class="modal__over-subtitle">Players &amp; stats</div>
 					<div class="finish-stats">
 						<div class="yourStats__header">
 							<p>You</p>
@@ -770,29 +770,28 @@
 						<div class="yourStats">
 							<span class="yourAmountWinLoses_stat">
 								<!-- <span class="yourAmountWinLoseTitle">Win:</span> -->
-								<span class="yourAmountWinLoses" id="yourAmountWinLose"></span>
+								<span class="red" id="yourAmountWinLose">Lose: -0.0001 ETH</span>
 							</span>
 							<div class="yourKills_stat">
 								<span class="yourKillsTitle">Kills:</span>
-								<span class="yourKills" id="yourKills"></span>
+								<span class="yourKills" id="yourKills">0</span>
 							</div>
 							<div class="yourDep_stat">
 								<span class="yourDepTitle">Dep:</span>
-								<span id="yourDep"></span>
+								<span id="yourDep"> 0.0001 ETH</span>
 							</div>
 							<div class="yourDeaths_stat">
 								<span class="yourDeathsTitle">Deaths:</span>
-								<span class="yourDeaths" id="yourDeaths"></span>
+								<span class="yourDeaths" id="yourDeaths">1</span>
 							</div>
 						</div>
 						<div class="yourStats_address">
 							<span class="your_address">Wallet: </span>
-							<a class="finish_modal_your_address" id="finish_modal_your_address"></a>
+							<a class="finish_modal_your_address" id="finish_modal_your_address">0xf39F...2266</a>
 						</div>
 					</div>
 					
-				</div>
-
+				<div class="finish-stats_enemy finish-stats"><div class="enemyStats__header"><p>Enemy #1</p></div><div class="enemyStats"><div class="enemyKills_stat"><span class="enemyKillsTitle">Kills:</span><span class="enemyKills" id="0x71be63f3384f5fb98995898a86b02fb2426c5788_kills_31337_1"> 1</span></div><span id="enemyAmountWinLose_0x71be63f3384f5fb98995898a86b02fb2426c5788_balance_31337_1" class="green">Win: 0.0001 ETH</span><div class="enemyDeaths_stat"><span class="enemyDeathsTitle">Deaths:</span><span class="enemyDeaths" id="0x71be63f3384f5fb98995898a86b02fb2426c5788_deaths_31337_1"> 0</span></div><div class="enemyDep_stat"><span class="enemyDepTitle">Dep:</span><span> 0.0001 ETH</span></div></div><div class="enemyStats_address"><span class="enemy_address"> Wallet: </span><a class="finish_modal_enemy_address">0x71bE...5788</a></div></div></div>
 			</div>
 		</div>
 		<button id="finishGame" class='close-button_finish-game close-button'>exit</button>
@@ -981,7 +980,7 @@
 </div>
 
 <!-- Pause modal -->
-<div id="pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay">
+<div id="ton_pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay">
 	<div class="board wrapper__message-modal modal_content">
 		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
 		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
