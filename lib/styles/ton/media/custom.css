@@ -1444,7 +1444,7 @@ background-position: center 11px;
         padding-bottom: 20px !important;
     }
     .wrapper__nft-shop-modal .list-items__item {
-        margin-right: 20px;
+        margin-right: 30px;
     }
     #nft-shop-boxes-list .list-items__item {
         display: inline-block !important;
@@ -1506,7 +1506,7 @@ background-position: center 11px;
     
     .simplebar-content {
         padding: 0 0 5px 0 !important;
-        gap: 10px !important;
+        /* gap: 10px !important; */
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
