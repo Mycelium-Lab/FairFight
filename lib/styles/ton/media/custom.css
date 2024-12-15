@@ -1444,7 +1444,7 @@ background-position: center 11px;
         padding-bottom: 20px !important;
     }
     .wrapper__nft-shop-modal .list-items__item {
-        margin-right: 20px;
+        margin-right: 30px;
     }
     #nft-shop-boxes-list .list-items__item {
         display: inline-block !important;
@@ -1506,7 +1506,7 @@ background-position: center 11px;
     
     .simplebar-content {
         padding: 0 0 5px 0 !important;
-        gap: 10px !important;
+        /* gap: 10px !important; */
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
@@ -1519,6 +1519,11 @@ background-position: center 11px;
         grid-template-columns: 1fr !important;
         display: grid;
 
+    }
+
+    #opengames-list .simplebar-content,
+    #opengames-list-f2p-evm .simplebar-content {
+        gap: 10px !important;
     }
 
     #inventory-item-body {
@@ -1580,24 +1585,6 @@ background-position: center 11px;
         margin-right: 0;
     }
     .modal__over-body {padding-top: 0 !important;}
-
-    #over-modal-body {
-        max-height: 400px;
-        overflow-y: auto;
-        margin-right: 3px;
-    }
-
-    #over-modal-body::-webkit-scrollbar {
-        width: 4px;
-      }
-
-    #over-modal-body::-webkit-scrollbar-track {
-        background: #FFFDF4; 
-      }
-       
-    #over-modal-body::-webkit-scrollbar-thumb {
-      background: #ff7c06; 
-    }
 
     #close-button_finish-game  {font-size: 14px;}
 

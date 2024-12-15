@@ -621,6 +621,12 @@
         padding-top: 10px;
         font-size: 34px;
     }
+
+    /* .simplebar-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+    } */
 }
 
 @media (max-width: 400px) {
@@ -672,11 +678,6 @@
         display: none;
     }
 
-    .simplebar-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-    }
 }
 
 @media (max-width: 360px) {

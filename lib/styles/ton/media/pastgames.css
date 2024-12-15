@@ -40,9 +40,11 @@
         background-image: url("../../../media/svg/past-game/calendar.svg");
         width: 16px;
         height: 16px;
-        background-size: 16px 16px;
+        background-size: 14px 14px;
         margin-right: 5px;
         margin-bottom: 2px;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     .table__row .red {
         color: #ee0000;
