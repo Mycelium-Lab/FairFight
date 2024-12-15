@@ -1521,6 +1521,11 @@ background-position: center 11px;
 
     }
 
+    #opengames-list .simplebar-content,
+    #opengames-list-f2p-evm .simplebar-content {
+        gap: 10px !important;
+    }
+
     #inventory-item-body {
         font-family: "Quadriana";
     }
