@@ -66,6 +66,10 @@ bot.onText('Handbook', async (msg) => {
         const chatId = msg.chat.id;
     
         bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/10');
-        bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/11');
+        setTimeout(() => {
+            try {
+                bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/11');
+            } catch (error) {}
+        },100)
     } catch (error) {}
 })
