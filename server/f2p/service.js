@@ -114,7 +114,11 @@ export async function createFight(fight, bodyInitData, sign_evm) {
             ]);
             if (bot) {
                 for (let i = 0; i < playersToNotify.length; i++) {
-                    bot.sendMessage(playersToNotify[i], `${fight.owner} have created new fight.`)
+                    try {
+                        bot.sendMessage(playersToNotify[i], `${fight.owner} have created new fight.`)
+                    } catch (error) {
+                        console.error(error)
+                    }
                 }
                 // const chat = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [fight.owner])
                 // if (chat.rows.length ) {
@@ -180,7 +184,11 @@ export async function joinFight(fightId, player, bodyInitData, sign_evm) {
                     // const chatJoiner = await pgClient.query('SELECT * FROM tg_chats WHERE username = $1', [player])
                     // if (chat.rows.length) {
                     for (let i = 0; i < playersToNotify.length; i++) {
-                        bot.sendMessage(playersToNotify[i], `${player} joined your fight (id: ${fightId})`)
+                        try {
+                            bot.sendMessage(playersToNotify[i], `${player} joined your fight (id: ${fightId})`)
+                        } catch (error) {
+                            console.error(error)
+                        }
                     }
                         // bot.sendMessage(chat.rows[0].chat_id, `Player (username: ${player}) joined your fight (id: ${fightId})`)
                     // }
