@@ -20,6 +20,10 @@ bot.onText(/\/start|Social/i, (msg) => {
                     {
                         text: "Discord",
                         url: "https://discord.gg/sYzQy6h3" 
+                    },
+                    {
+                        text: "Channel",
+                        url: "https://t.me/FairFightCom" 
                     }
                 ]
             ]
@@ -30,7 +34,8 @@ bot.onText(/\/start|Social/i, (msg) => {
             keyboard: [
                 [
                 { text: "Social" },
-                { text: "FAQ" }
+                { text: "FAQ" },
+                { text: "Handbook" }
                 ]
             ],
             resize_keyboard: true
@@ -53,5 +58,18 @@ bot.onText('FAQ', async (msg) => {
         const chatId = msg.chat.id;
     
         bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/4');
+    } catch (error) {}
+})
+
+bot.onText('Handbook', async (msg) => {
+    try {
+        const chatId = msg.chat.id;
+    
+        bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/10');
+        setTimeout(() => {
+            try {
+                bot.sendPhoto(chatId, 'https://t.me/ffvideolinks/11');
+            } catch (error) {}
+        },100)
     } catch (error) {}
 })

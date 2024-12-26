@@ -1,15 +1,15 @@
 .inventory__modal-content{
-    width: 918px;
-    padding-bottom: 40px;
+    width: fit-content;
+    padding: 10px 26px;
 }
 
-.modal__header-title_inventory{
+/* .modal__header-title_inventory{
   width: 100%;
   height: 35px;
   background-image: url('../../../media/svg/inventory-modal/inventory-modal-header.svg');
   background-position: center center;
   background-repeat: no-repeat;
-}
+} */
 
 .inventory-modal__left-title {
     left: 0;
@@ -37,7 +37,7 @@
 
 .body__inventory {
     position: relative;
-    width: 336px;
+    width: 340px;
     right: 15px
 }
 
@@ -53,22 +53,24 @@
 }
 
 .inventory__header-title{
-    border-bottom: 5px solid #FF7C06;
-    padding-bottom: 15.57px;
     font-family: 'Teletactile';
     font-size: 21.67px;
     line-height: 32px;
     color: #FF7C06;
     text-align: center;
+    font-family: "Quadriana";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 39.1px;
 }
 
 .inventory-modal__body {
-    margin-top: 32.43px;
+    margin-top: 10px;
     height: 100%;
     display: grid;
     gap: 23.01px;
     grid-template-columns: 339px 1fr;
-    padding: 0px 48.09px 0px 68px;
+    padding: 0 10px;
   }
 
 .inventory__list-wrap {
@@ -99,7 +101,11 @@
     left: -6px;
 }
 .inventory-character{
-    gap: 21.67px
+  gap: 21.67px
+}
+
+.inventory-character .slot-wrap__slot {
+  margin-top: 7px;
 }
  
 .inventory-wrap-corner_topleft {
@@ -136,10 +142,10 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 67.1px);
-    grid-template-rows: repeat(auto-fill, 90.1px);
+    /* grid-template-rows: repeat(auto-fill, 90.1px); */
     overflow: auto;
     overflow-x: hidden;
-    gap: 10px;
+    gap: 8px;
   }
 
   .item-list__slot {
@@ -333,4 +339,24 @@
   .body__item-detail .board-edge_sm:nth-child(4){
     left: -5px;
     bottom: -5px;
+  }
+
+  .modal__header-title_inventory {
+    letter-spacing: -1px;
+    font-size: 48px;
+    line-height: 58.66px;
+    margin-bottom: 0;
+  }
+
+  #inventory-modal .four-color-border-block,
+  .modal__header-title_inventory::before {
+    z-index: 0 !important;
+  }
+  
+  #inventory-item-modal .four-color-border-block {
+    z-index: 0;
+  }
+
+  #inventory-item-modal .body__item-detail {
+    width: 350px;
   }

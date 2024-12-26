@@ -903,11 +903,6 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     .header-right {
         margin-bottom: 45px;
     }
-    .contact_link_about {
-        right: 25px;
-        top: 55px;
-        gap: 5px;
-    }
     .contact_link_about .link__name {
         font-size: 12px;
     }

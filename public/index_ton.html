@@ -17,6 +17,7 @@
 		</script>
 		<title>Fair Fight</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script async src="https://tganalytics.xyz/index.js" type="text/javascript"></script>
 		<link
 	  rel="stylesheet"
 	  href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
@@ -1110,11 +1111,11 @@
 									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<p>NEW Characters</p>
-									<div class="buyblock-image">
+									<div class="buyblock-image ton">
 										<img src="media/new-charachtar-avatar-1.png" alt="">
 										<img src="media/new-charachtar-avatar-2.png" alt="">
 									</div>
-									<button id="new-characters-btn" class="banner__buy"></button>
+									<button id="new-characters-btn" class="banner__buy new-characters-btn"></button>
 								</div>
 								<div class="board wrapper__banner-boxes wrapper__banner">
 									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -1123,7 +1124,7 @@
 									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<p>Try your luck</p>
 									<div class="buyblock-image__boxes"></div>
-									<button id="try-luck-btn" class="banner__buy"></button>
+									<button id="try-luck-btn" class="banner__buy try-luck-btn"></button>
 								</div>
 							</div>
 						</div>
@@ -1377,7 +1378,7 @@
 									<img class=" board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<p>NEW Characters</p>
 									<div class="buyblock-image"></div>
-									<button id="new-characters-btn" class="banner__buy"></button>
+									<button id="new-characters-btn" class="banner__buy new-characters-btn"></button>
 								</div>
 								<div class="board wrapper__banner-boxes wrapper__banner">
 									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
@@ -1386,7 +1387,7 @@
 									<img class="board-edge_sm board-edge" src="media/svg/boarder-edge-sm.svg">
 									<p>Try your luck</p>
 									<div class="buyblock-image__boxes"></div>
-									<button id="try-luck-btn" class="banner__buy"></button>
+									<button id="try-luck-btn" class="banner__buy try-luck-btn"></button>
 								</div>
 							</div>
 						</main>
@@ -1490,7 +1491,7 @@
 					<div id="amountPerDeathText" style="display: flex;">						
 						<span class="quadriana-label" data-text="Bet per round">Bet per round</span>
 						<div class="pixel-bordered-form">
-							<input type="number" id="amountPerDeath" name="amountPerDeath" required />
+							<input type="number" id="amountPerDeath" name="amountPerDeath" required placeholder="TON"/>
 						</div>
 					</div>
 					<div id="amountToPlayText" style="display: flex;">						
@@ -4783,6 +4784,31 @@
 		<span class="blur-bg"></span>
 	</div>
 	<!-- REDIRECT TO DESKTOP POPUP	 -->
+
+	<!-- PLATFORM NOT SUPORTED POPUP -->
+	<div class="playform-not-supported-popup-tg">
+		<img src="media/game-ton-chars.png" alt="">
+		<div class="playform-not-supported__text">
+			<h1 class="quadriana-label" data-text="Your platform">Your platform</h1>
+			<h1 class="quadriana-label" data-text="is not">is not</h1>
+			<h1 class="quadriana-label" data-text="supported!">supported!</h1>
+		</div>
+		<span class="blur-bg"></span>
+	</div>
+	<!-- PLATFORM NOT SUPORTED POPUP -->
+
+	<!-- PLATFORM NOT SUPORTED POPUP -->
+	<div class="tg-rotate-popup">
+		<div class="tg-rotate-popup__content">
+			<img src="media/logo.svg" alt="" class="tg-rotate-popup__logo">
+			<div class="tg-rotate-popup__bottom">
+				<img src="media/left-person.svg" alt="" class="tg-rotate-popup__left-person">
+				<img src="media/rotate-phone.svg" alt="" class="tg-rotate-popup__phone">
+				<img src="media/right-person.svg" alt="" class="tg-rotate-popup__right-person">
+			</div>
+		</div>
+	</div>
+	<!-- PLATFORM NOT SUPORTED POPUP -->
 	
 	<!-- PLAY TO PLAY POPUP	 -->
 	<div class="play-to-play-popup">

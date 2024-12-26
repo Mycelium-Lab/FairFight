@@ -28,8 +28,14 @@
 
 /* inside */
 .modal__header-title_fitting {
-    background-image: url('../../../media/svg/shop/fitting-room-title.svg');
-    margin-bottom: 40px;
+    /* background-image: url('../../../media/svg/shop/fitting-room-title.svg'); */
+    margin-bottom: 17px;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.modal__header-title_fitting::before {
+    z-index: 0 !important;
 }
 .modal__body_fitting{
     margin-top: 30px;

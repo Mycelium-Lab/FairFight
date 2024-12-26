@@ -138,9 +138,6 @@
     .wrapper__nft-shop-modal .list-items__item_character .left__img-wrap img:last-child{
          width: 100% !important;
     }
-    .nft-shop-modal__header-title{
-        transform: translateX(80px);
-    }
     .wrapper__nft-shop-modal{
         width: 400px !important;
     }
@@ -191,6 +188,10 @@
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
         gap: 17px !important;
     }
+    
+    .slot-wrap__title {
+        color: black;
+    }
 }
 @media (max-width: 411px) {
     .wrapper__nft-shop-modal{
@@ -198,9 +199,6 @@
     }
     .wrapper__nft-shop-modal .list-items__item{
         margin-right: 15px !important;
-    }
-    .nft-shop-modal__header-title{
-        transform: translateX(70px);
     }
     .nft-shop-modal__nav-wrap .nav-wrap__nav{
         gap: 10px !important;
