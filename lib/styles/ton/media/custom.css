@@ -129,7 +129,7 @@
     }
     .newgame__btn::after {
         width: 183.5px;
-        transform: translate(-10px, -5px);
+        /* transform: translate(-10px, -5px); */
         background-image: url("../../../media/buttons/border-game-sm.svg");
     }
     .startContainer {
@@ -259,9 +259,7 @@
         margin-bottom: 0px;
         z-index: 1;
     }
-    .wrapper_banners p {
-        font-family: 'Quadriana';
-    }
+    
     .games__row {
         background-size: 100%;
         gap: 4px;
@@ -322,7 +320,7 @@
 
     }
     .games__item p span {
-        max-width: 60px;
+        max-width: 48px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -483,9 +481,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
         background: linear-gradient(180deg, #FFDC2B 29.5%, #FF7659 51%, #FFDC2B 66%);
         -webkit-background-clip: text;
     }
-    .modal .modal_content_finish .modal__title::before {
-        -webkit-text-stroke: 5px rgba(112, 15, 81, 1);
-    }
+    
     .modal .modal_content_finish .message-modal__btn-close {
         top: 7px !important;
     }
@@ -557,7 +553,7 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .buyblock-image__boxes {
         background-image: url("../../../media/mobile//loot-box.png");
-        width: 130px;
+        width: 155px;
         height: 90px;
         background-size: 100% 100%;
         margin: 0 auto;
@@ -589,8 +585,22 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     #home-btn,
     #menu-home-btn {
         background-image: url("../../../media/buttons/home-mobile-horizontal.svg");
+        width: 132.5px !important;
+        height: 55px;
+    }
+    #menu-p2p-btn-evm {
+        background-image: url("../../../media/buttons/newgame-mobile-horizontal.svg");
+        width: 132.5px !important;
+        height: 55px;
+    }
+    #menu-f2p-btn-evm {
+        background-image: url("../../../media/buttons/newgame-green-mobile-horizontal.svg");
         width: 132.5px;
         height: 55px;
+    }
+    #menu-f2p-btn-evm::after,
+    #menu-p2p-btn-evm::after {
+        background-position: center 9px;
     }
     #nft-shop-btn,
     #menu-nft-shop-btn {
@@ -781,7 +791,8 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
     }
     .newgame__btn::after {
         width: 173.5px;
-        background-position: center 26px;
+        left: -11px;
+        bottom: -18px;
     }
 
     #btn_modal_window_mobile
@@ -897,6 +908,27 @@ background-image: url('../../../media/buttons/frame-btn-mobile.svg');
 }
 
 @media (max-width: 500px) {
+    .wrapper_banners .wrapper__banner {
+        padding-top: 6px !important;
+    }
+
+    .nft-shop-modal__header-title {
+        font-size: 32px;
+        line-height: 39.1px;
+    }
+
+    .nft-shop-modal__header-title.quadriana-label::before {
+        -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+    }
+
+    .list-items-wrap__list-items .simplebar-content {flex-direction: row;}
+    
+
+    .controls_block__list.mobile {
+        display: flex;
+    }
+    .controls_desktop_block__list {display: none;}
+
     .inner-block__head {padding-bottom: 7px;}
     .inner-block__head button {
         font-size: 24px;
@@ -1387,6 +1419,7 @@ background-position: center 11px;
     .connect-button:hover {
         padding-top: 8px;
     }
+    .contact_link_about-game,
     .player-visible {
         display: none;
     }
@@ -1411,7 +1444,7 @@ background-position: center 11px;
         padding-bottom: 20px !important;
     }
     .wrapper__nft-shop-modal .list-items__item {
-        margin-right: 20px;
+        margin-right: 30px;
     }
     #nft-shop-boxes-list .list-items__item {
         display: inline-block !important;
@@ -1473,7 +1506,7 @@ background-position: center 11px;
     
     .simplebar-content {
         padding: 0 0 5px 0 !important;
-        gap: 10px !important;
+        /* gap: 10px !important; */
     }
     .simplebar-content-wrapper {padding: 0 !important;}
 
@@ -1486,6 +1519,11 @@ background-position: center 11px;
         grid-template-columns: 1fr !important;
         display: grid;
 
+    }
+
+    #opengames-list .simplebar-content,
+    #opengames-list-f2p-evm .simplebar-content {
+        gap: 10px !important;
     }
 
     #inventory-item-body {
@@ -1548,24 +1586,6 @@ background-position: center 11px;
     }
     .modal__over-body {padding-top: 0 !important;}
 
-    #over-modal-body {
-        max-height: 400px;
-        overflow-y: auto;
-        margin-right: 3px;
-    }
-
-    #over-modal-body::-webkit-scrollbar {
-        width: 4px;
-      }
-
-    #over-modal-body::-webkit-scrollbar-track {
-        background: #FFFDF4; 
-      }
-       
-    #over-modal-body::-webkit-scrollbar-thumb {
-      background: #ff7c06; 
-    }
-
     #close-button_finish-game  {font-size: 14px;}
 
     .claim_nft_btn {
@@ -1624,7 +1644,17 @@ background-position: center 11px;
     #thirtyleader-table thead th,
     #sevenleader-table thead th {
         font-size: 10px;
+        font-family: "Helvetica Neue";
     }
+    .buyblock-image.ton {
+        background-image: none;
+        margin-top: -4px;
+    }
+
+    .tabs__content.empty .four-color-border-block {
+        display: none !important;
+    }
+
     #thirtyleader-table thead th img,
     #sevenleader-table thead th img {
         width: 13.7px;
@@ -1741,10 +1771,6 @@ background-position: center 11px;
     
     .dataTables_wrapper {overflow-x: hidden;}
 
-    #leaderboard_modal .board {
-        background-color: #FFFDF4 !important;
-    }
-
     .dataTables_info {
         padding-top: 10px !important;
     }
@@ -1797,8 +1823,8 @@ background-position: center 11px;
         grid-template-columns: 1.3fr 1fr 1fr;
     }
 
-    .bordered-content .four-color-border-block {display: block;}
-    .bordered-content .board-edge {display: none;}
+    /* .bordered-content .four-color-border-block {display: block;}
+    .bordered-content .board-edge {display: none;} */
 }
 
 @media (max-width: 411px) {

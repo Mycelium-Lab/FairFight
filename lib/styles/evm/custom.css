@@ -4654,6 +4654,7 @@ wrapper__nft-shop-modal .info__pricing button {
     top: 0;
     z-index: -1;
     -webkit-text-stroke: 2px rgba(112, 15, 81, 1);
+    width: 100%;
 }
 
 .four-color-border-block {

@@ -1,5 +1,5 @@
 .modal_content_finish {
-    height: 560px;
+    height: fit-content;
 }
 .yourStats__header,
 .enemyStats__header {
@@ -28,14 +28,15 @@
     font-weight: 700;
     line-height: 17.09px;
     margin-bottom: 0px !important;
+    font-family: "Quadriana";
 }
 
 .enemyStats__header p {
-    text-align: end;
+    /* text-align: end; */
 }
 
 .finish-stats {
-    width: 246px;
+    width: 260px;
     border-bottom: 1px solid #ffc897;
 }
 
@@ -123,6 +124,7 @@
 .enemyDeathsTitle,
 .enemy_address {
     font-weight: 500;
+    font-family: "Quadriana";
 }
 
 .yourAmountWinLoseTitle,
@@ -249,7 +251,7 @@
     margin-bottom: 5px;
 }
 .enemyStats_address {
-    text-align: end;
+    /* text-align: end; */
     margin-bottom: 5px;
 }
 

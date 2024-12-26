@@ -619,7 +619,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="control_keys_mobile_modal" class="modal" style="display: flex;">
+				<div id="control_keys_mobile_modal" class="modal" style="display: none;">
 					<div class="board modal_content_control_keys_mobile  modal_content_pause modal_content">
 						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
 						<img class="board-edge_sm board-edge" src="/media/svg/boarder-edge-sm.svg">
@@ -956,12 +956,8 @@
 </div>
 
 <!-- Pause modal -->
-<div id="pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay" style="display: none">
+<div id="ton_pause_modal" class="ton_pause_modal modal wrapper__message-modal-overlay" style="display: none">
 	<div class="board wrapper__message-modal modal_content">
-		<!-- <img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg">
-		<img class="board-edge" src="/media/svg/boarder-edge-sm.svg"> -->
 		<div class="four-color-border-block ">
 			<span class="horizontal top-1"></span>
 			<span class="horizontal top-2"></span>
@@ -984,7 +980,7 @@
 			<span class="squrale three"></span>
 			<span class="squrale four"></span>
 		</div>
-		<button id="about_modal_close" onclick="unpauseBtn()"
+		<button id="pause_modal_close" onclick="unpauseBtn()"
 			class="message-modal__btn-close new-confirm-modal-close-button close_modal_window"></button>
 		<h2 class="pause__title quadriana-label" data-text="Finish the game">Finish the game</h2>
 		<div class="pause__content">
@@ -1127,6 +1123,19 @@
 		</div>
 	</div>
 </div>
+
+<!-- PLATFORM NOT SUPORTED POPUP -->
+<div class="tg-rotate-popup">
+	<div class="tg-rotate-popup__content">
+		<img src="../../media/logo.svg" alt="" class="tg-rotate-popup__logo">
+		<div class="tg-rotate-popup__bottom">
+			<img src="../../media/left-person.svg" alt="" class="tg-rotate-popup__left-person">
+			<img src="../../media/rotate-phone.svg" alt="" class="tg-rotate-popup__phone">
+			<img src="../../media/right-person.svg" alt="" class="tg-rotate-popup__right-person">
+		</div>
+	</div>
+</div>
+<!-- PLATFORM NOT SUPORTED POPUP -->
 </body>
 </div>
 

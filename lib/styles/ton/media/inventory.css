@@ -81,7 +81,8 @@
         font-size: 32px;
         font-family: "Quadriana";
         text-align: center;
-        height: auto;background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
+        height: auto;
+        background: linear-gradient(180deg, #FFDC2B 54%, #FF7659 69%, #FFDC2B 81%);
         line-height: 39.1px;
         letter-spacing: -1px;
     }
@@ -191,6 +192,10 @@
 }
 
 @media(max-width: 500px) {
+    .modal__header-title_inventory {
+        display: none;
+    }
+
     .inventory__modal-content{
         width: 372.56px;
         height: 100vh; /* Резервный вариант для браузеров, которые не поддерживают пользовательские свойства */
@@ -374,7 +379,8 @@
 }
 .list-wrap__item-list {
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    row-gap: 25px;
+    margin-left: 5px;
 }
 #inventory-item-modal .board.body__item-detail {
     height: fit-content !important;
@@ -386,6 +392,10 @@
 
 #inventory-modal .four-color-border-block,
 #inventory-item-modal .four-color-border-block {z-index: 0;}
+
+.inventory-character .slot-wrap__slot {
+    margin-top: 3px;
+  }
 }
 
 @media(max-width: 380px) {

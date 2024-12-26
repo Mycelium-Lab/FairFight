@@ -272,12 +272,8 @@
     }
     .head__showcase-title{
         font-size: 20px;
-        padding-bottom: 0px;
         border-bottom: 1px solid #FF7C06;
-        padding-top: 4px;
-        font-family: "Quadriana";
-        background: linear-gradient(180deg, #FF7C06 0%, #E45C00 100%);
-        -webkit-background-clip: text;
+        padding-bottom: 15.57px;
     }
     .modal__header-title_fitting {
         background-image: none;
