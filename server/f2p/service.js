@@ -185,7 +185,7 @@ export async function joinFight(fightId, player, bodyInitData, sign_evm) {
                     // if (chat.rows.length) {
                     for (let i = 0; i < playersToNotify.length; i++) {
                         try {
-                            bot.sendMessage(playersToNotify[i], `${player} joined your fight (id: ${fightId})`)
+                            bot.sendMessage(playersToNotify[i], `${player} joined fight (id: ${fightId})`)
                         } catch (error) {
                             console.error(error)
                         }
