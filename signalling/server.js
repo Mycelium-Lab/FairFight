@@ -4,6 +4,7 @@ const PORT = parseInt(process.env.SIGNALLING_PORT || '8033', 10);
 const MAX_ROOM_USERS = 5;
 
 import fs from 'fs';
+import crypto from 'crypto';
 const log = console.log.bind(console);
 import socketio from 'socket.io';
 const io = socketio(PORT, {
@@ -65,11 +66,19 @@ const MessageType = {
   SDP: 'sdp',
   ICE_CANDIDATE: 'ice_candidate',
 
+  // Wallet ownership proof, required before joining a fight room
+  AUTH_REQUEST: 'auth_request',
+  AUTH_NONCE: 'auth_nonce',
+
   // Errors... shit happens
   ERROR_ROOM_IS_FULL: 'error_room_is_full',
   ERROR_USER_INITIALIZED: 'error_user_initialized',
+  ERROR_AUTH_REQUIRED: 'error_auth_required',
   NOT_USER_ROOM: 'not_user_room'
 };
+
+//Set REQUIRE_SOCKET_AUTH=false only for local debugging without a wallet.
+const REQUIRE_SOCKET_AUTH = process.env.REQUIRE_SOCKET_AUTH !== 'false';
 
 function User(walletAddress) {
   this.userId = ++lastUserId;
@@ -198,7 +207,9 @@ Room.prototype = {
 function handleSocket(socket) {
   var user = null;
   var room = null;
+  var authNonce = null;
 
+  socket.on(MessageType.AUTH_REQUEST, onAuthRequest);
   socket.on(MessageType.JOIN, onJoin);
   socket.on(MessageType.SDP, onSdp);
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
@@ -209,6 +220,30 @@ function handleSocket(socket) {
   socket.on(MessageType.SHOOT, onShoot);
   socket.on(MessageType.USER_UPDATE_BALANCE, onUpdateBalance)
   socket.on(MessageType.END_FINISHING, onEndFinishing)
+
+  //Returns true only when this socket is entitled to report the death it is claiming.
+  //Rejects: unjoined sockets, reporting someone else's death, killers who are not in
+  //the room, and self-kills used to farm the opponent's balance.
+  function isDeathReportValid(data) {
+    if (user === null || room === null) return false
+    if (!data || typeof data.walletAddress !== 'string' || typeof data.killerAddress !== 'string') return false
+    const victim = data.walletAddress.toLowerCase()
+    const killer = data.killerAddress.toLowerCase()
+    if (victim !== `${user.getWalletAddress()}`.toLowerCase()) {
+      log('rejected user_dead: socket %s reported a death for %s', user.getWalletAddress(), data.walletAddress)
+      return false
+    }
+    if (victim === killer) {
+      log('rejected user_dead: self-kill claimed by %s', data.walletAddress)
+      return false
+    }
+    const inRoom = room.getUsers().some(u => `${u.getWalletAddress()}`.toLowerCase() === killer)
+    if (!inRoom) {
+      log('rejected user_dead: killer %s is not in room %s', data.killerAddress, room.getName())
+      return false
+    }
+    return true
+  }
 
   async function onEndFinishing() {
     try {
@@ -334,6 +369,11 @@ function handleSocket(socket) {
 
   async function onDead(data) {
     try {
+      //A death moves stake between players, so it must come from the socket that
+      //owns the dying wallet. Previously both addresses were taken from the payload
+      //verbatim, so any connected socket could mint an arbitrary result - and the
+      //resulting balance is what gets signed into an on-chain payout.
+      if (!isDeathReportValid(data)) return
       if (data.killerAddress) {
         console.log(`${data.walletAddress} dead (network: ${room.getChainId()}, fight: ${room.getFightId()}, killer: ${data.killerAddress})`)
         console.log(data.walletAddress, await redisClient.get(createAmountRedisLink(data.walletAddress, room.getChainId(), room.getFightId())))
@@ -427,6 +467,12 @@ function handleSocket(socket) {
 
   async function onFinishing(data) {
     try {
+      //data.address decides which side of the fight the caller is treated as, and
+      //feeds signature creation. Take it from the authenticated socket rather than
+      //the payload so a client cannot claim to be its opponent. The internal
+      //timeout call below passes the same address this socket joined with.
+      if (user === null || room === null) return
+      data = { ...data, address: user.getWalletAddress() }
       // if (data.fromButton) {
         let fight, players
         if ((room.getChainId() != 0) && (room.chainid != 999999) && (room.chainid != 999998)) {
@@ -839,6 +885,40 @@ function handleSocket(socket) {
     }
   }
 
+  //Issues a one-time nonce for this socket. The client signs it with the wallet it
+  //claims to own, proving control before it can join a fight room.
+  function onAuthRequest() {
+    try {
+      authNonce = `FairFight login\nnonce: ${crypto.randomBytes(16).toString('hex')}\nissued: ${Date.now()}`
+      socket.emit(MessageType.AUTH_NONCE, { nonce: authNonce })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  //The fight's player list is public on-chain, so without this anyone could join a
+  //room claiming to be either participant and then report results as that player.
+  //TON wallets cannot personal_sign, so chain 0 is not covered yet - see REQUIRE_SOCKET_AUTH.
+  function isJoinAuthentic(joinData) {
+    if (`${room.getChainId()}` === '0') return true
+    if (!REQUIRE_SOCKET_AUTH) return true
+    if (!authNonce || !joinData || typeof joinData.signature !== 'string') {
+      log('rejected join: missing signature for %s', joinData && joinData.walletAddress)
+      return false
+    }
+    try {
+      const recovered = ethers.utils.verifyMessage(authNonce, joinData.signature)
+      const ok = recovered.toLowerCase() === `${joinData.walletAddress}`.toLowerCase()
+      if (!ok) log('rejected join: signature recovers to %s, claimed %s', recovered, joinData.walletAddress)
+      return ok
+    } catch (error) {
+      log('rejected join: bad signature for %s (%s)', joinData.walletAddress, error.message)
+      return false
+    } finally {
+      authNonce = null //single use, whatever the outcome
+    }
+  }
+
   async function onJoin(joinData) {
     try {
       // Somehow sent join request twice?
@@ -851,6 +931,12 @@ function handleSocket(socket) {
       room = getOrCreateRoom(joinData.roomName);
       if (room.numUsers() >= MAX_ROOM_USERS) {
         room.sendTo(user, MessageType.ERROR_ROOM_IS_FULL);
+        return;
+      }
+
+      if (!isJoinAuthentic(joinData)) {
+        socket.emit(MessageType.ERROR_AUTH_REQUIRED);
+        room = null;
         return;
       }
 
