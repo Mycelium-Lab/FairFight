@@ -3,5 +3,8 @@ node_modules
 .idea
 .project
 npm-debug.log
-dist/index.js
 .env
+# Build output. Was tracked, and drifted from source: three of the four webpack
+# entries were commented out, so the committed bundles could not be rebuilt.
+# `npm --prefix lib run build` is now the source of truth.
+dist/
