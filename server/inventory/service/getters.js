@@ -17,7 +17,11 @@ export async function getInventory(req, response) {
     try {
         const address = req.body.address
         const chainid = req.body.chainid
-        //TODO: добавить проверку chain'a (существует ли)
+        //The lobby calls this before a wallet is connected, so address arrives null
+        //and the query below used to throw a 500 on every page load.
+        if (!isValidChainId(chainid) || !isValidAddress(address, chainid)) {
+            return response.status(400).json({})
+        }
         const res = await pgClient.query(
             `
             SELECT 
