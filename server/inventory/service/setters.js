@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import db from "../../db/db.js"
 import blockchainConfig from "../../utils/blockchainConfig.js"
 import { createMixingPicture } from '../../../mixing/mixing.js';
+import { isValidAddress, isValidChainId, safeJoin } from '../../utils/validation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,11 +12,20 @@ const __dirname = path.dirname(__filename);
 const pgClient = db()
 await pgClient.connect()
 
+//address and chainid come from the request body and end up in a filename,
+//so resolve through safeJoin and let the caller 400 on null.
+function previewImagePath(address, chainid) {
+    return safeJoin(path.join(__dirname, '../../../media/characters'), 'players_preview', `${address}_${chainid}.png`)
+}
+
 //TODO заменить setTimeOut на приличное что-то
 export async function setCharacter(req, response) {
     try {
-        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
+        if (!isValidChainId(chainid) || !isValidAddress(req.body.address, chainid)) {
+            return response.status(400).send()
+        }
+        const address = req.body.address.toLowerCase()
         const characterid = req.body.characterid
         const { characters, contract } = blockchainConfig(chainid)
         //check if player is busy now
@@ -32,7 +42,8 @@ export async function setCharacter(req, response) {
                 //create mixing picture
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${chainid}.png`)
+                    const imagePath = previewImagePath(address, chainid)
+                    if (imagePath === null) return response.status(400).send()
                     response.status(200).sendFile(imagePath)
                 }, 2500)
             } else {
@@ -49,8 +60,11 @@ export async function setCharacter(req, response) {
 
 export async function setArmor(req, response) {
     try {
-        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
+        if (!isValidChainId(chainid) || !isValidAddress(req.body.address, chainid)) {
+            return response.status(400).send()
+        }
+        const address = req.body.address.toLowerCase()
         const armor = req.body.armor
         const { armors, contract } = blockchainConfig(chainid)
         const busy = await contract.currentlyBusy(address)
@@ -67,7 +81,8 @@ export async function setArmor(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${chainid}.png`)
+                    const imagePath = previewImagePath(address, chainid)
+                    if (imagePath === null) return response.status(400).send()
                     response.status(200).sendFile(imagePath)
                 }, 2500)
             } else {
@@ -83,8 +98,11 @@ export async function setArmor(req, response) {
 }
 export async function setWeapon(req, response) {
     try {
-        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
+        if (!isValidChainId(chainid) || !isValidAddress(req.body.address, chainid)) {
+            return response.status(400).send()
+        }
+        const address = req.body.address.toLowerCase()
         const weapon = req.body.weapon
         const { weapons, contract } = blockchainConfig(chainid)
         const busy = await contract.currentlyBusy(address)
@@ -101,7 +119,8 @@ export async function setWeapon(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${chainid}.png`)
+                    const imagePath = previewImagePath(address, chainid)
+                    if (imagePath === null) return response.status(400).send()
                     response.status(200).sendFile(imagePath)
                 }, 2500)
             } else {
@@ -117,8 +136,11 @@ export async function setWeapon(req, response) {
 }
 export async function setBoots(req, response) {
     try {
-        const address = req.body.address.toLowerCase()
         const chainid = req.body.chainid
+        if (!isValidChainId(chainid) || !isValidAddress(req.body.address, chainid)) {
+            return response.status(400).send()
+        }
+        const address = req.body.address.toLowerCase()
         const boot = req.body.boots
         const { boots, contract } = blockchainConfig(chainid)
         const busy = await contract.currentlyBusy(address)
@@ -135,7 +157,8 @@ export async function setBoots(req, response) {
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
                 setTimeout(() => {
-                    const imagePath = path.join(__dirname, `../../../media/characters/players_preview`, `${address}_${chainid}.png`)
+                    const imagePath = previewImagePath(address, chainid)
+                    if (imagePath === null) return response.status(400).send()
                     response.status(200).sendFile(imagePath)
                 }, 2500)
             } else {

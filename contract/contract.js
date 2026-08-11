@@ -1,8 +1,7 @@
-import dotenv from "dotenv"
+import '../server/utils/env.js'
 export { nftAbi, shopAbi} from "./shop.js"
 export { lootboxAbi } from './lootbox.js'
 export { erc20Abi } from './erc20.js'
-dotenv.config()
 
 export const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
 // const contractAddress = '0xa061c2604F35352F8A7731d0c738f535DAa6411a'//goerli

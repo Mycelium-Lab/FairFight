@@ -1,5 +1,4 @@
-import dotenv from 'dotenv'
-dotenv.config()
+import './env.js'
 
 export const appState = process.env.APP_STATE || 'test'
 

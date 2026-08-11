@@ -1,5 +1,5 @@
 import { createHash, createHmac } from 'crypto';
-import dotenv from 'dotenv'
+import '../utils/env.js'
 import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
 import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
@@ -13,7 +13,6 @@ import { mnemonicToWalletKey } from 'ton-crypto';
 const pgClient = db()
 await pgClient.connect()
 
-dotenv.config()
 
 const mnemonic = process.env.MNEMONIC_TON || "nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice nice"
 const key = await mnemonicToWalletKey(mnemonic.split(" "));

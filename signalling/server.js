@@ -16,8 +16,7 @@ import redis from "redis"
 import pg from "pg"
 import ethers from "ethers"
 import web3 from "web3"
-import dotenv from "dotenv"
-dotenv.config()
+import '../server/utils/env.js'
 
 import { contractAbi, contractAddress, networks } from "../contract/contract.js"
 import { getFights } from '../server/ton/service.js';

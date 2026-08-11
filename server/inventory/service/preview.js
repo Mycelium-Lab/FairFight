@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 
 import db from "../../db/db.js"
 import { createMixingPicture } from '../../../mixing/mixing.js';
+import { isValidAddress, isValidChainId, safeJoin } from '../../utils/validation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +17,9 @@ export async function tryOn(req, response) {
     try {
         const address = req.body.address
         const chainid = req.body.chainid
+        if (!isValidChainId(chainid) || !isValidAddress(address, chainid)) {
+            return response.status(400).send()
+        }
         /*
             {
                 characters: undefined | number
@@ -37,7 +41,8 @@ export async function tryOn(req, response) {
         const isTryOn = true
         await createMixingPicture(address.toLowerCase(), chainid, inventory.characters, inventory.armors, inventory.boots, inventory.weapons, isTryOn)
         setTimeout(() => {
-            const imagePath = path.join(__dirname, `../../../media/characters/tryon`, `${address.toLowerCase()}_${chainid}.png`)
+            const imagePath = safeJoin(path.join(__dirname, '../../../media/characters'), 'tryon', `${address.toLowerCase()}_${chainid}.png`)
+            if (imagePath === null) return response.status(400).send()
             response.status(200).sendFile(imagePath)
         }, 2500)
     } catch (error) {

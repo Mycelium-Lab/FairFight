@@ -1,6 +1,5 @@
 import { ethers } from "ethers"
-import dotenv from 'dotenv'
-dotenv.config()
+import './env.js'
 
 export const checkIfAddressIsNotNew = async (address) => {
     let timestamps = []

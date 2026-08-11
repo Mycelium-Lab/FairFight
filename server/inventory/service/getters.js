@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 import db from "../../db/db.js"
 import { createMixingPicture } from '../../../mixing/mixing.js';
+import { isValidAddress, isValidChainId, isValidImageType, safeJoin } from '../../utils/validation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,13 +63,22 @@ export async function getCharacterImage(req, response) {
         const chainid = req.query.chainid
         let address = req.query.address
         const typeofimage = req.query.typeofimage
+        //All three land in a filesystem path below, so reject anything unexpected
+        //rather than letting it walk out of the media directories.
+        if (!isValidImageType(typeofimage) || !isValidChainId(chainid) || !isValidAddress(address, chainid)) {
+            return response.status(400).send()
+        }
         address = chainid == 0 ? address : address.toLowerCase()
-        const imagePath = path.join(__dirname, `../../../media/characters/players_${typeofimage}`, `${address}_${chainid}.png`)
+        const imagePath = safeJoin(path.join(__dirname, '../../../media/characters'), `players_${typeofimage}`, `${address}_${chainid}.png`)
+        const fallbackPath = safeJoin(path.join(__dirname, '../../../mixing/basic_images'), `characters_${typeofimage}`, '0.png')
+        if (imagePath === null || fallbackPath === null) {
+            return response.status(400).send()
+        }
         try {
             await fs.access(imagePath)
             response.sendFile(imagePath)
         } catch (error) {
-            response.sendFile(path.join(__dirname, `../../../mixing/basic_images/characters_${typeofimage}`, `0.png`))
+            response.sendFile(fallbackPath)
         }
     } catch (error) {
         console.log(error)

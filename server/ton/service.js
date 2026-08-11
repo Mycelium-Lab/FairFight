@@ -1,7 +1,7 @@
 import { Address, beginCell, Cell, Dictionary, internal, toNano, TonClient, WalletContractV4 } from "ton";
 import { fileURLToPath } from 'url';
 import path from "path";
-import dotenv from 'dotenv'
+import '../utils/env.js'
 import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
 import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
 import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
@@ -21,7 +21,6 @@ import { playersToNotify } from "../constants/constants.js";
 const pgClient = db()
 await pgClient.connect()
 
-dotenv.config()
 
 const isTest = false
 

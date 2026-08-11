@@ -1,6 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
-import dotenv from 'dotenv'
-dotenv.config()
+import './server/utils/env.js'
 
 const bot = process.env.TG_BOT_KEY ? new TelegramBot(process.env.TG_BOT_KEY, {polling: true}) : null
 

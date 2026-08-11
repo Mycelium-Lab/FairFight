@@ -1,6 +1,5 @@
 import pg from "pg"
-import dotenv from 'dotenv'
-dotenv.config()
+import '../utils/env.js'
 
 const pgClient = () => new pg.Client({
     user: process.env.DB_USER,

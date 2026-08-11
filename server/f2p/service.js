@@ -2,12 +2,11 @@
 
 import db from "../db/db.js"
 import TelegramBot from "node-telegram-bot-api";
-import dotenv from 'dotenv'
+import '../utils/env.js'
 import { checkSignatureTG } from "../utils/utils.js";
 import { appState, appStateTypes } from "../utils/appState.js";
 import { msgSignIn, playersToNotify } from "../constants/constants.js";
 import { ethers } from "ethers";
-dotenv.config()
 
 const pgClient = db()
 await pgClient.connect()
