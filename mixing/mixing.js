@@ -1,5 +1,6 @@
-import { createCanvas, loadImage } from 'canvas'
+import { createCanvas, loadImage } from '@napi-rs/canvas'
 import fs from 'fs'
+import fsp from 'fs/promises'
 import { thirdFramesX } from './frames/x/third.js';
 import { thirdFramesY } from './frames/y/third.js';
 import { forthFramesX } from './frames/x/forth.js';
@@ -146,7 +147,7 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
         }
     }
 
-    function draw(_ctx, _canvas, type, image) {
+    async function draw(_ctx, _canvas, type, image) {
         const preview = image.naturalHeight === 3180
         // Наложение персонажа на холст
         _ctx.drawImage(image, 0, 0);
@@ -412,38 +413,22 @@ export const createMixingPicture = async (address, chainid, characterId, armorId
                 _ctx.drawImage(weaponImage, _weaponSize.position.seventhFrames.x, _weaponSize.position.seventhFrames.y, _weaponSize.size.x, _weaponSize.size.y);
             }
         }
-        // Запись объединенного изображения в файл
+        // Запись объединенного изображения в файл.
+        // Пишем буфером и ждём завершения: раньше поток не ожидался, поэтому
+        // вызывающий код был вынужден спать 2500 мс и всё равно ловил гонку.
         let filePath = `${__basedir}/media/characters/players_${type}/${address}_${chainid}.png`
         if (isTryOn) {
             filePath = `${__basedir}/media/characters/tryon/${address}_${chainid}.png`
-        } 
-        fs.access(filePath, fs.constants.F_OK, (err) => {
-            if (!err) {
-                const out = fs.createWriteStream(filePath);
-                const stream = _canvas.createPNGStream();
-                stream.pipe(out);
-            } else {
-                // Создание пустого файла
-                fs.writeFile(filePath, '', (err) => {
-                  if (err) {
-                    console.error('Ошибка при создании файла:', err);
-                  } else {
-                    const out = fs.createWriteStream(filePath);
-                    const stream = _canvas.createPNGStream();
-                    stream.pipe(out);
-                  }
-                });
-            }
-          });
+        }
+        //Эти каталоги в .gitignore, поэтому на свежем клоне их нет.
+        await fsp.mkdir(path.dirname(filePath), { recursive: true })
+        await fsp.writeFile(filePath, _canvas.toBuffer('image/png'))
     }
 
-    try {
-        draw(ctxPreview, canvasPreview, 'preview', personPreviewImage)
-        if (!isTryOn) { 
-            draw(ctx, canvas, 'main', personImage)
-            draw(ctxRival, canvasRival, 'rival', personRivalImage) 
-        }
-    } catch (error) {
-        console.log(error)
+    //Ждём записи всех файлов, чтобы вызывающий код мог сразу отдавать картинку.
+    await draw(ctxPreview, canvasPreview, 'preview', personPreviewImage)
+    if (!isTryOn) {
+        await draw(ctx, canvas, 'main', personImage)
+        await draw(ctxRival, canvasRival, 'rival', personRivalImage)
     }
 }

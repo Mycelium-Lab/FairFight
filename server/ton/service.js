@@ -2,10 +2,10 @@ import { Address, beginCell, Cell, Dictionary, internal, toNano, TonClient, Wall
 import { fileURLToPath } from 'url';
 import path from "path";
 import '../utils/env.js'
-import charactersJsons from '../../lib/jsons/characters.json' assert { type: "json" };
-import armorsJsons from '../../lib/jsons/armors.json' assert { type: "json" };
-import bootsJsons from '../../lib/jsons/boots.json' assert { type: "json" };
-import weaponsJsons from '../../lib/jsons/weapons.json' assert { type: "json" };
+import charactersJsons from '../../lib/jsons/characters.json' with { type: "json" };
+import armorsJsons from '../../lib/jsons/armors.json' with { type: "json" };
+import bootsJsons from '../../lib/jsons/boots.json' with { type: "json" };
+import weaponsJsons from '../../lib/jsons/weapons.json' with { type: "json" };
 
 import { createMixingPicture } from '../../mixing/mixing.js';
 

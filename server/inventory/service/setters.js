@@ -41,11 +41,11 @@ export async function setCharacter(req, response) {
                 const inventory = res.rows[0]
                 //create mixing picture
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                setTimeout(() => {
-                    const imagePath = previewImagePath(address, chainid)
-                    if (imagePath === null) return response.status(400).send()
-                    response.status(200).sendFile(imagePath)
-                }, 2500)
+                //createMixingPicture now resolves only once the file is on disk,
+                //so the old 2500ms sleep (and its race) is no longer needed.
+                const imagePath = previewImagePath(address, chainid)
+                if (imagePath === null) return response.status(400).send()
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -80,11 +80,11 @@ export async function setArmor(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                setTimeout(() => {
-                    const imagePath = previewImagePath(address, chainid)
-                    if (imagePath === null) return response.status(400).send()
-                    response.status(200).sendFile(imagePath)
-                }, 2500)
+                //createMixingPicture now resolves only once the file is on disk,
+                //so the old 2500ms sleep (and its race) is no longer needed.
+                const imagePath = previewImagePath(address, chainid)
+                if (imagePath === null) return response.status(400).send()
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -118,11 +118,11 @@ export async function setWeapon(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                setTimeout(() => {
-                    const imagePath = previewImagePath(address, chainid)
-                    if (imagePath === null) return response.status(400).send()
-                    response.status(200).sendFile(imagePath)
-                }, 2500)
+                //createMixingPicture now resolves only once the file is on disk,
+                //so the old 2500ms sleep (and its race) is no longer needed.
+                const imagePath = previewImagePath(address, chainid)
+                if (imagePath === null) return response.status(400).send()
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }
@@ -156,11 +156,11 @@ export async function setBoots(req, response) {
                 )
                 const inventory = res.rows[0]
                 await createMixingPicture(address, chainid, inventory.characterid, inventory.armor, inventory.boots, inventory.weapon)
-                setTimeout(() => {
-                    const imagePath = previewImagePath(address, chainid)
-                    if (imagePath === null) return response.status(400).send()
-                    response.status(200).sendFile(imagePath)
-                }, 2500)
+                //createMixingPicture now resolves only once the file is on disk,
+                //so the old 2500ms sleep (and its race) is no longer needed.
+                const imagePath = previewImagePath(address, chainid)
+                if (imagePath === null) return response.status(400).send()
+                response.status(200).sendFile(imagePath)
             } else {
                 response.status(401).send('Not exist')
             }

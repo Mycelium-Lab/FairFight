@@ -40,11 +40,11 @@ export async function tryOn(req, response) {
         if (isNaN(parseInt(inventory.boots))) inventory.boots = currentInventory.boots
         const isTryOn = true
         await createMixingPicture(address.toLowerCase(), chainid, inventory.characters, inventory.armors, inventory.boots, inventory.weapons, isTryOn)
-        setTimeout(() => {
-            const imagePath = safeJoin(path.join(__dirname, '../../../media/characters'), 'tryon', `${address.toLowerCase()}_${chainid}.png`)
-            if (imagePath === null) return response.status(400).send()
-            response.status(200).sendFile(imagePath)
-        }, 2500)
+        //createMixingPicture now resolves only once the file is on disk,
+        //so the old 2500ms sleep (and its race) is no longer needed.
+        const imagePath = safeJoin(path.join(__dirname, '../../../media/characters'), 'tryon', `${address.toLowerCase()}_${chainid}.png`)
+        if (imagePath === null) return response.status(400).send()
+        response.status(200).sendFile(imagePath)
     } catch (error) {
         console.log(error)
         response.status(500).send()

@@ -91,7 +91,10 @@ server.get('/maintenance', async (req, res) => {
     res.sendFile(__dirname+'/public/maintenance.html')
 })
 
-server.listen(5000, async () => {
-    console.log(`Server started on port 5000`)
+//Port 5000 collides with AirPlay Receiver on macOS, so allow an override.
+const PORT = parseInt(process.env.PORT || '5000', 10)
+
+server.listen(PORT, async () => {
+    console.log(`Server started on port ${PORT}`)
 })
 

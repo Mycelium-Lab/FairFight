@@ -1,4 +1,6 @@
-const PORT = 8033;
+//ESM evaluates all imports (including ../server/utils/env.js) before this body runs,
+//so process.env is already populated here.
+const PORT = parseInt(process.env.SIGNALLING_PORT || '8033', 10);
 const MAX_ROOM_USERS = 5;
 
 import fs from 'fs';
@@ -13,7 +15,7 @@ const io = socketio(PORT, {
   }
 })
 import redis from "redis"
-import pg from "pg"
+import db from "../server/db/db.js"
 import ethers from "ethers"
 import web3 from "web3"
 import '../server/utils/env.js'
@@ -32,11 +34,8 @@ const redisClient = redis.createClient({
   }
 })
 
-const pgClient = new pg.Client({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB
-})
+//Use the shared factory so host/port config cannot drift from the HTTP server's.
+const pgClient = db()
 
 const rooms = {};
 let lastUserId = 0;
