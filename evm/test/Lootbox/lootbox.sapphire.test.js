@@ -248,6 +248,15 @@ describe("FairFightLootbox", function (){
             assert(regularRarityLooted || superiorRarityLooted || rareRarityLooted || legendaryRarityLooted || epicRarityLooted, "NFT exist")
             await expect(() => tx).to.changeEtherBalance(owner, price)
         })
+
+        it('Should reject native purchases unless msg.value equals price', async () => {
+            await expect(
+                lootbox.connect(looter).buyNative({value: 0})
+            ).to.be.revertedWith('LootboxSapphire: Wrong native amount')
+            await expect(
+                lootbox.connect(looter).buyNative({value: price.add(1)})
+            ).to.be.revertedWith('LootboxSapphire: Wrong native amount')
+        })
     })
 
 })

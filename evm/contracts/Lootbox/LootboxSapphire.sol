@@ -7,8 +7,9 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@oasisprotocol/sapphire-contracts/contracts/Sapphire.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract LootboxSapphire is Pausable, Ownable {
+contract LootboxSapphire is Pausable, Ownable, ReentrancyGuard {
 
     using SafeERC20 for IERC20;
 
@@ -53,6 +54,11 @@ contract LootboxSapphire is Pausable, Ownable {
         address         _collector,
         IERC20          _paymentToken
     ) {
+        require(regularRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(superiorRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(rareRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(legendaryRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(epicRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
         rarityPercent[Rarity.Regular] = 8000;   //80%
         rarityPercent[Rarity.Superior] = 2000;  //20%
         rarityPercent[Rarity.Rare] = 200;       //2%
@@ -86,19 +92,20 @@ contract LootboxSapphire is Pausable, Ownable {
     /// @param  v - Part of signature.
     /// @param  s - Part of signature.
     /// @param  somenumber - Some random number
-    function loot(bytes32 r, uint8 v, bytes32 s, uint256 somenumber) external whenNotPaused {
+    function loot(bytes32 r, uint8 v, bytes32 s, uint256 somenumber) external whenNotPaused nonReentrant {
         require(_check(r, v, s, somenumber), "FairFight Lootbox: Not verified");
         _loot(somenumber);
     }
 
     /// @notice Allows to buy lootboxes for a user for a certain price and token
-    function buy() external whenNotPaused {
+    function buy() external whenNotPaused nonReentrant {
         paymentToken.safeTransferFrom(msg.sender, collector, price);
         _loot(price);
         emit Buy(msg.sender, paymentToken, price);
     }
 
-    function buyNative() external payable whenNotPaused {
+    function buyNative() external payable whenNotPaused nonReentrant {
+        require(msg.value == price, "LootboxSapphire: Wrong native amount");
         (bool success, ) = payable(collector).call{value: price}("");
         require(success, "LootboxSapphire: Not success sending to collector");
         _loot(price);
@@ -114,7 +121,7 @@ contract LootboxSapphire is Pausable, Ownable {
         if (randomRarity < rarityPercent[Rarity.Legendary] && randomRarity >= rarityPercent[Rarity.Epic])   rarity = Rarity.Legendary;
         if (randomRarity < rarityPercent[Rarity.Epic])                                                      rarity = Rarity.Epic;
         uint256 prizesLength = prizesByRarity[rarity].length;
-        uint256 randomPrizeIndex = getPseudoRandomNumber(somenumber, address(this), prizesLength - 1);
+        uint256 randomPrizeIndex = getPseudoRandomNumber(somenumber, address(this), prizesLength);
         Prize memory prize = prizesByRarity[rarity][randomPrizeIndex];
         prize.nft.mint(msg.sender, prize.propertyId);
         currentUserLoot[msg.sender] += 1;

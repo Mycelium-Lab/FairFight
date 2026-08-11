@@ -1,6 +1,6 @@
 # TACT Compilation Report
 Contract: FairFight
-BOC Size: 3828 bytes
+BOC Size: 3939 bytes
 
 # Types
 Total Types: 22
@@ -86,8 +86,8 @@ TLB: `change_min_amount_per_round#dacecab6 minAmountPerRound:int257 = ChangeMinA
 Signature: `ChangeMinAmountPerRound{minAmountPerRound:int257}`
 
 ## Fight
-TLB: `_ id:int257 owner:address createTime:int257 finishTime:int257 baseAmount:coins amountPerRound:coins rounds:int257 maxPlayersAmount:int257 players:dict<int, address> playersCurrentLength:int257 playersClaimed:dict<address, bool> = Fight`
-Signature: `Fight{id:int257,owner:address,createTime:int257,finishTime:int257,baseAmount:coins,amountPerRound:coins,rounds:int257,maxPlayersAmount:int257,players:dict<int, address>,playersCurrentLength:int257,playersClaimed:dict<address, bool>}`
+TLB: `_ id:int257 owner:address createTime:int257 finishTime:int257 baseAmount:coins amountPerRound:coins rounds:int257 maxPlayersAmount:int257 players:dict<int, address> playersCurrentLength:int257 playersClaimed:dict<address, bool> escrowed:coins paidOut:coins = Fight`
+Signature: `Fight{id:int257,owner:address,createTime:int257,finishTime:int257,baseAmount:coins,amountPerRound:coins,rounds:int257,maxPlayersAmount:int257,players:dict<int, address>,playersCurrentLength:int257,playersClaimed:dict<address, bool>,escrowed:coins,paidOut:coins}`
 
 ## Fee
 TLB: `_ amount:coins fee:coins = Fee`
@@ -152,9 +152,14 @@ Argument: player
 137: Masterchain support is not enabled for this contract
 4109: invalid owner
 7757: max amount per round exceeded
+8040: signed address does not match sender
+9617: sender is not a participant
 13244: value does not equal sum to play
 15880: fight has players
+16679: fee out of range
+23915: fight escrow exceeded
 31383: player already busy
+43443: insufficient contract balance
 44463: already claimed
 45028: max players amount exceeded
 55104: invalid contract address

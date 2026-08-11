@@ -35,12 +35,12 @@
     $players~__tact_dict_set_int_slice(257, 0, $Context$_get_sender(__tact_context_get()));
     cell $playersClaimed = null();
     $playersClaimed~__tact_dict_set_slice_int(267, $Context$_get_sender(__tact_context_get()), false, 1);
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed($self'fullFightsLength, $Context$_get_sender(__tact_context_get()), now(), 0, $amountToPlay, $fightMsg'amountPerRound, $fightMsg'rounds, $fightMsg'maxPlayersAmount, 1, $players, $playersClaimed);
-    $self'currentFights~__tact_dict_set_int_cell(257, $self'fullFightsLength, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed)));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut($self'fullFightsLength, $Context$_get_sender(__tact_context_get()), now(), 0, $amountToPlay, $fightMsg'amountPerRound, $fightMsg'rounds, $fightMsg'maxPlayersAmount, 1, $players, $playersClaimed, $amountToPlay, 0);
+    $self'currentFights~__tact_dict_set_int_cell(257, $self'fullFightsLength, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut)));
     $self'currentPlayerFight~__tact_dict_set_slice_int(267, $Context$_get_sender(__tact_context_get()), $self'fullFightsLength, 257);
     $self'currentFightsLength = $self'currentFightsLength + 1;
     $self'fullFightsLength = $self'fullFightsLength + 1;
-    $global_emit($Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed)));
+    $global_emit($Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut)));
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), ());
 }
 
@@ -49,7 +49,7 @@
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)))) {
         throw(32);
     }
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
     throw_unless(31383, null?(__tact_dict_get_slice_int($self'currentPlayerFight, 267, $Context$_get_sender(__tact_context_get()), 257)));
     throw_unless(59313, ($fight'playersCurrentLength < $fight'maxPlayersAmount));
     throw_unless(58632, ($fight'finishTime == 0));
@@ -58,7 +58,8 @@
     $self'currentPlayerFight~__tact_dict_set_slice_int(267, $Context$_get_sender(__tact_context_get()), $id, 257);
     $fight'playersClaimed~__tact_dict_set_slice_int(267, $Context$_get_sender(__tact_context_get()), false, 1);
     $fight'playersCurrentLength = $fight'playersCurrentLength + 1;
-    $self'currentFights~__tact_dict_set_int_cell(257, $id, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed)));
+    $fight'escrowed = $fight'escrowed + $fight'baseAmount;
+    $self'currentFights~__tact_dict_set_int_cell(257, $id, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut)));
     $global_emit($FightJoin$_store_cell($FightJoin$_constructor_id_joiner($id, $Context$_get_sender(__tact_context_get()))));
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), ());
 }
@@ -68,7 +69,7 @@
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)))) {
         throw(32);
     }
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
     throw_unless(4109, ( __tact_slice_eq_bits($Context$_get_sender(__tact_context_get()), $fight'owner) ));
     throw_unless(58632, ($fight'finishTime == 0));
     throw_unless(15880, ($fight'playersCurrentLength == 1));
@@ -103,23 +104,30 @@
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $finishMsg'data'id)))) {
         throw(32);
     }
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(8040, ( __tact_slice_eq_bits($ctx'sender, $finishMsg'data'address) ));
     throw_unless(55104, ( __tact_slice_eq_bits(my_address(), $finishMsg'data'contract) ));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $finishMsg'data'id)));
+    throw_unless(9617, (~ null?(__tact_dict_get_slice_int($fight'playersClaimed, 267, $ctx'sender, 1))));
+    throw_unless(44463, __tact_int_eq_nullable_one(__tact_dict_get_slice_int($fight'playersClaimed, 267, $ctx'sender, 1), false));
+    throw_unless(23915, (($fight'paidOut + $finishMsg'data'amount) <= $fight'escrowed));
     int $hash = cell_hash($FinishData$_store_cell(($finishMsg'data'id, $finishMsg'data'address, $finishMsg'data'contract, $finishMsg'data'amount)));
     int $check = check_signature($hash, $finishMsg'signature, $self'signerPublicKey);
     throw_unless(57400, $check);
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $finishMsg'data'id)));
-    throw_unless(44463, __tact_int_eq_nullable_one(__tact_dict_get_slice_int($fight'playersClaimed, 267, $Context$_get_sender(__tact_context_get()), 1), false));
-    $fight'playersClaimed~__tact_dict_set_slice_int(267, $Context$_get_sender(__tact_context_get()), true, 1);
+    int $reserveAmount = ((__tact_my_balance() - $ctx'value) - $finishMsg'data'amount);
+    throw_unless(43443, ($reserveAmount >= 10000000));
+    raw_reserve($reserveAmount, 0);
+    $fight'playersClaimed~__tact_dict_set_slice_int(267, $ctx'sender, true, 1);
+    $fight'paidOut = $fight'paidOut + $finishMsg'data'amount;
     if (($fight'finishTime == 0)) {
         $fight'finishTime = now();
     }
     var ($feeData'amount, $feeData'fee) = ($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights)~$FairFight$_fun_feeCalc($fight'baseAmount, $finishMsg'data'amount);
     if (($feeData'fee != 0)) {
-        int $amount = min($feeData'fee, (((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000) - $feeData'amount));
-        $global_send($SendParameters$_constructor_to_bounce_value_mode($self'feeCollector, true, $amount, 66));
+        $global_send($SendParameters$_constructor_to_bounce_value_mode($self'feeCollector, false, $feeData'fee, 1));
     }
-    int $amount = min($feeData'amount, ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000));
-    $global_send($SendParameters$_constructor_to_bounce_value_mode(__tact_context_get_sender(), true, $amount, 66));
+    $global_send($SendParameters$_constructor_to_bounce_value_mode($ctx'sender, false, $feeData'amount, 1));
+    $global_send($SendParameters$_constructor_to_bounce_value_mode($ctx'sender, false, 0, 130));
     int $i = 0;
     int $checkerIfAllClaimed = true;
     while (($i < $fight'playersCurrentLength)) {
@@ -128,11 +136,11 @@
         }
         $i = $i + 1;
     }
-    $self'currentFights~__tact_dict_set_int_cell(257, $finishMsg'data'id, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed)));
+    $self'currentFights~__tact_dict_set_int_cell(257, $finishMsg'data'id, $Fight$_store_cell(($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut)));
     if ($checkerIfAllClaimed) {
         $self'currentFights~__tact_dict_delete_int(257, $finishMsg'data'id);
     }
-    $self'currentPlayerFight~__tact_dict_delete(267, $Context$_get_sender(__tact_context_get()));
+    $self'currentPlayerFight~__tact_dict_delete(267, $ctx'sender);
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), ());
 }
 
@@ -141,7 +149,7 @@
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), $self'currentFights);
 }
 
-((slice, int, slice, int, int, int, int, cell, int, int, cell), (int, slice, int, int, int, int, int, int, cell, int, cell)) $FairFight$_fun_currentFight((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, int $id) impure inline_ref {
+((slice, int, slice, int, int, int, int, cell, int, int, cell), (int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $FairFight$_fun_currentFight((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, int $id) impure inline_ref {
     var (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights)) = $self;
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)))) {
         throw(32);
@@ -154,7 +162,7 @@
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)))) {
         throw(32);
     }
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), $fight'players);
 }
 
@@ -163,7 +171,7 @@
     if (null?($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)))) {
         throw(32);
     }
-    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
+    var ($fight'id, $fight'owner, $fight'createTime, $fight'finishTime, $fight'baseAmount, $fight'amountPerRound, $fight'rounds, $fight'maxPlayersAmount, $fight'players, $fight'playersCurrentLength, $fight'playersClaimed, $fight'escrowed, $fight'paidOut) = $Fight$_not_null($Fight$_load_opt(__tact_dict_get_int_cell($self'currentFights, 257, $id)));
     if (null?(__tact_dict_get_slice_int($fight'playersClaimed, 267, $player, 1))) {
         throw(32);
     }
@@ -254,6 +262,7 @@
     var ($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights) = $self;
     var ($msg'fee) = $msg;
     ($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights)~$FairFight$_fun_requireOwner();
+    throw_unless(16679, ($msg'fee <= 10000));
     $self'fee = $msg'fee;
     return (($self'owner, $self'signerPublicKey, $self'feeCollector, $self'fee, $self'maxPlayers, $self'maxRounds, $self'minAmountPerRound, $self'currentPlayerFight, $self'fullFightsLength, $self'currentFightsLength, $self'currentFights), ());
 }

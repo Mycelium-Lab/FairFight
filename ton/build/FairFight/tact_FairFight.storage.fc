@@ -300,11 +300,11 @@ cell $FightJoin$_store_cell((int, slice) v) inline {
 
 ;;
 ;; Type: Fight
-;; TLB: _ id:int257 owner:address createTime:int257 finishTime:int257 baseAmount:coins amountPerRound:coins rounds:int257 maxPlayersAmount:int257 players:dict<int, address> playersCurrentLength:int257 playersClaimed:dict<address, bool> = Fight
+;; TLB: _ id:int257 owner:address createTime:int257 finishTime:int257 baseAmount:coins amountPerRound:coins rounds:int257 maxPlayersAmount:int257 players:dict<int, address> playersCurrentLength:int257 playersClaimed:dict<address, bool> escrowed:coins paidOut:coins = Fight
 ;;
 
-builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int, cell, int, cell) v) inline_ref {
-    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
+builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline_ref {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut) = v;
     build_0 = build_0.store_int(v'id, 257);
     build_0 = __tact_store_address(build_0, v'owner);
     build_0 = build_0.store_int(v'createTime, 257);
@@ -318,16 +318,18 @@ builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int
     var build_2 = begin_cell();
     build_2 = build_2.store_int(v'playersCurrentLength, 257);
     build_2 = build_2.store_dict(v'playersClaimed);
+    build_2 = build_2.store_coins(v'escrowed);
+    build_2 = build_2.store_coins(v'paidOut);
     build_1 = store_ref(build_1, build_2.end_cell());
     build_0 = store_ref(build_0, build_1.end_cell());
     return build_0;
 }
 
-cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline {
+cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline {
     return $Fight$_store(begin_cell(), v).end_cell();
 }
 
-(slice, ((int, slice, int, int, int, int, int, int, cell, int, cell))) $Fight$_load(slice sc_0) inline_ref {
+(slice, ((int, slice, int, int, int, int, int, int, cell, int, cell, int, int))) $Fight$_load(slice sc_0) inline_ref {
     var v'id = sc_0~load_int(257);
     var v'owner = sc_0~__tact_load_address();
     var v'createTime = sc_0~load_int(257);
@@ -341,12 +343,14 @@ cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, ce
     slice sc_2 = sc_1~load_ref().begin_parse();
     var v'playersCurrentLength = sc_2~load_int(257);
     var v'playersClaimed = sc_2~load_dict();
-    return (sc_0, (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed));
+    var v'escrowed = sc_2~load_coins();
+    var v'paidOut = sc_2~load_coins();
+    return (sc_0, (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut));
 }
 
-tuple $Fight$_as_optional((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline {
-    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
-    return __tact_tuple_create_11(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+tuple $Fight$_as_optional((int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut) = v;
+    return __tact_tuple_create_13(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut);
 }
 
 tuple $Fight$_load_opt(cell cl) inline {
@@ -357,24 +361,24 @@ tuple $Fight$_load_opt(cell cl) inline {
     return $Fight$_as_optional(sc~$Fight$_load());
 }
 
-((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_not_null(tuple v) inline {
+((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $Fight$_not_null(tuple v) inline {
     throw_if(128, null?(v));
-    var (int vvv'id, slice vvv'owner, int vvv'createTime, int vvv'finishTime, int vvv'baseAmount, int vvv'amountPerRound, int vvv'rounds, int vvv'maxPlayersAmount, cell vvv'players, int vvv'playersCurrentLength, cell vvv'playersClaimed) = __tact_tuple_destroy_11(v);
-    return (vvv'id, vvv'owner, vvv'createTime, vvv'finishTime, vvv'baseAmount, vvv'amountPerRound, vvv'rounds, vvv'maxPlayersAmount, vvv'players, vvv'playersCurrentLength, vvv'playersClaimed);
+    var (int vvv'id, slice vvv'owner, int vvv'createTime, int vvv'finishTime, int vvv'baseAmount, int vvv'amountPerRound, int vvv'rounds, int vvv'maxPlayersAmount, cell vvv'players, int vvv'playersCurrentLength, cell vvv'playersClaimed, int vvv'escrowed, int vvv'paidOut) = __tact_tuple_destroy_13(v);
+    return (vvv'id, vvv'owner, vvv'createTime, vvv'finishTime, vvv'baseAmount, vvv'amountPerRound, vvv'rounds, vvv'maxPlayersAmount, vvv'players, vvv'playersCurrentLength, vvv'playersClaimed, vvv'escrowed, vvv'paidOut);
 }
 
-tuple $Fight$_to_tuple(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline {
-    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v;
-    return __tact_tuple_create_11(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+tuple $Fight$_to_tuple(((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut) = v;
+    return __tact_tuple_create_13(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut);
 }
 
-tuple $Fight$_to_external(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline {
-    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed) = v; 
-    return $Fight$_to_tuple(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed);
+tuple $Fight$_to_external(((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) v) inline {
+    var (v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut) = v; 
+    return $Fight$_to_tuple(v'id, v'owner, v'createTime, v'finishTime, v'baseAmount, v'amountPerRound, v'rounds, v'maxPlayersAmount, v'players, v'playersCurrentLength, v'playersClaimed, v'escrowed, v'paidOut);
 }
 
-((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed(int $id, slice $owner, int $createTime, int $finishTime, int $baseAmount, int $amountPerRound, int $rounds, int $maxPlayersAmount, int $playersCurrentLength, cell $players, cell $playersClaimed) inline {
-    return ($id, $owner, $createTime, $finishTime, $baseAmount, $amountPerRound, $rounds, $maxPlayersAmount, $players, $playersCurrentLength, $playersClaimed);
+((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut(int $id, slice $owner, int $createTime, int $finishTime, int $baseAmount, int $amountPerRound, int $rounds, int $maxPlayersAmount, int $playersCurrentLength, cell $players, cell $playersClaimed, int $escrowed, int $paidOut) inline {
+    return ($id, $owner, $createTime, $finishTime, $baseAmount, $amountPerRound, $rounds, $maxPlayersAmount, $players, $playersCurrentLength, $playersClaimed, $escrowed, $paidOut);
 }
 
 ;;

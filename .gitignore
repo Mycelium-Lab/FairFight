@@ -9,3 +9,6 @@ dist/index.js
 /media/characters/players_rival
 /media/characters/players_preview
 /media/characters/tryon
+# Build output - was tracked, churns every compile
+evm/artifacts/
+evm/cache/

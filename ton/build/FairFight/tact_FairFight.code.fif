@@ -59,7 +59,7 @@ PROGRAM{
   DECLPROC $FairFight$_contract_store
   DECLPROC $global_send
   DECLPROC $global_emit
-  DECLPROC $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed
+  DECLPROC $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut
   DECLPROC $FairFight$_fun_create
   DECLPROC $FightJoin$_constructor_id_joiner
   DECLPROC $FairFight$_fun_join
@@ -462,28 +462,26 @@ PROGRAM{
     SWAP
   }>
   $Fight$_store PROCREF:<{
-    s10 s11 XCHG2
+    s12 s13 XCHG2
     257 PUSHINT
     STIX
-    s0 s8 XCHG2
+    s0 s10 XCHG2
     __tact_store_address INLINECALLDICT
-    s1 s6 XCHG
+    s1 s8 XCHG
     257 PUSHINT
     STIX
-    s0 s4 XCHG
+    s0 s6 XCHG
     NEWC
     257 PUSHINT
     STIX
+    s0 s5 XCHG2
+    STGRAMS
     s0 s3 XCHG2
     STGRAMS
-    SWAP
-    STGRAMS
     257 PUSHINT
     STIX
-    s1 s2 XCHG
     257 PUSHINT
     STIX
-    s1 s2 XCHG
     STDICT
     s0 s2 XCHG
     NEWC
@@ -491,6 +489,10 @@ PROGRAM{
     STIX
     s1 s3 XCHG
     STDICT
+    s0 s3 XCHG2
+    STGRAMS
+    s0 s3 XCHG2
+    STGRAMS
     ENDC
     SWAP
     STREF
@@ -500,7 +502,7 @@ PROGRAM{
   }>
   $Fight$_store_cell PROCINLINE:<{
     NEWC
-    11 -ROLL
+    13 -ROLL
     $Fight$_store INLINECALLDICT
     ENDC
   }>
@@ -529,13 +531,15 @@ PROGRAM{
     257 PUSHINT
     LDIX
     LDDICT
+    LDGRAMS
+    LDGRAMS
     DROP
-    s8 s11 XCHG
-    s8 s10 XCHG
-    s8 s9 XCHG
+    s10 s13 XCHG
+    s10 s12 XCHG
+    s10 s11 XCHG
   }>
   $Fight$_as_optional PROCINLINE:<{
-    11 TUPLE
+    13 TUPLE
   }>
   $Fight$_load_opt PROCINLINE:<{
     DUP
@@ -546,7 +550,7 @@ PROGRAM{
     }>ELSE<{
       CTOS
       $Fight$_load INLINECALLDICT
-      1 11 BLKDROP2
+      1 13 BLKDROP2
       $Fight$_as_optional INLINECALLDICT
     }>
   }>
@@ -635,10 +639,10 @@ PROGRAM{
     DUP
     ISNULL
     128 THROWIF
-    11 UNTUPLE
+    13 UNTUPLE
   }>
   $Fight$_to_tuple PROCINLINE:<{
-    11 TUPLE
+    13 TUPLE
   }>
   $Fight$_to_external PROCINLINE:<{
     $Fight$_to_tuple INLINECALLDICT
@@ -829,8 +833,8 @@ PROGRAM{
     0 PUSHINT
     SENDRAWMSG
   }>
-  $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed PROCINLINE:<{
-    s1 s2 XCHG
+  $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut PROCINLINE:<{
+    s3 s4 XCHG
   }>
   $FairFight$_fun_create PROCREF:<{
     s1 s2 PUSH2
@@ -893,35 +897,39 @@ PROGRAM{
     NOW
     0 PUSHINT
     1 PUSHINT
-    s12 PUSH
-    s0 s10 XCHG
+    s1 s12 PUSH2
+    s11 s8 XCPU
+    s6 s11 XCHG
+    s5 s10 XCHG
     s4 s9 XCHG
-    s3 s8 XCHG
-    s2 s7 XCHG
-    s1 s6 s5 XCHG3
-    $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed INLINECALLDICT
+    s0 s8 XCHG
+    s0 s3 XCHG
+    s4 s4 XCHG2
+    s7 s1 s7 XCHG3
+    $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut INLINECALLDICT
     257 PUSHINT
-    s11 s10 s9 PUSH3
-    s11 s10 s9 PUSH3
-    s11 s10 s9 PUSH3
-    s11 s10 PUSH2
+    s13 s12 s11 PUSH3
+    s13 s12 s11 PUSH3
+    s13 s12 s11 PUSH3
+    s13 s12 s11 PUSH3
+    s13 PUSH
     $Fight$_store_cell INLINECALLDICT
-    s15 PUSH
-    s3 s14 XCHG
+    s2 s15 XCHG
+    17 s() PUSH
     SWAP
     __tact_dict_set_int_cell INLINECALLDICT
     267 PUSHINT
     __tact_context_get INLINECALLDICT
     $Context$_get_sender INLINECALLDICT
-    s2 16 s() XCHG
-    s15 PUSH
+    s2 18 s() XCHG
+    17 s() PUSH
     257 PUSHINT
     __tact_dict_set_slice_int INLINECALLDICT
-    s0 s12 XCHG
+    s0 s14 XCHG
+    INC
+    s0 s15 XCHG
     INC
     s0 s13 XCHG
-    INC
-    s0 s11 XCHG
     $Fight$_store_cell INLINECALLDICT
     $global_emit INLINECALLDICT
     s0 s0 s3 XCHG3
@@ -948,39 +956,39 @@ PROGRAM{
     267 PUSHINT
     __tact_context_get INLINECALLDICT
     $Context$_get_sender INLINECALLDICT
-    18 s() PUSH
+    20 s() PUSH
     -ROT
     257 PUSHINT
     __tact_dict_get_slice_int INLINECALLDICT
     ISNULL
     THROWANYIFNOT
     59313 PUSHINT
-    s2 s4 PUSH2
+    s4 s6 PUSH2
     LESS
     THROWANYIFNOT
     58632 PUSHINT
-    s8 PUSH
+    s10 PUSH
     0 EQINT
     THROWANYIFNOT
     13244 PUSHINT
     __tact_context_get INLINECALLDICT
     $Context$_get_value INLINECALLDICT
-    s6 s7 PUSH2
+    s8 s9 PUSH2
     MUL
     GEQ
     THROWANYIFNOT
     257 PUSHINT
     __tact_context_get INLINECALLDICT
     $Context$_get_sender INLINECALLDICT
-    s3 PUSH
-    s3 s5 XCHG
+    s5 PUSH
+    s3 s7 XCHG
     SWAP
     __tact_dict_set_int_slice INLINECALLDICT
     267 PUSHINT
     __tact_context_get INLINECALLDICT
     $Context$_get_sender INLINECALLDICT
-    s2 17 s() XCHG
-    s13 PUSH
+    s2 19 s() XCHG
+    s15 PUSH
     257 PUSHINT
     __tact_dict_set_slice_int INLINECALLDICT
     267 PUSHINT
@@ -990,21 +998,27 @@ PROGRAM{
     FALSE
     1 PUSHINT
     __tact_dict_set_slice_int INLINECALLDICT
-    SWAP
+    s0 s3 XCHG
     INC
-    s9 s10 XCHG
-    s8 s10 XCHG
-    s7 s10 XCHG
-    s6 s10 XCHG
-    s5 s10 XCHG
-    s4 s10 XCHG
-    s3 s10 XCHG
-    s10 s15 s0 XCHG3
+    s1 s8 XCPU
+    ADD
+    s11 s12 XCHG
+    s10 s12 XCHG
+    s9 s12 XCHG
+    s8 s12 XCHG
+    s7 s12 XCHG
+    s6 s12 XCHG
+    s5 s12 XCHG
+    s4 s12 XCHG
+    s3 17 s() XCHG
+    s1 s2 XCHG
+    s1 17 s() XCHG
     257 PUSHINT
-    s0 16 s() XCHG
+    s0 s13 XCHG
     $Fight$_store_cell INLINECALLDICT
-    s3 s6 s0 XCHG3
-    s3 s(-1) PUXC
+    s2 PUSH
+    s3 s4 XCHG
+    SWAP
     __tact_dict_set_int_cell INLINECALLDICT
     __tact_context_get INLINECALLDICT
     $Context$_get_sender INLINECALLDICT
@@ -1037,8 +1051,8 @@ PROGRAM{
     __tact_dict_get_int_cell INLINECALLDICT
     $Fight$_load_opt INLINECALLDICT
     $Fight$_not_null INLINECALLDICT
-    s1 s5 XCHG
-    5 BLKDROP
+    s3 s7 XCHG
+    7 BLKDROP
     s3 POP
     s4 POP
     4109 PUSHINT
@@ -1118,110 +1132,140 @@ PROGRAM{
     IF:<{
       32 THROW
     }>
-    55104 PUSHINT
-    MYADDR
-    s4 PUSH
+    __tact_context_get INLINECALLDICT
+    DROP
+    s2 POP
+    8040 PUSHINT
+    s1 s6 PUSH2
     __tact_slice_eq_bits INLINECALLDICT
     THROWANYIFNOT
-    s4 s3 s2 PUXC2
-    s3 PUSH
-    $FinishData$_store_cell INLINECALLDICT
-    HASHCU
-    s0 s2 s13 XC2PU
-    CHKSIGNU
-    57400 PUSHINT
-    SWAP
+    55104 PUSHINT
+    MYADDR
+    s6 PUSH
+    __tact_slice_eq_bits INLINECALLDICT
     THROWANYIFNOT
-    s2 PUSH
+    s7 PUSH
     257 PUSHINT
-    s3 PUSH
+    s8 PUSH
     __tact_dict_get_int_cell INLINECALLDICT
     $Fight$_load_opt INLINECALLDICT
     $Fight$_not_null INLINECALLDICT
-    44463 PUSHINT
-    267 PUSHINT
-    __tact_context_get INLINECALLDICT
-    $Context$_get_sender INLINECALLDICT
+    9617 PUSHINT
     s3 PUSH
-    -ROT
+    267 PUSHINT
+    16 s() PUSH
+    1 PUSHINT
+    __tact_dict_get_slice_int INLINECALLDICT
+    ISNULL
+    NOT
+    THROWANYIFNOT
+    44463 PUSHINT
+    s3 PUSH
+    267 PUSHINT
+    16 s() PUSH
     1 PUSHINT
     __tact_dict_get_slice_int INLINECALLDICT
     FALSE
     __tact_int_eq_nullable_one INLINECALLDICT
     THROWANYIFNOT
+    23915 PUSHINT
+    OVER
+    18 s() PUSH
+    ADD
+    s3 PUSH
+    LEQ
+    THROWANYIFNOT
+    19 s() PUSH
+    s0 s2 XCHG
+    s1 19 s() XCHG
+    s0 18 s() XCHG
+    17 s() PUSH
+    $FinishData$_store_cell INLINECALLDICT
+    HASHCU
+    s0 s14 XCHG2
+    28 s() PUSH
+    CHKSIGNU
+    57400 PUSHINT
+    SWAP
+    THROWANYIFNOT
+    __tact_my_balance INLINECALLDICT
+    s0 s12 XCHG2
+    SUB
+    s13 PUSH
+    SUB
+    43443 PUSHINT
+    OVER
+    10000000 PUSHINT
+    GEQ
+    THROWANYIFNOT
+    0 PUSHINT
+    RAWRESERVE
+    s0 s11 XCHG
     267 PUSHINT
-    __tact_context_get INLINECALLDICT
-    $Context$_get_sender INLINECALLDICT
+    s10 PUSH
     TRUE
     1 PUSHINT
     __tact_dict_set_slice_int INLINECALLDICT
-    s7 PUSH
+    s14 s12 XCPU
+    ADD
+    s5 PUSH
     0 EQINT
     IF:<{
       NOW
-      s8 POP
+      s6 POP
     }>
-    s11 23 s() XCHG
-    s10 22 s() XCHG
-    s9 21 s() XCHG
-    s8 20 s() XCHG
-    s7 19 s() XCHG
-    s6 18 s() XCHG
-    s5 17 s() XCHG
-    s4 16 s() XCHG
-    s3 s15 XCHG
-    s14 s13 s0 XCHG3
-    18 s() PUSH
-    SWAP
-    s0 24 s() XCHG
+    s11 26 s() XCHG
+    s10 25 s() XCHG
+    s9 24 s() XCHG
+    s8 23 s() XCHG
+    s7 22 s() XCHG
+    s6 21 s() XCHG
+    s5 20 s() XCHG
+    s4 19 s() XCHG
+    s3 18 s() XCHG
+    s2 17 s() XCHG
+    s1 16 s() XCHG
+    19 s() PUSH
+    s0 s13 XCHG2
     $FairFight$_fun_feeCalc INLINECALLDICT
     DUP
     0 NEQINT
     IF:<{
-      __tact_my_balance INLINECALLDICT
-      __tact_context_get INLINECALLDICT
-      $Context$_get_value INLINECALLDICT
-      SUB
-      10000000 PUSHINT
-      SUB
-      s2 PUSH
-      SUB
-      MIN
-      TRUE
+      FALSE
       s11 PUSH
       s0 s2 XCHG
-      66 PUSHINT
+      1 PUSHINT
       $SendParameters$_constructor_to_bounce_value_mode INLINECALLDICT
       $global_send INLINECALLDICT
     }>ELSE<{
       DROP
     }>
-    __tact_my_balance INLINECALLDICT
-    __tact_context_get INLINECALLDICT
-    $Context$_get_value INLINECALLDICT
-    SUB
-    10000000 PUSHINT
-    SUB
-    MIN
-    __tact_context_get_sender INLINECALLDICT
-    TRUE
-    ROT
-    66 PUSHINT
+    FALSE
+    25 s() PUSH
+    s0 s2 XCHG
+    1 PUSHINT
+    $SendParameters$_constructor_to_bounce_value_mode INLINECALLDICT
+    $global_send INLINECALLDICT
+    23 s() PUSH
+    FALSE
+    0 PUSHINT
+    130 PUSHINT
     $SendParameters$_constructor_to_bounce_value_mode INLINECALLDICT
     $global_send INLINECALLDICT
     0 PUSHINT
     TRUE
     WHILE:<{
-      s1 s14 PUSH2
+      OVER
+      27 s() PUSH
       LESS
     }>DO<{
       267 PUSHINT
-      16 s() PUSH
+      28 s() PUSH
       257 PUSHINT
       s4 PUSH
       __tact_dict_get_int_slice INLINECALLDICT
       __tact_not_null INLINECALLDICT
-      26 s() PUSH
+      17 s() PUSH
       -ROT
       1 PUSHINT
       __tact_dict_get_slice_int INLINECALLDICT
@@ -1236,42 +1280,37 @@ PROGRAM{
       SWAP
     }>
     NIP
-    s9 22 s() XCHG
-    s8 21 s() XCHG
-    s7 20 s() XCHG
-    s6 19 s() XCHG
-    s5 18 s() XCHG
-    s4 17 s() XCHG
-    s3 16 s() XCHG
-    s15 s14 s13 XCHG3
+    s11 23 s() XCHG
+    s10 22 s() XCHG
+    s9 21 s() XCHG
+    s8 20 s() XCHG
+    s7 19 s() XCHG
+    s6 18 s() XCHG
+    s5 17 s() XCHG
+    s4 16 s() XCHG
+    s3 26 s() XCHG
+    s2 25 s() XCHG
+    s14 s13 XCHG2
     257 PUSHINT
-    s0 24 s() XCHG
+    s0 s13 XCHG
     $Fight$_store_cell INLINECALLDICT
-    s5 s14 s0 XCHG3
-    s3 s(-1) PUXC
+    s4 PUSH
+    s3 s4 XCHG
+    SWAP
     __tact_dict_set_int_cell INLINECALLDICT
-    s0 s2 XCHG
+    SWAP
     IF:<{
-      SWAP
       257 PUSHINT
       DICTIDEL
       DROP
     }>ELSE<{
-      DROP
+      NIP
     }>
+    s9 s9 XCHG2
     267 PUSHINT
-    __tact_context_get INLINECALLDICT
-    $Context$_get_sender INLINECALLDICT
-    s0 s6 s6 XCHG3
     DICTDEL
     DROP
-    s1 s10 XCHG
-    s1 s9 XCHG
-    s3 s8 s3 XCHG3
-    s0 s7 XCHG2
-    s0 s6 XCHG
-    s0 s5 XCHG
-    s0 s4 XCHG
+    3 8 BLKSWAP
   }>
   $FairFight$_fun_currentFights PROCREF:<{
     DUP
@@ -1309,8 +1348,8 @@ PROGRAM{
     __tact_dict_get_int_cell INLINECALLDICT
     $Fight$_load_opt INLINECALLDICT
     $Fight$_not_null INLINECALLDICT
-    s2 s10 XCHG
-    10 BLKDROP
+    s4 s12 XCHG
+    12 BLKDROP
   }>
   $FairFight$_fun_currentFightPlayerClaimed PROCREF:<{
     s2 PUSH
@@ -1327,7 +1366,8 @@ PROGRAM{
     __tact_dict_get_int_cell INLINECALLDICT
     $Fight$_load_opt INLINECALLDICT
     $Fight$_not_null INLINECALLDICT
-    10 1 BLKDROP2
+    s2 s12 XCHG
+    12 BLKDROP
     DUP
     267 PUSHINT
     s3 PUSH
@@ -1446,6 +1486,11 @@ PROGRAM{
     11 -ROLL
     $FairFight$_fun_requireOwner INLINECALLDICT
     s7 POP
+    16679 PUSHINT
+    s11 PUSH
+    10000 PUSHINT
+    LEQ
+    THROWANYIFNOT
     s9 s10 XCHG
     s8 s9 XCHG
     s7 s8 XCHG
@@ -1536,7 +1581,18 @@ PROGRAM{
     $FairFight$_contract_load INLINECALLDICT
     11 ROLL
     $FairFight$_fun_currentFight INLINECALLDICT
-    11 11 BLKDROP2
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    s13 POP
+    11 2 BLKSWAP
     $Fight$_to_external INLINECALLDICT
   }>
   %currentFightPlayers PROC:<{

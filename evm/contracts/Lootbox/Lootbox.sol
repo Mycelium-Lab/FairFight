@@ -6,10 +6,13 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
-contract Lootbox is Pausable, Ownable {
+contract Lootbox is Pausable, Ownable, ReentrancyGuard {
 
     using SafeERC20 for IERC20;
+    using ECDSA for bytes32;
 
     enum Rarity {
         Regular,
@@ -24,6 +27,11 @@ contract Lootbox is Pausable, Ownable {
         uint256 propertyId;
     }
 
+    struct PendingLoot {
+        bytes32 commitment;
+        uint64 blockNumber;
+    }
+
     uint256 constant    MAX_PERCENT = 10000;
     uint256 public      price;
     address             signer;
@@ -36,9 +44,12 @@ contract Lootbox is Pausable, Ownable {
     /// @notice Prevents using one signature few times
     mapping(address => uint256) public currentUserLoot;
     mapping(Rarity  => Prize[]) public prizesByRarity;
+    mapping(address => PendingLoot) public pendingLoots;
 
     event Loot(address indexed looter, IFFNFT indexed nft, uint256 indexed propertyId);
     event Buy(address indexed looter, IERC20 indexed token, uint256 price);
+    event LootCommitted(address indexed looter, bytes32 indexed commitment, uint256 blockNumber);
+    event LootCommitmentExpired(address indexed looter, bytes32 indexed commitment);
 
     constructor(
         Prize[] memory  regularRarityPrizes,
@@ -51,6 +62,16 @@ contract Lootbox is Pausable, Ownable {
         address         _collector,
         IERC20          _paymentToken
     ) {
+        require(regularRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(superiorRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(rareRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(legendaryRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(epicRarityPrizes.length != 0, "FairFight Lootbox: Empty rarity");
+        require(_price != 0, "FairFight Lootbox: Price is zero");
+        require(_signer != address(0), "FairFight Lootbox: Signer cant be address zero");
+        require(_collector != address(0), "FairFight Lootbox: Collector cant be address zero");
+        require(address(_paymentToken) != address(0), "FairFight Lootbox: Token cant be address zero");
+
         rarityPercent[Rarity.Regular] = 8000;   //80%
         rarityPercent[Rarity.Superior] = 2000;  //20%
         rarityPercent[Rarity.Rare] = 200;       //2%
@@ -77,26 +98,74 @@ contract Lootbox is Pausable, Ownable {
         collector = _collector;
     }
 
-    /// @notice Allowes to loot some reward for user
-    /// @dev    Only if user is verified
-    /// @param  r - Part of signature.
-    /// @param  v - Part of signature.
-    /// @param  s - Part of signature.
-    /// @param  somenumber - Some random number
-    function loot(bytes32 r, uint8 v, bytes32 s, uint256 somenumber) external whenNotPaused {
-        require(_check(r, v, s, somenumber), "FairFight Lootbox: Not verified");
-        _loot(somenumber);
+    /// @notice Commits an authorized free loot before its randomness exists.
+    /// @dev commitment = keccak256(abi.encode(looter, address(this), secret)).
+    ///      The authorization nonce is consumed here, not during reveal.
+    function commitLoot(bytes32 commitment, bytes32 r, uint8 v, bytes32 s)
+        external
+        whenNotPaused
+        nonReentrant
+    {
+        require(_checkCommit(commitment, r, v, s), "FairFight Lootbox: Not verified");
+        _commit(commitment);
     }
 
-    /// @notice Allows to buy lootboxes for a user for a certain price and token
-    function buy() external whenNotPaused {
+    /// @notice Pays for a lootbox and commits before its randomness exists.
+    /// @dev Payment is final at commit time. A caller can decline to reveal a
+    ///      bad result, but cannot recover the payment or reroll this commitment.
+    function commitBuy(bytes32 commitment) external whenNotPaused nonReentrant {
+        _commit(commitment);
         paymentToken.safeTransferFrom(msg.sender, collector, price);
-        _loot(price);
         emit Buy(msg.sender, paymentToken, price);
     }
 
-    function _loot(uint256 somenumber) private {
-        uint256 randomRarity = getPseudoRandomNumber(somenumber, msg.sender, MAX_PERCENT);
+    /// @notice Reveals a fixed draw after the commitment block has been mined.
+    /// @dev The commitment block hash was unknowable when the secret was
+    ///      committed. It remains fixed across reveal retries, so a wrapper that
+    ///      reverts after inspecting a bad mint cannot obtain a different roll.
+    function reveal(bytes32 secret)
+        external
+        whenNotPaused
+        nonReentrant
+        returns (IFFNFT nft, uint256 propertyId)
+    {
+        PendingLoot memory pending = pendingLoots[msg.sender];
+        require(pending.commitment != bytes32(0), "FairFight Lootbox: No commitment");
+        require(block.number > pending.blockNumber, "FairFight Lootbox: Reveal too early");
+        require(block.number <= uint256(pending.blockNumber) + 256, "FairFight Lootbox: Commitment expired");
+        require(
+            keccak256(abi.encode(msg.sender, address(this), secret)) == pending.commitment,
+            "FairFight Lootbox: Wrong secret"
+        );
+
+        bytes32 entropy = keccak256(
+            abi.encode(secret, blockhash(pending.blockNumber), msg.sender, address(this))
+        );
+        delete pendingLoots[msg.sender];
+        return _loot(entropy, msg.sender);
+    }
+
+    function expireCommitment() external {
+        PendingLoot memory pending = pendingLoots[msg.sender];
+        require(pending.commitment != bytes32(0), "FairFight Lootbox: No commitment");
+        require(block.number > uint256(pending.blockNumber) + 256, "FairFight Lootbox: Not expired");
+        delete pendingLoots[msg.sender];
+        emit LootCommitmentExpired(msg.sender, pending.commitment);
+    }
+
+    function _commit(bytes32 commitment) private {
+        require(commitment != bytes32(0), "FairFight Lootbox: Empty commitment");
+        require(pendingLoots[msg.sender].commitment == bytes32(0), "FairFight Lootbox: Pending commitment");
+        pendingLoots[msg.sender] = PendingLoot({
+            commitment: commitment,
+            blockNumber: uint64(block.number)
+        });
+        currentUserLoot[msg.sender] += 1;
+        emit LootCommitted(msg.sender, commitment, block.number);
+    }
+
+    function _loot(bytes32 entropy, address looter) private returns (IFFNFT nft, uint256 propertyId) {
+        uint256 randomRarity = uint256(entropy) % MAX_PERCENT;
         Rarity rarity;
         if (randomRarity >= rarityPercent[Rarity.Superior])                                                 rarity = Rarity.Regular;
         if (randomRarity < rarityPercent[Rarity.Superior] && randomRarity >= rarityPercent[Rarity.Rare])    rarity = Rarity.Superior;
@@ -104,44 +173,23 @@ contract Lootbox is Pausable, Ownable {
         if (randomRarity < rarityPercent[Rarity.Legendary] && randomRarity >= rarityPercent[Rarity.Epic])   rarity = Rarity.Legendary;
         if (randomRarity < rarityPercent[Rarity.Epic])                                                      rarity = Rarity.Epic;
         uint256 prizesLength = prizesByRarity[rarity].length;
-        uint256 randomPrizeIndex = getPseudoRandomNumber(somenumber, address(this), prizesLength - 1);
+        uint256 randomPrizeIndex = uint256(keccak256(abi.encode(entropy, "PRIZE"))) % prizesLength;
         Prize memory prize = prizesByRarity[rarity][randomPrizeIndex];
-        prize.nft.mint(msg.sender, prize.propertyId);
-        currentUserLoot[msg.sender] += 1;
-        emit Loot(msg.sender, prize.nft, prize.propertyId);
+        prize.nft.mint(looter, prize.propertyId);
+        emit Loot(looter, prize.nft, prize.propertyId);
+        return (prize.nft, prize.propertyId);
     }
 
-    function getPseudoRandomNumber(uint256 _somenumber, address _someaddress, uint256 _max) private view returns (uint256) {
-        uint256 pseudoRandomNumber = 
-            uint256(
-                keccak256(
-                    abi.encodePacked(
-                        _someaddress, block.number, block.prevrandao, _somenumber, blockhash(block.number - 1)
-                    )
-                )
-            );
-        return uint256(pseudoRandomNumber % _max); 
-    }
-
-    function _check(bytes32 _r, uint8 _v, bytes32 _s, uint256 _somenumber) private view returns (bool) {
+    function _checkCommit(bytes32 commitment, bytes32 r, uint8 v, bytes32 s) private view returns (bool) {
         bytes32 hash = keccak256(
             abi.encodePacked(
-                _somenumber,
+                commitment,
                 msg.sender,
                 address(this),
                 currentUserLoot[msg.sender]
             )
         );
-        return
-            signer ==
-            ecrecover(
-                keccak256(
-                    abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)
-                ),
-                _v,
-                _r,
-                _s
-            );
+        return signer == hash.toEthSignedMessageHash().recover(v, r, s);
     }
 
     function setSigner(

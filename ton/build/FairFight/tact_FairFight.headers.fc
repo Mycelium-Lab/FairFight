@@ -121,16 +121,16 @@ cell $FightJoin$_store_cell((int, slice) v) inline;
 (slice, ((int))) $ChangeMinAmountPerRound$_load(slice sc_0) inline;
 
 ;; $Fight$_store
-builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int, cell, int, cell) v) inline_ref;
+builder $Fight$_store(builder build_0, (int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline_ref;
 
 ;; $Fight$_store_cell
-cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline;
+cell $Fight$_store_cell((int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline;
 
 ;; $Fight$_load
-(slice, ((int, slice, int, int, int, int, int, int, cell, int, cell))) $Fight$_load(slice sc_0) inline_ref;
+(slice, ((int, slice, int, int, int, int, int, int, cell, int, cell, int, int))) $Fight$_load(slice sc_0) inline_ref;
 
 ;; $Fight$_as_optional
-tuple $Fight$_as_optional((int, slice, int, int, int, int, int, int, cell, int, cell) v) inline;
+tuple $Fight$_as_optional((int, slice, int, int, int, int, int, int, cell, int, cell, int, int) v) inline;
 
 ;; $Fight$_load_opt
 tuple $Fight$_load_opt(cell cl) inline;
@@ -151,13 +151,13 @@ _ $Context$_get_sender((int, slice, int, slice) v) inline;
 _ $Context$_get_value((int, slice, int, slice) v) inline;
 
 ;; $Fight$_not_null
-((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_not_null(tuple v) inline;
+((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $Fight$_not_null(tuple v) inline;
 
 ;; $Fight$_to_tuple
-tuple $Fight$_to_tuple(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline;
+tuple $Fight$_to_tuple(((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) v) inline;
 
 ;; $Fight$_to_external
-tuple $Fight$_to_external(((int, slice, int, int, int, int, int, int, cell, int, cell)) v) inline;
+tuple $Fight$_to_external(((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) v) inline;
 
 ;; $Fee$_to_tuple
 tuple $Fee$_to_tuple(((int, int)) v) inline;
@@ -183,8 +183,8 @@ tuple $Fee$_to_external(((int, int)) v) inline;
 ;; $global_emit
 () $global_emit(cell $body) impure inline;
 
-;; $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed
-((int, slice, int, int, int, int, int, int, cell, int, cell)) $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed(int $id, slice $owner, int $createTime, int $finishTime, int $baseAmount, int $amountPerRound, int $rounds, int $maxPlayersAmount, int $playersCurrentLength, cell $players, cell $playersClaimed) inline;
+;; $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut
+((int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $Fight$_constructor_id_owner_createTime_finishTime_baseAmount_amountPerRound_rounds_maxPlayersAmount_playersCurrentLength_players_playersClaimed_escrowed_paidOut(int $id, slice $owner, int $createTime, int $finishTime, int $baseAmount, int $amountPerRound, int $rounds, int $maxPlayersAmount, int $playersCurrentLength, cell $players, cell $playersClaimed, int $escrowed, int $paidOut) inline;
 
 ;; $FairFight$_fun_create
 ((slice, int, slice, int, int, int, int, cell, int, int, cell), ()) $FairFight$_fun_create((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, (int, int, int) $fightMsg) impure inline_ref;
@@ -217,7 +217,7 @@ tuple $Fee$_to_external(((int, int)) v) inline;
 ((slice, int, slice, int, int, int, int, cell, int, int, cell), cell) $FairFight$_fun_currentFights((slice, int, slice, int, int, int, int, cell, int, int, cell) $self) impure inline_ref;
 
 ;; $FairFight$_fun_currentFight
-((slice, int, slice, int, int, int, int, cell, int, int, cell), (int, slice, int, int, int, int, int, int, cell, int, cell)) $FairFight$_fun_currentFight((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, int $id) impure inline_ref;
+((slice, int, slice, int, int, int, int, cell, int, int, cell), (int, slice, int, int, int, int, int, int, cell, int, cell, int, int)) $FairFight$_fun_currentFight((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, int $id) impure inline_ref;
 
 ;; $FairFight$_fun_currentFightPlayers
 ((slice, int, slice, int, int, int, int, cell, int, int, cell), cell) $FairFight$_fun_currentFightPlayers((slice, int, slice, int, int, int, int, cell, int, int, cell) $self, int $id) impure inline_ref;

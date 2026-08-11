@@ -62,6 +62,8 @@ struct Fight {
     players:                map<Int, Address>;
     playersCurrentLength:   Int;
     playersClaimed:         map<Address, Bool>;
+    escrowed:               Int as coins;
+    paidOut:                Int as coins;
 }
 
 struct Fee {
@@ -128,6 +130,9 @@ contract FairFight with Deployable, OwnableTransferable {
 
     receive(msg: ChangeFee) {
         self.requireOwner();
+        // fee is in basis points; anything above 100% would make feeCalc return a
+        // negative payout and brick every claim on every fight.
+        require(msg.fee <= 10000, "fee out of range");
         self.fee = msg.fee;
     }
 
@@ -173,7 +178,9 @@ contract FairFight with Deployable, OwnableTransferable {
             maxPlayersAmount:       fightMsg.maxPlayersAmount,
             playersCurrentLength:   1,
             players:                players,
-            playersClaimed:         playersClaimed
+            playersClaimed:         playersClaimed,
+            escrowed:               amountToPlay,
+            paidOut:                0
         };
         self.currentFights.set(self.fullFightsLength, fight);
         self.currentPlayerFight.set(context().sender, self.fullFightsLength);
@@ -195,6 +202,7 @@ contract FairFight with Deployable, OwnableTransferable {
         self.currentPlayerFight.set(context().sender, id);
         fight.playersClaimed.set(context().sender, false);
         fight.playersCurrentLength += 1;
+        fight.escrowed += fight.baseAmount;
         self.currentFights.set(id, fight);
         emit(FightJoin{id: id, joiner: context().sender}.toCell());
     }
@@ -224,32 +232,47 @@ contract FairFight with Deployable, OwnableTransferable {
         if (self.currentFights.get(finishMsg.data.id) == null) {
             throw(32); // "fight not exist"
         }
+        let ctx: Context = context();
+        require(finishMsg.data.address == ctx.sender, "signed address does not match sender");
         require(finishMsg.data.contract == myAddress(), "invalid contract address");
+        let fight: Fight = self.currentFights.get(finishMsg.data.id)!!;
+        require(fight.playersClaimed.get(ctx.sender) != null, "sender is not a participant");
+        require(fight.playersClaimed.get(ctx.sender) == false, "already claimed");
+        require(fight.paidOut + finishMsg.data.amount <= fight.escrowed, "fight escrow exceeded");
         let hash: Int = finishMsg.data.toCell().hash();
         let check: Bool = checkSignature(hash, finishMsg.signature, self.signerPublicKey);
         require(check, "invalid signature");
-        let fight: Fight = self.currentFights.get(finishMsg.data.id)!!;
-        require(fight.playersClaimed.get(context().sender) == false, "already claimed");
-        fight.playersClaimed.set(context().sender, true);
+        let reserveAmount: Int = myBalance() - ctx.value - finishMsg.data.amount;
+        require(reserveAmount >= ton("0.01"), "insufficient contract balance");
+        nativeReserve(reserveAmount, ReserveExact);
+        fight.playersClaimed.set(ctx.sender, true);
+        fight.paidOut += finishMsg.data.amount;
         if (fight.finishTime == 0) {
             fight.finishTime = now();
         }
         let feeData: Fee = self.feeCalc(fight.baseAmount, finishMsg.data.amount);
         if (feeData.fee != 0) {
-            let amount: Int = min(feeData.fee, myBalance() - context().value - ton("0.01") - feeData.amount);
             send(SendParameters{
                 to: self.feeCollector,
-                bounce: true,
-                value: amount,
-                mode: SendRemainingValue + SendIgnoreErrors
+                bounce: false,
+                value: feeData.fee,
+                mode: SendPayGasSeparately
             });
         }
-        let amount: Int = min(feeData.amount, myBalance() - context().value - ton("0.01"));
         send(SendParameters{
-            to: sender(),
-            bounce: true,
-            value: amount,
-            mode: SendRemainingValue + SendIgnoreErrors
+            to: ctx.sender,
+            bounce: false,
+            value: feeData.amount,
+            mode: SendPayGasSeparately
+        });
+        // Everything above the reserve is the unspent part of this message's gas;
+        // hand it back to the caller. SendRemainingBalance is bounded by the
+        // reserve, so this can never dip into another fight's escrow.
+        send(SendParameters{
+            to: ctx.sender,
+            bounce: false,
+            value: 0,
+            mode: SendRemainingBalance + SendIgnoreErrors
         });
         let i: Int = 0;
         let checkerIfAllClaimed: Bool = true;
@@ -263,7 +286,7 @@ contract FairFight with Deployable, OwnableTransferable {
         if (checkerIfAllClaimed) {
             self.currentFights.del(finishMsg.data.id);
         }
-        self.currentPlayerFight.del(context().sender);
+        self.currentPlayerFight.del(ctx.sender);
     }
 
     get fun feeCalc(baseAmount: Int, amount: Int): Fee {
