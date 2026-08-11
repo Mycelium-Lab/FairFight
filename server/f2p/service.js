@@ -5,8 +5,9 @@ import TelegramBot from "node-telegram-bot-api";
 import '../utils/env.js'
 import { checkSignatureTG } from "../utils/utils.js";
 import { appState, appStateTypes } from "../utils/appState.js";
-import { msgSignIn, playersToNotify } from "../constants/constants.js";
+import { playersToNotify } from "../constants/constants.js";
 import { ethers } from "ethers";
+import { verifySignIn } from "../utils/authNonce.js";
 
 const pgClient = db()
 await pgClient.connect()
@@ -39,9 +40,7 @@ export async function createFight(fight, bodyInitData, sign_evm) {
                     msg: 'wrong sign'
                 }
             } else {
-                const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
-                console.log(recoveredAddress, fight.owner)
-                if (recoveredAddress != fight.owner) {
+                if (!await verifySignIn(fight.owner, sign_evm)) {
                     return {
                         code: 401,
                         msg: 'wrong sign'
@@ -165,9 +164,7 @@ export async function joinFight(fightId, player, bodyInitData, sign_evm) {
                         msg: 'wrong sign'
                     }
                 } else {
-                    const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
-                    console.log(recoveredAddress, player)
-                    if (recoveredAddress != player) {
+                    if (!await verifySignIn(player, sign_evm)) {
                         return {
                             code: 401,
                             msg: 'wrong sign'
@@ -248,9 +245,7 @@ export async function withdrawFight(fightId, bodyInitData, sign_evm) {
                         msg: 'wrong sign'
                     }
                 } else {
-                    const recoveredAddress = ethers.utils.verifyMessage(msgSignIn, sign_evm)
-                    console.log(recoveredAddress, res.rows[0].owner)
-                    if (recoveredAddress != res.rows[0].owner) {
+                    if (!await verifySignIn(res.rows[0].owner, sign_evm)) {
                         return {
                             code: 401,
                             msg: 'wrong sign'

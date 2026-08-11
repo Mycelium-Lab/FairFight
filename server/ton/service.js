@@ -540,8 +540,13 @@ export async function mintNFT(req, res) {
             if (!checkerTG) {
                 res.status(401).send('Wrong tg init data')
             } else {
-                //брать username из tg init data
-                const username = req.body.username
+                //Username must come from the HMAC-verified initData, never from the body:
+                //otherwise any valid Telegram user could spend another player's tokens
+                //and have the NFT minted to their own address.
+                const username = usernameFromInitData(initData)
+                if (!username) {
+                    return res.status(401).send('No username in tg init data')
+                }
                 const address = req.body.address
                 const responsePg = await pgClient.query(`SELECT * FROM board_f2p WHERE player = $1`, [username])
                 if (responsePg.rows.length === 0) {
@@ -625,12 +630,18 @@ export async function setAddress(req, res) {
             if (!checkerTG) {
                 res.status(401).send('wrong tg init data')
             } else {
+                //Same rule as mintNFT: the identity comes from the verified initData,
+                //not the body, or one user can repoint another user's payout address.
+                const verifiedUsername = usernameFromInitData(initData)
+                if (!verifiedUsername || (username && username !== verifiedUsername)) {
+                    return res.status(401).send('username does not match tg init data')
+                }
                 await pgClient.query(
                     `
                     UPDATE tg_chats SET player = $1
                     WHERE chat_id = $2 AND username = $3
                     `,
-                    [ address, chat_id, username ]
+                    [ address, chat_id, verifiedUsername ]
                 )
                 res.status(200).send('setted')
             }
@@ -640,6 +651,20 @@ export async function setAddress(req, res) {
     } catch (error) {
         console.log(error)
         res.status(500).send()
+    }
+}
+
+//Telegram signs the whole initData payload, so the `user` entry inside it is
+//trustworthy once checkSignatureTG has passed - unlike anything in the request body.
+function usernameFromInitData(initData) {
+    try {
+        const raw = initData.get('user')
+        if (!raw) return null
+        const parsed = JSON.parse(raw)
+        return parsed && typeof parsed.username === 'string' ? parsed.username : null
+    } catch (error) {
+        console.log('could not parse tg initData user', error.message)
+        return null
     }
 }
 

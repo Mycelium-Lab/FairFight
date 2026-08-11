@@ -1,7 +1,25 @@
 import { Router } from "express";
 import { createFight, getFightsWithNullFinish, joinFight, withdrawFight, getPastFights, getBoard } from "./service.js";
+import { issueNonce } from "../utils/authNonce.js";
+import { isValidAddress } from "../utils/validation.js";
 
 const f2pRouter = Router()
+
+//Clients call this first and sign the returned message. Replaces the old constant
+//sign-in string, whose signature never expired and could be replayed forever.
+f2pRouter.get('/auth/nonce', async (req, res) => {
+    try {
+        const address = req.query.address
+        if (!isValidAddress(address, 1)) {
+            return res.status(400).json({ message: '' })
+        }
+        const { message } = await issueNonce(address)
+        res.status(200).json({ message })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: '' })
+    }
+})
 
 f2pRouter.get('/f2p', async (req, res) => {
     try {

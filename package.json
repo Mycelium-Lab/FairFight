@@ -10,7 +10,8 @@
     "http": " http-server -c-1 . -p 8080",
     "dev:si": "nodemon signalling/server.js",
     "dev:se": "nodemon server.js",
-    "prod:bot": "pm2 start bot.js --exp-backoff-restart-delay=100 --name telegram_bot_ff"
+    "prod:bot": "pm2 start bot.js --exp-backoff-restart-delay=100 --name telegram_bot_ff",
+    "test": "node server/utils/validation.test.mjs && node test/integration/auth-nonce.test.mjs && node test/integration/socket-auth.test.cjs"
   },
   "keywords": [
     "webrtc",
