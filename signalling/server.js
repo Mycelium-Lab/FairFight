@@ -6,15 +6,102 @@ const MAX_ROOM_USERS = 5;
 import fs from 'fs';
 import crypto from 'crypto';
 const log = console.log.bind(console);
-import socketio from 'socket.io';
-const io = socketio(PORT, {
+//socket.io 4.x: the callable default export of 1.x is gone, the Server class is the API.
+//The vendored browser client (lib/net/socket.io.js) must stay on a matching 4.x major -
+//the Engine.IO 4 handshake used here cannot talk to a 1.x/2.x client.
+import { Server as SocketIOServer } from 'socket.io';
+
+//A browser sends an Origin of scheme://host[:port] with no trailing slash, so
+//'https://fairfight.fairprotocol.solutions/' could never match anything. On socket.io
+//1.7.4 that did not matter because the `cors` option did not exist yet and was silently
+//dropped, which left the signalling server - the process that signs payouts - open to
+//any origin. The option is real on 4.x, so the entries have to be exact.
+const DEFAULT_ALLOWED_ORIGINS = [
+  'http://localhost:5000', //express server.js default
+  'http://localhost:5050', //express server.js with PORT=5050 (5000 collides with AirPlay)
+  'https://fairfight.fairprotocol.solutions'
+];
+const ALLOWED_ORIGINS = (process.env.SIGNALLING_ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(o => o.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+const allowedOrigins = ALLOWED_ORIGINS.length ? ALLOWED_ORIGINS : DEFAULT_ALLOWED_ORIGINS;
+
+//Abuse limits. This process settles live wagers, so an unauthenticated client must not be
+//able to exhaust it. Every value is overridable so a busy fight night can be tuned without
+//a code change.
+const MAX_CONNECTIONS = parseInt(process.env.SIGNALLING_MAX_CONNECTIONS || '500', 10);
+const MAX_CONNECTIONS_PER_IP = parseInt(process.env.SIGNALLING_MAX_CONNECTIONS_PER_IP || '20', 10);
+//A join/sdp/ice payload is a few KB; 64KB is generous and still bounds memory per packet.
+//The 1.x default was 100MB (engine.io maxHttpBufferSize 10e7).
+const MAX_HTTP_BUFFER_SIZE = parseInt(process.env.SIGNALLING_MAX_PAYLOAD_BYTES || '65536', 10);
+//Nonce issuing is unauthenticated, so cap it per socket rather than let it spin freely.
+const MAX_AUTH_REQUESTS_PER_MINUTE = parseInt(process.env.SIGNALLING_MAX_AUTH_REQUESTS || '30', 10);
+
+const io = new SocketIOServer(PORT, {
   cors: {
-    origin: [
-      'http://localhost:5000',
-      'https://fairfight.fairprotocol.solutions/'
-    ],
+    origin: allowedOrigins,
+    methods: ['GET', 'POST'],
+    credentials: false
+  },
+  //CORS headers only make a browser refuse to read a response; they do not stop the
+  //request, and a WebSocket upgrade is not subject to CORS at all. Reject a
+  //disallowed Origin outright so the allowlist binds every transport. A missing Origin
+  //(native/CLI clients, the integration test) is not a browser request and is allowed -
+  //those clients are still gated by the wallet signature check in isJoinAuthentic.
+  allowRequest: (req, callback) => {
+    const origin = req.headers.origin;
+    if (!origin || allowedOrigins.includes(origin.replace(/\/+$/, ''))) {
+      return callback(null, true);
+    }
+    log('rejected handshake from disallowed origin %s', origin);
+    return callback('origin not allowed', false);
+  },
+  maxHttpBufferSize: MAX_HTTP_BUFFER_SIZE,
+  //Drop a wedged player in ~25s instead of holding the room (and its stake) open.
+  pingInterval: 10000,
+  pingTimeout: 15000,
+  //A socket that connects but never completes the Engine.IO handshake is dead weight.
+  connectTimeout: 20000,
+  //No need to keep the 1.x-era Flash/JSONP fallbacks alive.
+  transports: ['polling', 'websocket'],
+  //Compression buys little on tiny signalling frames and is a memory/CPU amplifier.
+  perMessageDeflate: false
+});
+
+//Concurrency caps. Without these one host can hold every slot in the process and stall
+//settlement for everybody else.
+const connectionsPerIp = new Map();
+
+io.use((socket, next) => {
+  const ip = socket.handshake.address || 'unknown';
+  //engine.clientsCount counts transports already open, including sockets still inside this
+  //middleware, so a burst cannot slip past the cap the way a namespace count would.
+  if (io.engine.clientsCount > MAX_CONNECTIONS) {
+    log('rejected connection from %s: server at capacity (%d)', ip, MAX_CONNECTIONS);
+    return next(new Error('server at capacity'));
   }
-})
+  const forIp = connectionsPerIp.get(ip) || 0;
+  if (forIp >= MAX_CONNECTIONS_PER_IP) {
+    log('rejected connection from %s: %d concurrent connections', ip, forIp);
+    return next(new Error('too many connections'));
+  }
+  connectionsPerIp.set(ip, forIp + 1);
+  //Release on the engine connection's close, not on the namespace 'disconnect' event:
+  //if the client goes away while middleware is still running, socket.io drops the socket
+  //without ever emitting 'disconnect' and the slot would leak. Only one namespace is in
+  //use here, so conn and socket are one-to-one.
+  socket.conn.once('close', () => {
+    const left = (connectionsPerIp.get(ip) || 1) - 1;
+    if (left > 0) {
+      connectionsPerIp.set(ip, left);
+    } else {
+      connectionsPerIp.delete(ip);
+    }
+  });
+  return next();
+});
+
 import redis from "redis"
 import db from "../server/db/db.js"
 import ethers from "ethers"
@@ -209,10 +296,16 @@ function handleSocket(socket) {
   var room = null;
   var authNonce = null;
 
+  var authRequestCount = 0;
+  var authRequestWindowStart = 0;
+
   socket.on(MessageType.AUTH_REQUEST, onAuthRequest);
   socket.on(MessageType.JOIN, onJoin);
   socket.on(MessageType.SDP, onSdp);
   socket.on(MessageType.ICE_CANDIDATE, onIceCandidate);
+  //Still called 'disconnect' on 4.x; the handler now also receives a reason string, which
+  //onLeave ignores. ('disconnecting' is the pre-teardown variant, not needed here because
+  //room membership is tracked in `rooms`, not in socket.io rooms.)
   socket.on(MessageType.DISCONNECT, onLeave);
   socket.on(MessageType.USER_DEAD, onDead);
   socket.on(MessageType.FINISHING, onFinishing);
@@ -245,6 +338,10 @@ function handleSocket(socket) {
     return true
   }
 
+  //The `socket.to(value.id).emit(...)` pattern used throughout this file survives the
+  //1.x -> 4.x move unchanged: a socket still auto-joins a room named after its own id, and
+  //`socket.to(...)` still excludes the sender. Rewriting these as `io.to(...)` would start
+  //delivering to the sender too, which the client does not expect - leave them alone.
   async function onEndFinishing() {
     try {
       Object.entries(room.sockets).forEach(([key, value]) => {
@@ -887,8 +984,19 @@ function handleSocket(socket) {
 
   //Issues a one-time nonce for this socket. The client signs it with the wallet it
   //claims to own, proving control before it can join a fight room.
+  //Nonce issuing is pre-authentication, so it is capped per socket: a legitimate client
+  //asks once per join, and rotation on every request is the point of the challenge.
   function onAuthRequest() {
     try {
+      const now = Date.now()
+      if (now - authRequestWindowStart > 60000) {
+        authRequestWindowStart = now
+        authRequestCount = 0
+      }
+      if (++authRequestCount > MAX_AUTH_REQUESTS_PER_MINUTE) {
+        log('rejected auth_request: socket %s over the nonce rate limit', socket.id)
+        return
+      }
       authNonce = `FairFight login\nnonce: ${crypto.randomBytes(16).toString('hex')}\nissued: ${Date.now()}`
       socket.emit(MessageType.AUTH_NONCE, { nonce: authNonce })
     } catch (error) {
@@ -924,6 +1032,13 @@ function handleSocket(socket) {
       // Somehow sent join request twice?
       if (user !== null || room !== null) {
         room.sendTo(user, MessageType.ERROR_USER_INITIALIZED);
+        return;
+      }
+
+      //Room() parses this string positionally, so reject junk before it becomes a
+      //half-built room object. maxHttpBufferSize bounds the packet; this bounds the shape.
+      if (!joinData || typeof joinData.roomName !== 'string' || joinData.roomName.length > 128) {
+        log('rejected join: malformed roomName');
         return;
       }
 
@@ -1332,8 +1447,12 @@ redisClient
     pgClient.connect()
   })
   .then(() => {
+    //'connection' is still the event name on 4.x ('connect' remains an alias).
     io.on('connection', handleSocket);
     log('Running room server on port %d', PORT);
+    log('Allowed origins: %s', allowedOrigins.join(', '));
+    log('Limits: %d connections (%d per IP), %d byte max payload',
+      MAX_CONNECTIONS, MAX_CONNECTIONS_PER_IP, MAX_HTTP_BUFFER_SIZE);
   })
   .then(async () => {
     key = await mnemonicToWalletKey(process.env.MNEMONIC_TON.split(" "));
