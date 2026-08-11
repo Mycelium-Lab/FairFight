@@ -335,8 +335,7 @@
         margin: 0 0 4px 0;
     }
 
-    #pastgames-f2p,
-    #pastgames-f2p-evm {background-color: transparent !important;}
+    #pastgames-f2p {background-color: transparent !important;}
 
 }
 

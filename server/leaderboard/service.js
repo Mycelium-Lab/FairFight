@@ -167,9 +167,9 @@ export async function createLeaderboardTON(req, res) {
                 player,
                 SUM(kills) AS total_kills,
                 SUM(deaths) AS total_deaths,
-                COUNT(*) FILTER (WHERE baseAmount < amount) AS wins,
+                COUNT(*) FILTER (WHERE baseAmount::DECIMAL < amount::DECIMAL) AS wins,
                 COUNT(*) AS total_games,
-                SUM(CASE WHEN baseAmount < amount THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
+                SUM(CASE WHEN baseAmount::DECIMAL < amount::DECIMAL THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
             FROM
                 statistics
             WHERE
@@ -185,9 +185,9 @@ export async function createLeaderboardTON(req, res) {
                 player,
                 SUM(kills) AS total_kills,
                 SUM(deaths) AS total_deaths,
-                COUNT(*) FILTER (WHERE baseAmount < amount) AS wins,
+                COUNT(*) FILTER (WHERE baseAmount::DECIMAL < amount::DECIMAL) AS wins,
                 COUNT(*) AS total_games,
-                SUM(CASE WHEN baseAmount < amount THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
+                SUM(CASE WHEN baseAmount::DECIMAL < amount::DECIMAL THEN (amount::DECIMAL - baseAmount::DECIMAL) ELSE 0 END) / 10^9 * $2 AS amount_won
             FROM
                 statistics
             WHERE

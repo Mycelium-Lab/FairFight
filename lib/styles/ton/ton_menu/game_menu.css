@@ -1,9 +1,8 @@
 @media (max-width: 500px) {
 
 
-    #pastgames-list-f2p-evm,
-    #opengames-list-f2p,
     #pastgames-list-f2p,
+    #opengames-list-f2p,
     #opengames-list,
     #pastgames-list {
         display: flex;
@@ -20,9 +19,7 @@
         background-image: none !important;
     }
 
-    #opengames-f2p-evm,
     #opengames-f2p,
-    #pastgames-f2p-evm,
     #pastgames-f2p,
     #pastgames {
         background-color: #fffdf4;
@@ -32,11 +29,9 @@
         overflow: visible;
     }
 
-    #opengames-f2p-evm,
     #opengames-f2p {background-color: transparent;}
 
     #pastgames-list table,
-    #pastgames-f2p-evm table,
     #pastgames-f2p table,
     #pastgames table {
         width: calc(100% - 25px);
@@ -44,7 +39,6 @@
     }
     
     #opengames-list .games__row.border-style,
-    #opengames-list-f2p-evm .games__row.border-style,
     #opengames-list-f2p .games__row.border-style {
         margin-left: 5px;
         width: calc(100% - 18px) !important;
@@ -52,22 +46,19 @@
     }
 
     #pastgames .four-color-border-block,
-    #pastgames-f2p .four-color-border-block,
-    #pastgames-f2p-evm .four-color-border-block {
+    #pastgames-f2p .four-color-border-block {
         z-index: 0;
     }
 
     #pastgames .four-color-border-block .horizontal,
-    #pastgames-f2p .four-color-border-block .horizontal,
-    #pastgames-f2p-evm .four-color-border-block .horizontal {
+    #pastgames-f2p .four-color-border-block .horizontal {
         width: 100%;
         height: 1px !important;
         left: 0;
     }
 
     #pastgames .four-color-border-block .vertical,
-    #pastgames-f2p .four-color-border-block .vertical,
-    #pastgames-f2p-evm .four-color-border-block .vertical {
+    #pastgames-f2p .four-color-border-block .vertical {
         height: 100%;
         width: 1px !important;
         top: 0;
@@ -82,12 +73,7 @@
     #pastgames-f2p .four-color-border-block .horizontal.bottom-2,
     #pastgames-f2p .four-color-border-block .vertical.left-2,
     #pastgames-f2p .four-color-border-block .vertical.right-2,
-    #pastgames-f2p .four-color-border-block .squrale,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.top-2,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-2,
-    #pastgames-f2p-evm .four-color-border-block .vertical.left-2,
-    #pastgames-f2p-evm .four-color-border-block .vertical.right-2,
-    #pastgames-f2p-evm .four-color-border-block .squrale {
+    #pastgames-f2p .four-color-border-block .squrale {
         background-color: var(--color-brown);
     }
 
@@ -98,108 +84,89 @@
     #pastgames-f2p .four-color-border-block .horizontal.top-1,
     #pastgames-f2p .four-color-border-block .horizontal.bottom-1,
     #pastgames-f2p .four-color-border-block .vertical.left-1,
-    #pastgames-f2p .four-color-border-block .vertical.right-1,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.top-1,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-1,
-    #pastgames-f2p-evm .four-color-border-block .vertical.left-1,
-    #pastgames-f2p-evm .four-color-border-block .vertical.right-1 {
+    #pastgames-f2p .four-color-border-block .vertical.right-1 {
         background-color: #FFC897;
     }
 
     #pastgames .four-color-border-block .horizontal,
-    #pastgames-f2p .four-color-border-block .horizontal,
-    #pastgames-f2p-evm .four-color-border-block .horizontal {
+    #pastgames-f2p .four-color-border-block .horizontal {
         width: calc(100% - 2px);
         left: 1px;
     }
 
     #pastgames .four-color-border-block .vertical,
-    #pastgames-f2p .four-color-border-block .vertical,
-    #pastgames-f2p-evm .four-color-border-block .vertical {
+    #pastgames-f2p .four-color-border-block .vertical {
         height: calc(100% - 2px);
         top: 1px;
     }
 
     #pastgames .four-color-border-block .horizontal.top-1,
-    #pastgames-f2p .four-color-border-block .horizontal.top-1,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.top-1 {
+    #pastgames-f2p .four-color-border-block .horizontal.top-1 {
         top: 0;
     }
 
     #pastgames .four-color-border-block .horizontal.bottom-1,
-    #pastgames-f2p .four-color-border-block .horizontal.bottom-1,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-1 {
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-1 {
         bottom: 0;
     }
 
     #pastgames .four-color-border-block .vertical.left-1,
-    #pastgames-f2p .four-color-border-block .vertical.left-1,
-    #pastgames-f2p-evm .four-color-border-block .vertical.left-1 {
+    #pastgames-f2p .four-color-border-block .vertical.left-1 {
         left: 0;
     }
 
     #pastgames .four-color-border-block .vertical.right-1,
-    #pastgames-f2p .four-color-border-block .vertical.right-1,
-    #pastgames-f2p-evm .four-color-border-block .vertical.right-1 {
+    #pastgames-f2p .four-color-border-block .vertical.right-1 {
         right: 0;
     }
 
     #pastgames .four-color-border-block .horizontal.top-2,
-    #pastgames-f2p .four-color-border-block .horizontal.top-2,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.top-2 {
+    #pastgames-f2p .four-color-border-block .horizontal.top-2 {
         top: -1px;
     }
 
     #pastgames .four-color-border-block .horizontal.bottom-2,
-    #pastgames-f2p .four-color-border-block .horizontal.bottom-2,
-    #pastgames-f2p-evm .four-color-border-block .horizontal.bottom-2 {
+    #pastgames-f2p .four-color-border-block .horizontal.bottom-2 {
         bottom: -1px;
     }
 
     #pastgames .four-color-border-block .vertical.left-2,
-    #pastgames-f2p .four-color-border-block .vertical.left-2,
-    #pastgames-f2p-evm .four-color-border-block .vertical.left-2 {
+    #pastgames-f2p .four-color-border-block .vertical.left-2 {
         left: -1px;
     }
 
     #pastgames .four-color-border-block .vertical.right-2,
-    #pastgames-f2p .four-color-border-block .vertical.right-2,
-    #pastgames-f2p-evm .four-color-border-block .vertical.right-2 {
+    #pastgames-f2p .four-color-border-block .vertical.right-2 {
         right: -1px;
     }
 
     #pastgames .four-color-border-block .squrale,
-    #pastgames-f2p-evm .four-color-border-block .squrale,
     #pastgames-f2p .four-color-border-block .squrale {
         width: 1px;
         height: 1px;
     }
 
     #pastgames .four-color-border-block .squrale.one,
-    #pastgames-f2p .four-color-border-block .squrale.one,
-    #pastgames-f2p-evm .four-color-border-block .squrale.one {
+    #pastgames-f2p .four-color-border-block .squrale.one {
         left: 0;
         top: 0;
     }
 
     #pastgames .four-color-border-block .squrale.two,
-    #pastgames-f2p .four-color-border-block .squrale.two,
-    #pastgames-f2p-evm .four-color-border-block .squrale.two {
+    #pastgames-f2p .four-color-border-block .squrale.two {
         right: 0;
         top: 0;
     }
 
     #pastgames .four-color-border-block .squrale.three,
-    #pastgames-f2p .four-color-border-block .squrale.three,
-    #pastgames-f2p-evm .four-color-border-block .squrale.three {
+    #pastgames-f2p .four-color-border-block .squrale.three {
         right: 0;
         bottom: 0;
         left: auto;
     }
 
     #pastgames .four-color-border-block .squrale.four,
-    #pastgames-f2p .four-color-border-block .squrale.four,
-    #pastgames-f2p-evm .four-color-border-block .squrale.four {
+    #pastgames-f2p .four-color-border-block .squrale.four {
         left: 0;
         bottom: 0;
         right: auto;
@@ -306,31 +273,27 @@
         background: none !important;
     }
 
-    #pastgames-list-f2p-evm,
     #pastgames-list-f2p {
         overflow-x: hidden;
         margin: 0;
     }
 
-    #pastgames-list-f2p-evm,
-    #pastgames-list,
-    #pastgames-list-f2p {
+    #pastgames-list-f2p,
+    #pastgames-list {
         max-height: 203px;
         overflow-y: auto;
         overflow-x: hidden;
         width: calc(100% + 12px);
     }
     
-    #opengames-list-f2p-evm,
-    #opengames-list,
-    #opengames-list-f2p {
+    #opengames-list-f2p,
+    #opengames-list {
         height: 206px;
         overflow-y: auto;
         overflow-x: hidden;
         margin: 0;
     }
     
-    #opengames-list-f2p-evm,
     #opengames-list-f2p {
         width: calc(100% + 12px);
     }

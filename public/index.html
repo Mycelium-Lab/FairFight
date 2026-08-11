@@ -55,7 +55,7 @@
 		<script type="module" src="/modules/airdrop.js"></script>
 		<script type="module" src="/modules/leaderboard.js"></script>
 		<script src="custom.js"></script>
-		<script type="module" src="/src/f2p-evm/custom.js"></script>
+		<script type="module" src="/src/fights/menu.js"></script>
 	</head>
 
 <body>
@@ -1151,21 +1151,21 @@
 									<button class="" id="pastgames-f2p-btn" data-text="Past games">Past games</button>
 								</div>
 	
-								<h4 id="opengames-empty-f2p-evm" style="display: none">Empty or only your game</h4>
-								<div id="opengames-f2p-evm" class="tabs__content active">
+								<h4 id="opengames-empty-f2p" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p" class="tabs__content active">
 									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg"> -->
 									
-									<ul id="opengames-list-f2p-evm">
-										<div class="games__empty" id="opengames_empty-f2p-evm">
-											<span id="opengames_empty-title-f2p-evm">Empty :(</span>
-											<span id="opengames_empty-desc-f2p-evm">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
+									<ul id="opengames-list-f2p">
+										<div class="games__empty" id="opengames_empty-f2p">
+											<span id="opengames_empty-title-f2p">Empty :(</span>
+											<span id="opengames_empty-desc-f2p">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames-f2p-evm" class="tabs__content">
+								<div id="pastgames-f2p" class="tabs__content">
 									<div class="four-color-border-block">
 										<span class="horizontal top-1"></span>
 										<span class="horizontal top-2"></span>
@@ -1185,12 +1185,12 @@
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg"> -->
-									<ul id="pastgames-list-f2p-evm">
-										<div class="games__empty" id="pastgames_empty-f2p-evm">
-											<span id="pastgames_empty-title-f2p-evm">Empty :(</span>
-											<span id="pastgames_empty-desc-f2p-evm">That's where your game history will be listed</span>
+									<ul id="pastgames-list-f2p">
+										<div class="games__empty" id="pastgames_empty-f2p">
+											<span id="pastgames_empty-title-f2p">Empty :(</span>
+											<span id="pastgames_empty-desc-f2p">That's where your game history will be listed</span>
 										</div>
-										<table id="pastgames-table-f2p-evm"></table>
+										<table id="pastgames-table-f2p"></table>
 									</ul>
 								</div>
 							</div>
@@ -1349,7 +1349,7 @@
 
 
 						<button id="btn_modal_window" class="newgame__btn"></button>
-						<button id="btn_modal_window-f2p-evm" class="newgame__btn__green" style="display: none;"></button>
+						<button id="btn_modal_window-f2p" class="newgame__btn__green" style="display: none;"></button>
 
 
 						<main class="main-container">
@@ -1482,8 +1482,8 @@
 									<button class="" id="pastgames-f2p-btn-desktop" data-text="Past games">Past games</button>
 								</div>
 
-								<h4 id="opengames-empty-f2p-evm-desktop" style="display: none">Empty or only your game</h4>
-								<div id="opengames-f2p-evm-desktop" style="display: none" class="tabs__content active bordered-content">
+								<h4 id="opengames-empty-f2p-desktop" style="display: none">Empty or only your game</h4>
+								<div id="opengames-f2p-desktop" style="display: none" class="tabs__content active bordered-content">
 									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
@@ -1510,14 +1510,14 @@
 										<span class="squrale three"></span>
 										<span class="squrale four"></span>
 									</div>
-									<ul id="opengames-list-f2p-evm-desktop">
-										<div class="games__empty" id="opengames_empty-f2p-evm-desktop">
-											<span id="opengames_empty-title-f2p-evm-desktop">Empty:(</span>
-											<span id="opengames_empty-desc-f2p-evm-desktop">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
+									<ul id="opengames-list-f2p-desktop">
+										<div class="games__empty" id="opengames_empty-f2p-desktop">
+											<span id="opengames_empty-title-f2p-desktop">Empty:(</span>
+											<span id="opengames_empty-desc-f2p-desktop">At the moment, there are no games available for joining. But you can always start your own by clicking the "New game" button above.</span>
 										</div>
 									</ul>
 								</div>
-								<div id="pastgames-f2p-evm-desktop" style="display: none" class="tabs__content bordered-content">
+								<div id="pastgames-f2p-desktop" style="display: none" class="tabs__content bordered-content">
 									<!-- <img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
 									<img class="board-edge" src="media/svg/board-edge.svg">
@@ -1544,10 +1544,10 @@
 										<span class="squrale three"></span>
 										<span class="squrale four"></span>
 									</div>
-									<ul id="pastgames-list-f2p-evm-desktop">
-										<div class="games__empty" id="pastgames_empty-f2p-evm-desktop" style="display: none;">
-											<span id="pastgames_empty-title-f2p-evm-desktop">Empty:(</span>
-											<span id="pastgames_empty-desc-f2p-evm-desktop">That's where your game history will be listed.</span>
+									<ul id="pastgames-list-f2p-desktop">
+										<div class="games__empty" id="pastgames_empty-f2p-desktop" style="display: none;">
+											<span id="pastgames_empty-title-f2p-desktop">Empty:(</span>
+											<span id="pastgames_empty-desc-f2p-desktop">That's where your game history will be listed.</span>
 										</div>
 									</ul>
 								</div>
@@ -1650,7 +1650,7 @@
 					<div>
 						<span class="quadriana-label" data-text="Map">Map</span>
 						<div class="custom-select" id="map-wrapper">
-							<div id="map-select-selecter" class="select-selected" data-value="0">Steel plant</div>
+							<div id="map-select-selected" class="select-selected" data-value="0">Steel plant</div>
 							<span class="arrow"></span>
 							<div class="select-items-wrapper select-hide">
 							  <div class="select-items">
@@ -1666,7 +1666,7 @@
 					<div>
 						<span class="quadriana-label" data-text="Number of players">Number of players</span>
 						<div class="custom-select" id="number-of-players">
-							<div id="players-select-selecter" class="select-selected" data-value="2">2 players</div>
+							<div id="players-select-selected" class="select-selected" data-value="2">2 players</div>
 							<span class="arrow"></span>
 							<div class="select-items-wrapper select-hide">
 							  <div class="select-items">
@@ -1704,7 +1704,7 @@
 						<span class="quadriana-label" data-text="Number of rounds">Number of rounds</span>
 						<!-- <input type="number" id="amountToPlay" min="1" max="255" required /> -->
 						<div class="custom-select" id="amountToPlay">
-							<div id="rounds-select-selecter" class="select-selected" data-value="1">1 ROUND</div>
+							<div id="rounds-select-selected" class="select-selected" data-value="1">1 ROUND</div>
 							<span class="arrow"></span>
 							<div class="select-items-wrapper select-hide">
 							  <div class="select-items">
@@ -1736,7 +1736,7 @@
 						<span id="yourDepositToken" class="quadriana-label" data-text="ETH">ETH</span>
 					</div>
 					<button class="close-button btn-big" disabled="disabled" id="createGame">create</button>
-					<button class="close-button btn-big" disabled="disabled" id="createGame-f2p-evm">create</button>
+					<button class="close-button btn-big" disabled="disabled" id="createGame-f2p">create</button>
 					<img id="player-visible-element" style="z-index: -10;" class="player-visible" src="media/svg/player-visible.svg">
 					<img id="player-visible-mobile-element" style="z-index: -10;" class="player-visible-mobile" src="media/svg/player-visible-mobile.svg">
 				</div>

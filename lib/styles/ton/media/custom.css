@@ -1513,16 +1513,14 @@ background-position: center 11px;
     #opengames-list .simplebar-content,
     #pastgames-list .simplebar-content,
     #opengames-list-f2p .simplebar-content,
-    #pastgames-list-f2p .simplebar-content,
-    #opengames-list-f2p-evm .simplebar-content,
-    #pastgames-list-f2p-evm .simplebar-content {
+    #pastgames-list-f2p .simplebar-content {
         grid-template-columns: 1fr !important;
         display: grid;
 
     }
 
     #opengames-list .simplebar-content,
-    #opengames-list-f2p-evm .simplebar-content {
+    #opengames-list-f2p .simplebar-content {
         gap: 10px !important;
     }
 
