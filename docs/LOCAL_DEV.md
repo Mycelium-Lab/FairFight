@@ -70,7 +70,17 @@ zero and that both players are released. Expect `END TO END OK`.
 Note this **consumes** the seeded fight — re-run `deployAndSeed.js` to get
 another playable one.
 
-## 4. Services
+## 4. Client bundles
+
+`lib/dist` is build output and is no longer tracked, so a fresh clone has no
+bundles and the lobby will not load until you build:
+
+```bash
+npm --prefix lib ci
+npm --prefix lib run build
+```
+
+## 5. Services
 
 ```bash
 PORT=5050 node server.js                    # HTTP API + static, terminal 3
@@ -81,7 +91,24 @@ Port 5000 is taken by AirPlay Receiver on macOS, hence 5050.
 
 Open <http://127.0.0.1:5050/>.
 
-## 5. Playing a local match
+## 6. Playing without a wallet (the quick way)
+
+A match needs two players before anything happens — `ig.main()` is only called
+once both are in the room, so one browser sits on "ROUND LOADING" forever. The
+sparring bot is the second player.
+
+```bash
+FAIRFIGHT_DEV_NO_WALLET=true SIGNALLING_PORT=8033 node signalling/server.js
+node bot/sparring-bot.mjs --human yourname --dies-after 10s --rounds 3
+```
+
+Open the URL the bot prints. No wallet, no chain, no transactions — the fight is
+rows in `game_f2p`/`players_f2p`.
+
+The bot is invisible in the game view and always loses; see `docs/DEV_BOT.md`
+for why, before you go looking for a character to shoot at.
+
+## 7. Playing a real wagered match
 
 You need a real wallet extension, so use two browser profiles:
 
@@ -98,12 +125,14 @@ either participant, since the fight's player list is public on-chain.
 
 ```bash
 npm test                    # server: input validation, sign-in nonce, socket auth
+node test/integration/headless-match.test.cjs <gameid>   # a match, no wallet or browser
+node test/integration/sparring-bot.test.mjs              # 43 bot assertions
 cd evm && npx hardhat test  # 119 contract tests, incl. differential legacy exploits
 cd ton && npx jest tests/FairFight.spec.ts   # 21 TON settlement tests
 ```
 
 The server integration tests need Postgres, Redis and the signalling server
-running.
+running; the wallet-free ones need `FAIRFIGHT_DEV_NO_WALLET=true` on it.
 
 ## Known local gotchas
 
@@ -112,3 +141,9 @@ running.
   contract, pre-existing and unrelated to settlement.
 - `evm/artifacts` and `lib/dist` are build output and no longer tracked; run a
   build rather than expecting them in a fresh clone.
+- All four pages request `/dist/index.js`, which has never been committed and
+  which nothing builds, so it 404s. Pre-existing and harmless — the pages work.
+- WalletConnect logs `Project not found`: its cloud project id is dead. Use
+  MetaMask's injected connector locally until it is re-provisioned.
+- The TON lobby shows "Your platform is not supported!" on a desktop browser.
+  That is its Telegram Mini App mobile gate, not a fault — use a mobile viewport.
