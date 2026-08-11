@@ -67,12 +67,14 @@ server.get('/ton', (req, res) => {
     res.sendFile(__dirname+'/public/index_ton.html')
 })
 
+//Both chain families now share one match page; the entry picks the family from
+//?network=. game_ton.html is gone.
 server.get('/ton_game', (req, res) => {
     maintenance
     ?
     res.redirect('/maintenance')
     :
-    res.sendFile(__dirname+'/public/game_ton.html')
+    res.sendFile(__dirname+'/public/game.html')
 })
 
 server.get('/game', (req, res) => {
