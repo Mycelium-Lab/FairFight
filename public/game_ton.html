@@ -40,6 +40,12 @@
 	<script type="text/javascript" src="/net/adapter.js"></script>
 	<script type="text/javascript" src="/messages.js"></script>
 	<script type="text/javascript" src="/game.min.js"></script>
+	<script type="text/javascript">
+		// See public/game.html for why: Impact's default relative "lib/" module root
+		// resolves against /game/ or /ton_game/ and 404s. Anchor it at the site root.
+		ig.prefix = '/';
+		ig.lib = '';
+	</script>
 	<script type="text/javascript" src="/game/plugins/minimap.js"></script>
 	<script type="text/javascript" src="/game/levels/main.js"></script>
 	<script type="text/javascript" src="/game/levels/moon.js"></script>

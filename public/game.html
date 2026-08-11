@@ -42,6 +42,17 @@
 	<script type="text/javascript" src="/net/adapter.js"></script>
 	<script type="text/javascript" src="/messages.js"></script>
 	<script type="text/javascript" src="/game.min.js"></script>
+	<script type="text/javascript">
+		// Impact builds a module URL as ig.prefix + ig.lib + "path/with/slashes.js",
+		// defaulting to a relative "lib/". express.static serves the lib directory at
+		// the site root, so those files live at /game/entities/*.js. Left at the
+		// default, a level requiring an entity that has not yet been script-tagged
+		// fetches "lib/game/entities/x.js" relative to the current URL - and because
+		// /game redirects to /game/, that became /game/lib/game/entities/x.js and 404'd,
+		// which stopped the game booting. Anchor it at the root instead.
+		ig.prefix = '/';
+		ig.lib = '';
+	</script>
 	<script type="text/javascript" src="/game/plugins/minimap.js"></script>
 	<script type="text/javascript" src="/game/levels/main.js"></script>
 	<script type="text/javascript" src="/game/levels/moon.js"></script>

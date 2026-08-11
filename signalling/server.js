@@ -167,6 +167,18 @@ const MessageType = {
 //Set REQUIRE_SOCKET_AUTH=false only for local debugging without a wallet.
 const REQUIRE_SOCKET_AUTH = process.env.REQUIRE_SOCKET_AUTH !== 'false';
 
+//The two free-to-play pseudo-chains. They carry no on-chain escrow: fights live in
+//game_f2p/players_f2p and settlement writes statistics_f2p instead of signing a payout.
+const F2P_CHAIN_IDS = new Set(['999998', '999999']);
+
+//Wallet-free play, for developing the game loop and capturing gameplay fixtures.
+//Refuses to arm in prod so it cannot be switched on against real players by mistake.
+const DEV_NO_WALLET = process.env.FAIRFIGHT_DEV_NO_WALLET === 'true'
+  && process.env.APP_STATE !== 'prod';
+if (process.env.FAIRFIGHT_DEV_NO_WALLET === 'true' && process.env.APP_STATE === 'prod') {
+  log('REFUSING FAIRFIGHT_DEV_NO_WALLET: APP_STATE is prod');
+}
+
 function User(walletAddress) {
   this.userId = ++lastUserId;
   this.walletAddress = walletAddress;
@@ -1009,6 +1021,10 @@ function handleSocket(socket) {
   //TON wallets cannot personal_sign, so chain 0 is not covered yet - see REQUIRE_SOCKET_AUTH.
   function isJoinAuthentic(joinData) {
     if (`${room.getChainId()}` === '0') return true
+    //Free-to-play rooms hold no on-chain stake, so a wallet cannot be required to
+    //enter one. Only exempt them when dev mode is explicitly on, and never in prod -
+    //F2P still awards leaderboard tokens, so this is not a free-for-all.
+    if (DEV_NO_WALLET && F2P_CHAIN_IDS.has(`${room.getChainId()}`)) return true
     if (!REQUIRE_SOCKET_AUTH) return true
     if (!authNonce || !joinData || typeof joinData.signature !== 'string') {
       log('rejected join: missing signature for %s', joinData && joinData.walletAddress)

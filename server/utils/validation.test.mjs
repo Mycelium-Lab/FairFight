@@ -41,5 +41,14 @@ check('safeJoin result stays under base', (safeJoin(base, 'players_main', 'a_1.p
 //The shape of the original /getcharacterimage exploit.
 check('full exploit chain blocked', safeJoin(base, 'players_../../..', '../../.env_1.png'), null)
 
+//Free-to-play players are handles, not wallets (chains 999998/999999).
+check('F2P handle accepted', isValidAddress('devplayer1', 999999), true)
+check('F2P telegram-style handle accepted', isValidAddress('some_user.1-x', 999998), true)
+check('F2P traversal rejected', isValidAddress('../../.env', 999999), false)
+check('F2P dotdot rejected', isValidAddress('a..b', 999999), false)
+check('F2P slash rejected', isValidAddress('a/b', 999999), false)
+check('F2P empty rejected', isValidAddress('', 999999), false)
+check('EVM handle still rejected on an EVM chain', isValidAddress('devplayer1', 42161), false)
+
 console.log(failed === 0 ? '\nALL PASS' : `\n${failed} FAILED`)
 process.exit(failed === 0 ? 0 : 1)
