@@ -73,8 +73,27 @@ const io = new SocketIOServer(PORT, {
 //settlement for everybody else.
 const connectionsPerIp = new Map();
 
+//Behind a reverse proxy every connection arrives from the proxy's own address, so
+//keying the per-IP cap on handshake.address would count all players as one host and
+//lock everybody out at MAX_CONNECTIONS_PER_IP. Only trust X-Forwarded-For when the
+//deployment says there is a proxy in front, since the header is client-settable and
+//trusting it unconditionally would let anyone forge a fresh identity per connection.
+const TRUST_PROXY = process.env.SIGNALLING_TRUST_PROXY === 'true';
+
+function clientIp(socket) {
+  if (TRUST_PROXY) {
+    const forwarded = socket.handshake.headers['x-forwarded-for'];
+    if (typeof forwarded === 'string' && forwarded.length) {
+      //Left-most entry is the original client; the rest are proxies it passed through.
+      const original = forwarded.split(',')[0].trim();
+      if (original) return original;
+    }
+  }
+  return socket.handshake.address || 'unknown';
+}
+
 io.use((socket, next) => {
-  const ip = socket.handshake.address || 'unknown';
+  const ip = clientIp(socket);
   //engine.clientsCount counts transports already open, including sockets still inside this
   //middleware, so a burst cannot slip past the cap the way a namespace count would.
   if (io.engine.clientsCount > MAX_CONNECTIONS) {
@@ -1467,8 +1486,14 @@ redisClient
     io.on('connection', handleSocket);
     log('Running room server on port %d', PORT);
     log('Allowed origins: %s', allowedOrigins.join(', '));
-    log('Limits: %d connections (%d per IP), %d byte max payload',
-      MAX_CONNECTIONS, MAX_CONNECTIONS_PER_IP, MAX_HTTP_BUFFER_SIZE);
+    log('Limits: %d connections (%d per IP via %s), %d byte max payload',
+      MAX_CONNECTIONS, MAX_CONNECTIONS_PER_IP,
+      TRUST_PROXY ? 'X-Forwarded-For' : 'socket address',
+      MAX_HTTP_BUFFER_SIZE);
+    if (!TRUST_PROXY) {
+      log('note: set SIGNALLING_TRUST_PROXY=true if a reverse proxy fronts this port, '
+        + 'or the per-IP cap will see every player as one host');
+    }
   })
   .then(async () => {
     key = await mnemonicToWalletKey(process.env.MNEMONIC_TON.split(" "));
