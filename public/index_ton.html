@@ -50,10 +50,11 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 		<script src="/bundle.js"></script>
-		<!-- <script type="text/javascript" src="dist/index.js"></script> -->
 		<script type="module" src="/modules/ton_modal.js"></script>
 		<script src="/modules/ton_playbtn.js" defer></script>
-		<script type="module" src="/dist/main_ton.js"></script>
+		<!-- One lobby bundle for both chain families; data-chain tells it which
+		     half of itself to load. See lib/lobby.js. -->
+		<script type="module" src="/dist/lobby.js" data-chain="tvm"></script>
 		<script type="module" src="/modules/airdrop.js"></script>
 		<script type="module" src="/modules/leaderboard.js"></script>
 		<script src="custom.js"></script>

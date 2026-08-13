@@ -50,8 +50,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.6.0/ethers.umd.min.js" type="text/javascript">
 		</script>
 		<script src="/bundle.js"></script>
-		<!-- <script type="text/javascript" src="dist/index.js"></script> -->
-		<script type="module" src="/dist/main.js"></script>
+		<!-- One lobby bundle for both chain families; data-chain tells it which
+		     half of itself to load. See lib/lobby.js. -->
+		<script type="module" src="/dist/lobby.js" data-chain="evm"></script>
 		<script type="module" src="/modules/airdrop.js"></script>
 		<script type="module" src="/modules/leaderboard.js"></script>
 		<script src="custom.js"></script>

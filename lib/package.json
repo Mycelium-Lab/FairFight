@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "//build": "Builds all four page bundles into lib/dist (main, main_game, main_ton, main_game_ton). lib/dist is generated and gitignored - run this after any change under lib/ and before deploying. From the repo root: npm --prefix lib ci && npm --prefix lib run build",
+    "//build": "Builds the page bundles into lib/dist: lobby.js (both lobby pages, which load lobby-evm.js or lobby-tvm.js at runtime) and main_game.js (both match pages). lib/dist is generated and gitignored - run this after any change under lib/ and before deploying. From the repo root: npm --prefix lib ci && npm --prefix lib run build",
     "build": "webpack",
     "build:clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && webpack",
     "watch": "webpack --watch",
