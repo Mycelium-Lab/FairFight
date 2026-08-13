@@ -138,30 +138,39 @@ socket owning the dying wallet). See `docs/DEV_BOT.md`.
 | TON contract | ✅ 21 tests; the headline bug proven fixed by mutation testing |
 | Server security | ✅ validation, nonce replay, socket auth, proxy cap — all run against a live server |
 | Wallet-free match | ✅ plays and settles end to end |
-| **Step 6 (one lobby entry)** | ⚠️ **compiles, unproven at runtime** — see below |
+| Step 6 (one lobby entry) | ✅ both pages load one bundle and render — see below |
 | Shop / lootbox / equip flows | ⚠️ traced, never executed — needs a funded wallet |
+| A wagered (non-F2P) match | ⚠️ never played — needs a funded wallet on a real chain |
 
-### The one thing left half-done
+### Step 6, and what is still owed on it
 
-The last commit (`0a83f68`) restructured `lib/index.js` + `lib/index_ton.js` into
-`lib/lobby/{evm,tvm}.js` behind a single `lobby.js` entry, and both pages now load
-one `dist/lobby.js`. The webpack build is clean and every file parses — but the
-agent doing it stalled, and Docker died before it could be loaded in a browser.
+`0a83f68` restructured `lib/index.js` + `lib/index_ton.js` into
+`lib/lobby/{evm,tvm}.js` behind a single `lobby.js` entry. Verified: clean build,
+and **both `/` and `/ton` load the same `dist/lobby.js` and render**, with `/ton`
+correctly reporting `document.body.dataset.chain === 'tvm'` (which is what the
+leaderboard module reads to pick its chain). That confirms step 8c is unblocked —
+a merged page now has one script tag to point at.
 
-**First job for whoever continues: boot the stack and open both lobbies.** If they
-work, the remaining deletions that step was meant to make (duplicate WalletConnect
-init blocks, the amount observers, ~545 lines of commented-out mock fixtures) are
-still on the table. If they don't, `git revert 0a83f68` loses only that step.
+Caveat on how that was checked: Docker was down, so it was served by a minimal
+static server mirroring `server.js`'s two mounts rather than by `server.js`
+itself. The bundles execute and the pages render; the API-backed lists were not
+exercised. Worth one pass with the real stack.
+
+Still owed from that step, because the agent stalled before finishing: the
+deletions it was also meant to make — the duplicate WalletConnect init blocks,
+the amount observers, and ~545 lines of commented-out mock fixtures. Grep for
+them; the ~600-line target for the merged entry has not been hit yet.
 
 ---
 
 ## 6. What to do next, in order
 
-1. **Verify `0a83f68`** — both lobbies in a browser. Everything else is blocked
-   behind knowing whether it works.
-2. **Step 8c — merge the two lobby pages.** Now unblocked: a merged page can point
-   at the single `dist/lobby.js`. ~95% of the two pages is already identical after
-   the id normalisation in step 2.
+1. **Finish step 6's deletions.** The restructure works, but the duplicate
+   WalletConnect init blocks, the amount observers and ~545 lines of commented-out
+   mock fixtures are still there. Cheap, mechanical, and it makes step 8c smaller.
+2. **Step 8c — merge the two lobby pages.** Unblocked and verified as such: both
+   pages already load one `dist/lobby.js`, and `/ton` sets `data-chain="tvm"`
+   correctly. ~95% of the two pages is identical after step 2's id normalisation.
 3. **Step 3b — unify the fight-row state machines.** The riskiest remaining
    frontend work, and deliberately left alone. TON navigates away *as a side effect
    of rendering a row*; EVM navigates from a contract event handler and from the
@@ -202,6 +211,16 @@ Not code — operations. These block a relaunch regardless of how good the code 
    vulnerable until funds are migrated. That migration is not written.
 5. Legacy `FairFight.sol` is still in the tree and still exploitable exactly as
    the differential tests demonstrate.
+6. **There are three committed private keys that are NOT the public Hardhat test
+   accounts**, present since the original `first evm version commit`:
+   - `0x0be95d95…` and `0x36a85827…` in `evm/scripts/Legacy/sign.js`
+   - `0x435bc8f7…` in `evm/scripts/FairFight/joinAndFinish.js`
+
+   They are in git history, so rewriting the files does not unpublish them. Check
+   whether either address ever held or controlled anything; if so, treat it as
+   compromised and move the funds. Everything *this* branch added uses the
+   well-known public Hardhat accounts (`0xac0974be…`, `0x59c6995e…`,
+   `0x5de4111a…`), which are safe by design and labelled as such.
 
 ---
 
